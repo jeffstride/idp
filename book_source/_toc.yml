@@ -1,0 +1,27 @@
+format: jb-book
+root: index
+chapters:
+  - file: homework-assignments/index
+    sections:
+      - file: homework-assignments/hw1
+      - file: homework-assignments/hw2
+      - file: homework-assignments/hw3
+  - file: final-project/index
+    sections:
+      - file: final-project/handouts/index
+        sections:
+          - file: final-project/handouts/proposal
+          - file: final-project/handouts/code
+          - file: final-project/handouts/report
+          - file: final-project/handouts/presentation
+      - file: final-project/tips/index
+        sections:
+          - file: final-project/tips/proposal
+          - file: final-project/tips/code
+          - file: final-project/tips/report
+          - file: final-project/tips/presentation
+  - file: visualizations/index
+    sections:
+      - file: visualizations/lineplots
+      - file: visualizations/barchart
+      - file: visualizations/geospatial

@@ -1,0 +1,62 @@
+#######################################################################################
+# Book settings
+title: "IDP at NCHS"
+author: "Jeff Stride"
+copyright: "2023"
+logo: _static/logo.png
+
+#######################################################################################
+# Execution settings
+execute:
+  execute_notebooks: "off"
+
+#######################################################################################
+# Parse and render settings
+parse:
+  myst_enable_extensions:
+    - amsmath
+    - dollarmath
+
+#######################################################################################
+# HTML-specific settings
+html:
+  favicon: "_static/favicon.png"
+  use_edit_page_button: true
+  use_repository_button: true
+  use_issues_button: true
+  # Kind of a hack, but I have to hardcode the GitHub URL to get this to work :(
+  extra_navbar: '<a href="https://jeffstride.github.io/idp/acknowledgements.html">Acknowledgements</a><br/>Stride EdVentures, LLC'
+  extra_footer: 'Under Construction!'
+
+  comments:
+    utterances:
+      repo: "jeffstride/idp"
+      issue-term: "pathname"
+      label: "💬 Comments"
+      theme: "preferred-color-scheme"
+
+#######################################################################################
+# Launch button settings
+# launch_buttons:
+#   notebook_interface: jupyterlab
+#   binderhub_url: https://mybinder.org
+#   colab_url: https://colab.research.google.com/
+
+repository:
+  url: https://github.com/jeffstride/idp
+  path_to_book: book_source/
+  branch: main
+
+#######################################################################################
+# Advanced and power-user settings
+sphinx:
+  extra_extensions:
+    - "sphinx_comments"
+    - "sphinx_copybutton"
+    - "sphinx_design"
+  # local_extensions:
+  #   "custom_directives": "ext/"
+  #   "setup_templating": "ext/"
+  config:
+    suppress_warnings:
+      - "myst.header"
