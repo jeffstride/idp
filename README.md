@@ -64,7 +64,7 @@ Build the new book HTML by running (create a terminal in VS Code):
 
 ```
 # From the top-most directory
-jupyter-book build book_source/source
+jupyter-book build book_source
 ```
 
 This will rebuild the whole book into the `book_source/_build` directory, which might take some time depending on the change.
