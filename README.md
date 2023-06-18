@@ -37,18 +37,42 @@ is the specific book theme, `myst-nb` changes the Sphinx langauge from rST to My
 pip install -r requirements.txt
 ```
 
-### Editing the book (TODO: needs updating)
+### Editing the book
 
-The book text is stored in `docs`. Each MyST file (`.md`) corresponds to a single page of the book. Some pages, like the `index.md` files for the 
-Modules don't contain any useful information other than links.
+The book text is stored in `book_source/source`. Each MyST file (`.md`) corresponds to a single page of the book. Some pages, like the `index.md` files for the Modules don't contain any useful information other than links. Some of the book pages are Juptyer notebooks which also get converted to HTML.
 
-Edit the book text by editing the appropriate MyST file. See [MyST's documentation](https://myst-parser.readthedocs.io/en/latest/) for syntax examples 
-(note: it is incredibly similar to plain markdown, with some extra macros available).
+Edit the book text by editing the appropriate MyST file. See [MyST's documentation](https://myst-parser.readthedocs.io/en/latest/) for syntax examples (note: it is incredibly similar to plain markdown, with some extra macros available).
 
+The practice problem starter code and tests live in `book_source/coding_problems`.
+
+### Rebuilding the book
+
+#### Step 1) Update starter code zips [optional, if changing starter code]
+
+**If you changed starter code or tests for the practice problems, you will need to do this step first, otherwise skip to the next step** The code in `book_source/coding_problems` needs to be copied to appropriate `.zip` file in the book source. To do this, run the following Python script.
+
+```bash
+python scripts/generate_pages.py
+
+# Or
+make zips
+```
+
+#### Step 2) Build HTML output
+
+Build the new book HTML by running (create a terminal in VS Code):
+
+```
+# From the top-most directory
+jupyter-book build book_source/source
+```
+
+This will rebuild the whole book into the `book_source/_build` directory, which might take some time depending on the change.
 
 ### Committing and pushing changes
 
-Whenever we push to `main` branch, GitHub Actions will build the site again and deploy it to the `gh-pages` branch.
+Stage any changes to the `book_source` and push. We **do not** stage any changes to build files. Whenever we push to `main`,
+GitHub Actions will build the site again and deploy it to the `gh-pages` branch.
 
 **Special note aboute deploying:**
 
