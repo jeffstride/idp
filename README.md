@@ -21,9 +21,10 @@ is to make an [GitHub Issue](https://github.com/jeffstride/idp/issues) or to con
 
 This book is built with the [Sphinx Book Theme](https://sphinx-book-theme.readthedocs.io/en/latest/index.html) to generate HTML.
 
-### Setup (TODO: needs updating)
+### Setup (Create Virtual Environment)
 
-Create a virtual environment with Python 3.8 or higher. For example, if you use Anaconda you can write:
+Create a virtual environment with Python 3.8 or higher. For example, if you use Anaconda you can launch an Anaconda command
+console. CD to the root directory of this repository, and then write:
 
 ```bash
 conda create --name 163-book python=3.8
@@ -62,7 +63,7 @@ make zips
 
 Build the new book HTML by running (create a terminal in VS Code):
 
-```
+```yaml
 # From the top-most directory
 jupyter-book build book_source
 ```
@@ -72,10 +73,26 @@ This will rebuild the whole book into the `book_source/_build` directory, which 
 ### Committing and pushing changes
 
 Stage any changes to the `book_source` and push. We **do not** stage any changes to build files. Whenever we push to `main`,
-GitHub Actions will build the site again and deploy it to the `gh-pages` branch.
+GitHub Actions will build the site again and deploy it to the `gh-pages` branch. 
+
+The GitHub actions are all established in the `.github\workflows\main.yml` file.  To get the Actions to run with permissions, 
+we needed to add some configuration to the file.
+```yaml
+permissions:
+  contents: write
+```
 
 **Special note aboute deploying:**
 
-This will likely not matter, but is a bug we ran into a few times when setting up the book so I thought we should docunment it. T
-here must be a file called `.nojekyll` in the directory wherever GitHub Pages is deployed. This file exists on the `gh-pages` branch
-and should stay there by itself. If something weird happens though, check to make sure it is still there.
+This will likely not matter, but is a bug we ran into a few times when setting up the book so I thought we should docunment it. 
+There must be a file called `.nojekyll` in the directory wherever GitHub Pages is deployed. This file exists on the `gh-pages` branch
+and should stay there by itself (i.e. add this empty `.nojekyll` file to the root of the branch). If something weird happens though, check to make sure it is still there.
+
+When this file did not exist, then the `_static` resources were not found and the site looked like no CSS was applied.
+
+### Working Locally
+Here are some steps that I take to get things to run locally. 
+1. Launch VS Code in the cse-book virtual environment.
+2. In a terminal window `pip install -r requirements.txt`
+3. Then, `jupyter-book build book_source` 
+
