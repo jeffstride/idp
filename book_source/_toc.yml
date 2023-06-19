@@ -6,6 +6,16 @@ chapters:
       - file: homework-assignments/hw1
       - file: homework-assignments/hw2
       - file: homework-assignments/hw3
+  - file: module-additions/index
+    sections:
+      - file: module-additions/module1/index
+        sections:
+          - file: module-additions/module1/building-in-replit
+          - file: module-additions/module1/replit-tips
+      - file: module-additions/module2/index
+        sections:
+          - file: module-additions/module2/stub1
+          - file: module-additions/module2/stub2
   - file: final-project/index
     sections:
       - file: final-project/handouts/index
