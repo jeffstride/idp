@@ -37,9 +37,16 @@ from cse163_utils.py import assert_equals
 import hw1
 
 def test_problem_1():
+    '''
+    Tests the method problem_1()
+    '''
+    # Tests provided in the handout
     assert_equals(hw1.problem_1('sletstheresbeslight'), 'let there be light')
     assert_equals(hw1.problem_1('ssss'), '   ')
+    # Edge Case
     assert_equals(hw1.problem_1('', ''))
+    # My extra tests
+    assert_equals(hw1.problem_1('?My?Tests?are?better!', 'My Tests are better!'))
 ```
 
 ```{tab-item} Step 3
@@ -73,10 +80,85 @@ See [Building on Replit](/module-additions/module1/building-in-replit) for more 
 ```
 
 * * * 
+## Methods in hw1.py
+### `funky_sum`
+**Task:** Write a function `funky_sum` that does a special sum to combine two numbers. An initial (but incomplete) implementation has already been done for you! We will revisit funky_sum later in the spec to fix a bug in this initial code.
 
-Here are the details of the assignment.  
+The function should take three parameters, the first two are numbers, `a` and `b`, to combine and a third, `mix`, is a number to determine the ratio to use from each. `mix` acts as a "slider" to control how much to use of each number. If mix is 0 or less, the result should be the same as `a`. On the other hand, if `mix` is 1 or more, the result should be the same as `b`. For any value of `mix` between 0 and 1, it should add `1-mix` times `a` and `mix` times `b`. The technical name for this operation is "linear interpolation".  
 
-Problems to create.  
-Testing to do.  
-Rubric information.  
+Here are some examples that you should make sure appear in `hw1_test.py`:
+| call | returns |
+|------|---------|
+|funky_sum(1, 3, 0.5)| 2.0| 
+|funky_sum(1, 3, 0)|1| 
+|funky_sum(1, 3, 0.25)| 1.5| 
+|funky_sum(1, 3, 0.6) |2.2|
+|funky_sum(1, 3, 1)|3|
+
+
+### `total`
+**Task:** Write a function total that takes a number `n` and returns the sum of the integers from 0 (inclusive) to n (inclusive). If `n` is negative, the function should return the value `None` instead.  
+
+This has already been done for you, so you will not need to modify any code for this function. But, you will have to document and test it.
+
+### `swip_swap`
+**Task:** Write a function `swip_swap` that takes a string source and characters `c1` and `c2` and returns a copy of source with all occurrences of c1 and c2 swapped. You may assume that the c1 and c2 are single characters. Use str concatenation with the + operator to solve this problem.
+
+Here are some examples that you should make sure appear in `hw1_test.py`:
+| call | returns | 
+|------|---------| 
+|swip_swap('foobar', 'f', 'o')|  'offbar'| 
+|swip_swap('foobar', 'b', 'c')| 'foocar'| 
+|swip_swap('foobar', 'z', 'c')| 'foobar'| 
+
+```{admonition} important
+In order to demonstrate the learning objectives for this problem, you should **NOT** use the string `replace` function or use any data structures like `list` to solve this problem.
+```
+
+## Testing
+**Task:** You will have three functions in `hw1_test.py` that test the methods in `hw1.py`. Each testing method should include the tests provided in this document along with **at least 2 more** tests that you make up. All of these methods make calls to `assert_equals`. 
+
+Make sure each test function is actually called in `main` and that you use the _main-pattern_ as shown here!
+
+```python
+def main():
+    test_swip_swap()
+    test_total()
+    test_funky_sum()
+
+
+if __name__ == '__main__':
+    main()
+```
+
+## Documentation
+**Task:** Document the code in `hw1.py` and `hw1_test.py`.
+
+There is no documentation in the provided code! We recommend writing your documentation FIRST (in Step 1). Writing documentation for your function is a great way to start to get you thinking about what your method needs to do. You should go through and add the following documentation:
+
+* Each function in `hw1.py` and `hw1_test.py` should have a doc-string comment describing their parameters, returns and behavior.
+
+* Each file `hw1.py` and `hw1_test.py` should have a doc-string comment as the first lines of that file. This comment should describe what the whole file is for. A doc-string for a file looks the same as a doc-string for a function, but goes as the first lines of the file. Each doc-string for the file should have your name and your section in it as well. Since this assignment doesn’t really have a context, the description for hw1.py can just say something like "Implements the functions for HW1".
+
+Importantly, it helps to think about who the audience of your comments will be. They are interested in knowing:  
+1. **WHAT** your function does
+2. **RETURN** values of the function, including special cases. 
+
+The audience of your comments are **NOT** looking for you to simply rewrite the code in English. They do **NOT** want to know how the method works. Those types of comments belong in the code as `# inline comments`. You commonly want to avoid phrases that are telling the reader how you accomplish something (e.g. “uses a for loop”) since that is a little too detailed into the specific implementation. Instead, describe your function at a high-level; mimic documentation that you find online about a method. 
+
+For example, when you read the [documentation](https://docs.python.org/3/library/stdtypes.html#str.split) on the `split` method, notice that it doesn't ell you anything about the code. It tells you what it does!  
+
+```{admonition} hint
+Make sure to describe any import edge-cases that the reader might want to know about. For example, does your function ever return `None`?
+```
+
+Test method doc-strings do not need to be elaborate. While they are still required, they can be very simple such as: 
+```python
+def test_method_x():
+    '''
+    Test the method_x().
+    '''
+``` 
+
+Rubric information can be found in the instruction in the Replit project.  
 
