@@ -1,7 +1,7 @@
-# <i class="fas fa-book fa-fw"></i> Module 1
+# <i class="fas fa-book fa-fw"></i> Module 1 : Introduction
 
-This section will provide extra instructional information useful to your success.
-
+This information may seem overwhelming at first. Module 1 is stuff you'll want to refer back
+to during the entire school year.
 
 ```{tableofcontents}
 ```
