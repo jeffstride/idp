@@ -6,7 +6,7 @@ This website is intended to augment the [CSE 163: Intermediate Data Programming]
 ```{admonition} Note
 :class: note margin
 
-Mr. Stride has created this rediculous thing for you.
+Mr. Stride has created this ridiculous thing for you.
 ```
 
 <div>
