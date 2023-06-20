@@ -4,7 +4,7 @@
 Go to the `Settings` tab and change two things:  
 **Indent type** = spaces  
 **Indent size** = 4  
-![Set Spaces](/mod_imgs/set_tabs.jpg)
+![Set Spaces](../../images/set_tabs.jpg)
 
 These will make your code look easier to read and conform to all the template files provided to you.
 
@@ -16,5 +16,5 @@ in order for this to work.
 Sometimes the replit evironment may have the CPU or RAM pegged eventhough you're not doing anything.
 To fix this, in the `shell` tab, run the command: `kill 1`
 
-![Kill replit](/mod_imgs/kill1.jpg)
+![Kill replit](../../images/kill1.jpg)
 
