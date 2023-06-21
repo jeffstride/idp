@@ -109,8 +109,21 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Homework Assignment #2" href="hw2.html" />
     <link rel="prev" title="Homework Assignments" href="index.html" />
+    
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DW6SHVPBYV"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-DW6SHVPBYV');
+    </script>
+
+
   </head>
   
   
@@ -653,17 +666,20 @@ See <a class="reference internal" href="../module-additions/module1/building-in-
 <li><p><strong>RETURN</strong> values of the function, including special cases.</p></li>
 </ol>
 <p>The audience of your comments are <strong>NOT</strong> looking for you to simply rewrite the code in English. They do <strong>NOT</strong> want to know how the method works. Those types of comments belong in the code as <code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">inline</span> <span class="pre">comments</span></code>. You commonly want to avoid phrases that are telling the reader how you accomplish something (e.g. “uses a for loop”) since that is a little too detailed into the specific implementation. Instead, describe your function at a high-level; mimic documentation that you find online about a method.</p>
-<p>For example, when you read the <a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str.split">documentation</a> on the <code class="docutils literal notranslate"><span class="pre">split</span></code> method, notice that it doesn’t ell you anything about the code. It tells you what it does!</p>
+<p>For example, when you read the <a href="https://docs.python.org/3/library/stdtypes.html#str.split" target="_blank">documentation</a> on the <code class="docutils literal notranslate"><span class="pre">split</span></code> method, notice that it doesn’t ell you anything about the code. It tells you what it does!</p>
 <div class="admonition-hint admonition">
 <p class="admonition-title">hint</p>
 <p>Make sure to describe any import edge-cases that the reader might want to know about. For example, does your function ever return <code class="docutils literal notranslate"><span class="pre">None</span></code>?</p>
 </div>
 <p>Test method doc-strings do not need to be elaborate. While they are still required, they can be very simple such as:</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Sample Test Comment</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">test_method_x</span><span class="p">():</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    Test the method_x().</span>
 <span class="sd">    &#39;&#39;&#39;</span>
 </pre></div>
+</div>
 </div>
 <p>Rubric information can be found in the instruction in the Replit project.</p>
 </section>
@@ -783,7 +799,7 @@ By Jeff Stride
   <div class="footer-item">
     
 <div class="extra_footer">
-  Under Construction!
+  <a href="https://idp.mrstride.com/acknowledgements.html">Acknowledgements</a>
 </div>
   </div>
   

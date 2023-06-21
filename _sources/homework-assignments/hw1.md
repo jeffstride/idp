@@ -146,13 +146,16 @@ Importantly, it helps to think about who the audience of your comments will be. 
 
 The audience of your comments are **NOT** looking for you to simply rewrite the code in English. They do **NOT** want to know how the method works. Those types of comments belong in the code as `# inline comments`. You commonly want to avoid phrases that are telling the reader how you accomplish something (e.g. “uses a for loop”) since that is a little too detailed into the specific implementation. Instead, describe your function at a high-level; mimic documentation that you find online about a method. 
 
-For example, when you read the [documentation](https://docs.python.org/3/library/stdtypes.html#str.split) on the `split` method, notice that it doesn't ell you anything about the code. It tells you what it does!  
+For example, when you read the <a href="https://docs.python.org/3/library/stdtypes.html#str.split" target="_blank">documentation</a> on the `split` method, notice that it doesn't ell you anything about the code. It tells you what it does!  
 
 ```{admonition} hint
 Make sure to describe any import edge-cases that the reader might want to know about. For example, does your function ever return `None`?
 ```
 
 Test method doc-strings do not need to be elaborate. While they are still required, they can be very simple such as: 
+```{admonition} Sample Test Comment
+:class: dropdown
+
 ```python
 def test_method_x():
     '''
