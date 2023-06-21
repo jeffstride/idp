@@ -467,14 +467,10 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#files">Files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methods-in-hw1-py">Methods in hw1.py</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funky-sum"><code class="docutils literal notranslate"><span class="pre">funky_sum</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#total"><code class="docutils literal notranslate"><span class="pre">total</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#swip-swap"><code class="docutils literal notranslate"><span class="pre">swip_swap</span></code></a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methods-in-hw1-py">Methods in hw1.py</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing">Testing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">Documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-question">Challenge Question</a></li>
 </ul>
             </nav>
         </div>
@@ -574,8 +570,11 @@ See <a class="reference internal" href="../module-additions/module1/building-in-
 <hr class="docutils" />
 <section id="methods-in-hw1-py">
 <h2>Methods in hw1.py<a class="headerlink" href="#methods-in-hw1-py" title="Permalink to this heading">#</a></h2>
-<section id="funky-sum">
-<h3><code class="docutils literal notranslate"><span class="pre">funky_sum</span></code><a class="headerlink" href="#funky-sum" title="Permalink to this heading">#</a></h3>
+<p>Implement the following three methods.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-3">
+funky_sum</label><div class="sd-tab-content docutils">
 <p><strong>Task:</strong> Write a function <code class="docutils literal notranslate"><span class="pre">funky_sum</span></code> that does a special sum to combine two numbers. An initial (but incomplete) implementation has already been done for you! We will revisit funky_sum later in the spec to fix a bug in this initial code.</p>
 <p>The function should take three parameters, the first two are numbers, <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>, to combine and a third, <code class="docutils literal notranslate"><span class="pre">mix</span></code>, is a number to determine the ratio to use from each. <code class="docutils literal notranslate"><span class="pre">mix</span></code> acts as a “slider” to control how much to use of each number. If mix is 0 or less, the result should be the same as <code class="docutils literal notranslate"><span class="pre">a</span></code>. On the other hand, if <code class="docutils literal notranslate"><span class="pre">mix</span></code> is 1 or more, the result should be the same as <code class="docutils literal notranslate"><span class="pre">b</span></code>. For any value of <code class="docutils literal notranslate"><span class="pre">mix</span></code> between 0 and 1, it should add <code class="docutils literal notranslate"><span class="pre">1-mix</span></code> times <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">mix</span></code> times <code class="docutils literal notranslate"><span class="pre">b</span></code>. The technical name for this operation is “linear interpolation”.</p>
 <p>Here are some examples that you should make sure appear in <code class="docutils literal notranslate"><span class="pre">hw1_test.py</span></code>:</p>
@@ -603,14 +602,16 @@ See <a class="reference internal" href="../module-additions/module1/building-in-
 </tr>
 </tbody>
 </table>
-</section>
-<section id="total">
-<h3><code class="docutils literal notranslate"><span class="pre">total</span></code><a class="headerlink" href="#total" title="Permalink to this heading">#</a></h3>
+</div>
+<input id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-4">
+total</label><div class="sd-tab-content docutils">
 <p><strong>Task:</strong> Write a function total that takes a number <code class="docutils literal notranslate"><span class="pre">n</span></code> and returns the sum of the integers from 0 (inclusive) to n (inclusive). If <code class="docutils literal notranslate"><span class="pre">n</span></code> is negative, the function should return the value <code class="docutils literal notranslate"><span class="pre">None</span></code> instead.</p>
-<p>This has already been done for you, so you will not need to modify any code for this function. But, you will have to document and test it.</p>
-</section>
-<section id="swip-swap">
-<h3><code class="docutils literal notranslate"><span class="pre">swip_swap</span></code><a class="headerlink" href="#swip-swap" title="Permalink to this heading">#</a></h3>
+<p>This method already been written for you, so you will not need to modify any code for this function. <strong>But</strong>, you will have to add <strong>doc-string documentation</strong> and add <strong>more tests</strong> to assure all special cases are covered.</p>
+</div>
+<input id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-5">
+swip_swap</label><div class="sd-tab-content docutils">
 <p><strong>Task:</strong> Write a function <code class="docutils literal notranslate"><span class="pre">swip_swap</span></code> that takes a string source and characters <code class="docutils literal notranslate"><span class="pre">c1</span></code> and <code class="docutils literal notranslate"><span class="pre">c2</span></code> and returns a copy of source with all occurrences of c1 and c2 swapped. You may assume that the c1 and c2 are single characters. Use str concatenation with the + operator to solve this problem.</p>
 <p>Here are some examples that you should make sure appear in <code class="docutils literal notranslate"><span class="pre">hw1_test.py</span></code>:</p>
 <table class="table">
@@ -635,7 +636,15 @@ See <a class="reference internal" href="../module-additions/module1/building-in-
 <p class="admonition-title">important</p>
 <p>In order to demonstrate the learning objectives for this problem, you should <strong>NOT</strong> use the string <code class="docutils literal notranslate"><span class="pre">replace</span></code> function or use any data structures like <code class="docutils literal notranslate"><span class="pre">list</span></code> to solve this problem.</p>
 </div>
-</section>
+</div>
+<input id="sd-tab-item-6" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-6">
+challenge</label><div class="sd-tab-content docutils">
+<p><strong>OPTIONAL</strong>: This programming method is not graded and is here for those students who already know Python and want to flex some of their intellectual muscle.<br />
+<strong>NOTE</strong>: If you implement this method, you’ll need to document all methods fully with doc-strings so that all the grading scripts pass. You don’t want to have your grade drop!<br />
+<strong>Task:</strong> Write a function named <code class="docutils literal notranslate"><span class="pre">simple_decode</span></code> that is decodes a message using a simple encryption. See the <a href="#challenge-question">Challenge Question</a> section down below for details.</p>
+</div>
+</div>
 </section>
 <section id="testing">
 <h2>Testing<a class="headerlink" href="#testing" title="Permalink to this heading">#</a></h2>
@@ -680,6 +689,28 @@ See <a class="reference internal" href="../module-additions/module1/building-in-
 <span class="sd">    &#39;&#39;&#39;</span>
 </pre></div>
 </div>
+</div>
+</section>
+<section id="challenge-question">
+<h2>Challenge Question<a class="headerlink" href="#challenge-question" title="Permalink to this heading">#</a></h2>
+<p>This method is a simple decoding of a message that has no more than 16 unique characters in it. This method takes two arguments:</p>
+<ul class="simple">
+<li><p>key - a list of letters (no more than 16 long)</p></li>
+<li><p>encoded - a list of bytes where each nibble (4-bits) of each byte is the index of letter as found in key<br />
+return the decoded message</p></li>
+</ul>
+<p>For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">simple_decode</span><span class="p">([</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">],</span> <span class="p">[</span><span class="mi">33</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span> <span class="o">==&gt;</span> <span class="s1">&#39;hello&#39;</span>
+    <span class="n">This</span> <span class="ow">is</span> <span class="n">because</span> <span class="mi">33</span> <span class="ow">in</span> <span class="n">binary</span> <span class="ow">is</span> <span class="mi">0010</span> <span class="mf">0001.</span>
+        <span class="mi">0010</span> <span class="ow">is</span> <span class="n">binary</span> <span class="k">for</span> <span class="mi">2</span> <span class="ow">and</span> <span class="s1">&#39;h&#39;</span> <span class="ow">is</span> <span class="n">at</span> <span class="n">index</span> <span class="mf">2.</span>
+        <span class="mi">0001</span> <span class="ow">is</span> <span class="n">binary</span> <span class="k">for</span> <span class="mi">1</span> <span class="ow">and</span> <span class="s1">&#39;e&#39;</span> <span class="ow">is</span> <span class="n">at</span> <span class="n">index</span> <span class="mf">1.</span>
+    <span class="n">And</span><span class="p">,</span> <span class="n">the</span> <span class="n">second</span> <span class="n">integer</span> <span class="n">value</span> <span class="ow">is</span> <span class="mi">0</span><span class="p">,</span> <span class="ow">or</span> <span class="mi">0000</span> <span class="mf">0000.</span>
+        <span class="n">This</span> <span class="n">represents</span> <span class="n">two</span> <span class="n">characters</span><span class="p">,</span> <span class="n">each</span> <span class="n">at</span> <span class="n">index</span> <span class="mf">0.</span> <span class="s1">&#39;ll&#39;</span>
+    <span class="mi">48</span> <span class="ow">in</span> <span class="n">binary</span> <span class="ow">is</span> <span class="mi">0011</span> <span class="mi">0000</span>
+        <span class="mi">0011</span> <span class="ow">is</span> <span class="n">binary</span> <span class="k">for</span> <span class="mi">3</span> <span class="ow">and</span> <span class="s1">&#39;o&#39;</span> <span class="ow">is</span> <span class="n">at</span> <span class="n">index</span> <span class="mf">3.</span>
+    <span class="n">The</span> <span class="n">very</span> <span class="n">last</span> <span class="n">nibble</span> <span class="ow">is</span> <span class="n">ignored</span> <span class="n">because</span> <span class="n">the</span> <span class="n">last</span> <span class="n">integer</span> <span class="n">value</span> <span class="ow">is</span> <span class="mi">1</span>
+    <span class="n">which</span> <span class="n">means</span> <span class="n">that</span> <span class="n">the</span> <span class="n">message</span> <span class="ow">is</span> <span class="n">odd</span><span class="o">-</span><span class="n">lengthed</span><span class="o">.</span>
+</pre></div>
 </div>
 <p>Rubric information can be found in the instruction in the Replit project.</p>
 </section>
@@ -754,14 +785,10 @@ See <a class="reference internal" href="../module-additions/module1/building-in-
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#files">Files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methods-in-hw1-py">Methods in hw1.py</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#funky-sum"><code class="docutils literal notranslate"><span class="pre">funky_sum</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#total"><code class="docutils literal notranslate"><span class="pre">total</span></code></a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#swip-swap"><code class="docutils literal notranslate"><span class="pre">swip_swap</span></code></a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methods-in-hw1-py">Methods in hw1.py</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing">Testing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">Documentation</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-question">Challenge Question</a></li>
 </ul>
   </nav></div>
 
