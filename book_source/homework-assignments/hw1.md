@@ -81,7 +81,10 @@ See [Building on Replit](/module-additions/module1/building-in-replit) for more 
 
 * * * 
 ## Methods in hw1.py
-### `funky_sum`
+Implement the following three methods.
+
+````{tab-set}
+```{tab-item} funky_sum
 **Task:** Write a function `funky_sum` that does a special sum to combine two numbers. An initial (but incomplete) implementation has already been done for you! We will revisit funky_sum later in the spec to fix a bug in this initial code.
 
 The function should take three parameters, the first two are numbers, `a` and `b`, to combine and a third, `mix`, is a number to determine the ratio to use from each. `mix` acts as a "slider" to control how much to use of each number. If mix is 0 or less, the result should be the same as `a`. On the other hand, if `mix` is 1 or more, the result should be the same as `b`. For any value of `mix` between 0 and 1, it should add `1-mix` times `a` and `mix` times `b`. The technical name for this operation is "linear interpolation".  
@@ -94,26 +97,34 @@ Here are some examples that you should make sure appear in `hw1_test.py`:
 |funky_sum(1, 3, 0.25)| 1.5| 
 |funky_sum(1, 3, 0.6) |2.2|
 |funky_sum(1, 3, 1)|3|
+```
 
-
-### `total`
+```{tab-item} total
 **Task:** Write a function total that takes a number `n` and returns the sum of the integers from 0 (inclusive) to n (inclusive). If `n` is negative, the function should return the value `None` instead.  
 
-This has already been done for you, so you will not need to modify any code for this function. But, you will have to document and test it.
+This method already been written for you, so you will not need to modify any code for this function. **But**, you will have to add **doc-string documentation** and add **more tests** to assure all special cases are covered.
 
-### `swip_swap`
+```
+
+```{tab-item} swip_swap
 **Task:** Write a function `swip_swap` that takes a string source and characters `c1` and `c2` and returns a copy of source with all occurrences of c1 and c2 swapped. You may assume that the c1 and c2 are single characters. Use str concatenation with the + operator to solve this problem.
 
 Here are some examples that you should make sure appear in `hw1_test.py`:
 | call | returns | 
 |------|---------| 
-|swip_swap('foobar', 'f', 'o')|  'offbar'| 
+|swip_swap('foobar', 'f', 'o')| 'offbar'| 
 |swip_swap('foobar', 'b', 'c')| 'foocar'| 
 |swip_swap('foobar', 'z', 'c')| 'foobar'| 
 
 ```{admonition} important
 In order to demonstrate the learning objectives for this problem, you should **NOT** use the string `replace` function or use any data structures like `list` to solve this problem.
 ```
+
+```{tab-item} challenge
+**OPTIONAL**: This programming method is not graded and is here for those students who already know Python and want to flex some of their intellectual muscle.  
+**NOTE**: If you implement this method, you'll need to document all methods fully with doc-strings so that all the grading scripts pass. You don't want to have your grade drop!  
+**Task:** Write a function named `simple_decode` that is decodes a message using a simple encryption. See the <a href="#challenge-question">Challenge Question</a> section down below for details.
+````
 
 ## Testing
 **Task:** You will have three functions in `hw1_test.py` that test the methods in `hw1.py`. Each testing method should include the tests provided in this document along with **at least 2 more** tests that you make up. All of these methods make calls to `assert_equals`. 
@@ -162,6 +173,26 @@ def test_method_x():
     Test the method_x().
     '''
 ``` 
+
+## Challenge Question
+This method is a simple decoding of a message that has no more than 16 unique characters in it. This method takes two arguments:  
+* key - a list of letters (no more than 16 long)
+* encoded - a list of bytes where each nibble (4-bits) of each byte is the index of letter as found in key  
+return the decoded message  
+
+For example:
+```
+    simple_decode(['l', 'e', 'h', 'o'], [33, 0, 48, 1])) ==> 'hello'
+    This is because 33 in binary is 0010 0001.
+        0010 is binary for 2 and 'h' is at index 2.
+        0001 is binary for 1 and 'e' is at index 1.
+    And, the second integer value is 0, or 0000 0000.
+        This represents two characters, each at index 0. 'll'
+    48 in binary is 0011 0000
+        0011 is binary for 3 and 'o' is at index 3.
+    The very last nibble is ignored because the last integer value is 1
+    which means that the message is odd-lengthed.
+```
 
 Rubric information can be found in the instruction in the Replit project.  
 
