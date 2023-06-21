@@ -6,7 +6,7 @@ Go to the `Settings` tab and change two things:
 **Indent size** = 4  
 ```{admonition} See Screenshot
 :class: dropdown
-<img alt="Set Spaces" src="../../_static/set_tabs.jpg"/>
+<img alt="Set Spaces" src="../../_static/set_tabs.JPG"/>
 ```
 
 These will make your code look easier to read and conform to all the template files provided to you.
@@ -20,5 +20,5 @@ Sometimes the replit evironment may have the CPU or RAM pegged eventhough you're
 To fix this, in the `shell` tab, run the command: `kill 1`
 ```{admonition} See Screenshot
 :class: dropdown
-<img alt="Kill replit" src="../../_static/kill1.jpg"/>
+<img alt="Kill replit" src="../../_static/kill1.JPG"/>
 ```
