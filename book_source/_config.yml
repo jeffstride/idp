@@ -25,8 +25,8 @@ html:
   use_repository_button: true
   use_issues_button: true
   # Kind of a hack, but I have to hardcode the GitHub URL to get this to work :(
-  extra_navbar: '<a href="https://jeffstride.github.io/idp/acknowledgements.html">Acknowledgements</a><br/>Stride EdVentures, LLC'
-  extra_footer: 'Under Construction!'
+  extra_navbar: ''
+  extra_footer: '<a href="https://idp.mrstride.com/acknowledgements.html">Acknowledgements</a>'
   google_analytics_id: G-DW6SHVPBYV
 
   comments:
@@ -55,9 +55,9 @@ sphinx:
     - "sphinx_comments"
     - "sphinx_copybutton"
     - "sphinx_design"
-  # local_extensions:
-  #   "custom_directives": "ext/"
-  #   "setup_templating": "ext/"
+  local_extensions:
+    "custom_directives": "ext/"
+    "setup_templating": "ext/"
   config:
     suppress_warnings:
       - "myst.header"
