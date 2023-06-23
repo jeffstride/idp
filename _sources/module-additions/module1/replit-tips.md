@@ -18,7 +18,6 @@ in order for this to work.
 ## Restart 
 Sometimes the replit evironment may have the CPU or RAM pegged eventhough you're not doing anything.
 To fix this, in the `shell` tab, run the command: `kill 1`
-```{admonition} See Screenshot
-:class: dropdown
+
 <img alt="Kill replit" src="../../_static/kill1.JPG"/>
-```
+

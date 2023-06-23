@@ -80,8 +80,10 @@ See [Building on Replit](/module-additions/module1/building-in-replit) for more 
 ```
 
 * * * 
-## Methods in hw1.py
-Implement the following three methods.
+## Implementation
+In the file named `hw1.py`, implement three methods: `funky_sum`, `total`, `swip_swap`. The description for each
+method is found in the tabs below.
+Also found in the tabs is a challenge question which is optional and not graded.
 
 ````{tab-set}
 ```{tab-item} funky_sum
@@ -123,7 +125,7 @@ In order to demonstrate the learning objectives for this problem, you should **N
 ```{tab-item} challenge
 **OPTIONAL**: This programming method is not graded and is here for those students who already know Python and want to flex some of their intellectual muscle.  
 **NOTE**: If you implement this method, you'll need to document all methods fully with doc-strings so that all the grading scripts pass. You don't want to have your grade drop!  
-**Task:** Write a function named `simple_decode` that is decodes a message using a simple encryption. See the <a href="#challenge-question">Challenge Question</a> section down below for details.
+**Task:** Write a function named `simple_decode` that will decode a message using a simple encryption. See the <a href="#challenge-question">Challenge Question</a> section down below for details.
 ````
 
 ## Testing
@@ -175,23 +177,38 @@ def test_method_x():
 ``` 
 
 ## Challenge Question
-This method is a simple decoding of a message that has no more than 16 unique characters in it. This method takes two arguments:  
-* key - a list of letters (no more than 16 long)
-* encoded - a list of bytes where each nibble (4-bits) of each byte is the index of letter as found in key  
-return the decoded message  
+```{admonition} important
+This Challenge Question is OPTIONAL!! It is NOT graded.
+```
+**Task**: Implement a method named `simple_decode` that is a simple decoding of a message that has no more than 16 unique characters in it. This method takes two arguments:  
+* `key` - a list of letters (no more than 16 long)
+* `encoded` - a list of bytes where each nibble (4-bits) of each byte is the index of letter as found in key  
+
+This method will return the decoded message as a string. 
 
 For example:
+```python
+    simple_decode(['l', 'e', 'h', 'o'], [33, 0, 48, 1]) # returns 'hello'
 ```
-    simple_decode(['l', 'e', 'h', 'o'], [33, 0, 48, 1])) ==> 'hello'
-    This is because 33 in binary is 0010 0001.
-        0010 is binary for 2 and 'h' is at index 2.
-        0001 is binary for 1 and 'e' is at index 1.
-    And, the second integer value is 0, or 0000 0000.
-        This represents two characters, each at index 0. 'll'
-    48 in binary is 0011 0000
-        0011 is binary for 3 and 'o' is at index 3.
-    The very last nibble is ignored because the last integer value is 1
-    which means that the message is odd-lengthed.
+In summary, the list of integers decodes as follows:
+```
+    33 = 'he'
+    0 = 'll'
+    48 = 'o'
+    1 = odd length encryption. Ignore last nibble.
+```
+
+In more detail:  
+```
+    The first integer 33 in binary is 0010 0001.  
+        0010 is binary for 2 and 'h' is at index 2.  
+        0001 is binary for 1 and 'e' is at index 1.  
+    And, the second integer value is 0, or 0000 0000.  
+        This represents two characters, each at index 0. 'll'  
+    48 in binary is 0011 0000  
+        0011 is binary for 3 and 'o' is at index 3.  
+    The very last nibble is ignored because the last integer value is 1  
+    which means that the message is odd-lengthed.  
 ```
 
 Rubric information can be found in the instruction in the Replit project.  

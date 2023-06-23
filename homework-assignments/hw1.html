@@ -252,6 +252,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../visualizations/index.html"><i class="fas fa-book fa-fw"></i> Visualizations</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../visualizations/lineplots.html">Line Plots &amp; Scatter Plots</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../visualizations/barchart.html">Bar Charts</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="../visualizations/geospatial.html">Geospatial Plots</a></li>
 </ul>
 </li>
@@ -467,7 +468,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#files">Files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methods-in-hw1-py">Methods in hw1.py</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implementation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing">Testing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">Documentation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-question">Challenge Question</a></li>
@@ -568,9 +569,11 @@ See <a class="reference internal" href="../module-additions/module1/building-in-
 </div>
 </section>
 <hr class="docutils" />
-<section id="methods-in-hw1-py">
-<h2>Methods in hw1.py<a class="headerlink" href="#methods-in-hw1-py" title="Permalink to this heading">#</a></h2>
-<p>Implement the following three methods.</p>
+<section id="implementation">
+<h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this heading">#</a></h2>
+<p>In the file named <code class="docutils literal notranslate"><span class="pre">hw1.py</span></code>, implement three methods: <code class="docutils literal notranslate"><span class="pre">funky_sum</span></code>, <code class="docutils literal notranslate"><span class="pre">total</span></code>, <code class="docutils literal notranslate"><span class="pre">swip_swap</span></code>. The description for each
+method is found in the tabs below.
+Also found in the tabs is a challenge question which is optional and not graded.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-3">
@@ -642,7 +645,7 @@ swip_swap</label><div class="sd-tab-content docutils">
 challenge</label><div class="sd-tab-content docutils">
 <p><strong>OPTIONAL</strong>: This programming method is not graded and is here for those students who already know Python and want to flex some of their intellectual muscle.<br />
 <strong>NOTE</strong>: If you implement this method, you’ll need to document all methods fully with doc-strings so that all the grading scripts pass. You don’t want to have your grade drop!<br />
-<strong>Task:</strong> Write a function named <code class="docutils literal notranslate"><span class="pre">simple_decode</span></code> that is decodes a message using a simple encryption. See the <a href="#challenge-question">Challenge Question</a> section down below for details.</p>
+<strong>Task:</strong> Write a function named <code class="docutils literal notranslate"><span class="pre">simple_decode</span></code> that will decode a message using a simple encryption. See the <a href="#challenge-question">Challenge Question</a> section down below for details.</p>
 </div>
 </div>
 </section>
@@ -693,23 +696,37 @@ challenge</label><div class="sd-tab-content docutils">
 </section>
 <section id="challenge-question">
 <h2>Challenge Question<a class="headerlink" href="#challenge-question" title="Permalink to this heading">#</a></h2>
-<p>This method is a simple decoding of a message that has no more than 16 unique characters in it. This method takes two arguments:</p>
+<div class="admonition-important admonition">
+<p class="admonition-title">important</p>
+<p>This Challenge Question is OPTIONAL!! It is NOT graded.</p>
+</div>
+<p><strong>Task</strong>: Implement a method named <code class="docutils literal notranslate"><span class="pre">simple_decode</span></code> that is a simple decoding of a message that has no more than 16 unique characters in it. This method takes two arguments:</p>
 <ul class="simple">
-<li><p>key - a list of letters (no more than 16 long)</p></li>
-<li><p>encoded - a list of bytes where each nibble (4-bits) of each byte is the index of letter as found in key<br />
-return the decoded message</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">key</span></code> - a list of letters (no more than 16 long)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">encoded</span></code> - a list of bytes where each nibble (4-bits) of each byte is the index of letter as found in key</p></li>
 </ul>
+<p>This method will return the decoded message as a string.</p>
 <p>For example:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">simple_decode</span><span class="p">([</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">],</span> <span class="p">[</span><span class="mi">33</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">1</span><span class="p">]))</span> <span class="o">==&gt;</span> <span class="s1">&#39;hello&#39;</span>
-    <span class="n">This</span> <span class="ow">is</span> <span class="n">because</span> <span class="mi">33</span> <span class="ow">in</span> <span class="n">binary</span> <span class="ow">is</span> <span class="mi">0010</span> <span class="mf">0001.</span>
-        <span class="mi">0010</span> <span class="ow">is</span> <span class="n">binary</span> <span class="k">for</span> <span class="mi">2</span> <span class="ow">and</span> <span class="s1">&#39;h&#39;</span> <span class="ow">is</span> <span class="n">at</span> <span class="n">index</span> <span class="mf">2.</span>
-        <span class="mi">0001</span> <span class="ow">is</span> <span class="n">binary</span> <span class="k">for</span> <span class="mi">1</span> <span class="ow">and</span> <span class="s1">&#39;e&#39;</span> <span class="ow">is</span> <span class="n">at</span> <span class="n">index</span> <span class="mf">1.</span>
-    <span class="n">And</span><span class="p">,</span> <span class="n">the</span> <span class="n">second</span> <span class="n">integer</span> <span class="n">value</span> <span class="ow">is</span> <span class="mi">0</span><span class="p">,</span> <span class="ow">or</span> <span class="mi">0000</span> <span class="mf">0000.</span>
-        <span class="n">This</span> <span class="n">represents</span> <span class="n">two</span> <span class="n">characters</span><span class="p">,</span> <span class="n">each</span> <span class="n">at</span> <span class="n">index</span> <span class="mf">0.</span> <span class="s1">&#39;ll&#39;</span>
-    <span class="mi">48</span> <span class="ow">in</span> <span class="n">binary</span> <span class="ow">is</span> <span class="mi">0011</span> <span class="mi">0000</span>
-        <span class="mi">0011</span> <span class="ow">is</span> <span class="n">binary</span> <span class="k">for</span> <span class="mi">3</span> <span class="ow">and</span> <span class="s1">&#39;o&#39;</span> <span class="ow">is</span> <span class="n">at</span> <span class="n">index</span> <span class="mf">3.</span>
-    <span class="n">The</span> <span class="n">very</span> <span class="n">last</span> <span class="n">nibble</span> <span class="ow">is</span> <span class="n">ignored</span> <span class="n">because</span> <span class="n">the</span> <span class="n">last</span> <span class="n">integer</span> <span class="n">value</span> <span class="ow">is</span> <span class="mi">1</span>
-    <span class="n">which</span> <span class="n">means</span> <span class="n">that</span> <span class="n">the</span> <span class="n">message</span> <span class="ow">is</span> <span class="n">odd</span><span class="o">-</span><span class="n">lengthed</span><span class="o">.</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">simple_decode</span><span class="p">([</span><span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">],</span> <span class="p">[</span><span class="mi">33</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span> <span class="c1"># returns &#39;hello&#39;</span>
+</pre></div>
+</div>
+<p>In summary, the list of integers decodes as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="mi">33</span> <span class="o">=</span> <span class="s1">&#39;he&#39;</span>
+    <span class="mi">0</span> <span class="o">=</span> <span class="s1">&#39;ll&#39;</span>
+    <span class="mi">48</span> <span class="o">=</span> <span class="s1">&#39;o&#39;</span>
+    <span class="mi">1</span> <span class="o">=</span> <span class="n">odd</span> <span class="n">length</span> <span class="n">encryption</span><span class="o">.</span> <span class="n">Ignore</span> <span class="n">last</span> <span class="n">nibble</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>In more detail:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">The</span> <span class="n">first</span> <span class="n">integer</span> <span class="mi">33</span> <span class="ow">in</span> <span class="n">binary</span> <span class="ow">is</span> <span class="mi">0010</span> <span class="mf">0001.</span>  
+        <span class="mi">0010</span> <span class="ow">is</span> <span class="n">binary</span> <span class="k">for</span> <span class="mi">2</span> <span class="ow">and</span> <span class="s1">&#39;h&#39;</span> <span class="ow">is</span> <span class="n">at</span> <span class="n">index</span> <span class="mf">2.</span>  
+        <span class="mi">0001</span> <span class="ow">is</span> <span class="n">binary</span> <span class="k">for</span> <span class="mi">1</span> <span class="ow">and</span> <span class="s1">&#39;e&#39;</span> <span class="ow">is</span> <span class="n">at</span> <span class="n">index</span> <span class="mf">1.</span>  
+    <span class="n">And</span><span class="p">,</span> <span class="n">the</span> <span class="n">second</span> <span class="n">integer</span> <span class="n">value</span> <span class="ow">is</span> <span class="mi">0</span><span class="p">,</span> <span class="ow">or</span> <span class="mi">0000</span> <span class="mf">0000.</span>  
+        <span class="n">This</span> <span class="n">represents</span> <span class="n">two</span> <span class="n">characters</span><span class="p">,</span> <span class="n">each</span> <span class="n">at</span> <span class="n">index</span> <span class="mf">0.</span> <span class="s1">&#39;ll&#39;</span>  
+    <span class="mi">48</span> <span class="ow">in</span> <span class="n">binary</span> <span class="ow">is</span> <span class="mi">0011</span> <span class="mi">0000</span>  
+        <span class="mi">0011</span> <span class="ow">is</span> <span class="n">binary</span> <span class="k">for</span> <span class="mi">3</span> <span class="ow">and</span> <span class="s1">&#39;o&#39;</span> <span class="ow">is</span> <span class="n">at</span> <span class="n">index</span> <span class="mf">3.</span>  
+    <span class="n">The</span> <span class="n">very</span> <span class="n">last</span> <span class="n">nibble</span> <span class="ow">is</span> <span class="n">ignored</span> <span class="n">because</span> <span class="n">the</span> <span class="n">last</span> <span class="n">integer</span> <span class="n">value</span> <span class="ow">is</span> <span class="mi">1</span>  
+    <span class="n">which</span> <span class="n">means</span> <span class="n">that</span> <span class="n">the</span> <span class="n">message</span> <span class="ow">is</span> <span class="n">odd</span><span class="o">-</span><span class="n">lengthed</span><span class="o">.</span>  
 </pre></div>
 </div>
 <p>Rubric information can be found in the instruction in the Replit project.</p>
@@ -785,7 +802,7 @@ return the decoded message</p></li>
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#files">Files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#methods-in-hw1-py">Methods in hw1.py</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implementation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing">Testing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">Documentation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-question">Challenge Question</a></li>

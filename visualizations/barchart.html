@@ -252,6 +252,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html"><i class="fas fa-book fa-fw"></i> Visualizations</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="lineplots.html">Line Plots &amp; Scatter Plots</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Bar Charts</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="geospatial.html">Geospatial Plots</a></li>
 </ul>
 </li>
@@ -442,7 +443,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -458,6 +461,25 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Bar Charts</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#positive-vs-negative-bars">Positive vs Negative Bars</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overlayed-bars">Overlayed Bars</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sorted-bars">Sorted Bars</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stacked-bars">Stacked Bars</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#side-by-side-bars">Side-by-side Bars</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#horizontal-bar-chart">Horizontal Bar Chart</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seaporn-bar-chart">Seaporn Bar Chart</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#future-work">Future Work</a></li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -469,7 +491,440 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="bar-charts">
 <h1>Bar Charts<a class="headerlink" href="#bar-charts" title="Permalink to this heading">#</a></h1>
-<p>here are great examples</p>
+<p>Bar charts are good when:</p>
+<ul class="simple">
+<li><p>The x-axis is categorical and does not have a natural order (e.g. Country names).</p></li>
+<li><p>There are very few points to show (e.g. 4 or less)</p></li>
+<li><p>There isn’t an obvious relationship to the prior value on the x-axis (because they are categorical).</p></li>
+<li><p>You want to use color to emphasize the height or illustrate a relationship to another value.</p></li>
+</ul>
+<p>Bar charts are NOT good when:</p>
+<ul class="simple">
+<li><p>You’re attempting to show a correlation. (e.g. more X means more Y)</p></li>
+<li><p>There are a lot of points to show (e.g. 15 or more)</p></li>
+</ul>
+<section id="positive-vs-negative-bars">
+<h2>Positive vs Negative Bars<a class="headerlink" href="#positive-vs-negative-bars" title="Permalink to this heading">#</a></h2>
+<p>In this example bar chart you’ll see that the positive values have green bars
+while the negative values have red bars. The example below only uses two colors
+to emphasize the direction of change. We use a bar chart here depsite there being
+many different years to plot because the green/red colors emphasize the relative changes nicely.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+Image</label><div class="sd-tab-content docutils">
+<p><img alt="bar chart" src="../_images/annual_change.png" /></p>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+Code</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">pos_neg_bar_chart</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="c1"># first create a figure with one axis</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+    
+    <span class="c1"># create a color column</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Annual Change&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">v</span><span class="p">:</span> <span class="s1">&#39;green&#39;</span> <span class="k">if</span> <span class="n">v</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="k">else</span> <span class="s1">&#39;red&#39;</span><span class="p">)</span>
+
+    <span class="c1"># create the bar chart with slightly wider bars</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;Annual Change&#39;</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;color&#39;</span><span class="p">],</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Positive Change&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">61</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Change in %&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Annual Change in Inflation from 1961-2021&#39;</span><span class="p">)</span>
+
+    <span class="c1"># slant the dates to be at an angle</span>
+    <span class="n">fig</span><span class="o">.</span><span class="n">autofmt_xdate</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
+Data</label><div class="sd-tab-content docutils">
+<p>Here are the first few lines of data in the DataFrame.<br />
+<img alt="bar chart" src="../_images/inflation_data.jpg" /></p>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-3">
+Comments</label><div class="sd-tab-content docutils">
+<ul class="simple">
+<li><p>The x-axis label has only a few years listed because of the method <code class="docutils literal notranslate"><span class="pre">plt.xticks(np.arange(0,</span> <span class="pre">61,</span> <span class="pre">10))</span></code>. This reduces the number of ticks in the graph and makes it much more readable.</p></li>
+<li><p>The years on the x-axis look nice due to the <code class="docutils literal notranslate"><span class="pre">xticks</span></code> call as well as <code class="docutils literal notranslate"><span class="pre">fig.autofmt_xdate()</span></code>. One could instead use <code class="docutils literal notranslate"><span class="pre">plot.xticks(rotation=45)</span></code> to provide a custom rotation of the x-label.</p></li>
+<li><p>The Title and y-axis labels use the phrase <code class="docutils literal notranslate"><span class="pre">Change</span> <span class="pre">in</span></code> meaning that the value is relative to the prior year. The chart does not plot the actual inflation rate of that year (which is almost always positive).</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="overlayed-bars">
+<h2>Overlayed Bars<a class="headerlink" href="#overlayed-bars" title="Permalink to this heading">#</a></h2>
+<p>This is a bar chart that has the values overlayed one on top of the other. The values are NOT stacked. This means that the
+base of the tall bar is at the bottom: the top of the bar has a height as denoted on the y-axis.
+This example shows how to overlay bar charts as well as to annotate the bars with a values.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-4">
+Image</label><div class="sd-tab-content docutils">
+<p><img alt="bar chart" src="../_images/annotated_bars.png" /></p>
+</div>
+<input id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-5">
+Plot Code</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">annotated_bars</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="c1"># generate a &#39;payback&#39; column</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;payback&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;return&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;investment&#39;</span><span class="p">]</span>
+    
+    <span class="c1"># get the custom-sized figure and axis for annotation work.</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+    
+    <span class="c1"># Graphs two bar charts on the same axis, one overlayed on top of the other. </span>
+    <span class="c1"># One value must be known to be greater than the other if it is to be seen.</span>
+    <span class="c1"># Plot the larger value first so that it doesn&#39;t completely hide the smaller value.</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">],</span> <span class="n">height</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;return&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#10E0D0&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Return&#39;</span><span class="p">)</span>
+
+    <span class="c1"># add annotations before plotting the second set of values</span>
+    <span class="n">add_value_labels</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;payback&#39;</span><span class="p">],</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;x</span><span class="si">{:.2f}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="c1"># plot the shorter bars second, on top of the taller bars</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">],</span> <span class="n">height</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;investment&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;#A030A0&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Investment&#39;</span><span class="p">)</span>
+        
+    <span class="c1"># Adds formatting specifications like a legend and title</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Year&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Dollars&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]],</span> <span class="n">rotation</span><span class="o">=-</span><span class="mi">45</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Investments &amp; Returns&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-6" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-6">
+Annotation Code</label><div class="sd-tab-content docutils">
+<p>Code source: <a href="https://stackoverflow.com/questions/28931224/how-to-add-value-labels-on-a-bar-chart" target="_blank">
+StackOverflow</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_value_labels</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">values</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">{:.1f}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">spacing</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Add labels to the end of each bar in a bar chart.</span>
+
+<span class="sd">    Arguments:</span>
+<span class="sd">        ax (matplotlib.axes.Axes): The matplotlib object containing the axes</span>
+<span class="sd">            of the plot to annotate.</span>
+<span class="sd">        values: the sequence of values to show</span>
+<span class="sd">        fmt: a customizable format string used to print the values</span>
+<span class="sd">        spacing (int): The distance in pixels between the labels and the bars</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># For each bar: Place a label</span>
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">rect</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">ax</span><span class="o">.</span><span class="n">patches</span><span class="p">):</span>
+        <span class="c1"># Get X and Y placement of label from rect.</span>
+        <span class="n">y_value</span> <span class="o">=</span> <span class="n">rect</span><span class="o">.</span><span class="n">get_height</span><span class="p">()</span>
+        <span class="n">x_value</span> <span class="o">=</span> <span class="n">rect</span><span class="o">.</span><span class="n">get_x</span><span class="p">()</span> <span class="o">+</span> <span class="n">rect</span><span class="o">.</span><span class="n">get_width</span><span class="p">()</span> <span class="o">/</span> <span class="mi">2</span>
+
+        <span class="c1"># Number of points between bar and label. Change to your liking.</span>
+        <span class="n">space</span> <span class="o">=</span> <span class="n">spacing</span>
+        <span class="c1"># Vertical alignment for positive values</span>
+        <span class="n">va</span> <span class="o">=</span> <span class="s1">&#39;bottom&#39;</span>
+
+        <span class="c1"># If value of bar is negative: Place label below bar</span>
+        <span class="k">if</span> <span class="n">y_value</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="c1"># Invert space to place label below</span>
+            <span class="n">space</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+            <span class="c1"># Vertically align label at top</span>
+            <span class="n">va</span> <span class="o">=</span> <span class="s1">&#39;top&#39;</span>
+
+        <span class="c1"># Format the value into a label</span>
+        <span class="n">label</span> <span class="o">=</span> <span class="n">fmt</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">values</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+
+        <span class="c1"># Create annotation</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span>
+            <span class="n">label</span><span class="p">,</span>                      <span class="c1"># Use `label` as label</span>
+            <span class="p">(</span><span class="n">x_value</span><span class="p">,</span> <span class="n">y_value</span><span class="p">),</span>         <span class="c1"># Place label at end of the bar</span>
+            <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">space</span><span class="p">),</span>          <span class="c1"># Vertically shift label by `space`</span>
+            <span class="n">textcoords</span><span class="o">=</span><span class="s2">&quot;offset points&quot;</span><span class="p">,</span> <span class="c1"># Interpret `xytext` as offset in points</span>
+            <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">,</span>                <span class="c1"># Horizontally center label</span>
+            <span class="n">va</span><span class="o">=</span><span class="n">va</span><span class="p">)</span>                      <span class="c1"># Vertically align label differently for</span>
+                                        <span class="c1"># positive and negative values.</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-7" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-7">
+Data</label><div class="sd-tab-content docutils">
+<p>Here is the complete set of data in the DataFrame. Notice how the annotated values are not present in this
+initial dataframe. Instead, the plotting code calculates the “payback factor” and adds this column before
+plotting.
+<img alt="bar chart" src="../_images/annotation_data.jpg" /></p>
+</div>
+<input id="sd-tab-item-8" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-8">
+Comments</label><div class="sd-tab-content docutils">
+<ul class="simple">
+<li><p>We broke out the annotation code separately because there is a lot going on there.</p></li>
+<li><p>The overlayed bars is accomplished by plotting two bar charts, one with shorter bars on top of another with taller bars. The second plot covers up the first. If the second plot has values greater than the first, then the first plot’s bars will be hidden.</p></li>
+<li><p>The annotation code gets a bunch of rectangles (via <code class="docutils literal notranslate"><span class="pre">ax.patches</span></code>) that reveals the location of each bar in the plot. In creating this figure we have plotted multiple bar charts, so we need to annotate immediately after the first chart is plotted, otherwise we’d get many more rectangles due to the second plot.</p></li>
+<li><p>We use custom colors for the bars using the <code class="docutils literal notranslate"><span class="pre">#RRGGBB</span></code> syntax.</p></li>
+<li><p>The figure would be too narrow for our tastes, so we increase the figure size when calling <code class="docutils literal notranslate"><span class="pre">subplots</span></code>.</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="sorted-bars">
+<h2>Sorted Bars<a class="headerlink" href="#sorted-bars" title="Permalink to this heading">#</a></h2>
+<p>Bar charts usually have an x-axis that doesn’t have a natural sorting order. However, sorting by the height of the bars is a valuable way to present data and insight.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-9" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-9">
+Image</label><div class="sd-tab-content docutils">
+<p><img alt="bar chart" src="../_images/sorted_bars.png" /></p>
+</div>
+<input id="sd-tab-item-10" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-10">
+Code</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sorted_plt_bars</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="c1"># we need the axis and a larger figure size to make this plot look nice</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+
+    <span class="c1"># remove any background grid that might be present (generally only needed if seaborn was used previously)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># sort the dataframe. Here we assign back to df. Altneratively, we could have done `inplace=True`.</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;a_value&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># no color parameter provided means that we default to a single blue color.</span>
+    <span class="n">bar</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">],</span> <span class="n">height</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;a_value&#39;</span><span class="p">])</span>
+
+    <span class="c1"># this adds the value of the bar to the center of the bar</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">bar_label</span><span class="p">(</span><span class="n">bar</span><span class="p">,</span> <span class="n">label_type</span><span class="o">=</span><span class="s1">&#39;center&#39;</span><span class="p">)</span>
+
+    <span class="c1"># make the x-axis values be slanted to ease the readability</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+
+    <span class="c1"># every plot needs good labels</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Best &quot;A Value&quot; by State&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;A Value&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-11" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-11">
+Data</label><div class="sd-tab-content docutils">
+<p>This is the first 11 rows of the <strong>orginal</strong> data (which was unsorted).</p>
+<p><img alt="bar chart" src="../_images/sorted_data.jpg" /></p>
+</div>
+<input id="sd-tab-item-12" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-12">
+Comments</label><div class="sd-tab-content docutils">
+<ul class="simple">
+<li><p>When there are a good number of bars, the viewer will benefit if the bars are sorted.</p></li>
+<li><p>In this chart, text is added inside the bar to provide the bar’s value. Without a grid background (which can be added when using seaborn), it can be hard to know what the precise value is. There are multiple ways to add text. In this example, we use the <code class="docutils literal notranslate"><span class="pre">ax.bar_label</span></code> API. But, one can also use <code class="docutils literal notranslate"><span class="pre">plt.text</span></code> or <code class="docutils literal notranslate"><span class="pre">ax.annotate</span></code> methods.</p></li>
+<li><p>The x-axis label is purposely set to an empty string because the viewer can clearly the x-axis values and understand their meaning.</p></li>
+<li><p>The colors of the bars can be cusomized using the <code class="docutils literal notranslate"><span class="pre">color</span></code> named parameter. You can set all the bars to one identical color, or pass in a sequence of values such as <code class="docutils literal notranslate"><span class="pre">df['color']</span></code> (if you create a meaningful and correct color column in the dataframe).</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="stacked-bars">
+<h2>Stacked Bars<a class="headerlink" href="#stacked-bars" title="Permalink to this heading">#</a></h2>
+<p>Sometimes the addition of multiple values has meaning and you’ll want to stack one bar on top of another. This allows you to see
+multiples values and their sum total. We still sort the bars by a specific value to provide some added insight.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-13" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-13">
+Image</label><div class="sd-tab-content docutils">
+<p><img alt="bar chart" src="../_images/stacked_bars.png" /></p>
+</div>
+<input id="sd-tab-item-14" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-14">
+Code</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">stacked_df_plot_kind</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="c1"># create a figure of a good size</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    
+    <span class="c1"># sort by one of the values in the dataframe</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;a_value&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># x-axis of a bar chart is taken from the index, so set the index to the state</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;state&#39;</span><span class="p">)</span> 
+
+    <span class="c1"># tell matplotl;ib to plot a bar chart where the bars are stacked</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+    <span class="c1"># set labels to make it all readable</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Stacked Bar&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Both Values&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-15" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-15">
+Data</label><div class="sd-tab-content docutils">
+<p>This is the first 11 rows of the <strong>orginal</strong> data (which was unsorted).</p>
+<p><img alt="bar chart" src="../_images/sorted_data.jpg" /></p>
+</div>
+<input id="sd-tab-item-16" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-16">
+Comments</label><div class="sd-tab-content docutils">
+<ul class="simple">
+<li><p>We could have chosen to sort by the sum total of the values charted. It all depends on what you’re trying to illustrate.</p></li>
+<li><p>If the DataFrame has more columns, each column’s value will be stacked into this bar chart. Here, we have only two columns that are not the index value.</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="side-by-side-bars">
+<h2>Side-by-side Bars<a class="headerlink" href="#side-by-side-bars" title="Permalink to this heading">#</a></h2>
+<p>Sometimes you want to compare two values side-by-side across a set of categories.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-17" name="sd-tab-set-4" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-17">
+Image</label><div class="sd-tab-content docutils">
+<p><img alt="bar chart" src="../_images/side-by-side-bars.png" /></p>
+</div>
+<input id="sd-tab-item-18" name="sd-tab-set-4" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-18">
+Code</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">df_plot_kind</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="c1"># get the first 10 rows</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;b_value&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">loc</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+
+    <span class="c1"># x-axis is taken from the index, so set that to the state</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;state&#39;</span><span class="p">)</span>
+
+    <span class="c1"># default to a single blue color. use color=&#39;red&#39; for all red bars.</span>
+    <span class="c1"># https://matplotlib.org/2.0.2/examples/color/colormaps_reference.html </span>
+    <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">colormap</span><span class="o">=</span><span class="s1">&#39;Spectral&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Top 10 States&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Both Values&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;A Value&#39;</span><span class="p">,</span> <span class="s1">&#39;B Value&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-19" name="sd-tab-set-4" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-19">
+Data</label><div class="sd-tab-content docutils">
+<p>This is the first 11 rows of the <strong>orginal</strong> data (which was unsorted).</p>
+<p><img alt="bar chart" src="../_images/sorted_data.jpg" /></p>
+</div>
+<input id="sd-tab-item-20" name="sd-tab-set-4" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-20">
+Comments</label><div class="sd-tab-content docutils">
+<ul class="simple">
+<li><p>More horizonal space is needed for side-by-side bar charts. You shouldn’t show too many bars in one plot; we filter this chart down to just 10 states.</p></li>
+<li><p>The width of each bar can give the chart a different feel. Here we increase the width a bit.</p></li>
+<li><p>The color of each bar can be set manually via the named parameter <code class="docutils literal notranslate"><span class="pre">color</span></code>. Instead, we chose to use <code class="docutils literal notranslate"><span class="pre">colormap</span></code> which has a lot of different options, including gradients.</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="horizontal-bar-chart">
+<h2>Horizontal Bar Chart<a class="headerlink" href="#horizontal-bar-chart" title="Permalink to this heading">#</a></h2>
+<p>If we want to plot our bars horizontally, we can leverage the <code class="docutils literal notranslate"><span class="pre">barh</span></code> method.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-21" name="sd-tab-set-5" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-21">
+Image</label><div class="sd-tab-content docutils">
+<p><img alt="bar chart" src="../_images/horiz_bars.png" /></p>
+</div>
+<input id="sd-tab-item-22" name="sd-tab-set-5" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-22">
+Code</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">df_horiz_plot</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;state&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># x-axis is taken from the index, so set that to the state</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">&#39;state&#39;</span><span class="p">)</span>
+ 
+    <span class="c1"># plot using the barh API</span>
+    <span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="n">stacked</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mf">0.6</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;State Values&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Values&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;State&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;A Value&#39;</span><span class="p">,</span> <span class="s1">&#39;B Value&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-23" name="sd-tab-set-5" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-23">
+Data</label><div class="sd-tab-content docutils">
+<p>This is the first 11 rows of the <strong>orginal</strong> data (which was unsorted).</p>
+<p><img alt="bar chart" src="../_images/sorted_data.jpg" /></p>
+</div>
+<input id="sd-tab-item-24" name="sd-tab-set-5" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-24">
+Comments</label><div class="sd-tab-content docutils">
+<ul class="simple">
+<li><p>DataFrame has a plot object. On this <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.plot.html" target="_blank">plot object</a> we can call the following methods:</p>
+<ul>
+<li><p>area</p></li>
+<li><p>bar</p></li>
+<li><p>barh</p></li>
+<li><p>box</p></li>
+<li><p>… and a bunch more …</p></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="seaporn-bar-chart">
+<h2>Seaporn Bar Chart<a class="headerlink" href="#seaporn-bar-chart" title="Permalink to this heading">#</a></h2>
+<p>Seaborn doesn’t add much to Bar Charts. But, it does have fancy colors and a different background.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-25" name="sd-tab-set-6" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-25">
+Image</label><div class="sd-tab-content docutils">
+<p><img alt="bar chart" src="../_images/seaborn_bars.png" /></p>
+</div>
+<input id="sd-tab-item-26" name="sd-tab-set-6" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-26">
+Code</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">sorted_bars</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="c1"># sets the background grid style</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">set_style</span><span class="p">(</span><span class="s2">&quot;darkgrid&quot;</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s1">&#39;a_value&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="c1"># default to various colors. use color=&#39;navy&#39; to set all bars to the same color.</span>
+    <span class="c1"># or, we can colormap=&#39;xxx&#39; using values as found here:</span>
+    <span class="c1">#     https://matplotlib.org/2.0.2/examples/color/colormaps_reference.html</span>
+    <span class="n">bar</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;state&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;a_value&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Best &quot;A Value&quot; by State&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;A Value&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-27" name="sd-tab-set-6" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-27">
+Data</label><div class="sd-tab-content docutils">
+<p>This is the first 11 rows of the <strong>orginal</strong> data (which was unsorted).</p>
+<p><img alt="bar chart" src="../_images/sorted_data.jpg" /></p>
+</div>
+<input id="sd-tab-item-28" name="sd-tab-set-6" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-28">
+Comments</label><div class="sd-tab-content docutils">
+<ul class="simple">
+<li><p>The background is a dark grid, as set by <code class="docutils literal notranslate"><span class="pre">sns.set_style</span></code>.</p></li>
+<li><p>The color of each bar is set using a <code class="docutils literal notranslate"><span class="pre">colormap</span></code> which has a lot of different options, including gradients.</p></li>
+</ul>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="future-work">
+<h1>Future Work<a class="headerlink" href="#future-work" title="Permalink to this heading">#</a></h1>
+<p>Question: Can the annotation code method be used to annotate a geospatial plot?<br />
+Question: Can we manually relocate Alaska and Hawaii in the geometry space to fake a small Alaska?  Also, draw a box around them.<br />
+(Note that Krithika also had a Correlation Heat Map)
+(Ria had Exhibit of geospatial that looks to be “stolen” from somewhere, but looks good!)</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -530,6 +985,31 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Bar Charts</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#positive-vs-negative-bars">Positive vs Negative Bars</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overlayed-bars">Overlayed Bars</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#sorted-bars">Sorted Bars</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stacked-bars">Stacked Bars</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#side-by-side-bars">Side-by-side Bars</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#horizontal-bar-chart">Horizontal Bar Chart</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seaporn-bar-chart">Seaporn Bar Chart</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#future-work">Future Work</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>
