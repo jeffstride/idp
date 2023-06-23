@@ -90,9 +90,25 @@ and should stay there by itself (i.e. add this empty `.nojekyll` file to the roo
 
 When this file did not exist, then the `_static` resources were not found and the site looked like no CSS was applied.
 
-### Working Locally
+# Notes on Development
+
+## Working Locally
 Here are some steps that I take to get things to run locally. 
 1. Launch VS Code in the cse-book virtual environment.
 2. In a terminal window `pip install -r requirements.txt`
 3. Then, `jupyter-book build book_source` 
+
+## Images
+I have found that the only way I can get static images to deploy is to add them to the `_static` directory.
+Then, the image file is copied to the `_build\html\_static` directory. The markdown will reference the image
+with either: `<a href="../_static/the_image.jpg"/>` or with `![alt_text](../_static/the_image.jpg)`.
+
+**Capitalization Matters**: The name of the image must match exactly; it is case-sensitive. You may need
+to have `<a href="../_static/the_image.JPG"/>`.
+
+## Resources
+* https://github.com/executablebooks/jupyter-book/blob/master/docs/_config.yml
+* https://jupyterbook.org/en/stable/customize/config.html
+
+
 
