@@ -3,11 +3,24 @@ Bar charts are good when:
 * The x-axis is categorical and does not have a natural order (e.g. Country names).  
 * There are very few points to show (e.g. 4 or less)  
 * There isn't an obvious relationship to the prior value on the x-axis (because they are categorical).  
-* You want to use color to emphasize the height or illustrate a relationship to another value.   
+* You want to use color to emphasize the height or illustrate a relationship to another value.  
+* You have a count you want to represent   
   
 Bar charts are NOT good when:  
 * You're attempting to show a correlation. (e.g. more X means more Y)  
-* There are a lot of points to show (e.g. 15 or more)
+* The data are indended to be continuous and not discrete  
+* There are a lot of points to show (e.g. 20 or more)
+
+There are a lot of different libraries and methods to create bar charts. Here is a quick summary. Details are found in the examples below.  
+|API|When to use|
+|---|-----------|
+|`df.plot(kind='bar')`|There is only one value per category|
+|`df.plot.barh()`|There is one value per category and horizontal bars adds meaning or there are many categories to show| 
+|`plt.bar()`|Essentially the same as `df.plot`, but you may not have a DataFrame handy|  
+|`plt.hist()`|You want to count occurences|  
+|`sns.barplot()`|There are many values per category to be averaged |
+|`sns.catplot(kind='bar')`|Effectively the same as `sns.barplot()`|    
+
 
 ## Positive vs Negative Bars
 In this example bar chart you'll see that the positive values have green bars
@@ -321,10 +334,38 @@ This is the first 11 rows of the **orginal** data (which was unsorted).
     * box  
     * ... and a bunch more ...
 ```
-
 ````
-## Seaporn Bar Chart
-Seaborn doesn't add much to Bar Charts. But, it does have fancy colors and a different background.   
+## Histogram
+Sometimes you want to know the number of times something occurs. A Histogram will allow you to do a bar plot that represents counts.  
+````{tab-set}
+```{tab-item} Image
+![bar chart](../_static/distance_hist.jpg)
+```
+```{tab-item} Code
+```python
+def hist_chart(df):
+    plt.hist(df['distance'], bins=25)
+    plt.xlabel('Distance')
+    plt.ylabel('Count')
+    plt.title('Count of Throwers at Each Distance')
+```
+
+```{tab-item} Data
+This data is fake data generated for this coding example.  
+![bar chart](../_static/distance_data.jpg)
+```
+
+```{tab-item} Comments
+* `bins` is a numberical value that sets how many bars there will be. The idea is that you 'toss the items into bins' and then plot the count of items in each bin.  
+* In this plot, we've initialized `seaborn` so there is a white grid in the background established with `sns.set_style('whitegrid')`.     
+```
+````
+
+## Seaborn Colorful Bar Chart
+Seaborn has a wide variety of fancy charts and offers easy ways to view insightful statistics. 
+When it comes to bar charts it doesn't add that much. Here we show two things:  
+1. Fancy colors and a different background   
+2. Statistical analysis when there are many values per category on the x-axis  
 
 ````{tab-set}
 ```{tab-item} Image
@@ -339,8 +380,6 @@ def sorted_bars(df):
     df = df.sort_values(by='a_value', ascending=False)
 
     # default to various colors. use color='navy' to set all bars to the same color.
-    # or, we can colormap='xxx' using values as found here:
-    #     https://matplotlib.org/2.0.2/examples/color/colormaps_reference.html
     bar = sns.barplot(data=df, x='state', y='a_value', ax=ax)
     plt.xticks(rotation=60)
     
@@ -356,13 +395,42 @@ This is the first 11 rows of the **orginal** data (which was unsorted).
 ```
 
 ```{tab-item} Comments
-* The background is a dark grid, as set by `sns.set_style`. 
-* The color of each bar is set using a `colormap` which has a lot of different options, including gradients.  
+* The background is a dark grid, as set by `sns.set_style`.  
+* The color of each bar is set using a `colormap` which has a lot of different options, including gradients. We can set colormap='xxx' to a variety of values as described in [colormaps reference](https://matplotlib.org/2.0.2/examples/color/colormaps_reference.html).  
+* Note that there is only one data value for every State.  
 ```
 
 ````
-# Future Work
-Question: Can the annotation code method be used to annotate a geospatial plot?  
-Question: Can we manually relocate Alaska and Hawaii in the geometry space to fake a small Alaska?  Also, draw a box around them.  
-(Note that Krithika also had a Correlation Heat Map)
-(Ria had Exhibit of geospatial that looks to be "stolen" from somewhere, but looks good!)
+## Seaborn Statistical Bar Chart
+There can be many values that fall in a specific category. In this example, we analyze how far people can throw a ball. We have 400 samples of people's distance and gender and we show a simple bar chart showing the difference.  
+````{tab-set}
+```{tab-item} Image
+![bar chart](../_static/sns_bar_stats.jpg)
+```
+```{tab-item} Code
+```python
+def sns_bar_stats(df):
+    # display the line with the standard deviation instead of %95 confidence.
+    # St. Dev is much better because we are not so focused on our confidence
+    # in the average so much as the variance in the distance.
+    sns.barplot(data=df, x='gender', y='distance', ci='sd')
+    plt.ylabel('Distance')
+    plt.xlabel('')
+    plt.title('Avg with St Deviation of Distance by Gender')
+```
+
+```{tab-item} Data
+This data is fake data generated for this coding example.  
+![bar chart](../_static/distance_data.jpg)
+```
+
+```{tab-item} Comments
+* The 'line' coming out of the bar represents some statistical information. In this chart, we have it represent the Standard Deviation to help is understand the variance in the data. 
+* Note: in more current versions of Seaborn, 'ci' is deprecated in favor of 'errorbar'. There are three options for `ci`:  
+    * None: don't draw an errorbar at all  
+    * 95: (Some number 0-100). This is the percent confidence you want to have in the average. Small numbers result in short lines (or no lines). Large numbers result in larger lines. In other words, if you want a lot of confidence, you need a bigger range.  
+    * 'sd': Shows the Standard Deviation instead of the mean.  
+* By default, the line would represent the confidence interval of the average in the data. This may sound strange because we can calculate the average of the data exactly. But, in the world of statistics, we acknowledge that our data is just a sample of the entire population and may not accurately reflect reality. The larger our sample, the more confidence we can have in the data. Seaborn uses something called [bootstrapping](https://www.thoughtco.com/what-is-bootstrapping-in-statistics-3126172).   
+```
+
+````
