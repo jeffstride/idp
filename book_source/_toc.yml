@@ -16,6 +16,9 @@ chapters:
         sections:
           - file: module-additions/module2/stub1
           - file: module-additions/module2/stub2
+      - file: module-additions/module3/index
+        sections:
+          - file: module-additions/module3/printing
   - file: final-project/index
     sections:
       - file: final-project/handouts/index
@@ -32,6 +35,7 @@ chapters:
           - file: final-project/tips/presentation
   - file: visualizations/index
     sections:
-      - file: visualizations/lineplots
       - file: visualizations/barchart
       - file: visualizations/geospatial
+      - file: visualizations/lineplots
+      - file: visualizations/line_of_best_fit.md

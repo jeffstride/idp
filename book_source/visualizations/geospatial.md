@@ -265,11 +265,193 @@ There are several issues that we address in this plotting solution:
 ```
 ````
 
-## Correlation Lost
-Show how the correlation between population and electoral votes is lost in this type of plot. show how setting vmin, vmax can help. But, really we just need to do a line plot.
+## Finding Obvious Correlations
+Is there a correlation between population and electoral votes? Does the size of a state in square miles correlate to the number of electoral votes? Geospatial provides only minimal insight; a scatter plot is better. (todo: show how setting vmin, vmax can help illustrate a delta when correlations exist. For example, male/female pay across the states where female pay is lower, but still correlates.)
+
+
+````{tab-set}
+```{tab-item} Image
+One the top-left, you'll see a plot representing Electoral Votes by state. Were we to plot a geospatial plot of Population, we'd see something virtually identical and therefore a correrlation would be seen.  
+One the top-right, you'll see a plot representing each state's size in square miles.
+   
+![election image](../_static/geo_correlation.jpg)
+```
+```{tab-item} Code
+```python
+def plot_correlation(gdf):
+    fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(10,5))
+
+    # Plot the entire United States
+    gdf.plot(ax=ax1, column='Electoral Votes', legend=True)
+    gdf.plot(ax=ax2, column='CENSUSAREA', legend=True)
+    # Set the extent of the main plot to cut off Alaska's long tail of regions
+    for ax in (ax1, ax2):
+        ax.set_xlim(-130, -65)
+        ax.set_ylim(24, 50)
+    ax1.set_title('Electoral Votes')
+    ax2.set_title('Square Miles')
+    gdf.plot(ax=ax4, kind='scatter', y='Electoral Votes', x='CENSUSAREA', cmap='viridis')
+    gdf.plot(ax=ax3, kind='scatter', y='Electoral Votes', x='2023 Population')
+    ax4.set_title('Area vs Votes')
+    ax3.set_title('Population vs Votes')
+    
+    for ax in (ax3, ax4):
+        ax.grid(linestyle="--", linewidth=0.5, color='.25', zorder=-10)
+```
+
+```{tab-item} Data
+Same data as above.     
+![election data](../_static/geo_elect_data.jpg)
+```
+```{tab-item} Comments
+Were we to plot a geospatial plot of Population, we'd see something virtually identical to the top-left and, therefore, a correrlation would be seen. But, it would take **two** geospatial plots to show the correlation. And, in this specific case, the correlation is **extremely strong**; Electoral Votes is, in fact, calculated by a state's population. In this example, we omitted the second geospatial plot in favor of a scatter plot.   
+
+One the top-right, you'll see a plot representing each state's size in square miles. Is there a correlation of a state's size to the count of Electoral Votes? It's a bit hard to determine from the geospatial plot. However, in combination with the scatter plots, one can be more confident in their assessment.  
+
+**In summary**: we show 4 different plots in a single figure that in combination provide insight. The geospatial plots provide some understanding about where the Electoral Votes go geographically. Showing it side-by-side to the geospatial plot on Square Miles gives you an idea that there is _not an obvious_ correlation between votes and square miles. However, when we add the scatter plots, the correlations become a lot clearer. It is obvious that there is strong and direct relationship between population and votes, while there is very little, if any, correlation of square miles to votes. 
+
+```{admonition} Using Statistics
+:class: dropdown
+In other sections, you can see how using Python libraries you can identify statistical information (e.g. Coefficient of Determination, Mean Square Error) to provide objective measurements of the correlation. In our example here, the Coefficient of Determination ($R^2$) for Votes vs Area is only 0.019 (which is extremely small) while for Votes vs Population the value is 0.991 (which is extremely high).  
+```
+````
+
+## Correlations and Coefficient of Determination
+In this example, we create three values (A, B, C) for each state. There is a strong correlation in the data, but the geospatial plots makes it hard to see. See if you can spot the correlations in the geospatial plots? Notice how the plots for **'Value A'** and **'Value C'** appear to be nearly identical, yet the relationship is somewhat hidden because of the scale on the colormap. Then, the scatter & line plots make it all very apparent. Read more in the **Plot Comments** and **Code Comments** tabs.
+
+
+````{tab-set}
+```{tab-item} Image
+   
+![Geospacial & Linear plots](../_static/geo_line_correlations.jpg)
+```
+```{tab-item} Code
+```python
+from scipy import stats
+
+def plot_correlations(gdf):
+    # sort along the x-axis to make line look like a line
+    gdf.sort_values(by='A')
+    res_b = stats.linregress(gdf['A'], gdf['B'])
+    res_c = stats.linregress(gdf['A'], gdf['C'])
+    
+    fig, ((ax1, ax2), (ax3, ax4), (ax5, ax6), (ax7, ax8)) = plt.subplots(4, 2, figsize=(12,15))
+
+    # the linear plots are virtually on top of each other. Spread them out
+    # horizontally even though this makes the geospatial plots seem too var apart.
+    plt.subplots_adjust(hspace=0.3)
+
+    max_value = max(gdf['A'].max(), gdf['B'].max(), gdf['C'].max())
+    
+    # Plot A, B, C values for the entire United States
+    gdf.plot(ax=ax1, column='A', legend=True)
+    gdf.plot(ax=ax2, column='B', legend=True, vmin=0, vmax=max_value)
+    gdf.plot(ax=ax3, column='C', legend=True)
+    gdf.plot(ax=ax4, column='A', legend=True, vmin=0, vmax=max_value)
+    gdf.plot(ax=ax5, column='C', legend=True, vmin=0, vmax=max_value)
+    axes = (ax1, ax2, ax3, ax4, ax5)
+    # Set the extent of the main plot to cut off Alaska's long tail of regions
+    for ax in axes:
+        ax.set_xlim(-130, -65)
+        ax.set_ylim(24, 50)
+    for ax, s in zip(axes, ['Value A', 'Value B', 'Value C', 'Value A (on B scale)', 'Value C (on B scale)']):
+        ax.set_title(s)
+    
+    # create the scatter plots
+    for ax in (ax6, ax8):
+        gdf.plot(ax=ax, kind='scatter', x='A', y='B', color='blue', label='B Value')
+    for ax in (ax7, ax8):
+        gdf.plot(ax=ax, kind='scatter', x='A', y='C', marker='s', color='green', label='C Value')
+    
+    # create a DataFrame with best fit line data
+    line = gdf[['A', 'B', 'C']].copy()
+    line['YB'] = res_b.intercept + res_b.slope*line['A']
+    line['YC'] = res_c.intercept + res_c.slope*line['A']
+    
+    # plot best fit lines
+    for ax in (ax6, ax8):
+        line.plot(ax=ax, kind='line', x='A', y='YB', color='red', label='B fitted line')
+    for ax in (ax7, ax8):
+        line.plot(ax=ax, kind='line', x='A', y='YC', color='black', label='C fitted line')
+    
+    # print the Coefficient of Determination onto the plots
+    ax6.text(70, 20, f'R2={res_b.rvalue**2:.3f}')
+    ax7.text(70, 20, f'R2={res_c.rvalue**2:.3f}')
+    ax8.text(70, 20, f'B R2={res_b.rvalue**2:.3f}\nC R2={res_c.rvalue**2:.3f}')
+    ax6.set_title('Value B vs Value A')
+    ax7.set_title('Value C vs Value A')
+    ax8.set_title('B & C vs Value A')
+```
+
+```{tab-item} Data
+The values for A, B, and C are contrived. This is only the first 12 rows of the full set.      
+![election data](../_static/geo_abc_data.jpg)
+```
+```{tab-item} Plot Comments
+There is a lot going on here. First, let's discuss the geospatial plots. There appears to be some correlation
+in all the geospatial plots, but it is hard to figure out. One might think that **Value A** and **Value C** are identical.
+However, when we plot A, B, C all on the same color scale, you can see that **Value A (on B scale)** is quite different
+from **Value C (on B scale)**. Can you see the relationship between **Value A** and **Value B**? I think you
+can see that there is _some_ relationship, but it is hard to understand what it is and how strong it is.  
+
+Now, let's look at the scatter and line plots. The dots alone shows a clear linear relationship. When we
+add the line, the correlation is bolstered.  
+
+But, how strong is the correlation? To determine this, we displayed the **Coefficient of Determination** value
+on the plot directly. The larger the value (closer to 1.0), the strong the correlation. The $R^2$ value basically
+tells us what percentage of the value on the y-axis is due to the value on the x-axis. We see that the values of
+$R^2$ are 0.736 and 0.948 respectively. These are quite high.   
+
+Lastly, the best plot is the last one which combines all the information into a single plot. If you're trying
+to show correlation with **Value A**, the last plot is all you need.
+```
+
+```{tab-item} Code Comments
+In this plot, we generated the line using the method `stats` that we imported with: `from scipy import stats`. 
+We calculated the slope and y-intercept from the data points and used that to plot the line. It was critically
+important to first sort the values by the x-axis (in our case, by **Value A**).
+
+We could have generated the line in the plot using `seaborn.regplot`. While this would have drawn our line
+for us automatically, it does not provide the **Coefficient of Determination**. So, instead, we get all 
+the **Line of Best Fit** information using `stats.linregress`.   
+
+To present the $R^2$ value on the plot, we need to choose where to "print" it using the `ax.text` method.
+To accomplish this, we plotted the graph with the text first, identified an open space, and then added
+the printing code. The $R^2$ value is a lot of digits after the decimal place that just get in the way. We choose to print the value
+using Python's string <a href="https://docs.python.org/3/library/string.html#format-string-syntax" 
+target="_blank">formatting</a> functionality as built into Pythons <a href="https://realpython.com/python-f-strings/" 
+target="_blank">f-string</a>. The API is a bit complicated to understand. It is similar
+to the way Java implements `printf`, only it has different escape sequences and specifics. In short, when a
+string literal is preceded with 'f' then the string is expecting to have some
+formatting sequence in it. A formatting sequence is embedded inside curly braces `{}` and the text
+inside the curly braces is interpreted. It would contain identifiers, method calls, and possibly
+formatting options following a colon. Here is the syantax for printing a floating point number with some text label:  
+
+    f'text{<identifer>:.<integer>f}'
+    
+For example, let's say we do the following:  
+
+    gpa = 3.899
+    print(f'GPA={gpa:.2f}')
+
+That code results in printing, `GPA=3.90` (due to rounding to 2 decimal places).
+
+To set the color scales to match in each of the geospatial plots, we set both `vmin` and `vmax`. When we
+don't set these, the plot will customize the colors to match the data being plotted. This is often what you
+want to do, but if you're attempting to see a relationship between two geospatial plots, setting vmin and
+vmax are important.    
+
+The vertical spacing between the all the plots was originally not good enough. The line plots had their
+x-axis' labels occluded by the titles of the graphs below them. So, we added vertical spacing with
+`plt.subplots_adjust(hspace=0.3)`. This actually makes the spacing be too large in the geospatial plots.
+We could have customized the spacing across all the subplots by using <a href="https://matplotlib.org/stable/gallery/userdemo/demo_gridspec03.html" target="_blank">matplotlib GridSpec</a>. But, since that code is pretty foreign and not
+at all the focus of this discussion, we left the spacing as-is.  
+```
+````
+## Terrain Plots
+show how added libraries can make things look cooler.
+
 
 # Future Work
-Question: Can the annotation code method be used to annotate a geospatial plot?  
-Question: Can we manually relocate Alaska and Hawaii in the geometry space to fake a small Alaska?  Also, draw a box around them.  
+Pie Charts 
 (Note that Krithika also had a Correlation Heat Map)
-(Ria had Exhibit of geospatial that looks to be "stolen" from somewhere, but looks good!)
