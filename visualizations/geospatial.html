@@ -258,7 +258,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html"><i class="fas fa-book fa-fw"></i> Visualizations</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="barchart.html">Bar Charts</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Geospatial Plots</a></li>
-
 <li class="toctree-l2"><a class="reference internal" href="lineplots.html">Line Plots &amp; Scatter Plots</a></li>
 <li class="toctree-l2"><a class="reference internal" href="line_of_best_fit.html">Line of Best Fit</a></li>
 
@@ -476,19 +475,14 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Geospatial Plots</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contiguous-states-only">Contiguous States Only</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inset-alaska-hawaii">Inset Alaska &amp; Hawaii</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modified-geometry">Modified Geometry</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#annotated-with-table-inset">Annotated with Table Inset</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-obvious-correlations">Finding Obvious Correlations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlations-and-coefficient-of-determination">Correlations and Coefficient of Determination</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terrain-plots">Terrain Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cartopy">Cartopy</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#future-work">Future Work</a></li>
-</ul>
-
             </nav>
         </div>
     </div>
@@ -509,7 +503,7 @@ document.write(`
 </ol>
 <p>Geospatial plots are NOT good at:</p>
 <ol class="arabic simple">
-<li><p>Showing correlations. (Use a line plot for this)</p></li>
+<li><p>Showing <strong>how</strong> one value correlates to another. (Use a line plot for this)</p></li>
 <li><p>Emphasizing the amount of difference between one area and another.</p></li>
 </ol>
 <section id="contiguous-states-only">
@@ -814,7 +808,7 @@ Comments</label><div class="sd-tab-content docutils">
 </section>
 <section id="finding-obvious-correlations">
 <h2>Finding Obvious Correlations<a class="headerlink" href="#finding-obvious-correlations" title="Permalink to this heading">#</a></h2>
-<p>Is there a correlation between population and electoral votes? Does the size of a state in square miles correlate to the number of electoral votes? Geospatial provides only minimal insight; a scatter plot is better. (todo: show how setting vmin, vmax can help illustrate a delta when correlations exist. For example, male/female pay across the states where female pay is lower, but still correlates.)</p>
+<p>Is there a correlation between population and electoral votes? Does the size of a state in square miles correlate to the number of electoral votes? Geospatial provides only minimal insight; a scatter plot is better.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-12" name="sd-tab-set-3" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-12">
@@ -869,7 +863,7 @@ Comments</label><div class="sd-tab-content docutils">
 </section>
 <section id="correlations-and-coefficient-of-determination">
 <h2>Correlations and Coefficient of Determination<a class="headerlink" href="#correlations-and-coefficient-of-determination" title="Permalink to this heading">#</a></h2>
-<p>In this example, we create three values (A, B, C) for each state. There is a strong correlation in the data, but the geospatial plots makes it hard to see. See if you can spot the correlations in the geospatial plots? Notice how the plots for <strong>‘Value A’</strong> and <strong>‘Value C’</strong> appear to be nearly identical, yet the relationship is somewhat hidden because of the scale on the colormap. Then, the scatter &amp; line plots make it all very apparent. Read more in the <strong>Plot Comments</strong> and <strong>Code Comments</strong> tabs.</p>
+<p>In this example, we create three values (A, B, C) for each state. There is a strong correlation in the data, but the geospatial plots makes it hard to see <strong>how</strong> they relate. See if you can spot the correlations in the geospatial plots? Notice how the plots for <strong>‘Value A’</strong> and <strong>‘Value C’</strong> appear to be nearly identical, yet the details of the relationship is somewhat hidden because of the scale on the colormap. Then, the scatter &amp; line plots make it all very apparent. Read more in the <strong>Plot Comments</strong> and <strong>Code Comments</strong> tabs.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-16" name="sd-tab-set-4" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-16">
@@ -1000,15 +994,89 @@ at all the focus of this discussion, we left the spacing as-is.</p>
 </div>
 </div>
 </section>
-<section id="terrain-plots">
-<h2>Terrain Plots<a class="headerlink" href="#terrain-plots" title="Permalink to this heading">#</a></h2>
-<p>show how added libraries can make things look cooler.</p>
+<section id="cartopy">
+<h2>Cartopy<a class="headerlink" href="#cartopy" title="Permalink to this heading">#</a></h2>
+<p>You can make some cool plots that show the terrain of the Earth using a libary called <code class="docutils literal notranslate"><span class="pre">cartopy</span></code>.
+These types of plots are good to use when you’re attempting to illustrate the location of something
+as it would appear on a map.</p>
+<p>Advantages:</p>
+<ul class="simple">
+<li><p>No need to manually download shape files. The library will download data for you.</p></li>
+<li><p>The plots are professional looking.</p></li>
+</ul>
+<p>Disadvantages:</p>
+<ul class="simple">
+<li><p>Does not work on Replit</p></li>
+<li><p>Requires some background knowledge about different types of Coordinate and Projection systems.</p></li>
+</ul>
+<p>You can still do some geodataframe-looking plots. For example, the <a href="https://cse163.github.io/book/module-7-geospatial-data/lesson-20-dissolve-join/hurricane-florence/HurricanFlorence.html" target="_blank">
+Hurricane Florence plot</a> is replicated on Hurricane Katrina using <a href="https://scitools.org.uk/cartopy/docs/latest/gallery/lines_and_polygons/hurricane_katrina.html#sphx-glr-gallery-lines-and-polygons-hurricane-katrina-py" target="_blank">this code</a>.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-21" name="sd-tab-set-5" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-21">
+Image</label><div class="sd-tab-content docutils">
+<p>This shows a direct, “flat”  Plate Carrée line between Seattle and New York as well as the curved, Geodetic line
+that an airplane would travel over the curved Earth, which is a more accurate reflection of reality.</p>
+<p><img alt="election image" src="../_images/geo_cartopy.jpg" /></p>
+</div>
+<input id="sd-tab-item-22" name="sd-tab-set-5" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-22">
+Code</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">cartopy.crs</span> <span class="k">as</span> <span class="nn">ccrs</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">cartopy.feature</span> <span class="k">as</span> <span class="nn">cfeature</span>
+
+<span class="k">def</span> <span class="nf">cartopy_plot_of_us</span><span class="p">():</span>
+    <span class="c1"># create a figure &amp; axis using the Robinson projection.</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">subplot_kw</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;projection&#39;</span><span class="p">:</span> <span class="n">ccrs</span><span class="o">.</span><span class="n">Robinson</span><span class="p">()},</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
+
+    <span class="c1"># show some texture &amp; color on the map representing the terrain</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">stock_img</span><span class="p">()</span>
+
+    <span class="c1"># crop the figure to be just the United States</span>
+    <span class="c1"># if we don&#39;t set_extent, the image is too big to be displayed (in Jupyter Notebook)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_extent</span><span class="p">([</span><span class="o">-</span><span class="mi">130</span><span class="p">,</span> <span class="o">-</span><span class="mi">60</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">50</span><span class="p">],</span> <span class="n">crs</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+
+    <span class="c1"># set the latitude and longitude points for Seattle &amp; New york</span>
+    <span class="n">ny_lat</span><span class="p">,</span> <span class="n">ny_lon</span> <span class="o">=</span> <span class="mf">40.73</span><span class="p">,</span> <span class="o">-</span><span class="mf">73.93</span>
+    <span class="n">sea_lat</span><span class="p">,</span> <span class="n">sea_lon</span> <span class="o">=</span> <span class="mf">47.60</span><span class="p">,</span> <span class="o">-</span><span class="mf">122.33</span>
+
+    <span class="c1"># draw a line using Geodetic() to give it a curved look over a curved Earth</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">ny_lon</span><span class="p">,</span> <span class="n">sea_lon</span><span class="p">],</span> <span class="p">[</span><span class="n">ny_lat</span><span class="p">,</span> <span class="n">sea_lat</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span>
+             <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">Geodetic</span><span class="p">())</span>
+
+    <span class="c1"># draw a line using PlateCarree() which assume a flat, paper-like map</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">ny_lon</span><span class="p">,</span> <span class="n">sea_lon</span><span class="p">],</span> <span class="p">[</span><span class="n">ny_lat</span><span class="p">,</span> <span class="n">sea_lat</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;gray&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span>
+             <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">PlateCarree</span><span class="p">())</span>
+
+    <span class="c1"># annotate the map with text of cities</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">ny_lon</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="n">ny_lat</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;New York&#39;</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">Geodetic</span><span class="p">())</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">sea_lon</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">sea_lat</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;Seattle&#39;</span><span class="p">,</span> <span class="n">horizontalalignment</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">transform</span><span class="o">=</span><span class="n">ccrs</span><span class="o">.</span><span class="n">Geodetic</span><span class="p">())</span>
+
+    <span class="c1"># Show some features and borders</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">COASTLINE</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">STATES</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s2">&quot;:&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">BORDERS</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">LAKES</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">add_feature</span><span class="p">(</span><span class="n">cfeature</span><span class="o">.</span><span class="n">RIVERS</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-23" name="sd-tab-set-5" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-23">
+Data</label><div class="sd-tab-content docutils">
+<p>All the data is downloaded directly by the Cartopy library.</p>
+</div>
+<input id="sd-tab-item-24" name="sd-tab-set-5" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-24">
+Comments</label><div class="sd-tab-content docutils">
+<p>The <a href="https://scitools.org.uk/cartopy/docs/latest/reference/projections.html" target="_blank">Projection types</a> are many. One popular projection is: <code class="docutils literal notranslate"><span class="pre">ccrs.PlateCarree()</span></code>.</p>
+<p>In this plot, we add the “stock image” of the background (textured map) to the axis. We then plot two lines onto the map using two different projection systems.  We add text labels for the city names. Lastly, we add nice features such as state borders, lakes, and rivers.</p>
+<p>We need to know the latitude &amp; longitude positions of the two cities. Other than that, our data is virtually non-existent.</p>
+<p>There is a lot to know about <a href="https://scitools.org.uk/cartopy/docs/latest/getting_started/index.html" target="_blank">Cartopy</a>. It can take a lot of time to learn (as with every library). So, be sure this library adds value and is appropriate for your task before you simply start using it.</p>
+</div>
+</div>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="future-work">
-<h1>Future Work<a class="headerlink" href="#future-work" title="Permalink to this heading">#</a></h1>
-<p>Pie Charts
-(Note that Krithika also had a Correlation Heat Map)</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1078,19 +1146,14 @@ at all the focus of this discussion, we left the spacing as-is.</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Geospatial Plots</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#contiguous-states-only">Contiguous States Only</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inset-alaska-hawaii">Inset Alaska &amp; Hawaii</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#modified-geometry">Modified Geometry</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#annotated-with-table-inset">Annotated with Table Inset</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#finding-obvious-correlations">Finding Obvious Correlations</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlations-and-coefficient-of-determination">Correlations and Coefficient of Determination</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#terrain-plots">Terrain Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#cartopy">Cartopy</a></li>
 </ul>
-</li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#future-work">Future Work</a></li>
-</ul>
-
   </nav></div>
 
 </div></div>
