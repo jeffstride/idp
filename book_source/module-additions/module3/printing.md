@@ -8,6 +8,7 @@ explain how *args is a list or sequence of values.
 explain named arguments 'end' and 'sep'.
 
 Reference: https://realpython.com/python-f-strings/  
+https://docs.python.org/3/library/string.html#format-string-syntax
 
 ## %-formatting (old)
 print("Hello, %s. You are %s." % (name, adjective))

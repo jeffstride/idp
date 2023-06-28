@@ -6,7 +6,7 @@ Geospatial plots are great at:
 3. Illustrateing a pattern in the location of something.
 
 Geospatial plots are NOT good at:  
-1. Showing correlations. (Use a line plot for this)  
+1. Showing **how** one value correlates to another. (Use a line plot for this)  
 2. Emphasizing the amount of difference between one area and another.  
 
 ## Contiguous States Only
@@ -266,8 +266,7 @@ There are several issues that we address in this plotting solution:
 ````
 
 ## Finding Obvious Correlations
-Is there a correlation between population and electoral votes? Does the size of a state in square miles correlate to the number of electoral votes? Geospatial provides only minimal insight; a scatter plot is better. (todo: show how setting vmin, vmax can help illustrate a delta when correlations exist. For example, male/female pay across the states where female pay is lower, but still correlates.)
-
+Is there a correlation between population and electoral votes? Does the size of a state in square miles correlate to the number of electoral votes? Geospatial provides only minimal insight; a scatter plot is better.  
 
 ````{tab-set}
 ```{tab-item} Image
@@ -317,7 +316,7 @@ In other sections, you can see how using Python libraries you can identify stati
 ````
 
 ## Correlations and Coefficient of Determination
-In this example, we create three values (A, B, C) for each state. There is a strong correlation in the data, but the geospatial plots makes it hard to see. See if you can spot the correlations in the geospatial plots? Notice how the plots for **'Value A'** and **'Value C'** appear to be nearly identical, yet the relationship is somewhat hidden because of the scale on the colormap. Then, the scatter & line plots make it all very apparent. Read more in the **Plot Comments** and **Code Comments** tabs.
+In this example, we create three values (A, B, C) for each state. There is a strong correlation in the data, but the geospatial plots makes it hard to see **how** they relate. See if you can spot the correlations in the geospatial plots? Notice how the plots for **'Value A'** and **'Value C'** appear to be nearly identical, yet the details of the relationship is somewhat hidden because of the scale on the colormap. Then, the scatter & line plots make it all very apparent. Read more in the **Plot Comments** and **Code Comments** tabs.
 
 
 ````{tab-set}
@@ -448,10 +447,80 @@ We could have customized the spacing across all the subplots by using <a href="h
 at all the focus of this discussion, we left the spacing as-is.  
 ```
 ````
-## Terrain Plots
-show how added libraries can make things look cooler.
+## Cartopy
+You can make some cool plots that show the terrain of the Earth using a libary called `cartopy`. 
+These types of plots are good to use when you're attempting to illustrate the location of something
+as it would appear on a map.  
 
+Advantages:  
+* No need to manually download shape files. The library will download data for you.  
+* The plots are professional looking.  
 
-# Future Work
-Pie Charts 
-(Note that Krithika also had a Correlation Heat Map)
+Disadvantages:  
+* Does not work on Replit  
+* Requires some background knowledge about different types of Coordinate and Projection systems.  
+
+You can still do some geodataframe-looking plots. For example, the <a href="https://cse163.github.io/book/module-7-geospatial-data/lesson-20-dissolve-join/hurricane-florence/HurricanFlorence.html" target="_blank">
+Hurricane Florence plot</a> is replicated on Hurricane Katrina using <a href="https://scitools.org.uk/cartopy/docs/latest/gallery/lines_and_polygons/hurricane_katrina.html#sphx-glr-gallery-lines-and-polygons-hurricane-katrina-py" target="_blank">this code</a>.
+
+````{tab-set}
+```{tab-item} Image
+This shows a direct, "flat"  Plate Carrée line between Seattle and New York as well as the curved, Geodetic line
+that an airplane would travel over the curved Earth, which is a more accurate reflection of reality.
+   
+![election image](../_static/geo_cartopy.jpg)
+```
+```{tab-item} Code
+```python
+import cartopy.crs as ccrs
+import matplotlib.pyplot as plt
+import cartopy.feature as cfeature
+
+def cartopy_plot_of_us():
+    # create a figure & axis using the Robinson projection.
+    fig, ax = plt.subplots(1, subplot_kw={'projection': ccrs.Robinson()}, figsize=(10,4))
+
+    # show some texture & color on the map representing the terrain
+    ax.stock_img()
+
+    # crop the figure to be just the United States
+    # if we don't set_extent, the image is too big to be displayed (in Jupyter Notebook)
+    ax.set_extent([-130, -60, 24, 50], crs=ccrs.PlateCarree())
+
+    # set the latitude and longitude points for Seattle & New york
+    ny_lat, ny_lon = 40.73, -73.93
+    sea_lat, sea_lon = 47.60, -122.33
+
+    # draw a line using Geodetic() to give it a curved look over a curved Earth
+    plt.plot([ny_lon, sea_lon], [ny_lat, sea_lat], color='blue', linewidth=2, marker='o',
+             transform=ccrs.Geodetic())
+
+    # draw a line using PlateCarree() which assume a flat, paper-like map
+    plt.plot([ny_lon, sea_lon], [ny_lat, sea_lat], color='gray', linestyle='--',
+             transform=ccrs.PlateCarree())
+
+    # annotate the map with text of cities
+    plt.text(ny_lon-3, ny_lat-1, 'New York', horizontalalignment='right', transform=ccrs.Geodetic())
+    plt.text(sea_lon+1, sea_lat-2, 'Seattle', horizontalalignment='left', transform=ccrs.Geodetic())
+
+    # Show some features and borders
+    ax.add_feature(cfeature.COASTLINE)
+    ax.add_feature(cfeature.STATES, linestyle=":")
+    ax.add_feature(cfeature.BORDERS)
+    ax.add_feature(cfeature.LAKES, alpha=0.7)
+    ax.add_feature(cfeature.RIVERS)
+```
+
+```{tab-item} Data
+All the data is downloaded directly by the Cartopy library. 
+```
+```{tab-item} Comments
+The <a href="https://scitools.org.uk/cartopy/docs/latest/reference/projections.html" target="_blank">Projection types</a> are many. One popular projection is: `ccrs.PlateCarree()`.  
+
+In this plot, we add the "stock image" of the background (textured map) to the axis. We then plot two lines onto the map using two different projection systems.  We add text labels for the city names. Lastly, we add nice features such as state borders, lakes, and rivers.  
+
+We need to know the latitude & longitude positions of the two cities. Other than that, our data is virtually non-existent.  
+
+There is a lot to know about <a href="https://scitools.org.uk/cartopy/docs/latest/getting_started/index.html" target="_blank">Cartopy</a>. It can take a lot of time to learn (as with every library). So, be sure this library adds value and is appropriate for your task before you simply start using it.  
+```
+````
