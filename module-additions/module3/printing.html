@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Printing and Arguments &#8212; IDP at NCHS</title>
+    <title>Arguments &#8212; IDP at NCHS</title>
   
   
   
@@ -231,7 +231,8 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html"><i class="fas fa-book fa-fw"></i> Module 3</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">Printing and Arguments</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Arguments</a></li>
+
 </ul>
 </li>
 </ul>
@@ -261,6 +262,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 
+<li class="toctree-l2"><a class="reference internal" href="../../visualizations/case_study_dist.html">Case Study on Distance</a></li>
 </ul>
 </li>
 </ul>
@@ -463,7 +465,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Printing and Arguments</h1>
+    <h1>Arguments</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -473,10 +475,15 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Arguments</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#printing-arguments-formatted-strings">Printing, Arguments &amp; Formatted Strings</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting-old">%-formatting (old)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatted-printing">formatted printing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f-string">f-string</a></li>
 </ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -487,8 +494,87 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="printing-and-arguments">
-<h1>Printing and Arguments<a class="headerlink" href="#printing-and-arguments" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="arguments">
+<h1>Arguments<a class="headerlink" href="#arguments" title="Permalink to this heading">#</a></h1>
+<p>I have found it frustrating to visit online API sites to discover their form of
+documentation consists of something like the following:
+<code class="docutils literal notranslate"><span class="pre">my_method(*args,</span> <span class="pre">**kwargs)</span></code><br />
+Especially when there is no mention of what <code class="docutils literal notranslate"><span class="pre">args</span></code> or <code class="docutils literal notranslate"><span class="pre">kwargs</span></code> can be. We can’t solve
+that, but we can at least understand what <code class="docutils literal notranslate"><span class="pre">*args,</span> <span class="pre">**kwargs</span></code> means and how to use them.
+The above effectively means the method takes any number of <code class="docutils literal notranslate"><span class="pre">positional</span> <span class="pre">arguments</span></code> and
+any number of <code class="docutils literal notranslate"><span class="pre">named</span> <span class="pre">arguments</span></code>. Let’s first define a couple of terms.</p>
+<div class="sd-card sd-sphinx-override sd-mb-3 sd-shadow-sm docutils">
+<div class="sd-card-body docutils">
+<div class="sd-card-title sd-font-weight-bold docutils">
+Important Terms</div>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p class="sd-card-text">Term</p></th>
+<th class="head"><p class="sd-card-text">Definition</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p class="sd-card-text"><em>Positional Argument</em></p></td>
+<td><p class="sd-card-text">Required method arguments that must appear in a specific order</p></td>
+</tr>
+<tr class="row-odd"><td><p class="sd-card-text"><em>Named Argument</em></p></td>
+<td><p class="sd-card-text">Optional method arguments that are given a default value in the prototype (method declaration). They will appear as <code class="docutils literal notranslate"><span class="pre">name=value</span></code>. They can appear in any order after all the positional arguments are provided.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example prototype with 4 positional arguments and 3 named arguments</span>
+<span class="k">def</span> <span class="nf">example_a</span><span class="p">(</span><span class="n">value1</span><span class="p">,</span> <span class="n">value2</span><span class="p">,</span> <span class="n">value3</span><span class="p">,</span> <span class="n">value4</span><span class="p">,</span> <span class="n">named1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">named2</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">named3</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    value1, value2, value3 &amp; value4 must be present when calling method()</span>
+<span class="sd">    named1, named2 &amp; named3 are optional because they have default values.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">value1</span><span class="p">,</span> <span class="n">value2</span><span class="p">,</span> <span class="n">value3</span><span class="p">,</span> <span class="n">value4</span><span class="p">,</span> <span class="n">named1</span><span class="p">,</span> <span class="n">named2</span><span class="p">,</span> <span class="n">named3</span><span class="p">)</span>
+
+<span class="c1"># we can call example_a in the following ways</span>
+<span class="n">example_a</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>                               <span class="c1"># output: 3 1 4 1 1 2 3</span>
+<span class="n">example_a</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">named2</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>         <span class="c1"># output: a b c d 1 foo 3</span>
+<span class="n">example_a</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">named3</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">named1</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span><span class="c1">#output: 0 0 a b foo 2 bar</span>
+
+<span class="c1"># example prototype with 1 required positional argument, any number of</span>
+<span class="c1"># optional positional arguments, and two optional named arguments</span>
+<span class="k">def</span> <span class="nf">example_b</span><span class="p">(</span><span class="n">value1</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">named1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">named2</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    value1 is a required, positional argument</span>
+<span class="sd">    args is basically a Tuple that represents any number of un-named argments that appear</span>
+<span class="sd">        before all named arguments</span>
+<span class="sd">    named1 &amp; named2 are optional, named arguments that are given default values</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># when we put the &#39;*&#39; in front of args, we unpack the set of</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">value1</span> <span class="o">+</span> <span class="mi">10</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">named1</span><span class="p">,</span> <span class="n">named2</span><span class="p">)</span>
+
+<span class="c1"># we can call example_b in the following ways:</span>
+<span class="n">example_b</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>        <span class="c1"># output: 15 10 15 20 1 2</span>
+<span class="n">example_b</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">named2</span><span class="o">=</span><span class="s1">&#39;override&#39;</span><span class="p">)</span> <span class="c1"># output: 10 1 override</span>
+
+<span class="k">def</span> <span class="nf">example_c</span><span class="p">(</span><span class="n">value1</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">named1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">named2</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    value1 is a required, positional argument</span>
+<span class="sd">    args is basically a Tuple that represents any number of un-named argments that appear</span>
+<span class="sd">        before all named arguments</span>
+<span class="sd">    named1 &amp; named2 are optional, named arguments that are given default values</span>
+<span class="sd">    kwargs is basically a dictionary that represents any number of named argument</span>
+<span class="sd">        that appear after all the positional arguments</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># unpack args to all positional arguments</span>
+    <span class="c1"># unpack **kwargs to be all named arguments</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">value1</span> <span class="o">+</span> <span class="mi">20</span><span class="p">,</span> <span class="n">named1</span><span class="p">,</span> <span class="n">named2</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+    
+<span class="n">example_c</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">named1</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>     <span class="c1"># output: 20 10 2</span>
+<span class="n">example_c</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="n">named2</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span> <span class="c1"># output: 22-1-0-foo</span>
+
+</pre></div>
+</div>
+<p>Explain after each example how the output happens. Explain <code class="docutils literal notranslate"><span class="pre">sep</span></code>. Explain why <code class="docutils literal notranslate"><span class="pre">foo</span></code> appears at the end.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="printing-arguments-formatted-strings">
+<h1>Printing, Arguments &amp; Formatted Strings<a class="headerlink" href="#printing-arguments-formatted-strings" title="Permalink to this heading">#</a></h1>
 <p>Cover the different ways we print and how to format our strings.
 We need to understand named arguments, packing and unpacking.
 explain <code class="docutils literal notranslate"><span class="pre">print(*args,</span> <span class="pre">**kwargs)</span></code><br />
@@ -600,10 +686,15 @@ print(f&#39;GPA={gpa:.2f}&#39;)
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Arguments</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#printing-arguments-formatted-strings">Printing, Arguments &amp; Formatted Strings</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting-old">%-formatting (old)</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatted-printing">formatted printing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f-string">f-string</a></li>
 </ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
