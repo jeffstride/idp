@@ -39,3 +39,4 @@ chapters:
       - file: visualizations/geospatial
       - file: visualizations/lineplots
       - file: visualizations/line_of_best_fit.md
+      - file: visualizations/case_study_dist.md
