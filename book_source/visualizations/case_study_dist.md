@@ -18,6 +18,7 @@ import seaborn as sns
 
 import scipy.integrate as integrate
 from scipy.optimize import curve_fit
+from scipy import stats
 
 sns.set()
 
@@ -463,6 +464,194 @@ def plot_perc_by_age_area(df):
     ax.set_xlabel('Distance')
     ax.set_ylabel('Percentage at Distance')
     ax.set_title("Each Age-Groups' Percentage at Distance")
+````
+# Examining Distance
+
+````{tab-set}
+```{tab-item} Scatter
+These two plots clearly show how scattered the distance values are. The plot on the left shows how men throw farther than women. The density of the dots gets thinner above 80 years-old and beyond 100 yards.  
+
+The plot on the right gives a glimpse into how many people are in a particular sport (e.g. very few in Golf and Hockey). The colors allow one to see that the older folks, by and large, throw shorter distances. And, Baseball has a few outliers.
+
+![Distance Scatter Plots](../_static/dist_scatter.png)   
+```{admonition} See Code
+:class: dropdown  
+We use Seaborn to present these plots so that we can take advantate of the named argument, `hue`.  
+The two plots were positioned too close to each other at the start and the Sport names were overlapped on top of the plot on the left. We set the spacing using `plt.subplots_adjust`.  
+
+Most of this relatively simple code is setting the titles and labels.  
+```python
+def scatter_plots(df):
+    fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(12, 5))
+    sns.scatterplot(data=df, ax=ax1, x='distance', y='age', hue='gender')
+    sns.scatterplot(data=df, ax=ax2, x='distance', y='sport', hue='age')
+    # space out the two plots horizontally
+    plt.subplots_adjust(wspace=0.5)
+    ax1.set_title('Distance vs Age')
+    ax1.legend(title='Gender')
+    ax1.set_ylabel('Age')
+    for ax in (ax1, ax2):
+        ax.set_xlabel('Distance')
+    
+    ax2.set_title('Distance vs Sport w/ Age')
+    ax2.set_ylabel('')
+    ax2.legend(title='Age', loc='lower left', bbox_to_anchor=(.95, .05))
+```
+```{tab-item} Regression
+To determine the impact of age on the throwing distance, we can do a `regplot` and calculate the `Coefficient of Determination`, which expresses how strongly a change in x impacts the change in y (and vice versa).
+
+![Distance Regression](../_static/dist_age_reg.png)    
+
+The code is very short and simple.
+```python
+def calc_r2_stats(df, x_name, y_name):
+    residual = stats.linregress(df[x_name], df[y_name])
+    return residual.rvalue**2
+    
+def regplot_plot(df):
+    ax = sns.regplot(data=df, x='distance', y='age', line_kws={'color': 'red', 'linestyle': '--'}, ci=None)
+    ax.text(100, 80, f'R2={calc_r2_stats(df, "age", "distance"):.3f}', fontsize=16)
+    plt.title('Distance vs Age Regression Plot')
+    plt.xlabel('Distance')
+    plt.ylabel('Age')
+```
+```{tab-item} Histogram
+This plot allows us to see the total count of throwers at each distance. It looks to be a "normal distribution", but it might also be a "binormal distribution" (which you can see more clearly in the section "Data by Gender" histrogram plots above.)
+
+![Distance Histogram](../_static/dist_hist.png)    
+
+The code is very short and simple.
+```python
+def hist_chart(df):
+    plt.hist(df['distance'], bins=25)
+    plt.xlabel('Distance')
+    plt.ylabel('Count')
+    plt.title('Count of Throwers at Each Distance')
+```
+```{tab-item} Cummlative Histogram
+This plot allows us to see how the longer the distance, the harder it is for someone to throw that far. It looks very much like a sigmoid curve and led me to consider finding ways to scientifically calculate the farthest anyone could possibly throw (using the same sample pool). That work will be done in the next section.   
+
+![Distance Histogram](../_static/dist_cumm_hist.png)    
+
+The code is very short and simple.
+```python
+def cum_hist(df):
+    # Set up plot
+    fig, ax = plt.subplots()
+
+    # get histogram values by having numpy put into bins for us
+    bars, bins = np.histogram(df['distance'], bins=15)
+    
+    # manually create the cummlative values from bars
+    # convert the cum_count to percent total as we go
+    cum_count = [ ]
+    total = sum(bars)
+    cum_sum = 0
+    for n in bars:
+        cum_sum += 100 * n / total
+        cum_count.append(cum_sum)
+
+    # Plot cummulative histogram. 
+    # Bins has all boundaries, so remove the last 'fence-post' 
+    plt.bar(x=bins[:-1], height=cum_count, width=6)
+    # format the y-axis as a percentage. We could have manually set the yticks.
+    ax.yaxis.set_major_formatter(mtick.PercentFormatter())
+    plt.title('Cummlative Percent of those at Distance or Less')
+    plt.xlabel('Distance')
+    plt.ylabel('Percent')
+```
+```{tab-item} KDE
+KDE stands for Kernel Density Estimation. Kernel Density Estimation is a non-parametric technique used to estimate the probability density function (PDF) of a continuous random variable. It allows us to estimate the underlying distribution of the data based on the available observations.
+
+The basic idea behind KDE is to represent the data as a smooth continuous curve, which can provide insights into the shape, peaks, and variations in the data distribution. It is particularly useful when the data is limited or irregularly sampled.
+
+In this plot we see how female throwing clearly peaks at a shorter distance than males. We then integrate the value under the curve to find the percentage of women who throw farter than the median male. This value is a staggering low 14%.  
+
+Using the same techniques we can also show that:  
+* 14% of Women throw farther than the median Man. (Shaded in Yellow in plot below)
+* 80% of Men throw farther than the median Woman    
+* 9% of Men throw farther than the Best Woman
+* 91% of Men throw less than the **Best Woman** 
+
+This last statistic could be anecdotally used to claim that women can throw as far as men. But, the majority of these graphs show how men do, on average, throw farther.
+
+![Distance Scatter Plots](../_static/dist_kde.png)   
+```{admonition} See Code
+:class: dropdown  
+  
+```python
+def annotate_shade_area_under_curve(ax, line_index, x_min, x_max, color=None):
+    # Get the area under the curve, and shade it
+    area_under_curve, pt = shade_area(ax, line_index, x_min, x_max, color=color)
+
+    # draw a vertical line at x_min, if we shaded
+    if color is not None:
+        plt.axvline(x=x_min, color='red', linestyle='--')
+    
+    # Annotate the shaded area with text
+    text = f'{area_under_curve*100:.0f}%'
+    plt.text(pt[0], pt[1], text, ha='center', va='center', fontsize=12)
+    
+    return area_under_curve
+
+def shade_area(ax, line_index, x_min, x_max, color=None):
+    '''
+    ax is the axis object that contains the drawn lines
+    line_index is the index of the line we want to use in the axis object
+    Using the line object, calculate the area under the curve between x_min and x_max.
+    if color is set, then shade that area with that color. otherwise, just calculate stuff.
+    return a tuple of:
+       area under the curve
+       (x, y) a good point in the shaded area to use for annotation
+    '''
+    line = ax.get_lines()[line_index]
+    x = line.get_xdata()
+    y = line.get_ydata()
+    integration_function = lambda x1: np.interp(x1, x, y)
+    area_under_curve, _ = integrate.quad(integration_function, x_min, x_max)
+    if color is not None:
+        ax.fill_between(x, y, where=((x >= x_min) & (x <= x_max)), alpha=0.5, color=color)
+        
+    # find good annotation point
+    xpos = x_min + 10
+    ypos = np.interp(xpos, x, y) / 2
+    
+    return area_under_curve, (xpos, ypos)
+
+def get_perc_between(df, x_min, x_max):
+    df2 = df[(df['distance'] >= x_min) & (df['distance'] <= x_max)]
+    return len(df2) / len(df)
+    
+def sns_density(df):
+    # set up
+    max_x = 140
+    women = df[df['gender'] == 'Female']
+    women_avg = women['distance'].median()
+    men = df[df['gender'] == 'Male']
+    man_avg = men['distance'].median()
+    colors = ['green', 'navy', 'pink']
+    
+    # when we shade a portion of the curve, the axis returned
+    # does not have an added line: get_lines() returns an empty list.
+    # So, don't shade using shade=True during the call to kdeplot. Shade manually.
+    
+    fig = plt.figure(figsize=(8, 6))
+    # Draw the three lines: Combined, Men & Women
+    for d, c in zip([df, men, women], colors):
+        axis = sns.kdeplot(data=d['distance'], color=c, clip=(0, max_x))
+    
+    # now, manually shade each region. We could have set the named argument 'shade'=True
+    # when plotting, but we wanted the line data added to the axis for computations.
+    # for info on lines: https://matplotlib.org/stable/api/_as_gen/matplotlib.lines.Line2D.html
+    for line_index, color in enumerate(colors):
+        shade_area(axis, line_index, 0, max_x, color=color)
+    
+    annotate_shade_area_under_curve(axis, 2, man_avg, max_x, color='yellow')
+
+    plt.xlabel('Distance')
+    plt.legend(['Combined', 'Male', 'Female', 'Male Median'])
+    plt.title('Comparing Density by Gender')
+```
 ````
 
 # Machine learning
