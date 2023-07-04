@@ -370,10 +370,11 @@ If you want to see the intermediate DataFrames and the code to create the above 
 
 ````{tab-set}
 ```{tab-item} Pie Chart
-The largest age groups happen to be: 38-47, then 28-37, followed by 18-27. This is a bias in the data and will skew the
-results of the entire research. Given that we will soon see that younger people throw a bit farther on average, that
-having our data skewed a bit older makes the results less accurate overall. The general population gets smaller as
-the ages go up, and surely this distribution by age does not match what we expect.  
+The largest age groups happen to be: 38-47, then 28-37, followed by 18-27. It appears that there is a bias in the data which could skew the
+results of the research. Given that we will soon see that younger people throw a bit farther on average, that
+having our data skewed a bit older makes the results less accurate overall. The number of people in the general population should get
+smaller as the ages go up, and surely this distribution by age does not match what we expect. This triggered another plot (Actual vs Sample)
+to examine more closely the age distribution relative to the actual population.    
 
 ![Age Pie](../_static/dist_pie_age.png)   
 ```{admonition} See Code
@@ -391,7 +392,87 @@ def pie_by_age(df):
     fig, ax = plt.subplots()
     plot_pie(ax, df2, 'age_bracket', 'Age Bracket')
 ```
-```{tab-item} Histogram
+```{tab-item} Actual vs Sample
+I went [here](https://www2.census.gov/programs-surveys/popest/tables/2020-2022/national/asrh/nc-est2022-syasexn.xlsx) to
+get data on the US Population in 2022 by age (by single year). I did a little work in Excel to change the count to 
+percentages between 18-99 (inclusive). The percentage represents the percent at age X of all people between 18-99. In other
+words, I excluded those 0-17 and 100+. 
+Then, I generated the plots below. The red line represent the actual US population and the blue histogram is our study data.
+I considered doing adding a regression line (with order=2, or a parabola) to see how our
+sample data would curve, but I thought the plots were busy enough and it additional line wouldn't add much value.  
+
+We can see that the age distribution is pretty close to the general population except for those in the 38-47 age bracket. It also
+looks like we might have an under representation of the following age ranges: 21-23, 30-32, and 51-53. 
+
+![Sample vs Actual](../_static/dist_age_study.png)  
+```{admonition} See the Code
+:class: dropdown 
+In the code below, `df` is our study data, while `df_us` is the actual population data with only two columns, 'age' and 'percent'. 
+This code makes use of `twinx()` which allows us to plot two plots on the same x-axis where the y-values are at different scales. 
+Notice how there are two y-axis labels for each subplot.  
+```python
+def add_age_bracket(df):
+    bracket_names = [ str(n)+"-"+str(n+9) for n in range(18, 81, 10) ]
+    bracket_names.append('88-99')
+    age_bracket = [ bracket_names[-1] if age > 87 else bracket_names[(age-18)//10] for age in df['age'] ]
+    df['age_bracket'] = age_bracket
+
+def hist_line_ages(ax1, df, df_us):
+    # we have some outliers at: 25, 30, 35, etc.
+    # so, use bins of size 3 to flatting things out a bit
+    ax1.hist(df['age'], bins=(99-18+1)//3, label='Study')
+    ax2 = ax1.twinx()
+    for ax in (ax1, ax2):
+        ax.grid(axis='y', visible=False)
+    ax2.plot(df_us['age'], df_us['percent'], color='red', label='Actual')
+    
+    # with a twinx(), the labels are separate. Let's combine them.
+    lines, labels = ax1.get_legend_handles_labels()
+    lines2, labels2 = ax2.get_legend_handles_labels()
+    ax1.legend(lines + lines2, labels + labels2)
+    ax1.set_title('Age Histogram (3 Year Bins)')
+    ax1.set_xlabel('Age')
+    ax1.set_ylabel('Study Count')
+    ax2.set_ylabel('True Percent')
+
+def compare_hist(ax1, df, df_us):
+    add_age_bracket(df_us)
+    
+    # aggregate (sum up) values in age brackets
+    perc_series = df_us.groupby('age_bracket')['percent'].sum()
+    
+    # Set up plot
+    # ax1.set_facecolor('lightgrey')
+
+    # Plot histogram for study data, save the bins, and reindex the series to the bins
+    n, bins, patches = ax1.hist(df['age'], bins=8, color='blue', alpha=0.7, label='Study')
+    # have the series object with the same index values, but add 5 to center in the bar
+    perc_series.index = bins[:-1] + 5
+    
+    # Plot aggregated percentages of actual population
+    ax2 = ax1.twinx()
+    for ax in (ax1, ax2):
+        ax.grid(axis='y', visible=False)
+    ax2.plot(perc_series.index, perc_series.values, 'r-')
+    ax2.set_ylabel('True Percent')
+    ax1.set_ylabel('Study Count')
+    ax1.set_xlabel('Age')
+    ax1.set_xticks([18, 28, 38, 48, 58, 68, 78, 88 ])
+    ax1.set_title('Age Histogram (10 Year Bins)')
+    
+def create_dual_hist_plots(df, df_us):
+    # two, side-by-side plots
+    fig, (ax_left, ax_right) = plt.subplots(1, 2, figsize=(12, 4))
+    plt.subplots_adjust(wspace=0.5)
+    
+    # On the left, create histogram & line with only 3 ages combined
+    hist_line_ages(ax_left, df, df_us)
+    compare_hist(ax_right, df, df_us)
+    
+    # Add super title
+    plt.suptitle('Actual vs Study Sample', fontsize=20)
+```
+```{tab-item} Box Plot
 Here we see that the younger you are, the farther you can throw. The one exception is in the 88-99 age bracket. There we see that they are a bit better than they 78-87 year olds. Even though the average is slightly greater than the 68-77 year-olds, the range is much smaller. This is probably due to the low numbers we have the higher age group and is an anomoly in the data. 
 
 ![Age Box Plot](../_static/dist_age_box_plots.png)   

@@ -891,10 +891,11 @@ Area Plots</label><div class="sd-tab-content docutils">
 <input checked="checked" id="sd-tab-item-14" name="sd-tab-set-3" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-14">
 Pie Chart</label><div class="sd-tab-content docutils">
-<p>The largest age groups happen to be: 38-47, then 28-37, followed by 18-27. This is a bias in the data and will skew the
-results of the entire research. Given that we will soon see that younger people throw a bit farther on average, that
-having our data skewed a bit older makes the results less accurate overall. The general population gets smaller as
-the ages go up, and surely this distribution by age does not match what we expect.</p>
+<p>The largest age groups happen to be: 38-47, then 28-37, followed by 18-27. It appears that there is a bias in the data which could skew the
+results of the research. Given that we will soon see that younger people throw a bit farther on average, that
+having our data skewed a bit older makes the results less accurate overall. The number of people in the general population should get
+smaller as the ages go up, and surely this distribution by age does not match what we expect. This triggered another plot (Actual vs Sample)
+to examine more closely the age distribution relative to the actual population.</p>
 <p><img alt="Age Pie" src="../_images/dist_pie_age.png" /></p>
 <div class="dropdown admonition">
 <p class="admonition-title">See Code</p>
@@ -915,7 +916,89 @@ the ages go up, and surely this distribution by age does not match what we expec
 </div>
 <input id="sd-tab-item-15" name="sd-tab-set-3" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-15">
-Histogram</label><div class="sd-tab-content docutils">
+Actual vs Sample</label><div class="sd-tab-content docutils">
+<p>I went <a class="reference external" href="https://www2.census.gov/programs-surveys/popest/tables/2020-2022/national/asrh/nc-est2022-syasexn.xlsx">here</a> to
+get data on the US Population in 2022 by age (by single year). I did a little work in Excel to change the count to
+percentages between 18-99 (inclusive). The percentage represents the percent at age X of all people between 18-99. In other
+words, I excluded those 0-17 and 100+.
+Then, I generated the plots below. The red line represent the actual US population and the blue histogram is our study data.
+I considered doing adding a regression line (with order=2, or a parabola) to see how our
+sample data would curve, but I thought the plots were busy enough and it additional line wouldn’t add much value.</p>
+<p>We can see that the age distribution is pretty close to the general population except for those in the 38-47 age bracket. It also
+looks like we might have an under representation of the following age ranges: 21-23, 30-32, and 51-53.</p>
+<p><img alt="Sample vs Actual" src="../_images/dist_age_study.png" /></p>
+<div class="dropdown admonition">
+<p class="admonition-title">See the Code</p>
+<p>In the code below, <code class="docutils literal notranslate"><span class="pre">df</span></code> is our study data, while <code class="docutils literal notranslate"><span class="pre">df_us</span></code> is the actual population data with only two columns, ‘age’ and ‘percent’.
+This code makes use of <code class="docutils literal notranslate"><span class="pre">twinx()</span></code> which allows us to plot two plots on the same x-axis where the y-values are at different scales.
+Notice how there are two y-axis labels for each subplot.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_age_bracket</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="n">bracket_names</span> <span class="o">=</span> <span class="p">[</span> <span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span><span class="o">+</span><span class="s2">&quot;-&quot;</span><span class="o">+</span><span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">9</span><span class="p">)</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">18</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="p">]</span>
+    <span class="n">bracket_names</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;88-99&#39;</span><span class="p">)</span>
+    <span class="n">age_bracket</span> <span class="o">=</span> <span class="p">[</span> <span class="n">bracket_names</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="k">if</span> <span class="n">age</span> <span class="o">&gt;</span> <span class="mi">87</span> <span class="k">else</span> <span class="n">bracket_names</span><span class="p">[(</span><span class="n">age</span><span class="o">-</span><span class="mi">18</span><span class="p">)</span><span class="o">//</span><span class="mi">10</span><span class="p">]</span> <span class="k">for</span> <span class="n">age</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">]</span> <span class="p">]</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;age_bracket&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">age_bracket</span>
+
+<span class="k">def</span> <span class="nf">hist_line_ages</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">df_us</span><span class="p">):</span>
+    <span class="c1"># we have some outliers at: 25, 30, 35, etc.</span>
+    <span class="c1"># so, use bins of size 3 to flatting things out a bit</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="p">(</span><span class="mi">99</span><span class="o">-</span><span class="mi">18</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">//</span><span class="mi">3</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Study&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">visible</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_us</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">],</span> <span class="n">df_us</span><span class="p">[</span><span class="s1">&#39;percent&#39;</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Actual&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># with a twinx(), the labels are separate. Let&#39;s combine them.</span>
+    <span class="n">lines</span><span class="p">,</span> <span class="n">labels</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+    <span class="n">lines2</span><span class="p">,</span> <span class="n">labels2</span> <span class="o">=</span> <span class="n">ax2</span><span class="o">.</span><span class="n">get_legend_handles_labels</span><span class="p">()</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">lines</span> <span class="o">+</span> <span class="n">lines2</span><span class="p">,</span> <span class="n">labels</span> <span class="o">+</span> <span class="n">labels2</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Age Histogram (3 Year Bins)&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Age&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Study Count&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;True Percent&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">compare_hist</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">df_us</span><span class="p">):</span>
+    <span class="n">add_age_bracket</span><span class="p">(</span><span class="n">df_us</span><span class="p">)</span>
+    
+    <span class="c1"># aggregate (sum up) values in age brackets</span>
+    <span class="n">perc_series</span> <span class="o">=</span> <span class="n">df_us</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;age_bracket&#39;</span><span class="p">)[</span><span class="s1">&#39;percent&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    
+    <span class="c1"># Set up plot</span>
+    <span class="c1"># ax1.set_facecolor(&#39;lightgrey&#39;)</span>
+
+    <span class="c1"># Plot histogram for study data, save the bins, and reindex the series to the bins</span>
+    <span class="n">n</span><span class="p">,</span> <span class="n">bins</span><span class="p">,</span> <span class="n">patches</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;age&#39;</span><span class="p">],</span> <span class="n">bins</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Study&#39;</span><span class="p">)</span>
+    <span class="c1"># have the series object with the same index values, but add 5 to center in the bar</span>
+    <span class="n">perc_series</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">bins</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="mi">5</span>
+    
+    <span class="c1"># Plot aggregated percentages of actual population</span>
+    <span class="n">ax2</span> <span class="o">=</span> <span class="n">ax1</span><span class="o">.</span><span class="n">twinx</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">ax</span> <span class="ow">in</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="n">axis</span><span class="o">=</span><span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="n">visible</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">perc_series</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">perc_series</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">)</span>
+    <span class="n">ax2</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;True Percent&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Study Count&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Age&#39;</span><span class="p">)</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([</span><span class="mi">18</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">48</span><span class="p">,</span> <span class="mi">58</span><span class="p">,</span> <span class="mi">68</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">88</span> <span class="p">])</span>
+    <span class="n">ax1</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Age Histogram (10 Year Bins)&#39;</span><span class="p">)</span>
+    
+<span class="k">def</span> <span class="nf">create_dual_hist_plots</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">df_us</span><span class="p">):</span>
+    <span class="c1"># two, side-by-side plots</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax_left</span><span class="p">,</span> <span class="n">ax_right</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">wspace</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    
+    <span class="c1"># On the left, create histogram &amp; line with only 3 ages combined</span>
+    <span class="n">hist_line_ages</span><span class="p">(</span><span class="n">ax_left</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">df_us</span><span class="p">)</span>
+    <span class="n">compare_hist</span><span class="p">(</span><span class="n">ax_right</span><span class="p">,</span> <span class="n">df</span><span class="p">,</span> <span class="n">df_us</span><span class="p">)</span>
+    
+    <span class="c1"># Add super title</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Actual vs Study Sample&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<input id="sd-tab-item-16" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-16">
+Box Plot</label><div class="sd-tab-content docutils">
 <p>Here we see that the younger you are, the farther you can throw. The one exception is in the 88-99 age bracket. There we see that they are a bit better than they 78-87 year olds. Even though the average is slightly greater than the 68-77 year-olds, the range is much smaller. This is probably due to the low numbers we have the higher age group and is an anomoly in the data.</p>
 <p><img alt="Age Box Plot" src="../_images/dist_age_box_plots.png" /></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">boxes_by_age</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
@@ -936,8 +1019,8 @@ Histogram</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="sd-tab-item-16" name="sd-tab-set-3" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-16">
+<input id="sd-tab-item-17" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-17">
 Area of Percent</label><div class="sd-tab-content docutils">
 <p>This plot is starting to show a little more creativity. Notice a few things:</p>
 <p>First, the y-label goes up to 1.0, which represent 100% of people at that distance. No matter what distance we look at, all the people there represent 100% of the people there. For example, even though at 120 yards there are only 2 people there, they make up 100% of the people there. At 110 yards, there is only one person who happens to be in the 18-27 year-old age-bracket, which is why the graph is entirely blue at 110 yards.</p>
@@ -993,8 +1076,8 @@ Area of Percent</label><div class="sd-tab-content docutils">
 <section class="tex2jax_ignore mathjax_ignore" id="examining-distance">
 <h1>Examining Distance<a class="headerlink" href="#examining-distance" title="Permalink to this heading">#</a></h1>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-17" name="sd-tab-set-4" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-17">
+<input checked="checked" id="sd-tab-item-18" name="sd-tab-set-4" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-18">
 Scatter</label><div class="sd-tab-content docutils">
 <p>These two plots clearly show how scattered the distance values are. The plot on the left shows how men throw farther than women. The density of the dots gets thinner above 80 years-old and beyond 100 yards.</p>
 <p>The plot on the right gives a glimpse into how many people are in a particular sport (e.g. very few in Golf and Hockey). The colors allow one to see that the older folks, by and large, throw shorter distances. And, Baseball has a few outliers.</p>
@@ -1023,8 +1106,8 @@ The two plots were positioned too close to each other at the start and the Sport
 </div>
 </div>
 </div>
-<input id="sd-tab-item-18" name="sd-tab-set-4" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-18">
+<input id="sd-tab-item-19" name="sd-tab-set-4" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-19">
 Regression</label><div class="sd-tab-content docutils">
 <p>To determine the impact of age on the throwing distance, we can do a <code class="docutils literal notranslate"><span class="pre">regplot</span></code> and calculate the <code class="docutils literal notranslate"><span class="pre">Coefficient</span> <span class="pre">of</span> <span class="pre">Determination</span></code>, which expresses how strongly a change in x impacts the change in y (and vice versa).</p>
 <p><img alt="Distance Regression" src="../_images/dist_age_reg.png" /></p>
@@ -1042,8 +1125,8 @@ Regression</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="sd-tab-item-19" name="sd-tab-set-4" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-19">
+<input id="sd-tab-item-20" name="sd-tab-set-4" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-20">
 Histogram</label><div class="sd-tab-content docutils">
 <p>This plot allows us to see the total count of throwers at each distance. It looks to be a “normal distribution”, but it might also be a “binormal distribution” (which you can see more clearly in the section “Data by Gender” histrogram plots above.)</p>
 <p><img alt="Distance Histogram" src="../_images/dist_hist.png" /></p>
@@ -1056,8 +1139,8 @@ Histogram</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="sd-tab-item-20" name="sd-tab-set-4" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-20">
+<input id="sd-tab-item-21" name="sd-tab-set-4" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-21">
 Cummlative Histogram</label><div class="sd-tab-content docutils">
 <p>This plot allows us to see how the longer the distance, the harder it is for someone to throw that far. It looks very much like a sigmoid curve and led me to consider finding ways to scientifically calculate the farthest anyone could possibly throw (using the same sample pool). That work will be done in the next section.</p>
 <p><img alt="Distance Histogram" src="../_images/dist_cumm_hist.png" /></p>
@@ -1089,8 +1172,8 @@ Cummlative Histogram</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="sd-tab-item-21" name="sd-tab-set-4" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-21">
+<input id="sd-tab-item-22" name="sd-tab-set-4" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-22">
 KDE</label><div class="sd-tab-content docutils">
 <p>KDE stands for Kernel Density Estimation. Kernel Density Estimation is a non-parametric technique used to estimate the probability density function (PDF) of a continuous random variable. It allows us to estimate the underlying distribution of the data based on the available observations.</p>
 <p>The basic idea behind KDE is to represent the data as a smooth continuous curve, which can provide insights into the shape, peaks, and variations in the data distribution. It is particularly useful when the data is limited or irregularly sampled.</p>
