@@ -546,7 +546,7 @@ def plot_perc_by_age_area(df):
     ax.set_ylabel('Percentage at Distance')
     ax.set_title("Each Age-Groups' Percentage at Distance")
 ````
-# Examining Distance
+## Examining Distance
 
 ````{tab-set}
 ```{tab-item} Scatter
@@ -609,7 +609,7 @@ def hist_chart(df):
     plt.ylabel('Count')
     plt.title('Count of Throwers at Each Distance')
 ```
-```{tab-item} Cummlative Histogram
+```{tab-item} Cumulative Histogram
 This plot allows us to see how the longer the distance, the harder it is for someone to throw that far. It looks very much like a sigmoid curve and led me to consider finding ways to scientifically calculate the farthest anyone could possibly throw (using the same sample pool). That work will be done in the next section.   
 
 ![Distance Histogram](../_static/dist_cumm_hist.png)    
@@ -732,6 +732,150 @@ def sns_density(df):
     plt.xlabel('Distance')
     plt.legend(['Combined', 'Male', 'Female', 'Male Median'])
     plt.title('Comparing Density by Gender')
+```
+````
+## Human Limits
+In this section we will attempt to discover the farthest a human being can throw a baseball. This was inspired
+by the Cumulative Bar Chart where we could see that the slope of the chart flattened out as the distance got farther
+and farther. It suggests (as does common sense), that eventually, no one else will be able to throw farther: there is
+a limit to how far a human being can throw a ball. _What is that distance?_  
+
+````{tab-set}
+```{tab-item} Overview
+The shape of the curve in the Cumulative chart is Sigmoid-like (S-Curve). In this specific graph,
+the <a href="https://en.wikipedia.org/wiki/Asymptote" target="_blank">asymptote</a> is at 100%. The y-value asymptote is
+at the percentage and not at the distance. We want to rotate the graph so that our y-value is the distance thrown
+and the x-axis is "time". Unfortunately, we can't just swap the x & y axis to get this graph we want. What do we do?  
+
+I did a little thought experiment inspired by a statistical technique called 
+<a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)" target="_blank">bootstrapping</a>. The idea is that when
+you don't have access to the true population data, you simulate it by resampling your sample data over and over. The idea
+is to pretend that my data sample is the entire population of the world over an infinite amount of time. Let's call this
+"True Population" (even thought it is definitely NOT)! Then, I "simulate"
+a moment of time by randomly taking a sample of our "True Population" to get a small dataset in this moment in time.  
+
+So, I'm assuming that I have "True Population" data and I'm simulating time. For each resample, I take the maximum value
+to see if anyone has set a record for the farthest distance thrown. I repeat this until I get the maximum value in my
+"True Population" dataset.  
+
+With this set of resampled data, I generated a plot of "records" over "time." Then, I used some Curve of Best Fit techniques
+to find the best fitting curve to our data. This has some limits because in real life, the curve would always have
+the asymptote above the farthest distance thrown, but a curve of best fit minimizes the MSE and may decide that the
+best fitting curve has the asymptote _below_ the farthest distance thrown. Also, the resampling process is random and it
+can create a simulated record set that is far from _real-looking_. I had to do multiple attempts at resampling to find
+something that looks convincingly real.  
+
+I did four different Bootstrap Resamples, graphed them, did a curve of best fit to a Sigmoid curve, and then picked
+the best one. 
+
+**Final Result**  
+The most likely y-upper-limit (asymptote) that represents the upper limit of human performance is:  
+<div style="font-size: 24px; font-weight: bold;">149 Yards</div>   
+See the content in the other tabs for details.
+
+```
+```{tab-item} The Curves
+The S-Shaped curve I initially looked at was the generalized form of Sigmoid.  $y = \frac{L}{1 + e^{-k \cdot (x - x_0)}} + b$  
+
+In this generalized form, I would need to optimize for 4 coefficients: $L$, $k$, $x_0$ and $b$.  
+
+To simplify, we can fix $x_0 = 0$. The coefficients' impact the curve are as follows:  
+- b = lower limit of y  
+- L = y value at $x_0$  (upper limit of y = b + L)  
+- k = curve rate (how fast does the line approach the y-upper-limit)   
+
+Here is how these curves look on a graph:  
+![Sigmoid curves](../_static/dist_sigmoid.png)
+```
+```{tab-item} Bootstrap Resamples
+I picked several throwers from the full data, found the max, and had that be our datapoint at that time.
+My next resample represented the next point in time. If the new max value was not greater than the previous
+max value, then we ignored the values and tried again at the next point in time. If a new greater value
+was found, we considered this to be a new record.  
+
+Here are the four resample data points:  
+
+![Image 1](../_static/dist_boot1_data.jpg) ![Image 2](../_static/dist_boot2_data.jpg)
+![Image 3](../_static/dist_boot3_data.jpg) ![Image 4](../_static/dist_boot4_data.jpg)
+
+Here are four resamples ploted along with their best fit, Sigmoid curves:
+
+![Image 1](../_static/dist_bootstrap1.png) ![Image 2](../_static/dist_bootstrap2.png)
+![Image 3](../_static/dist_bootstrap3.png) ![Image 4](../_static/dist_bootstrap4.png)
+
+The y-upper-limit (asymptote) for these 4 resamples are: 149, 131, 131, 131 (respectively). The curve that
+appears to be the most believable is the first one with 149 yards as the upper limit of human performance.
+```
+```{tab-item} Code
+The resample code is not shown. The `fn` method is a rearranged version of the Sigmoid curve. 
+Because our Sigmoid curve is asymptotic, the best way to successfully get a curve of best fit 
+was to use the Trust Region Reflective algorithm where we established bounds.  
+
+For more details on how all of this works, see the page 'Curve of Best Fit' (TODO).  
+```python
+def fn(x, abs_top, rate, first):
+    '''
+    parabolic shape that has a top-most y value at abs_top.
+    It approaches the asymptote at 'rate'
+    The first value is at first.
+    '''
+    y = (abs_top-first) * (1 - np.exp(-rate*x)) + first
+    return y
+
+def fit_to_curve(x_data, y_data, func, p0, cust_bounds=None):
+    """
+    Fit a curve to the data points and find the coefficients in the equation.
+    Since our curve has some requirements, we need to establish some bounds
+    and use the 'trf' (Trust Region Reflective algorithm) method instead of the 
+    default 'lf', Levenberg-Marquardt algorithm, which is unbounded.
+    
+    The bounds can be hard to determine. If done incorrectly, the shape of the
+    curve can be pretty far off the expected curve. If not provided, we will
+    set the bounds assuming an S-curve. Bounds is a tuple:
+       ( [list of min values for each arg], [list of max values] )
+       
+    Our custom, asymptotic curve has:
+      - abs_top value must be greater than the max point in the dataset.
+      - rate should be between [0.0001, 3]. 
+      - first should be [0, min(y)*2]
+    Note that P0 needs to have values the fit within the bounds.
+    """
+    # p0 is the initial guess at all the parameters that our function, sigmoid,
+    # takes. curve_fit uses p0 to figure out how many arguments in the function to optimize.
+    # curve_fit will use something like a Gradient Descent approach to solve
+    # the problem. Each variable into the function (sigmoid) is a dimension
+    # in the problem to optimize Least Squares (lowest sum of residuals squared)
+    if cust_bounds == None:
+        cust_bounds = ([max(y_data)+2, 0.0001, min(y_data)*.6], [max(y_data)*2, .15, min(y_data)*2])
+        
+    popt, pcov = curve_fit(func, x_data, y_data, p0=p0, method='trf', bounds=cust_bounds)
+
+    # Return the optimized parameters
+    return popt
+
+def plot_guess(x_data, y_data, func, *args):
+    # Generate the x values for the fitted curve
+    x_fit = np.linspace(min(x_data), max(x_data)*2, 1000)
+    # unpack the values to pass into fn
+    y_fit = func(x_fit, *args)
+
+    # Plot the original data and the fitted curve
+    plt.scatter(x_data, y_data, label='Data')
+    plt.plot(x_fit, y_fit, 'r-', label='Fit')
+    plt.xlabel('x')
+    plt.ylabel('y')
+    plt.legend()
+
+def plot_all_4_resamples():
+    # resamples saved in csv files and reloaded here
+    for n in range(1, 5):
+        df_boot = pd.read_csv('boot' + str(n) + '.csv')
+        x_data, y_data = df_boot['time'], df_boot['record']
+        my_p0 = [ max(y_data)+5, .1, min(y_data)]
+        bounds =  ([max(y_data)+2, 0.0001, min(y_data)*.6], [max(y_data)+20, .15, min(y_data)*2])
+        args = fit_to_curve(x_data, y_data, fn, my_p0, cust_bounds=bounds)
+        plot_guess(x_data, y_data, fn, *args)
+        print(f"Optimized parameters: {args}")
 ```
 ````
 

@@ -103,6 +103,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'visualizations/case_study_dist';</script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -262,7 +264,6 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Case Study on Distance</a></li>
-
 
 </ul>
 </li>
@@ -482,9 +483,10 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-by-gender">Data by Gender</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-by-sport">Data by Sport</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-by-age">Data by Age</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examining-distance">Examining Distance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#human-limits">Human Limits</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#examining-distance">Examining Distance</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning">Machine learning</a></li>
 </ul>
 
@@ -1072,9 +1074,8 @@ Area of Percent</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="examining-distance">
-<h1>Examining Distance<a class="headerlink" href="#examining-distance" title="Permalink to this heading">#</a></h1>
+<section id="examining-distance">
+<h2>Examining Distance<a class="headerlink" href="#examining-distance" title="Permalink to this heading">#</a></h2>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-18" name="sd-tab-set-4" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-18">
@@ -1141,7 +1142,7 @@ Histogram</label><div class="sd-tab-content docutils">
 </div>
 <input id="sd-tab-item-21" name="sd-tab-set-4" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-21">
-Cummlative Histogram</label><div class="sd-tab-content docutils">
+Cumulative Histogram</label><div class="sd-tab-content docutils">
 <p>This plot allows us to see how the longer the distance, the harder it is for someone to throw that far. It looks very much like a sigmoid curve and led me to consider finding ways to scientifically calculate the farthest anyone could possibly throw (using the same sample pool). That work will be done in the next section.</p>
 <p><img alt="Distance Histogram" src="../_images/dist_cumm_hist.png" /></p>
 <p>The code is very short and simple.</p>
@@ -1266,6 +1267,148 @@ KDE</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </section>
+<section id="human-limits">
+<h2>Human Limits<a class="headerlink" href="#human-limits" title="Permalink to this heading">#</a></h2>
+<p>In this section we will attempt to discover the farthest a human being can throw a baseball. This was inspired
+by the Cumulative Bar Chart where we could see that the slope of the chart flattened out as the distance got farther
+and farther. It suggests (as does common sense), that eventually, no one else will be able to throw farther: there is
+a limit to how far a human being can throw a ball. <em>What is that distance?</em></p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-23" name="sd-tab-set-5" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-23">
+Overview</label><div class="sd-tab-content docutils">
+<p>The shape of the curve in the Cumulative chart is Sigmoid-like (S-Curve). In this specific graph,
+the <a href="https://en.wikipedia.org/wiki/Asymptote" target="_blank">asymptote</a> is at 100%. The y-value asymptote is
+at the percentage and not at the distance. We want to rotate the graph so that our y-value is the distance thrown
+and the x-axis is “time”. Unfortunately, we can’t just swap the x &amp; y axis to get this graph we want. What do we do?</p>
+<p>I did a little thought experiment inspired by a statistical technique called
+<a href="https://en.wikipedia.org/wiki/Bootstrapping_(statistics)" target="_blank">bootstrapping</a>. The idea is that when
+you don’t have access to the true population data, you simulate it by resampling your sample data over and over. The idea
+is to pretend that my data sample is the entire population of the world over an infinite amount of time. Let’s call this
+“True Population” (even thought it is definitely NOT)! Then, I “simulate”
+a moment of time by randomly taking a sample of our “True Population” to get a small dataset in this moment in time.</p>
+<p>So, I’m assuming that I have “True Population” data and I’m simulating time. For each resample, I take the maximum value
+to see if anyone has set a record for the farthest distance thrown. I repeat this until I get the maximum value in my
+“True Population” dataset.</p>
+<p>With this set of resampled data, I generated a plot of “records” over “time.” Then, I used some Curve of Best Fit techniques
+to find the best fitting curve to our data. This has some limits because in real life, the curve would always have
+the asymptote above the farthest distance thrown, but a curve of best fit minimizes the MSE and may decide that the
+best fitting curve has the asymptote <em>below</em> the farthest distance thrown. Also, the resampling process is random and it
+can create a simulated record set that is far from <em>real-looking</em>. I had to do multiple attempts at resampling to find
+something that looks convincingly real.</p>
+<p>I did four different Bootstrap Resamples, graphed them, did a curve of best fit to a Sigmoid curve, and then picked
+the best one.</p>
+<p><strong>Final Result</strong><br />
+The most likely y-upper-limit (asymptote) that represents the upper limit of human performance is:</p>
+<div style="font-size: 24px; font-weight: bold;">149 Yards</div>   
+See the content in the other tabs for details.
+</div>
+<input id="sd-tab-item-24" name="sd-tab-set-5" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-24">
+The Curves</label><div class="sd-tab-content docutils">
+<p>The S-Shaped curve I initially looked at was the generalized form of Sigmoid.  <span class="math notranslate nohighlight">\(y = \frac{L}{1 + e^{-k \cdot (x - x_0)}} + b\)</span></p>
+<p>In this generalized form, I would need to optimize for 4 coefficients: <span class="math notranslate nohighlight">\(L\)</span>, <span class="math notranslate nohighlight">\(k\)</span>, <span class="math notranslate nohighlight">\(x_0\)</span> and <span class="math notranslate nohighlight">\(b\)</span>.</p>
+<p>To simplify, we can fix <span class="math notranslate nohighlight">\(x_0 = 0\)</span>. The coefficients’ impact the curve are as follows:</p>
+<ul class="simple">
+<li><p>b = lower limit of y</p></li>
+<li><p>L = y value at <span class="math notranslate nohighlight">\(x_0\)</span>  (upper limit of y = b + L)</p></li>
+<li><p>k = curve rate (how fast does the line approach the y-upper-limit)</p></li>
+</ul>
+<p>Here is how these curves look on a graph:<br />
+<img alt="Sigmoid curves" src="../_images/dist_sigmoid.png" /></p>
+</div>
+<input id="sd-tab-item-25" name="sd-tab-set-5" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-25">
+Bootstrap Resamples</label><div class="sd-tab-content docutils">
+<p>I picked several throwers from the full data, found the max, and had that be our datapoint at that time.
+My next resample represented the next point in time. If the new max value was not greater than the previous
+max value, then we ignored the values and tried again at the next point in time. If a new greater value
+was found, we considered this to be a new record.</p>
+<p>Here are the four resample data points:</p>
+<p><img alt="Image 1" src="../_images/dist_boot1_data.jpg" /> <img alt="Image 2" src="../_images/dist_boot2_data.jpg" />
+<img alt="Image 3" src="../_images/dist_boot3_data.jpg" /> <img alt="Image 4" src="../_images/dist_boot4_data.jpg" /></p>
+<p>Here are four resamples ploted along with their best fit, Sigmoid curves:</p>
+<p><img alt="Image 1" src="../_images/dist_bootstrap1.png" /> <img alt="Image 2" src="../_images/dist_bootstrap2.png" />
+<img alt="Image 3" src="../_images/dist_bootstrap3.png" /> <img alt="Image 4" src="../_images/dist_bootstrap4.png" /></p>
+<p>The y-upper-limit (asymptote) for these 4 resamples are: 149, 131, 131, 131 (respectively). The curve that
+appears to be the most believable is the first one with 149 yards as the upper limit of human performance.</p>
+</div>
+<input id="sd-tab-item-26" name="sd-tab-set-5" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-26">
+Code</label><div class="sd-tab-content docutils">
+<p>The resample code is not shown. The <code class="docutils literal notranslate"><span class="pre">fn</span></code> method is a rearranged version of the Sigmoid curve.
+Because our Sigmoid curve is asymptotic, the best way to successfully get a curve of best fit
+was to use the Trust Region Reflective algorithm where we established bounds.</p>
+<p>For more details on how all of this works, see the page ‘Curve of Best Fit’ (TODO).</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fn</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">abs_top</span><span class="p">,</span> <span class="n">rate</span><span class="p">,</span> <span class="n">first</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    parabolic shape that has a top-most y value at abs_top.</span>
+<span class="sd">    It approaches the asymptote at &#39;rate&#39;</span>
+<span class="sd">    The first value is at first.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">abs_top</span><span class="o">-</span><span class="n">first</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">rate</span><span class="o">*</span><span class="n">x</span><span class="p">))</span> <span class="o">+</span> <span class="n">first</span>
+    <span class="k">return</span> <span class="n">y</span>
+
+<span class="k">def</span> <span class="nf">fit_to_curve</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="n">p0</span><span class="p">,</span> <span class="n">cust_bounds</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Fit a curve to the data points and find the coefficients in the equation.</span>
+<span class="sd">    Since our curve has some requirements, we need to establish some bounds</span>
+<span class="sd">    and use the &#39;trf&#39; (Trust Region Reflective algorithm) method instead of the </span>
+<span class="sd">    default &#39;lf&#39;, Levenberg-Marquardt algorithm, which is unbounded.</span>
+<span class="sd">    </span>
+<span class="sd">    The bounds can be hard to determine. If done incorrectly, the shape of the</span>
+<span class="sd">    curve can be pretty far off the expected curve. If not provided, we will</span>
+<span class="sd">    set the bounds assuming an S-curve. Bounds is a tuple:</span>
+<span class="sd">       ( [list of min values for each arg], [list of max values] )</span>
+<span class="sd">       </span>
+<span class="sd">    Our custom, asymptotic curve has:</span>
+<span class="sd">      - abs_top value must be greater than the max point in the dataset.</span>
+<span class="sd">      - rate should be between [0.0001, 3]. </span>
+<span class="sd">      - first should be [0, min(y)*2]</span>
+<span class="sd">    Note that P0 needs to have values the fit within the bounds.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># p0 is the initial guess at all the parameters that our function, sigmoid,</span>
+    <span class="c1"># takes. curve_fit uses p0 to figure out how many arguments in the function to optimize.</span>
+    <span class="c1"># curve_fit will use something like a Gradient Descent approach to solve</span>
+    <span class="c1"># the problem. Each variable into the function (sigmoid) is a dimension</span>
+    <span class="c1"># in the problem to optimize Least Squares (lowest sum of residuals squared)</span>
+    <span class="k">if</span> <span class="n">cust_bounds</span> <span class="o">==</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">cust_bounds</span> <span class="o">=</span> <span class="p">([</span><span class="nb">max</span><span class="p">(</span><span class="n">y_data</span><span class="p">)</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">y_data</span><span class="p">)</span><span class="o">*</span><span class="mf">.6</span><span class="p">],</span> <span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="n">y_data</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="mf">.15</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">y_data</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="p">])</span>
+        
+    <span class="n">popt</span><span class="p">,</span> <span class="n">pcov</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">func</span><span class="p">,</span> <span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span><span class="p">,</span> <span class="n">p0</span><span class="o">=</span><span class="n">p0</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;trf&#39;</span><span class="p">,</span> <span class="n">bounds</span><span class="o">=</span><span class="n">cust_bounds</span><span class="p">)</span>
+
+    <span class="c1"># Return the optimized parameters</span>
+    <span class="k">return</span> <span class="n">popt</span>
+
+<span class="k">def</span> <span class="nf">plot_guess</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span><span class="p">,</span> <span class="n">func</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="c1"># Generate the x values for the fitted curve</span>
+    <span class="n">x_fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">x_data</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">x_data</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+    <span class="c1"># unpack the values to pass into fn</span>
+    <span class="n">y_fit</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+    <span class="c1"># Plot the original data and the fitted curve</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">y_fit</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Fit&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">plot_all_4_resamples</span><span class="p">():</span>
+    <span class="c1"># resamples saved in csv files and reloaded here</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">):</span>
+        <span class="n">df_boot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;boot&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.csv&#39;</span><span class="p">)</span>
+        <span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span> <span class="o">=</span> <span class="n">df_boot</span><span class="p">[</span><span class="s1">&#39;time&#39;</span><span class="p">],</span> <span class="n">df_boot</span><span class="p">[</span><span class="s1">&#39;record&#39;</span><span class="p">]</span>
+        <span class="n">my_p0</span> <span class="o">=</span> <span class="p">[</span> <span class="nb">max</span><span class="p">(</span><span class="n">y_data</span><span class="p">)</span><span class="o">+</span><span class="mi">5</span><span class="p">,</span> <span class="mf">.1</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">y_data</span><span class="p">)]</span>
+        <span class="n">bounds</span> <span class="o">=</span>  <span class="p">([</span><span class="nb">max</span><span class="p">(</span><span class="n">y_data</span><span class="p">)</span><span class="o">+</span><span class="mi">2</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">y_data</span><span class="p">)</span><span class="o">*</span><span class="mf">.6</span><span class="p">],</span> <span class="p">[</span><span class="nb">max</span><span class="p">(</span><span class="n">y_data</span><span class="p">)</span><span class="o">+</span><span class="mi">20</span><span class="p">,</span> <span class="mf">.15</span><span class="p">,</span> <span class="nb">min</span><span class="p">(</span><span class="n">y_data</span><span class="p">)</span><span class="o">*</span><span class="mi">2</span><span class="p">])</span>
+        <span class="n">args</span> <span class="o">=</span> <span class="n">fit_to_curve</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="n">my_p0</span><span class="p">,</span> <span class="n">cust_bounds</span><span class="o">=</span><span class="n">bounds</span><span class="p">)</span>
+        <span class="n">plot_guess</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Optimized parameters: </span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
 <section class="tex2jax_ignore mathjax_ignore" id="machine-learning">
 <h1>Machine learning<a class="headerlink" href="#machine-learning" title="Permalink to this heading">#</a></h1>
 <p>TODO: We’ve created a ML model that predicts distance based on the three features: gender, sport and age. (I think) the results show that the model is not very accurate at predicting.</p>
@@ -1337,9 +1480,10 @@ KDE</label><div class="sd-tab-content docutils">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-by-gender">Data by Gender</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-by-sport">Data by Sport</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-by-age">Data by Age</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examining-distance">Examining Distance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#human-limits">Human Limits</a></li>
 </ul>
 </li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#examining-distance">Examining Distance</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#machine-learning">Machine learning</a></li>
 </ul>
 
