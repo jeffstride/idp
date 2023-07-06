@@ -502,8 +502,8 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="case-study-on-distance">
 <h1>Case Study on Distance<a class="headerlink" href="#case-study-on-distance" title="Permalink to this heading">#</a></h1>
-<p>This page will present graphs for a ‘fake’ research project. It will show you both good graphs and bad graphs and a brief summary of what the graph means. It will provide the code used to generate the graphs as well a short discussion on the code: how the code works, why the code was selected, and potential pitfalls to watch out for when generating your own.</p>
-<p>This exercise is intended to show how one can be creative in examining and visualizing data to surface true insights.</p>
+<p>This page will present graphs for a ‘fake’ research project. It will show you both good graphs and bad graphs and a brief summary of what the graphs mean. It will provide the code used to generate the graphs as well a short discussion on the code: how the code works, why the code was selected, and potential pitfalls to watch out for when generating your own.</p>
+<p>This exercise is intended to show how one can be <em>creative</em> in examining and visualizing data to surface true insights.</p>
 <p>This exercise is <strong>NOT</strong> intended to show how to <em>clean</em> the data nor how to <em>test</em> the code.</p>
 <div class="dropdown admonition">
 <p class="admonition-title">See Imports</p>
@@ -538,7 +538,7 @@ document.write(`
 <p>A total of 1866 people’s responses were recorded.</p>
 <p>Here is a sample of the data. These are the people with the top 10 and bottom 10 distance values:<br />
 <img alt="Distance Data" src="../_images/distance_data.jpg" /></p>
-<p>Note that our is “clean” and is not riddled with <code class="docutils literal notranslate"><span class="pre">NaN</span></code> or errors.</p>
+<p>Note that our data is very “clean” and is not riddled with <code class="docutils literal notranslate"><span class="pre">NaN</span></code> or errors.</p>
 </section>
 <hr class="docutils" />
 <section id="worthless-graphs">
@@ -1276,7 +1276,7 @@ a limit to how far a human being can throw a ball. <em>What is that distance?</e
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-23" name="sd-tab-set-5" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-23">
-Overview</label><div class="sd-tab-content docutils">
+Summary</label><div class="sd-tab-content docutils">
 <p>The shape of the curve in the Cumulative chart is Sigmoid-like (S-Curve). In this specific graph,
 the <a href="https://en.wikipedia.org/wiki/Asymptote" target="_blank">asymptote</a> is at 100%. The y-value asymptote is
 at the percentage and not at the distance. We want to rotate the graph so that our y-value is the distance thrown
@@ -1324,7 +1324,7 @@ Bootstrap Resamples</label><div class="sd-tab-content docutils">
 My next resample represented the next point in time. If the new max value was not greater than the previous
 max value, then we ignored the values and tried again at the next point in time. If a new greater value
 was found, we considered this to be a new record.</p>
-<p>Here are the four resample data points:</p>
+<p>Here are the four resample data sets:</p>
 <p><img alt="Image 1" src="../_images/dist_boot1_data.jpg" /> <img alt="Image 2" src="../_images/dist_boot2_data.jpg" />
 <img alt="Image 3" src="../_images/dist_boot3_data.jpg" /> <img alt="Image 4" src="../_images/dist_boot4_data.jpg" /></p>
 <p>Here are four resamples ploted along with their best fit, Sigmoid curves:</p>
