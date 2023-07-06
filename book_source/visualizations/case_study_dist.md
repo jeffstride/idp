@@ -1,7 +1,7 @@
 # Case Study on Distance
-This page will present graphs for a 'fake' research project. It will show you both good graphs and bad graphs and a brief summary of what the graph means. It will provide the code used to generate the graphs as well a short discussion on the code: how the code works, why the code was selected, and potential pitfalls to watch out for when generating your own.  
+This page will present graphs for a 'fake' research project. It will show you both good graphs and bad graphs and a brief summary of what the graphs mean. It will provide the code used to generate the graphs as well a short discussion on the code: how the code works, why the code was selected, and potential pitfalls to watch out for when generating your own.  
 
-This exercise is intended to show how one can be creative in examining and visualizing data to surface true insights.  
+This exercise is intended to show how one can be *creative* in examining and visualizing data to surface true insights.  
 
 This exercise is **NOT** intended to show how to *clean* the data nor how to *test* the code.  
 
@@ -38,7 +38,7 @@ A total of 1866 people's responses were recorded.
 Here is a sample of the data. These are the people with the top 10 and bottom 10 distance values:  
 ![Distance Data](../_static/distance_data.jpg)  
 
-Note that our is "clean" and is not riddled with `NaN` or errors. 
+Note that our data is very "clean" and is not riddled with `NaN` or errors. 
 - - - 
 
 ## Worthless Graphs
@@ -741,7 +741,7 @@ and farther. It suggests (as does common sense), that eventually, no one else wi
 a limit to how far a human being can throw a ball. _What is that distance?_  
 
 ````{tab-set}
-```{tab-item} Overview
+```{tab-item} Summary
 The shape of the curve in the Cumulative chart is Sigmoid-like (S-Curve). In this specific graph,
 the <a href="https://en.wikipedia.org/wiki/Asymptote" target="_blank">asymptote</a> is at 100%. The y-value asymptote is
 at the percentage and not at the distance. We want to rotate the graph so that our y-value is the distance thrown
@@ -793,7 +793,7 @@ My next resample represented the next point in time. If the new max value was no
 max value, then we ignored the values and tried again at the next point in time. If a new greater value
 was found, we considered this to be a new record.  
 
-Here are the four resample data points:  
+Here are the four resample data sets:  
 
 ![Image 1](../_static/dist_boot1_data.jpg) ![Image 2](../_static/dist_boot2_data.jpg)
 ![Image 3](../_static/dist_boot3_data.jpg) ![Image 4](../_static/dist_boot4_data.jpg)

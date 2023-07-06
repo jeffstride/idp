@@ -10,5 +10,6 @@ You'll find material on formatted print statements and variable arguments with m
 explanations of unpacking. You can find a wider variety of effective plots commonly used in the
 final project and the code used to generate them.
 
+
 ```{tableofcontents}
 ```
