@@ -262,7 +262,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="lineplots.html">Line Plots &amp; Scatter Plots</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Curve of Best Fit</a></li>
 
-
 <li class="toctree-l2"><a class="reference internal" href="case_study_dist.html">Case Study on Distance</a></li>
 
 </ul>
@@ -485,7 +484,6 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-regressions">ML regressions</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy-numpy-regressions">SciPy &amp; NumPy Regressions</a></li>
 </ul>
 
             </nav>
@@ -553,6 +551,26 @@ answered by looking at the <code class="docutils literal notranslate"><span clas
 </tr>
 </tbody>
 </table>
+<div class="dropdown note admonition">
+<p class="admonition-title">code imports</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+
+<span class="kn">from</span> <span class="nn">scipy.optimize</span> <span class="kn">import</span> <span class="n">curve_fit</span>
+<span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="kn">import</span> <span class="n">linregress</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">stats</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+
+<span class="n">sns</span><span class="o">.</span><span class="n">set</span><span class="p">()</span>
+
+<span class="c1"># This if for Jupyter Notebook only</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+</pre></div>
+</div>
+</div>
 <section id="seaborn-regression">
 <h2>Seaborn Regression<a class="headerlink" href="#seaborn-regression" title="Permalink to this heading">#</a></h2>
 <p>In many research projects, it is beneficial to find a curved line that best fits the data.
@@ -563,42 +581,96 @@ if there is one. And, <code class="docutils literal notranslate"><span class="pr
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-0">
-Image</label><div class="sd-tab-content docutils">
+Simple regplot</label><div class="sd-tab-content docutils">
 <p><img alt="regplot" src="../_images/bestfit_simple_reg.png" /></p>
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-1">
 Code</label><div class="sd-tab-content docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">function</span><span class="p">():</span>
-    <span class="k">pass</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">true_slope</span> <span class="o">=</span> <span class="mi">3</span><span class="o">/</span><span class="mi">4</span>
+<span class="n">true_intercept</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span>
+<span class="n">x_data</span> <span class="o">=</span> <span class="p">[</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="p">]</span>
+<span class="n">y_data</span> <span class="o">=</span> <span class="p">[</span> <span class="n">x</span><span class="o">*</span><span class="n">true_slope</span> <span class="o">+</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span> <span class="o">+</span> <span class="n">true_intercept</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">x_data</span><span class="p">]</span>
+
+<span class="c1"># Use the grid in the plot and set the line style to black &amp; dashed</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_data</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-2">
 Comments</label><div class="sd-tab-content docutils">
-<p>Comments go here.</p>
+<p>This is about as simple as it gets. We generated <code class="docutils literal notranslate"><span class="pre">x_data</span></code> with a simple comprehension. We could
+have also used <code class="docutils literal notranslate"><span class="pre">np.linspace()</span></code>. We similarly created the <code class="docutils literal notranslate"><span class="pre">y_data</span></code> and added some noise with
+<code class="docutils literal notranslate"><span class="pre">random.randint(-5,</span> <span class="pre">5)</span></code>. By default, <code class="docutils literal notranslate"><span class="pre">regplot</span></code> will add a regression line and a confidence
+interval. The confidence interval is 95% and students often misunderstand what it means.</p>
+<p>It does <strong>NOT</strong> mean that there is a 95% confidence that the points in the scatter plot will
+fall within the shaded interval. Clearly, that is not the case!</p>
+<p>It means, insteatd, that there is a 95% confidence that the average of the scatter plot data falls within that range.
+I know what you’re thinking: the average of the data is clear and concrete–there is no need to estimate it.
+That is true. The average is easy to
+calculate with a finite set of points that <strong>are</strong> the <em>true population</em> data.
+<code class="docutils literal notranslate"><span class="pre">regplot</span></code> estimates what the <em>true population</em> might look like assuming that your data is just a sample. It then calculates
+the confidence interval based on the assumption that the errors (residuals) in the regression model
+follow a normal distribution. It is 95% sure that the <em>true average</em> falls in that range.</p>
+<p>Note that in your research, you may want to extend the curve of best fit out further. You can see
+how to do this in the next plot below.</p>
+<p>Here are some helpful links:<br />
+<a href="https://seaborn.pydata.org/tutorial/regression.html" target="_blank">Seaborn Tutorial</a><br />
+<a href="http://seaborn.pydata.org/generated/seaborn.regplot.html" target="_blank">Seaborn regplot API</a></p>
+<div class="important admonition">
+<p class="admonition-title">Lastly</p>
+<p>It is common to hide the shaded confidence interval by setting the named parameter, <code class="docutils literal notranslate"><span class="pre">ci</span></code> to <code class="docutils literal notranslate"><span class="pre">None</span></code>, as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="kc">None</span><span class="p">)</span>
+</pre></div>
 </div>
 </div>
-<p>However,
-in assignment that measured performance, I did work to find Mean Square Error</p>
-<p>https://seaborn.pydata.org/tutorial/regression.html
-http://seaborn.pydata.org/generated/seaborn.regplot.html
-Can extend the x-axis and set regplot(truncate=False) to extend line out.</p>
+</div>
+</div>
 </section>
 <section id="scipy-linregress">
 <h2>SciPy Linregress<a class="headerlink" href="#scipy-linregress" title="Permalink to this heading">#</a></h2>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-3">
-Image</label><div class="sd-tab-content docutils">
-<p><img alt="regplot" src="../_images/bestfit_linregress.png" /></p>
+Annotated Regression</label><div class="sd-tab-content docutils">
+<p>This plot shows a scatter plot of data drawn with <code class="docutils literal notranslate"><span class="pre">plt.scatter</span></code>. It then finds the line of best fit using
+<code class="docutils literal notranslate"><span class="pre">linregress</span></code>. It plots it out, extending an extra 20 values on the x-axis, and it provides data on the
+graph itself. It shows what the slope and y-intercept are (m &amp; b), gives the <span class="math notranslate nohighlight">\(R^2\)</span> value, and lastly
+it presents the Mean Squared Error.<br />
+<img alt="regplot" src="../_images/bestfit_linregress.png" /></p>
 </div>
 <input id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-4">
 Code</label><div class="sd-tab-content docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">function</span><span class="p">():</span>
-    <span class="k">pass</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># use the same x_data &amp; y_data in example above.</span>
+<span class="c1"># To find details about the line, we need to use linregress.</span>
+<span class="n">slope</span><span class="p">,</span> <span class="n">intercept</span><span class="p">,</span> <span class="n">r_value</span><span class="p">,</span> <span class="n">p_value</span><span class="p">,</span> <span class="n">std_err</span> <span class="o">=</span> <span class="n">linregress</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span><span class="p">)</span>
+
+<span class="c1"># generate 100 x_fit points and go out 20 past x_data limits to show &quot;prediction&quot;</span>
+<span class="n">x_fit</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">x_data</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">x_data</span><span class="p">)</span><span class="o">+</span><span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">y_fit</span> <span class="o">=</span> <span class="n">intercept</span> <span class="o">+</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">x_fit</span>
+
+<span class="c1"># create a &#39;vector&#39; (list of values) for the line of best fit.</span>
+<span class="c1"># We use the scalar values (1 value) from linregress and the original x_data points.</span>
+<span class="c1"># We need the same number of y values as are in y_data.</span>
+<span class="n">y_predicted</span> <span class="o">=</span> <span class="n">intercept</span> <span class="o">+</span> <span class="n">slope</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x_data</span><span class="p">)</span>
+
+<span class="c1"># Calculate the MSE </span>
+<span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_data</span><span class="p">,</span> <span class="n">y_predicted</span><span class="p">)</span>
+
+<span class="c1"># plot our data points with line of best fit with info on the graph</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Actual&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_fit</span><span class="p">,</span> <span class="n">y_fit</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Fitted&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Best Linear Fit&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="sa">f</span><span class="s1">&#39;m = </span><span class="si">{</span><span class="n">slope</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="se">\n</span><span class="s1">b = </span><span class="si">{</span><span class="n">intercept</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="se">\n</span><span class="s1">R2 = </span><span class="si">{</span><span class="n">r_value</span><span class="o">**</span><span class="mi">2</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="se">\n</span><span class="s1">MSE = </span><span class="si">{</span><span class="n">mse</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> 
+         <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -611,17 +683,87 @@ Comments</label><div class="sd-tab-content docutils">
 </section>
 <section id="numpy-polyfit">
 <h2>Numpy Polyfit<a class="headerlink" href="#numpy-polyfit" title="Permalink to this heading">#</a></h2>
+<p>Here we use <code class="docutils literal notranslate"><span class="pre">np.polyfit</span></code> to find the best fit for a line and a parabola. Put another way,
+the coefficients of a polynomial of degree 1 and 2.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-6" name="sd-tab-set-2" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-6">
 Best Fit Plot</label><div class="sd-tab-content docutils">
-<p><img alt="regplot" src="../_images/bestfit_polyfit.png" /></p>
+<p>The graph shows many things: scatter plot of data, line of best fit, parabola of best fit,
+a legend, coefficients of the parabola of best fit, and MSE of both the parabola and line. Whew!<br />
+It shows that the parabola is a much better fit for the points.<br />
+<img alt="regplot" src="../_images/bestfit_polyfit.png" /></p>
 </div>
 <input id="sd-tab-item-7" name="sd-tab-set-2" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-7">
 Code</label><div class="sd-tab-content docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">function</span><span class="p">():</span>
-    <span class="k">pass</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_inset_text</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="n">actual</span><span class="p">,</span> <span class="n">coeffs</span><span class="p">):</span>
+    <span class="c1"># print values in an inset positioned in figure percentages [x, y, width, height]</span>
+    <span class="n">ax_inset</span> <span class="o">=</span> <span class="n">fig</span><span class="o">.</span><span class="n">add_axes</span><span class="p">(</span><span class="n">position</span><span class="p">)</span>
+    <span class="n">ax_inset</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">ax_inset</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">ax_inset</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">([])</span>
+    <span class="n">ax_inset</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([])</span>
+    <span class="n">ax_inset</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;Coeff Actual vs Pred&#39;</span>
+    <span class="n">ax_inset</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span> <span class="mf">0.90</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+    <span class="k">for</span> <span class="n">a</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">coeffs</span><span class="p">):</span>
+        <span class="n">text</span> <span class="o">+=</span> <span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">a</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> vs </span><span class="si">{</span><span class="n">c</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="se">\n</span><span class="s1">&#39;</span>
+    <span class="n">ax_inset</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.18</span><span class="p">,</span> <span class="mf">.70</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ax_inset</span>
+    
+    
+<span class="k">def</span> <span class="nf">best_parabola_fit</span><span class="p">():</span>
+
+    <span class="k">def</span> <span class="nf">generate_points</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">noise</span><span class="p">):</span>
+        <span class="n">x_data</span> <span class="o">=</span> <span class="p">[</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="p">]</span>
+        <span class="n">y_data</span> <span class="o">=</span> <span class="p">[</span> <span class="n">parabola</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span> <span class="o">+</span> <span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="o">-</span><span class="n">noise</span><span class="p">,</span> <span class="n">noise</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">x_data</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span>
+    
+    <span class="c1"># establish our True parabola coefficients</span>
+    <span class="n">actual</span> <span class="o">=</span> <span class="p">(</span><span class="mf">0.45</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">)</span>
+    <span class="n">noise</span> <span class="o">=</span> <span class="mi">150</span>
+    <span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span> <span class="o">=</span> <span class="n">generate_points</span><span class="p">(</span><span class="o">*</span><span class="n">actual</span><span class="p">,</span> <span class="n">noise</span><span class="p">)</span>
+    
+    <span class="c1"># plot it all</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">5</span><span class="p">))</span>
+
+    <span class="c1"># Use the grid in the plot and set the line style to black &amp; dashed</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+    
+    <span class="c1"># Eliminate the confidence interval shading of the parapola and color the line red</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">regplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_data</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_data</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">,</span> <span class="n">order</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">ci</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">line_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;color&#39;</span><span class="p">:</span><span class="s1">&#39;red&#39;</span><span class="p">})</span>
+    
+    <span class="c1"># Determine if a linear line is a better fit using MSE</span>
+    <span class="c1"># find the coefficients of the parbola that best fits the points generated</span>
+    <span class="c1"># The coefficients are ordered from high order to lower order</span>
+    <span class="n">coeffs_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="n">y_predicted_2</span> <span class="o">=</span> <span class="p">[</span> <span class="n">coeffs_2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">coeffs_2</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">coeffs_2</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">x_data</span><span class="p">]</span>
+    <span class="n">mse_degree_2</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_data</span><span class="p">,</span> <span class="n">y_predicted_2</span><span class="p">)</span>
+    
+    <span class="c1">#  get coefficients for the line</span>
+    <span class="n">coeffs_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">polyfit</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># Use vector math instead of a comprehension this time (because we can)</span>
+    <span class="n">y_predicted_1</span> <span class="o">=</span> <span class="n">coeffs_1</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">coeffs_1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x_data</span><span class="p">)</span>
+    <span class="n">mse_degree_1</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_data</span><span class="p">,</span> <span class="n">y_predicted_1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;MSE Degree2:&#39;</span><span class="p">,</span> <span class="n">mse_degree_2</span><span class="p">,</span> <span class="s1">&#39; MSE Degree1:&#39;</span><span class="p">,</span> <span class="n">mse_degree_1</span><span class="p">)</span>
+    
+    <span class="c1"># add MSE to our inset text box</span>
+    <span class="n">ax_inset</span> <span class="o">=</span> <span class="n">add_inset_text</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.15</span><span class="p">,</span> <span class="mf">0.50</span><span class="p">,</span> <span class="mf">0.35</span><span class="p">,</span> <span class="mf">0.28</span><span class="p">],</span> <span class="n">actual</span><span class="p">,</span> <span class="n">coeffs_2</span><span class="p">)</span>
+    <span class="n">ax_inset</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.90</span><span class="p">,</span> <span class="s1">&#39;MSE:&#39;</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">14</span><span class="p">)</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="sa">f</span><span class="s1">&#39;Line:</span><span class="si">{</span><span class="n">mse_degree_1</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="se">\n</span><span class="s1">Para:</span><span class="si">{</span><span class="n">mse_degree_2</span><span class="si">:</span><span class="s1">.0f</span><span class="si">}</span><span class="s1">&#39;</span>
+    <span class="n">ax_inset</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.65</span><span class="p">,</span> <span class="mf">.70</span><span class="p">,</span> <span class="n">text</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;left&#39;</span><span class="p">,</span> <span class="n">va</span><span class="o">=</span><span class="s1">&#39;top&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+    
+    <span class="c1"># since plt.plot() does not offer ax=ax argument, and without it we plot on the inset,</span>
+    <span class="c1"># use ax.plot() to get the line to show up on the right axis.</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">y_predicted_1</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;green&quot;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s1">&#39;Best Parabola &amp; Line Fit&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">16</span><span class="p">)</span>
+    
+    <span class="c1"># Need to set the legend on the axis to get things to show up correctly,</span>
+    <span class="c1"># even when setting label=&#39;&#39;values&#39; during plots, we need to set the label strings here.</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Parabola Fit&#39;</span><span class="p">,</span> <span class="s1">&#39;Line Fit&#39;</span><span class="p">,</span> <span class="s1">&#39;Actual&#39;</span><span class="p">],</span> <span class="n">loc</span><span class="o">=</span><span class="s1">&#39;lower right&#39;</span><span class="p">)</span>
+
 </pre></div>
 </div>
 </div>
@@ -668,13 +810,6 @@ https://datagy.io/mean-squared-error-python/
 <code class="docutils literal notranslate"><span class="pre">model</span> <span class="pre">=</span> <span class="pre">LinearRegression()</span></code>
 Students will often pursue a Machine Learning model to do predictions which it is great at doing.
 ML models are intended to do predictions.</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="scipy-numpy-regressions">
-<h1>SciPy &amp; NumPy Regressions<a class="headerlink" href="#scipy-numpy-regressions" title="Permalink to this heading">#</a></h1>
-<p>https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.linregress.html
-This is a good way when using scatter plots. Seaborn doesn’t seem to give the value when finding
-the line of best fit.
-https://www.askpython.com/python/coefficient-of-determination</p>
 </section>
 
     <script type="text/x-thebe-config">
@@ -752,7 +887,6 @@ https://www.askpython.com/python/coefficient-of-determination</p>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-regressions">ML regressions</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy-numpy-regressions">SciPy &amp; NumPy Regressions</a></li>
 </ul>
 
   </nav></div>
