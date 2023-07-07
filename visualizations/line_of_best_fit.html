@@ -499,16 +499,20 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="curve-of-best-fit">
 <h1>Curve of Best Fit<a class="headerlink" href="#curve-of-best-fit" title="Permalink to this heading">#</a></h1>
 <p>In this section, we will show how you can identify a Curve of Best Fit for a set of data points.
-You can choose the form of the equation of the line; it can be a line, parabola, polynomial of order 4 or more,
-or some custom equation like Sigmoid.</p>
-<p>We will review three different ways to get the equation of a fitted curve.</p>
+The curve can be anything an equation can express, but there are some limitations with discontinuous curves and asymptotes.
+The easiest is finding a line of best fit. Secondarily, you can find the polynomial that fits the data points. Tertiary,
+you can provide an equation of a continuous curve involving a combination of functions such as sine or logarithm.
+Lasty, you can have a non-continuous curve like Sigmoid or `y = 1 / (x - 3).</p>
+<p>We will review four different ways to get the equation of a fitted curve.</p>
 <ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">scipy.stats.linregress</span></code>: a statistical method that identifies a line’s coefficients as well some statistical information.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">numpy.polyfit</span></code>: a Numpy method that identifies the coefficients of any n-ordered polynomial.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">scipy.stats.curve_fit</span></code>: a statistical method that identifies the coefficients of <strong><em>any</em> function</strong> as well as some statistical information about the fit.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ML</span> <span class="pre">LinearRegression</span></code>:</p></li>
 </ol>
-<p>In identifying a Curve of Best Fit, it is good to know <em>how good</em> the curve is at representing
-the data points. You should quanitify that it is better worse than a parabola. We can do some of this with
+<p>When identifying a Curve of Best Fit, it is good to know <em>how good</em> the curve is at representing
+the data points. We want an objective quanitification that tells us whether a straight line is better at fitting
+the points, or some other curved line such as a parabola. We can compare how well two differen lines fit using
 the Mean Squared Error.</p>
 <p>Often we want to know how much of a correlation there is between the x &amp; y data points. Afterall,
 we may have just asked Seaborn to plot a regression line and the line presented is the best line that fits the
@@ -715,6 +719,9 @@ Code</label><div class="sd-tab-content docutils">
     
     
 <span class="k">def</span> <span class="nf">best_parabola_fit</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">parabola</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">a</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">c</span>
+        <span class="k">return</span> <span class="n">y</span>
 
     <span class="k">def</span> <span class="nf">generate_points</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">,</span> <span class="n">noise</span><span class="p">):</span>
         <span class="n">x_data</span> <span class="o">=</span> <span class="p">[</span> <span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="p">]</span>
@@ -776,29 +783,111 @@ Comments</label><div class="sd-tab-content docutils">
 </section>
 <section id="curve-fit">
 <h2>Curve Fit<a class="headerlink" href="#curve-fit" title="Permalink to this heading">#</a></h2>
+<p>Here we see how we can find a curve of best fit to a custom, continuous curve: a logarithmically degrading, sinusoidal wave.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-9" name="sd-tab-set-3" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-9">
 Sinusoidal</label><div class="sd-tab-content docutils">
-<p><img alt="regplot" src="../_images/bestfit_curve_two.png" /></p>
+<p>In our custom curve, we have coefficients for each of the following: amplitude, frequency, rate of logarithmic
+degredation, phase and offset.</p>
+<p>The top plot has “zero arguments” provided in the method <code class="docutils literal notranslate"><span class="pre">logarithmic_sinusoidal_wave</span></code> which means that
+it uses all the default values (10, 1, 0.2, 0, 0). This is why the title of the top plot is: “Arguments: ()”.</p>
+<p>The bottom plot is the same equation but with specific coefficients provided (15, 0.5, 0.1, 0, 10). It
+shows how the coefficients impact the curve. Pay attention to the values on the y-axis.<br />
+<img alt="regplot" src="../_images/bestfit_curve_two.png" /></p>
+<div class="dropdown seealso admonition">
+<p class="admonition-title">See Code</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">logarithmic_sinusoidal_wave</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">frequency</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">r</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">phase</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">offset</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="c1"># Logarithmic convergence of amplitude</span>
+    <span class="n">amplitude</span> <span class="o">=</span> <span class="n">a</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">r</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">offset</span> <span class="o">+</span> <span class="n">amplitude</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">*</span> <span class="n">frequency</span> <span class="o">*</span> <span class="n">x</span> <span class="o">+</span> <span class="n">phase</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">plot_with_args</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+    <span class="c1"># Generate x values</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">x_max</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+    <span class="c1"># Compute y values (plural) </span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">logarithmic_sinusoidal_wave</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+    <span class="c1"># Plot on the axis &amp; show labels</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;X&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Amplitude&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Arguments: </span><span class="si">{</span><span class="n">args</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+        
+<span class="k">def</span> <span class="nf">show_sinusoidal_curve</span><span class="p">():</span>    
+    <span class="n">fig</span><span class="p">,</span> <span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="n">ax2</span><span class="p">)</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+    <span class="c1"># add some more spacing horizontally between the two subplots</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">hspace</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+    <span class="n">plot_with_args</span><span class="p">(</span><span class="n">ax1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+    
+    <span class="n">wave_args</span> <span class="o">=</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">plot_with_args</span><span class="p">(</span><span class="n">ax2</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="o">*</span><span class="n">wave_args</span><span class="p">)</span>
+    
+    <span class="n">plt</span><span class="o">.</span><span class="n">suptitle</span><span class="p">(</span><span class="s1">&#39;Logarithmic Sinusoidal Waves&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">18</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </div>
 <input id="sd-tab-item-10" name="sd-tab-set-3" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-10">
 Best Fit</label><div class="sd-tab-content docutils">
-<p><img alt="regplot" src="../_images/bestfit_curve_fit.png" /></p>
+<p>This plot shows the generated data points (that have noise) as small red dots. These data points
+were derived by adding a noise (<span class="math notranslate nohighlight">\(\pm 1\)</span>) to the sinusoidal equation using the argments (15, 0.5, 0.1, 0, 10).</p>
+<p>The blue line is the best fit curve that fits the <code class="docutils literal notranslate"><span class="pre">logarithmic_sinusoidal_wave</span></code> (provided
+in the code of the Sinusoidal tab.)</p>
+<p>The inset shows how the actual arguments used when generating the points with noise, and it compares
+them against the coefficients for the curve of best fit. Here you can see that it slightly underestimated
+the amplitidue. It was 0.15 off of the frequency, only 0.01 way from the rate of degradation, and only
+0.02 away from the offset. The phase was 6.56 off of the actual phase used.<br />
+<img alt="regplot" src="../_images/bestfit_curve_fit.png" /></p>
 </div>
 <input id="sd-tab-item-11" name="sd-tab-set-3" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-11">
 Code</label><div class="sd-tab-content docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">function</span><span class="p">():</span>
-    <span class="k">pass</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span> <span class="k">def</span> <span class="nf">find_curve_best_fit</span><span class="p">():</span>
+    <span class="k">def</span> <span class="nf">generate_points</span><span class="p">(</span><span class="n">noise</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">        *args : allow us to call the function with any number of arguments so long as they are in order.</span>
+<span class="sd">                we would just default the rest of the argument values.</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="n">x_data</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">55</span><span class="p">)</span>
+        <span class="n">y_data</span> <span class="o">=</span> <span class="p">[</span> <span class="n">logarithmic_sinusoidal_wave</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">)</span> <span class="o">+</span> <span class="n">random</span><span class="o">.</span><span class="n">uniform</span><span class="p">(</span><span class="o">-</span><span class="n">noise</span><span class="p">,</span> <span class="n">noise</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">x_data</span><span class="p">]</span>
+        <span class="k">return</span> <span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span>
+    
+    <span class="c1"># establish our True curve parameters and generate points</span>
+    <span class="n">wave_args</span> <span class="o">=</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+    <span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span> <span class="o">=</span> <span class="n">generate_points</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="o">*</span><span class="n">wave_args</span><span class="p">)</span>
+    
+    <span class="c1"># get our initial guess as to what the coefficients will be.</span>
+    <span class="c1"># the count of arguments here tells curve_fit how many arguments to optimize.</span>
+    <span class="n">p0</span> <span class="o">=</span> <span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+    <span class="c1"># find our curve of best fit from the line, and round off the coefficient values</span>
+    <span class="n">coeffs</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">logarithmic_sinusoidal_wave</span><span class="p">,</span> <span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span><span class="p">,</span> <span class="n">p0</span><span class="o">=</span><span class="n">p0</span><span class="p">)</span>
+    <span class="n">coeffs</span> <span class="o">=</span> <span class="nb">tuple</span><span class="p">([</span> <span class="nb">round</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="n">coeffs</span>  <span class="p">])</span>
+
+    <span class="c1"># Plot all of it</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">plot_with_args</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="o">*</span><span class="n">coeffs</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">([</span><span class="s1">&#39;Best Fit&#39;</span><span class="p">,</span> <span class="s1">&#39;Actual&#39;</span><span class="p">])</span>
+    <span class="n">pos</span> <span class="o">=</span> <span class="p">[</span> <span class="mf">.4</span><span class="p">,</span> <span class="mf">.14</span><span class="p">,</span> <span class="mf">.3</span><span class="p">,</span> <span class="mf">.28</span> <span class="p">]</span>
+    <span class="n">add_inset_text</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span> <span class="n">wave_args</span><span class="p">,</span> <span class="n">coeffs</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <input id="sd-tab-item-12" name="sd-tab-set-3" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-12">
 Comments</label><div class="sd-tab-content docutils">
-<p>Comments go here.</p>
+<p>Things to discuss:</p>
+<ul class="simple">
+<li><p>sinusoidal curve equation</p></li>
+<li><p>ax.scatter with ‘s’ argument</p></li>
+<li><p>*args in generate_points and use of *wave_args</p></li>
+<li><p>linspace</p></li>
+<li><p>curve_fit: return values and how it works</p></li>
+<li><p>P0 values</p></li>
+<li><p>graph inset</p></li>
+</ul>
 </div>
 </div>
 </section>
