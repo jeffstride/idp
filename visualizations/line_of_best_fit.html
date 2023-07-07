@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Line of Best Fit &#8212; IDP at NCHS</title>
+    <title>Curve of Best Fit &#8212; IDP at NCHS</title>
   
   
   
@@ -103,6 +103,8 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'visualizations/line_of_best_fit';</script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -258,8 +260,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="barchart.html">Bar Charts</a></li>
 <li class="toctree-l2"><a class="reference internal" href="geospatial.html">Geospatial Plots</a></li>
 <li class="toctree-l2"><a class="reference internal" href="lineplots.html">Line Plots &amp; Scatter Plots</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Line of Best Fit</a></li>
-
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Curve of Best Fit</a></li>
 
 
 <li class="toctree-l2"><a class="reference internal" href="case_study_dist.html">Case Study on Distance</a></li>
@@ -466,7 +467,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Line of Best Fit</h1>
+    <h1>Curve of Best Fit</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -476,8 +477,13 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Line of Best Fit</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#seaborn-regression">seaborn regression</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Curve of Best Fit</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seaborn-regression">Seaborn Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy-linregress">SciPy Linregress</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-polyfit">Numpy Polyfit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#curve-fit">Curve Fit</a></li>
+</ul>
+</li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-regressions">ML regressions</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy-numpy-regressions">SciPy &amp; NumPy Regressions</a></li>
 </ul>
@@ -492,21 +498,176 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="line-of-best-fit">
-<h1>Line of Best Fit<a class="headerlink" href="#line-of-best-fit" title="Permalink to this heading">#</a></h1>
-<p>in assignment that measured performance, I did work to find Mean Square Error</p>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="seaborn-regression">
-<h1>seaborn regression<a class="headerlink" href="#seaborn-regression" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="curve-of-best-fit">
+<h1>Curve of Best Fit<a class="headerlink" href="#curve-of-best-fit" title="Permalink to this heading">#</a></h1>
+<p>In this section, we will show how you can identify a Curve of Best Fit for a set of data points.
+You can choose the form of the equation of the line; it can be a line, parabola, polynomial of order 4 or more,
+or some custom equation like Sigmoid.</p>
+<p>We will review three different ways to get the equation of a fitted curve.</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">scipy.stats.linregress</span></code>: a statistical method that identifies a line’s coefficients as well some statistical information.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">numpy.polyfit</span></code>: a Numpy method that identifies the coefficients of any n-ordered polynomial.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">scipy.stats.curve_fit</span></code>: a statistical method that identifies the coefficients of <strong><em>any</em> function</strong> as well as some statistical information about the fit.</p></li>
+</ol>
+<p>In identifying a Curve of Best Fit, it is good to know <em>how good</em> the curve is at representing
+the data points. You should quanitify that it is better worse than a parabola. We can do some of this with
+the Mean Squared Error.</p>
+<p>Often we want to know how much of a correlation there is between the x &amp; y data points. Afterall,
+we may have just asked Seaborn to plot a regression line and the line presented is the best line that fits the
+data, but is the data linearly related at all? This is a different, but also important question! This is
+answered by looking at the <code class="docutils literal notranslate"><span class="pre">Coefficient</span> <span class="pre">of</span> <span class="pre">Determination</span></code>.</p>
+<div class="dropdown tip admonition">
+<p class="admonition-title"><span class="math notranslate nohighlight">\(R^2\)</span> or Coefficient of Determination  </p>
+<p>R-squared (<span class="math notranslate nohighlight">\(R^2\)</span>) is a statistical measure that provides an indication of how well the line of best fit (the regression line) fits the data points. It quantifies the proportion of the variance in the dependent variable (y) that can be explained by the independent variable (x) in a linear regression model.</p>
+<p>The R-squared value ranges from 0 to 1. A value of 1 indicates that the regression line perfectly predicts the dependent variable, meaning all the data points lie exactly on the line. A value of 0 indicates that the regression line does not explain any of the variance in the dependent variable, and the points are scattered randomly.</p>
+<p>In general, a higher R-squared value indicates a better fit of the line to the data. For example, an R-squared value of 0.8 means that 80% of the variability in the dependent variable is accounted for by the independent variable(s) in the model.</p>
+</div>
+<p>Here is a table that shows some of the most frequent API we used in this section.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>API</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html">plt.plot</a></p></td>
+<td><p>This does a simple line plot on the current axis. It does not offer ‘ax=ax’ argument.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.scatter.html">plt.scatter</a></p></td>
+<td><p>This does a simple scatter plot on the current axis. It does not offer ‘ax=ax’ argument.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://seaborn.pydata.org/generated/seaborn.regplot.html">np.linspace</a></p></td>
+<td><p>This creates a numpy array of values linearly spaced between [start, end] with a specific number of points. It is helpful in generating <code class="docutils literal notranslate"><span class="pre">x_data</span></code> during plotting.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://numpy.org/doc/stable/reference/generated/numpy.polyfit.html">np.polyfit</a></p></td>
+<td><p>This identifies the coefficients of any n-ordered polynomial.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.linregress.html">linregress</a></p></td>
+<td><p>a statistical method that identifies a line’s coefficients as well some statistical information.</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference external" href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.optimize.curve_fit.html#scipy.optimize.curve_fit">curve_fit</a></p></td>
+<td><p>A statistical method that identifies the coefficients of <strong><em>any</em> function</strong> as well as some statistical information about the fit.</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html">mean_squared_error</a></p></td>
+<td><p>Calculates the Mean Squared Error (MSE) from two sets of y_data points.</p></td>
+</tr>
+</tbody>
+</table>
+<section id="seaborn-regression">
+<h2>Seaborn Regression<a class="headerlink" href="#seaborn-regression" title="Permalink to this heading">#</a></h2>
+<p>In many research projects, it is beneficial to find a curved line that best fits the data.
+Students will often do a scatter plot of the data points and have Seaborn do a regression plot
+which shows a line of best fit with a shaded area around the line representing
+a 95% confidence interval. None of that is horrible. It is convenient to have a line of best fit,
+if there is one. And, <code class="docutils literal notranslate"><span class="pre">regplot</span></code> will draw one for you by default.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+Image</label><div class="sd-tab-content docutils">
+<p><img alt="regplot" src="../_images/bestfit_simple_reg.png" /></p>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+Code</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">function</span><span class="p">():</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
+Comments</label><div class="sd-tab-content docutils">
+<p>Comments go here.</p>
+</div>
+</div>
+<p>However,
+in assignment that measured performance, I did work to find Mean Square Error</p>
 <p>https://seaborn.pydata.org/tutorial/regression.html
 http://seaborn.pydata.org/generated/seaborn.regplot.html
 Can extend the x-axis and set regplot(truncate=False) to extend line out.</p>
+</section>
+<section id="scipy-linregress">
+<h2>SciPy Linregress<a class="headerlink" href="#scipy-linregress" title="Permalink to this heading">#</a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-3">
+Image</label><div class="sd-tab-content docutils">
+<p><img alt="regplot" src="../_images/bestfit_linregress.png" /></p>
+</div>
+<input id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-4">
+Code</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">function</span><span class="p">():</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-5">
+Comments</label><div class="sd-tab-content docutils">
+<p>Comments go here.</p>
+</div>
+</div>
+</section>
+<section id="numpy-polyfit">
+<h2>Numpy Polyfit<a class="headerlink" href="#numpy-polyfit" title="Permalink to this heading">#</a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-6" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-6">
+Best Fit Plot</label><div class="sd-tab-content docutils">
+<p><img alt="regplot" src="../_images/bestfit_polyfit.png" /></p>
+</div>
+<input id="sd-tab-item-7" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-7">
+Code</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">function</span><span class="p">():</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-8" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-8">
+Comments</label><div class="sd-tab-content docutils">
+<p>Comments go here.</p>
+</div>
+</div>
+</section>
+<section id="curve-fit">
+<h2>Curve Fit<a class="headerlink" href="#curve-fit" title="Permalink to this heading">#</a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-9" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-9">
+Sinusoidal</label><div class="sd-tab-content docutils">
+<p><img alt="regplot" src="../_images/bestfit_curve_two.png" /></p>
+</div>
+<input id="sd-tab-item-10" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-10">
+Best Fit</label><div class="sd-tab-content docutils">
+<p><img alt="regplot" src="../_images/bestfit_curve_fit.png" /></p>
+</div>
+<input id="sd-tab-item-11" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-11">
+Code</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">function</span><span class="p">():</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-12" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-12">
+Comments</label><div class="sd-tab-content docutils">
+<p>Comments go here.</p>
+</div>
+</div>
+</section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="ml-regressions">
 <h1>ML regressions<a class="headerlink" href="#ml-regressions" title="Permalink to this heading">#</a></h1>
 <p>https://realpython.com/linear-regression-in-python/
 https://datagy.io/mean-squared-error-python/
-<code class="docutils literal notranslate"><span class="pre">model</span> <span class="pre">=</span> <span class="pre">LinearRegression()</span></code></p>
+<code class="docutils literal notranslate"><span class="pre">model</span> <span class="pre">=</span> <span class="pre">LinearRegression()</span></code>
+Students will often pursue a Machine Learning model to do predictions which it is great at doing.
+ML models are intended to do predictions.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="scipy-numpy-regressions">
 <h1>SciPy &amp; NumPy Regressions<a class="headerlink" href="#scipy-numpy-regressions" title="Permalink to this heading">#</a></h1>
@@ -583,8 +744,13 @@ https://www.askpython.com/python/coefficient-of-determination</p>
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Line of Best Fit</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#seaborn-regression">seaborn regression</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Curve of Best Fit</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#seaborn-regression">Seaborn Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy-linregress">SciPy Linregress</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#numpy-polyfit">Numpy Polyfit</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#curve-fit">Curve Fit</a></li>
+</ul>
+</li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#ml-regressions">ML regressions</a></li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#scipy-numpy-regressions">SciPy &amp; NumPy Regressions</a></li>
 </ul>
