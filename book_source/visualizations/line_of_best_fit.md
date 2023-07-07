@@ -1,15 +1,19 @@
 # Curve of Best Fit
 In this section, we will show how you can identify a Curve of Best Fit for a set of data points.
-You can choose the form of the equation of the line; it can be a line, parabola, polynomial of order 4 or more,
-or some custom equation like Sigmoid.  
+The curve can be anything an equation can express, but there are some limitations with discontinuous curves and asymptotes.
+The easiest is finding a line of best fit. Secondarily, you can find the polynomial that fits the data points. Tertiary,
+you can provide an equation of a continuous curve involving a combination of functions such as sine or logarithm. 
+Lasty, you can have a non-continuous curve like Sigmoid or `y = 1 / (x - 3).  
 
-We will review three different ways to get the equation of a fitted curve.  
+We will review four different ways to get the equation of a fitted curve.  
 1. `scipy.stats.linregress`: a statistical method that identifies a line's coefficients as well some statistical information.  
 2. `numpy.polyfit`: a Numpy method that identifies the coefficients of any n-ordered polynomial.  
 3. `scipy.stats.curve_fit`: a statistical method that identifies the coefficients of **_any_ function** as well as some statistical information about the fit.  
+4. `ML LinearRegression`: 
 
-In identifying a Curve of Best Fit, it is good to know _how good_ the curve is at representing
-the data points. You should quanitify that it is better worse than a parabola. We can do some of this with 
+When identifying a Curve of Best Fit, it is good to know _how good_ the curve is at representing
+the data points. We want an objective quanitification that tells us whether a straight line is better at fitting
+the points, or some other curved line such as a parabola. We can compare how well two differen lines fit using 
 the Mean Squared Error.  
 
 Often we want to know how much of a correlation there is between the x & y data points. Afterall, 
@@ -189,6 +193,9 @@ def add_inset_text(fig, position, actual, coeffs):
     
     
 def best_parabola_fit():
+    def parabola(x, a, b, c):
+        y = a*x**2 + b*x + c
+        return y
 
     def generate_points(a, b, c, noise):
         x_data = [ x for x in range(3, 50, 2) ]
@@ -245,20 +252,103 @@ Comments go here.
 ````
 
 ## Curve Fit
+Here we see how we can find a curve of best fit to a custom, continuous curve: a logarithmically degrading, sinusoidal wave.  
 ````{tab-set}
-```{tab-item} Sinusoidal
+```{tab-item} Sinusoidal  
+In our custom curve, we have coefficients for each of the following: amplitude, frequency, rate of logarithmic 
+degredation, phase and offset.  
+
+The top plot has "zero arguments" provided in the method `logarithmic_sinusoidal_wave` which means that
+it uses all the default values (10, 1, 0.2, 0, 0). This is why the title of the top plot is: "Arguments: ()".  
+
+The bottom plot is the same equation but with specific coefficients provided (15, 0.5, 0.1, 0, 10). It 
+shows how the coefficients impact the curve. Pay attention to the values on the y-axis.   
 ![regplot](../_static/bestfit_curve_two.png)
+
+```{admonition} See Code
+:class: dropdown seealso
+```python
+def logarithmic_sinusoidal_wave(x, a=10, frequency=1, r=0.2, phase=0, offset=0):
+    # Logarithmic convergence of amplitude
+    amplitude = a * np.exp(-r * x)
+    return offset + amplitude * np.sin(2 * np.pi * frequency * x + phase)
+
+def plot_with_args(ax, x_max, *args):
+    # Generate x values
+    x = np.linspace(0, x_max, 200)
+    # Compute y values (plural) 
+    y = logarithmic_sinusoidal_wave(x, *args)
+
+    # Plot on the axis & show labels
+    ax.plot(x, y)
+    ax.set_xlabel('X')
+    ax.set_ylabel('Amplitude')
+    ax.set_title(f'Arguments: {args}')
+        
+def show_sinusoidal_curve():    
+    fig, (ax1, ax2) = plt.subplots(2, figsize=(10, 9))
+    # add some more spacing horizontally between the two subplots
+    plt.subplots_adjust(hspace=0.3)
+    plot_with_args(ax1, 20)
+    
+    wave_args = (15, 0.5, 0.1, 0, 10)
+    plot_with_args(ax2, 20, *wave_args)
+    
+    plt.suptitle('Logarithmic Sinusoidal Waves', fontsize=18)
 ```
 ```{tab-item} Best Fit
+This plot shows the generated data points (that have noise) as small red dots. These data points
+were derived by adding a noise ($\pm 1$) to the sinusoidal equation using the argments (15, 0.5, 0.1, 0, 10).  
+
+The blue line is the best fit curve that fits the `logarithmic_sinusoidal_wave` (provided
+in the code of the Sinusoidal tab.)  
+
+The inset shows how the actual arguments used when generating the points with noise, and it compares
+them against the coefficients for the curve of best fit. Here you can see that it slightly underestimated
+the amplitidue. It was 0.15 off of the frequency, only 0.01 way from the rate of degradation, and only
+0.02 away from the offset. The phase was 6.56 off of the actual phase used.  
 ![regplot](../_static/bestfit_curve_fit.png)
 ```
 ```{tab-item} Code
 ```python
-def function():
-    pass
+ def find_curve_best_fit():
+    def generate_points(noise, *args):
+        '''
+        *args : allow us to call the function with any number of arguments so long as they are in order.
+                we would just default the rest of the argument values.
+        '''
+        x_data = np.linspace(3, 50, 55)
+        y_data = [ logarithmic_sinusoidal_wave(x, *args) + random.uniform(-noise, noise) for x in x_data]
+        return x_data, y_data
+    
+    # establish our True curve parameters and generate points
+    wave_args = (15, 0.5, 0.1, 0, 10)
+    x_data, y_data = generate_points(1, *wave_args)
+    
+    # get our initial guess as to what the coefficients will be.
+    # the count of arguments here tells curve_fit how many arguments to optimize.
+    p0 = (15, 1, .5, 0, 0)
+    # find our curve of best fit from the line, and round off the coefficient values
+    coeffs, _ = curve_fit(logarithmic_sinusoidal_wave, x_data, y_data, p0=p0)
+    coeffs = tuple([ round(t, 2) for t in coeffs  ])
+
+    # Plot all of it
+    fig, ax = plt.subplots(1, figsize=(10, 5))
+    ax.scatter(x_data, y_data, s=10, color='r')
+    plot_with_args(ax, 50, *coeffs)
+    ax.legend(['Best Fit', 'Actual'])
+    pos = [ .4, .14, .3, .28 ]
+    add_inset_text(fig, pos, wave_args, coeffs)
 ```
 ```{tab-item} Comments
-Comments go here.
+Things to discuss:   
+* sinusoidal curve equation   
+* ax.scatter with 's' argument  
+* *args in generate_points and use of *wave_args  
+* linspace  
+* curve_fit: return values and how it works  
+* P0 values   
+* graph inset  
 ```
 ````
 
