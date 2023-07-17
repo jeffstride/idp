@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>HW1 &#8212; IDP at NCHS</title>
+    <title>HW1 - Startup &#8212; IDP at NCHS</title>
   
   
   
@@ -107,7 +107,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Homework Assignment #2" href="hw2.html" />
+    <link rel="next" title="HW2 - Primer" href="hw2.html" />
     <link rel="prev" title="Homework Assignments" href="index.html" />
     
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -214,9 +214,9 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html"><i class="fas fa-book fa-fw"></i> Homework Assignments</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active"><a class="current reference internal" href="#"><i class="fas fa-laptop fa-fw"></i> HW1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hw2.html">Homework Assignment #2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hw3.html">Homework Assignment #3</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#"><i class="fas fa-laptop fa-fw"></i> HW1 - Startup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw2.html"><i class="fas fa-laptop fa-fw"></i> HW2 - Primer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw3.html"><i class="fas fa-laptop fa-fw"></i> HW3 - Pokémon</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../module-additions/index.html"><i class="fas fa-layer-group fa-fw"></i> Module Additions</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -464,7 +464,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><i class="fas fa-laptop fa-fw"></i> HW1</h1>
+    <h1><i class="fas fa-laptop fa-fw"></i> HW1 - Startup</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -491,8 +491,8 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="i-class-fas-fa-laptop-fa-fw-i-hw1">
-<h1><i class="fas fa-laptop fa-fw"></i> HW1<a class="headerlink" href="#i-class-fas-fa-laptop-fa-fw-i-hw1" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="i-class-fas-fa-laptop-fa-fw-i-hw1-startup">
+<h1><i class="fas fa-laptop fa-fw"></i> HW1 - Startup<a class="headerlink" href="#i-class-fas-fa-laptop-fa-fw-i-hw1-startup" title="Permalink to this heading">#</a></h1>
 <p>Welcome to your first take-home assessment! In every assessment, we will define a set of problems we would like you to solve. Even if the assessment is solving some larger problem, we usually break it up into small sub-problems for you to help manage the work.</p>
 <section id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
@@ -586,7 +586,7 @@ Also found in the tabs is a challenge question which is optional and not graded.
 <input checked="checked" id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-3">
 funky_sum</label><div class="sd-tab-content docutils">
-<p><strong>Task:</strong> Write a function <code class="docutils literal notranslate"><span class="pre">funky_sum</span></code> that does a special sum to combine two numbers. An initial (but incomplete) implementation has already been done for you! We will revisit funky_sum later in the spec to fix a bug in this initial code.</p>
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a function <code class="docutils literal notranslate"><span class="pre">funky_sum</span></code> that does a special sum to combine two numbers. An initial (but incomplete) implementation has already been done for you! We will revisit funky_sum later in the spec to fix a bug in this initial code.</p>
 <p>The function should take three parameters, the first two are numbers, <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>, to combine and a third, <code class="docutils literal notranslate"><span class="pre">mix</span></code>, is a number to determine the ratio to use from each. <code class="docutils literal notranslate"><span class="pre">mix</span></code> acts as a “slider” to control how much to use of each number. If mix is 0 or less, the result should be the same as <code class="docutils literal notranslate"><span class="pre">a</span></code>. On the other hand, if <code class="docutils literal notranslate"><span class="pre">mix</span></code> is 1 or more, the result should be the same as <code class="docutils literal notranslate"><span class="pre">b</span></code>. For any value of <code class="docutils literal notranslate"><span class="pre">mix</span></code> between 0 and 1, it should add <code class="docutils literal notranslate"><span class="pre">1-mix</span></code> times <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">mix</span></code> times <code class="docutils literal notranslate"><span class="pre">b</span></code>. The technical name for this operation is “linear interpolation”.</p>
 <p>Here are some examples that you should make sure appear in <code class="docutils literal notranslate"><span class="pre">hw1_test.py</span></code>:</p>
 <table class="table">
@@ -617,13 +617,13 @@ funky_sum</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-4">
 total</label><div class="sd-tab-content docutils">
-<p><strong>Task:</strong> Write a function total that takes a number <code class="docutils literal notranslate"><span class="pre">n</span></code> and returns the sum of the integers from 0 (inclusive) to n (inclusive). If <code class="docutils literal notranslate"><span class="pre">n</span></code> is negative, the function should return the value <code class="docutils literal notranslate"><span class="pre">None</span></code> instead.</p>
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a function total that takes a number <code class="docutils literal notranslate"><span class="pre">n</span></code> and returns the sum of the integers from 0 (inclusive) to n (inclusive). If <code class="docutils literal notranslate"><span class="pre">n</span></code> is negative, the function should return the value <code class="docutils literal notranslate"><span class="pre">None</span></code> instead.</p>
 <p>This method already been written for you, so you will not need to modify any code for this function. <strong>But</strong>, you will have to add <strong>doc-string documentation</strong> and add <strong>more tests</strong> to assure all special cases are covered.</p>
 </div>
 <input id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-5">
 swip_swap</label><div class="sd-tab-content docutils">
-<p><strong>Task:</strong> Write a function <code class="docutils literal notranslate"><span class="pre">swip_swap</span></code> that takes a string source and characters <code class="docutils literal notranslate"><span class="pre">c1</span></code> and <code class="docutils literal notranslate"><span class="pre">c2</span></code> and returns a copy of source with all occurrences of c1 and c2 swapped. You may assume that the c1 and c2 are single characters. Use str concatenation with the + operator to solve this problem.</p>
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a function <code class="docutils literal notranslate"><span class="pre">swip_swap</span></code> that takes a string source and characters <code class="docutils literal notranslate"><span class="pre">c1</span></code> and <code class="docutils literal notranslate"><span class="pre">c2</span></code> and returns a copy of source with all occurrences of c1 and c2 swapped. You may assume that the c1 and c2 are single characters. Use str concatenation with the + operator to solve this problem.</p>
 <p>Here are some examples that you should make sure appear in <code class="docutils literal notranslate"><span class="pre">hw1_test.py</span></code>:</p>
 <table class="table">
 <thead>
@@ -659,7 +659,7 @@ challenge</label><div class="sd-tab-content docutils">
 </section>
 <section id="testing">
 <h2>Testing<a class="headerlink" href="#testing" title="Permalink to this heading">#</a></h2>
-<p><strong>Task:</strong> You will have three functions in <code class="docutils literal notranslate"><span class="pre">hw1_test.py</span></code> that test the methods in <code class="docutils literal notranslate"><span class="pre">hw1.py</span></code>. Each testing method should include the tests provided in this document along with <strong>at least 2 more</strong> tests that you make up. All of these methods make calls to <code class="docutils literal notranslate"><span class="pre">assert_equals</span></code>.</p>
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Test</strong> the three functions in with test method in <code class="docutils literal notranslate"><span class="pre">hw1_test.py</span></code>. The original code in <code class="docutils literal notranslate"><span class="pre">hw1.py</span></code> remains unchanged. Each testing method should include the tests provided in this document along with <strong>at least 2 more</strong> tests that you make up. All of these methods make calls to <code class="docutils literal notranslate"><span class="pre">assert_equals</span></code>.</p>
 <p>Make sure each test function is actually called in <code class="docutils literal notranslate"><span class="pre">main</span></code> and that you use the <em>main-pattern</em> as shown here!</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="n">test_swip_swap</span><span class="p">()</span>
@@ -674,7 +674,7 @@ challenge</label><div class="sd-tab-content docutils">
 </section>
 <section id="documentation">
 <h2>Documentation<a class="headerlink" href="#documentation" title="Permalink to this heading">#</a></h2>
-<p><strong>Task:</strong> Document the code in <code class="docutils literal notranslate"><span class="pre">hw1.py</span></code> and <code class="docutils literal notranslate"><span class="pre">hw1_test.py</span></code>.</p>
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Document</strong> the code in <code class="docutils literal notranslate"><span class="pre">hw1.py</span></code> and <code class="docutils literal notranslate"><span class="pre">hw1_test.py</span></code>.</p>
 <p>There is no documentation in the provided code! We recommend writing your documentation FIRST (in Step 1). Writing documentation for your function is a great way to start to get you thinking about what your method needs to do. You should go through and add the following documentation:</p>
 <ul class="simple">
 <li><p>Each function in <code class="docutils literal notranslate"><span class="pre">hw1.py</span></code> and <code class="docutils literal notranslate"><span class="pre">hw1_test.py</span></code> should have a doc-string comment describing their parameters, returns and behavior.</p></li>
@@ -786,7 +786,7 @@ challenge</label><div class="sd-tab-content docutils">
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Homework Assignment #2</p>
+        <p class="prev-next-title"><i class="fas fa-laptop fa-fw"></i> HW2 - Primer</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>

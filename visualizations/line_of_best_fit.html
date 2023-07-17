@@ -216,9 +216,9 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../homework-assignments/index.html"><i class="fas fa-book fa-fw"></i> Homework Assignments</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="../homework-assignments/hw1.html"><i class="fas fa-laptop fa-fw"></i> HW1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../homework-assignments/hw2.html">Homework Assignment #2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../homework-assignments/hw3.html">Homework Assignment #3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework-assignments/hw1.html"><i class="fas fa-laptop fa-fw"></i> HW1 - Startup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework-assignments/hw2.html"><i class="fas fa-laptop fa-fw"></i> HW2 - Primer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../homework-assignments/hw3.html"><i class="fas fa-laptop fa-fw"></i> HW3 - Pokémon</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../module-additions/index.html"><i class="fas fa-layer-group fa-fw"></i> Module Additions</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -555,7 +555,7 @@ answered by looking at the <code class="docutils literal notranslate"><span clas
 </tr>
 </tbody>
 </table>
-<div class="dropdown note admonition">
+<div class="dropdown seealso admonition">
 <p class="admonition-title">code imports</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -681,7 +681,18 @@ Code</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-5">
 Comments</label><div class="sd-tab-content docutils">
-<p>Comments go here.</p>
+<p>The nice thing about using <code class="docutils literal notranslate"><span class="pre">linregress</span></code> is that it will provide multiple pieces of information
+for us in one simple call. It gives use the slope and intercept values, along with the <code class="docutils literal notranslate"><span class="pre">r_value</span></code> that
+we can square to get the Coefficient of Determination.</p>
+<p>Interestingly, <code class="docutils literal notranslate"><span class="pre">linregress</span></code> returns an object, not a list of values. However, because the linrgress object
+returns implements the special method <code class="docutils literal notranslate"><span class="pre">__iter__</span></code>, the object can be unpacked into a set of values. This gives
+some flexibility in how the caller wants to receive the values. The caller can keep the object and dereference
+the object, or the specific values can be immediately unpacked upon receipt. Cool!</p>
+<p>Example call:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">line_info</span> <span class="o">=</span> <span class="n">linregress</span><span class="p">(</span><span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;R2=</span><span class="si">{</span><span class="n">line_info</span><span class="o">.</span><span class="n">r_value</span><span class="o">**</span><span class="mi">2</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>  
+</pre></div>
+</div>
 </div>
 </div>
 </section>
@@ -777,13 +788,66 @@ Code</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-8" name="sd-tab-set-2" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-8">
 Comments</label><div class="sd-tab-content docutils">
-<p>Comments go here.</p>
+<p>In this code we use <code class="docutils literal notranslate"><span class="pre">sns.regplot</span></code> with <code class="docutils literal notranslate"><span class="pre">order=2</span></code> to draw a portion of a parabola (in red) that best
+fits our set of points (in blue). The order, value 2, tell Seaborn the highest exponent in the polynomial.
+A value of 2 means a parabola. The default value of 1 is a line. We also set <code class="docutils literal notranslate"><span class="pre">ci=None</span></code> to avoid drawing
+any shaded area around the line.</p>
+<p>Seaborn will draw the line but it doesn’t give us the equation of the line. It also fails to give us
+any value that tells us how well the line fits our set of points. To identify the coefficients for
+both the line and polynomial, we use <code class="docutils literal notranslate"><span class="pre">np.polyfit</span></code> and pass in the original data points with the order
+of polynomial to use.</p>
+<p>Mean Squared Error (MSE) is defined to be the sum of all squared residuals (different between the line and
+the data point). The implementation is quite simple:<br />
+<code class="docutils literal notranslate">&#160;&#160; <span class="pre">mse</span> <span class="pre">=</span> <span class="pre">sum([</span> <span class="pre">(y1</span> <span class="pre">-</span> <span class="pre">y2)**2</span> <span class="pre">for</span> <span class="pre">y1,</span> <span class="pre">y2</span> <span class="pre">in</span> <span class="pre">zip(y_points,</span> <span class="pre">y_line)])</span></code></p>
+<p>In this sample code, we use “vector” math to calculate the y values for the line (or predicted curve).<br />
+<code class="docutils literal notranslate">&#160;&#160; <span class="pre">y_predicted_1</span> <span class="pre">=</span> <span class="pre">coeffs_1[1]</span> <span class="pre">+</span> <span class="pre">coeffs_1[0]</span> <span class="pre">*</span> <span class="pre">np.array(x_data)</span></code></p>
+<p><code class="docutils literal notranslate"><span class="pre">Numpy</span></code> arrays are “vectors” and allow us to multiply them by a “scalar” (a constant, non-array). The above code will result
+in a “vector” (numpy array of values) without having to do a for-loop or comprehension. You cannot do
+this with a regular list; it requires a numpy array. Convention often has us representing a vector of
+values with a capital letter which can sometimes be confused with a constant. Here would be another
+conventional way to do vector math.<br />
+<code class="docutils literal notranslate">&#160;&#160; <span class="pre">X</span> <span class="pre">=</span> <span class="pre">np.array(list_of_x_values)</span></code>
+<code class="docutils literal notranslate">&#160;&#160; <span class="pre">Y</span> <span class="pre">=</span> <span class="pre">3</span> <span class="pre">*</span> <span class="pre">X</span> <span class="pre">+</span> <span class="pre">4</span></code></p>
+<p>Lastly, we make use of an inset to annotate some text to the graph so the reader can see how much
+better the curve is over the line. MSE values are relative and the values depend on the scale of the numbers.
+MSE values are most valuable when compared against another MSE value. In this case we can see how the
+parabola’s MSE value is close to half the value of the line’s MSE.</p>
 </div>
 </div>
 </section>
 <section id="curve-fit">
 <h2>Curve Fit<a class="headerlink" href="#curve-fit" title="Permalink to this heading">#</a></h2>
-<p>Here we see how we can find a curve of best fit to a custom, continuous curve: a logarithmically degrading, sinusoidal wave.</p>
+<p>Here we see how we can find a curve of best fit to a custom, continuous curve: a logarithmically degrading, sinusoidal wave.
+This is a continuous curve with no x-value that causes a division by zero. This allows us to use the <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> API. It will
+highly unlikely that you’ll ever want to fit a set of points to a curve like this. In the event that you ever encounter
+wave data, you’ll more likely want to leverage <a href="https://youtu.be/spUNpyF58BY" target="_blank">Fourier Transforms.</a> The
+reason we use a sinusoidal wave is simply to illustrate how <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> can be used on any curve.</p>
+<p>To fit a line to a curve:</p>
+<ol class="arabic simple">
+<li><p>Identify an equation that you want to fit. You’ll create a method that has the generalized
+equation with coefficients that are unknown. For example, a line is: <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">mx</span> <span class="pre">+</span> <span class="pre">b</span></code> where curve_fit will identify the values
+for <code class="docutils literal notranslate"><span class="pre">m</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>. You may have a polynomial curve such as: <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">=</span> <span class="pre">a*x**4</span> <span class="pre">+</span> <span class="pre">b*x**3</span> <span class="pre">+</span> <span class="pre">c*x**2</span> <span class="pre">+</span> <span class="pre">d*x</span> <span class="pre">+</span> <span class="pre">e</span></code> and curve_fit will
+find the values for <code class="docutils literal notranslate"><span class="pre">a</span></code> through <code class="docutils literal notranslate"><span class="pre">e</span></code>. If you know want to fix one of the values, you can use a constant to the known
+value. Write a method that takes <code class="docutils literal notranslate"><span class="pre">x</span></code> along with the coefficiencts are arguments. For example:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_function</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span><span class="o">*</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">b</span><span class="o">*</span><span class="n">x</span> <span class="o">+</span> <span class="n">c</span>
+</pre></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Select a set of values for the coefficients that represents a valid guess. Assign these coefficients to a
+list, often named, <code class="docutils literal notranslate"><span class="pre">p0</span></code>. You’ll provide <code class="docutils literal notranslate"><span class="pre">p0</span></code> as an argument to <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> to help it get started as well as to
+understand how many coefficients to solve for.</p></li>
+<li><p>You’ll call <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> with the following arguments: methoid pointer, set of points you want to fit, along
+with the initial guess. For example:</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># curve_fit returns a tuple. The first item is a list of coefficients. The second</span>
+<span class="c1"># is statistical information about the coefficients. In this example we ignore</span>
+<span class="c1"># the covariance values, and so we unpack them into the identifer &#39;_&#39; which is a conventional</span>
+<span class="c1"># name for a variable that goes ignored and unused.</span>
+<span class="n">coeffs</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">curve_fit</span><span class="p">(</span><span class="n">logarithmic_sinusoidal_wave</span><span class="p">,</span> <span class="n">x_data</span><span class="p">,</span> <span class="n">y_data</span><span class="p">,</span> <span class="n">p0</span><span class="o">=</span><span class="n">p0</span><span class="p">)</span>
+</pre></div>
+</div>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-9" name="sd-tab-set-3" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-9">
@@ -878,16 +942,39 @@ Code</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-12" name="sd-tab-set-3" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-12">
 Comments</label><div class="sd-tab-content docutils">
-<p>Things to discuss:</p>
-<ul class="simple">
-<li><p>sinusoidal curve equation</p></li>
-<li><p>ax.scatter with ‘s’ argument</p></li>
-<li><p>*args in generate_points and use of *wave_args</p></li>
-<li><p>linspace</p></li>
-<li><p>curve_fit: return values and how it works</p></li>
-<li><p>P0 values</p></li>
-<li><p>graph inset</p></li>
-</ul>
+<p>The code for the sinusoidal curve equation is provided in the ‘See Code’ dropdown in the
+‘Sinusoidal’ tab. In this method we chose to have all the coefficients be named arguments with
+default values. This allows us to to easily modify our code to hold some values constant and
+allow <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> to solve for the others. If we had chosen to make <code class="docutils literal notranslate"><span class="pre">p0</span></code> have only two values
+in it, then curve_fit would have solved for amplitude &amp; frequency while holding <code class="docutils literal notranslate"><span class="pre">r</span></code>, <code class="docutils literal notranslate"><span class="pre">phase</span></code>
+and <code class="docutils literal notranslate"><span class="pre">offset</span></code> constant.</p>
+<p>In this plot, we first generated our set of points to which we will fit the sinusoidal curve.
+These points are intended to be ‘actual’ data points in our hypothetical experiment that will have some noise.
+We generate the points by calling our sinusoidal method will all the coefficients and then add some
+random values intended to be “noise” or imperfections in the data.</p>
+<p>We chose to pass around the many coefficient to <code class="docutils literal notranslate"><span class="pre">generate_points</span></code> and <code class="docutils literal notranslate"><span class="pre">logarithmic_sinusoidal_wave</span></code> by
+using a tuple of values. <code class="docutils literal notranslate"><span class="pre">wave_args</span></code> is a tuple with all the “true” coefficients used in the
+hypothetical experiement. The use of tuple shortens the code and makes it easier to read, so
+long as you understand what is going on. We unpack the values when we call <code class="docutils literal notranslate"><span class="pre">generate_points</span></code> which
+collects and repacks them into the tuple named ‘args’. In turn, it can easily call the sinusoidal method
+with the tuple. Altogether, this allows us to generate points and solve for coefficients using as many or
+as few arguments as we want, using default values for the rest.</p>
+<p>Confusing? See <a class="reference internal" href="../module-additions/module3/printing.html"><span class="doc std std-doc">Arguments</span></a> for more information.</p>
+<p>When generating our data points, we make use of <code class="docutils literal notranslate"><span class="pre">linspace</span></code> which is a nifty method that allows us
+to quickly set a minimum, maximum, and an arbitrary number of points. It generates values
+evenly spaced in that range.</p>
+<p><code class="docutils literal notranslate"><span class="pre">curve_fit</span></code> does a lot of work for us, making use of calculus and statistics to find the coefficients
+to the equation we established. Each coefficient represents one dimension, and our equation
+represents values in an n-dimensional space. It then uses a method similar to “Gradient Descent”
+to find values that minimize the Mean Squared Error for our coefficients and the set of actual points.</p>
+<p>Confusing? See the video, <a href="https://youtu.be/IHZwWFHWa-w?t=567" target="_blank">Gradient descent, how nerual
+networks learn</a>, by 3Blue1Brown, to get a great visual on Gradient Descent. This video is tailored
+to neural networks, but the idea is the same. Gradient Descent is a mathematical method for optimizing
+in n-dimensional space.</p>
+<p>Note that in <code class="docutils literal notranslate"><span class="pre">ax.scatter</span></code> we provided the x &amp; y data as lists and set some named arguments.
+It can be frustrating that plotting methods often have named arguments with different names.
+When we call <code class="docutils literal notranslate"><span class="pre">scatter</span></code> on the axis object, we set <code class="docutils literal notranslate"><span class="pre">s</span></code> to change the size of the markers (or dots).</p>
+<p>To add more value to the graph, we create an inset with text on the graph.</p>
 </div>
 </div>
 </section>

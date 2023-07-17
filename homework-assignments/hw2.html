@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Homework Assignment #2 &#8212; IDP at NCHS</title>
+    <title>HW2 - Primer &#8212; IDP at NCHS</title>
   
   
   
@@ -103,12 +103,14 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'homework-assignments/hw2';</script>
     <link rel="shortcut icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Homework Assignment #3" href="hw3.html" />
-    <link rel="prev" title="HW1" href="hw1.html" />
+    <link rel="next" title="HW3 - Pokémon" href="hw3.html" />
+    <link rel="prev" title="HW1 - Startup" href="hw1.html" />
     
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -214,9 +216,9 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html"><i class="fas fa-book fa-fw"></i> Homework Assignments</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="hw1.html"><i class="fas fa-laptop fa-fw"></i> HW1</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Homework Assignment #2</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hw3.html">Homework Assignment #3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw1.html"><i class="fas fa-laptop fa-fw"></i> HW1 - Startup</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#"><i class="fas fa-laptop fa-fw"></i> HW2 - Primer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw3.html"><i class="fas fa-laptop fa-fw"></i> HW3 - Pokémon</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../module-additions/index.html"><i class="fas fa-layer-group fa-fw"></i> Module Additions</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -451,7 +453,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -462,11 +466,24 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Homework Assignment #2</h1>
+    <h1><i class="fas fa-laptop fa-fw"></i> HW2 - Primer</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#files">Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#required-methods">Required Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-quality">Code Quality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rubric">Rubric</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-question">Challenge Question</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -476,13 +493,361 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="homework-assignment-2">
-<h1>Homework Assignment #2<a class="headerlink" href="#homework-assignment-2" title="Permalink to this heading">#</a></h1>
-<p>Here are the details of the assignment.
-Problems to create.
-Testing to do.
-Rubric information.</p>
-<p>Turn-in instructions?</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="i-class-fas-fa-laptop-fa-fw-i-hw2-primer">
+<h1><i class="fas fa-laptop fa-fw"></i> HW2 - Primer<a class="headerlink" href="#i-class-fas-fa-laptop-fa-fw-i-hw2-primer" title="Permalink to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
+<p><strong>Learning objective:</strong> Apply control structures and data structures to solve problems involving numbers, text, and files.</p>
+</section>
+<section id="files">
+<h2>Files<a class="headerlink" href="#files" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">hw2.py</span></code> is the file to put your implementations for each problem. hw1.py is not a runnable program, so we don’t use the main-method pattern.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hw2_test.py</span></code> is the file for you to put your own tests. The Run button executes this program.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cse163_utils.py</span></code> is a helper file that has code to help you test your code.</p></li>
+</ul>
+<div class="important admonition">
+<p class="admonition-title">Expectation!</p>
+<p>In hw2.py you should not use any <code class="docutils literal notranslate"><span class="pre">import</span></code> statements or features in Python we have not yet discussed in class, online book, or in homework handout. All of these problems should be solved using the fundamental constructs we’ve learned in class so far. For your testing program, you can use imports. In fact, you’re expected to use cse163_utils‘ <code class="docutils literal notranslate"><span class="pre">assert_equals</span></code> function.</p>
+</div>
+</section>
+<hr class="docutils" />
+<section id="required-methods">
+<h2>Required Methods<a class="headerlink" href="#required-methods" title="Permalink to this heading">#</a></h2>
+<p>In the file named <code class="docutils literal notranslate"><span class="pre">hw2.py</span></code>, implement seven methods: <code class="docutils literal notranslate"><span class="pre">count_divisible_digits</span></code>, <code class="docutils literal notranslate"><span class="pre">is_relatively_prime</span></code>, <code class="docutils literal notranslate"><span class="pre">travel</span></code>, <code class="docutils literal notranslate"><span class="pre">reformat_date</span></code>, <code class="docutils literal notranslate"><span class="pre">longest_word</span></code>,  <code class="docutils literal notranslate"><span class="pre">get_average_in_range</span></code> and <code class="docutils literal notranslate"><span class="pre">mode_digit</span></code>. The description for each
+method is found in the tabs below.</p>
+<p>You are required to <strong>TEST</strong> each method. Each test method should include the example method calls provided herein.</p>
+<p>Way down below is a challenge question which is optional and not graded. See the <a href="#challenge-question">Challenge Question</a> section down below for details.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+count_divisible_digits</label><div class="sd-tab-content docutils">
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a function <code class="docutils literal notranslate"><span class="pre">count_divisible_digits</span></code> that takes two integer numbers <code class="docutils literal notranslate"><span class="pre">n</span></code> and <code class="docutils literal notranslate"><span class="pre">m</span></code> as arguments and returns the number of digits in n that are divisible by m. If m is 0, then count_divisible_digits should return 0. For this problem, any digit in n that is 0 is divisible by any number. You may assume m is a single digit (0 ≤ m &lt;10) and that it is not negative.</p>
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a test in the file <code class="docutils literal notranslate"><span class="pre">hw2_test.py</span></code> that calls the function with some inputs and compares the output of the program with the expected value using assert_equals. Include test cases for all of the examples above as well as 3 (<strong>three</strong>) additional test cases.</p>
+<p>Here are some examples that you should make sure appear in <code class="docutils literal notranslate"><span class="pre">hw2_test.py</span></code>:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>call</p></th>
+<th class="head"><p>returns</p></th>
+<th class="head"><p>comments</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>count_divisible_digits(650899, 3)</p></td>
+<td><p>4</p></td>
+<td><p>The four digits 0, 6, and 9 are all divisible by 3</p></td>
+</tr>
+<tr class="row-odd"><td><p>count_divisible_digits(-204, 5)</p></td>
+<td><p>1</p></td>
+<td><p>Only 0 is divisible by 5</p></td>
+</tr>
+<tr class="row-even"><td><p>count_divisible_digits(24, 5)</p></td>
+<td><p>0</p></td>
+<td><p>No digit is divisible by 5</p></td>
+</tr>
+<tr class="row-odd"><td><p>count_divisible_digits(1, 0)</p></td>
+<td><p>0</p></td>
+<td><p>When <code class="docutils literal notranslate"><span class="pre">m=0</span></code>, return zero.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="important admonition">
+<p class="admonition-title">Do Not Use String</p>
+<p>Do not use <code class="docutils literal notranslate"><span class="pre">str</span></code> to solve any part of this this problem in any way. Instead, you should solve this problem by manipulating the number itself using integer division. Recall that:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">//</span> <span class="pre">10</span></code> evaluates to all but the last digit of n.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">%</span> <span class="pre">10</span></code> evaluates to the last digit of n.</p></li>
+</ul>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+is_relatively_prime</label><div class="sd-tab-content docutils">
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a function <code class="docutils literal notranslate"><span class="pre">is_relatively_prime</span></code> that takes two integer numbers <code class="docutils literal notranslate"><span class="pre">n</span></code> and <code class="docutils literal notranslate"><span class="pre">m</span></code>, returning <code class="docutils literal notranslate"><span class="pre">True</span></code> if <code class="docutils literal notranslate"><span class="pre">n</span></code> and <code class="docutils literal notranslate"><span class="pre">m</span></code> are relatively prime to each other and <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise. Two numbers are relatively prime if they share no common factors besides 1. (1 is relatively prime with every number.) Assume the value of <code class="docutils literal notranslate"><span class="pre">n</span></code> and <code class="docutils literal notranslate"><span class="pre">m</span></code> are at least one.</p>
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a test that calls the function with some inputs and compares the output of the program with the expected value using <code class="docutils literal notranslate"><span class="pre">assert_equals</span></code>. Include test cases for all of the examples below as well as 3 (<strong>three</strong>) additional test cases:</p>
+<p>Here are some examples that you should make sure appear in <code class="docutils literal notranslate"><span class="pre">hw2_test.py</span></code>:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>call</p></th>
+<th class="head"><p>returns</p></th>
+<th class="head"><p>comments</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>is_relatively_prime(12, 13)</p></td>
+<td><p>True</p></td>
+<td><p>The factors of 12 are 1, 2, 3, 4, 6, 12 and the factors of 13 are 1, 13.</p></td>
+</tr>
+<tr class="row-odd"><td><p>is_relatively_prime(12, 14)</p></td>
+<td><p>False</p></td>
+<td><p>The factors of 12 are 1, 2, 3, 4, 6, 12 and the factors of 14 are 1, 2, 7, 14.</p></td>
+</tr>
+<tr class="row-even"><td><p>is_relatively_prime(5, 9)</p></td>
+<td><p>True</p></td>
+<td><p>The factors of 5 are 1, 5 and the factors of 9 are 1, 3, 9.</p></td>
+</tr>
+<tr class="row-odd"><td><p>is_relatively_prime(8, 9)</p></td>
+<td><p>True</p></td>
+<td><p>The factors of 8 are 1, 2, 4, 8 and the factors of 9 are 1, 3, 9.</p></td>
+</tr>
+<tr class="row-even"><td><p>is_relatively_prime(8, 1)</p></td>
+<td><p>True</p></td>
+<td><p>We define that 1 is relatively prime with every number.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="important admonition">
+<p class="admonition-title">No Data Structures  </p>
+<p><strong>Do not</strong> use data structures to store factors during the execution of the algorithm. Also, use a single loop rather than nested loops.</p>
+</div>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
+travel</label><div class="sd-tab-content docutils">
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a function <code class="docutils literal notranslate"><span class="pre">travel</span></code> which takes a string of north, east, south, west directions, a starting location on a grid <code class="docutils literal notranslate"><span class="pre">x</span></code>, and a starting location on a grid <code class="docutils literal notranslate"><span class="pre">y</span></code>. Your function should return a tuple that indicates the new position after following the directions starting from the given <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>. The returned tuple should be in the format <code class="docutils literal notranslate"><span class="pre">(x_new,</span> <span class="pre">y_new)</span></code>.</p>
+<p>The directions string will use <code class="docutils literal notranslate"><span class="pre">'N'</span></code> to indicate increasing the y-coordinate, <code class="docutils literal notranslate"><span class="pre">'E'</span></code> to indicate increasing the x-coordinate, <code class="docutils literal notranslate"><span class="pre">'S'</span></code> to indicate decreasing the y-coordinate, and <code class="docutils literal notranslate"><span class="pre">'W'</span></code> to indicate decreasing the x-coordinate. The case of the characters should be ignored. You can assume that <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> are both of type <code class="docutils literal notranslate"><span class="pre">int</span></code>. Any characters that are not ‘N’, ‘E’, ‘W’, or ‘S’ (ignoring letter-casing) should be ignored.</p>
+<p><code class="docutils literal notranslate"><span class="pre">travel('NW!ewnW',</span> <span class="pre">1,</span> <span class="pre">2)</span></code> should return the tuple <code class="docutils literal notranslate"><span class="pre">(-1,</span> <span class="pre">4)</span></code> following this sequence of movements:</p>
+<ol class="arabic simple">
+<li><p>Start at (1, 2).</p></li>
+<li><p>Move ‘N’ to (1, 3).</p></li>
+<li><p>Move ‘W’ to (0, 3).</p></li>
+<li><p>Ignore ‘!’ since it is not a valid direction.</p></li>
+<li><p>Move ‘e’ to (1, 3).</p></li>
+<li><p>Move ‘w’ to (0, 3).</p></li>
+<li><p>Move ‘n’ to (0, 4).</p></li>
+<li><p>Move ‘W’ to (-1, 4).</p></li>
+</ol>
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a test that calls the function with some inputs and compares the output of the program with the expected value using <code class="docutils literal notranslate"><span class="pre">assert_equals</span></code>. Include test cases for the example above as well as 3 (<strong>three</strong>) additional test cases.</p>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-3">
+reformat_date</label><div class="sd-tab-content docutils">
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a function <code class="docutils literal notranslate"><span class="pre">reformat_date</span></code> which takes three strings as arguments representing a date, a current date format, and a target date format and returns a new string with the date formatted in the target format.</p>
+<p>For example, if we made the method call,  <code class="docutils literal notranslate"><span class="pre">reformat_date(&quot;12/31/1998&quot;,</span> <span class="pre">&quot;M/D/Y&quot;,</span> <span class="pre">&quot;D/M/Y&quot;)</span></code> it should return the string <code class="docutils literal notranslate"><span class="pre">&quot;31/12/1998&quot;</span></code>. In this example, the first argument represents a date and the second argument specifies this date is currently in the format Month/Day/Year (abbreviated <code class="docutils literal notranslate"><span class="pre">&quot;M/D/Y&quot;</span></code>). The third argument specifies that the method should return a new date in the format of Day/Month/Year format (abbreviated <code class="docutils literal notranslate"><span class="pre">&quot;D/M/Y&quot;</span></code>).</p>
+<p>A date string will be some non-empty string of numbers separated by <code class="docutils literal notranslate"><span class="pre">/</span></code> (e.g, <code class="docutils literal notranslate"><span class="pre">&quot;3/6/1995&quot;</span></code>). Note that the numbers between the <code class="docutils literal notranslate"><span class="pre">/</span></code>‘s can have any number of digits, but you may assume there is at least one digit for each part of the date provided.</p>
+<p>The current and target formats will be some non-empty sequence of the characters <code class="docutils literal notranslate"><span class="pre">'D'</span></code>, <code class="docutils literal notranslate"><span class="pre">'M'</span></code>, <code class="docutils literal notranslate"><span class="pre">'Y'</span></code> separated by <code class="docutils literal notranslate"><span class="pre">/</span></code>. You can assume the given date and the current format will match up (i.e., they will have the same number of <code class="docutils literal notranslate"><span class="pre">/</span></code>‘s) and that any date symbol that appears in the target format also appears in the current format (i.e., if the target format contains a <code class="docutils literal notranslate"><span class="pre">'Y'</span></code> the current format will also contain a <code class="docutils literal notranslate"><span class="pre">'Y'</span></code>).</p>
+<p>Below are some valid/invalid examples of current and target formats. You do <strong>not</strong> need to handle invalid formats. You may assume we will never pass you an example that is invalid. Make sure these valid test cases appear in <code class="docutils literal notranslate"><span class="pre">hw2_test.py</span></code>:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>call</p></th>
+<th class="head"><p>returns</p></th>
+<th class="head"><p>notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reformat_date(&quot;1/2/3&quot;,</span> <span class="pre">&quot;M/D/Y&quot;,</span> <span class="pre">&quot;Y/M/D&quot;)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;3/1/2&quot;</span></code></p></td>
+<td><p>Valid</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">reformat_date(&quot;0/200/4&quot;,</span> <span class="pre">&quot;Y/D/M&quot;,</span> <span class="pre">&quot;M/Y&quot;)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;4/0&quot;</span></code></p></td>
+<td><p>Valid</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reformat_date(&quot;3/2&quot;,</span> <span class="pre">&quot;M/D&quot;,</span> <span class="pre">&quot;D&quot;)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&quot;2&quot;</span></code></p></td>
+<td><p>Valid</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">reformat_date(&quot;3/2&quot;,</span> <span class="pre">&quot;M/D/Y&quot;,</span> <span class="pre">&quot;Y/M/D&quot;)</span></code></p></td>
+<td><p></p></td>
+<td><p>Invalid - Date &amp; Format do not match</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reformat_date(&quot;3/2&quot;,</span> <span class="pre">&quot;M/D&quot;,</span> <span class="pre">&quot;Y/M/D&quot;)</span></code></p></td>
+<td><p></p></td>
+<td><p>Invalid - Current Format missing ‘Y’</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">reformat_date(&quot;1/2/3/4&quot;,</span> <span class="pre">&quot;M/D/Y/S&quot;,</span> <span class="pre">&quot;M/D&quot;)</span></code></p></td>
+<td><p></p></td>
+<td><p>Invalid - Date format contains ‘S’</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">reformat_date(&quot;&quot;,</span> <span class="pre">&quot;&quot;,</span> <span class="pre">&quot;&quot;)</span></code></p></td>
+<td><p></p></td>
+<td><p>Invalid - empty string</p></td>
+</tr>
+</tbody>
+</table>
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a test that calls the function with some inputs and compares the output of the program with the expected value using <code class="docutils literal notranslate"><span class="pre">assert_equals</span></code>. Include test cases for the example above as well as 3 (<strong>three</strong>) additional test cases.</p>
+<p>Again, you may assume <strong>we won’t pass you any of these invalid date formats</strong>. We wanted to provide this list and rationale for why they are invalid to give you a better sense of what assumptions you can make about your inputs.</p>
+<div class="tip admonition">
+<p class="admonition-title">Implementation</p>
+<p>Your function should be as general as possible and avoid hard-coding specific orderings of the date parts.</p>
+</div>
+</div>
+<input id="sd-tab-item-4" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-4">
+longest_word</label><div class="sd-tab-content docutils">
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a function <code class="docutils literal notranslate"><span class="pre">longest_word</span></code> that takes a string filename
+and returns the longest word in the file with which line it appears on. A word here is defined as a
+sequence of characters separated by whitespace. If there are ties for the longest word, it should
+return the one that appears first in the file. If the file is empty or there are no words in the file,
+the function should return <code class="docutils literal notranslate"><span class="pre">None</span></code>. You may assume that the file exists.</p>
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a test that calls the <code class="docutils literal notranslate"><span class="pre">longest_word</span></code> with some file names and compares the
+output of the method with the expected value using <code class="docutils literal notranslate"><span class="pre">assert_equals</span></code>. Include the test case below as well as 3 (<strong>three</strong>)
+additional test cases.</p>
+<p>📝 <strong>TIP</strong>: Each test case should have a test file that you have created. Be sure that you <strong>submit</strong> these
+test files with your python files.  Your test need to run successfully!!</p>
+<p>Using the file contents below, the call <code class="docutils literal notranslate"><span class="pre">longest_word('song.txt')</span></code> should return <code class="docutils literal notranslate"><span class="pre">'3:</span> <span class="pre">Merrily,'</span></code>, the first
+word in the third line of the file shown here. Note that the filename uses a relative path.</p>
+<div class="admonition-song-txt admonition">
+<p class="admonition-title">song.txt</p>
+<p>Row, row, row your boat<br />
+Gently down the stream<br />
+Merrily, merrily, merrily, merrily<br />
+Life is but a dream!</p>
+</div>
+</div>
+<input id="sd-tab-item-5" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-5">
+get_average_in_range</label><div class="sd-tab-content docutils">
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a function <code class="docutils literal notranslate"><span class="pre">get_average_in_range</span></code> that takes a list of integers, an integer
+<code class="docutils literal notranslate"><span class="pre">low</span></code>, and an integer <code class="docutils literal notranslate"><span class="pre">high</span></code>, and returns the average of all values within the list that lies in the given range from <code class="docutils literal notranslate"><span class="pre">low</span></code>
+(inclusive) to <code class="docutils literal notranslate"><span class="pre">high</span></code> (exclusive). If there are no values in the given range, returns <code class="docutils literal notranslate"><span class="pre">0</span></code>.</p>
+<p>Here are some examples that you should make sure appear in <code class="docutils literal notranslate"><span class="pre">hw2_test.py</span></code>:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>call</p></th>
+<th class="head"><p>returns</p></th>
+<th class="head"><p>notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">get_average_in_range([1,</span> <span class="pre">5,</span> <span class="pre">6,</span> <span class="pre">7,</span> <span class="pre">9],</span> <span class="pre">5,</span> <span class="pre">7)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">5.5</span></code></p></td>
+<td><p>only 5 and 6 fall in the range between 5 (inclusive) and 7 (exclusive), and the average of 5 and 6 is 5.5.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">get_average_in_range([1,</span> <span class="pre">2,</span> <span class="pre">3],</span> <span class="pre">-1,</span> <span class="pre">10)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2.0</span></code></p></td>
+<td><p>1, 2, 3 all fall within the specified range and the average of the three numbers is 2.0.</p></td>
+</tr>
+</tbody>
+</table>
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a test that calls the <code class="docutils literal notranslate"><span class="pre">get_average_in_range</span></code> with some inputs and compares the
+outputs of the method with the expected value using <code class="docutils literal notranslate"><span class="pre">assert_equals</span></code>. Include the test cases above as well as 3 (<strong>three</strong>)
+additional test cases.</p>
+</div>
+<input id="sd-tab-item-6" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-6">
+mode_digit</label><div class="sd-tab-content docutils">
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a function <code class="docutils literal notranslate"><span class="pre">mode_digit</span></code> that takes an integer number <code class="docutils literal notranslate"><span class="pre">n</span></code> and returns
+the digit that appears most frequently in that number. The given number may be positive or negative, but the most
+frequent digit returned should always be non-negative. If there is a tie for the most frequent digit, the digit with
+the greatest value should be returned.</p>
+<p>Here are some examples that you should make sure appear in <code class="docutils literal notranslate"><span class="pre">hw2_test.py</span></code>:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>call</p></th>
+<th class="head"><p>returns</p></th>
+<th class="head"><p>notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">mode_digit(12121)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1</span></code></p></td>
+<td><p>1 appears the most–three times</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">mode_digit(0)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code></p></td>
+<td><p>Zero can be thought of as a special case</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">mode_digit(-122)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
+<td><p>Negative numbers can be tricky!</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">mode_digit(1211232231)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2</span></code></p></td>
+<td><p>Both 1 &amp; 2 appear 4 times, but 2 &gt; 1</p></td>
+</tr>
+</tbody>
+</table>
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a test that calls the <code class="docutils literal notranslate"><span class="pre">mode_digit</span></code> with some inputs and compares the
+outputs of the method with the expected value using <code class="docutils literal notranslate"><span class="pre">assert_equals</span></code>. Include the test cases above as well as 3 (<strong>three</strong>)
+additional test cases.</p>
+<div class="important admonition">
+<p class="admonition-title">Requirements</p>
+<ul class="simple">
+<li><p>Do not create strings in any way to solve any part of the problem.</p></li>
+<li><p>Do not use any nested loops or recursion.</p></li>
+<li><p>Do not use an if, elif, or else branch for each digit.<br />
+📝 <strong>TIP</strong>: Use data structures to count digit occurrences.</p></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="code-quality">
+<h2>Code Quality<a class="headerlink" href="#code-quality" title="Permalink to this heading">#</a></h2>
+<p>Assessment submissions should pass these checks: <code class="docutils literal notranslate"><span class="pre">flake8</span></code>, and <a href="https://courses.cs.washington.edu/courses/cse163/22sp/resources/code_quality/" target="_blank">code quality guidelines</a>. The code quality guidelines are very thorough. For this assessment, the most relevant rules can be found in these sections:</p>
+<ul class="simple">
+<li><p><a href="https://courses.cs.washington.edu/courses/cse163/22sp/resources/code_quality/#naming-conventions" target="_blank">Naming</a></p></li>
+<li><p><a href="https://courses.cs.washington.edu/courses/cse163/22sp/resources/code_quality/#documentation" target="_blank">Documentation</a></p></li>
+<li><p><a href="https://courses.cs.washington.edu/courses/cse163/22sp/resources/code_quality/#efficiency-and-redundancy" target="_blank">Efficiency and Redundancy</a></p>
+<ul>
+<li><p>Boolean Zen</p></li>
+<li><p>Loop Zen</p></li>
+<li><p>Factoring</p></li>
+<li><p>Unnecessary Cases</p></li>
+</ul>
+</li>
+</ul>
+<div class="important admonition">
+<p class="admonition-title">Requirements</p>
+<p>Make sure to provide a descriptive file header in doc-string format, not something generic like “implements functions for Primer”.</p>
+</div>
+</section>
+<section id="rubric">
+<h2>Rubric<a class="headerlink" href="#rubric" title="Permalink to this heading">#</a></h2>
+<p>Rubric information can be found in the instruction in the Replit project.</p>
+</section>
+<section id="challenge-question">
+<h2>Challenge Question<a class="headerlink" href="#challenge-question" title="Permalink to this heading">#</a></h2>
+<p><strong>OPTIONAL</strong>: This challenge method is not graded and is here for those students who already know Python and want to flex some of their intellectual muscle.<br />
+<strong>NOTE</strong>: If you implement this method, you’ll need to document all methods fully with doc-strings so that all the grading scripts pass. You don’t want to have your grade drop!  Be sure to test it, too!</p>
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a function named <code class="docutils literal notranslate"><span class="pre">weighted_average</span></code> that will take two <code class="docutils literal notranslate"><span class="pre">numpy</span></code> arrays.
+The first argument, <code class="docutils literal notranslate"><span class="pre">values</span></code> will be a two-dimensional array (of any number of rows &amp; cols) that contains real values. The second argument,
+<code class="docutils literal notranslate"><span class="pre">weights</span></code>, will be a one-dimensional array with the same number of elements as there are cols in the argument <code class="docutils literal notranslate"><span class="pre">values</span></code>.
+The method will return a weighted average of all the values using the weights across each row. Here are some examples:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># use these numpy arrays for the calls in the table below</span>
+<span class="n">v1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">],[</span><span class="mi">2</span><span class="p">]])</span>  <span class="c1"># 2x1 array</span>
+<span class="n">w1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">3</span><span class="p">])</span>
+
+<span class="n">v2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]])</span> <span class="c1"># 2x3 array</span>
+<span class="n">w2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="n">v3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">],[</span><span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">2</span><span class="p">]])</span> <span class="c1"># 3x4 array</span>
+<span class="n">w3</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>call</p></th>
+<th class="head"><p>returns</p></th>
+<th class="head"><p>notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">weighted_average(v1,</span> <span class="pre">w1)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">4.5</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\((3*1 + 3*2)/2 = 4.5\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">weighted_average(v2,</span> <span class="pre">w2)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2.0</span></code></p></td>
+<td><p><span class="math notranslate nohighlight">\((1*1 + 2*0 +3*1 + 4*1 + 3*0 + 4*1)/6 = 2.0\)</span></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">weighted_average(v3,</span> <span class="pre">w3)</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0.5</span></code></p></td>
+<td><p>Let’s look at the last column only</br>because the first 3 columns have weights = 0.</br> <span class="math notranslate nohighlight">\((0*2 + 1*2 +2*2)/12 = 0.5\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<div class="hint admonition">
+<p class="admonition-title">Tips</p>
+<ul class="simple">
+<li><p>It helps if you know about: <code class="docutils literal notranslate"><span class="pre">shape</span></code>, <code class="docutils literal notranslate"><span class="pre">broadcasting</span></code> and “vector” math.</p></li>
+<li><p>Consider how <code class="docutils literal notranslate"><span class="pre">numpy</span></code> uses “broadcasting” to adjust the shapes.</p></li>
+<li><p>Leverage <code class="docutils literal notranslate"><span class="pre">numpy</span></code> methods and functionality.<br />
+📝 <strong>Extra Challenge</strong>: Can you write this method in 1 line of code?</p></li>
+</ul>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -522,7 +887,7 @@ Rubric information.</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><i class="fas fa-laptop fa-fw"></i> HW1</p>
+        <p class="prev-next-title"><i class="fas fa-laptop fa-fw"></i> HW1 - Startup</p>
       </div>
     </a>
     <a class="right-next"
@@ -530,7 +895,7 @@ Rubric information.</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Homework Assignment #3</p>
+        <p class="prev-next-title"><i class="fas fa-laptop fa-fw"></i> HW3 - Pokémon</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -543,6 +908,25 @@ Rubric information.</p>
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#files">Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#required-methods">Required Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-quality">Code Quality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rubric">Rubric</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-question">Challenge Question</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Homework Assignment #3 &#8212; IDP at NCHS</title>
+    <title>HW3 - Pokémon &#8212; IDP at NCHS</title>
   
   
   
@@ -108,7 +108,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Module Additions" href="../module-additions/index.html" />
-    <link rel="prev" title="Homework Assignment #2" href="hw2.html" />
+    <link rel="prev" title="HW2 - Primer" href="hw2.html" />
     
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -214,9 +214,9 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html"><i class="fas fa-book fa-fw"></i> Homework Assignments</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="hw1.html"><i class="fas fa-laptop fa-fw"></i> HW1</a></li>
-<li class="toctree-l2"><a class="reference internal" href="hw2.html">Homework Assignment #2</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">Homework Assignment #3</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw1.html"><i class="fas fa-laptop fa-fw"></i> HW1 - Startup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw2.html"><i class="fas fa-laptop fa-fw"></i> HW2 - Primer</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#"><i class="fas fa-laptop fa-fw"></i> HW3 - Pokémon</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../module-additions/index.html"><i class="fas fa-layer-group fa-fw"></i> Module Additions</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -451,7 +451,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -462,11 +464,30 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Homework Assignment #3</h1>
+    <h1><i class="fas fa-laptop fa-fw"></i> HW3 - Pokémon</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#files">Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context">Context</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#without-pandas">Without Pandas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#with-pandas">With Pandas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#miscellaneous-tips">Miscellaneous Tips</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#required-methods">Required Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-quality">Code Quality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rubric">Rubric</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-question">Challenge Question</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -476,13 +497,370 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="homework-assignment-3">
-<h1>Homework Assignment #3<a class="headerlink" href="#homework-assignment-3" title="Permalink to this heading">#</a></h1>
-<p>Here are the details of the assignment.
-Problems to create.
-Testing to do.
-Rubric information.</p>
-<p>Turn-in instructions?</p>
+  <section class="tex2jax_ignore mathjax_ignore" id="i-class-fas-fa-laptop-fa-fw-i-hw3-pokemon">
+<h1><i class="fas fa-laptop fa-fw"></i> HW3 - Pokémon<a class="headerlink" href="#i-class-fas-fa-laptop-fa-fw-i-hw3-pokemon" title="Permalink to this heading">#</a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
+<p><strong>Learning objective:</strong> Read, process, and group CSV data to compute descriptive statistics with and without Pandas.</p>
+</section>
+<section id="files">
+<h2>Files<a class="headerlink" href="#files" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">hw3_manual.py</span></code> is the file for you to put your implementations for solving each problem without Pandas.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hw3_pandas.py</span></code> is the file for you to put your implementations for solving each problem with Pandas.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hw3_test.py</span></code> is the file for you to put your own tests. You need to change <code class="docutils literal notranslate"><span class="pre">.replit</span></code> to run your tests. Be sure to use the <em>main-pattern</em> for this file. Make sure it runs successfully!</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cse163_utils.py</span></code> is a helper file that has code to help you test your code.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pokemon_box.csv</span></code> is a large CSV file that stores information about pokemon.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pokemon_test.csv</span></code> is a very small CSV file that stores information about pokemon used for the example cases.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hw3.py</span></code> is the file to put your implementations for each problem. <code class="docutils literal notranslate"><span class="pre">hw3.py</span></code> is not a runnable program, so we don’t use the <em>main-method</em> pattern.</p></li>
+</ul>
+</section>
+<section id="context">
+<h2>Context<a class="headerlink" href="#context" title="Permalink to this heading">#</a></h2>
+<p>In the <a href="https://en.wikipedia.org/wiki/Pok%C3%A9mon" target="_blank">Pokémon</a> video game series, the player catches pokemon, fictional creatures trained to battle each other as part of a sport franchise. Pokémon exerted significant cultural influence on people who grew up in the late 1990s and early 2000s not only in its country of origin, Japan, but also around the world. More recently,
+<a href="https://en.wikipedia.org/wiki/Pok%C3%A9mon_Go" target="_blank"> Pokémon Go</a> became a viral hit as hundreds of millions of people played the augmented-reality game at its peak during the summer of 2016. You do not need to understand the details of Pokémon or need to have played the game to do the assignment. All you need to understand is the statistics we provide in our dataset about each pokemon.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">pokemon_box.csv</span></code> file stores some imagined data about a player’s pokemon in the following format.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>id</p></th>
+<th class="head"><p>name</p></th>
+<th class="head"><p>level</p></th>
+<th class="head"><p>personality</p></th>
+<th class="head"><p>type</p></th>
+<th class="head"><p>weakness</p></th>
+<th class="head"><p>atk</p></th>
+<th class="head"><p>def</p></th>
+<th class="head"><p>hp</p></th>
+<th class="head"><p>stage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>Bulbasaur</p></td>
+<td><p>12</p></td>
+<td><p>Jolly</p></td>
+<td><p>Grass</p></td>
+<td><p>Fire</p></td>
+<td><p>45</p></td>
+<td><p>50</p></td>
+<td><p>112</p></td>
+<td><p>1</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code> is a unique numeric identifier corresponding to the species of a pokemon. All pokemon of the same species share the same id.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> is the name of the species of pokemon, such as Bulbasaur.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">level</span></code> is the integer level of the pokemon.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">personality</span></code> is a one-word string describing the personality of the pokemon, such as Jolly.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code> is a one-word string describing the type of the pokemon, such as Grass.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">weakness</span></code> is the enemy type that this pokemon is weak toward. Bulbasaur is weak to fire-type pokemon.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">atk</span></code>, <code class="docutils literal notranslate"><span class="pre">def</span></code>, <code class="docutils literal notranslate"><span class="pre">hp</span></code> are integers that indicate the attack power, defense power, and hit points of the pokemon.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">stage</span></code> is an integer that indicates the particular developmental stage of the pokemon.</p></li>
+</ul>
+<p>In the Charmander species, Charmander begins at stage 1, evolves into a Charmeleon at stage 2, and finally evolves into Charizard at stage 3.</p>
+<p><img alt="Charmander stages" src="https://courses.cs.washington.edu/courses/cse163/22sp/assets/images/pokemon.png" /></p>
+<p>The problems in this assessment focus on providing <a href="https://en.wikipedia.org/wiki/Descriptive_statistics" target="_blank">descriptive statistics</a> for summarizing the pokemon dataset, such as computing the mean or count of a certain column. Solve each problem in two ways.</p>
+<section id="without-pandas">
+<h3>Without Pandas<a class="headerlink" href="#without-pandas" title="Permalink to this heading">#</a></h3>
+<p>Use Python built-in data structures plus Python math functions to solve the problems in the file <code class="docutils literal notranslate"><span class="pre">hw3_manual.py</span></code>. These 6 functions take a list of dictionaries representing the parsed pokemon dataset.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="s1">&#39;pokemon_box.csv&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Number of species:&#39;</span><span class="p">,</span> <span class="n">hw3_manual</span><span class="o">.</span><span class="n">species_count</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Highest level pokemon:&#39;</span><span class="p">,</span> <span class="n">hw3_manual</span><span class="o">.</span><span class="n">max_level</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Low-level Pokemon:&#39;</span><span class="p">,</span> <span class="n">hw3_manual</span><span class="o">.</span><span class="n">filter_range</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Average attack for fire types:&#39;</span><span class="p">,</span> <span class="n">hw3_manual</span><span class="o">.</span><span class="n">mean_attack_for_type</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;fire&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Count of each Pokemon type:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hw3_manual</span><span class="o">.</span><span class="n">count_types</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Average attack for each Pokemon type:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hw3_manual</span><span class="o">.</span><span class="n">mean_attack_per_type</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+</pre></div>
+</div>
+</section>
+<section id="with-pandas">
+<h3>With Pandas<a class="headerlink" href="#with-pandas" title="Permalink to this heading">#</a></h3>
+<p>Use Pandas (plus Python math functions) in <code class="docutils literal notranslate"><span class="pre">hw3_pandas.py</span></code>. <strong>Do not use any loops or list/dictionary comprehensions.</strong> These 6 functions take a Pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> representing the parsed pokemon dataset.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;pokemon_box.csv&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Number of species:&#39;</span><span class="p">,</span> <span class="n">hw3_pandas</span><span class="o">.</span><span class="n">species_count</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Highest level pokemon:&#39;</span><span class="p">,</span> <span class="n">hw3_pandas</span><span class="o">.</span><span class="n">max_level</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Low-level Pokemon:&#39;</span><span class="p">,</span>  <span class="n">hw3_pandas</span><span class="o">.</span><span class="n">filter_range</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">9</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Average attack for fire types:&#39;</span><span class="p">,</span> <span class="n">hw3_pandas</span><span class="o">.</span><span class="n">mean_attack_for_type</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="s1">&#39;fire&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Count of each Pokemon type:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hw3_pandas</span><span class="o">.</span><span class="n">count_types</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Average attack for each Pokemon type:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">hw3_pandas</span><span class="o">.</span><span class="n">mean_attack_per_type</span><span class="p">(</span><span class="n">data</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="hint admonition">
+<p class="admonition-title">You May Assume</p>
+<p>Assume the data is never empty (there’s at least one pokemon) and that there’s no missing data (each pokemon has every attribute).</p>
+</div>
+<div class="warning admonition">
+<p class="admonition-title">Do NOT Assume</p>
+<p>Canonically, Pokémon cannot have an attack stat of 0. For this assessment, however, you should NOT make that assumption.</p>
+</div>
+</section>
+<section id="miscellaneous-tips">
+<h3>Miscellaneous Tips<a class="headerlink" href="#miscellaneous-tips" title="Permalink to this heading">#</a></h3>
+<p>As with previous assessments, you’ll also check your solutions by adding tests to <code class="docutils literal notranslate"><span class="pre">hw3_test.py</span></code> using the <code class="docutils literal notranslate"><span class="pre">assert_equals</span></code> function.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+Tip #1</label><div class="sd-tab-content docutils">
+<div class="hint admonition">
+<p class="admonition-title">Parsing</p>
+<p>You can see examples of both lf these parsing functions below:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">parse</span></code>: To help test functions solved without Pandas, <code class="docutils literal notranslate"><span class="pre">cse163_utils.py</span></code> defines a <code class="docutils literal notranslate"><span class="pre">parse</span></code> function that takes a filename and returns the dataset as a list of dictionaries.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">read_csv</span></code>: To help test functions solved with Pandas, call <code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code> to return the dataset as a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cse163_utils</span> <span class="kn">import</span> <span class="n">parse</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;file.csv&#39;</span><span class="p">)</span>
+<span class="n">list_of_dict</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="s1">&#39;file.csv&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+Tip #2</label><div class="sd-tab-content docutils">
+<div class="hint admonition">
+<p class="admonition-title">Test Files</p>
+<ul class="simple">
+<li><p>Create your own testing CSV file and submit these files with your other files.</p></li>
+<li><p><strong>Do not</strong> use introduce subdirectories (subfolders) for the test files in this assignment. Keep the file structure flat.</p></li>
+<li><p>When specifying file names, use <strong>relative</strong> paths, such as <code class="docutils literal notranslate"><span class="pre">pd.read_csv('pokemon_test.csv')</span></code>.</p></li>
+<li><p><strong>Do not</strong> use the <code class="docutils literal notranslate"><span class="pre">pokemon_box.csv</span></code> file in your own test cases. The file is too large to come up with the correct answer on your own; it’s not valid to assume your code’s output is the correct answer and to blindly use that as the expected value.</p></li>
+</ul>
+</div>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
+Tip #3</label><div class="sd-tab-content docutils">
+<div class="hint admonition">
+<p class="admonition-title">Test Methods</p>
+<ul class="simple">
+<li><p>Write at least one test function for each problem and give it a descriptive name that indicates the function being tested, such as <code class="docutils literal notranslate"><span class="pre">test_species_count</span></code>.</p></li>
+<li><p>In addition to the provided <code class="docutils literal notranslate"><span class="pre">pokemon_test.csv</span></code> example file, add at least 2 (<strong>two</strong>) additional test files (one file for each case you’re testing). These data files contain short, contrived, targeted data that is easy to verify in your tests.</p></li>
+<li><p>One test function per problem is fine since both ways of solving the problem should compute the same result. In other words, you may choose to write one method, <code class="docutils literal notranslate"><span class="pre">test_species_count</span></code> that tests both the manual and pandas code.</p></li>
+</ul>
+</div>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-3">
+Tip #4</label><div class="sd-tab-content docutils">
+<div class="hint admonition">
+<p class="admonition-title">Globals &amp; Locality</p>
+<ul class="simple">
+<li><p>Do <strong>NOT</strong> use globals in your test file. Instead, use constants or method parameters.</p></li>
+<li><p>Attempt to keep declarations and values in close proximity to where they are used. This helps the reader understand the code better. This means, define expected values in the method where they are used.</p></li>
+<li><p>Attempt to reduce redundancy with code instead of copy/paste.</p></li>
+</ul>
+<p>Here is some sample code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">This is my test file</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">hw3_manual</span>
+<span class="kn">import</span> <span class="nn">hw3_pandas</span>
+
+<span class="kn">from</span> <span class="nn">cse163_utils</span> <span class="kn">import</span> <span class="n">parse</span>
+
+<span class="c1"># do NOT use globals like these</span>
+<span class="n">test_data_1_dict</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="s1">&#39;pokemon_box.csv&#39;</span><span class="p">)</span>
+<span class="n">test_data_1_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;pokemon_box.csv&#39;</span><span class="p">)</span>
+
+<span class="c1"># these are constants and are fine to use if you want</span>
+<span class="n">FILE_1</span> <span class="o">=</span> <span class="s1">&#39;test_data1.csv&#39;</span>
+<span class="n">FILE_2</span> <span class="o">=</span> <span class="s1">&#39;test_data2.csv&#39;</span>
+
+<span class="k">def</span> <span class="nf">test_example</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Test the method example using both manual and pandas</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># test simple case</span>
+    <span class="n">expected</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;age&#39;</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="p">:</span><span class="mi">102</span><span class="p">}</span>
+    <span class="n">assert_equals</span><span class="p">(</span><span class="n">expected</span><span class="p">,</span> <span class="n">hw3_pandas</span><span class="o">.</span><span class="n">example</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">FILE_1</span><span class="p">)))</span>
+    <span class="n">assert_equals</span><span class="p">(</span><span class="n">expected</span><span class="p">,</span> <span class="n">hw3_manual</span><span class="o">.</span><span class="n">example</span><span class="p">(</span><span class="n">parse</span><span class="p">(</span><span class="n">FILE_1</span><span class="p">)))</span>
+
+    <span class="c1"># test extreme case</span>
+    <span class="n">expected</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;age&#39;</span><span class="p">:</span><span class="mi">99</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="p">:</span><span class="mi">999</span><span class="p">}</span>
+    <span class="n">assert_equals</span><span class="p">(</span><span class="n">expected</span><span class="p">,</span> <span class="n">hw3_pandas</span><span class="o">.</span><span class="n">example</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">FILE_2</span><span class="p">)))</span>
+    <span class="n">assert_equals</span><span class="p">(</span><span class="n">expected</span><span class="p">,</span> <span class="n">hw3_manual</span><span class="o">.</span><span class="n">example</span><span class="p">(</span><span class="n">parse</span><span class="p">(</span><span class="n">FILE_2</span><span class="p">)))</span>
+
+    <span class="c1"># test redundant case</span>
+    <span class="n">expected</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;age&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="p">:</span><span class="mi">25</span><span class="p">}</span>
+    <span class="n">assert_equals</span><span class="p">(</span><span class="n">expected</span><span class="p">,</span> <span class="n">hw3_pandas</span><span class="o">.</span><span class="n">example</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;test_data3.csv&#39;</span><span class="p">)))</span>
+    <span class="n">assert_equals</span><span class="p">(</span><span class="n">expected</span><span class="p">,</span> <span class="n">hw3_manual</span><span class="o">.</span><span class="n">example</span><span class="p">(</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;test_data3.csv&#39;</span><span class="p">)))</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="c1"># be sure to call every test you write</span>
+    <span class="n">test_example</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="required-methods">
+<h2>Required Methods<a class="headerlink" href="#required-methods" title="Permalink to this heading">#</a></h2>
+<p>In the file named <code class="docutils literal notranslate"><span class="pre">hw3.py</span></code>, implement six methods: <code class="docutils literal notranslate"><span class="pre">species_count</span></code>, <code class="docutils literal notranslate"><span class="pre">max_level</span></code>, <code class="docutils literal notranslate"><span class="pre">filter_range</span></code>, <code class="docutils literal notranslate"><span class="pre">mean_attack_for_type</span></code>, <code class="docutils literal notranslate"><span class="pre">count_types</span></code>,  and <code class="docutils literal notranslate"><span class="pre">mean_attack_per_type</span></code>. The description for each
+method is found in the tabs below.</p>
+<p>You are required to <strong>TEST</strong> each method. Each test method should include the example provided herein.</p>
+<p>Way down below is a challenge question which is optional and not graded. See the <a href="#challenge-question">Challenge Question</a> section down below for details.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-4">
+species_count</label><div class="sd-tab-content docutils">
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> in <code class="docutils literal notranslate"><span class="pre">hw3_manual.py</span></code> a function <code class="docutils literal notranslate"><span class="pre">species_count</span></code> that takes a parsed pokemon dataset and returns the number of unique pokemon species in the dataset as determined by the <code class="docutils literal notranslate"><span class="pre">name</span></code> attribute without using Pandas.</p>
+<p>For the <code class="docutils literal notranslate"><span class="pre">pokemon_test.csv</span></code> file, <code class="docutils literal notranslate"><span class="pre">species_count(data)</span></code> should return <code class="docutils literal notranslate"><span class="pre">3</span></code>.</p>
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> in <code class="docutils literal notranslate"><span class="pre">hw3_pandas.py</span></code> the same function using Pandas. Rather than take a list of dictionaries, this takes a Pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> in <code class="docutils literal notranslate"><span class="pre">hw3_test.py</span></code> one or more test functions that call <code class="docutils literal notranslate"><span class="pre">species_count</span></code> with some CSV files and compares the output of the program with the expected value using <code class="docutils literal notranslate"><span class="pre">assert_equals</span></code>. In addition to the <code class="docutils literal notranslate"><span class="pre">pokemon_test.csv</span></code> file, add two additional test cases by creating your own CSV files.</p>
+<p>```{admonition}  Do not use <code class="docutils literal notranslate"><span class="pre">id</span></code>
+:class: important
+Do not use the <code class="docutils literal notranslate"><span class="pre">id</span></code> attribute to solve this this problem. Instead, you use the <code class="docutils literal notranslate"><span class="pre">name</span></code> attribute.<br />
+I realize that <code class="docutils literal notranslate"><span class="pre">id</span></code> should be the right approach, but UW has other ideas here. Don’t fight it. Just use <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
+</div>
+<input id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-5">
+max_level</label><div class="sd-tab-content docutils">
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> in <code class="docutils literal notranslate"><span class="pre">hw3_manual.py</span></code> a function <code class="docutils literal notranslate"><span class="pre">max_level</span></code> that takes a parsed pokemon dataset and returns a 2-element tuple of the <code class="docutils literal notranslate"><span class="pre">(name,</span> <span class="pre">level)</span></code> of the pokemon with the highest <code class="docutils literal notranslate"><span class="pre">level</span></code> in the dataset. If there is more than one pokemon with the highest <code class="docutils literal notranslate"><span class="pre">level</span></code>, return the pokemon that appears first in the file.</p>
+<p>For the <code class="docutils literal notranslate"><span class="pre">pokemon_test.csv</span></code> file, <code class="docutils literal notranslate"><span class="pre">max_level(data)</span></code> should return the 2-element tuple, <code class="docutils literal notranslate"><span class="pre">('Lapras',</span> <span class="pre">72)</span></code>.</p>
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> in <code class="docutils literal notranslate"><span class="pre">hw3_pandas.py</span></code> the same function using Pandas. Rather than take a list of dictionaries, this takes a Pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> in <code class="docutils literal notranslate"><span class="pre">hw3_test.py</span></code> one or more test functions that call <code class="docutils literal notranslate"><span class="pre">max_level</span></code> with some CSV files and compares the output of the program with the expected value using <code class="docutils literal notranslate"><span class="pre">assert_equals</span></code>. In addition to the <code class="docutils literal notranslate"><span class="pre">pokemon_test.csv</span></code> file, add two additional test cases by creating your own CSV files.</p>
+</div>
+<input id="sd-tab-item-6" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-6">
+filter_range</label><div class="sd-tab-content docutils">
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> in <code class="docutils literal notranslate"><span class="pre">hw3_manual.py</span></code> a function <code class="docutils literal notranslate"><span class="pre">filter_range</span></code> that takes a parsed pokemon dataset and  two numbers: a lower bound (inclusive) and upper bound (exclusive). The function returns a list of the names of pokemon whose <code class="docutils literal notranslate"><span class="pre">level</span></code> fall within the bounds in the same order that they appear in the dataset.</p>
+<p>For the <code class="docutils literal notranslate"><span class="pre">pokemon_test.csv</span></code> file, <code class="docutils literal notranslate"><span class="pre">filter_range(data,</span> <span class="pre">35,</span> <span class="pre">72)</span></code> should return <code class="docutils literal notranslate"><span class="pre">['Arcanine',</span> <span class="pre">'Arcanine',</span> <span class="pre">'Starmie']</span></code>. Note that Lapras is not included because the upper bound is exclusive of Lapras, which is exactly level 72.</p>
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> in <code class="docutils literal notranslate"><span class="pre">hw3_pandas.py</span></code> the same function using Pandas. Rather than take a list of dictionaries, this takes a Pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> in <code class="docutils literal notranslate"><span class="pre">hw3_test.py</span></code> one or more test functions that call <code class="docutils literal notranslate"><span class="pre">max_level</span></code> with some CSV files and compares the output of the program with the expected value using <code class="docutils literal notranslate"><span class="pre">assert_equals</span></code>. In addition to the <code class="docutils literal notranslate"><span class="pre">pokemon_test.csv</span></code> file, add two additional test cases by creating your own CSV files.</p>
+<div class="hint admonition">
+<p class="admonition-title">Series to list</p>
+<p>To convert a Pandas Series to a list, use the built-in list function. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># data is a DataFrame storing following info:</span>
+<span class="c1"># name,age,species</span>
+<span class="c1"># Fido,4,dog</span>
+<span class="c1"># Meowrty,6,cat</span>
+<span class="c1"># Chester,1,dog</span>
+<span class="c1"># Phil,1,axolotl</span>
+<span class="n">names</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>  <span class="c1"># Series</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>  <span class="c1"># [&#39;Fido&#39;, &#39;Meowrty&#39;, &#39;Chester&#39;, &#39;Phil&#39;]</span>
+<span class="n">row</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># Series</span>
+<span class="nb">list</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>  <span class="c1"># [&#39;Meowrty&#39;, 6, &#39;cat&#39;]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<input id="sd-tab-item-7" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-7">
+mean_attack_for_type</label><div class="sd-tab-content docutils">
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> in <code class="docutils literal notranslate"><span class="pre">hw3_manual.py</span></code> a function <code class="docutils literal notranslate"><span class="pre">mean_attack_for_type</span></code> that takes a parsed pokemon dataset and a string representing the pokemon <code class="docutils literal notranslate"><span class="pre">type</span></code>. The function returns the average <code class="docutils literal notranslate"><span class="pre">atk</span></code> for all the pokemon in the dataset with the given <code class="docutils literal notranslate"><span class="pre">type</span></code>. If there are no pokemon of the given <code class="docutils literal notranslate"><span class="pre">type</span></code>, return <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
+<p>For the pokemon_test.csv file, <code class="docutils literal notranslate"><span class="pre">mean_attack_for_type(data,</span> <span class="pre">'fire')</span></code> should return <code class="docutils literal notranslate"><span class="pre">47.5</span></code>.</p>
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> in <code class="docutils literal notranslate"><span class="pre">hw3_pandas.py</span></code> the same function using Pandas. Rather than take a list of dictionaries, this takes a Pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> in <code class="docutils literal notranslate"><span class="pre">hw3_test.py</span></code> one or more test functions that call <code class="docutils literal notranslate"><span class="pre">max_level</span></code> with some CSV files and compares the output of the program with the expected value using <code class="docutils literal notranslate"><span class="pre">assert_equals</span></code>. In addition to the <code class="docutils literal notranslate"><span class="pre">pokemon_test.csv</span></code> file, add two additional test cases by creating your own CSV files.</p>
+</div>
+<input id="sd-tab-item-8" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-8">
+count_types</label><div class="sd-tab-content docutils">
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> in <code class="docutils literal notranslate"><span class="pre">hw3_manual.py</span></code> a function <code class="docutils literal notranslate"><span class="pre">count_types</span></code> that takes a parsed pokemon dataset and returns a dictionary representing for each pokemon <code class="docutils literal notranslate"><span class="pre">type</span></code> the number of pokemon of that <code class="docutils literal notranslate"><span class="pre">type</span></code>. The order of the keys in the returned dictionary does not matter.</p>
+<p>For the <code class="docutils literal notranslate"><span class="pre">pokemon_test.csv</span></code> file, <code class="docutils literal notranslate"><span class="pre">count_types(data)</span></code> should return <code class="docutils literal notranslate"><span class="pre">{'fire':</span> <span class="pre">2,</span> <span class="pre">'water':</span> <span class="pre">2}</span></code>.</p>
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> in <code class="docutils literal notranslate"><span class="pre">hw3_pandas.py</span></code> the same function using Pandas. Rather than take a list of dictionaries, this takes a Pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> in <code class="docutils literal notranslate"><span class="pre">hw3_test.py</span></code> one or more test functions that call <code class="docutils literal notranslate"><span class="pre">max_level</span></code> with some CSV files and compares the output of the program with the expected value using <code class="docutils literal notranslate"><span class="pre">assert_equals</span></code>. In addition to the <code class="docutils literal notranslate"><span class="pre">pokemon_test.csv</span></code> file, add two additional test cases by creating your own CSV files.</p>
+<div class="hint admonition">
+<p class="admonition-title">Series to dict</p>
+<p>To convert a Pandas Series to a dictionary, use the built-in <code class="docutils literal notranslate"><span class="pre">dict</span></code> function. The dictionary keys are determined by the series index. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># data is a DataFrame storing following info:</span>
+<span class="c1"># name,age,species</span>
+<span class="c1"># Fido,4,dog</span>
+<span class="c1"># Meowrty,6,cat</span>
+<span class="c1"># Chester,1,dog</span>
+<span class="c1"># Phil,1,axolotl</span>
+<span class="n">names</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>  <span class="c1"># Series</span>
+<span class="nb">dict</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>  <span class="c1"># {0: &#39;Fido&#39;, 1: &#39;Meowrty&#39;, 2: &#39;Chester&#39;, 3: &#39;Phil&#39;}</span>
+<span class="n">row</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># Series</span>
+<span class="nb">dict</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>  <span class="c1"># {&#39;name&#39;: &#39;Meowrty&#39;, &#39;age&#39;: 6, &#39;species&#39;: &#39;cat&#39;}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<input id="sd-tab-item-9" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-9">
+mean_attack_per_type</label><div class="sd-tab-content docutils">
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> in <code class="docutils literal notranslate"><span class="pre">hw3_manual.py</span></code> a function <code class="docutils literal notranslate"><span class="pre">mean_attack_per_type</span></code> that takes a parsed pokemon dataset and returns a dictionary representing for each pokemon <code class="docutils literal notranslate"><span class="pre">type</span></code> the average <code class="docutils literal notranslate"><span class="pre">atk</span></code> of pokemon of that <code class="docutils literal notranslate"><span class="pre">type</span></code>. The order of the keys in the returned dictionary does not matter.</p>
+<p>For the <code class="docutils literal notranslate"><span class="pre">pokemon_test.csv</span></code> file, <code class="docutils literal notranslate"><span class="pre">mean_attack_per_type(data)</span></code> should return <code class="docutils literal notranslate"><span class="pre">{'fire':</span> <span class="pre">47.5,</span> <span class="pre">'water':</span> <span class="pre">140.5}</span></code>.</p>
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> in <code class="docutils literal notranslate"><span class="pre">hw3_pandas.py</span></code> the same function using Pandas. Rather than take a list of dictionaries, this takes a Pandas <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p>
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> in <code class="docutils literal notranslate"><span class="pre">hw3_test.py</span></code> one or more test functions that call <code class="docutils literal notranslate"><span class="pre">max_level</span></code> with some CSV files and compares the output of the program with the expected value using <code class="docutils literal notranslate"><span class="pre">assert_equals</span></code>. In addition to the <code class="docutils literal notranslate"><span class="pre">pokemon_test.csv</span></code> file, add two additional test cases by creating your own CSV files.</p>
+</div>
+</div>
+</section>
+<section id="code-quality">
+<h2>Code Quality<a class="headerlink" href="#code-quality" title="Permalink to this heading">#</a></h2>
+<p>Assessment submissions should pass these checks: <code class="docutils literal notranslate"><span class="pre">flake8</span></code>, and <a href="https://courses.cs.washington.edu/courses/cse163/22sp/resources/code_quality/" target="_blank">code quality guidelines</a>. The code quality guidelines are very thorough. For this assessment, the most relevant rules can be found in these sections:</p>
+<ul class="simple">
+<li><p><a href="https://courses.cs.washington.edu/courses/cse163/22sp/resources/code_quality/#naming-conventions" target="_blank">Naming</a></p></li>
+<li><p><a href="https://courses.cs.washington.edu/courses/cse163/22sp/resources/code_quality/#documentation" target="_blank">Documentation</a></p></li>
+<li><p><a href="https://courses.cs.washington.edu/courses/cse163/22sp/resources/code_quality/#efficiency-and-redundancy" target="_blank">Efficiency and Redundancy</a></p>
+<ul>
+<li><p>Boolean Zen</p></li>
+<li><p>Loop Zen</p></li>
+<li><p>Factoring</p></li>
+<li><p>Unnecessary Cases</p></li>
+<li><p><strong>Avoid Looping with Pandas</strong></p></li>
+</ul>
+</li>
+</ul>
+<div class="important admonition">
+<p class="admonition-title">Reminder</p>
+<p>Make sure to provide a descriptive comments in doc-string format.</p>
+</div>
+</section>
+<section id="rubric">
+<h2>Rubric<a class="headerlink" href="#rubric" title="Permalink to this heading">#</a></h2>
+<p>Rubric information can be found in the instruction in the Replit project.</p>
+</section>
+<section id="challenge-question">
+<h2>Challenge Question<a class="headerlink" href="#challenge-question" title="Permalink to this heading">#</a></h2>
+<p><strong>OPTIONAL</strong>: This challenge method is not graded and is here for those students who already know Python and want to flex some of their intellectual muscle.<br />
+<strong>NOTE</strong>: If you implement this method, you’ll need to document all methods fully with doc-strings so that all the grading scripts pass. You don’t want to have your grade drop!  Be sure to test it, too!</p>
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a class named <code class="docutils literal notranslate"><span class="pre">xx</span></code> inside the file <code class="docutils literal notranslate"><span class="pre">hw3_manual.py</span></code>. It will implement
+several methods to support the primary functionality.</p>
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a method named <code class="docutils literal notranslate"><span class="pre">compute</span></code> that will take a DataFrame as an argument. It will computer three statistics about the data frame (described below). The method will return the appropriate “thing” that allows the method to be called in two different ways. (See code sample below)</p>
+<ul class="simple">
+<li><p>stat1:</p></li>
+<li><p>stat2:</p></li>
+<li><p>stat3:</p></li>
+</ul>
+<p>📝 <strong>TIP</strong>: To enable the return value to be unpacked (as shown in the example below), implement the correct special methods using the underscore syntax. For example: <code class="docutils literal notranslate"><span class="pre">def</span> <span class="pre">__init__()</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># get our dataframe of data</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data.csv&#39;</span><span class="p">)</span>
+<span class="c1"># create an instance of our class</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">xx</span><span class="p">()</span>
+<span class="c1"># unpack the results into three separate statistics</span>
+<span class="n">stat1</span><span class="p">,</span> <span class="n">stat2</span><span class="p">,</span> <span class="n">stat3</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;s1: </span><span class="si">{</span><span class="n">stat1</span><span class="si">}</span><span class="s1"> s2: </span><span class="si">{</span><span class="n">stat2</span><span class="si">}</span><span class="s1"> s3: </span><span class="si">{</span><span class="n">stat3</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="c1"># alternatively, use the return object</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;s1: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">get_stat1</span><span class="p">()</span><span class="si">}</span><span class="s1"> s2: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">get_stat2</span><span class="p">()</span><span class="si">}</span><span class="s1"> s3: </span><span class="si">{</span><span class="n">result</span><span class="o">.</span><span class="n">get_stat3</span><span class="p">()</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="hint admonition">
+<p class="admonition-title">Tips</p>
+<ul class="simple">
+<li><p>Follow privacy rules by using Python’s naming conventions for private instance fields</p></li>
+<li><p>Something else..</p></li>
+</ul>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -522,7 +900,7 @@ Rubric information.</p>
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Homework Assignment #2</p>
+        <p class="prev-next-title"><i class="fas fa-laptop fa-fw"></i> HW2 - Primer</p>
       </div>
     </a>
     <a class="right-next"
@@ -543,6 +921,31 @@ Rubric information.</p>
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#files">Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context">Context</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#without-pandas">Without Pandas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#with-pandas">With Pandas</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#miscellaneous-tips">Miscellaneous Tips</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#required-methods">Required Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-quality">Code Quality</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rubric">Rubric</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-question">Challenge Question</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
