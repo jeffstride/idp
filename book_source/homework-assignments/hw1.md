@@ -1,4 +1,4 @@
-# <i class="fas fa-laptop fa-fw"></i> HW1
+# <i class="fas fa-laptop fa-fw"></i> HW1 - Startup
 
 
 Welcome to your first take-home assessment! In every assessment, we will define a set of problems we would like you to solve. Even if the assessment is solving some larger problem, we usually break it up into small sub-problems for you to help manage the work. 
@@ -87,7 +87,7 @@ Also found in the tabs is a challenge question which is optional and not graded.
 
 ````{tab-set}
 ```{tab-item} funky_sum
-**Task:** Write a function `funky_sum` that does a special sum to combine two numbers. An initial (but incomplete) implementation has already been done for you! We will revisit funky_sum later in the spec to fix a bug in this initial code.
+<i class="fas fa-pen-square fa-fw"></i> **Write** a function `funky_sum` that does a special sum to combine two numbers. An initial (but incomplete) implementation has already been done for you! We will revisit funky_sum later in the spec to fix a bug in this initial code.
 
 The function should take three parameters, the first two are numbers, `a` and `b`, to combine and a third, `mix`, is a number to determine the ratio to use from each. `mix` acts as a "slider" to control how much to use of each number. If mix is 0 or less, the result should be the same as `a`. On the other hand, if `mix` is 1 or more, the result should be the same as `b`. For any value of `mix` between 0 and 1, it should add `1-mix` times `a` and `mix` times `b`. The technical name for this operation is "linear interpolation".  
 
@@ -102,14 +102,14 @@ Here are some examples that you should make sure appear in `hw1_test.py`:
 ```
 
 ```{tab-item} total
-**Task:** Write a function total that takes a number `n` and returns the sum of the integers from 0 (inclusive) to n (inclusive). If `n` is negative, the function should return the value `None` instead.  
+<i class="fas fa-pen-square fa-fw"></i> **Write** a function total that takes a number `n` and returns the sum of the integers from 0 (inclusive) to n (inclusive). If `n` is negative, the function should return the value `None` instead.  
 
 This method already been written for you, so you will not need to modify any code for this function. **But**, you will have to add **doc-string documentation** and add **more tests** to assure all special cases are covered.
 
 ```
 
 ```{tab-item} swip_swap
-**Task:** Write a function `swip_swap` that takes a string source and characters `c1` and `c2` and returns a copy of source with all occurrences of c1 and c2 swapped. You may assume that the c1 and c2 are single characters. Use str concatenation with the + operator to solve this problem.
+<i class="fas fa-pen-square fa-fw"></i> **Write** a function `swip_swap` that takes a string source and characters `c1` and `c2` and returns a copy of source with all occurrences of c1 and c2 swapped. You may assume that the c1 and c2 are single characters. Use str concatenation with the + operator to solve this problem.
 
 Here are some examples that you should make sure appear in `hw1_test.py`:
 | call | returns | 
@@ -129,7 +129,7 @@ In order to demonstrate the learning objectives for this problem, you should **N
 ````
 
 ## Testing
-**Task:** You will have three functions in `hw1_test.py` that test the methods in `hw1.py`. Each testing method should include the tests provided in this document along with **at least 2 more** tests that you make up. All of these methods make calls to `assert_equals`. 
+<i class="fas fa-pen-square fa-fw"></i> **Test** the three functions in with test method in `hw1_test.py`. The original code in `hw1.py` remains unchanged. Each testing method should include the tests provided in this document along with **at least 2 more** tests that you make up. All of these methods make calls to `assert_equals`. 
 
 Make sure each test function is actually called in `main` and that you use the _main-pattern_ as shown here!
 
@@ -145,7 +145,7 @@ if __name__ == '__main__':
 ```
 
 ## Documentation
-**Task:** Document the code in `hw1.py` and `hw1_test.py`.
+<i class="fas fa-pen-square fa-fw"></i> **Document** the code in `hw1.py` and `hw1_test.py`.
 
 There is no documentation in the provided code! We recommend writing your documentation FIRST (in Step 1). Writing documentation for your function is a great way to start to get you thinking about what your method needs to do. You should go through and add the following documentation:
 

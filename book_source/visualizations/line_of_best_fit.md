@@ -43,7 +43,7 @@ Here is a table that shows some of the most frequent API we used in this section
 |[mean_squared_error](https://scikit-learn.org/stable/modules/generated/sklearn.metrics.mean_squared_error.html)|Calculates the Mean Squared Error (MSE) from two sets of y_data points.|  
 
 ```{admonition} code imports
-:class: dropdown note
+:class: dropdown seealso
 
 ```python
 import random
@@ -159,7 +159,19 @@ plt.text(42, 20, f'm = {slope:.2f}\nb = {intercept:.2f}\nR2 = {r_value**2:.2f}\n
          ha='left', va='top', fontsize=14)
 ```
 ```{tab-item} Comments
-Comments go here.
+The nice thing about using `linregress` is that it will provide multiple pieces of information
+for us in one simple call. It gives use the slope and intercept values, along with the `r_value` that
+we can square to get the Coefficient of Determination.  
+
+Interestingly, `linregress` returns an object, not a list of values. However, because the linrgress object
+returns implements the special method `__iter__`, the object can be unpacked into a set of values. This gives
+some flexibility in how the caller wants to receive the values. The caller can keep the object and dereference
+the object, or the specific values can be immediately unpacked upon receipt. Cool!  
+
+Example call: 
+```python   
+    line_info = linregress(x_data, y_data)
+    print(f'R2={line_info.r_value**2:.2f}')  
 ```
 ````
 
@@ -247,12 +259,67 @@ def best_parabola_fit():
 
 ```
 ```{tab-item} Comments
-Comments go here.
+In this code we use `sns.regplot` with `order=2` to draw a portion of a parabola (in red) that best 
+fits our set of points (in blue). The order, value 2, tell Seaborn the highest exponent in the polynomial. 
+A value of 2 means a parabola. The default value of 1 is a line. We also set `ci=None` to avoid drawing
+any shaded area around the line.  
+
+Seaborn will draw the line but it doesn't give us the equation of the line. It also fails to give us
+any value that tells us how well the line fits our set of points. To identify the coefficients for
+both the line and polynomial, we use `np.polyfit` and pass in the original data points with the order
+of polynomial to use.  
+
+Mean Squared Error (MSE) is defined to be the sum of all squared residuals (different between the line and
+the data point). The implementation is quite simple:  
+`   mse = sum([ (y1 - y2)**2 for y1, y2 in zip(y_points, y_line)])`  
+
+In this sample code, we use "vector" math to calculate the y values for the line (or predicted curve).  
+`   y_predicted_1 = coeffs_1[1] + coeffs_1[0] * np.array(x_data)`  
+
+`Numpy` arrays are "vectors" and allow us to multiply them by a "scalar" (a constant, non-array). The above code will result
+in a "vector" (numpy array of values) without having to do a for-loop or comprehension. You cannot do
+this with a regular list; it requires a numpy array. Convention often has us representing a vector of
+values with a capital letter which can sometimes be confused with a constant. Here would be another
+conventional way to do vector math.  
+`   X = np.array(list_of_x_values)`
+`   Y = 3 * X + 4`  
+
+Lastly, we make use of an inset to annotate some text to the graph so the reader can see how much
+better the curve is over the line. MSE values are relative and the values depend on the scale of the numbers.
+MSE values are most valuable when compared against another MSE value. In this case we can see how the 
+parabola's MSE value is close to half the value of the line's MSE.  
 ```
 ````
 
 ## Curve Fit
-Here we see how we can find a curve of best fit to a custom, continuous curve: a logarithmically degrading, sinusoidal wave.  
+Here we see how we can find a curve of best fit to a custom, continuous curve: a logarithmically degrading, sinusoidal wave. 
+This is a continuous curve with no x-value that causes a division by zero. This allows us to use the `curve_fit` API. It will
+highly unlikely that you'll ever want to fit a set of points to a curve like this. In the event that you ever encounter
+wave data, you'll more likely want to leverage <a href="https://youtu.be/spUNpyF58BY" target="_blank">Fourier Transforms.</a> The
+reason we use a sinusoidal wave is simply to illustrate how `curve_fit` can be used on any curve.  
+
+To fit a line to a curve:  
+1. Identify an equation that you want to fit. You'll create a method that has the generalized
+equation with coefficients that are unknown. For example, a line is: `y = mx + b` where curve_fit will identify the values
+for `m` and `b`. You may have a polynomial curve such as: `y = a*x**4 + b*x**3 + c*x**2 + d*x + e` and curve_fit will
+find the values for `a` through `e`. If you know want to fix one of the values, you can use a constant to the known
+value. Write a method that takes `x` along with the coefficiencts are arguments. For example:  
+```python
+def my_function(x, a, b, c):
+    return a*x**2 + b*x + c
+```
+2. Select a set of values for the coefficients that represents a valid guess. Assign these coefficients to a
+list, often named, `p0`. You'll provide `p0` as an argument to `curve_fit` to help it get started as well as to
+understand how many coefficients to solve for.  
+3.  You'll call `curve_fit` with the following arguments: methoid pointer, set of points you want to fit, along 
+with the initial guess. For example:
+```python
+# curve_fit returns a tuple. The first item is a list of coefficients. The second
+# is statistical information about the coefficients. In this example we ignore
+# the covariance values, and so we unpack them into the identifer '_' which is a conventional
+# name for a variable that goes ignored and unused.
+coeffs, _ = curve_fit(logarithmic_sinusoidal_wave, x_data, y_data, p0=p0)
+```
 ````{tab-set}
 ```{tab-item} Sinusoidal  
 In our custom curve, we have coefficients for each of the following: amplitude, frequency, rate of logarithmic 
@@ -341,14 +408,47 @@ the amplitidue. It was 0.15 off of the frequency, only 0.01 way from the rate of
     add_inset_text(fig, pos, wave_args, coeffs)
 ```
 ```{tab-item} Comments
-Things to discuss:   
-* sinusoidal curve equation   
-* ax.scatter with 's' argument  
-* *args in generate_points and use of *wave_args  
-* linspace  
-* curve_fit: return values and how it works  
-* P0 values   
-* graph inset  
+The code for the sinusoidal curve equation is provided in the 'See Code' dropdown in the 
+'Sinusoidal' tab. In this method we chose to have all the coefficients be named arguments with
+default values. This allows us to to easily modify our code to hold some values constant and
+allow `curve_fit` to solve for the others. If we had chosen to make `p0` have only two values
+in it, then curve_fit would have solved for amplitude & frequency while holding `r`, `phase`
+and `offset` constant.  
+
+In this plot, we first generated our set of points to which we will fit the sinusoidal curve.
+These points are intended to be 'actual' data points in our hypothetical experiment that will have some noise.
+We generate the points by calling our sinusoidal method will all the coefficients and then add some
+random values intended to be "noise" or imperfections in the data. 
+
+We chose to pass around the many coefficient to `generate_points` and `logarithmic_sinusoidal_wave` by
+using a tuple of values. `wave_args` is a tuple with all the "true" coefficients used in the 
+hypothetical experiement. The use of tuple shortens the code and makes it easier to read, so
+long as you understand what is going on. We unpack the values when we call `generate_points` which
+collects and repacks them into the tuple named 'args'. In turn, it can easily call the sinusoidal method
+with the tuple. Altogether, this allows us to generate points and solve for coefficients using as many or
+as few arguments as we want, using default values for the rest.
+
+Confusing? See [Arguments](../module-additions/module3/printing) for more information.  
+
+When generating our data points, we make use of `linspace` which is a nifty method that allows us
+to quickly set a minimum, maximum, and an arbitrary number of points. It generates values
+evenly spaced in that range.  
+
+`curve_fit` does a lot of work for us, making use of calculus and statistics to find the coefficients
+to the equation we established. Each coefficient represents one dimension, and our equation
+represents values in an n-dimensional space. It then uses a method similar to "Gradient Descent"
+to find values that minimize the Mean Squared Error for our coefficients and the set of actual points.
+
+Confusing? See the video, <a href="https://youtu.be/IHZwWFHWa-w?t=567" target="_blank">Gradient descent, how nerual
+networks learn</a>, by 3Blue1Brown, to get a great visual on Gradient Descent. This video is tailored
+to neural networks, but the idea is the same. Gradient Descent is a mathematical method for optimizing
+in n-dimensional space.  
+
+Note that in `ax.scatter` we provided the x & y data as lists and set some named arguments.
+It can be frustrating that plotting methods often have named arguments with different names. 
+When we call `scatter` on the axis object, we set `s` to change the size of the markers (or dots).   
+
+To add more value to the graph, we create an inset with text on the graph.  
 ```
 ````
 
