@@ -84,12 +84,13 @@ As with previous assessments, you’ll also check your solutions by adding tests
 ```{tab-item} Tip #1
 ```{admonition} Parsing
 :class: hint
-You can see examples of both lf these parsing functions below:  
+Here you can see examples of both parsing functions:  
 * `parse`: To help test functions solved without Pandas, `cse163_utils.py` defines a `parse` function that takes a filename and returns the dataset as a list of dictionaries.   
 * `read_csv`: To help test functions solved with Pandas, call `pd.read_csv` to return the dataset as a `DataFrame`.  
 ```python
 from cse163_utils import parse
 import pandas as pd
+
 df = pd.read_csv('file.csv')
 list_of_dict = parse('file.csv')
 ```
@@ -97,7 +98,7 @@ list_of_dict = parse('file.csv')
 ```{admonition} Test Files
 :class: hint
 * Create your own testing CSV file and submit these files with your other files.  
-* **Do not** use introduce subdirectories (subfolders) for the test files in this assignment. Keep the file structure flat.  
+* **Do not** use or introduce subdirectories (subfolders) for the test files in this assignment. Keep the file structure flat.  
 * When specifying file names, use **relative** paths, such as `pd.read_csv('pokemon_test.csv')`.  
 * **Do not** use the `pokemon_box.csv` file in your own test cases. The file is too large to come up with the correct answer on your own; it’s not valid to assume your code's output is the correct answer and to blindly use that as the expected value.  
 ```
@@ -109,11 +110,12 @@ list_of_dict = parse('file.csv')
 * One test function per problem is fine since both ways of solving the problem should compute the same result. In other words, you may choose to write one method, `test_species_count` that tests both the manual and pandas code.  
 ```
 ```{tab-item} Tip #4
-```{admonition} Globals & Locality
+```{admonition} Constants, Globals & Locality
 :class: hint
 * Do **NOT** use globals in your test file. Instead, use constants or method parameters.   
+* Don't make "heavy weight" constants. (See: <a href="https://courses.cs.washington.edu/courses/cse163/22sp/resources/code_quality/#constant-names" target="_blank">Code Quality - Constants</a> for more details.)  
 * Attempt to keep declarations and values in close proximity to where they are used. This helps the reader understand the code better. This means, define expected values in the method where they are used.  
-* Attempt to reduce redundancy with code instead of copy/paste.  
+* Attempt to reduce redundancy with code instead of copy/paste. But, in test files, some redundancy is allowed so that tests can remain insulated from one another and to improve readability of individual test functions.   
 
 Here is some sample code:  
 ```python
@@ -166,12 +168,18 @@ if __name__ == '__main__':
 
 
 ## Required Methods
-In the file named `hw3.py`, implement six methods: `species_count`, `max_level`, `filter_range`, `mean_attack_for_type`, `count_types`,  and `mean_attack_per_type`. The description for each
-method is found in the tabs below.   
+In the file named `hw3.py`, implement six methods: `species_count`, `max_level`, `filter_range`, `mean_attack_for_type`, `count_types`, 
+and `mean_attack_per_type`. The description for each method is found in the tabs below.   
 
-You are required to **TEST** each method. Each test method should include the example provided herein.  
+For each method described in the tabs you must: 
+* <i class="fas fa-pen-square fa-fw"></i> **Write** in `hw3_manuals.py` the function as described in the tabs.  
+* <i class="fas fa-pen-square fa-fw"></i> **Write** in `hw3_pandas.py` the same function using Pandas. Rather than take a list of dictionaries, the Pandas version will take a `DataFrame` argument.   
+* <i class="fas fa-pen-square fa-fw"></i> **Write** in `hw3_test.py` one or more test functions that call the method with various input. Compare the actual results to the expected results using `assert_equals`. Do **not** do all your testing with the `pokemon_test.csv` file; be sure to add 2 (**two**) additional test cases by creating your own CSV files. (See Miscellaneous Tip #4 above.)
 
+```{admonition} Challenge
+:class: note
 Way down below is a challenge question which is optional and not graded. See the <a href="#challenge-question">Challenge Question</a> section down below for details.
+```
 
 ````{tab-set}
 ```{tab-item} species_count
@@ -179,11 +187,7 @@ Way down below is a challenge question which is optional and not graded. See the
 
 For the `pokemon_test.csv` file, `species_count(data)` should return `3`.
 
-<i class="fas fa-pen-square fa-fw"></i> **Write** in `hw3_pandas.py` the same function using Pandas. Rather than take a list of dictionaries, this takes a Pandas `DataFrame`.
-
-<i class="fas fa-pen-square fa-fw"></i> **Write** in `hw3_test.py` one or more test functions that call `species_count` with some CSV files and compares the output of the program with the expected value using `assert_equals`. In addition to the `pokemon_test.csv` file, add two additional test cases by creating your own CSV files.
-
-```{admonition}  Do not use `id`
+```{admonition}  Do not use id
 :class: important
 Do not use the `id` attribute to solve this this problem. Instead, you use the `name` attribute.  
 I realize that `id` should be the right approach, but UW has other ideas here. Don't fight it. Just use `name`.
@@ -194,20 +198,12 @@ I realize that `id` should be the right approach, but UW has other ideas here. D
 
 For the `pokemon_test.csv` file, `max_level(data)` should return the 2-element tuple, `('Lapras', 72)`.
 
-<i class="fas fa-pen-square fa-fw"></i> **Write** in `hw3_pandas.py` the same function using Pandas. Rather than take a list of dictionaries, this takes a Pandas `DataFrame`.
-
-<i class="fas fa-pen-square fa-fw"></i> **Write** in `hw3_test.py` one or more test functions that call `max_level` with some CSV files and compares the output of the program with the expected value using `assert_equals`. In addition to the `pokemon_test.csv` file, add two additional test cases by creating your own CSV files.
-
 ```
 
 ```{tab-item} filter_range
 <i class="fas fa-pen-square fa-fw"></i> **Write** in `hw3_manual.py` a function `filter_range` that takes a parsed pokemon dataset and  two numbers: a lower bound (inclusive) and upper bound (exclusive). The function returns a list of the names of pokemon whose `level` fall within the bounds in the same order that they appear in the dataset.
 
 For the `pokemon_test.csv` file, `filter_range(data, 35, 72)` should return `['Arcanine', 'Arcanine', 'Starmie']`. Note that Lapras is not included because the upper bound is exclusive of Lapras, which is exactly level 72.
-
-<i class="fas fa-pen-square fa-fw"></i> **Write** in `hw3_pandas.py` the same function using Pandas. Rather than take a list of dictionaries, this takes a Pandas `DataFrame`.
-
-<i class="fas fa-pen-square fa-fw"></i> **Write** in `hw3_test.py` one or more test functions that call `max_level` with some CSV files and compares the output of the program with the expected value using `assert_equals`. In addition to the `pokemon_test.csv` file, add two additional test cases by creating your own CSV files.
 
 ```{admonition} Series to list
 :class: hint
@@ -227,20 +223,12 @@ list(row)  # ['Meowrty', 6, 'cat']
 ```{tab-item} mean_attack_for_type
 <i class="fas fa-pen-square fa-fw"></i> **Write** in `hw3_manual.py` a function `mean_attack_for_type` that takes a parsed pokemon dataset and a string representing the pokemon `type`. The function returns the average `atk` for all the pokemon in the dataset with the given `type`. If there are no pokemon of the given `type`, return `None`.
 
-For the pokemon_test.csv file, `mean_attack_for_type(data, 'fire')` should return `47.5`.
-
-<i class="fas fa-pen-square fa-fw"></i> **Write** in `hw3_pandas.py` the same function using Pandas. Rather than take a list of dictionaries, this takes a Pandas `DataFrame`.
-
-<i class="fas fa-pen-square fa-fw"></i> **Write** in `hw3_test.py` one or more test functions that call `max_level` with some CSV files and compares the output of the program with the expected value using `assert_equals`. In addition to the `pokemon_test.csv` file, add two additional test cases by creating your own CSV files.
+For the `pokemon_test.csv` file, `mean_attack_for_type(data, 'fire')` should return `47.5`.
 ```
 ```{tab-item} count_types
 <i class="fas fa-pen-square fa-fw"></i> **Write** in `hw3_manual.py` a function `count_types` that takes a parsed pokemon dataset and returns a dictionary representing for each pokemon `type` the number of pokemon of that `type`. The order of the keys in the returned dictionary does not matter.
 
 For the `pokemon_test.csv` file, `count_types(data)` should return `{'fire': 2, 'water': 2}`.
-
-<i class="fas fa-pen-square fa-fw"></i> **Write** in `hw3_pandas.py` the same function using Pandas. Rather than take a list of dictionaries, this takes a Pandas `DataFrame`.
-
-<i class="fas fa-pen-square fa-fw"></i> **Write** in `hw3_test.py` one or more test functions that call `max_level` with some CSV files and compares the output of the program with the expected value using `assert_equals`. In addition to the `pokemon_test.csv` file, add two additional test cases by creating your own CSV files.
 
 ```{admonition} Series to dict
 :class: hint
@@ -262,14 +250,11 @@ dict(row)  # {'name': 'Meowrty', 'age': 6, 'species': 'cat'}
 
 For the `pokemon_test.csv` file, `mean_attack_per_type(data)` should return `{'fire': 47.5, 'water': 140.5}`.
 
-<i class="fas fa-pen-square fa-fw"></i> **Write** in `hw3_pandas.py` the same function using Pandas. Rather than take a list of dictionaries, this takes a Pandas `DataFrame`.
-
-<i class="fas fa-pen-square fa-fw"></i> **Write** in `hw3_test.py` one or more test functions that call `max_level` with some CSV files and compares the output of the program with the expected value using `assert_equals`. In addition to the `pokemon_test.csv` file, add two additional test cases by creating your own CSV files.
 ```
 ````
 
 ## Code Quality
-Assessment submissions should pass these checks: `flake8`, and <a href="https://courses.cs.washington.edu/courses/cse163/22sp/resources/code_quality/" target="_blank">code quality guidelines</a>. The code quality guidelines are very thorough. For this assessment, the most relevant rules can be found in these sections:  
+Assessment submissions should pass these checks: `flake8`, and <a href="https://courses.cs.washington.edu/courses/cse163/22sp/resources/code_quality/" target="_blank">code quality guidelines</a>. The code quality guidelines are very thorough. For this assessment, the most relevant rules can be found in these sections, with the **bolded** one being new from the last homework:  
 
 * <a href="https://courses.cs.washington.edu/courses/cse163/22sp/resources/code_quality/#naming-conventions" target="_blank">Naming</a>  
 * <a href="https://courses.cs.washington.edu/courses/cse163/22sp/resources/code_quality/#documentation" target="_blank">Documentation</a>   
@@ -289,36 +274,59 @@ Rubric information can be found in the instruction in the Replit project.
 
 ## Challenge Question
 
-**OPTIONAL**: This challenge method is not graded and is here for those students who already know Python and want to flex some of their intellectual muscle.  
-**NOTE**: If you implement this method, you'll need to document all methods fully with doc-strings so that all the grading scripts pass. You don't want to have your grade drop!  Be sure to test it, too!  
+**OPTIONAL**: This challenge question is not graded and is here for those students who already know Python and want to flex some of their intellectual muscle.  
+**NOTE**: If you implement this challenge question, you'll need to document all methods fully with doc-strings so that all the grading scripts pass. You don't want to have your grade drop!  Be sure to test it, too!  
+* * * 
+<i class="fas fa-pen-square fa-fw"></i> **Write** a class named `MyStats` inside the file `hw3_manual.py`. It will implement
+several methods to support the required functionality. The `class` will have a static method named `compute` that will calculate three
+statistics using Python libraries; do not implement the calculations yourself.  
 
-<i class="fas fa-pen-square fa-fw"></i> **Write** a class named `xx` inside the file `hw3_manual.py`. It will implement
-several methods to support the primary functionality. 
+Here are the three relatively esoteric statistics that the `compute` method provides:  
+1) **Kurtosis**: Kurtosis is a measure of the tailedness or shape of a probability distribution. It quantifies whether the distribution has heavy tails or is more peaked compared to a normal distribution. You can calculate the kurtosis using the `scipy.stats.kurtosis` function.   
+2) **Skewness**: Skewness measures the asymmetry of a probability distribution. It indicates whether the distribution has a longer tail on one side compared to the other. Positive skewness means the tail is on the right side, while negative skewness means the tail is on the left side. You can calculate the skewness of a distribution using the `scipy.stats.skew` method.  
+3) **95th Percentile**: Numpy provides a convenient way to calculate percentiles. A percentile represents the values below which a given percentage of the data falls. For example, the 50th percentile is the median. Numpy's percentile function allows you to calculate percentiles easily for a given list of numbers. You will calculate the 95th percentile.
 
-<i class="fas fa-pen-square fa-fw"></i> **Write** a method named `compute` that will take a DataFrame as an argument. It will computer three statistics about the data frame (described below). The method will return the appropriate "thing" that allows the method to be called in two different ways. (See code sample below)  
-
-* stat1:  
-* stat2:  
-* stat3:  
-
-📝 **TIP**: To enable the return value to be unpacked (as shown in the example below), implement the correct special methods using the underscore syntax. For example: `def __init__()`.
+Here is sample code that shows how client code can use the class:  
 ```python
-# get our dataframe of data
-df = pd.read_csv('data.csv')
-# create an instance of our class
-x = xx()
-# unpack the results into three separate statistics
-stat1, stat2, stat3 = x.compute(df)
-print(f's1: {stat1} s2: {stat2} s3: {stat3}')
-# alternatively, use the return object
-result = x.compute(df)
-print(f's1: {result.get_stat1()} s2: {result.get_stat2()} s3: {result.get_stat3()}')
+'''
+This file is named: my_client.py
+'''
+# import the MyStats class from the file that implements it
+from hw3_manual import MyStats
+
+# Sample list on which to calculate three stats
+l = [1, 2, 3, 4, 5, 6, 7, 10, 15]
+
+# unpack the three statistics directly from the method call
+a, b, c = MyStats.compute(l)
+
+# store the results object (which is of type MyStats) from the method call
+obj = MyStats.compute(l)
+
+# print the object directly
+print(obj) # prints: MyStats(kertosis=0.10, skew=0.98, 95_percentile=13.00)
+
+# print the three unpacked statistics (raw & unrounded)
+print(a, b, c)
+
+# iterate the object and print each stat rounded to 3 decimal places
+for s in obj:
+    print(f'Stat = {s:.3f}')
 ```
-
-
+The expected output of the above code is:  
+```
+MyStats(kertosis=0.10, skew=0.98, 95_percentile=13.00)
+0.10378287249864737 0.9838565052198887 12.999999999999998
+Stat = 0.104
+Stat = 0.984
+Stat = 13.000
+```
+Several higher Object Oreinted pieces of functionality are are present. You need to figure them out.  
 ```{admonition} Tips
 :class: hint
-* Follow privacy rules by using Python's naming conventions for private instance fields 
-* Something else.. 
+* Mr. Stride's implementation was a total of 20 lines of code (including imports and empty lines, but excluding comments).   
+* Use an <a href="https://docs.python.org/3/library/functions.html#staticmethod" target="_blank">annotation</a> to designate `compute` to be a static method.  
+* Use <a href="https://docs.python.org/3/reference/datamodel.html#special-method-names" target="_blank">special methods</a> to allow the object to be _iterable_ and _printable_.  
+* Consider leveraging a list's inherent ability to be _iterable_ to simpify the object's required implementation.  
+* Follow privacy rules by using Python's naming conventions (using underscores) for private instance field names.   
 ```
-
