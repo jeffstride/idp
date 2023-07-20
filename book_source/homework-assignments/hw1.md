@@ -6,7 +6,6 @@ Welcome to your first take-home assessment! In every assessment, we will define 
 ## Overview
 ```{admonition} Note
 :class: margin
-
 You'll want to take shortcuts all year. You'll be better off if you follow this pattern.
 ```
 This course will stress a development process called **Test Driven Development**. This means that you write your tests first!
@@ -83,7 +82,7 @@ See [Building on Replit](/module-additions/module1/building-in-replit) for more 
 ## Implementation
 In the file named `hw1.py`, implement three methods: `funky_sum`, `total`, `swip_swap`. The description for each
 method is found in the tabs below.
-Also found in the tabs is a challenge question which is optional and not graded.
+> Note that there is a challenge question which is optional and not graded. See the <a href="#challenge-question">Challenge Question</a> section down below for details.
 
 ````{tab-set}
 ```{tab-item} funky_sum
@@ -122,10 +121,6 @@ Here are some examples that you should make sure appear in `hw1_test.py`:
 In order to demonstrate the learning objectives for this problem, you should **NOT** use the string `replace` function or use any data structures like `list` to solve this problem.
 ```
 
-```{tab-item} challenge
-**OPTIONAL**: This programming method is not graded and is here for those students who already know Python and want to flex some of their intellectual muscle.  
-**NOTE**: If you implement this method, you'll need to document all methods fully with doc-strings so that all the grading scripts pass. You don't want to have your grade drop!  
-**Task:** Write a function named `simple_decode` that will decode a message using a simple encryption. See the <a href="#challenge-question">Challenge Question</a> section down below for details.
 ````
 
 ## Testing
@@ -177,10 +172,14 @@ def test_method_x():
 ``` 
 
 ## Challenge Question
+
+**OPTIONAL**: This programming method is not graded and is here for those students who already know Python and want to flex some of their intellectual muscle.  
+> **NOTE**: If you implement this method, you'll need to document all methods fully with doc-strings so that all the grading scripts pass. You don't want to have your grade drop!  
+
 ```{admonition} important
 This Challenge Question is OPTIONAL!! It is NOT graded.
 ```
-**Task**: Implement a method named `simple_decode` that is a simple decoding of a message that has no more than 16 unique characters in it. This method takes two arguments:  
+**Task**: <i class="fas fa-pen-square fa-fw"></i> Implement a method named `simple_decode` that is a simple decoding of a message that has no more than 16 unique characters in it. This method takes two arguments:  
 * `key` - a list of letters (no more than 16 long)
 * `encoded` - a list of bytes where each nibble (4-bits) of each byte is the index of letter as found in key  
 
@@ -209,6 +208,7 @@ In more detail:
         0011 is binary for 3 and 'o' is at index 3.  
     The very last nibble is ignored because the last integer value is 1  
     which means that the message is odd-lengthed.  
+    If the last integer value was 0, then we would include the letter at index 0.
 ```
 
 Rubric information can be found in the instruction in the Replit project.  

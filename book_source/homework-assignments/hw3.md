@@ -1,18 +1,18 @@
 # <i class="fas fa-laptop fa-fw"></i> HW3 - Pokémon
 
-
-
 ## Overview
 **Learning objective:** Read, process, and group CSV data to compute descriptive statistics with and without Pandas.  
 
 ## Files
-* `hw3_manual.py` is the file for you to put your implementations for solving each problem without Pandas.  
-* `hw3_pandas.py` is the file for you to put your implementations for solving each problem with Pandas.  
+**Note:** This list of files has some _non-runnable_ files which do not use the _main-method_ pattern. The methods inside them are run; we do not run the file directly using the Run button.  
+   
+* `hw3_manual.py` is the _non-runnable_ file for you to put your implementations for solving each problem without Pandas.  
+* `hw3_pandas.py` is the _non-runnable_ file for you to put your implementations for solving each problem with Pandas.  
 * `hw3_test.py` is the file for you to put your own tests. You need to change `.replit` to run your tests. Be sure to use the _main-pattern_ for this file. Make sure it runs successfully!  
 * `cse163_utils.py` is a helper file that has code to help you test your code.  
 * `pokemon_box.csv` is a large CSV file that stores information about pokemon.  
 * `pokemon_test.csv` is a very small CSV file that stores information about pokemon used for the example cases.  
-* `hw3.py` is the file to put your implementations for each problem. `hw3.py` is not a runnable program, so we don’t use the _main-method_ pattern.  
+* `run_hw3.py` is the file that runs your implementations for each problem.  
 
 ## Context
 In the <a href="https://en.wikipedia.org/wiki/Pok%C3%A9mon" target="_blank">Pokémon</a> video game series, the player catches pokemon, fictional creatures trained to battle each other as part of a sport franchise. Pokémon exerted significant cultural influence on people who grew up in the late 1990s and early 2000s not only in its country of origin, Japan, but also around the world. More recently,

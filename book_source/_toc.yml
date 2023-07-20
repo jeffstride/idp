@@ -6,6 +6,10 @@ chapters:
       - file: homework-assignments/hw1
       - file: homework-assignments/hw2
       - file: homework-assignments/hw3
+      - file: homework-assignments/hw4
+      - file: homework-assignments/hw5
+      - file: homework-assignments/hw6
+      - file: homework-assignments/hw7
   - file: module-additions/index
     sections:
       - file: module-additions/module1/index
@@ -14,11 +18,12 @@ chapters:
           - file: module-additions/module1/replit-tips
       - file: module-additions/module2/index
         sections:
-          - file: module-additions/module2/stub1
+          - file: module-additions/module2/collections
           - file: module-additions/module2/stub2
       - file: module-additions/module3/index
         sections:
-          - file: module-additions/module3/printing
+          - file: module-additions/module3/arguments
+          - file: module-additions/module3/formatted-string
   - file: final-project/index
     sections:
       - file: final-project/handouts/index
