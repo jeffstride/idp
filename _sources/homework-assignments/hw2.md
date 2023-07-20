@@ -198,9 +198,9 @@ Rubric information can be found in the instruction in the Replit project.
 
 ## Challenge Question
 
-**OPTIONAL**: This challenge method is not graded and is here for those students who already know Python and want to flex some of their intellectual muscle.  
-**NOTE**: If you implement this method, you'll need to document all methods fully with doc-strings so that all the grading scripts pass. You don't want to have your grade drop!  Be sure to test it, too!  
-
+**OPTIONAL**: This challenge question is not graded and is here for those students who already know Python and want to flex some of their intellectual muscle.  
+**NOTE**: If you implement this challenge, you'll need to document all methods fully with doc-strings so that all the grading scripts pass. You don't want to have your grade drop!  Be sure to test it, too!  
+* * * 
 <i class="fas fa-pen-square fa-fw"></i> **Write** a function named `weighted_average` that will take two `numpy` arrays.
 The first argument, `values` will be a two-dimensional array (of any number of rows & cols) that contains real values. The second argument, 
 `weights`, will be a one-dimensional array with the same number of elements as there are cols in the argument `values`. 

@@ -1,0 +1,986 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>HW6 - Spell Checker &#8212; IDP at NCHS</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "jeffstride/idp");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "preferred-color-scheme");
+    script.setAttribute("label", "💬 Comments");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-DW6SHVPBYV"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-DW6SHVPBYV');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'homework-assignments/hw6';</script>
+    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="HW7 - Mapping" href="hw7.html" />
+    <link rel="prev" title="HW5 - Search Engine" href="hw5.html" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DW6SHVPBYV"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-DW6SHVPBYV');
+    </script>
+
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    <i class="fas fa-hand-sparkles fa-fw"></i> Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html"><i class="fas fa-book fa-fw"></i> Homework Assignments</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="hw1.html"><i class="fas fa-laptop fa-fw"></i> HW1 - Startup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw2.html"><i class="fas fa-laptop fa-fw"></i> HW2 - Primer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw3.html"><i class="fas fa-laptop fa-fw"></i> HW3 - Pokémon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw4.html"><i class="fas fa-laptop fa-fw"></i> HW4 - Education</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw5.html"><i class="fas fa-laptop fa-fw"></i> HW5 - Search Engine</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#"><i class="fas fa-laptop fa-fw"></i> HW6 - Spell Checker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw7.html"><i class="fas fa-laptop fa-fw"></i> HW7 - Mapping</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../module-additions/index.html"><i class="fas fa-layer-group fa-fw"></i> Module Additions</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../module-additions/module1/index.html"><i class="fas fa-book fa-fw"></i> Module 1 : Introduction</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../module-additions/module1/building-in-replit.html">Building in Replit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../module-additions/module1/replit-tips.html">Replit Tips</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../module-additions/module2/index.html"><i class="fas fa-book fa-fw"></i> Module 2</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../module-additions/module2/collections.html">Collections</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../module-additions/module2/stub2.html">Stub 2</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../module-additions/module3/index.html"><i class="fas fa-book fa-fw"></i> Module 3</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../module-additions/module3/arguments.html">Arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../module-additions/module3/formatted-string.html">Formatted Strings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../final-project/index.html"><i class="fas fa-layer-group fa-fw"></i> Final Project</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../final-project/handouts/index.html"><i class="fas fa-book fa-fw"></i> Final Project - Handouts</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../final-project/handouts/proposal.html">Proposal Document</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../final-project/handouts/code.html">Final Project Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../final-project/handouts/report.html">Final Report</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../final-project/handouts/presentation.html">Final Presentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../final-project/tips/index.html"><i class="fas fa-book fa-fw"></i> Final Project - Tips</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../final-project/tips/proposal.html">Tips for Proposal Document</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../final-project/tips/code.html">Tips for Final Project Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../final-project/tips/report.html">Tips for Final Report</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../final-project/tips/presentation.html">Tips for Final Presentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../visualizations/index.html"><i class="fas fa-book fa-fw"></i> Visualizations</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../visualizations/barchart.html">Bar Charts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualizations/geospatial.html">Geospatial Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualizations/lineplots.html">Line Plots &amp; Scatter Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualizations/line_of_best_fit.html">Curve of Best Fit</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../visualizations/case_study_dist.html">Case Study on Distance</a></li>
+
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jeffstride/idp" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jeffstride/idp/edit/main/book_source/homework-assignments/hw6.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jeffstride/idp/issues/new?title=Issue%20on%20page%20%2Fhomework-assignments/hw6.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/homework-assignments/hw6.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1><i class="fas fa-laptop fa-fw"></i> HW6 - Spell Checker</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rubric-submission">Rubric &amp; Submission</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instructions">Instructions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spell-checking-an-essay">Spell Checking an Essay</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-for-passing-test">Tips for Passing Test</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generators">Generators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spelling-suggestion">Spelling Suggestion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mis-misspelled">Mis-misspelled</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1">Part 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2">Part 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3">Part 3</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggest-correction">suggest_correction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#composing">Composing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#levenshtein-distance">Levenshtein Distance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-the-difference">Experience the Difference</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="i-class-fas-fa-laptop-fa-fw-i-hw6-spell-checker">
+<h1><i class="fas fa-laptop fa-fw"></i> HW6 - Spell Checker<a class="headerlink" href="#i-class-fas-fa-laptop-fa-fw-i-hw6-spell-checker" title="Permalink to this heading">#</a></h1>
+<p><strong>Learning objective:</strong> Implement efficient code with generators.</p>
+<section id="rubric-submission">
+<h2>Rubric &amp; Submission<a class="headerlink" href="#rubric-submission" title="Permalink to this heading">#</a></h2>
+<p>Please note these important things:</p>
+<ul class="simple">
+<li><p>You will NOT turn this into AutoGrader. You will <strong>Submit to Replit.</strong></p></li>
+<li><p>This will be for your High School Grade only.  It will be worth <code class="docutils literal notranslate"><span class="pre">40</span> <span class="pre">points</span></code> (40% a UW Homework Assignment).</p></li>
+<li><p>You will be graded on the Replit Unit Tests only. ~3pts per Unit Test.</p></li>
+<li><p>You will not be graded on any commenting or tests you write.</p></li>
+<li><p>Please know the due date and TIME as posted in Schoology. (6am Feb 3)</p></li>
+</ul>
+</section>
+<section id="instructions">
+<h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this heading">#</a></h2>
+<p>In this project you will learn:</p>
+<ul class="simple">
+<li><p>Class implementation (should just be extra practice by now)</p></li>
+<li><p>The importance of efficiency</p></li>
+<li><p>How to do implement spelling suggestions</p></li>
+<li><p>How to do implement a <code class="docutils literal notranslate"><span class="pre">generator</span></code></p></li>
+</ul>
+<p>All of these things will accomplished by implementing a <code class="docutils literal notranslate"><span class="pre">SpellChecker</span></code> class.</p>
+<p>Your Spell Checker program will be giving a list of words to use as its dictionary.
+The primary pieces of functionality will be to:</p>
+<ul class="simple">
+<li><p>Determine if a single word is misspelled</p></li>
+<li><p>Find all the misspelled words in an <em>essay</em> (text file)</p></li>
+<li><p>Provide a set of correctly spelled words as suggested corrections</p></li>
+</ul>
+<p>A basic infrastructure of the SpellChecker class will be provided.</p>
+</section>
+<section id="spell-checking-an-essay">
+<h2>Spell Checking an Essay<a class="headerlink" href="#spell-checking-an-essay" title="Permalink to this heading">#</a></h2>
+<p>First, improve the code so that it can complete the spell checking quickly.</p>
+<p>You will implement the following three things in the class <code class="docutils literal notranslate"><span class="pre">SpellChecker</span></code>:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">constructor</span></code> : Takes the name of a dictionary and intializes a SpellChecker object.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">misspelled</span></code> : An instance method that returns True if the word passed in is not found in the dictionary.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">spell_check</span></code> : An instance method that returns a list of misspelled words found in the essay while also outputting to the console details about which words are misspelled.</p></li>
+</ol>
+<p>There are several Unit Tests that related to the above that you should pass
+before continuing onto the next step. Note that these Unit Test will test both
+the functionality as well as the speed of execution. You need to have <em>FAST</em> code!!</p>
+<p>Also, the output printed to the console for <code class="docutils literal notranslate"><span class="pre">spell_check</span></code> should look close to:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">civalized</span><span class="p">:</span> <span class="n">line</span><span class="p">:</span> <span class="mi">1</span>  <span class="n">word</span><span class="p">:</span><span class="mi">3</span>
+<span class="n">oportunities</span><span class="p">:</span> <span class="n">line</span><span class="p">:</span> <span class="mi">6</span>  <span class="n">word</span><span class="p">:</span><span class="mi">4</span>
+<span class="n">seeems</span><span class="p">:</span> <span class="n">line</span><span class="p">:</span> <span class="mi">15</span>  <span class="n">word</span><span class="p">:</span><span class="mi">9</span>
+<span class="n">peopl</span><span class="p">:</span> <span class="n">line</span><span class="p">:</span> <span class="mi">21</span>  <span class="n">word</span><span class="p">:</span><span class="mi">8</span>
+<span class="n">ettiquitt</span><span class="p">:</span> <span class="n">line</span><span class="p">:</span> <span class="mi">35</span>  <span class="n">word</span><span class="p">:</span><span class="mi">1</span>
+<span class="n">shoudl</span><span class="p">:</span> <span class="n">line</span><span class="p">:</span> <span class="mi">37</span>  <span class="n">word</span><span class="p">:</span><span class="mi">7</span>
+<span class="n">psudo</span><span class="o">-</span><span class="n">code</span><span class="p">:</span> <span class="n">line</span><span class="p">:</span> <span class="mi">37</span>  <span class="n">word</span><span class="p">:</span><span class="mi">10</span>
+<span class="n">algorythm</span><span class="p">:</span> <span class="n">line</span><span class="p">:</span> <span class="mi">39</span>  <span class="n">word</span><span class="p">:</span><span class="mi">6</span>
+</pre></div>
+</div>
+<p>Be sure you Pass the Unit Tests:</p>
+<ul class="simple">
+<li><p>test_misspelled</p></li>
+<li><p>test_check_essay</p></li>
+<li><p>test_check_essay_speed_not_garbage</p></li>
+<li><p>test_check_essay_speed_okay</p></li>
+<li><p>test_check_essay_speed_good</p></li>
+</ul>
+<section id="tips-for-passing-test">
+<h3>Tips for Passing Test<a class="headerlink" href="#tips-for-passing-test" title="Permalink to this heading">#</a></h3>
+<p>Make sure that you have your own tests written. You will understand the input
+and expected output of your own tests. This will assure that things are working
+according to plan.</p>
+<blockquote>
+<div><p>Mr. Stride will ask to see your tests first before helping you figure out why
+a functional Unit Test is failing.</p>
+</div></blockquote>
+<p>You need to update <code class="docutils literal notranslate"><span class="pre">misspelled</span></code> to work with hyphenated words. There is
+a slick and easy recursive approach to this which is also very fast.</p>
+<blockquote>
+<div><p>Hint: If no hyphen, solve normally. If it has hyphens, break into subwords
+and solve for each subword.</p>
+</div></blockquote>
+<p><code class="docutils literal notranslate"><span class="pre">misspelled</span></code> needs to work with hyphenated words with multiple hyphens!</p>
+<blockquote>
+<div><p>Example: <code class="docutils literal notranslate"><span class="pre">word-is-good-now</span></code> is correctly spelled!</p>
+</div></blockquote>
+<p>If you are not passing the speed checks, it could be several things:</p>
+<ul class="simple">
+<li><p>Maybe Mr. Stride’s test are bad. Do other students’ tests pass?</p></li>
+<li><p>Verify that the data structure you’re using to hold the dictionary is fast.</p></li>
+</ul>
+</section>
+</section>
+<section id="generators">
+<h2>Generators<a class="headerlink" href="#generators" title="Permalink to this heading">#</a></h2>
+<p>Before we move onto the next phase of development, you need to learn about
+<code class="docutils literal notranslate"><span class="pre">generators</span></code>.</p>
+<p>In Python, a generator is a special type of function that produces a sequence
+of values, one at a time, when iterated over. Generators are different from
+regular functions in that they do not return all their output at once; instead,
+they <code class="docutils literal notranslate"><span class="pre">yield</span></code> their values one at a time, which allows them to be more memory-efficient
+than regular functions that return all their output at once.</p>
+<p>Here is a simple example of a generator in Python:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">countdown</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">yield</span> <span class="n">n</span>
+        <span class="n">n</span> <span class="o">-=</span> <span class="mi">1</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">countdown</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>This generator, countdown, yields the values 5, 4, 3, 2, and 1, one at a time,
+when it is iterated over. When the generator is called, it does not execute the
+code inside of it immediately; instead, it returns a special type of iterator
+called a “generator iterator”, which can be used to execute the code in the
+generator one step at a time.</p>
+<p>Generators can be very useful for producing large sequences of data, because
+they allow you to generate the values one at a time, rather than creating a
+list with all the values at once, which can be very memory-intensive.</p>
+<p>Here are a couple of YouTube videos that explain generators in Python:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=gMompY5MyPg">Python Generators: (By Socratica)</a></p></li>
+<li><p><a class="reference external" href="https://www.youtube.com/watch?v=bD05uGo_sVI">Python Generators Explained (With Examples) (By Corey Schafer)</a></p></li>
+</ul>
+<p>These videos provide a good overview of generators, including how to create them,
+how to use them, and some of the benefits of using generators in your Python code.</p>
+</section>
+<section id="spelling-suggestion">
+<h2>Spelling Suggestion<a class="headerlink" href="#spelling-suggestion" title="Permalink to this heading">#</a></h2>
+<p>This is where the project starts to get more interesting. There are many creative ways
+to suggest words for a misspelled word.
+We will start simple and then build up to <em>AMAZING!</em></p>
+<section id="mis-misspelled">
+<h3>Mis-misspelled<a class="headerlink" href="#mis-misspelled" title="Permalink to this heading">#</a></h3>
+<p>We will start with a concept that I’ll call: <code class="docutils literal notranslate"><span class="pre">mis-misspelled</span></code>. The basic idea
+is that we will modify the spelling of a misspelled word until
+it is modified into a correctly spelled word.</p>
+<p>For example: Let’s consider the misspelled word, <code class="docutils literal notranslate"><span class="pre">aple</span></code>. If we modify <code class="docutils literal notranslate"><span class="pre">aple</span></code> by
+introducing another <code class="docutils literal notranslate"><span class="pre">p</span></code> into the ‘3rd’ position (after the second letter) then
+we will generate the word <code class="docutils literal notranslate"><span class="pre">apple</span></code> which is correctly spelled!</p>
+<p>Using this concept, we could have the following code:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_suggestion</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">misspelled_word</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">mis_misspelled_word</span> <span class="ow">in</span> <span class="n">create_misspelling</span><span class="p">(</span><span class="n">misspelled_word</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">misspelled</span><span class="p">(</span><span class="n">mis_misspelled_word</span><span class="p">):</span>
+            <span class="k">return</span> <span class="n">mis_misspelled_word</span>
+</pre></div>
+</div>
+<blockquote>
+<div><p>For each section below, attempt find the correct spelling for words
+using the generator just created.</p>
+</div></blockquote>
+</section>
+<section id="part-1">
+<h3>Part 1<a class="headerlink" href="#part-1" title="Permalink to this heading">#</a></h3>
+<p>You will implement a create_misspelling <code class="docutils literal notranslate"><span class="pre">generator</span></code>, but instead of using the name ‘create_misspelling’,
+we will use a more specific name that describes exactly <em>how</em> we are misspelling the
+word. Let’s name it: <code class="docutils literal notranslate"><span class="pre">_insert_letters</span></code>.</p>
+<blockquote>
+<div><p>Note: we prefix the name with <code class="docutils literal notranslate"><span class="pre">_</span></code> because it is a private method. Also, this
+method is an instance method (belongs to the object).</p>
+</div></blockquote>
+<p>This method will insert all the letters, a-z, into every possible
+position of a given word.</p>
+<p>Be sure you pass the Unit Test:</p>
+<ul class="simple">
+<li><p>test_insert_letters</p></li>
+</ul>
+</section>
+<section id="part-2">
+<h3>Part 2<a class="headerlink" href="#part-2" title="Permalink to this heading">#</a></h3>
+<p>Implement another generator to move all letters, one letter at a time.
+This will be called: <code class="docutils literal notranslate"><span class="pre">_remove_letters</span></code>. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>   <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_remove_letters</span><span class="p">(</span><span class="s1">&#39;goodbye&#39;</span><span class="p">):</span>
+      <span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+
+<span class="c1"># prints</span>
+<span class="n">oodbye</span>
+<span class="n">godbye</span>
+<span class="n">godbye</span>
+<span class="n">goodye</span>
+<span class="n">goodbe</span>
+<span class="n">goodby</span>
+</pre></div>
+</div>
+<p>Be sure you pass the Unit Test:</p>
+<ul class="simple">
+<li><p>test_remove_letters</p></li>
+</ul>
+</section>
+<section id="part-3">
+<h3>Part 3<a class="headerlink" href="#part-3" title="Permalink to this heading">#</a></h3>
+<p>Implement another generator to change all letters, one letter at a time.
+This will be called: <code class="docutils literal notranslate"><span class="pre">_swap_letters</span></code>. Note that this does NOT mean that
+two letters in the word is swapped. Instead, it means that one letter is
+swapped out for another. For example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>   <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_swap_letters</span><span class="p">(</span><span class="s1">&#39;ab&#39;</span><span class="p">):</span>
+      <span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+
+<span class="c1"># optionally prints &#39;ab&#39;, but definitely prints...</span>
+<span class="n">bb</span>
+<span class="n">cb</span>
+<span class="n">db</span>
+<span class="n">eb</span>
+<span class="n">fb</span>
+<span class="n">gb</span>
+<span class="o">...</span>
+<span class="n">yb</span>
+<span class="n">zb</span>
+<span class="n">aa</span>
+<span class="n">ac</span>
+<span class="n">ad</span>
+<span class="n">ae</span>
+<span class="n">af</span>
+<span class="n">ag</span>
+<span class="o">...</span>
+<span class="n">ay</span>
+<span class="n">az</span>
+
+</pre></div>
+</div>
+<p>Be sure you pass the Unit Test:</p>
+<ul class="simple">
+<li><p>test_swap_letters</p></li>
+</ul>
+</section>
+</section>
+<section id="suggest-correction">
+<h2>suggest_correction<a class="headerlink" href="#suggest-correction" title="Permalink to this heading">#</a></h2>
+<p>It is time to implement the method <code class="docutils literal notranslate"><span class="pre">suggest_correction</span></code>. This method
+should return a list of suggested words that could be the correct
+spelling for the misspelled word. The list will have an maximum number
+of words added to the list which is specified in the optional <code class="docutils literal notranslate"><span class="pre">max</span></code> argument.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">suggest_correction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">6</span><span class="p">):</span>
+        <span class="c1"># student&#39;s implementation goes here</span>
+</pre></div>
+</div>
+<section id="composing">
+<h3>Composing<a class="headerlink" href="#composing" title="Permalink to this heading">#</a></h3>
+<p>Each <code class="docutils literal notranslate"><span class="pre">generator</span></code> above catches some types of mistakes, but not all of them.
+In fact, you can’t even try all three back-to-back-to-back because some
+misspelled words require ALL THREE at the SAME TIME!! For example, to
+identify the correctly spelled word <code class="docutils literal notranslate"><span class="pre">etiquette</span></code> from <code class="docutils literal notranslate"><span class="pre">ettiquitt</span></code> requires
+that we delete a <code class="docutils literal notranslate"><span class="pre">t</span></code>, add an <code class="docutils literal notranslate"><span class="pre">e</span></code>, and change an <code class="docutils literal notranslate"><span class="pre">i</span></code> to an <code class="docutils literal notranslate"><span class="pre">e</span></code>. All three!!</p>
+<p>We want to implement all 3 types, composed with one another. This can be
+difficult. Here is a way to compose all three together:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">suggest_correction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">6</span><span class="p">):</span>
+        <span class="c1"># partial implementation only!!</span>
+        <span class="n">fns</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_insert_letters</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_remove_letters</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_swap_letters</span><span class="p">]</span>
+        <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compose_fns</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">fns</span><span class="p">):</span>
+            <span class="c1"># rest of code not shown</span>
+
+    <span class="k">def</span> <span class="nf">_compose_fns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word</span><span class="p">,</span> <span class="n">fns</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&#39;&#39;&#39; </span>
+<span class="sd">        A recursive generator that composes all the generators in fns.</span>
+<span class="sd">        word : the word that is misspelled</span>
+<span class="sd">        fns : a list of generators</span>
+<span class="sd">        &#39;&#39;&#39;</span>
+        <span class="k">for</span> <span class="n">fn1_word</span> <span class="ow">in</span> <span class="n">fns</span><span class="p">[</span><span class="mi">0</span><span class="p">](</span><span class="n">word</span><span class="p">):</span>
+            <span class="k">yield</span> <span class="n">fn1_word</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">fns</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+                <span class="k">yield</span> <span class="n">fn1_word</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="c1"># our recursive case must be in the form of a for-loop</span>
+                <span class="k">for</span> <span class="n">fn2_word</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compose_fns</span><span class="p">(</span><span class="n">fn1_word</span><span class="p">,</span> <span class="n">fns</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
+                    <span class="k">yield</span> <span class="n">fn2_word</span>
+</pre></div>
+</div>
+<p>Be sure you pass the Unit Test:</p>
+<ul class="simple">
+<li><p>test_suggest_compose : This tests that suggest_correction correctly finds a suggestion for a misspelled word that requires three changes.</p></li>
+</ul>
+<p>Using the above code, see if you can correctly produce at least one suggestion
+for each of the misspelled words in <code class="docutils literal notranslate"><span class="pre">englishEssay.txt</span></code>.</p>
+<blockquote>
+<div><p>Note: Your code may run for as much as a full minute to find suggestions for all
+the misspelled words in the englishEssay.txt.</p>
+</div></blockquote>
+</section>
+</section>
+<section id="levenshtein-distance">
+<h2>Levenshtein Distance<a class="headerlink" href="#levenshtein-distance" title="Permalink to this heading">#</a></h2>
+<p>There are two problems with what we’ve done so far:</p>
+<ol class="arabic simple">
+<li><p>It’s too slow!!</p></li>
+<li><p>The list may contain lots of odd words</p></li>
+</ol>
+<p>We are going to change the approach to solving this Suggestion Problem. We
+will essentially go backwards. Instead of generating mis-misspelled candidates
+and then search the dictionary to see if it is indeed a correctly spelled word,
+we will compare ‘every’ word in the dictionary against the misspelled word
+to see if it is ‘close’. The ‘closests’ words will be what we suggest.</p>
+<p>To accomplish this, we need a way to <em>measure the ‘distance’</em> between two words.
+The Levenshtein Distance algorithm is exactly what we want. The algorithm will
+provide an integer number that is essentially the count of changes made to one
+word to reach the other. The changes are exactly the same three generators you
+implemented above. (The algorithm will not use your generators.)</p>
+<p>You will add a new instance method to the SpellChecker class.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">lev_suggest_correction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span>
+<span class="w">       </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">       Return a list of all the suggest words that share the same, minimum</span>
+<span class="sd">       distance from word using the levenshtein distance algorithm.</span>
+<span class="sd">       &#39;&#39;&#39;</span>
+</pre></div>
+</div>
+<p>It can take a while to understand the algorithm which can take us off topic
+quite a bit. So, instead, you have been provided with three different implementations
+of the algorithm in the file <code class="docutils literal notranslate"><span class="pre">levenshtein.py</span></code>.</p>
+<p>Below are the names of the 3 implementations along with the time (in seconds) it took to provide
+suggestions for all the misspelled words in the englishEssay.txt. (Times were using
+Mr. Stride’s implementation. Measured only once.)</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">levenshtein_distance:</span> <span class="pre">71.16</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">lev_distance:</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">51.45</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fast_lev_distance:</span>&#160;&#160;&#160;&#160; <span class="pre">1.42</span></code></p></li>
+</ol>
+<p>It is pretty clear that one implementation is much, much, much faster than the rest.
+This is because it is implemented in the Python module <a class="reference external" href="https://pypi.org/project/editdistance/">editdistance</a>
+written in C++. Because it is written in C++ the code can run a lot faster.
+Furthermore, some braniacs out there used some fancy math an algorithm techniques
+to speed it up even more.</p>
+<section id="experience-the-difference">
+<h3>Experience the Difference<a class="headerlink" href="#experience-the-difference" title="Permalink to this heading">#</a></h3>
+<p>Implement the <code class="docutils literal notranslate"><span class="pre">lev_suggest_correction</span></code> and experience the difference in speed
+from one algorithm to the other. Amazing, right?!</p>
+<p>Be sure you pass the final two Unit Tests:</p>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./homework-assignments"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="hw5.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><i class="fas fa-laptop fa-fw"></i> HW5 - Search Engine</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="hw7.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title"><i class="fas fa-laptop fa-fw"></i> HW7 - Mapping</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rubric-submission">Rubric &amp; Submission</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instructions">Instructions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spell-checking-an-essay">Spell Checking an Essay</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-for-passing-test">Tips for Passing Test</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generators">Generators</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spelling-suggestion">Spelling Suggestion</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mis-misspelled">Mis-misspelled</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1">Part 1</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2">Part 2</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3">Part 3</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggest-correction">suggest_correction</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#composing">Composing</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#levenshtein-distance">Levenshtein Distance</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-the-difference">Experience the Difference</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Jeff Stride
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a href="https://idp.mrstride.com/acknowledgements.html">Acknowledgements</a>
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

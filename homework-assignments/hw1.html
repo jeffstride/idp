@@ -217,6 +217,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2 current active"><a class="current reference internal" href="#"><i class="fas fa-laptop fa-fw"></i> HW1 - Startup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hw2.html"><i class="fas fa-laptop fa-fw"></i> HW2 - Primer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hw3.html"><i class="fas fa-laptop fa-fw"></i> HW3 - Pokémon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw4.html"><i class="fas fa-laptop fa-fw"></i> HW4 - Education</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw5.html"><i class="fas fa-laptop fa-fw"></i> HW5 - Search Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw6.html"><i class="fas fa-laptop fa-fw"></i> HW6 - Spell Checker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hw7.html"><i class="fas fa-laptop fa-fw"></i> HW7 - Mapping</a></li>
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="../module-additions/index.html"><i class="fas fa-layer-group fa-fw"></i> Module Additions</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -226,13 +230,13 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../module-additions/module2/index.html"><i class="fas fa-book fa-fw"></i> Module 2</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../module-additions/module2/stub1.html">Stub 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../module-additions/module2/collections.html">Collections</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../module-additions/module2/stub2.html">Stub 2</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../module-additions/module3/index.html"><i class="fas fa-book fa-fw"></i> Module 3</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../module-additions/module3/printing.html">Arguments</a></li>
-
+<li class="toctree-l3"><a class="reference internal" href="../module-additions/module3/arguments.html">Arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../module-additions/module3/formatted-string.html">Formatted Strings</a></li>
 </ul>
 </li>
 </ul>
@@ -580,8 +584,10 @@ See <a class="reference internal" href="../module-additions/module1/building-in-
 <section id="implementation">
 <h2>Implementation<a class="headerlink" href="#implementation" title="Permalink to this heading">#</a></h2>
 <p>In the file named <code class="docutils literal notranslate"><span class="pre">hw1.py</span></code>, implement three methods: <code class="docutils literal notranslate"><span class="pre">funky_sum</span></code>, <code class="docutils literal notranslate"><span class="pre">total</span></code>, <code class="docutils literal notranslate"><span class="pre">swip_swap</span></code>. The description for each
-method is found in the tabs below.
-Also found in the tabs is a challenge question which is optional and not graded.</p>
+method is found in the tabs below.</p>
+<blockquote>
+<div><p>Note that there is a challenge question which is optional and not graded. See the <a href="#challenge-question">Challenge Question</a> section down below for details.</p>
+</div></blockquote>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-3">
@@ -648,13 +654,6 @@ swip_swap</label><div class="sd-tab-content docutils">
 <p>In order to demonstrate the learning objectives for this problem, you should <strong>NOT</strong> use the string <code class="docutils literal notranslate"><span class="pre">replace</span></code> function or use any data structures like <code class="docutils literal notranslate"><span class="pre">list</span></code> to solve this problem.</p>
 </div>
 </div>
-<input id="sd-tab-item-6" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-6">
-challenge</label><div class="sd-tab-content docutils">
-<p><strong>OPTIONAL</strong>: This programming method is not graded and is here for those students who already know Python and want to flex some of their intellectual muscle.<br />
-<strong>NOTE</strong>: If you implement this method, you’ll need to document all methods fully with doc-strings so that all the grading scripts pass. You don’t want to have your grade drop!<br />
-<strong>Task:</strong> Write a function named <code class="docutils literal notranslate"><span class="pre">simple_decode</span></code> that will decode a message using a simple encryption. See the <a href="#challenge-question">Challenge Question</a> section down below for details.</p>
-</div>
 </div>
 </section>
 <section id="testing">
@@ -704,11 +703,15 @@ challenge</label><div class="sd-tab-content docutils">
 </section>
 <section id="challenge-question">
 <h2>Challenge Question<a class="headerlink" href="#challenge-question" title="Permalink to this heading">#</a></h2>
+<p><strong>OPTIONAL</strong>: This programming method is not graded and is here for those students who already know Python and want to flex some of their intellectual muscle.</p>
+<blockquote>
+<div><p><strong>NOTE</strong>: If you implement this method, you’ll need to document all methods fully with doc-strings so that all the grading scripts pass. You don’t want to have your grade drop!</p>
+</div></blockquote>
 <div class="admonition-important admonition">
 <p class="admonition-title">important</p>
 <p>This Challenge Question is OPTIONAL!! It is NOT graded.</p>
 </div>
-<p><strong>Task</strong>: Implement a method named <code class="docutils literal notranslate"><span class="pre">simple_decode</span></code> that is a simple decoding of a message that has no more than 16 unique characters in it. This method takes two arguments:</p>
+<p><strong>Task</strong>: <i class="fas fa-pen-square fa-fw"></i> Implement a method named <code class="docutils literal notranslate"><span class="pre">simple_decode</span></code> that is a simple decoding of a message that has no more than 16 unique characters in it. This method takes two arguments:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">key</span></code> - a list of letters (no more than 16 long)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">encoded</span></code> - a list of bytes where each nibble (4-bits) of each byte is the index of letter as found in key</p></li>
@@ -735,6 +738,7 @@ challenge</label><div class="sd-tab-content docutils">
         <span class="mi">0011</span> <span class="ow">is</span> <span class="n">binary</span> <span class="k">for</span> <span class="mi">3</span> <span class="ow">and</span> <span class="s1">&#39;o&#39;</span> <span class="ow">is</span> <span class="n">at</span> <span class="n">index</span> <span class="mf">3.</span>  
     <span class="n">The</span> <span class="n">very</span> <span class="n">last</span> <span class="n">nibble</span> <span class="ow">is</span> <span class="n">ignored</span> <span class="n">because</span> <span class="n">the</span> <span class="n">last</span> <span class="n">integer</span> <span class="n">value</span> <span class="ow">is</span> <span class="mi">1</span>  
     <span class="n">which</span> <span class="n">means</span> <span class="n">that</span> <span class="n">the</span> <span class="n">message</span> <span class="ow">is</span> <span class="n">odd</span><span class="o">-</span><span class="n">lengthed</span><span class="o">.</span>  
+    <span class="n">If</span> <span class="n">the</span> <span class="n">last</span> <span class="n">integer</span> <span class="n">value</span> <span class="n">was</span> <span class="mi">0</span><span class="p">,</span> <span class="n">then</span> <span class="n">we</span> <span class="n">would</span> <span class="n">include</span> <span class="n">the</span> <span class="n">letter</span> <span class="n">at</span> <span class="n">index</span> <span class="mf">0.</span>
 </pre></div>
 </div>
 <p>Rubric information can be found in the instruction in the Replit project.</p>

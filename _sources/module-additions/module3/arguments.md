@@ -1,12 +1,16 @@
 # Arguments
 
-I have found it frustrating to visit online API sites to discover their form of 
-documentation consists of something like the following:
-    `my_method(*args, **kwargs)`  
-Especially when there is no mention of what `args` or `kwargs` can be. We can't solve
-that, but we can at least understand what `*args, **kwargs` means and how to use them.
-The above effectively means the method takes any number of `positional arguments` and
-any number of `named arguments`. Let's first define a couple of terms.  
+I have found it frustrating to visit online API sites to discover documentation that consists of something like the following:  
+```python
+    my_method(*args, **kwargs)
+```
+This is especially annoying when there is no mention of what `args` or `kwargs` can be. We can't solve
+that problem, but we can at least understand what `*args`, `**kwargs` means and how to use them.
+In short:  
+* `*args` means that the method can take any number of **positional arguments**.  
+* `kwargs` means that the method can take any number of **named arguments**.  
+
+Let's define a couple of terms.   
 ```{card} Important Terms
 
 |Term|Definition|  
@@ -14,6 +18,12 @@ any number of `named arguments`. Let's first define a couple of terms.
 |_Positional Argument_|Required method arguments that must appear in a specific order|  
 |_Named Argument_|Optional method arguments that are given a default value in the prototype (method declaration). They will appear as `name=value`. They can appear in any order after all the positional arguments are provided.|
 ```
+## Printing
+Let's first explore the method `print` to see how it works.  
+
+## Examples
+Let's sayt that we want to have a method with 7 arguments where 3 of them have default values. 
+We'd define this menthod as shown below. Note that the three arguments with default values have
 
 ```python
 # Example prototype with 4 positional arguments and 3 named arguments
@@ -67,7 +77,7 @@ Explain after each example how the output happens. Explain `sep`. Explain why `f
 
 
 
-# Printing, Arguments & Formatted Strings
+
 
 Cover the different ways we print and how to format our strings.
 We need to understand named arguments, packing and unpacking.

@@ -8,13 +8,13 @@ You'll want to change which file you build so that you can run either your funct
 To do this, you'll want to modify the `.replit` file which is hidden in the `Config files` section that
 you can't see until you `Show hidden files`.  
 
-To run a different file, change `.replit` so that both the `run` and `entrypoint` values are what you 
-want them to be. For example, the snippet of code below is set up to run `hw1_test.py`.
+To run a different file, change `.replit` so that the `run` value references the file that you 
+want to run. For example, the snippet of code below is set up to run `hw1_test.py`.
 
 ```bash
 run = "python hw1_test.py"
 
-entrypoint = "hw1_test.py"
+entrypoint = "main.py"
 # A list of globs that specify which files and directories should
 # be hidden in the workspace.
 hidden = ["venv", ".config", "**/__pycache__", "**/.mypy_cache", "**/*.pyc"]
@@ -24,9 +24,10 @@ When you run a specific python file, that file should have the `main-pattern`. H
 file that follows the main-pattern.
 
 ```python
-# <Students Name Here>
-# <Homework Info Here>
-
+'''
+<Students Name Here>
+<Homework Info Here>
+'''
 
 def problem_0(arg)
     '''

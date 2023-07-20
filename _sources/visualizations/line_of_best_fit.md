@@ -428,7 +428,7 @@ collects and repacks them into the tuple named 'args'. In turn, it can easily ca
 with the tuple. Altogether, this allows us to generate points and solve for coefficients using as many or
 as few arguments as we want, using default values for the rest.
 
-Confusing? See [Arguments](../module-additions/module3/printing) for more information.  
+Confusing? See [Arguments](../module-additions/module3/arguments) for more information.  
 
 When generating our data points, we make use of `linspace` which is a nifty method that allows us
 to quickly set a minimum, maximum, and an arbitrary number of points. It generates values

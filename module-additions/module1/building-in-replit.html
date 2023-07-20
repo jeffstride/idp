@@ -217,6 +217,10 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="../../homework-assignments/hw1.html"><i class="fas fa-laptop fa-fw"></i> HW1 - Startup</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../homework-assignments/hw2.html"><i class="fas fa-laptop fa-fw"></i> HW2 - Primer</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../homework-assignments/hw3.html"><i class="fas fa-laptop fa-fw"></i> HW3 - Pokémon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework-assignments/hw4.html"><i class="fas fa-laptop fa-fw"></i> HW4 - Education</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework-assignments/hw5.html"><i class="fas fa-laptop fa-fw"></i> HW5 - Search Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework-assignments/hw6.html"><i class="fas fa-laptop fa-fw"></i> HW6 - Spell Checker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework-assignments/hw7.html"><i class="fas fa-laptop fa-fw"></i> HW7 - Mapping</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html"><i class="fas fa-layer-group fa-fw"></i> Module Additions</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
@@ -226,13 +230,13 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../module2/index.html"><i class="fas fa-book fa-fw"></i> Module 2</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../module2/stub1.html">Stub 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../module2/collections.html">Collections</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../module2/stub2.html">Stub 2</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../module3/index.html"><i class="fas fa-book fa-fw"></i> Module 3</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../module3/printing.html">Arguments</a></li>
-
+<li class="toctree-l3"><a class="reference internal" href="../module3/arguments.html">Arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../module3/formatted-string.html">Formatted Strings</a></li>
 </ul>
 </li>
 </ul>
@@ -486,11 +490,11 @@ document.write(`
 <p>You’ll want to change which file you build so that you can run either your functional code or your tests.
 To do this, you’ll want to modify the <code class="docutils literal notranslate"><span class="pre">.replit</span></code> file which is hidden in the <code class="docutils literal notranslate"><span class="pre">Config</span> <span class="pre">files</span></code> section that
 you can’t see until you <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">hidden</span> <span class="pre">files</span></code>.</p>
-<p>To run a different file, change <code class="docutils literal notranslate"><span class="pre">.replit</span></code> so that both the <code class="docutils literal notranslate"><span class="pre">run</span></code> and <code class="docutils literal notranslate"><span class="pre">entrypoint</span></code> values are what you
-want them to be. For example, the snippet of code below is set up to run <code class="docutils literal notranslate"><span class="pre">hw1_test.py</span></code>.</p>
+<p>To run a different file, change <code class="docutils literal notranslate"><span class="pre">.replit</span></code> so that the <code class="docutils literal notranslate"><span class="pre">run</span></code> value references the file that you
+want to run. For example, the snippet of code below is set up to run <code class="docutils literal notranslate"><span class="pre">hw1_test.py</span></code>.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">run</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;python hw1_test.py&quot;</span>
 
-<span class="nv">entrypoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;hw1_test.py&quot;</span>
+<span class="nv">entrypoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;main.py&quot;</span>
 <span class="c1"># A list of globs that specify which files and directories should</span>
 <span class="c1"># be hidden in the workspace.</span>
 <span class="nv">hidden</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="o">[</span><span class="s2">&quot;venv&quot;</span>,<span class="w"> </span><span class="s2">&quot;.config&quot;</span>,<span class="w"> </span><span class="s2">&quot;**/__pycache__&quot;</span>,<span class="w"> </span><span class="s2">&quot;**/.mypy_cache&quot;</span>,<span class="w"> </span><span class="s2">&quot;**/*.pyc&quot;</span><span class="o">]</span>
@@ -498,9 +502,10 @@ want them to be. For example, the snippet of code below is set up to run <code c
 </div>
 <p>When you run a specific python file, that file should have the <code class="docutils literal notranslate"><span class="pre">main-pattern</span></code>. Here is an example
 file that follows the main-pattern.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># &lt;Students Name Here&gt;</span>
-<span class="c1"># &lt;Homework Info Here&gt;</span>
-
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">&lt;Students Name Here&gt;</span>
+<span class="sd">&lt;Homework Info Here&gt;</span>
+<span class="sd">&#39;&#39;&#39;</span>
 
 <span class="k">def</span> <span class="nf">problem_0</span><span class="p">(</span><span class="n">arg</span><span class="p">)</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
