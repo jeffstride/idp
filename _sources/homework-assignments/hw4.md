@@ -33,6 +33,8 @@ The National Center for Education Statistics is a U.S. federal government agency
 
 In the Charmander species, Charmander begins at stage 1, evolves into a Charmeleon at stage 2, and finally evolves into Charizard at stage 3.  
 
+### TODO: All the below stuff needs to be deleted
+
 ### Miscellaneous Tips
 As with previous assessments, you’ll also check your solutions by adding tests to `hw3_test.py` using the `assert_equals` function.
 ````{tab-set}
