@@ -34,6 +34,7 @@ chapters:
           - file: final-project/handouts/presentation
       - file: final-project/tips/index
         sections:
+          - file: final-project/tips/ML
           - file: final-project/tips/proposal
           - file: final-project/tips/code
           - file: final-project/tips/report
