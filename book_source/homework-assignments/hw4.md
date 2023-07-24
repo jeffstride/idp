@@ -14,8 +14,7 @@
 
 ## Context
 The National Center for Education Statistics is a U.S. federal government agency for collecting and analyzing data related to education. We have downloaded and cleaned one of their datasets: Percentage of persons 25 to 29 years old with selected levels of educational attainment, by race/ethnicity and sex: Selected years, 1920 through 2018. The nces-ed-attainment.csv file has columns for Year, Sex, Min degree, and race/ethnicity categories.   
-> Note the missing data: not all columns have data starting from 1920!  
-
+> Note the missing data: not all columns have data starting from 1920! And, Our `main` method provides a line of code to read `nces-ed-attainment.csv` and replaces all occurrences of the `---` with pandas `NaN` to help with later data processing steps.  
 
 |Year|Sex|Min degree|Total|White|Black|Hispanic|Asian|Pacific Islander|American Indian/Alaska Native|Two or more races|  
 |----|---|----------|-----|-----|-----|--------|-----|----------------|-----------------------------|-----------------|
@@ -30,185 +29,110 @@ The National Center for Education Statistics is a U.S. federal government agency
 * `Min degree` is the degree of educational attainment for the row: `high school`, `associate's`, `bachelor's`, or `master's`.  
 * `Total` is the overall percentage of people of the `Sex` in the `Year` with at least the `Min degree` of educational attainment.  
 * `White`, `Black`, `Hispanic`, `Asian`, `Pacific Islander`, `American Indian/Alaska Native`, `Two or more races` is the percentage of students of the specified race (and of the `Sex` in the `Year`) with at least the `Min degree` of educational attainment.  
+  
 
-In the Charmander species, Charmander begins at stage 1, evolves into a Charmeleon at stage 2, and finally evolves into Charizard at stage 3.  
+```{admonition} Warning
+:class: warning
+Do not use any loops, list comprehensions, or dictionary comprehensions. The goal of this assessment is to apply data science libraries to answer questions.  
 
-### TODO: All the below stuff needs to be deleted
+Be sure to call all of the functions you write inside your `main` method!
+```
 
-### Miscellaneous Tips
-As with previous assessments, you’ll also check your solutions by adding tests to `hw3_test.py` using the `assert_equals` function.
+## main
+
+<i class="fas fa-pen-square fa-fw"></i> **Write** a `main` method in `hw4.py` that loads in the dataset provided and calls all of the functions you wrote. For all of the method calls, you should rely on any default parameters we specified.  
+
+## Pandas Methods
+Implement two methods `compare_bachelors_1980` and `top_2_2000s`. 
 ````{tab-set}
-```{tab-item} Tip #1
-```{admonition} Parsing
-:class: hint
-Here you can see examples of both parsing functions:  
-* `parse`: To help test functions solved without Pandas, `cse163_utils.py` defines a `parse` function that takes a filename and returns the dataset as a list of dictionaries.   
-* `read_csv`: To help test functions solved with Pandas, call `pd.read_csv` to return the dataset as a `DataFrame`.  
-```python
-from cse163_utils import parse
-import pandas as pd
+```{tab-item} Method 1
+Answer the question: **What were the percentages for women vs. men having earned a Bachelor’s Degree in 1980?**  
 
-df = pd.read_csv('file.csv')
-list_of_dict = parse('file.csv')
-```
-```{tab-item} Tip #2
-```{admonition} Test Files
-:class: hint
-* Create your own testing CSV file and submit these files with your other files.  
-* **Do not** use or introduce subdirectories (subfolders) for the test files in this assignment. Keep the file structure flat.  
-* When specifying file names, use **relative** paths, such as `pd.read_csv('pokemon_test.csv')`.  
-* **Do not** use the `pokemon_box.csv` file in your own test cases. The file is too large to come up with the correct answer on your own; it’s not valid to assume your code's output is the correct answer and to blindly use that as the expected value.  
-```
-```{tab-item} Tip #3
-```{admonition} Test Methods
-:class: hint
-* Write at least one test function for each problem and give it a descriptive name that indicates the function being tested, such as `test_species_count`.  
-* In addition to the provided `pokemon_test.csv` example file, add at least 2 (**two**) additional test files (one file for each case you're testing). These data files contain short, contrived, targeted data that is easy to verify in your tests.  
-* One test function per problem is fine since both ways of solving the problem should compute the same result. In other words, you may choose to write one method, `test_species_count` that tests both the manual and pandas code.  
-```
-```{tab-item} Tip #4
-```{admonition} Constants, Globals & Locality
-:class: hint
-* Do **NOT** use globals in your test file. Instead, use constants or method parameters.   
-* Don't make "heavy weight" constants. (See: <a href="https://courses.cs.washington.edu/courses/cse163/22sp/resources/code_quality/#constant-names" target="_blank">Code Quality - Constants</a> for more details.)  
-* Attempt to keep declarations and values in close proximity to where they are used. This helps the reader understand the code better. This means, define expected values in the method where they are used.  
-* Attempt to reduce redundancy with code instead of copy/paste. But, in test files, some redundancy is allowed so that tests can remain insulated from one another and to improve readability of individual test functions.   
+<i class="fas fa-pen-square fa-fw"></i> **Write** a function `compare_bachelors_1980` that takes one argument, `data`, and _finds_ the percentages of men and women who achieved a minimum degree of a Bachelor’s degree in 1980. The result should be a 2-by-2 `DataFrame` with rows corresponding to men and women and columns corresponding to `Sex` and `Total`. The order of the rows doesn’t matter. For example, your result should look something like this:
 
-Here is some sample code:  
-```python
-'''
-This is my test file
-'''
-import pandas as pd
-import hw3_manual
-import hw3_pandas
+|Sex|Total|
+|---|-----|
+|M|...|
+|F|...|
 
-from cse163_utils import parse
-
-# do NOT use globals like these
-test_data_1_dict = parse('pokemon_box.csv')
-test_data_1_df = pd.read_csv('pokemon_box.csv')
-
-# these are constants and are fine to use if you want
-FILE_1 = 'test_data1.csv'
-FILE_2 = 'test_data2.csv'
-
-def test_example():
-    '''
-    Test the method example using both manual and pandas
-    '''
-    # test simple case
-    expected = {'age':15, 'height':102}
-    assert_equals(expected, hw3_pandas.example(pd.read_csv(FILE_1)))
-    assert_equals(expected, hw3_manual.example(parse(FILE_1)))
-
-    # test extreme case
-    expected = {'age':99, 'height':999}
-    assert_equals(expected, hw3_pandas.example(pd.read_csv(FILE_2)))
-    assert_equals(expected, hw3_manual.example(parse(FILE_2)))
-
-    # test redundant case
-    expected = {'age':2, 'height':25}
-    assert_equals(expected, hw3_pandas.example(pd.read_csv('test_data3.csv')))
-    assert_equals(expected, hw3_manual.example(parse('test_data3.csv')))
-
-
-def main():
-    # be sure to call every test you write
-    test_example()
-
-
-if __name__ == '__main__':
-    main()
-```
-````
-
-
-## Required Methods
-In the file named `hw3.py`, implement six methods: `species_count`, `max_level`, `filter_range`, `mean_attack_for_type`, `count_types`, 
-and `mean_attack_per_type`. The description for each method is found in the tabs below.   
-
-For each method described in the tabs you must: 
-* <i class="fas fa-pen-square fa-fw"></i> **Write** in `hw3_manuals.py` the function as described in the tabs.  
-* <i class="fas fa-pen-square fa-fw"></i> **Write** in `hw3_pandas.py` the same function using Pandas. Rather than take a list of dictionaries, the Pandas version will take a `DataFrame` argument.   
-* <i class="fas fa-pen-square fa-fw"></i> **Write** in `hw3_test.py` one or more test functions that call the method with various input. Compare the actual results to the expected results using `assert_equals`. Do **not** do all your testing with the `pokemon_test.csv` file; be sure to add 2 (**two**) additional test cases by creating your own CSV files. (See Miscellaneous Tip #4 above.)
-
-```{admonition} Challenge
+```{admonition} Requirement
 :class: note
-Way down below is a challenge question which is optional and not graded. See the <a href="#challenge-question">Challenge Question</a> section down below for details.
+Your code should ONLY assume the structure of the data. Your code should **not** make any assumptions about the number
+of rows or where values exist. Your code should work on a different data set with different index values.
 ```
+```{tab-item} Method 2
+Answer the question: **What were the 2 most commonly-awarded levels of educational attainment awarded between 2000–2010 (inclusive) for a given sex?**  
+<i class="fas fa-pen-square fa-fw"></i> **Write** a function `top_2_2000s(data, sex)` that takes two arguments, the `data` and a `sex` parameter, and computes the two most commonly earned degrees for that given sex between the years 2000 and 2010 (inclusive). The function should return a 2-element `Series`. Compare educational attainment levels by using the `mean`. The index of the returned `Series` should be the `Min degree` and the values should be its `mean`. The `sex` parameter should default to `'A'` if no `sex` parameter/value is provided by the caller.
 
-````{tab-set}
-```{tab-item} species_count
-<i class="fas fa-pen-square fa-fw"></i> **Write** in `hw3_manual.py` a function `species_count` that takes a parsed pokemon dataset and returns the number of unique pokemon species in the dataset as determined by the `name` attribute without using Pandas.
+> Hint: `Series.nlargest` works like `DataFrame.nlargest`. The Series method takes only a single integer argument and returns a Series, while the DataFrame method requires an additional column parameter and returns a DataFrame.  
 
-For the `pokemon_test.csv` file, `species_count(data)` should return `3`.
+Here is an example: `top_2_2000s(data, 'A')` will return the `Series` shown below with index on the left and value on the right. Your values don’t have to exactly match so long as they’re within a 0.001 tolerance due to <a href="https://docs.python.org/3/tutorial/floatingpoint.html" target="_blank">how Python represents float numbers</a>. Because `sex` is set to default to `'A'`, this means a call to `top_2_2000s(data)` should also return the same `Series`.
 
-```{admonition}  Do not use id
-:class: important
-Do not use the `id` attribute to solve this this problem. Instead, you use the `name` attribute.  
-I realize that `id` should be the right approach, but UW has other ideas here. Don't fight it. Just use `name`.
-```
-
-```{tab-item} max_level
-<i class="fas fa-pen-square fa-fw"></i> **Write** in `hw3_manual.py` a function `max_level` that takes a parsed pokemon dataset and returns a 2-element tuple of the `(name, level)` of the pokemon with the highest `level` in the dataset. If there is more than one pokemon with the highest `level`, return the pokemon that appears first in the file.
-
-For the `pokemon_test.csv` file, `max_level(data)` should return the 2-element tuple, `('Lapras', 72)`.
-
-```
-
-```{tab-item} filter_range
-<i class="fas fa-pen-square fa-fw"></i> **Write** in `hw3_manual.py` a function `filter_range` that takes a parsed pokemon dataset and  two numbers: a lower bound (inclusive) and upper bound (exclusive). The function returns a list of the names of pokemon whose `level` fall within the bounds in the same order that they appear in the dataset.
-
-For the `pokemon_test.csv` file, `filter_range(data, 35, 72)` should return `['Arcanine', 'Arcanine', 'Starmie']`. Note that Lapras is not included because the upper bound is exclusive of Lapras, which is exactly level 72.
-
-```{admonition} Series to list
-:class: hint
-To convert a Pandas Series to a list, use the built-in list function. For example:  
-```python
-# data is a DataFrame storing following info:
-# name,age,species
-# Fido,4,dog
-# Meowrty,6,cat
-# Chester,1,dog
-# Phil,1,axolotl
-names = data['name']  # Series
-list(names)  # ['Fido', 'Meowrty', 'Chester', 'Phil']
-row = data.loc[1]  # Series
-list(row)  # ['Meowrty', 6, 'cat']
-```
-```{tab-item} mean_attack_for_type
-<i class="fas fa-pen-square fa-fw"></i> **Write** in `hw3_manual.py` a function `mean_attack_for_type` that takes a parsed pokemon dataset and a string representing the pokemon `type`. The function returns the average `atk` for all the pokemon in the dataset with the given `type`. If there are no pokemon of the given `type`, return `None`.
-
-For the `pokemon_test.csv` file, `mean_attack_for_type(data, 'fire')` should return `47.5`.
-```
-```{tab-item} count_types
-<i class="fas fa-pen-square fa-fw"></i> **Write** in `hw3_manual.py` a function `count_types` that takes a parsed pokemon dataset and returns a dictionary representing for each pokemon `type` the number of pokemon of that `type`. The order of the keys in the returned dictionary does not matter.
-
-For the `pokemon_test.csv` file, `count_types(data)` should return `{'fire': 2, 'water': 2}`.
-
-```{admonition} Series to dict
-:class: hint
-To convert a Pandas Series to a dictionary, use the built-in `dict` function. The dictionary keys are determined by the series index. For example:  
-```python
-# data is a DataFrame storing following info:
-# name,age,species
-# Fido,4,dog
-# Meowrty,6,cat
-# Chester,1,dog
-# Phil,1,axolotl
-names = data['name']  # Series
-dict(names)  # {0: 'Fido', 1: 'Meowrty', 2: 'Chester', 3: 'Phil'}
-row = data.loc[1]  # Series
-dict(row)  # {'name': 'Meowrty', 'age': 6, 'species': 'cat'}
-```
-```{tab-item} mean_attack_per_type
-<i class="fas fa-pen-square fa-fw"></i> **Write** in `hw3_manual.py` a function `mean_attack_per_type` that takes a parsed pokemon dataset and returns a dictionary representing for each pokemon `type` the average `atk` of pokemon of that `type`. The order of the keys in the returned dictionary does not matter.
-
-For the `pokemon_test.csv` file, `mean_attack_per_type(data)` should return `{'fire': 47.5, 'water': 140.5}`.
-
+```html
+high school 87.557143  
+associate's 38.757143
 ```
 ````
+
+## Plotting Methods
+You will use `Seaborn` to create three plots. You will implement three methods: `line_plot_bachelors`, `bar_chart_high_school`, `plot_hispanic_min_degree`.
+
+```{admonition} Use Seaborn
+:class: warning
+For `line_plot_bachelors` and `bar_chart_high_school`, be sure to use the `seaborn` functions.  
+Use `catplot()` and `relplot()`.  
+Do **NOT** use `barplot()` or `lineplot()`.   
+
+This is to assure that the image comparison tests can work.  
+```
+````{tab-set}
+```{tab-item} Plot 1
+<i class="fas fa-pen-square fa-fw"></i> **Write** a function `line_plot_bachelors` that takes the `data` and plots a line chart of the total percentages of all people (`Sex` == `'A'`) and whose `Min degree` is `bachelor's`, graphed over time. Label the x-axis **Year**, the y-axis **Percentage**, and title the plot **Percentage Earning Bachelor's over Time**.  
+
+Your plot should look like this:  
+![Percentage Earning Bachelor's over Time](../_static/hw4_line_plot_bachelors.png)
+
+Use the following line of code to save the plot:
+```python
+plt.savefig('line_plot_bachelors.png', bbox_inches='tight')
+```
+```{tab-item} Plot 2
+<i class="fas fa-pen-square fa-fw"></i> **Write** a function `bar_chart_high_school` that takes the `data` and plots a bar chart comparing the total percentages of `Sex` `F`, `M`, and `A` with `high school` `Min degree` in the `Year` `2009`. Label the x-axis **Sex**, the y-axis **Percentage**, and title the plot **Percentage Completed High School by Sex**.  
+
+Your plot should look like this:  
+![Percentage completed High School by Sex](../_static/hw4_bar_chart_high_school.png)
+
+> Ask yourself: Is this visualization an effective one? You will consider this in last section of the assignment asking you to reflect on the work we did for this assignment.  
+
+Use the following line of code to save the plot:
+```python
+plt.savefig('bar_chart_high_school.png', bbox_inches='tight')
+```
+```{tab-item} Plot 3
+<i class="fas fa-pen-square fa-fw"></i> **Write** a function `plot_hispanic_min_degree` that takes the `data` and plots how the percentage of `Hispanic` people with degrees have changed between 1990–2010 (inclusive) for `high school` and `bachelor's` `Min degree`. Choose a plot type for this problem and prepare to explain your decision-making process in the writeup. Label the axes and title the plot appropriately.  
+
+> Hint: Remember that your plot should be readable. You might find the function `plt.xticks()` helpful!  
+
+Use the following line of code to save the plot:
+```python
+plt.savefig('plot_hispanic_min_degree.png', bbox_inches='tight')
+```
+````
+
+## Scikit-learn Requirement
+<i class="fas fa-pen-square fa-fw"></i> **Train** a `DecisionTreeRegressor` to predict the percentage of degrees attained for a given `Sex`, `Min degree`, and `Year`. Write a function `fit_and_predict_degrees` that takes the `data` and returns the **test mean squared error** as a `float`. Follow these specific data preprocessing and model training steps.
+
+**Preprocessing**: Filter the `DataFrame` to only include the columns for `Year`, `Min degree`, `Sex`, and `Total`. Drop rows that have missing data in these columns—**do not drop any additional rows**. One-hot encode `str` values. Split the columns as needed into input features and labels.
+
+**Model training**: Once the data has been preprocessed, randomly split the remaining `data` into 80% training and 20% testing. Fit the model to the training set. Finally, calculate the mean squared error of the model’s test set predictions.
+
+The automated tests only check that the function runs without causing an error. Try comparing the ground truth values and the model’s predictions manually to check for similarity. (It would be bad if the ground truth values were `[2, 755, ...]` but the predicted values were `[1022, 5, ...]`.) Also, try calculating the mean squared error on the training dataset as well as the testing dataset—the error should be lower on the training dataset than on the testing dataset.
+
+```{admonition} Info
+:class: note
+This education dataset is a time series. When working with time series, it is common to use the last rows as the test set rather than random sampling since the goal is to design a model that predicts the future. But by randomly sampling to generate the test set, we are assessing the model on its ability to predict the past! Even though random sampling is not necessarily appropriate here, we ask you to do it anyways because it’s the most common sampling method.
+```
+
 
 ## Code Quality
 Assessment submissions should pass these checks: `flake8`, and <a href="https://courses.cs.washington.edu/courses/cse163/22sp/resources/code_quality/" target="_blank">code quality guidelines</a>. The code quality guidelines are very thorough. For this assessment, the most relevant rules can be found in these sections, with the **bolded** one being new from the last homework:  
@@ -234,56 +158,40 @@ Rubric information can be found in the instruction in the Replit project.
 **OPTIONAL**: This challenge question is not graded and is here for those students who already know Python and want to flex some of their intellectual muscle.  
 **NOTE**: If you implement this challenge question, you'll need to document all methods fully with doc-strings so that all the grading scripts pass. You don't want to have your grade drop!  Be sure to test it, too!  
 * * * 
-<i class="fas fa-pen-square fa-fw"></i> **Write** a class named `MyStats` inside the file `hw3_manual.py`. It will implement
-several methods to support the required functionality. The `class` will have a static method named `compute` that will calculate three
-statistics using Python libraries; do not implement the calculations yourself.  
+<i class="fas fa-pen-square fa-fw"></i> **Create** a figure with two bar charts that looks like the following.  
+![Education Figure](../_static/hw4_challenge_bar_chart.png)   
+The first bar chart will illustrate by `Sex` the percentage who have earned a High School degree. A few things to note:  
+* The labels for each bar are customized to 'Combined', 'Male' and 'Female'.  
+* There is no 'Sex' label on the x-axis.  
+* The bottom of the chart starts at 86.5%.  
+* The y-label is 'Percentage'.  
+* Each bar is annotated with the value of the bar.  
 
-Here are the three relatively esoteric statistics that the `compute` method provides:  
-1) **Kurtosis**: Kurtosis is a measure of the tailedness or shape of a probability distribution. It quantifies whether the distribution has heavy tails or is more peaked compared to a normal distribution. You can calculate the kurtosis using the `scipy.stats.kurtosis` function.   
-2) **Skewness**: Skewness measures the asymmetry of a probability distribution. It indicates whether the distribution has a longer tail on one side compared to the other. Positive skewness means the tail is on the right side, while negative skewness means the tail is on the left side. You can calculate the skewness of a distribution using the `scipy.stats.skew` method.  
-3) **95th Percentile**: Numpy provides a convenient way to calculate percentiles. A percentile represents the values below which a given percentage of the data falls. For example, the 50th percentile is the median. Numpy's percentile function allows you to calculate percentiles easily for a given list of numbers. You will calculate the 95th percentile.
+There is a second bar chart plot in the same figure. Once again, there are some important features to recognize and replicate:  
+* The x-axis labels are the races.  
+* There are two side-by-side bars for Male and Female as shown in the legend.  
+* The legend is not on top of the figure, but off to the right side and aligned with the top of the plot.  
+* The bar labels are slanted and the end of the text aligns perfectly centered with the bars.  
+* The bars start at 60%.  
 
-Here is sample code that shows how client code can use the class:  
-```python
-'''
-This file is named: my_client.py
-'''
-# import the MyStats class from the file that implements it
-from hw3_manual import MyStats
-
-# Sample list on which to calculate three stats
-l = [1, 2, 3, 4, 5, 6, 7, 10, 15]
-
-# unpack the three statistics directly from the method call
-a, b, c = MyStats.compute(l)
-
-# store the results object (which is of type MyStats) from the method call
-obj = MyStats.compute(l)
-
-# print the object directly
-print(obj) # prints: MyStats(kertosis=0.10, skew=0.98, 95_percentile=13.00)
-
-# print the three unpacked statistics (raw & unrounded)
-print(a, b, c)
-
-# iterate the object and print each stat rounded to 3 decimal places
-for s in obj:
-    print(f'Stat = {s:.3f}')
+```{admonition} Reflect
+:class: note
+What does this figure tell you? How can you explain it? 
 ```
-The expected output of the above code is:  
+
+```{admonition} Conclusions
+:class: error dropdown
+Females get more degrees on average, yet when we look at this graph we can see that for many of the races, Males do just as well, if not better, than Females. In fact, for some of the most populous races (White), Females have a lower percentage of high school degrees. This should lead one to think more deeply about how Females have a higher average.  
+
+One can consider `Simpson's Paradox`. The does **NOT** really apply because Males do not do better in each individual category. However, it is possible that the ratio of races is different for Males than it is for Females.   
+
+Likely, there are a significant number of Hispanic women in the data which elevates the overall average to be 'significantly' larger than the Male average despite many of the races being higher for Males.  
+
+Overall, this data should beg the question: **What is the ratio of races for each gender?**  and **Why are some races doing significantly different depending on the race?**  
+
+We could do a plot over time to see if 2009 is an outlier.  
 ```
-MyStats(kertosis=0.10, skew=0.98, 95_percentile=13.00)
-0.10378287249864737 0.9838565052198887 12.999999999999998
-Stat = 0.104
-Stat = 0.984
-Stat = 13.000
-```
-Several higher Object Oreinted pieces of functionality are are present. You need to figure them out.  
-```{admonition} Tips
-:class: hint
-* Mr. Stride's implementation was a total of 20 lines of code (including imports and empty lines, but excluding comments).   
-* Use an <a href="https://docs.python.org/3/library/functions.html#staticmethod" target="_blank">annotation</a> to designate `compute` to be a static method.  
-* Use <a href="https://docs.python.org/3/reference/datamodel.html#special-method-names" target="_blank">special methods</a> to allow the object to be _iterable_ and _printable_.  
-* Consider leveraging a list's inherent ability to be _iterable_ to simpify the object's required implementation.  
-* Follow privacy rules by using Python's naming conventions (using underscores) for private instance field names.   
-```
+
+Annotate each bar with the value.
+The second bar chart will be a stacked bar chart by race for male and female, and each stacked bar will be annotated. 
+The final figure will look like the one below.  
