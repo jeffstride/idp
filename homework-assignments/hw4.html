@@ -481,12 +481,11 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#files">Files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context">Context</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#todo-all-the-below-stuff-needs-to-be-deleted">TODO: All the below stuff needs to be deleted</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#miscellaneous-tips">Miscellaneous Tips</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#required-methods">Required Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context">Context</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main">main</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-methods">Pandas Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-methods">Plotting Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scikit-learn-requirement">Scikit-learn Requirement</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-quality">Code Quality</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rubric">Rubric</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-question">Challenge Question</a></li>
@@ -523,7 +522,7 @@ document.write(`
 <h2>Context<a class="headerlink" href="#context" title="Permalink to this heading">#</a></h2>
 <p>The National Center for Education Statistics is a U.S. federal government agency for collecting and analyzing data related to education. We have downloaded and cleaned one of their datasets: Percentage of persons 25 to 29 years old with selected levels of educational attainment, by race/ethnicity and sex: Selected years, 1920 through 2018. The nces-ed-attainment.csv file has columns for Year, Sex, Min degree, and race/ethnicity categories.</p>
 <blockquote>
-<div><p>Note the missing data: not all columns have data starting from 1920!</p>
+<div><p>Note the missing data: not all columns have data starting from 1920! And, Our <code class="docutils literal notranslate"><span class="pre">main</span></code> method provides a line of code to read <code class="docutils literal notranslate"><span class="pre">nces-ed-attainment.csv</span></code> and replaces all occurrences of the <code class="docutils literal notranslate"><span class="pre">---</span></code> with pandas <code class="docutils literal notranslate"><span class="pre">NaN</span></code> to help with later data processing steps.</p>
 </div></blockquote>
 <table class="table">
 <thead>
@@ -598,209 +597,121 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">Total</span></code> is the overall percentage of people of the <code class="docutils literal notranslate"><span class="pre">Sex</span></code> in the <code class="docutils literal notranslate"><span class="pre">Year</span></code> with at least the <code class="docutils literal notranslate"><span class="pre">Min</span> <span class="pre">degree</span></code> of educational attainment.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">White</span></code>, <code class="docutils literal notranslate"><span class="pre">Black</span></code>, <code class="docutils literal notranslate"><span class="pre">Hispanic</span></code>, <code class="docutils literal notranslate"><span class="pre">Asian</span></code>, <code class="docutils literal notranslate"><span class="pre">Pacific</span> <span class="pre">Islander</span></code>, <code class="docutils literal notranslate"><span class="pre">American</span> <span class="pre">Indian/Alaska</span> <span class="pre">Native</span></code>, <code class="docutils literal notranslate"><span class="pre">Two</span> <span class="pre">or</span> <span class="pre">more</span> <span class="pre">races</span></code> is the percentage of students of the specified race (and of the <code class="docutils literal notranslate"><span class="pre">Sex</span></code> in the <code class="docutils literal notranslate"><span class="pre">Year</span></code>) with at least the <code class="docutils literal notranslate"><span class="pre">Min</span> <span class="pre">degree</span></code> of educational attainment.</p></li>
 </ul>
-<p>In the Charmander species, Charmander begins at stage 1, evolves into a Charmeleon at stage 2, and finally evolves into Charizard at stage 3.</p>
-<section id="todo-all-the-below-stuff-needs-to-be-deleted">
-<h3>TODO: All the below stuff needs to be deleted<a class="headerlink" href="#todo-all-the-below-stuff-needs-to-be-deleted" title="Permalink to this heading">#</a></h3>
+<div class="warning admonition">
+<p class="admonition-title">Warning</p>
+<p>Do not use any loops, list comprehensions, or dictionary comprehensions. The goal of this assessment is to apply data science libraries to answer questions.</p>
+<p>Be sure to call all of the functions you write inside your <code class="docutils literal notranslate"><span class="pre">main</span></code> method!</p>
+</div>
 </section>
-<section id="miscellaneous-tips">
-<h3>Miscellaneous Tips<a class="headerlink" href="#miscellaneous-tips" title="Permalink to this heading">#</a></h3>
-<p>As with previous assessments, you’ll also check your solutions by adding tests to <code class="docutils literal notranslate"><span class="pre">hw3_test.py</span></code> using the <code class="docutils literal notranslate"><span class="pre">assert_equals</span></code> function.</p>
+<section id="main">
+<h2>main<a class="headerlink" href="#main" title="Permalink to this heading">#</a></h2>
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a <code class="docutils literal notranslate"><span class="pre">main</span></code> method in <code class="docutils literal notranslate"><span class="pre">hw4.py</span></code> that loads in the dataset provided and calls all of the functions you wrote. For all of the method calls, you should rely on any default parameters we specified.</p>
+</section>
+<section id="pandas-methods">
+<h2>Pandas Methods<a class="headerlink" href="#pandas-methods" title="Permalink to this heading">#</a></h2>
+<p>Implement two methods <code class="docutils literal notranslate"><span class="pre">compare_bachelors_1980</span></code> and <code class="docutils literal notranslate"><span class="pre">top_2_2000s</span></code>.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-0">
-Tip #1</label><div class="sd-tab-content docutils">
-<div class="hint admonition">
-<p class="admonition-title">Parsing</p>
-<p>Here you can see examples of both parsing functions:</p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">parse</span></code>: To help test functions solved without Pandas, <code class="docutils literal notranslate"><span class="pre">cse163_utils.py</span></code> defines a <code class="docutils literal notranslate"><span class="pre">parse</span></code> function that takes a filename and returns the dataset as a list of dictionaries.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">read_csv</span></code>: To help test functions solved with Pandas, call <code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code> to return the dataset as a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>.</p></li>
-</ul>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">cse163_utils</span> <span class="kn">import</span> <span class="n">parse</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;file.csv&#39;</span><span class="p">)</span>
-<span class="n">list_of_dict</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="s1">&#39;file.csv&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
+Method 1</label><div class="sd-tab-content docutils">
+<p>Answer the question: <strong>What were the percentages for women vs. men having earned a Bachelor’s Degree in 1980?</strong></p>
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a function <code class="docutils literal notranslate"><span class="pre">compare_bachelors_1980</span></code> that takes one argument, <code class="docutils literal notranslate"><span class="pre">data</span></code>, and <em>finds</em> the percentages of men and women who achieved a minimum degree of a Bachelor’s degree in 1980. The result should be a 2-by-2 <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> with rows corresponding to men and women and columns corresponding to <code class="docutils literal notranslate"><span class="pre">Sex</span></code> and <code class="docutils literal notranslate"><span class="pre">Total</span></code>. The order of the rows doesn’t matter. For example, your result should look something like this:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Sex</p></th>
+<th class="head"><p>Total</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>M</p></td>
+<td><p>…</p></td>
+</tr>
+<tr class="row-odd"><td><p>F</p></td>
+<td><p>…</p></td>
+</tr>
+</tbody>
+</table>
+<div class="note admonition">
+<p class="admonition-title">Requirement</p>
+<p>Your code should ONLY assume the structure of the data. Your code should <strong>not</strong> make any assumptions about the number
+of rows or where values exist. Your code should work on a different data set with different index values.</p>
 </div>
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-1">
-Tip #2</label><div class="sd-tab-content docutils">
-<div class="hint admonition">
-<p class="admonition-title">Test Files</p>
-<ul class="simple">
-<li><p>Create your own testing CSV file and submit these files with your other files.</p></li>
-<li><p><strong>Do not</strong> use or introduce subdirectories (subfolders) for the test files in this assignment. Keep the file structure flat.</p></li>
-<li><p>When specifying file names, use <strong>relative</strong> paths, such as <code class="docutils literal notranslate"><span class="pre">pd.read_csv('pokemon_test.csv')</span></code>.</p></li>
-<li><p><strong>Do not</strong> use the <code class="docutils literal notranslate"><span class="pre">pokemon_box.csv</span></code> file in your own test cases. The file is too large to come up with the correct answer on your own; it’s not valid to assume your code’s output is the correct answer and to blindly use that as the expected value.</p></li>
-</ul>
-</div>
-</div>
-<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-2">
-Tip #3</label><div class="sd-tab-content docutils">
-<div class="hint admonition">
-<p class="admonition-title">Test Methods</p>
-<ul class="simple">
-<li><p>Write at least one test function for each problem and give it a descriptive name that indicates the function being tested, such as <code class="docutils literal notranslate"><span class="pre">test_species_count</span></code>.</p></li>
-<li><p>In addition to the provided <code class="docutils literal notranslate"><span class="pre">pokemon_test.csv</span></code> example file, add at least 2 (<strong>two</strong>) additional test files (one file for each case you’re testing). These data files contain short, contrived, targeted data that is easy to verify in your tests.</p></li>
-<li><p>One test function per problem is fine since both ways of solving the problem should compute the same result. In other words, you may choose to write one method, <code class="docutils literal notranslate"><span class="pre">test_species_count</span></code> that tests both the manual and pandas code.</p></li>
-</ul>
-</div>
-</div>
-<input id="sd-tab-item-3" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-3">
-Tip #4</label><div class="sd-tab-content docutils">
-<div class="hint admonition">
-<p class="admonition-title">Constants, Globals &amp; Locality</p>
-<ul class="simple">
-<li><p>Do <strong>NOT</strong> use globals in your test file. Instead, use constants or method parameters.</p></li>
-<li><p>Don’t make “heavy weight” constants. (See: <a href="https://courses.cs.washington.edu/courses/cse163/22sp/resources/code_quality/#constant-names" target="_blank">Code Quality - Constants</a> for more details.)</p></li>
-<li><p>Attempt to keep declarations and values in close proximity to where they are used. This helps the reader understand the code better. This means, define expected values in the method where they are used.</p></li>
-<li><p>Attempt to reduce redundancy with code instead of copy/paste. But, in test files, some redundancy is allowed so that tests can remain insulated from one another and to improve readability of individual test functions.</p></li>
-</ul>
-<p>Here is some sample code:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">This is my test file</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">import</span> <span class="nn">hw3_manual</span>
-<span class="kn">import</span> <span class="nn">hw3_pandas</span>
-
-<span class="kn">from</span> <span class="nn">cse163_utils</span> <span class="kn">import</span> <span class="n">parse</span>
-
-<span class="c1"># do NOT use globals like these</span>
-<span class="n">test_data_1_dict</span> <span class="o">=</span> <span class="n">parse</span><span class="p">(</span><span class="s1">&#39;pokemon_box.csv&#39;</span><span class="p">)</span>
-<span class="n">test_data_1_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;pokemon_box.csv&#39;</span><span class="p">)</span>
-
-<span class="c1"># these are constants and are fine to use if you want</span>
-<span class="n">FILE_1</span> <span class="o">=</span> <span class="s1">&#39;test_data1.csv&#39;</span>
-<span class="n">FILE_2</span> <span class="o">=</span> <span class="s1">&#39;test_data2.csv&#39;</span>
-
-<span class="k">def</span> <span class="nf">test_example</span><span class="p">():</span>
-<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">    Test the method example using both manual and pandas</span>
-<span class="sd">    &#39;&#39;&#39;</span>
-    <span class="c1"># test simple case</span>
-    <span class="n">expected</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;age&#39;</span><span class="p">:</span><span class="mi">15</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="p">:</span><span class="mi">102</span><span class="p">}</span>
-    <span class="n">assert_equals</span><span class="p">(</span><span class="n">expected</span><span class="p">,</span> <span class="n">hw3_pandas</span><span class="o">.</span><span class="n">example</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">FILE_1</span><span class="p">)))</span>
-    <span class="n">assert_equals</span><span class="p">(</span><span class="n">expected</span><span class="p">,</span> <span class="n">hw3_manual</span><span class="o">.</span><span class="n">example</span><span class="p">(</span><span class="n">parse</span><span class="p">(</span><span class="n">FILE_1</span><span class="p">)))</span>
-
-    <span class="c1"># test extreme case</span>
-    <span class="n">expected</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;age&#39;</span><span class="p">:</span><span class="mi">99</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="p">:</span><span class="mi">999</span><span class="p">}</span>
-    <span class="n">assert_equals</span><span class="p">(</span><span class="n">expected</span><span class="p">,</span> <span class="n">hw3_pandas</span><span class="o">.</span><span class="n">example</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">FILE_2</span><span class="p">)))</span>
-    <span class="n">assert_equals</span><span class="p">(</span><span class="n">expected</span><span class="p">,</span> <span class="n">hw3_manual</span><span class="o">.</span><span class="n">example</span><span class="p">(</span><span class="n">parse</span><span class="p">(</span><span class="n">FILE_2</span><span class="p">)))</span>
-
-    <span class="c1"># test redundant case</span>
-    <span class="n">expected</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;age&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="p">:</span><span class="mi">25</span><span class="p">}</span>
-    <span class="n">assert_equals</span><span class="p">(</span><span class="n">expected</span><span class="p">,</span> <span class="n">hw3_pandas</span><span class="o">.</span><span class="n">example</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;test_data3.csv&#39;</span><span class="p">)))</span>
-    <span class="n">assert_equals</span><span class="p">(</span><span class="n">expected</span><span class="p">,</span> <span class="n">hw3_manual</span><span class="o">.</span><span class="n">example</span><span class="p">(</span><span class="n">parse</span><span class="p">(</span><span class="s1">&#39;test_data3.csv&#39;</span><span class="p">)))</span>
-
-
-<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
-    <span class="c1"># be sure to call every test you write</span>
-    <span class="n">test_example</span><span class="p">()</span>
-
-
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
-    <span class="n">main</span><span class="p">()</span>
+Method 2</label><div class="sd-tab-content docutils">
+<p>Answer the question: <strong>What were the 2 most commonly-awarded levels of educational attainment awarded between 2000–2010 (inclusive) for a given sex?</strong><br />
+<i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a function <code class="docutils literal notranslate"><span class="pre">top_2_2000s(data,</span> <span class="pre">sex)</span></code> that takes two arguments, the <code class="docutils literal notranslate"><span class="pre">data</span></code> and a <code class="docutils literal notranslate"><span class="pre">sex</span></code> parameter, and computes the two most commonly earned degrees for that given sex between the years 2000 and 2010 (inclusive). The function should return a 2-element <code class="docutils literal notranslate"><span class="pre">Series</span></code>. Compare educational attainment levels by using the <code class="docutils literal notranslate"><span class="pre">mean</span></code>. The index of the returned <code class="docutils literal notranslate"><span class="pre">Series</span></code> should be the <code class="docutils literal notranslate"><span class="pre">Min</span> <span class="pre">degree</span></code> and the values should be its <code class="docutils literal notranslate"><span class="pre">mean</span></code>. The <code class="docutils literal notranslate"><span class="pre">sex</span></code> parameter should default to <code class="docutils literal notranslate"><span class="pre">'A'</span></code> if no <code class="docutils literal notranslate"><span class="pre">sex</span></code> parameter/value is provided by the caller.</p>
+<blockquote>
+<div><p>Hint: <code class="docutils literal notranslate"><span class="pre">Series.nlargest</span></code> works like <code class="docutils literal notranslate"><span class="pre">DataFrame.nlargest</span></code>. The Series method takes only a single integer argument and returns a Series, while the DataFrame method requires an additional column parameter and returns a DataFrame.</p>
+</div></blockquote>
+<p>Here is an example: <code class="docutils literal notranslate"><span class="pre">top_2_2000s(data,</span> <span class="pre">'A')</span></code> will return the <code class="docutils literal notranslate"><span class="pre">Series</span></code> shown below with index on the left and value on the right. Your values don’t have to exactly match so long as they’re within a 0.001 tolerance due to <a href="https://docs.python.org/3/tutorial/floatingpoint.html" target="_blank">how Python represents float numbers</a>. Because <code class="docutils literal notranslate"><span class="pre">sex</span></code> is set to default to <code class="docutils literal notranslate"><span class="pre">'A'</span></code>, this means a call to <code class="docutils literal notranslate"><span class="pre">top_2_2000s(data)</span></code> should also return the same <code class="docutils literal notranslate"><span class="pre">Series</span></code>.</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>high school 87.557143  
+associate&#39;s 38.757143
 </pre></div>
 </div>
 </div>
 </div>
-</div>
 </section>
-</section>
-<section id="required-methods">
-<h2>Required Methods<a class="headerlink" href="#required-methods" title="Permalink to this heading">#</a></h2>
-<p>In the file named <code class="docutils literal notranslate"><span class="pre">hw3.py</span></code>, implement six methods: <code class="docutils literal notranslate"><span class="pre">species_count</span></code>, <code class="docutils literal notranslate"><span class="pre">max_level</span></code>, <code class="docutils literal notranslate"><span class="pre">filter_range</span></code>, <code class="docutils literal notranslate"><span class="pre">mean_attack_for_type</span></code>, <code class="docutils literal notranslate"><span class="pre">count_types</span></code>,
-and <code class="docutils literal notranslate"><span class="pre">mean_attack_per_type</span></code>. The description for each method is found in the tabs below.</p>
-<p>For each method described in the tabs you must:</p>
-<ul class="simple">
-<li><p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> in <code class="docutils literal notranslate"><span class="pre">hw3_manuals.py</span></code> the function as described in the tabs.</p></li>
-<li><p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> in <code class="docutils literal notranslate"><span class="pre">hw3_pandas.py</span></code> the same function using Pandas. Rather than take a list of dictionaries, the Pandas version will take a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> argument.</p></li>
-<li><p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> in <code class="docutils literal notranslate"><span class="pre">hw3_test.py</span></code> one or more test functions that call the method with various input. Compare the actual results to the expected results using <code class="docutils literal notranslate"><span class="pre">assert_equals</span></code>. Do <strong>not</strong> do all your testing with the <code class="docutils literal notranslate"><span class="pre">pokemon_test.csv</span></code> file; be sure to add 2 (<strong>two</strong>) additional test cases by creating your own CSV files. (See Miscellaneous Tip #4 above.)</p></li>
-</ul>
-<div class="note admonition">
-<p class="admonition-title">Challenge</p>
-<p>Way down below is a challenge question which is optional and not graded. See the <a href="#challenge-question">Challenge Question</a> section down below for details.</p>
+<section id="plotting-methods">
+<h2>Plotting Methods<a class="headerlink" href="#plotting-methods" title="Permalink to this heading">#</a></h2>
+<p>You will use <code class="docutils literal notranslate"><span class="pre">Seaborn</span></code> to create three plots. You will implement three methods: <code class="docutils literal notranslate"><span class="pre">line_plot_bachelors</span></code>, <code class="docutils literal notranslate"><span class="pre">bar_chart_high_school</span></code>, <code class="docutils literal notranslate"><span class="pre">plot_hispanic_min_degree</span></code>.</p>
+<div class="warning admonition">
+<p class="admonition-title">Use Seaborn</p>
+<p>For <code class="docutils literal notranslate"><span class="pre">line_plot_bachelors</span></code> and <code class="docutils literal notranslate"><span class="pre">bar_chart_high_school</span></code>, be sure to use the <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> functions.<br />
+Use <code class="docutils literal notranslate"><span class="pre">catplot()</span></code> and <code class="docutils literal notranslate"><span class="pre">relplot()</span></code>.<br />
+Do <strong>NOT</strong> use <code class="docutils literal notranslate"><span class="pre">barplot()</span></code> or <code class="docutils literal notranslate"><span class="pre">lineplot()</span></code>.</p>
+<p>This is to assure that the image comparison tests can work.</p>
 </div>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
+<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
+Plot 1</label><div class="sd-tab-content docutils">
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a function <code class="docutils literal notranslate"><span class="pre">line_plot_bachelors</span></code> that takes the <code class="docutils literal notranslate"><span class="pre">data</span></code> and plots a line chart of the total percentages of all people (<code class="docutils literal notranslate"><span class="pre">Sex</span></code> == <code class="docutils literal notranslate"><span class="pre">'A'</span></code>) and whose <code class="docutils literal notranslate"><span class="pre">Min</span> <span class="pre">degree</span></code> is <code class="docutils literal notranslate"><span class="pre">bachelor's</span></code>, graphed over time. Label the x-axis <strong>Year</strong>, the y-axis <strong>Percentage</strong>, and title the plot <strong>Percentage Earning Bachelor’s over Time</strong>.</p>
+<p>Your plot should look like this:<br />
+<img alt="Percentage Earning Bachelor's over Time" src="../_images/hw4_line_plot_bachelors.png" /></p>
+<p>Use the following line of code to save the plot:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;line_plot_bachelors.png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-3">
+Plot 2</label><div class="sd-tab-content docutils">
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a function <code class="docutils literal notranslate"><span class="pre">bar_chart_high_school</span></code> that takes the <code class="docutils literal notranslate"><span class="pre">data</span></code> and plots a bar chart comparing the total percentages of <code class="docutils literal notranslate"><span class="pre">Sex</span></code> <code class="docutils literal notranslate"><span class="pre">F</span></code>, <code class="docutils literal notranslate"><span class="pre">M</span></code>, and <code class="docutils literal notranslate"><span class="pre">A</span></code> with <code class="docutils literal notranslate"><span class="pre">high</span> <span class="pre">school</span></code> <code class="docutils literal notranslate"><span class="pre">Min</span> <span class="pre">degree</span></code> in the <code class="docutils literal notranslate"><span class="pre">Year</span></code> <code class="docutils literal notranslate"><span class="pre">2009</span></code>. Label the x-axis <strong>Sex</strong>, the y-axis <strong>Percentage</strong>, and title the plot <strong>Percentage Completed High School by Sex</strong>.</p>
+<p>Your plot should look like this:<br />
+<img alt="Percentage completed High School by Sex" src="../_images/hw4_bar_chart_high_school.png" /></p>
+<blockquote>
+<div><p>Ask yourself: Is this visualization an effective one? You will consider this in last section of the assignment asking you to reflect on the work we did for this assignment.</p>
+</div></blockquote>
+<p>Use the following line of code to save the plot:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;bar_chart_high_school.png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-4">
-species_count</label><div class="sd-tab-content docutils">
-<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> in <code class="docutils literal notranslate"><span class="pre">hw3_manual.py</span></code> a function <code class="docutils literal notranslate"><span class="pre">species_count</span></code> that takes a parsed pokemon dataset and returns the number of unique pokemon species in the dataset as determined by the <code class="docutils literal notranslate"><span class="pre">name</span></code> attribute without using Pandas.</p>
-<p>For the <code class="docutils literal notranslate"><span class="pre">pokemon_test.csv</span></code> file, <code class="docutils literal notranslate"><span class="pre">species_count(data)</span></code> should return <code class="docutils literal notranslate"><span class="pre">3</span></code>.</p>
-<div class="important admonition">
-<p class="admonition-title">Do not use id</p>
-<p>Do not use the <code class="docutils literal notranslate"><span class="pre">id</span></code> attribute to solve this this problem. Instead, you use the <code class="docutils literal notranslate"><span class="pre">name</span></code> attribute.<br />
-I realize that <code class="docutils literal notranslate"><span class="pre">id</span></code> should be the right approach, but UW has other ideas here. Don’t fight it. Just use <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
-</div>
-</div>
-<input id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-5">
-max_level</label><div class="sd-tab-content docutils">
-<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> in <code class="docutils literal notranslate"><span class="pre">hw3_manual.py</span></code> a function <code class="docutils literal notranslate"><span class="pre">max_level</span></code> that takes a parsed pokemon dataset and returns a 2-element tuple of the <code class="docutils literal notranslate"><span class="pre">(name,</span> <span class="pre">level)</span></code> of the pokemon with the highest <code class="docutils literal notranslate"><span class="pre">level</span></code> in the dataset. If there is more than one pokemon with the highest <code class="docutils literal notranslate"><span class="pre">level</span></code>, return the pokemon that appears first in the file.</p>
-<p>For the <code class="docutils literal notranslate"><span class="pre">pokemon_test.csv</span></code> file, <code class="docutils literal notranslate"><span class="pre">max_level(data)</span></code> should return the 2-element tuple, <code class="docutils literal notranslate"><span class="pre">('Lapras',</span> <span class="pre">72)</span></code>.</p>
-</div>
-<input id="sd-tab-item-6" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-6">
-filter_range</label><div class="sd-tab-content docutils">
-<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> in <code class="docutils literal notranslate"><span class="pre">hw3_manual.py</span></code> a function <code class="docutils literal notranslate"><span class="pre">filter_range</span></code> that takes a parsed pokemon dataset and  two numbers: a lower bound (inclusive) and upper bound (exclusive). The function returns a list of the names of pokemon whose <code class="docutils literal notranslate"><span class="pre">level</span></code> fall within the bounds in the same order that they appear in the dataset.</p>
-<p>For the <code class="docutils literal notranslate"><span class="pre">pokemon_test.csv</span></code> file, <code class="docutils literal notranslate"><span class="pre">filter_range(data,</span> <span class="pre">35,</span> <span class="pre">72)</span></code> should return <code class="docutils literal notranslate"><span class="pre">['Arcanine',</span> <span class="pre">'Arcanine',</span> <span class="pre">'Starmie']</span></code>. Note that Lapras is not included because the upper bound is exclusive of Lapras, which is exactly level 72.</p>
-<div class="hint admonition">
-<p class="admonition-title">Series to list</p>
-<p>To convert a Pandas Series to a list, use the built-in list function. For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># data is a DataFrame storing following info:</span>
-<span class="c1"># name,age,species</span>
-<span class="c1"># Fido,4,dog</span>
-<span class="c1"># Meowrty,6,cat</span>
-<span class="c1"># Chester,1,dog</span>
-<span class="c1"># Phil,1,axolotl</span>
-<span class="n">names</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>  <span class="c1"># Series</span>
-<span class="nb">list</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>  <span class="c1"># [&#39;Fido&#39;, &#39;Meowrty&#39;, &#39;Chester&#39;, &#39;Phil&#39;]</span>
-<span class="n">row</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># Series</span>
-<span class="nb">list</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>  <span class="c1"># [&#39;Meowrty&#39;, 6, &#39;cat&#39;]</span>
+Plot 3</label><div class="sd-tab-content docutils">
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a function <code class="docutils literal notranslate"><span class="pre">plot_hispanic_min_degree</span></code> that takes the <code class="docutils literal notranslate"><span class="pre">data</span></code> and plots how the percentage of <code class="docutils literal notranslate"><span class="pre">Hispanic</span></code> people with degrees have changed between 1990–2010 (inclusive) for <code class="docutils literal notranslate"><span class="pre">high</span> <span class="pre">school</span></code> and <code class="docutils literal notranslate"><span class="pre">bachelor's</span></code> <code class="docutils literal notranslate"><span class="pre">Min</span> <span class="pre">degree</span></code>. Choose a plot type for this problem and prepare to explain your decision-making process in the writeup. Label the axes and title the plot appropriately.</p>
+<blockquote>
+<div><p>Hint: Remember that your plot should be readable. You might find the function <code class="docutils literal notranslate"><span class="pre">plt.xticks()</span></code> helpful!</p>
+</div></blockquote>
+<p>Use the following line of code to save the plot:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;plot_hispanic_min_degree.png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<input id="sd-tab-item-7" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-7">
-mean_attack_for_type</label><div class="sd-tab-content docutils">
-<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> in <code class="docutils literal notranslate"><span class="pre">hw3_manual.py</span></code> a function <code class="docutils literal notranslate"><span class="pre">mean_attack_for_type</span></code> that takes a parsed pokemon dataset and a string representing the pokemon <code class="docutils literal notranslate"><span class="pre">type</span></code>. The function returns the average <code class="docutils literal notranslate"><span class="pre">atk</span></code> for all the pokemon in the dataset with the given <code class="docutils literal notranslate"><span class="pre">type</span></code>. If there are no pokemon of the given <code class="docutils literal notranslate"><span class="pre">type</span></code>, return <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
-<p>For the <code class="docutils literal notranslate"><span class="pre">pokemon_test.csv</span></code> file, <code class="docutils literal notranslate"><span class="pre">mean_attack_for_type(data,</span> <span class="pre">'fire')</span></code> should return <code class="docutils literal notranslate"><span class="pre">47.5</span></code>.</p>
-</div>
-<input id="sd-tab-item-8" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-8">
-count_types</label><div class="sd-tab-content docutils">
-<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> in <code class="docutils literal notranslate"><span class="pre">hw3_manual.py</span></code> a function <code class="docutils literal notranslate"><span class="pre">count_types</span></code> that takes a parsed pokemon dataset and returns a dictionary representing for each pokemon <code class="docutils literal notranslate"><span class="pre">type</span></code> the number of pokemon of that <code class="docutils literal notranslate"><span class="pre">type</span></code>. The order of the keys in the returned dictionary does not matter.</p>
-<p>For the <code class="docutils literal notranslate"><span class="pre">pokemon_test.csv</span></code> file, <code class="docutils literal notranslate"><span class="pre">count_types(data)</span></code> should return <code class="docutils literal notranslate"><span class="pre">{'fire':</span> <span class="pre">2,</span> <span class="pre">'water':</span> <span class="pre">2}</span></code>.</p>
-<div class="hint admonition">
-<p class="admonition-title">Series to dict</p>
-<p>To convert a Pandas Series to a dictionary, use the built-in <code class="docutils literal notranslate"><span class="pre">dict</span></code> function. The dictionary keys are determined by the series index. For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># data is a DataFrame storing following info:</span>
-<span class="c1"># name,age,species</span>
-<span class="c1"># Fido,4,dog</span>
-<span class="c1"># Meowrty,6,cat</span>
-<span class="c1"># Chester,1,dog</span>
-<span class="c1"># Phil,1,axolotl</span>
-<span class="n">names</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span>  <span class="c1"># Series</span>
-<span class="nb">dict</span><span class="p">(</span><span class="n">names</span><span class="p">)</span>  <span class="c1"># {0: &#39;Fido&#39;, 1: &#39;Meowrty&#39;, 2: &#39;Chester&#39;, 3: &#39;Phil&#39;}</span>
-<span class="n">row</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>  <span class="c1"># Series</span>
-<span class="nb">dict</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>  <span class="c1"># {&#39;name&#39;: &#39;Meowrty&#39;, &#39;age&#39;: 6, &#39;species&#39;: &#39;cat&#39;}</span>
-</pre></div>
-</div>
-</div>
-</div>
-<input id="sd-tab-item-9" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-9">
-mean_attack_per_type</label><div class="sd-tab-content docutils">
-<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> in <code class="docutils literal notranslate"><span class="pre">hw3_manual.py</span></code> a function <code class="docutils literal notranslate"><span class="pre">mean_attack_per_type</span></code> that takes a parsed pokemon dataset and returns a dictionary representing for each pokemon <code class="docutils literal notranslate"><span class="pre">type</span></code> the average <code class="docutils literal notranslate"><span class="pre">atk</span></code> of pokemon of that <code class="docutils literal notranslate"><span class="pre">type</span></code>. The order of the keys in the returned dictionary does not matter.</p>
-<p>For the <code class="docutils literal notranslate"><span class="pre">pokemon_test.csv</span></code> file, <code class="docutils literal notranslate"><span class="pre">mean_attack_per_type(data)</span></code> should return <code class="docutils literal notranslate"><span class="pre">{'fire':</span> <span class="pre">47.5,</span> <span class="pre">'water':</span> <span class="pre">140.5}</span></code>.</p>
-</div>
+</section>
+<section id="scikit-learn-requirement">
+<h2>Scikit-learn Requirement<a class="headerlink" href="#scikit-learn-requirement" title="Permalink to this heading">#</a></h2>
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Train</strong> a <code class="docutils literal notranslate"><span class="pre">DecisionTreeRegressor</span></code> to predict the percentage of degrees attained for a given <code class="docutils literal notranslate"><span class="pre">Sex</span></code>, <code class="docutils literal notranslate"><span class="pre">Min</span> <span class="pre">degree</span></code>, and <code class="docutils literal notranslate"><span class="pre">Year</span></code>. Write a function <code class="docutils literal notranslate"><span class="pre">fit_and_predict_degrees</span></code> that takes the <code class="docutils literal notranslate"><span class="pre">data</span></code> and returns the <strong>test mean squared error</strong> as a <code class="docutils literal notranslate"><span class="pre">float</span></code>. Follow these specific data preprocessing and model training steps.</p>
+<p><strong>Preprocessing</strong>: Filter the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> to only include the columns for <code class="docutils literal notranslate"><span class="pre">Year</span></code>, <code class="docutils literal notranslate"><span class="pre">Min</span> <span class="pre">degree</span></code>, <code class="docutils literal notranslate"><span class="pre">Sex</span></code>, and <code class="docutils literal notranslate"><span class="pre">Total</span></code>. Drop rows that have missing data in these columns—<strong>do not drop any additional rows</strong>. One-hot encode <code class="docutils literal notranslate"><span class="pre">str</span></code> values. Split the columns as needed into input features and labels.</p>
+<p><strong>Model training</strong>: Once the data has been preprocessed, randomly split the remaining <code class="docutils literal notranslate"><span class="pre">data</span></code> into 80% training and 20% testing. Fit the model to the training set. Finally, calculate the mean squared error of the model’s test set predictions.</p>
+<p>The automated tests only check that the function runs without causing an error. Try comparing the ground truth values and the model’s predictions manually to check for similarity. (It would be bad if the ground truth values were <code class="docutils literal notranslate"><span class="pre">[2,</span> <span class="pre">755,</span> <span class="pre">...]</span></code> but the predicted values were <code class="docutils literal notranslate"><span class="pre">[1022,</span> <span class="pre">5,</span> <span class="pre">...]</span></code>.) Also, try calculating the mean squared error on the training dataset as well as the testing dataset—the error should be lower on the training dataset than on the testing dataset.</p>
+<div class="note admonition">
+<p class="admonition-title">Info</p>
+<p>This education dataset is a time series. When working with time series, it is common to use the last rows as the test set rather than random sampling since the goal is to design a model that predicts the future. But by randomly sampling to generate the test set, we are assessing the model on its ability to predict the past! Even though random sampling is not necessarily appropriate here, we ask you to do it anyways because it’s the most common sampling method.</p>
 </div>
 </section>
 <section id="code-quality">
@@ -833,61 +744,39 @@ mean_attack_per_type</label><div class="sd-tab-content docutils">
 <p><strong>OPTIONAL</strong>: This challenge question is not graded and is here for those students who already know Python and want to flex some of their intellectual muscle.<br />
 <strong>NOTE</strong>: If you implement this challenge question, you’ll need to document all methods fully with doc-strings so that all the grading scripts pass. You don’t want to have your grade drop!  Be sure to test it, too!</p>
 <hr class="docutils" />
-<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a class named <code class="docutils literal notranslate"><span class="pre">MyStats</span></code> inside the file <code class="docutils literal notranslate"><span class="pre">hw3_manual.py</span></code>. It will implement
-several methods to support the required functionality. The <code class="docutils literal notranslate"><span class="pre">class</span></code> will have a static method named <code class="docutils literal notranslate"><span class="pre">compute</span></code> that will calculate three
-statistics using Python libraries; do not implement the calculations yourself.</p>
-<p>Here are the three relatively esoteric statistics that the <code class="docutils literal notranslate"><span class="pre">compute</span></code> method provides:</p>
-<ol class="arabic simple">
-<li><p><strong>Kurtosis</strong>: Kurtosis is a measure of the tailedness or shape of a probability distribution. It quantifies whether the distribution has heavy tails or is more peaked compared to a normal distribution. You can calculate the kurtosis using the <code class="docutils literal notranslate"><span class="pre">scipy.stats.kurtosis</span></code> function.</p></li>
-<li><p><strong>Skewness</strong>: Skewness measures the asymmetry of a probability distribution. It indicates whether the distribution has a longer tail on one side compared to the other. Positive skewness means the tail is on the right side, while negative skewness means the tail is on the left side. You can calculate the skewness of a distribution using the <code class="docutils literal notranslate"><span class="pre">scipy.stats.skew</span></code> method.</p></li>
-<li><p><strong>95th Percentile</strong>: Numpy provides a convenient way to calculate percentiles. A percentile represents the values below which a given percentage of the data falls. For example, the 50th percentile is the median. Numpy’s percentile function allows you to calculate percentiles easily for a given list of numbers. You will calculate the 95th percentile.</p></li>
-</ol>
-<p>Here is sample code that shows how client code can use the class:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">This file is named: my_client.py</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="c1"># import the MyStats class from the file that implements it</span>
-<span class="kn">from</span> <span class="nn">hw3_manual</span> <span class="kn">import</span> <span class="n">MyStats</span>
-
-<span class="c1"># Sample list on which to calculate three stats</span>
-<span class="n">l</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">]</span>
-
-<span class="c1"># unpack the three statistics directly from the method call</span>
-<span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="n">MyStats</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
-
-<span class="c1"># store the results object (which is of type MyStats) from the method call</span>
-<span class="n">obj</span> <span class="o">=</span> <span class="n">MyStats</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">l</span><span class="p">)</span>
-
-<span class="c1"># print the object directly</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="c1"># prints: MyStats(kertosis=0.10, skew=0.98, 95_percentile=13.00)</span>
-
-<span class="c1"># print the three unpacked statistics (raw &amp; unrounded)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
-
-<span class="c1"># iterate the object and print each stat rounded to 3 decimal places</span>
-<span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">obj</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Stat = </span><span class="si">{</span><span class="n">s</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>The expected output of the above code is:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MyStats</span><span class="p">(</span><span class="n">kertosis</span><span class="o">=</span><span class="mf">0.10</span><span class="p">,</span> <span class="n">skew</span><span class="o">=</span><span class="mf">0.98</span><span class="p">,</span> <span class="mi">95</span><span class="n">_percentile</span><span class="o">=</span><span class="mf">13.00</span><span class="p">)</span>
-<span class="mf">0.10378287249864737</span> <span class="mf">0.9838565052198887</span> <span class="mf">12.999999999999998</span>
-<span class="n">Stat</span> <span class="o">=</span> <span class="mf">0.104</span>
-<span class="n">Stat</span> <span class="o">=</span> <span class="mf">0.984</span>
-<span class="n">Stat</span> <span class="o">=</span> <span class="mf">13.000</span>
-</pre></div>
-</div>
-<p>Several higher Object Oreinted pieces of functionality are are present. You need to figure them out.</p>
-<div class="hint admonition">
-<p class="admonition-title">Tips</p>
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Create</strong> a figure with two bar charts that looks like the following.<br />
+<img alt="Education Figure" src="../_images/hw4_challenge_bar_chart.png" /><br />
+The first bar chart will illustrate by <code class="docutils literal notranslate"><span class="pre">Sex</span></code> the percentage who have earned a High School degree. A few things to note:</p>
 <ul class="simple">
-<li><p>Mr. Stride’s implementation was a total of 20 lines of code (including imports and empty lines, but excluding comments).</p></li>
-<li><p>Use an <a href="https://docs.python.org/3/library/functions.html#staticmethod" target="_blank">annotation</a> to designate <code class="docutils literal notranslate"><span class="pre">compute</span></code> to be a static method.</p></li>
-<li><p>Use <a href="https://docs.python.org/3/reference/datamodel.html#special-method-names" target="_blank">special methods</a> to allow the object to be <em>iterable</em> and <em>printable</em>.</p></li>
-<li><p>Consider leveraging a list’s inherent ability to be <em>iterable</em> to simpify the object’s required implementation.</p></li>
-<li><p>Follow privacy rules by using Python’s naming conventions (using underscores) for private instance field names.</p></li>
+<li><p>The labels for each bar are customized to ‘Combined’, ‘Male’ and ‘Female’.</p></li>
+<li><p>There is no ‘Sex’ label on the x-axis.</p></li>
+<li><p>The bottom of the chart starts at 86.5%.</p></li>
+<li><p>The y-label is ‘Percentage’.</p></li>
+<li><p>Each bar is annotated with the value of the bar.</p></li>
 </ul>
+<p>There is a second bar chart plot in the same figure. Once again, there are some important features to recognize and replicate:</p>
+<ul class="simple">
+<li><p>The x-axis labels are the races.</p></li>
+<li><p>There are two side-by-side bars for Male and Female as shown in the legend.</p></li>
+<li><p>The legend is not on top of the figure, but off to the right side and aligned with the top of the plot.</p></li>
+<li><p>The bar labels are slanted and the end of the text aligns perfectly centered with the bars.</p></li>
+<li><p>The bars start at 60%.</p></li>
+</ul>
+<div class="note admonition">
+<p class="admonition-title">Reflect</p>
+<p>What does this figure tell you? How can you explain it?</p>
 </div>
+<div class="error dropdown admonition">
+<p class="admonition-title">Conclusions</p>
+<p>Females get more degrees on average, yet when we look at this graph we can see that for many of the races, Males do just as well, if not better, than Females. In fact, for some of the most populous races (White), Females have a lower percentage of high school degrees. This should lead one to think more deeply about how Females have a higher average.</p>
+<p>One can consider <code class="docutils literal notranslate"><span class="pre">Simpson's</span> <span class="pre">Paradox</span></code>. The does <strong>NOT</strong> really apply because Males do not do better in each individual category. However, it is possible that the ratio of races is different for Males than it is for Females.</p>
+<p>Likely, there are a significant number of Hispanic women in the data which elevates the overall average to be ‘significantly’ larger than the Male average despite many of the races being higher for Males.</p>
+<p>Overall, this data should beg the question: <strong>What is the ratio of races for each gender?</strong>  and <strong>Why are some races doing significantly different depending on the race?</strong></p>
+<p>We could do a plot over time to see if 2009 is an outlier.</p>
+</div>
+<p>Annotate each bar with the value.
+The second bar chart will be a stacked bar chart by race for male and female, and each stacked bar will be annotated.
+The final figure will look like the one below.</p>
 </section>
 </section>
 
@@ -960,12 +849,11 @@ statistics using Python libraries; do not implement the calculations yourself.</
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#files">Files</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context">Context</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#todo-all-the-below-stuff-needs-to-be-deleted">TODO: All the below stuff needs to be deleted</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#miscellaneous-tips">Miscellaneous Tips</a></li>
-</ul>
-</li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#required-methods">Required Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context">Context</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main">main</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-methods">Pandas Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-methods">Plotting Methods</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scikit-learn-requirement">Scikit-learn Requirement</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-quality">Code Quality</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rubric">Rubric</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-question">Challenge Question</a></li>

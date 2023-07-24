@@ -491,8 +491,11 @@ document.write(`
 <p>You’ll want to change which file you build so that you can run either your functional code or your tests.
 To do this, you’ll want to modify the <code class="docutils literal notranslate"><span class="pre">.replit</span></code> file which is hidden in the <code class="docutils literal notranslate"><span class="pre">Config</span> <span class="pre">files</span></code> section that
 you can’t see until you <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">hidden</span> <span class="pre">files</span></code>.</p>
-<p>To run a different file, change <code class="docutils literal notranslate"><span class="pre">.replit</span></code> so that the <code class="docutils literal notranslate"><span class="pre">run</span></code> value references the file that you
-want to run. For example, the snippet of code below is set up to run <code class="docutils literal notranslate"><span class="pre">hw1_test.py</span></code>.</p>
+<p>To run a different file, change <code class="docutils literal notranslate"><span class="pre">.replit</span></code> in two ways:</p>
+<ol class="arabic simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">run</span></code> value references the file that you want to run. For example, the snippet of code below is set up to run <code class="docutils literal notranslate"><span class="pre">hw1_test.py</span></code>.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">entrypoint</span></code> value references the file you want to run.</p></li>
+</ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">run</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;python hw1_test.py&quot;</span>
 
 <span class="nv">entrypoint</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;main.py&quot;</span>

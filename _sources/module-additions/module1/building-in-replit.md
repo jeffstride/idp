@@ -8,8 +8,9 @@ You'll want to change which file you build so that you can run either your funct
 To do this, you'll want to modify the `.replit` file which is hidden in the `Config files` section that
 you can't see until you `Show hidden files`.  
 
-To run a different file, change `.replit` so that the `run` value references the file that you 
-want to run. For example, the snippet of code below is set up to run `hw1_test.py`.
+To run a different file, change `.replit` in two ways:  
+1) The `run` value references the file that you want to run. For example, the snippet of code below is set up to run `hw1_test.py`.  
+2) The `entrypoint` value references the file you want to run.  
 
 ```bash
 run = "python hw1_test.py"
