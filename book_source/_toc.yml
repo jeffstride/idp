@@ -10,20 +10,22 @@ chapters:
       - file: homework-assignments/hw5
       - file: homework-assignments/hw6
       - file: homework-assignments/hw7
-  - file: module-additions/index
+  - file: Topics/index
     sections:
-      - file: module-additions/module1/index
+      - file: Topics/Replit/index
         sections:
-          - file: module-additions/module1/building-in-replit
-          - file: module-additions/module1/replit-tips
-      - file: module-additions/module2/index
+          - file: Topics/Replit/building-in-replit
+          - file: Topics/Replit/replit-tips
+          - file: Topics/Replit/corrupt-project
+          - file: Topics/Replit/flake8
+      - file: Topics/module2/index
         sections:
-          - file: module-additions/module2/collections
-          - file: module-additions/module2/stub2
-      - file: module-additions/module3/index
+          - file: Topics/module2/collections
+          - file: Topics/module2/stub2
+      - file: Topics/built-in/index
         sections:
-          - file: module-additions/module3/arguments
-          - file: module-additions/module3/formatted-string
+          - file: Topics/built-in/arguments
+          - file: Topics/built-in/formatted-string
   - file: final-project/index
     sections:
       - file: final-project/handouts/index
