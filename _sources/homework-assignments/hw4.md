@@ -176,20 +176,20 @@ There is a second bar chart plot in the same figure. Once again, there are some 
 
 ```{admonition} Reflect
 :class: note
-What does this figure tell you? How can you explain it? 
+What does this figure tell you? How can you explain it? Expand the 'conclusions' below to see Mr. Stride's conclusions.  
 ```
 
 ```{admonition} Conclusions
 :class: error dropdown
-Females get more degrees on average, yet when we look at this graph we can see that for many of the races, Males do just as well, if not better, than Females. In fact, for some of the most populous races (White), Females have a lower percentage of high school degrees. This should lead one to think more deeply about how Females have a higher average.  
+Females get more degrees on average, yet when we look at this graph we can see that for many of the races, males do just as well, if not better, than females. In fact, for some of the most populous races (White), females have a lower percentage of high school degrees. This should lead one to think more deeply about how females have a higher average.  
 
-One can consider `Simpson's Paradox`. The does **NOT** really apply because Males do not do better in each individual category. However, it is possible that the ratio of races is different for Males than it is for Females.   
+One can consider `Simpson's Paradox`. The does **NOT** really apply because males do not do better in each individual category. However, it is possible that the ratio of races is different for males than it is for females.   
 
 Likely, there are a significant number of Hispanic women in the data which elevates the overall average to be 'significantly' larger than the Male average despite many of the races being higher for Males.  
 
-Overall, this data should beg the question: **What is the ratio of races for each gender?**  and **Why are some races doing significantly different depending on the race?**  
+Overall, this data should beg the question: **What is the ratio of races for each gender?**  and **Why are some races doing significantly different depending on the gender?**  
 
-We could do a plot over time to see if 2009 is an outlier.  
+We could do a plot over time to see if 2009 is an outlier. We'd want to see when females start to do better than males, and if that correlates to any specific race.   
 ```
 
 Annotate each bar with the value.
