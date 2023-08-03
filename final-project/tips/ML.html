@@ -253,6 +253,11 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html"><i class="fas fa-book fa-fw"></i> Final Project - Tips</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Leveraging ML in the Final Project</a></li>
+
+
+
+
+
 <li class="toctree-l3"><a class="reference internal" href="proposal.html">Tips for Proposal Document</a></li>
 <li class="toctree-l3"><a class="reference internal" href="code.html">Tips for Final Project Code</a></li>
 <li class="toctree-l3"><a class="reference internal" href="report.html">Tips for Final Report</a></li>
@@ -458,7 +463,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -474,6 +481,20 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Leveraging ML in the Final Project</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-situation">Example Situation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#st-approach-model-performance-evaluation">1st Approach: Model Performance Evaluation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#nd-approach-identifying-important-features">2nd Approach: Identifying Important Features</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rd-approach-decision-tree-analysis">3rd Approach: Decision Tree Analysis</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#th-approach-prediction-and-forecasting">4th Approach: Prediction and Forecasting</a></li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -485,76 +506,156 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="leveraging-ml-in-the-final-project">
 <h1>Leveraging ML in the Final Project<a class="headerlink" href="#leveraging-ml-in-the-final-project" title="Permalink to this heading">#</a></h1>
-<p>Leveraging ML in the Final Project</p>
+<p>As previously discussed, there are two principal categories of models: classification and regression. When conducting computations and analysis for your final project, it is important not to merely present numerical outputs. You need to ask yourself what the real-world significance is and draw practical implications. Use your correlations and models to identify patterns and trends, which, in turn, form the basis for making informed predictions.</p>
+<p>There are a few approaches you can take to draw effective and insightful information from the performance of an ML model. For the problem provided as an example, four different approaches are taken.</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="example-situation">
+<h1>Example Situation<a class="headerlink" href="#example-situation" title="Permalink to this heading">#</a></h1>
+<p>The prevalence of alcohol abuse remains a significant public health concern in the United States. To address this pressing issue and gain insights into the factors influencing alcohol abuse rates, a  machine learning (ML) model has been developed.</p>
+<p>The following creates a regression model to predict the alcohol prevalence (label) in a state in the US given information that represents that state (features). <strong>For the context of this problem, alcohol prevalence is defined as the median number of binge drinking occasions in a period of 30 days.</strong></p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-0">
-ML</label><div class="sd-tab-content docutils">
-<p>As previously discussed, there are two principal categories of models: classification and regression. When conducting computations and analysis for your final project, it is important not to merely present numerical outputs. You need to ask yourself what the real-world significance is and draw practical implications. Use your correlations and models to identify patterns and trends, which, in turn, form the basis for making informed predictions.</p>
+Features</label><div class="sd-tab-content docutils">
+<p>Features: Median Household Income, Poverty Percent, Ages, Cost per Drink ($), Population Density, Graduation Rates</p>
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-1">
-PRAGYA</label><div class="sd-tab-content docutils">
-<p>sample code</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">method1</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
+Label</label><div class="sd-tab-content docutils">
+<p>Label: Alcohol prevalence (Median No. of Binge Drinking Occasions)</p>
 </div>
 <input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-2">
-IMG</label><div class="sd-tab-content docutils">
-<p><img alt="sample code" src="../../_images/final_tips_sample_code.png" /></p>
+Dataset</label><div class="sd-tab-content docutils">
+<p><img alt="sample code" src="../../_images/final_tips_dataset.png" /></p>
 </div>
 </div>
-<p>As previously discussed, there are two principal categories of models: classification and regression. When conducting computations and analysis for your final project, it is important not to merely present numerical outputs. You need to ask yourself what the real-world significance is and draw practical implications. Use your correlations and models to identify patterns and trends, which, in turn, form the basis for making informed predictions.</p>
-<p>There are a few approaches you can take to draw effective and insightful information from the performance of an ML model. For the problem provided as an example, four different approaches are taken.</p>
-<p>Example situation:</p>
-<p>The prevalence of alcohol abuse remains a significant public health concern in the United States. To address this pressing issue and gain insights into the factors influencing alcohol abuse rates, a  machine learning (ML) model has been developed.</p>
-<p>The following creates a regression model to predict the alcohol prevalence (label) in a state in the US given information that represents that state (features). For the context of this problem, alcohol prevalence is defined as the median number of binge drinking occasions in a period of 30 days.</p>
-<p>Features: Median Household Income, Poverty Percent, Ages, Cost per Drink ($), Population Density, Graduation Rates</p>
-<p>Label: Alcohol prevalence (Median No. of Binge Drinking Occasions)</p>
-<p>Glimpse of the Dataset:</p>
-<p>1st Approach: Model Performance Evaluation</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="st-approach-model-performance-evaluation">
+<h1>1st Approach: Model Performance Evaluation<a class="headerlink" href="#st-approach-model-performance-evaluation" title="Permalink to this heading">#</a></h1>
 <p>Assessing the model’s performance metrics, such as mean squared error, allows you to gauge the model’s accuracy and generalization capabilities. This information is essential for understanding how well the model is likely to perform on new, unseen data.</p>
-<p>After the model was trained, the following testing error was produced:</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-3">
+Mean Squared Error</label><div class="sd-tab-content docutils">
+<p>Train Error: 0.006199999</p>
+<p>Test Error: 0.02508999</p>
+</div>
+<input id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-4">
+Comments</label><div class="sd-tab-content docutils">
 <p>The model was accurately able to predict the alcohol prevalence value as indicated by the small testing error.</p>
-<p>This is a good start, but stopping at this point is not sufficient for the final project. There are many unanswered questions. What implications does this have? What predictions can be made? Which features are most important? If any?</p>
-<p>2nd Approach: Identifying Important Features</p>
+<p>This is a good start, but stopping at this point is not sufficient for the final project. There are many unanswered questions. <strong>What implications does this have? What predictions can be made? Which features are most important? If any?</strong></p>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="nd-approach-identifying-important-features">
+<h1>2nd Approach: Identifying Important Features<a class="headerlink" href="#nd-approach-identifying-important-features" title="Permalink to this heading">#</a></h1>
 <p>By analyzing the feature importances, you can determine which variables have the most significant impact on the predicted outcome. This information is crucial for understanding the driving factors influencing the label.</p>
-<p>To better understand the factors and their influence in alcohol prevalence, a Feature Importance analysis can be performed. Using the API provided by the DecisionTreeRegressor class, you can determine which of your features are most influential in the model’s predictions.</p>
-<p>Code:</p>
-<p>Output:</p>
-<p>Feature: Median Household Income, Score: 0.23044
-Feature: No. of drinks, Score: 0.42769
-Feature: Poverty Percent, All Ages, Score: 0.25019
+<p>To better understand the factors and their influence in alcohol prevalence, a Feature Importance analysis can be performed. Using the API provided by the <strong>DecisionTreeRegressor</strong> class, you can determine which of your features are most influential in the model’s predictions.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-5" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-5">
+Code</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Split into training and testing data</span>
+<span class="n">train_f</span><span class="p">,</span> <span class="n">test_f</span><span class="p">,</span> <span class="n">train_l</span><span class="p">,</span> <span class="n">test_l</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_depth</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># Train it on our training data</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_f</span><span class="p">,</span> <span class="n">train_l</span><span class="p">)</span>
+<span class="n">importance</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">feature_importances_</span>
+
+<span class="c1"># Determine feature importance</span>
+<span class="n">list1</span> <span class="o">=</span> <span class="n">features</span><span class="o">.</span><span class="n">columns</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">v</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">importance</span><span class="p">):</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Feature: </span><span class="si">%0s</span><span class="s1">, Score: </span><span class="si">%.5f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">list1</span><span class="p">[</span><span class="n">i</span><span class="p">],</span><span class="n">v</span><span class="p">))</span>
+
+
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">([</span><span class="n">x</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">importance</span><span class="p">))],</span> <span class="n">importance</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;feature_importance&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-6" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-6">
+Output</label><div class="sd-tab-content docutils">
+<p>Feature: Median Household Income, Score: 0.23044</p>
+<p>Feature: No. of drinks, Score: 0.42769</p>
+<p>Feature: Poverty Percent, All Ages, Score: 0.25019
 Feature: Grad Rates: 2015-2019, Score: 0.03506
 Feature: POP 2019, Score: 0.05662
 Feature: Cost per drink ($), Score: 0.00000</p>
-<p>Comments:</p>
-<p>Although the exact numbers varied each time, the general trend showed that among all six features, the most influential feature was: the Median Number of Drinks on one Occasion, and the second most influential feature was: Median Household Income. A higher score means that the specific feature will have a larger effect on the model that is being used to predict a certain variable. As you can see, the No. of Drinks had the highest score, and the Median Household Income had the secondest highest, showing that these are the two most influential features in the Machine Learning Model.</p>
-<p>3rd Approach: Decision Tree Analysis</p>
-<p>Another technique to better understand the significance of the results of your ML model, you can analyze what decisions were being made by the model to make predictions. You can do this by printing out images of your decision tree using the API provided by sklearn.</p>
-<p>Comments:</p>
+</div>
+<input id="sd-tab-item-7" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-7">
+Comments</label><div class="sd-tab-content docutils">
+<p>Although the exact numbers varied each time, the general trend showed that among all six features, the most influential feature was: <strong>the Median Number of Drinks on one Occasion</strong>, and the second most influential feature was: <strong>Median Household Income.</strong></p>
+<p>A higher score means that the specific feature will have a larger effect on the model that is being used to predict a certain variable. As you can see, the No. of Drinks had the highest score, and the Median Household Income had the secondest highest, showing that these are the two most influential features in the Machine Learning Model.</p>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="rd-approach-decision-tree-analysis">
+<h1>3rd Approach: Decision Tree Analysis<a class="headerlink" href="#rd-approach-decision-tree-analysis" title="Permalink to this heading">#</a></h1>
+<p>Another technique to better understand the significance of the results of your ML model, you can analyze what decisions were being made by the model to make predictions. You can do this by printing out images of your decision tree using the API provided by <strong>sklearn.</strong></p>
 <p>Using the hyperparameter “max_depth”, you can restrict and change the length of the decision tree and observe how that affected the decisions being made at each node. In this case, the height was changed three times and an image of the Tree was generated each time.</p>
-<p>Code:</p>
-<p>Output:</p>
-<p>Max_depth: 2</p>
-<p>Max_depth: 3</p>
-<p>Max_depth: 4</p>
-<p>Comments:</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-8" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-8">
+Code</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Split into training and testing data</span>
+<span class="n">train_f</span><span class="p">,</span> <span class="n">test_f</span><span class="p">,</span> <span class="n">train_l</span><span class="p">,</span> <span class="n">test_l</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_depth</span> <span class="o">=</span> <span class="mi">4</span><span class="p">)</span>
+
+<span class="c1"># Plot decision tree using helper method</span>
+<span class="n">plot_tree</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">train_f</span><span class="p">,</span> <span class="n">train_l</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">plot_tree</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">labels</span><span class="p">):</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">This method plots the Decision Tree Regressor Model</span>
+<span class="sd">It allows us to observe the decisions being made at each node</span>
+<span class="sd">and which features were most used in the decisions</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span><span class="mi">20</span><span class="p">))</span>
+<span class="n">_</span> <span class="o">=</span> <span class="n">tree</span><span class="o">.</span><span class="n">plot_tree</span><span class="p">(</span><span class="n">model</span><span class="p">,</span>
+<span class="n">feature_names</span><span class="o">=</span><span class="n">features</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
+<span class="n">class_names</span><span class="o">=</span><span class="n">labels</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
+<span class="n">filled</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s2">&quot;decision_tree.png&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-9" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-9">
+Output</label><div class="sd-tab-content docutils">
+<p>Max Depth: 2</p>
+<p><img alt="Max Depth: 2" src="../../_images/final_tips_max_depth_2.png" /></p>
+<p>Max Depth: 3</p>
+<p><img alt="Max Depth: 3" src="../../_images/final_tips_max_depth_3.png" /></p>
+<p>Max Depth: 4</p>
+<p><img alt="Max Depth: 4" src="../../_images/final_tips_max_depth_4.png" /></p>
+</div>
+<input id="sd-tab-item-10" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-10">
+Comments</label><div class="sd-tab-content docutils">
 <p>After analyzing the tree, we determined that for each version of the tree, the very first decision was made based on the feature: No. of drinks. This supports the results given by the feature importance, where it represented No. of drinks with the highest score.</p>
 <p>Following the first decision, the second level of decisions across all trees mainly involved the poverty percent and 2019 population. This was surprising since the calculated feature importances for these two features did not show them to be as relevant to the model.</p>
 <p>During the third set of decisions, and following that, median household income was used once or twice, and poverty percent, the number of drinks, and population were frequently repeated in the decisions. This allowed us to see that poverty percent, population, and number of drinks were the most influential features in the decision making the tree made.</p>
 <p>It is important to note that cost per drink was only utilized by the Decision Tree with a max depth of 4, and it was only used for one of the minor decisions. The college graduation rates feature was not used in any decision across all of the Decision Trees.</p>
 <p>Through this, we can successfully conclude that our most influential feature was the number of drinks, and the relevance of poverty percent, population, and median household income was about the same. In the end, we decided to use a max depth of 4 in our code to make sure that we did not have a high bias while still making sure that we weren’t overfitting.</p>
-<p>4th Approach: Prediction and Forecasting</p>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="th-approach-prediction-and-forecasting">
+<h1>4th Approach: Prediction and Forecasting<a class="headerlink" href="#th-approach-prediction-and-forecasting" title="Permalink to this heading">#</a></h1>
 <p>Regression models are commonly used for predicting and forecasting numerical values based on historical data. The model’s predictions can provide valuable insights into future trends, patterns, or behaviors, aiding in decision-making and planning.</p>
 <p>In the context of Alcohol Prevalence for a given state, the following decisions can be made in order to better the lives of individuals living in these areas:</p>
-<p>Public Health Policy: The predictions from the model can offer insights into the alcohol consumption patterns of a specific state’s population. Policymakers and public health officials can utilize this information to develop targeted interventions and awareness campaigns aimed at addressing potential alcohol-related issues or promoting responsible drinking habits.</p>
-<p>Alcohol Addiction and Treatment: Understanding the predicted alcohol consumption rates can help identify areas with higher alcohol usage, indicating potential hotspots for alcohol addiction problems. This knowledge can aid in directing resources and treatment programs to regions where they are most needed.</p>
-<p>Socioeconomic Patterns: The predictions of the model may indicate relationships between alcohol consumption rates and socioeconomic elements like income, education, or employment rates. Such information can be used to examine the connection between alcohol use and social determinants of health.</p>
-<p>Alcohol-Related Accidents and Crimes: Higher alcohol consumption rates may be associated with an increased risk of alcohol-related accidents and crimes. Policymakers and law enforcement agencies can use the model’s predictions to target areas with higher predicted consumption rates for enforcement and prevention measures.</p>
+<ol class="arabic simple">
+<li><p><strong>Public Health Policy:</strong> The predictions from the model can offer insights into the alcohol consumption patterns of a specific state’s population. Policymakers and public health officials can utilize this information to develop targeted interventions and awareness campaigns aimed at addressing potential alcohol-related issues or promoting responsible drinking habits.</p></li>
+<li><p><strong>Alcohol Addiction and Treatment:</strong> Understanding the predicted alcohol consumption rates can help identify areas with higher alcohol usage, indicating potential hotspots for alcohol addiction problems. This knowledge can aid in directing resources and treatment programs to regions where they are most needed.</p></li>
+<li><p><strong>Socioeconomic Patterns:</strong> The predictions of the model may indicate relationships between alcohol consumption rates and socioeconomic elements like income, education, or employment rates. Such information can be used to examine the connection between alcohol use and social determinants of health.</p></li>
+<li><p><strong>Alcohol-Related Accidents and Crimes:</strong> Higher alcohol consumption rates may be associated with an increased risk of alcohol-related accidents and crimes. Policymakers and law enforcement agencies can use the model’s predictions to target areas with higher predicted consumption rates for enforcement and prevention measures.</p></li>
+</ol>
 </section>
 
     <script type="text/x-thebe-config">
@@ -615,6 +716,26 @@ Feature: Cost per drink ($), Score: 0.00000</p>
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Leveraging ML in the Final Project</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#example-situation">Example Situation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#st-approach-model-performance-evaluation">1st Approach: Model Performance Evaluation</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#nd-approach-identifying-important-features">2nd Approach: Identifying Important Features</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#rd-approach-decision-tree-analysis">3rd Approach: Decision Tree Analysis</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#th-approach-prediction-and-forecasting">4th Approach: Prediction and Forecasting</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>
