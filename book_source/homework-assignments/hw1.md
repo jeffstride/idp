@@ -75,7 +75,7 @@ def problem_1(s):
 :class: important
 `replit` needs to be configured to run a file. Unfortunately, the way this works has changed a bit over time as replit
 adds more features and advances. As of this writing, replit uses [Nix](https://docs.replit.com/tutorials/python/build-with-nix). 
-See [Building on Replit](/module-additions/module1/building-in-replit) for more details.
+See [Building in Replit](/Topics/Replit/building-in-replit) for more details.
 ```
 
 * * * 

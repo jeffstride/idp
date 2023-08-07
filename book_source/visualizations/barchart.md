@@ -18,7 +18,7 @@ There are a lot of different libraries and methods to create bar charts. Here is
 |`df.plot.barh()`|There is one value per category and horizontal bars adds meaning or there are many categories to show| 
 |`plt.bar()`|Essentially the same as `df.plot`, but you may not have a DataFrame handy|  
 |`plt.hist()`|You want to count occurences|  
-|`sns.barplot()`|There are many values per category to be averaged |
+|`sns.barplot()`|There are many values per category to be averaged. The data can be structured differently. |
 |`sns.catplot(kind='bar')`|Effectively the same as `sns.barplot()`|    
 
 
@@ -254,25 +254,34 @@ This is the first 11 rows of the **orginal** data (which was unsorted).
 ````
 
 ## Side-by-side Bars
-Sometimes you want to compare two values side-by-side across a set of categories.    
+Sometimes you want to compare two values side-by-side across a set of categories. We demonstrate **TWO** ways to do this.  
+1) `plt` offers a way using `stacked=False` where there are many columns with values to plot. 
+2) `seaborn` allows us to plot using `hue='column'` when the data is structured differently.  
+
+Be sure to look at the data structure in each of these two examples.  
 
 ````{tab-set}
 ```{tab-item} Image
-![bar chart](../_static/side-by-side-bars.png)
+Note that this image is very, very similar to the `Seaborn` plot generated with the code used below. The differences are: The legend does not have a title, the color shades are slightly different, the legend is fully opaque, there are  vertical grid lines. All of these are very subtle.   
+![bar chart](../_static/plt_side-by-side-bars.png)
 ```
 ```{tab-item} Code
 ```python
-def df_plot_kind(df):
+def plot_side_by_side(df):
     fig, ax = plt.subplots(1, figsize=(12, 5))
-    # get the first 10 rows
-    df = df.sort_values(by='b_value', ascending=True).loc[:10]
+    # get the first 10 rows.
+    # After sorting, we need to reset the index to allow .loc[:9] to work.
+    df = df.sort_values(by='b_value', ascending=True).reset_index(drop=True)
+    # recall that in Pandas, slices are inclusive on both ends
+    df = df.loc[:9]
 
     # x-axis is taken from the index, so set that to the state
     df = df.set_index('state')
 
-    # default to a single blue color. use color='red' for all red bars.
+    # If we wanted to customize the colors, use: colormap='Spectral' (or something similar).
+    # The named argument 'color' won't work nicely here. color='red' would set all bars red.
     # https://matplotlib.org/2.0.2/examples/color/colormaps_reference.html 
-    df.plot(kind='bar', stacked=False, width=0.8, colormap='Spectral', ax=ax)
+    df.plot(kind='bar', stacked=False, width=0.8, ax=ax)
 
     plt.xticks(rotation=60)
     plt.title('Top 10 States')
@@ -290,11 +299,60 @@ This is the first 11 rows of the **orginal** data (which was unsorted).
 ```{tab-item} Comments
 * More horizonal space is needed for side-by-side bar charts. You shouldn't show too many bars in one plot; we filter this chart down to just 10 states.  
 * The width of each bar can give the chart a different feel. Here we increase the width a bit.  
-* The color of each bar can be set manually via the named parameter `color`. Instead, we chose to use `colormap` which has a lot of different options, including gradients.  
+* The color of the bars can be set manually via the named parameter `color`. But, this isn't what we want when we have side-by-side bars. Instead, we would want to use `colormap` which has a lot of [different options](https://matplotlib.org/2.0.2/examples/color/colormaps_reference.html), including gradients. Ultimately, we used the default colors.   
+* I found it interesting that my first attempt to limit the data to 10 rows worked without having used `reset_index`. I'm not sure how it worked originally, but I'm pretty sure that always using reset_index() will work. Also, there is an `inplace` named argument that we explicitly needed to have set to `False` (or not set to True). This assures that the reset_index() returns a new dataframe.  
 ```
 
 ````
+We can also use `Seaborn` to do this plot, but the data needs to be organized differently. We do a little extra
+work to get the data to look right, but sometimes our data starts off looking this way. Furthermore, it
+is really good to know about the method `pd.melt`. The resulting bar plot is virtually identical.  
+````{tab-set}
+```{tab-item} Image
+Note that this image is very, very similar to the plot generated with `plt` above.    
+![bar chart](../_static/side-by-side-bars.png)
+```
+```{tab-item} Data
+This is the data after we `melt` the DataFrame to its new structure. The original data structure is shown in the `plt` example above.   
 
+![bar chart](../_static/bar_sns_melt_data.jpg)
+```
+```{tab-item} Code
+```python
+def sns_side_by_side(df):
+    fig, ax = plt.subplots(1, figsize=(12, 5))
+    # get the first 10 rows of data sorted by b_value.
+    # After sorting, we need to reset the index to allow .loc[:9] to work.
+    df = df.sort_values(by='b_value', ascending=True).reset_index(drop=True)
+    # recall that in Pandas, slices are inclusive on both ends
+    df10 = df.loc[:9]
+    
+    # transform the dataframe using melt so that we go from having separate columns
+    # for A & B values, to having a column that designates the Value_Type
+    df10 = pd.melt(df10, id_vars='state', var_name='Value_Type', value_vars=['a_value', 'b_value'], value_name='Value')
+    
+    # Note that we use the named argument, hue, to have multiple side-by-side bars
+    sns.barplot(data=df10, x='state', y='Value', hue='Value_Type')
+
+    # Get the legend handles and labels from our axis to assure that we can
+    # customize our legend with correct colors, title and labels.
+    handles, labels = ax.get_legend_handles_labels()
+    
+    plt.xticks(rotation=60)
+    plt.title('Top 10 States')
+    plt.ylabel('Both Values')
+    plt.xlabel('')
+    plt.legend(handles=handles, title='Values', labels=['A Value', 'B Value'])
+```
+
+```{tab-item} Comments
+* Often times, data will be organized as shown in the Data tab here. It then becomes easy to use `Seaborn` to plot, leveraging the named argument, `hue`.   
+* The `melt` API is interesting. One could do all of this work by hand, but using the [melt function](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.melt.html) is much easier to do.  
+* I found it interesting that my first attempt to limit the data to 10 rows worked without having used `reset_index`. I'm not sure how it worked originally, but I'm pretty sure that always using reset_index() will work. Also, there is an `inplace` named argument that we explicitly needed to have set to `False` (or not set to True). This assures that the reset_index() returns a new dataframe.  
+* In this example, `plt.legend(['A Value', 'B Value'])` did not show the correct colors of the bars. To fix this, I needed to get the plot's `handles` from the `axis` object. Furthermore, I gave the legend a title.
+```
+
+````
 ## Horizontal Bar Chart
 If we want to plot our bars horizontally, we can leverage the `barh` method.   
 
