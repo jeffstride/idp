@@ -494,9 +494,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coefficient-magnitudes-linear-models">Coefficient Magnitudes (Linear Models)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-trees">Decision Trees</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#permutation-importance">Permutation Importance</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-analysis">Correlation Analysis</a></li>
 </ul>
             </nav>
         </div>
@@ -510,7 +508,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="feature-importance">
 <h1>Feature Importance<a class="headerlink" href="#feature-importance" title="Permalink to this heading">#</a></h1>
-<p><strong>Feature importance</strong> is a concept in machine learning (ML) that helps us understand and quantify the impact of different input variables (features) on the predictions made by a model. It allows us to identify which features are more influential in contributing to the model’s performance and predictions.</p>
+<p><strong>Feature importance</strong> is a concept in machine learning (ML) that helps us understand and quantify the impact of different <strong>features</strong> on the predictions made by a model. It allows us to identify which features are more influential in contributing to the model’s performance and predictions.</p>
 <p>There are several techniques to measure feature importance. This unit will go over a few of these techniques.</p>
 <section id="coefficient-magnitudes-linear-models">
 <h2>Coefficient Magnitudes (Linear Models)<a class="headerlink" href="#coefficient-magnitudes-linear-models" title="Permalink to this heading">#</a></h2>
@@ -520,52 +518,61 @@ document.write(`
 </input><label class="sd-tab-label" for="sd-tab-item-0">
 Code</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Split the data into training and testing sets</span>
-<span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">train_f</span><span class="p">,</span> <span class="n">test_f</span><span class="p">,</span> <span class="n">train_l</span><span class="p">,</span> <span class="n">test_l</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
 
 <span class="c1"># Initialize the Linear Regression model</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
 
 <span class="c1"># Fit the model to the training data</span>
-<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_f</span><span class="p">,</span> <span class="n">train_l</span><span class="p">)</span>
 
 <span class="c1"># Get the coefficients and feature names</span>
 <span class="n">coefficients</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">coef_</span>
 <span class="n">feature_names</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">feature_names</span>
 
 <span class="c1"># Print the coefficients and feature names</span>
-<span class="k">for</span> <span class="n">feature</span><span class="p">,</span> <span class="n">coef</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">feature_names</span><span class="p">,</span> <span class="n">coefficients</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">feature</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">coef</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">feature_coef</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">feature_names</span><span class="p">,</span> <span class="n">coefficients</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">f</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">feature_coef</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span> <span class="o">+</span> <span class="s2">&quot;: &quot;</span> <span class="o">+</span> <span class="n">c</span><span class="p">);</span>
 
-<span class="c1"># Plot the coefficient magnitudes</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">barh</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">feature_names</span><span class="p">)),</span> <span class="n">coefficients</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">feature_names</span><span class="p">)),</span> <span class="n">feature_names</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Coefficient Magnitude&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Feature&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Coefficient Magnitudes for Feature Importance&#39;</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-1">
 Comments</label><div class="sd-tab-content docutils">
-<p>Here’s how you can interpret coefficient magnitudes for feature importance:</p>
-<p>Magnitude of Coefficient: The magnitude of the coefficient for a particular feature indicates the strength and direction of its impact on the target variable. A larger coefficient magnitude (positive or negative) implies a greater influence of that feature on the target variable.</p>
-<p>Positive Coefficient: A positive coefficient indicates that an increase in the feature’s value will lead to an increase in the predicted output. In the context of linear regression, this means that the feature has a positive linear relationship with the target variable.</p>
-<p>Negative Coefficient: A negative coefficient implies that an increase in the feature’s value will lead to a decrease in the predicted output. In the context of linear regression, this suggests a negative linear relationship between the feature and the target variable.</p>
-<p>Magnitude Comparison: By comparing the magnitudes of coefficients across different features, you can rank features based on their relative importance. Features with larger absolute coefficients are generally considered more important in influencing the model’s predictions.</p>
+<p>The following is how to interpret coefficient magnitudes for feature importance:</p>
+<p><strong>Coefficient Magnitude:</strong> The magnitude of the coefficient reflects the strength and direction of its influence on the target variable. A larger coefficient magnitude (positive or negative) indicates that the feature has a greater influence.</p>
+<ol class="arabic simple">
+<li><p>A positive coefficient suggests that an increase in the value of the feature will result in an increase in the model’s output. This signifies that the feature has a positive linear connection with the target variable.</p></li>
+<li><p>A negative coefficient indicates that an increase in the value of the feature will result in a decrease in the model’s output. This shows a negative linear relationship between the feature and the label.</p></li>
+</ol>
+<p><strong>Magnitude Comparison:</strong> By comparing the magnitudes of coefficients across different features, you can rank features based on their relative importance. Features with larger absolute coefficients are generally considered more important in influencing the model’s predictions.</p>
 </div>
 </div>
-</section>
-<section id="decision-trees">
-<h2>Decision Trees<a class="headerlink" href="#decision-trees" title="Permalink to this heading">#</a></h2>
 </section>
 <section id="permutation-importance">
 <h2>Permutation Importance<a class="headerlink" href="#permutation-importance" title="Permalink to this heading">#</a></h2>
-</section>
-<section id="correlation-analysis">
-<h2>Correlation Analysis<a class="headerlink" href="#correlation-analysis" title="Permalink to this heading">#</a></h2>
+<p>This is a technique used to measure the importance of features in a model by evaluating how much the model’s performance drops when the values of a specific feature are randomly shuffled. The idea is that important features contribute significantly to the model’s prediction, so shuffling their values would lead to drop in performance.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
+Goal</label><div class="sd-tab-content docutils">
+<ol class="arabic simple">
+<li><p>Train a model and record its performance on the original set</p></li>
+<li><p>Randomly shuffle the values of a single feature in the set</p></li>
+<li><p>Calculate the performance again using the shuffled data</p></li>
+<li><p>Compare the drop in performance to the original performance. <strong>A larger drop indicates that the shuffled feature is important.</strong></p></li>
+</ol>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-3">
+Code</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;loading...&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 
@@ -637,9 +644,7 @@ Comments</label><div class="sd-tab-content docutils">
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coefficient-magnitudes-linear-models">Coefficient Magnitudes (Linear Models)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#decision-trees">Decision Trees</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#permutation-importance">Permutation Importance</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#correlation-analysis">Correlation Analysis</a></li>
 </ul>
   </nav></div>
 
