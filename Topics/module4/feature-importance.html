@@ -508,6 +508,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="feature-importance">
 <h1>Feature Importance<a class="headerlink" href="#feature-importance" title="Permalink to this heading">#</a></h1>
+<p>Helpful Links: <a class="reference external" href="https://scikit-learn.org/stable/modules/permutation_importance.html">Scikit Learn Permuation Feature Importance</a></p>
 <p><strong>Feature importance</strong> is a concept in machine learning (ML) that helps us understand and quantify the impact of different <strong>features</strong> on the predictions made by a model. It allows us to identify which features are more influential in contributing to the model’s performance and predictions.</p>
 <p>There are several techniques to measure feature importance. This unit will go over a few of these techniques.</p>
 <section id="coefficient-magnitudes-linear-models">
@@ -568,11 +569,32 @@ Goal</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-3">
 Code</label><div class="sd-tab-content docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;loading...&quot;</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Split the data into training and testing sets</span>
+<span class="n">train_f</span><span class="p">,</span> <span class="n">test_f</span><span class="p">,</span> <span class="n">train_l</span><span class="p">,</span> <span class="n">test_l</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="c1"># Create and Train a Random Forest classifier with 100 decision trees</span>
+<span class="c1"># n_estimators esnuers for the same results every time the program is run, as long as other factors remain constant</span>
+<span class="c1"># random_state allows for the model to re</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">RandomForestClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_f</span><span class="p">,</span> <span class="n">train_l</span><span class="p">)</span>
+
+<span class="c1"># Evaluate the model&#39;s performance on the original dataset</span>
+<span class="n">original_accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">test_l</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_f</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Original Accuracy: </span><span class="si">{</span><span class="n">original_accuracy</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Calculate permutation importance</span>
+<span class="n">perm_importance</span> <span class="o">=</span> <span class="n">permutation_importance</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">test_f</span><span class="p">,</span> <span class="n">test_l</span><span class="p">,</span> <span class="n">n_repeats</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+
+<span class="c1"># Print feature importance scores</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Permutation Importance Scores:&quot;</span><span class="p">)</span>
+<span class="o">//</span> <span class="n">importances_mean</span> <span class="ow">is</span> <span class="n">the</span> <span class="n">average</span> <span class="n">importance</span> <span class="n">scores</span> <span class="k">for</span> <span class="n">each</span> <span class="n">feature</span>
+<span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">score</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">perm_importance</span><span class="o">.</span><span class="n">importances_mean</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Feature </span><span class="si">{</span><span class="n">i</span><span class="si">}</span><span class="s2">: </span><span class="si">{</span><span class="n">score</span><span class="si">:</span><span class="s2">.4f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
+<p>Remember that the larger the drop in performance after shuffling a feature, the more important that feature is. Permutation importance provides insights into the relative importance of features based on their impact on model performance.</p>
 </section>
 </section>
 
