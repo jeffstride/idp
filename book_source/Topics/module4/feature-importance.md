@@ -1,5 +1,7 @@
 # Feature Importance 
 
+Helpful Links: [Scikit Learn Permuation Feature Importance](https://scikit-learn.org/stable/modules/permutation_importance.html)
+
 **Feature importance** is a concept in machine learning (ML) that helps us understand and quantify the impact of different **features** on the predictions made by a model. It allows us to identify which features are more influential in contributing to the model's performance and predictions. 
 
 There are several techniques to measure feature importance. This unit will go over a few of these techniques.
@@ -52,9 +54,30 @@ This is a technique used to measure the importance of features in a model by eva
 ```
 ```{tab-item} Code
 ```python
-print("loading...")
+# Split the data into training and testing sets
+train_f, test_f, train_l, test_l = train_test_split(features, labels, test_size=0.2)
+
+# Create and Train a Random Forest classifier with 100 decision trees
+# n_estimators esnuers for the same results every time the program is run, as long as other factors remain constant
+# random_state allows for the model to re
+model = RandomForestClassifier(n_estimators=100, random_state=42)
+model.fit(train_f, train_l)
+
+# Evaluate the model's performance on the original dataset
+original_accuracy = accuracy_score(test_l, model.predict(test_f))
+print(f"Original Accuracy: {original_accuracy:.4f}")
+
+# Calculate permutation importance
+perm_importance = permutation_importance(model, test_f, test_l, n_repeats=30)
+
+# Print feature importance scores
+print("Permutation Importance Scores:")
+// importances_mean is the average importance scores for each feature
+for idx, score in enumerate(perm_importance.importances_mean):
+    print(f"Feature {i}: {score:.4f}")
 ```
 ````
+Remember that the larger the drop in performance after shuffling a feature, the more important that feature is. Permutation importance provides insights into the relative importance of features based on their impact on model performance.
 
 
 
