@@ -1,7 +1,6 @@
 # Building in Replit
 
-
-
+## Setting Entrypoint
 You'll want to change which file you build so that you can run either your functional code or your tests.
 To do this, you'll want to modify the `.replit` file which is hidden in the `Config files` section that
 you can't see until you `Show hidden files`.  
@@ -19,6 +18,7 @@ entrypoint = "main.py"
 hidden = ["venv", ".config", "**/__pycache__", "**/.mypy_cache", "**/*.pyc"]
 ```
 
+## Main-Pattern
 When you run a specific python file, that file should have the `main-pattern`. Here is an example
 file that follows the main-pattern.
 

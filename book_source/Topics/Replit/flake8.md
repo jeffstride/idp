@@ -2,7 +2,7 @@
 This is a command line <a href="https://en.wikipedia.org/wiki/Lint_(software)" target="_blank">lint</a> tool that verifies that your style meets standards.
 Many people, including myself, detest the pedantic verification of spaces and line lengths.
 However, the tool will help assure that your code looks correct. Once you get
-comfortable writing code to the standards 
+comfortable writing code to the standards, it'll go quickly and naturally. And, your code will be nicely readable!  
 
 ```{admonition} Important!
 :class: important
@@ -21,6 +21,13 @@ install the correct version by going to the `shell` tab and typing in: `poetry a
 |E121| This error code indicates an indentation error. It is raised when there are inconsistencies in the indentation of code blocks, such as mismatched or inconsistent indentation levels.|
 |E402| This error code indicates a module-level import not at the top of the file. It reminds you that all imports should be placed at the beginning of the file before any other statements or code.|
 |E501| This error code indicates that a line of code exceeds the maximum line length allowed. By default, flake8 enforces a maximum line length of 79 characters.|
+
+## tox.ini
+```{admonition} Important!
+:class: important
+Do NOT modify `tox.ini` yourself. Mr. Stride's unit tests will not accept any changes you make to this file.
+If you fail flake8, then you'll be penalized.  
+```
 
 ## E501 line too long
 The spirit of the rule is fabulous: your code needs to be readable and lines that are too long detract from readability.
