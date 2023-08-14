@@ -1,31 +1,38 @@
 # Formatted Strings
 
-Cover the different ways we print and how to format our strings.
-We need to understand named arguments, packing and unpacking.
-explain `print(*args, **kwargs)`  
-explain how kwargs is a dictionary of key/value pairs.  
-explain how *args is a list or sequence of values.  
-explain named arguments 'end' and 'sep'.
-
-Reference: https://realpython.com/python-f-strings/  
-https://docs.python.org/3/library/string.html#format-string-syntax
+[RealPython Reference](https://realpython.com/python-f-strings/)  
+[Python docs Reference](https://docs.python.org/3/library/string.html#format-string-syntax)  
 
 ## %-formatting (old)
-print("Hello, %s. You are %s." % (name, adjective))
+This style of formatted print is old and not recommended. But, you may see it somewhere. The `%` acts
+like a "escape sequence" similar to how it is done in Java's `System.out.printf`.  
 
-## formatted printing
+The string literal is the format string. After the string literal the arguments to the string
+is separated by `%`. I find this odd. Apparently, so did many other programmers which is why this
+formatting isn't used very much these days.
+
 ```python
-float = 2.154327
-format_float = "{:.2f}".format(float)
+print("Hello, %s. You are %s." % (name, adjective))
+```
+
+## format method
+There is a method named `format` on the string object. The string contains formatting information inside
+of curly braces. This formatting is described below. The string can contain many curly braces and
+other text to be printed.  
+
+Once again, this method of formatting strings is not used very much these days.  
+```python
+n = 2.154327
+format_float = "{:.2f}".format(n)
 print(format_float)
 
 print("text {0}".format('value'))
 ```
 
 ## f-string
-
+This is the most recent and popular way to format a string and values. 
 Python's string <a href="https://docs.python.org/3/library/string.html#format-string-syntax" 
-target="_blank">formatting</a> functionality as built into Pythons <a href="https://realpython.com/python-f-strings/" 
+target="_blank">formatting</a> functionality is built into Python's <a href="https://realpython.com/python-f-strings/" 
 target="_blank">f-string</a>. The API is a bit complicated to understand. It is similar
 to the way Java implements `printf`, only it has different escape sequences and specifics. In short, when a
 string literal is preceded with 'f' then the string is expecting to have some
@@ -41,3 +48,21 @@ For example, let's say we do the following:
     print(f'GPA={gpa:.2f}')
 
 That code results in printing, `GPA=3.90` (due to rounding to 2 decimal places).
+
+There are lots and lots of options that you can find in [Python docs Reference](https://docs.python.org/3/library/string.html#format-string-syntax). 
+
+## Examples
+```python
+n = 30
+print(f'Hex     = {n:05x}')
+print(f'Decimal = {n:5d}')
+print(f'Sci Not = {n:e}')
+```
+
+**Output**:  
+```
+Hex     = 0001e
+Decimal =    30
+Sci Not = 3.000000e+01
+Percent = 3000.000000%
+```
