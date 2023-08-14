@@ -18,13 +18,16 @@ chapters:
           - file: Topics/Replit/replit-tips
           - file: Topics/Replit/corrupt-project
           - file: Topics/Replit/flake8
-      - file: Topics/module2/index
+      - file: Topics/collections/index
         sections:
-          - file: Topics/module2/collections
-          - file: Topics/module2/stub2
-      - file: Topics/module4/index
+          - file: Topics/collections/collections
+          - file: Topics/collections/stub2
+      - file: Topics/pandas/index
         sections:
-          - file: Topics/module4/feature-importance
+          - file: Topics/pandas/dataframe
+      - file: Topics/machine_learning/index
+        sections:
+          - file: Topics/machine_learning/feature-importance
       - file: Topics/built-in/index
         sections:
           - file: Topics/built-in/arguments

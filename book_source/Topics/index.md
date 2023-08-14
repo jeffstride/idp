@@ -2,7 +2,7 @@
 
 This section will provide extra instructional information useful to your success.
 The content does NOT replace what is found on [CSE 163](https://cse163.github.io/book/). Instead, the content
-will compliment the modules information, but will be organized by topic. For example, you'll
+will complement the modules information, but will be organized by topic. For example, you'll
 find helpful tips on how to execute the correct python file in your `replit` projects, or how to
 reset the remote Replit server to recover spinning CPU cycles. 
 
