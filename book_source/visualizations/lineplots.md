@@ -5,15 +5,15 @@ https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html
 multiple yaxis (twinx): https://matplotlib.org/stable/gallery/spines/multiple_yaxis_with_spines.html 
 
 
-There are several different libraries and objects that allow you to plot a line. The one you use depends on the structure of your data and the target graph. I have found that the most useful is the `DataFrame` and/or `axes` object. The named arguments are different in each situation so you'll want online access to the API.  
+There are several different libraries and objects that allow you to plot a line. The one you use depends on the structure of your data and the target graph. I have found that the most useful is the `DataFrame` where you can do most of what you want to do. You should read and become familiar with all the named arguments and options for each object as they are different. When you do subplots, using the `Axes` object becomes invaluable.   
 
 |Library|API|Comments|
 |-------|---|--------|
-|Matplotlib.pyplot|[plt.plot](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html)|The fundamental plotting API. All other objects will essentially call this one eventually. **Works on only one axis.**|
-|Matplotlib.axes|[axes.plot](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.plot.html#matplotlib.axes.Axes.plot)|Allows one to target a plot to a specific axes| 
-|Pandas|[DataFrame.plot](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.plot.html)|Most common type of plotting in IDP|  
+|Pandas|[DataFrame.plot](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.plot.html)|Recommended and most common method of plotting in IDP| 
+|Matplotlib.pyplot|[plt.plot](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html)|The fundamental plotting API. All other objects will essentially call this one eventually. Access to more named arguments, but **works on only one axis.**|
+|Matplotlib.axes|[axes.plot](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.plot.html#matplotlib.axes.Axes.plot)|Allows one to target a plot to a specific axes. Very useful in customizing figures with multiple subplots.| 
 |Pandas|[Series.plot](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.Series.plot.html)|Useful when the object is a `Series`|
-|Seaborn|[sns.lineplot](https://seaborn.pydata.org/generated/seaborn.lineplot.html)|Works on unpivoted data. Provides simple access to some statistics and various styles of drawing lines.|   
+|Seaborn|[sns.lineplot](https://seaborn.pydata.org/generated/seaborn.lineplot.html)|Also works on unpivoted data. Provides simple access to some statistics and various styles of drawing lines.|   
 
 ```{admonition} Helpful Resources/API 
 :class: seealso dropdown
@@ -23,20 +23,15 @@ There are several different libraries and objects that allow you to plot a line.
 * [plt.xticks](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.xticks.html#matplotlib.pyplot.xticks) : Customize the x-axis tick marks and/or labels. Note that `**kwargs` applies to the style of the text and are documented [here](https://matplotlib.org/stable/api/text_api.html#matplotlib.text.Text)  
 * [ax.annotate](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.annotate.html#matplotlib.axes.Axes.annotate) : Draws text on the axes  
 ```
-## DataFrame Defaults
-In this `df.plot()`, we default to drawing all columns using the `index` as the x-axis. We see that by default, there is no label
+## DataFrame
+
+````{tab-set}
+```{tab-item} Simple
+In this very simple, one line, `df.plot()`, we default to drawing all columns using the `index` as the x-axis. We see that by default, there is no label
 for the y-axis and the x-axis ticks are rotated for us. The `Sunrise` and `Sunset` columns cause all the other data to be
 squashed down to the bottom due to the units being 24-hour time. Furthermore, the 24-hour time causes there to be "jumps"
-in the data because it will jump from 1059 to 1100 since 1075 is not a valid time. 
-````{tab-set}
-```{tab-item} Image
-![Default Plot](../_static/line_default_df_plot.png)
-```
-```{tab-item} Data
-The data is three years of temperature data from Snohomish county.  
-![Temperature Data](../_static/line_data.png)
-```
-```{tab-item} Code
+in the data because it will jump from 1059 to 1100 since 1075 is not a valid time. We will fix this below.  
+![Default Plot](../_static/line_default_df_plot.png)  
 ```python
 # This will plot all columns on the same axes so long as all the values
 # in each cell is a numerical value
@@ -45,6 +40,22 @@ df.plot()
 # to the coordinate (1,.9) which is in units of percentages of the drawn figure.
 plt.legend(loc='upper left', bbox_to_anchor=(1.0, 0.9))
 plt.title('Default Graph of a DataFrame')
+```
+```{tab-item} Data
+The data is three years of temperature data from Snohomish county.  
+![Temperature Data](../_static/line_data.png)
+```
+```{tab-item} Subplots
+We can create a relatively complex figure with four subplots using one line of code. We set just
+a few things: figure size, columns to plot on `y`, line styles, grid lines turned on, and xlabel.  
+
+By providing just a few named arguments, we can get a pretty complex figure dran in 1 line!  
+![Subplots](../_static/line_subplots.png)  
+```python
+df.plot(figsize=(8,10),
+        y=['MaxTemp', 'Normal', 'Precipitation', 'Day Light'], 
+        subplots=True, title='Weather Summary', grid=True,
+        style=['-', ':', '--', '-.'], xlabel='')
 ```
 ````
 
