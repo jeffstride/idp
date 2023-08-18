@@ -35,7 +35,7 @@ Python's string <a href="https://docs.python.org/3/library/string.html#format-st
 target="_blank">formatting</a> functionality is built into Python's <a href="https://realpython.com/python-f-strings/" 
 target="_blank">f-string</a>. The API is a bit complicated to understand. It is similar
 to the way Java implements `printf`, only it has different escape sequences and specifics. In short, when a
-string literal is preceded with 'f' then the string is expecting to have some
+string literal is preceded with `'f'` then the string is expecting to have some
 formatting sequence in it. A formatting sequence is embedded inside curly braces `{}` and the text
 inside the curly braces is interpreted. It would contain identifiers, method calls, and possibly
 formatting options following a colon. Here is the syantax for printing a floating point number with some text label:  
@@ -56,7 +56,12 @@ There are lots and lots of options that you can find in [Python docs Reference](
 n = 30
 print(f'Hex     = {n:05x}')
 print(f'Decimal = {n:5d}')
-print(f'Sci Not = {n:e}')
+print(f'SciNota = {n:e}')
+print(f'Percent = {n:%}')
+
+# assume foo()=8
+from math import sqrt
+print(f'Foo = {foo()} and squirt 2 = {sqrt(2):.3f}')
 ```
 
 **Output**:  
@@ -65,4 +70,5 @@ Hex     = 0001e
 Decimal =    30
 Sci Not = 3.000000e+01
 Percent = 3000.000000%
+Foo = 8 and squirt 2 = 1.414
 ```
