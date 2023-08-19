@@ -1,11 +1,20 @@
 # Line Plots
 
-here are great plots
-https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html
-multiple yaxis (twinx): https://matplotlib.org/stable/gallery/spines/multiple_yaxis_with_spines.html 
+Line Plots are likely the most common plot you'll create in IDP. It is fantastic for 
+<a href='geospatial.html#correlations-and-coefficient-of-determination'>showing correlations</a>. While line plots are not complicated, it can be frustrating
+to draw multiple lines as you intend. Furthermore, there are many different API available to draw lines and they
+accept different named arguments (which is frustrating!). 
 
+On this page you'll see how to:  
+* draw multiple lines using various libraries  
+* do Time-Slices of a `TimeSeries`  
+* rescale the axis for specific lines only  
+* customize line styles  
 
-There are several different libraries and objects that allow you to plot a line. The one you use depends on the structure of your data and the target graph. I have found that the most useful is the `DataFrame` where you can do most of what you want to do. You should read and become familiar with all the named arguments and options for each object as they are different. When you do subplots, using the `Axes` object becomes invaluable.   
+## Libraries
+There are several different libraries and objects that allow you to plot a line. The one you use depends on the structure of your data and the complexity of your plot. I have found that the most useful object to use when drawing is the `DataFrame` where you can do most of what you want to do. When doing subplots, using the `Axes` object becomes invaluable.  
+
+You should read and become familiar with all the named arguments and options for each library/object.  
 
 |Library|API|Comments|
 |-------|---|--------|
@@ -23,6 +32,13 @@ There are several different libraries and objects that allow you to plot a line.
 * [plt.xticks](https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.xticks.html#matplotlib.pyplot.xticks) : Customize the x-axis tick marks and/or labels. Note that `**kwargs` applies to the style of the text and are documented [here](https://matplotlib.org/stable/api/text_api.html#matplotlib.text.Text)  
 * [ax.annotate](https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.annotate.html#matplotlib.axes.Axes.annotate) : Draws text on the axes  
 ```
+
+## Data
+
+The data is three years of temperature data from Snohomish county. This page will do some computations and data organization
+to enable better plots, but this is what the data basically looks like. We load it as a `TimeSeries` using `pd.read_csv`.    
+![Temperature Data](../_static/line_data.png)
+
 ## DataFrame
 
 ````{tab-set}
@@ -41,9 +57,13 @@ df.plot()
 plt.legend(loc='upper left', bbox_to_anchor=(1.0, 0.9))
 plt.title('Default Graph of a DataFrame')
 ```
-```{tab-item} Data
-The data is three years of temperature data from Snohomish county.  
-![Temperature Data](../_static/line_data.png)
+```{tab-item} Multi-Line
+We can very easily plot a specific set of lines by providing a list of column names. This plot is identical
+to the plot shown in the "Min & Max" tab below.   
+![Temperature Data](../_static/line_min_max_temps.png)  
+```python
+df.plot(y=['MinTemp', 'MaxTemp'], legend=False)
+plt.title('Min/Max Temperatures')
 ```
 ```{tab-item} Subplots
 We can create a relatively complex figure with four subplots using one line of code. We set just
@@ -73,8 +93,9 @@ plt.title('Temperatures for 2021')
 ```
 ```{tab-item} Day light
 ![Temperature Data](../_static/line_hours_of_daylight.png)  
-To adjust the number format for `Sunrise` and `Sunset` to be in fractions of an hour and thereby eliminate the
-apparent jumping, we do the following:  
+We do some math on `Sunrise` and `Sunset` to convert them to fractions of an hour and thereby eliminate the
+apparent jumping.  We convert the minutes `t%100` to be a percentage of an hour. The following code
+adds three new columns `['SunsetHr', 'SunriseHr', 'Day Light']` to the DataFrame and then plots `Day Light`.  
 ```python
 for col in ['Sunset', 'Sunrise']:
     df[col+'Hr'] = df[col].apply(lambda t: t//100 + (t%100)/60)
@@ -90,6 +111,19 @@ df['MinTemp'].plot()
 df['MaxTemp'].plot()
 plt.title('Min/Max Temperatures')
 ```
+```{tab-item} Custom Line
+![custom Line](../_static/line_custom_line.png)  
+We can customize the line using some parameters to the `plt.plot` method. In most cases, you'll
+want to use one of the string shorthand representations of linestyles. `['-', '--', ':', '-.']`  But,
+we choose to set a custom dashed style, because we can. See [linestyle documentation](https://matplotlib.org/stable/gallery/lines_bars_and_markers/linestyles.html) for more details.  
+```python
+# Time-Slice the first 2 weeks of 2020
+january = df['MaxTemp'].loc['2020-01-01':'2020-01-14']
+# Set line color, width, style and markers.
+plt.plot(january, color='tab:purple', linestyle=(0, (2, 3, 2, 3, 10, 3)), marker='x', linewidth=2)
+plt.xticks(rotation=30)
+plt.title('2 Weeks Max Temp in January 2020')
+```
 ````
 
 ## Twinx Plots
@@ -97,16 +131,20 @@ There are times when we want to plot two lines together but their units are dram
 You can see this impact in the DataFrame Default image at the top of this page. 
 
 Here we will look at an example where the the units gets in the way of our plot. Then, we will
-address it using `twinx`. 
+address it using `twinx`. [Online example](https://matplotlib.org/stable/gallery/spines/multiple_yaxis_with_spines.html)  
 
 Let's plot the normal temperature (average temperature over many years)
 along with the the average current temperature and the amount of current precipitation.
 ````{tab-set}
 ```{tab-item} First Attempt
 ![Bad Precipitation](../_static/line_rain_temps.png)  
-Here you'll see how the amount of precipitation is dwarfed by the scale of the temperatures. Here is the code
+Here you'll see how the amount of precipitation is dwarfed by the scale of the temperatures. Below is the code
 used to generate the above plot. Note that we `resample` at the week interval to smooth out the data. And,
-for precipitation, we use `sum` instead of `mean` to get a larger, more representative value.   
+for precipitation, we use `sum` instead of `mean` to get a larger, more representative value.  
+
+We also use `loc` to do a time-slice of the data which is easy because our DataFrame is a
+<a href='https://cse163.github.io/book/module-3-pandas/lesson-9-time-series/time-series.html' target='_blank'>TimeSeries.</a>
+Python semantically understands the date strings.  
 ```python
 # Creating a DataFrame and ploting it is very simple and gets us most of 
 # what we want. We ae missing a proper scale for the rain.
@@ -134,16 +172,17 @@ plt.ylabel('Temp in Fahrenheit\nPrecipitation in Inches')
 # Remove 'DATE' from label as it is obvious
 plt.xlabel('')
 ```
-```{tab-item} Fixed
+```{tab-item} Rescaled
 ![Good Precipitation](../_static/line_rain_temps_fixed.png)  
 In this new version, we've done several things differently. First, we didn't build a DataFrame
-where we are restricted to having the same number of values for each line. Instead, we plotted
-the `Series` object and `resample`d at a different rate to have fine control over how
+because a DataFrame is restricted to having the same number of values in each column. Instead, 
+we use plot using the `Series` object which gives us some added flexibility.
+We `resample`d each `Series` at a different rate to have finer control over how
 we smooth the curve. To make the precipitation be more pronounced, we summed up the values
-over a two week period.  
+over a **two week** period.  
 
-My first attempt at the code below displayed separate legends, one for each axis. To fix
-this we combined the 'handles' and 'labels'.  
+When I was developing this sample, I encountered a problem where the legends displayed separately, one for each axis. To fix
+this problem, I got help from ChatGPT which showed me how to combine the 'handles' and 'labels' into a single legend.  
 ```python
 fig, ax1 = plt.subplots(1)
 
@@ -183,7 +222,11 @@ plt.title('A Year of Rain & Temperatures')
 ### Another Twinx Example
 This example is nice because it annotates the daylight curve with the length of the day. 
 The plot shows how the average temperature "lags" the length of the day: the temperature
-doesn't change immediately with the length of the day.
+doesn't change immediately with the length of the day.  
+
+The code takes a time-slice for a 12 month period. When finding the equinox points,
+we make use of Tuple packing and unpacking to combine two lines of code into one line. This is a bit
+of a trick and is a nice way to shortn highly similar code.
 ````{tab-set}
 ```{tab-item} Image
 ![Temperature & Daylight](../_static/line_temp_daylight.png) 
@@ -193,7 +236,8 @@ doesn't change immediately with the length of the day.
 avg = df['AvgTemp'].loc['2020-08':'2021-07']
 day_len = df['Day Light'].loc['2020-08':'2021-07']
 
-# find the minimum and maximum daylight days
+# find the minimum and maximum daylight days.
+# Use Tuple packing and unpacking to reduce the line count. Trick!
 min_day, max_day = day_len.idxmin(), day_len.idxmax()
 min_len, max_len = day_len[min_day], day_len[max_day]
 
@@ -231,6 +275,7 @@ I've found that using Seaborn is helpful in only a few situations.
 2. When you have multiple y-values at the same x-value and you want to average them out automatically.  
 3. When you have many lines that you want to plot with different colors.  
 4. When you want to differentiate the lines using `size` or `style`.  
+5. When you want to do a scatter plot and do a [line of best fit](line_of_best_fit). 
 
 
 ```{admonition} Pivoted vs Unpivoted
