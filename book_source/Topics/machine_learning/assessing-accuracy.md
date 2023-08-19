@@ -25,6 +25,7 @@ accuracy = accuracy_score(actual_labels, predicted_labels)
 print("Accuracy:", accuracy)
 ```
 ```{tab-item} Comments:
-It's important to keep in mind that accuracy alone might not provide a complete picture, especially in scenarios where class distribution is imbalanced or the costs of different types of errors vary. Therefore, using additional evaluation metrics can offer a more comprehensive assessment of the model's classification performance.
+It's important to keep in mind that accuracy alone might not provide a complete picture, especially in scenarios where the costs of different types of errors vary (More details in When Not to Use ML). Therefore, using additional evaluation metrics can offer a more comprehensive assessment of the model's classification performance.
+
 ```
 ````
