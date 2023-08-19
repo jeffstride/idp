@@ -428,7 +428,7 @@ collects and repacks them into the tuple named 'args'. In turn, it can easily ca
 with the tuple. Altogether, this allows us to generate points and solve for coefficients using as many or
 as few arguments as we want, using default values for the rest.
 
-Confusing? See [Arguments](../Topics/module3/arguments) for more information.  
+Confusing? See [Arguments](../Topics/built-in/arguments) for more information.  
 
 When generating our data points, we make use of `linspace` which is a nifty method that allows us
 to quickly set a minimum, maximum, and an arbitrary number of points. It generates values
@@ -453,8 +453,12 @@ To add more value to the graph, we create an inset with text on the graph.
 ````
 
 # ML regressions
-https://realpython.com/linear-regression-in-python/
-https://datagy.io/mean-squared-error-python/
-`model = LinearRegression()`
-Students will often pursue a Machine Learning model to do predictions which it is great at doing. 
-ML models are intended to do predictions.
+The study on distance using Machine Learning models is done on another page.  
+
+```{admonition} See ML Study
+:class: seealso
+<a href='../Topics/machine_learning/feature-importance#predicting-distance'>Predicting Distance</a>
+```
+
+
+

@@ -1,11 +1,45 @@
 # Feature Importance 
 
-Helpful Links: [Scikit Learn Permuation Feature Importance](https://scikit-learn.org/stable/modules/permutation_importance.html)
+**Feature importance** is a concept in machine learning (ML) that helps us understand and quantify the impact of 
+different **features** on the predictions made by a model. It allows us to identify which features are more 
+influential in contributing to the model's performance and predictions.  
 
-**Feature importance** is a concept in machine learning (ML) that helps us understand and quantify the impact of different **features** on the predictions made by a model. It allows us to identify which features are more influential in contributing to the model's performance and predictions. 
+Too often students will create a model, provide some accuracy scores and then move on to other topics. This is a travesty
+because understanding the model (how it makes its predictions) is important. To illustrate this point, this page will review 
+a few models, show their predictions, and then explore how the features impact the predictions. (Feature Importance)   
 
-There are several techniques to measure feature importance. This unit will go over a few of these techniques.
-#### Coefficient Magnitudes (Linear Models)
+Once a feature's importance is known, a Data Scientist can choose to take several actions:  
+* make conclusions about features (obvious)  
+* eliminate a feature from the set of features (because it is so small)   
+* do a deeper dive study on select features   
+    * Example: a _fairness_ analysis (see classification study)  
+
+There are several techniques to measure _feature importance_. This unit will go over a few of these techniques.  
+
+```{admonition} External Resources
+:class: seealso dropdown
+* [Scikit Learn Permuation Feature Importance](https://scikit-learn.org/stable/modules/permutation_importance.html)  
+* [Understanding Feature Importance and How to Implement it in Python](https://towardsdatascience.com/understanding-feature-importance-and-how-to-implement-it-in-python-ff0287b20285)  
+* [MSE Explained](https://datagy.io/mean-squared-error-python/)  
+* [Linear Regression in Python](https://realpython.com/linear-regression-in-python/)
+```
+
+```{admonition} imports
+:class: seealso dropdown
+```python
+# TODO: update this
+from sklearn.linear_model import LinearRegression
+from sklearn.tree import DecisionTreeClassifier
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+from sklearn.metrics import accuracy_score
+
+import matplotlib.pyplot as plt
+import pandas as pd
+
+```
+
+## Coefficient Magnitudes (Linear Models)
 In linear regression and other linear models, the magnitude of the coefficients assigned to each feature gives an indication of its importance. Larger absolute coefficients imply stronger impact on the output variable.
 
 ````{tab-set}
@@ -28,7 +62,7 @@ feature_names = data.feature_names
 # Print the coefficients and feature names
 feature_coef = zip(feature_names, coefficients)
 for f, c in feature_coef:
-    print(f + ": " + c);
+    print(f + ": " + c)
 
 ```
 ```{tab-item} Comments
