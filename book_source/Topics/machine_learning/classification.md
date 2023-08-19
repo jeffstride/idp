@@ -1,6 +1,5 @@
 # Classification
-This page will do create a Machine Learning Classification model. We create and use contrived data where
-and then attempt to predict whether someone is in the NBA or not.  
+Here we will do a study on Machine Learning Classification using completely hypothetical data.    
 
 ## Summary
 In this study, we create the data which means that we absolutely know things about the
@@ -15,7 +14,7 @@ numbers with full understanding of "the truth" to know that **gender** is an imp
 In normal research, we do not know _the truth_ of the data. All we have are the results of the
 ML model. We need to be able to accurately and fairly interpret the model so that value is added.  
 
-In our studies here, students should learn:
+In this study, students should learn:
 * How to create and analyze a Classification model  
 * Accuracy can be misleading in a multitude of ways  
 * Calculating accuracy is not the stopping point of the research  
@@ -44,12 +43,15 @@ The two data types are:
 **Example Data**  
 ````{tab-set}
 ```{tab-item} Predictable
-TODO: show right image here
-![Predictable Data](../../_static/fi_nba_data.png)
+A person is in the NBA when they are tall enough. Nothing else matters. On the right,
+you can see the people who are tall enough. Men need to be 81 inches tall. Women need to be 75 inches tall.  
+![Predictable Data](../../_static/class_nba_data.png) ![Predictable Data](../../_static/class_nba_data_in_nba.png)
 ```
 ```{tab-item} Randomized
-
-![Randomized Data](../../_static/fi_nba_data.png)
+In this data, your height provides the chances that your in the NBA. There will be people who are tall enough
+but are not in the NBA, and there will be relatively short people who are in the NBA. But, the really tall
+people have a greater chance of being in the NBA.  
+![Randomized Data](../../_static/class_nba_rand_data.png) ![Randomized Data](../../_static/class_nba_rand_data_in_nba.png)
 ```
 ````
 ## The code
@@ -111,6 +113,30 @@ def get_nba_data(size, basis, nba_method=in_nba):
     df_height = df_sorted.sample(frac=1).reset_index(drop=True)
     return df_height
 
+def model_acc(features, labels, test_size=0.3, **kwargs):
+    # Create an untrained model
+    model = DecisionTreeClassifier(**kwargs)
+
+    # Split the data into training and testing sets
+    train_f, test_f, train_l, test_l = train_test_split(features, labels, test_size=test_size)
+
+    # Fit the model to the training data
+    model.fit(train_f, train_l)
+
+    # get the accuracy of our model
+    label_predictions = model.predict(test_f)
+    print(f'Accuracy: {accuracy_score(test_l, label_predictions):.2%}')
+
+    # get importance
+    importance = model.feature_importances_
+    # summarize feature importance
+    for index, feat_importance in enumerate(importance):
+        print(f'Feature: {features.columns[index]}, Importance: {feat_importance:.2%}')
+    # plot feature importance
+    plt.bar(x=features.columns, height=importance)
+    plt.title('Feature Importance')
+    return model
+
 def run_nba(randomized=False, size=1000, basis=0.005, keep_gender=True, max_depth=3):
     nba_method = in_nba if randomized else in_nba_by_height
     df_height = get_nba_data(size, basis, nba_method)
@@ -141,7 +167,7 @@ def plot_nba_predictions(model, actual=None, keep_gender=True):
                     legend='full', s=150)
     if actual is not None:
         colors = ['red', 'green']
-        sns.scatterplot(x=df['height'], y = df['male'], hue=df['nba'], palette=colors, 
+        sns.scatterplot(x=actual['height'], y = actual['male'], hue=actual['nba'], palette=colors, 
                         legend=False, s=10)
 
     plt.title('DecisionTreeClassifier\nPredicted NBA from Height & Gender')
@@ -215,7 +241,7 @@ smaller, red and green dots that represent that actual data. It shows that the m
 a great job! The picture says a lot and you should find it useful in concluding that
 the model is sound.  
 
-![Simple Data Predictions](../../_static/fi_nba_not_random.png)  
+![Simple Data Predictions](../../_static/class_nba_results.png)  
 
 So what? Where do we go from here?  
 
@@ -299,10 +325,12 @@ us to conclude that the model is **NOT FAIR** when we exclude **gender** from th
 ````
 
 #### Summary
-_Feature Importance_ can be drawn as a pie chart. Each feature is given a percentage amount
-that reflects how much that feature is used in the Decision Tree.  
+_Feature Importance_ : Each feature is given a percentage amount
+that reflects how much that feature is used in the Decision Tree. The sum of all
+the imporance values will total 100%.   
 
-_Feature Importance_ does **NOT** necessarily reflect how accurate the model will be.  
+_Feature Importance_ does **NOT** necessarily reflect how accurate the model will be if that feature
+is removed from consideration.  
 
 Plotting the model's predictions provides a lot of information.  
 
@@ -312,20 +340,97 @@ Calculating _Fairness_ values is important when evaluating a model.
 In this sub-study, we will create data that is more random. Surely not everyone who is very
 tall is in the NBA; they are simply more likely to be in the NBA. 
 
-
-**Model Predictions**  
-![Simple Data Predictions](../../_static/fi_nba_not_random.png)
+````{tab-set}
+```{tab-item} Trial #1
+In this trial:  
+* We set `basis=0.01` for a slightly greater chance of being in the NBA.  
+* We got 49 people to be in the NBA.  
+* We let the `max_depth=6` for the Decision Tree.
+* We allowed gender to be considered.   
+You can see that there are very few small, green dots (representing True NBA players) that
+are incorrectly categorized. There are a few randomly scattered large, blue dots
+(representing predicted NBA players). These scattered dots reflect the model's attempt
+to learn and predict the inherit randomness in the data.  
+![Random #1 Predictions](../../_static/class_nba_rand_results.png)
 
 > **OUTPUT**  
-> Accuracy: 99.83%  
-> Feature: male, Importance: 5.60%  
-> Feature: height, Importance: 94.40%  
+> Accuracy: 97.67%  
+> Feature: male, Importance: 2.38%  
+> Feature: height, Importance: 97.62% 
+
+The Fairness comparison for Male/Female shows that the model appears to be _fair_, meaning
+that the False-Negative-Rates across genders are not disparately out of whack.   
+|Gender|Equal Opportunity|Predictive Equality|
+|------|---------|-------------------|
+|Female|73%|0%|
+|Male|59%|0%|
+```
+```{tab-item} Trial #2
+In this trial:  
+* We keep `basis=0.01` for a slightly greater chance of being in the NBA.  
+* We got 42 people to be in the NBA.  
+* We let the `max_depth=3` for the Decision Tree; this is to reduce overfitting.
+* We allowed gender to be considered.   
+You can see that randomness in the prediction went away, which was expected since
+we set `max_depth=3`. What is unexpected though is that we still have ~98% accuracy,
+and the _Feature Importance_ for **gender** dropped to zero!   
+![Random #2 Predictions](../../_static/class_nba_rand_results_2.png)
+
+> **OUTPUT**  
+> Accuracy: 97.67%  
+> Feature: male, Importance: 0.00%  
+> Feature: height, Importance: 100.00% 
+
+The Fairness comparison for Male/Female shows that the model appears to be _fair_, meaning
+that the False-Negative-Rates across genders are not disparately out of whack. However,
+it might be better to say that the model is equally _**UN**fair_ because the False Rates
+are pretty high for both genders. Effectively, the high accuracy rate occurs because there
+are so few people in the NBA.  
+|Gender|Equal Opportunity|Predictive Equality|
+|------|---------|-------------------|
+|Female|100%|0%|
+|Male|86%|0%|
+```
+```{tab-item} Trial #3
+In this trial:  
+* We keep `basis=0.03` for a significantly greater chance of being in the NBA.  
+* We got 102 people to be in the NBA.  
+* We let the `max_depth=6` for the Decision Tree--we may overfit.
+* We allowed gender to be considered.   
+You can see that randomness in the prediction went away, which was **UN**expected since
+we set `max_depth=6`. We still have a high   
+![Random #3 Predictions](../../_static/class_nba_rand_results_3.png)
+
+> **OUTPUT**  
+> Accuracy: 96.17%  
+> Feature: male, Importance: 37.17%  
+> Feature: height, Importance: 62.83% 
+
+The Fairness comparison for Male/Female show it to be quite (un)fair:  
+|Gender|Equal Opportunity|Predictive Equality|
+|------|---------|-------------------|
+|Female|74%|0%|
+|Male|88%|0%|  
+
+This image of the Decision Tree is small and hard to read. The blue boxes
+predict NBA will the others predict not. You can see that virtually every
+path leads to False (not in NBA). Seems like pretty dumb tree to me.  
+
+![Decision Tree for NBA](../../_static/class_nba_rand_model_3.png)   
+
+Did we land a good model? Perhaps it is the best we can do, but the
+inability to accurately predict players in the NBA is horrible. 
+It fails to predict 74% of
+the NBA women and 88% of the NBA men. That's a lot! 
+```
+````
+
+
+ 
 
 This output is generated from the `model_acc` code in the prior tab. It is a bit
-surprising to think that height is the utmost importance in the decision making.
-We know from how we generated the data that females have a much lower height
-threshold before their chances increase. We know that `gender` has an impact. Yet,
-our **Feature Importance** says that gender has 0% importance.   
+surprising to think that model achieved ~99% accuracy while predicting that every
+male will 
 
 > **OUTPUT**  
 > Feature: male, Importance: 0.00%  

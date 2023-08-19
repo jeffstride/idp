@@ -8,17 +8,17 @@ to see the data, code, and what we learned.
 ````{tab-set}
 ```{tab-item} Data
 The gender is `Male` 92% of the time and has no relationship to the features.  
-![Random Data](../../_static/fi_rand_data.png)  
+![Random Data](../../_static/class_rand_data.png)  
 **Code used to generate the data**  
 ```python
-# let 92% of the population be Male and the features be completely random
-gender = [ 'Male' if random.random() < 0.92 else 'Female' for n in range(1000)]
-f1 = np.random.randint(50, 101, size=1000)
-f2 = [ random.randint(0, 2) for n in range(1000)]
+def create_rand_df():
+    # let 92% of the population be Male and the features be completely random
+    gender = [ 'Male' if random.random() < 0.92 else 'Female' for n in range(1000)]
+    f1 = np.random.randint(50, 101, size=1000)
+    f2 = [ random.randint(0, 2) for n in range(1000)]
 
-df_gender = pd.DataFrame({'gender':gender, 'score':f1, 'fav':f2})
-features = df_gender[['score', 'fav']]
-labels = df_gender['gender']
+    df_gender = pd.DataFrame({'gender':gender, 'score':f1, 'fav':f2})
+    return df_gender
 ```
 ```{tab-item} Model Accuracy
 This code will build a model, split it up for training and testing, train it, and then
