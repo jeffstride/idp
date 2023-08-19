@@ -9,7 +9,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
-    <title>Pandas &#8212; IDP at NCHS</title>
+    <title>Assessing Accuracy &#8212; IDP at NCHS</title>
   
   
   
@@ -103,12 +103,12 @@ const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'Topics/pandas/index';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Topics/machine_learning/assessing-accuracy';</script>
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="DataFrame" href="dataframe.html" />
-    <link rel="prev" title="Stub 2" href="../collections/stub2.html" />
+    <link rel="next" title="Classification" href="classification.html" />
+    <link rel="prev" title="Feature Importance" href="feature-importance.html" />
     
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -236,17 +236,17 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l3"><a class="reference internal" href="../collections/stub2.html">Stub 2</a></li>
 </ul>
 </li>
-<li class="toctree-l2 current active has-children"><a class="current reference internal" href="#"><i class="fas fa-book fa-fw"></i> Pandas</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="dataframe.html">DataFrame</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../pandas/index.html"><i class="fas fa-book fa-fw"></i> Pandas</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pandas/dataframe.html">DataFrame</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../machine_learning/index.html"><i class="fas fa-book fa-fw"></i> Machine Learning</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../machine_learning/feature-importance.html">Feature Importance</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../machine_learning/assessing-accuracy.html">Assessing Accuracy</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html"><i class="fas fa-book fa-fw"></i> Machine Learning</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="feature-importance.html">Feature Importance</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Assessing Accuracy</a></li>
 
-<li class="toctree-l3"><a class="reference internal" href="../machine_learning/classification.html">Classification</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../machine_learning/regression.html">Regression - Distance Study</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../machine_learning/classifier-rand.html">Classification - Fully Random</a></li>
+<li class="toctree-l3"><a class="reference internal" href="classification.html">Classification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="regression.html">Regression - Distance Study</a></li>
+<li class="toctree-l3"><a class="reference internal" href="classifier-rand.html">Classification - Fully Random</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../built-in/index.html"><i class="fas fa-book fa-fw"></i> Built-in</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -363,7 +363,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/jeffstride/idp/edit/main/book_source/Topics/pandas/index.md" target="_blank"
+      <li><a href="https://github.com/jeffstride/idp/edit/main/book_source/Topics/machine_learning/assessing-accuracy.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -380,7 +380,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://github.com/jeffstride/idp/issues/new?title=Issue%20on%20page%20%2FTopics/pandas/index.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/jeffstride/idp/issues/new?title=Issue%20on%20page%20%2FTopics/machine_learning/assessing-accuracy.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -410,7 +410,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="../../_sources/Topics/pandas/index.md" target="_blank"
+      <li><a href="../../_sources/Topics/machine_learning/assessing-accuracy.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -479,7 +479,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -490,11 +492,21 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><i class="fas fa-book fa-fw"></i> Pandas</h1>
+    <h1>Assessing Accuracy</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Assessing Accuracy</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#classification">Classification:</a></li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -504,17 +516,45 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="i-class-fas-fa-book-fa-fw-i-pandas">
-<h1><i class="fas fa-book fa-fw"></i> Pandas<a class="headerlink" href="#i-class-fas-fa-book-fa-fw-i-pandas" title="Permalink to this heading">#</a></h1>
-<p>Topics:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/frame.html">DataFrame</a></p></li>
-<li><p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/series.html">Series</a></p></li>
-</ul>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="dataframe.html">DataFrame</a></li>
-</ul>
+  <section id="assessing-accuracy">
+<h1>Assessing Accuracy<a class="headerlink" href="#assessing-accuracy" title="Permalink to this heading">#</a></h1>
+<p>Evaluating the accuracy of a machine learning (ML) model is a crucial step to determine its performance and effectiveness. The choice of evaluation metrics depends on the type of problem you’re solving (classification, regression, etc.), and it’s important to select metrics that are relevant to your specific goals. Here’s a general process for assessing the accuracy of an ML model.</p>
+<p>##Regression
+<strong>Mean Squared Error (MSE)</strong> measures the average squared difference between the predicted values and the actual values. It gives higher weight to larger errors.
+<strong>Formula: MSE = (1/n) * Σ(y_actual - y_predicted)^2</strong></p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+Code:</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">mse</span> <span class="o">=</span> <span class="n">mean_squared_error</span><span class="p">(</span><span class="n">actual_values</span><span class="p">,</span> <span class="n">predicted_values</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Mean Squared Error:&quot;</span><span class="p">,</span> <span class="n">mse</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+Comments:</label><div class="sd-tab-content docutils">
+<p>Lower MSE values indicate better model performance. It’s important to note that while MSE provides a useful measure of prediction accuracy, it emphasizes larger errors due to squaring them. This can make it sensitive to outliers, potentially leading to overemphasizing the impact of extreme values. As a result, it’s recommended to consider MSE alongside other evaluation metrics and to interpret it in the context of the specific problem and dataset being analyzed.</p>
+</div>
+</div>
+</section>
+<section id="classification">
+<h1>Classification:<a class="headerlink" href="#classification" title="Permalink to this heading">#</a></h1>
+<p>Accuracy score is a metric for classification accuracy, which calculates the proportion of correctly predicted instances out of the total instances in the dataset.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
+Code:</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">actual_labels</span><span class="p">,</span> <span class="n">predicted_labels</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Accuracy:&quot;</span><span class="p">,</span> <span class="n">accuracy</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-3">
+Comments:</label><div class="sd-tab-content docutils">
+<p>It’s important to keep in mind that accuracy alone might not provide a complete picture, especially in scenarios where the costs of different types of errors vary (More details in When Not to Use ML). Therefore, using additional evaluation metrics can offer a more comprehensive assessment of the model’s classification performance.</p>
+</div>
 </div>
 </section>
 
@@ -531,7 +571,7 @@ document.write(`
         },
         kernelOptions: {
             name: "python3",
-            path: "./Topics/pandas"
+            path: "./Topics/machine_learning"
         },
         predefinedOutput: true
     }
@@ -550,20 +590,20 @@ document.write(`
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../collections/stub2.html"
+       href="feature-importance.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Stub 2</p>
+        <p class="prev-next-title">Feature Importance</p>
       </div>
     </a>
     <a class="right-next"
-       href="dataframe.html"
+       href="classification.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">DataFrame</p>
+        <p class="prev-next-title">Classification</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -576,6 +616,22 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Assessing Accuracy</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#classification">Classification:</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
               
             
           </div>
