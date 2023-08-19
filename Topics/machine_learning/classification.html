@@ -1,0 +1,1149 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>Classification &#8212; IDP at NCHS</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
+    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "jeffstride/idp");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "preferred-color-scheme");
+    script.setAttribute("label", "💬 Comments");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-DW6SHVPBYV"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-DW6SHVPBYV');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Topics/machine_learning/classification';</script>
+    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Regression - Distance Study" href="regression.html" />
+    <link rel="prev" title="Feature Importance" href="feature-importance.html" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DW6SHVPBYV"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-DW6SHVPBYV');
+    </script>
+
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    <i class="fas fa-hand-sparkles fa-fw"></i> Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../homework-assignments/index.html"><i class="fas fa-book fa-fw"></i> Homework Assignments</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../homework-assignments/hw1.html"><i class="fas fa-laptop fa-fw"></i> HW1 - Startup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework-assignments/hw2.html"><i class="fas fa-laptop fa-fw"></i> HW2 - Primer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework-assignments/hw3.html"><i class="fas fa-laptop fa-fw"></i> HW3 - Pokémon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework-assignments/hw4.html"><i class="fas fa-laptop fa-fw"></i> HW4 - Education</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework-assignments/hw5.html"><i class="fas fa-laptop fa-fw"></i> HW5 - Search Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework-assignments/hw6.html"><i class="fas fa-laptop fa-fw"></i> HW6 - Spell Checker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework-assignments/hw7.html"><i class="fas fa-laptop fa-fw"></i> HW7 - Mapping</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html"><i class="fas fa-layer-group fa-fw"></i> Topics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Replit/index.html"><i class="fas fa-book fa-fw"></i> Replit</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Replit/building-in-replit.html">Building in Replit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Replit/replit-tips.html">Replit Tips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Replit/corrupt-project.html">Corrupt Replit Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Replit/flake8.html">Flake8</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../collections/index.html"><i class="fas fa-book fa-fw"></i> Collections</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../collections/collections.html">Collections</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../collections/stub2.html">Stub 2</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../pandas/index.html"><i class="fas fa-book fa-fw"></i> Pandas</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../pandas/dataframe.html">DataFrame</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html"><i class="fas fa-book fa-fw"></i> Machine Learning</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="feature-importance.html">Feature Importance</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">Classification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="regression.html">Regression - Distance Study</a></li>
+<li class="toctree-l3"><a class="reference internal" href="classifier-rand.html">Classification - Fully Random</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../built-in/index.html"><i class="fas fa-book fa-fw"></i> Built-in</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../built-in/arguments.html">Arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../built-in/formatted-string.html">Formatted Strings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../final-project/index.html"><i class="fas fa-layer-group fa-fw"></i> Final Project</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../final-project/handouts/index.html"><i class="fas fa-book fa-fw"></i> Final Project - Handouts</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../final-project/handouts/proposal.html">Proposal Document</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../final-project/handouts/code.html">Final Project Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../final-project/handouts/report.html">Final Report</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../final-project/handouts/presentation.html">Final Presentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../final-project/tips/index.html"><i class="fas fa-book fa-fw"></i> Final Project - Tips</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../final-project/tips/ML.html">Leveraging ML in the Final Project</a></li>
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../../final-project/tips/proposal.html">Tips for Proposal Document</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../final-project/tips/code.html">Tips for Final Project Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../final-project/tips/report.html">Tips for Final Report</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../final-project/tips/presentation.html">Tips for Final Presentation</a></li>
+
+
+
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../visualizations/index.html"><i class="fas fa-book fa-fw"></i> Visualizations</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../visualizations/barchart.html">Bar Charts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../visualizations/geospatial.html">Geospatial Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../visualizations/lineplots.html">Line Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../visualizations/line_of_best_fit.html">Curve of Best Fit</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../visualizations/case_study_dist.html">Case Study on Distance</a></li>
+
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jeffstride/idp" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jeffstride/idp/edit/main/book_source/Topics/machine_learning/classification.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jeffstride/idp/issues/new?title=Issue%20on%20page%20%2FTopics/machine_learning/classification.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/Topics/machine_learning/classification.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Classification</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-overview">Data Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-code">The code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-1-predictable-data-study">Data 1: Predictable Data Study</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gender-removed">Gender Removed</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">Discussion</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fairness">Fairness</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Summary</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-2-todo-randomized-data-study">Data 2: TODO: Randomized Data Study</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="classification">
+<h1>Classification<a class="headerlink" href="#classification" title="Permalink to this heading">#</a></h1>
+<p>Here we will do a study on Machine Learning Classification using completely hypothetical data.</p>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Permalink to this heading">#</a></h2>
+<p>In this study, we create the data which means that we absolutely know things about the
+data. The ML model is used to reverse engineer the characteristics that we built in. Since
+we know the <em>truth</em> of the data, we can explore the <em>value</em> of the ML model–its predictions and
+statistics.</p>
+<p>For example, we know that <strong>gender</strong> makes a <em>genuine</em> difference in the accuracy of the predictions. When we ask
+our code to give us statistics (e.g. Accuracy, Feature Importance) we can interpret these
+numbers with full understanding of “the truth” to know that <strong>gender</strong> is an important feature.</p>
+<p>In normal research, we do not know <em>the truth</em> of the data. All we have are the results of the
+ML model. We need to be able to accurately and fairly interpret the model so that value is added.</p>
+<p>In this study, students should learn:</p>
+<ul class="simple">
+<li><p>How to create and analyze a Classification model</p></li>
+<li><p>Accuracy can be misleading in a multitude of ways</p></li>
+<li><p>Calculating accuracy is not the stopping point of the research</p></li>
+<li><p>That graphing a model’s predictions reveals important information &amp; insight</p></li>
+<li><p>Feature Importance reflects how much a feature is used in making a model’s decisions, but that does not mean the feature is, in practice, (un)important in a Fair &amp; Ethical ML model.</p></li>
+<li><p>With limited data, a model’s accuracy may be <em>“wrong”</em></p></li>
+<li><p>Using a randomized test set won’t always reveal that the model is overly complex or convoluted.</p></li>
+</ul>
+</section>
+<section id="data-overview">
+<h2>Data Overview<a class="headerlink" href="#data-overview" title="Permalink to this heading">#</a></h2>
+<p>In this hypothetical example, we know the <strong>height</strong> and <strong>gender</strong> of about 2000 people who are between the ages of 22-32. We
+also know whether they play in the NBA (or WNBA). Let’s see if a <code class="docutils literal notranslate"><span class="pre">DecisionTreeClassifier</span></code> can accurately predict whether they
+play in the NBA or not based soley on their gender and height.  Note that for simplicity, we will only consider male/female,
+and we will often say just NBA when we also mean to include WNBA.</p>
+<p>We will break up our study into two primary sections. Each section uses completely contrived and made-up data. This
+allows us to understand the model’s results. In both cases, <strong>height</strong> impacts the results (playing for NBA), but
+the specifics of how it impacts the results is different in each study.</p>
+<p>In our first dataset, the threashold for automatically being in the NBA is
+81+ inches tall for a male, while a woman must be only 75+ inches tall.</p>
+<p>The two data types are:</p>
+<ol class="arabic simple">
+<li><p>Predictable Data :  a person is in the NBA based entirely on their height.</p></li>
+<li><p>Ranomized Data : the taller a person is, the more likely they are in the NBA.</p></li>
+</ol>
+<p><strong>Example Data</strong></p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+Predictable</label><div class="sd-tab-content docutils">
+<p>A person is in the NBA when they are tall enough. Nothing else matters. On the right,
+you can see the people who are tall enough. Men need to be 81 inches tall. Women need to be 75 inches tall.<br />
+<img alt="Predictable Data" src="../../_images/class_nba_data.png" /> <img alt="Predictable Data" src="../../_images/class_nba_data_in_nba.png" /></p>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+Randomized</label><div class="sd-tab-content docutils">
+<p>In this data, your height provides the chances that your in the NBA. There will be people who are tall enough
+but are not in the NBA, and there will be relatively short people who are in the NBA. But, the really tall
+people have a greater chance of being in the NBA.<br />
+<img alt="Randomized Data" src="../../_images/class_nba_rand_data.png" /> <img alt="Randomized Data" src="../../_images/class_nba_rand_data_in_nba.png" /></p>
+</div>
+</div>
+</section>
+<section id="the-code">
+<h2>The code<a class="headerlink" href="#the-code" title="Permalink to this heading">#</a></h2>
+<p>There are several parameterized methods used to create the data, models and graphs. Seeing the code can help the
+student understand the results as well as to reproduce similar studies.</p>
+<div class="seealso dropdown admonition">
+<p class="admonition-title">imports</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">plot_tree</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">random</span>
+</pre></div>
+</div>
+</div>
+<div class="seealso dropdown admonition">
+<p class="admonition-title">See Code</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">in_nba</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">male</span><span class="p">,</span> <span class="n">basis</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Chances of being in NBA increase when one is taller than some cutoff.</span>
+<span class="sd">    Normal and short people have a &#39;basis&#39; chance.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># pick the cutoffs based on the gender of the person</span>
+    <span class="n">cutoffs</span> <span class="o">=</span> <span class="p">[</span> <span class="p">[</span><span class="mi">85</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">80</span><span class="p">],</span> <span class="p">[</span><span class="mi">76</span><span class="p">,</span> <span class="mi">74</span><span class="p">,</span> <span class="mi">72</span><span class="p">]][</span><span class="mi">0</span> <span class="k">if</span> <span class="n">male</span> <span class="k">else</span> <span class="mi">1</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">height</span><span class="o">&gt;</span><span class="n">cutoffs</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+        <span class="n">basis</span> <span class="o">*=</span> <span class="mi">60</span>
+    <span class="k">elif</span> <span class="n">height</span><span class="o">&gt;</span><span class="n">cutoffs</span><span class="p">[</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="n">basis</span> <span class="o">*=</span> <span class="mi">20</span>
+    <span class="k">elif</span> <span class="n">height</span><span class="o">&gt;</span><span class="n">cutoffs</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span>
+        <span class="n">basis</span> <span class="o">*=</span> <span class="mi">10</span>
+
+    <span class="k">return</span> <span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">()</span> <span class="o">&lt;</span> <span class="n">basis</span>
+
+<span class="k">def</span> <span class="nf">in_nba_by_height</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">male</span><span class="p">,</span> <span class="n">ignored</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">male</span> <span class="ow">and</span> <span class="n">height</span><span class="o">&gt;=</span><span class="mi">81</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span><span class="ow">not</span> <span class="n">male</span> <span class="ow">and</span> <span class="n">height</span><span class="o">&gt;=</span><span class="mi">75</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">get_nba_data</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">basis</span><span class="p">,</span> <span class="n">nba_method</span><span class="o">=</span><span class="n">in_nba</span><span class="p">):</span>
+    <span class="c1"># This uses Numpy to create a normal distribution around some mean with </span>
+    <span class="c1"># some standard deviation. https://youtu.be/rzFX5NWojp0 </span>
+    <span class="c1"># use Numpy concatenate to make a single list of values rounded to 1 decimal place</span>
+    <span class="n">men_height</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">71</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+    <span class="n">women_height</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">normal</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">size</span><span class="p">)</span>
+    <span class="n">height</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">men_height</span><span class="p">,</span> <span class="n">women_height</span><span class="p">])</span>
+    <span class="n">height</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">round</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">decimals</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="c1"># Create a list of size having &#39;Male&#39; as every value</span>
+    <span class="c1"># use &#39;extend&#39; to &#39;concatenate&#39; another list to the end</span>
+    <span class="c1"># if we used &#39;append&#39; then only 1 element, a list, would get added</span>
+    <span class="n">genders</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Male&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">size</span>
+    <span class="n">genders</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s1">&#39;Female&#39;</span><span class="p">]</span><span class="o">*</span><span class="n">size</span><span class="p">)</span>
+    <span class="c1"># Create the True/False values for being in the NBA based on height &amp; gender</span>
+    <span class="n">nba</span> <span class="o">=</span> <span class="p">[</span> <span class="n">nba_method</span><span class="p">(</span><span class="n">h</span><span class="p">,</span> <span class="n">g</span><span class="o">==</span><span class="s1">&#39;Male&#39;</span><span class="p">,</span> <span class="n">basis</span><span class="p">)</span> <span class="k">for</span> <span class="n">h</span><span class="p">,</span> <span class="n">g</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">height</span><span class="p">,</span> <span class="n">genders</span><span class="p">)</span> <span class="p">]</span>
+    <span class="n">df_sorted</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;gender&#39;</span><span class="p">:</span><span class="n">genders</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="p">:</span><span class="n">height</span><span class="p">,</span> <span class="s1">&#39;nba&#39;</span><span class="p">:</span><span class="n">nba</span><span class="p">})</span>
+    <span class="c1"># shuffle the dataframe rows so that we don&#39;t have all males at the top</span>
+    <span class="n">df_height</span> <span class="o">=</span> <span class="n">df_sorted</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">frac</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">drop</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df_height</span>
+
+<span class="k">def</span> <span class="nf">model_acc</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="c1"># Create an untrained model</span>
+    <span class="n">model</span> <span class="o">=</span> <span class="n">DecisionTreeClassifier</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+    <span class="c1"># Split the data into training and testing sets</span>
+    <span class="n">train_f</span><span class="p">,</span> <span class="n">test_f</span><span class="p">,</span> <span class="n">train_l</span><span class="p">,</span> <span class="n">test_l</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="n">test_size</span><span class="p">)</span>
+
+    <span class="c1"># Fit the model to the training data</span>
+    <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_f</span><span class="p">,</span> <span class="n">train_l</span><span class="p">)</span>
+
+    <span class="c1"># get the accuracy of our model</span>
+    <span class="n">label_predictions</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_f</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Accuracy: </span><span class="si">{</span><span class="n">accuracy_score</span><span class="p">(</span><span class="n">test_l</span><span class="p">,</span><span class="w"> </span><span class="n">label_predictions</span><span class="p">)</span><span class="si">:</span><span class="s1">.2%</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="c1"># get importance</span>
+    <span class="n">importance</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">feature_importances_</span>
+    <span class="c1"># summarize feature importance</span>
+    <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">feat_importance</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">importance</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Feature: </span><span class="si">{</span><span class="n">features</span><span class="o">.</span><span class="n">columns</span><span class="p">[</span><span class="n">index</span><span class="p">]</span><span class="si">}</span><span class="s1">, Importance: </span><span class="si">{</span><span class="n">feat_importance</span><span class="si">:</span><span class="s1">.2%</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="c1"># plot feature importance</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">features</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">importance</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Feature Importance&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">model</span>
+
+<span class="k">def</span> <span class="nf">run_nba</span><span class="p">(</span><span class="n">randomized</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">basis</span><span class="o">=</span><span class="mf">0.005</span><span class="p">,</span> <span class="n">keep_gender</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">nba_method</span> <span class="o">=</span> <span class="n">in_nba</span> <span class="k">if</span> <span class="n">randomized</span> <span class="k">else</span> <span class="n">in_nba_by_height</span>
+    <span class="n">df_height</span> <span class="o">=</span> <span class="n">get_nba_data</span><span class="p">(</span><span class="n">size</span><span class="p">,</span> <span class="n">basis</span><span class="p">,</span> <span class="n">nba_method</span><span class="p">)</span>
+
+    <span class="n">labels</span> <span class="o">=</span> <span class="n">df_height</span><span class="p">[</span><span class="s1">&#39;nba&#39;</span><span class="p">]</span>
+    <span class="c1"># translate the &#39;gender&#39; column, a string, to a boolean &#39;male&#39; column</span>
+    <span class="n">df_height</span><span class="p">[</span><span class="s1">&#39;male&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_height</span><span class="p">[</span><span class="s1">&#39;gender&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;Male&#39;</span>
+    <span class="c1"># get our feature columns; honor our keep_gender argument</span>
+    <span class="n">features</span> <span class="o">=</span> <span class="n">df_height</span><span class="p">[[</span><span class="s1">&#39;male&#39;</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="p">]</span> <span class="k">if</span> <span class="n">keep_gender</span> <span class="k">else</span> <span class="p">[</span><span class="s1">&#39;height&#39;</span><span class="p">]]</span>
+
+    <span class="n">model_nba</span> <span class="o">=</span> <span class="n">model_acc</span><span class="p">(</span><span class="n">features</span><span class="p">,</span> <span class="n">labels</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="n">max_depth</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">model_nba</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">df_height</span>
+
+<span class="k">def</span> <span class="nf">plot_nba_predictions</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">actual</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">keep_gender</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">clf</span><span class="p">()</span>
+    <span class="c1"># create features to predict</span>
+    <span class="n">height</span> <span class="o">=</span> <span class="p">[</span> <span class="n">t</span> <span class="k">for</span> <span class="n">t</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">59</span><span class="p">,</span> <span class="mi">88</span><span class="p">)</span> <span class="p">]</span>
+    <span class="n">genders</span> <span class="o">=</span> <span class="p">[</span><span class="kc">False</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">height</span><span class="p">)</span>
+    <span class="n">gender_m</span> <span class="o">=</span> <span class="p">[</span><span class="kc">True</span><span class="p">]</span> <span class="o">*</span> <span class="nb">len</span><span class="p">(</span><span class="n">height</span><span class="p">)</span>
+    <span class="n">genders</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">gender_m</span><span class="p">)</span>
+    <span class="n">height</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">height</span><span class="p">)</span>
+    <span class="n">features</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;male&#39;</span><span class="p">:</span><span class="n">genders</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="p">:</span><span class="n">height</span><span class="p">})</span>
+    <span class="n">model_features</span> <span class="o">=</span> <span class="n">features</span> <span class="k">if</span> <span class="n">keep_gender</span> <span class="k">else</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;height&#39;</span><span class="p">:</span><span class="n">height</span><span class="p">})</span>
+    <span class="n">features</span><span class="p">[</span><span class="s1">&#39;nba&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">model_features</span><span class="p">)</span>
+    
+    <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">features</span><span class="p">[</span><span class="s1">&#39;height&#39;</span><span class="p">],</span> <span class="n">y</span><span class="o">=</span><span class="n">features</span><span class="p">[</span><span class="s1">&#39;male&#39;</span><span class="p">]</span> <span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="n">features</span><span class="p">[</span><span class="s1">&#39;nba&#39;</span><span class="p">],</span> 
+                    <span class="n">legend</span><span class="o">=</span><span class="s1">&#39;full&#39;</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">actual</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;red&#39;</span><span class="p">,</span> <span class="s1">&#39;green&#39;</span><span class="p">]</span>
+        <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">actual</span><span class="p">[</span><span class="s1">&#39;height&#39;</span><span class="p">],</span> <span class="n">y</span> <span class="o">=</span> <span class="n">actual</span><span class="p">[</span><span class="s1">&#39;male&#39;</span><span class="p">],</span> <span class="n">hue</span><span class="o">=</span><span class="n">actual</span><span class="p">[</span><span class="s1">&#39;nba&#39;</span><span class="p">],</span> <span class="n">palette</span><span class="o">=</span><span class="n">colors</span><span class="p">,</span> 
+                        <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;DecisionTreeClassifier</span><span class="se">\n</span><span class="s1">Predicted NBA from Height &amp; Gender&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">.5</span><span class="p">,</span> <span class="mf">1.5</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Is Male&#39;</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">plot_confusion_matrix</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">features</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">gender</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="c1"># Update the title depending on whether features has &#39;male&#39; as a column. </span>
+    <span class="n">gender_for_title</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;Male&#39;</span> <span class="k">if</span> <span class="n">gender</span><span class="o">==</span><span class="mi">1</span> <span class="k">else</span> <span class="s1">&#39;Female&#39;</span><span class="p">)</span>
+    
+    <span class="k">if</span> <span class="s1">&#39;male&#39;</span> <span class="ow">in</span> <span class="n">features</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+        <span class="n">gender_for_title</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Gender Included in Prediction&#39;</span>
+        <span class="n">feature_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;male&#39;</span><span class="p">,</span> <span class="s1">&#39;height&#39;</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">gender_for_title</span> <span class="o">+=</span> <span class="s1">&#39;</span><span class="se">\n</span><span class="s1">Gender Ignored in Prediction&#39;</span>
+        <span class="n">feature_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;height&#39;</span><span class="p">]</span>
+    
+    <span class="c1"># filter to a gender</span>
+    <span class="n">df_filtered</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;male&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">gender</span><span class="p">]</span>
+    <span class="n">features</span> <span class="o">=</span> <span class="n">df_filtered</span><span class="p">[</span><span class="n">feature_list</span><span class="p">]</span>
+    <span class="n">actual</span> <span class="o">=</span> <span class="n">df_filtered</span><span class="p">[</span><span class="s1">&#39;nba&#39;</span><span class="p">]</span>
+    
+    <span class="c1"># get our predictions</span>
+    <span class="n">predicted</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+    <span class="c1"># Calculate confusion matrix</span>
+    <span class="n">confusion</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">actual</span><span class="p">,</span> <span class="n">predicted</span><span class="p">)</span>
+    
+    <span class="c1"># Calculate the rates of accuracy for each quadrant</span>
+    <span class="c1"># get the counts</span>
+    <span class="n">tn</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">fn</span><span class="p">,</span> <span class="n">tp</span> <span class="o">=</span> <span class="n">confusion</span><span class="o">.</span><span class="n">ravel</span><span class="p">()</span>
+    <span class="c1"># FNR (Equal opportunity): #fn / (actual positives)</span>
+    <span class="n">actual_positives</span> <span class="o">=</span> <span class="n">df_filtered</span><span class="p">[</span><span class="s1">&#39;nba&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+    <span class="n">fnr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">NaN</span> <span class="k">if</span> <span class="n">actual_positives</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">fn</span> <span class="o">/</span> <span class="n">actual_positives</span>
+    <span class="c1"># FPR (Predictive Equality): #fp / (actual negatives)</span>
+    <span class="n">actual_negatives</span> <span class="o">=</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">df_filtered</span><span class="p">)</span><span class="o">-</span><span class="n">df_filtered</span><span class="p">[</span><span class="s1">&#39;nba&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+    <span class="n">fpr</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">NaN</span> <span class="k">if</span> <span class="n">actual_negatives</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="n">fp</span> <span class="o">/</span> <span class="n">actual_negatives</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Equal Opportunity (FNR): </span><span class="si">{</span><span class="n">fnr</span><span class="si">:</span><span class="s1">.0%</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Predictive Equality (FPR): </span><span class="si">{</span><span class="n">fpr</span><span class="si">:</span><span class="s1">.0%</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+    <span class="c1"># Create a table for visualization</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Predicted True&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">tp</span><span class="p">,</span> <span class="n">fp</span><span class="p">],</span>
+            <span class="s1">&#39;Predicted False&#39;</span><span class="p">:</span> <span class="p">[</span><span class="n">fn</span><span class="p">,</span> <span class="n">tn</span><span class="p">]}</span>
+
+    <span class="n">table_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;Actual True&#39;</span><span class="p">,</span> <span class="s1">&#39;Actual False&#39;</span><span class="p">])</span>
+
+    <span class="c1"># Plot the table using Seaborn&#39;s heatmap</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">table_df</span><span class="p">,</span> <span class="n">annot</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s2">&quot;d&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s2">&quot;Blues&quot;</span><span class="p">)</span> 
+    <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Equal Opportunity (FNR): </span><span class="si">{</span><span class="n">fnr</span><span class="si">:</span><span class="s1">.0%</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">.40</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> 
+                <span class="n">textcoords</span><span class="o">=</span><span class="s1">&#39;offset points&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">annotate</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Predictive Equality (FPR): </span><span class="si">{</span><span class="n">fpr</span><span class="si">:</span><span class="s1">.0%</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">,</span> <span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">1.30</span><span class="p">),</span> <span class="n">xytext</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> 
+                <span class="n">textcoords</span><span class="o">=</span><span class="s1">&#39;offset points&#39;</span><span class="p">,</span> <span class="n">weight</span><span class="o">=</span><span class="s1">&#39;bold&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Counts for &#39;</span> <span class="o">+</span> <span class="n">gender_for_title</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="data-1-predictable-data-study">
+<h2>Data 1: Predictable Data Study<a class="headerlink" href="#data-1-predictable-data-study" title="Permalink to this heading">#</a></h2>
+<p>In this contrived dataset, we say that whether a person is in the NBA is completely determined
+by their height. We use the <code class="docutils literal notranslate"><span class="pre">in_nba_by_height</span></code> method (in the <strong>Code</strong> dropdown above). We see
+that the accuracy is very, very high–nearly 100%! This kind of makes sense because we’ve
+generated the data in a way to be predictable.</p>
+<p>Belonging to the NBA in this <em>Predictable Data Study</em> is very simple: if you’re tall enough
+for your gender, you’re in! When we look at the <em>Feature Importance</em> we see that <strong>height</strong> has
+an importance of 60% while <strong>gender</strong> is ~40%.</p>
+<p><strong>Model Predictions Drawn</strong><br />
+In this graph we see both how the actual data is distributed and how the predictions are made.
+The predictions are shown with the larger, blue and organge dots. On top of predictions are
+smaller, red and green dots that represent that actual data. It shows that the model does
+a great job! The picture says a lot and you should find it useful in concluding that
+the model is sound.</p>
+<p><img alt="Simple Data Predictions" src="../../_images/class_nba_results.png" /></p>
+<p>So what? Where do we go from here?</p>
+<p>Let’s present a few questions:</p>
+<ul class="simple">
+<li><p>How important is <strong>gender</strong> in the predictions?</p></li>
+<li><p>What does the 40% mean?</p></li>
+</ul>
+<p>We will explore this by removing <strong>gender</strong> from the set of features available to the
+model when making its predictions.</p>
+<div class="important admonition">
+<p class="admonition-title">Make your prediction</p>
+<p>Take a minute to think and make some predictions about what will happen when we
+remove <strong>gender</strong> from the feature set.</p>
+</div>
+<div class="note admonition">
+<p class="admonition-title">An Aside</p>
+<p>When the percentage of actual women in WNBA drops to less than 1% (say, 2/500 women), then the <em>Feature Importance</em>
+drops to just ~6%. <strong>What does that say about Feature Importance?</strong></p>
+<p>Read on and hopefully it will all make sense.</p>
+</div>
+<section id="gender-removed">
+<h3>Gender Removed<a class="headerlink" href="#gender-removed" title="Permalink to this heading">#</a></h3>
+<p>Here are the results when <strong>gender</strong> is removed. I find the results fascinating! First off, the
+accuracy of the model is 99.5%!! Where you expecting that?</p>
+<p>How in the world does the model predict with 99.5% accuracy when we ingore <strong>gender</strong> which has
+a <em>Feature Importance</em> of 40%?</p>
+<p>What we see in the graph is that the model doesn’t predict NBA until one is 80 inches tall. In this
+particular dataset, one woman happened to be that tall while 12 others in the WNBA were not that tall.<br />
+<img alt="No Gender Model Results" src="../../_images/class_no_gender.png" /></p>
+<section id="discussion">
+<h4>Discussion<a class="headerlink" href="#discussion" title="Permalink to this heading">#</a></h4>
+<p>We are left to reflect about the meaning of Accuracy when it completely clobbers
+a segment of the population. Without knowing the error rates, the Accuracy number
+alone loses significance.</p>
+<p>We must also question what the <em>Feature Importance</em> really means. In this scenario
+we can predict with nearly 100% accuracy who is in the NBA even when excluding a
+feature with 40% importance.</p>
+<p>In this study, the count of people at various heights is random, and the training set randomly selected.
+This leads to getting different numbers each time we run the code. The greatest variance was
+in the <em>Feature Importance</em> of <strong>gender</strong>. The accuracy was always very close to 100%.</p>
+<p>So, is gender an important feature to have in the model? The answer depends on whether you want
+to be <em>Fair</em> or not. If all you care about is overall accuracy, you could ignore <strong>gender</strong> which
+simplifies your model. But, then, you’re not fair! Let’s examine Fairness more.</p>
+</section>
+<section id="fairness">
+<h4>Fairness<a class="headerlink" href="#fairness" title="Permalink to this heading">#</a></h4>
+<p>First, you should know that fairness is covered in
+<a class="reference external" href="https://cse163.github.io/book/module-10-beyond-163/lesson-28-fairness/index.html">Lesson 28</a>.
+What is especially important is to know the definitions of fairness and how we can discuss
+fairness scientifically once we define it.</p>
+<p>Let’s say that in our new model we choose to ignore <strong>gender</strong> because we’ve seen how
+overall Accuracy is still very high. What happens?</p>
+<p>We see that the model’s predictions for men is still very good and it basically ignores
+that women are shorter on average. This means that we have bad Fairness as measured by
+Equal Opportunit: there are too many False Negatives and not enough (or any) True-Positives.</p>
+<p>In other words, the True-Positive rate
+(the ability to correctly identify WNBA players) for women is near 0%.
+This is also called PPV (Positive Predictive Value) <a class="reference external" href="https://youtu.be/QqgJHryKOSU">Video Reference</a></p>
+<p>To be Fair, you want FNR and FPR to be relatively close across all the groups. If you look
+a these two graphs, you’ll see that FNR for Females is 92% while Males is at 0%!! This leads
+us to conclude that the model is <strong>NOT FAIR</strong> when we exclude <strong>gender</strong> from the features.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
+Female</label><div class="sd-tab-content docutils">
+<p><img alt="Female Fairness" src="../../_images/class_female_fairness.png" /></p>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-3">
+Male</label><div class="sd-tab-content docutils">
+<p><img alt="Male Fairness" src="../../_images/class_male_fairness.png" /></p>
+</div>
+</div>
+</section>
+<section id="id1">
+<h4>Summary<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
+<p><em>Feature Importance</em> : Each feature is given a percentage amount
+that reflects how much that feature is used in the Decision Tree. The sum of all
+the imporance values will total 100%.</p>
+<p><em>Feature Importance</em> does <strong>NOT</strong> necessarily reflect how accurate the model will be if that feature
+is removed from consideration.</p>
+<p>Plotting the model’s predictions provides a lot of information.</p>
+<p>Calculating <em>Fairness</em> values is important when evaluating a model.</p>
+</section>
+</section>
+</section>
+<section id="data-2-todo-randomized-data-study">
+<h2>Data 2: TODO: Randomized Data Study<a class="headerlink" href="#data-2-todo-randomized-data-study" title="Permalink to this heading">#</a></h2>
+<p>In this sub-study, we will create data that is more random. Surely not everyone who is very
+tall is in the NBA; they are simply more likely to be in the NBA.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-4">
+Trial #1</label><div class="sd-tab-content docutils">
+<p>In this trial:</p>
+<ul class="simple">
+<li><p>We set <code class="docutils literal notranslate"><span class="pre">basis=0.01</span></code> for a slightly greater chance of being in the NBA.</p></li>
+<li><p>We got 49 people to be in the NBA.</p></li>
+<li><p>We let the <code class="docutils literal notranslate"><span class="pre">max_depth=6</span></code> for the Decision Tree.</p></li>
+<li><p>We allowed gender to be considered.<br />
+You can see that there are very few small, green dots (representing True NBA players) that
+are incorrectly categorized. There are a few randomly scattered large, blue dots
+(representing predicted NBA players). These scattered dots reflect the model’s attempt
+to learn and predict the inherit randomness in the data.<br />
+<img alt="Random #1 Predictions" src="../../_images/class_nba_rand_results.png" /></p></li>
+</ul>
+<blockquote>
+<div><p><strong>OUTPUT</strong><br />
+Accuracy: 97.67%<br />
+Feature: male, Importance: 2.38%<br />
+Feature: height, Importance: 97.62%</p>
+</div></blockquote>
+<p>The Fairness comparison for Male/Female shows that the model appears to be <em>fair</em>, meaning
+that the False-Negative-Rates across genders are not disparately out of whack.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Gender</p></th>
+<th class="head"><p>Equal Opportunity</p></th>
+<th class="head"><p>Predictive Equality</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Female</p></td>
+<td><p>73%</p></td>
+<td><p>0%</p></td>
+</tr>
+<tr class="row-odd"><td><p>Male</p></td>
+<td><p>59%</p></td>
+<td><p>0%</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input id="sd-tab-item-5" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-5">
+Trial #2</label><div class="sd-tab-content docutils">
+<p>In this trial:</p>
+<ul class="simple">
+<li><p>We keep <code class="docutils literal notranslate"><span class="pre">basis=0.01</span></code> for a slightly greater chance of being in the NBA.</p></li>
+<li><p>We got 42 people to be in the NBA.</p></li>
+<li><p>We let the <code class="docutils literal notranslate"><span class="pre">max_depth=3</span></code> for the Decision Tree; this is to reduce overfitting.</p></li>
+<li><p>We allowed gender to be considered.<br />
+You can see that randomness in the prediction went away, which was expected since
+we set <code class="docutils literal notranslate"><span class="pre">max_depth=3</span></code>. What is unexpected though is that we still have ~98% accuracy,
+and the <em>Feature Importance</em> for <strong>gender</strong> dropped to zero!<br />
+<img alt="Random #2 Predictions" src="../../_images/class_nba_rand_results_2.png" /></p></li>
+</ul>
+<blockquote>
+<div><p><strong>OUTPUT</strong><br />
+Accuracy: 97.67%<br />
+Feature: male, Importance: 0.00%<br />
+Feature: height, Importance: 100.00%</p>
+</div></blockquote>
+<p>The Fairness comparison for Male/Female shows that the model appears to be <em>fair</em>, meaning
+that the False-Negative-Rates across genders are not disparately out of whack. However,
+it might be better to say that the model is equally <em><strong>UN</strong>fair</em> because the False Rates
+are pretty high for both genders. Effectively, the high accuracy rate occurs because there
+are so few people in the NBA.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Gender</p></th>
+<th class="head"><p>Equal Opportunity</p></th>
+<th class="head"><p>Predictive Equality</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Female</p></td>
+<td><p>100%</p></td>
+<td><p>0%</p></td>
+</tr>
+<tr class="row-odd"><td><p>Male</p></td>
+<td><p>86%</p></td>
+<td><p>0%</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<input id="sd-tab-item-6" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-6">
+Trial #3</label><div class="sd-tab-content docutils">
+<p>In this trial:</p>
+<ul class="simple">
+<li><p>We keep <code class="docutils literal notranslate"><span class="pre">basis=0.03</span></code> for a significantly greater chance of being in the NBA.</p></li>
+<li><p>We got 102 people to be in the NBA.</p></li>
+<li><p>We let the <code class="docutils literal notranslate"><span class="pre">max_depth=6</span></code> for the Decision Tree–we may overfit.</p></li>
+<li><p>We allowed gender to be considered.<br />
+You can see that randomness in the prediction went away, which was <strong>UN</strong>expected since
+we set <code class="docutils literal notranslate"><span class="pre">max_depth=6</span></code>. We still have a high<br />
+<img alt="Random #3 Predictions" src="../../_images/class_nba_rand_results_3.png" /></p></li>
+</ul>
+<blockquote>
+<div><p><strong>OUTPUT</strong><br />
+Accuracy: 96.17%<br />
+Feature: male, Importance: 37.17%<br />
+Feature: height, Importance: 62.83%</p>
+</div></blockquote>
+<p>The Fairness comparison for Male/Female show it to be quite (un)fair:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Gender</p></th>
+<th class="head"><p>Equal Opportunity</p></th>
+<th class="head"><p>Predictive Equality</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Female</p></td>
+<td><p>74%</p></td>
+<td><p>0%</p></td>
+</tr>
+<tr class="row-odd"><td><p>Male</p></td>
+<td><p>88%</p></td>
+<td><p>0%</p></td>
+</tr>
+</tbody>
+</table>
+<p>This image of the Decision Tree is small and hard to read. The blue boxes
+predict NBA will the others predict not. You can see that virtually every
+path leads to False (not in NBA). Seems like pretty dumb tree to me.</p>
+<p><img alt="Decision Tree for NBA" src="../../_images/class_nba_rand_model_3.png" /></p>
+<p>Did we land a good model? Perhaps it is the best we can do, but the
+inability to accurately predict players in the NBA is horrible.
+It fails to predict 74% of
+the NBA women and 88% of the NBA men. That’s a lot!</p>
+</div>
+</div>
+<p>This output is generated from the <code class="docutils literal notranslate"><span class="pre">model_acc</span></code> code in the prior tab. It is a bit
+surprising to think that model achieved ~99% accuracy while predicting that every
+male will</p>
+<blockquote>
+<div><p><strong>OUTPUT</strong><br />
+Feature: male, Importance: 0.00%<br />
+Feature: height, Importance: 100.00%</p>
+</div></blockquote>
+<p>This graphic shows that our tree is relatively simple. It shows that it always looks at height,
+and it predicts in the NBA in only 1 small case.
+<img alt="NBA Model" src="../../_images/fi_model_nba.png" /></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Topics/machine_learning"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="feature-importance.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Feature Importance</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="regression.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Regression - Distance Study</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#summary">Summary</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-overview">Data Overview</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#the-code">The code</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-1-predictable-data-study">Data 1: Predictable Data Study</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gender-removed">Gender Removed</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#discussion">Discussion</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#fairness">Fairness</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">Summary</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-2-todo-randomized-data-study">Data 2: TODO: Randomized Data Study</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Jeff Stride
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a href="https://idp.mrstride.com/acknowledgements.html">Acknowledgements</a>
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

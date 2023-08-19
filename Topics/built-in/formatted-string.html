@@ -242,6 +242,9 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../machine_learning/index.html"><i class="fas fa-book fa-fw"></i> Machine Learning</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../machine_learning/feature-importance.html">Feature Importance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../machine_learning/classification.html">Classification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../machine_learning/regression.html">Regression - Distance Study</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../machine_learning/classifier-rand.html">Classification - Fully Random</a></li>
 </ul>
 </li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html"><i class="fas fa-book fa-fw"></i> Built-in</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
@@ -498,8 +501,9 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting-old">%-formatting (old)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatted-printing">formatted printing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#format-method">format method</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f-string">f-string</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
 </ul>
             </nav>
         </div>
@@ -513,22 +517,27 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="formatted-strings">
 <h1>Formatted Strings<a class="headerlink" href="#formatted-strings" title="Permalink to this heading">#</a></h1>
-<p>Cover the different ways we print and how to format our strings.
-We need to understand named arguments, packing and unpacking.
-explain <code class="docutils literal notranslate"><span class="pre">print(*args,</span> <span class="pre">**kwargs)</span></code><br />
-explain how kwargs is a dictionary of key/value pairs.<br />
-explain how *args is a list or sequence of values.<br />
-explain named arguments ‘end’ and ‘sep’.</p>
-<p>Reference: https://realpython.com/python-f-strings/<br />
-https://docs.python.org/3/library/string.html#format-string-syntax</p>
+<p><a class="reference external" href="https://realpython.com/python-f-strings/">RealPython Reference</a><br />
+<a class="reference external" href="https://docs.python.org/3/library/string.html#format-string-syntax">Python docs Reference</a></p>
 <section id="formatting-old">
 <h2>%-formatting (old)<a class="headerlink" href="#formatting-old" title="Permalink to this heading">#</a></h2>
-<p>print(“Hello, %s. You are %s.” % (name, adjective))</p>
+<p>This style of formatted print is old and not recommended. But, you may see it somewhere. The <code class="docutils literal notranslate"><span class="pre">%</span></code> acts
+like a “escape sequence” similar to how it is done in Java’s <code class="docutils literal notranslate"><span class="pre">System.out.printf</span></code>.</p>
+<p>The string literal is the format string. After the string literal the arguments to the string
+is separated by <code class="docutils literal notranslate"><span class="pre">%</span></code>. I find this odd. Apparently, so did many other programmers which is why this
+formatting isn’t used very much these days.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Hello, </span><span class="si">%s</span><span class="s2">. You are </span><span class="si">%s</span><span class="s2">.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">adjective</span><span class="p">))</span>
+</pre></div>
+</div>
 </section>
-<section id="formatted-printing">
-<h2>formatted printing<a class="headerlink" href="#formatted-printing" title="Permalink to this heading">#</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">float</span> <span class="o">=</span> <span class="mf">2.154327</span>
-<span class="n">format_float</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<section id="format-method">
+<h2>format method<a class="headerlink" href="#format-method" title="Permalink to this heading">#</a></h2>
+<p>There is a method named <code class="docutils literal notranslate"><span class="pre">format</span></code> on the string object. The string contains formatting information inside
+of curly braces. This formatting is described below. The string can contain many curly braces and
+other text to be printed.</p>
+<p>Once again, this method of formatting strings is not used very much these days.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mf">2.154327</span>
+<span class="n">format_float</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">format_float</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;text </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">))</span>
@@ -537,11 +546,12 @@ https://docs.python.org/3/library/string.html#format-string-syntax</p>
 </section>
 <section id="f-string">
 <h2>f-string<a class="headerlink" href="#f-string" title="Permalink to this heading">#</a></h2>
-<p>Python’s string <a href="https://docs.python.org/3/library/string.html#format-string-syntax" 
-target="_blank">formatting</a> functionality as built into Pythons <a href="https://realpython.com/python-f-strings/" 
+<p>This is the most recent and popular way to format a string and values.
+Python’s string <a href="https://docs.python.org/3/library/string.html#format-string-syntax" 
+target="_blank">formatting</a> functionality is built into Python’s <a href="https://realpython.com/python-f-strings/" 
 target="_blank">f-string</a>. The API is a bit complicated to understand. It is similar
 to the way Java implements <code class="docutils literal notranslate"><span class="pre">printf</span></code>, only it has different escape sequences and specifics. In short, when a
-string literal is preceded with ‘f’ then the string is expecting to have some
+string literal is preceded with <code class="docutils literal notranslate"><span class="pre">'f'</span></code> then the string is expecting to have some
 formatting sequence in it. A formatting sequence is embedded inside curly braces <code class="docutils literal notranslate"><span class="pre">{}</span></code> and the text
 inside the curly braces is interpreted. It would contain identifiers, method calls, and possibly
 formatting options following a colon. Here is the syantax for printing a floating point number with some text label:</p>
@@ -554,6 +564,29 @@ print(f&#39;GPA={gpa:.2f}&#39;)
 </pre></div>
 </div>
 <p>That code results in printing, <code class="docutils literal notranslate"><span class="pre">GPA=3.90</span></code> (due to rounding to 2 decimal places).</p>
+<p>There are lots and lots of options that you can find in <a class="reference external" href="https://docs.python.org/3/library/string.html#format-string-syntax">Python docs Reference</a>.</p>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Hex     = </span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s1">05x</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Decimal = </span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s1">5d</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;SciNota = </span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s1">e</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Percent = </span><span class="si">{</span><span class="n">n</span><span class="si">:</span><span class="s1">%</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="c1"># assume foo()=8</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">sqrt</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Foo = </span><span class="si">{</span><span class="n">foo</span><span class="p">()</span><span class="si">}</span><span class="s1"> and squirt 2 = </span><span class="si">{</span><span class="n">sqrt</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Output</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Hex</span>     <span class="o">=</span> <span class="mi">0001</span><span class="n">e</span>
+<span class="n">Decimal</span> <span class="o">=</span>    <span class="mi">30</span>
+<span class="n">Sci</span> <span class="n">Not</span> <span class="o">=</span> <span class="mf">3.000000e+01</span>
+<span class="n">Percent</span> <span class="o">=</span> <span class="mf">3000.000000</span><span class="o">%</span>
+<span class="n">Foo</span> <span class="o">=</span> <span class="mi">8</span> <span class="ow">and</span> <span class="n">squirt</span> <span class="mi">2</span> <span class="o">=</span> <span class="mf">1.414</span>
+</pre></div>
+</div>
 </section>
 </section>
 
@@ -625,8 +658,9 @@ print(f&#39;GPA={gpa:.2f}&#39;)
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting-old">%-formatting (old)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatted-printing">formatted printing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#format-method">format method</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f-string">f-string</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
 </ul>
   </nav></div>
 

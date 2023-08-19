@@ -242,6 +242,9 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../machine_learning/index.html"><i class="fas fa-book fa-fw"></i> Machine Learning</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../machine_learning/feature-importance.html">Feature Importance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../machine_learning/classification.html">Classification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../machine_learning/regression.html">Regression - Distance Study</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../machine_learning/classifier-rand.html">Classification - Fully Random</a></li>
 </ul>
 </li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html"><i class="fas fa-book fa-fw"></i> Built-in</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
@@ -497,11 +500,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#printing">Printing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#start-with-print">Start with Print</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#packing-unpacking-arguments">Packing &amp; Unpacking Arguments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting-old">%-formatting (old)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatted-printing">formatted printing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f-string">f-string</a></li>
 </ul>
             </nav>
         </div>
@@ -548,14 +549,66 @@ Important Terms</div>
 </table>
 </div>
 </div>
-<section id="printing">
-<h2>Printing<a class="headerlink" href="#printing" title="Permalink to this heading">#</a></h2>
-<p>Let’s first explore the method <code class="docutils literal notranslate"><span class="pre">print</span></code> to see how it works.</p>
+<section id="start-with-print">
+<h2>Start with Print<a class="headerlink" href="#start-with-print" title="Permalink to this heading">#</a></h2>
+<p>Let’s first explore the method <code class="docutils literal notranslate"><span class="pre">print</span></code> to see how it works. Note that you can get help on <code class="docutils literal notranslate"><span class="pre">print</span></code> by
+using the following inside of Jupyter: <code class="docutils literal notranslate"><span class="pre">help(print)</span></code>. Here is the help printed:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Help</span> <span class="n">on</span> <span class="n">built</span><span class="o">-</span><span class="ow">in</span> <span class="n">function</span> <span class="nb">print</span> <span class="ow">in</span> <span class="n">module</span> <span class="n">builtins</span><span class="p">:</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="o">...</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="o">...</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    
+    <span class="n">Prints</span> <span class="n">the</span> <span class="n">values</span> <span class="n">to</span> <span class="n">a</span> <span class="n">stream</span><span class="p">,</span> <span class="ow">or</span> <span class="n">to</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span> <span class="n">by</span> <span class="n">default</span><span class="o">.</span>
+    <span class="n">Optional</span> <span class="n">keyword</span> <span class="n">arguments</span><span class="p">:</span>
+    <span class="n">file</span><span class="p">:</span>  <span class="n">a</span> <span class="n">file</span><span class="o">-</span><span class="n">like</span> <span class="nb">object</span> <span class="p">(</span><span class="n">stream</span><span class="p">);</span> <span class="n">defaults</span> <span class="n">to</span> <span class="n">the</span> <span class="n">current</span> <span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="o">.</span>
+    <span class="n">sep</span><span class="p">:</span>   <span class="n">string</span> <span class="n">inserted</span> <span class="n">between</span> <span class="n">values</span><span class="p">,</span> <span class="n">default</span> <span class="n">a</span> <span class="n">space</span><span class="o">.</span>
+    <span class="n">end</span><span class="p">:</span>   <span class="n">string</span> <span class="n">appended</span> <span class="n">after</span> <span class="n">the</span> <span class="n">last</span> <span class="n">value</span><span class="p">,</span> <span class="n">default</span> <span class="n">a</span> <span class="n">newline</span><span class="o">.</span>
+    <span class="n">flush</span><span class="p">:</span> <span class="n">whether</span> <span class="n">to</span> <span class="n">forcibly</span> <span class="n">flush</span> <span class="n">the</span> <span class="n">stream</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">...</span></code> above should be replaced with <code class="docutils literal notranslate"><span class="pre">*args</span></code>. It should look like:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">file</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">stdout</span><span class="p">,</span> <span class="n">flush</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>In short, <code class="docutils literal notranslate"><span class="pre">print</span></code> accepts as many position arguments as you want and it has four named arguments.
+You will likely want to set <code class="docutils literal notranslate"><span class="pre">end=''</span></code> at times to behave like Java’s <code class="docutils literal notranslate"><span class="pre">System.out.print</span></code> (no
+new line printed). And, if you want to print a list of values separated with commas, you could easily
+override <code class="docutils literal notranslate"><span class="pre">sep=',</span> <span class="pre">'</span></code>.</p>
+</section>
+<section id="packing-unpacking-arguments">
+<h2>Packing &amp; Unpacking Arguments<a class="headerlink" href="#packing-unpacking-arguments" title="Permalink to this heading">#</a></h2>
+<p>When someone calls a method using <code class="docutils literal notranslate"><span class="pre">*args</span></code> in the arguments (e.g. <code class="docutils literal notranslate"><span class="pre">foo(*args)</span></code>) it unpacks the Tuple
+and calls the method with each element in the Tuple as an argument (e.g. <code class="docutils literal notranslate"><span class="pre">foo(1,2,3)</span></code>).</p>
+<p>The same things happens when a method is called with <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> syntax, except that the names are
+also unpacked. In this case, kwargs is a <code class="docutils literal notranslate"><span class="pre">dictionary</span></code>.</p>
+<p>Here is some code to illustrate:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="n">foo</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>    <span class="c1"># Same as below</span>
+<span class="n">foo</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>  <span class="c1"># Same as above</span>
+
+<span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="s1">&#39;yes!&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span><span class="mi">3</span> <span class="p">}</span>
+<span class="n">bar</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>             <span class="c1"># same as below</span>
+<span class="n">bar</span><span class="p">(</span><span class="n">a</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">b</span><span class="o">=</span><span class="s1">&#39;yes!&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>   <span class="c1"># same as above</span>
+</pre></div>
+</div>
+<p>What this means is that you can technically define every method as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">foo</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="c1"># args behaves like a tuple. Just dereference elements.</span>
+    <span class="c1"># kwargs behaves like a dictionary.</span>
+    <span class="c1"># note: perhaps len(args) == 0. Your code should check!</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">if</span> <span class="s1">&#39;name&#39;</span> <span class="ow">in</span> <span class="n">kwargs</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">kwargs</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
+    <span class="c1"># repack and pass along all named arguments to foo()</span>
+    <span class="n">foo</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
 </section>
 <section id="examples">
 <h2>Examples<a class="headerlink" href="#examples" title="Permalink to this heading">#</a></h2>
-<p>Let’s sayt that we want to have a method with 7 arguments where 3 of them have default values.
-We’d define this menthod as shown below. Note that the three arguments with default values have</p>
+<p>Let’s say that we want to have a method with 7 arguments where 3 of them have default values.
+We’d define this menthod as shown below. Note that the three named arguments have default values.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Example prototype with 4 positional arguments and 3 named arguments</span>
 <span class="k">def</span> <span class="nf">example_a</span><span class="p">(</span><span class="n">value1</span><span class="p">,</span> <span class="n">value2</span><span class="p">,</span> <span class="n">value3</span><span class="p">,</span> <span class="n">value4</span><span class="p">,</span> <span class="n">named1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">named2</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">named3</span><span class="o">=</span><span class="mi">3</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
@@ -563,29 +616,52 @@ We’d define this menthod as shown below. Note that the three arguments with de
 <span class="sd">    named1, named2 &amp; named3 are optional because they have default values.</span>
 <span class="sd">    &#39;&#39;&#39;</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">value1</span><span class="p">,</span> <span class="n">value2</span><span class="p">,</span> <span class="n">value3</span><span class="p">,</span> <span class="n">value4</span><span class="p">,</span> <span class="n">named1</span><span class="p">,</span> <span class="n">named2</span><span class="p">,</span> <span class="n">named3</span><span class="p">)</span>
-
-<span class="c1"># we can call example_a in the following ways</span>
-<span class="n">example_a</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>                               <span class="c1"># output: 3 1 4 1 1 2 3</span>
-<span class="n">example_a</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">named2</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>         <span class="c1"># output: a b c d 1 foo 3</span>
-<span class="n">example_a</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">named3</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">named1</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span><span class="c1">#output: 0 0 a b foo 2 bar</span>
-
-<span class="c1"># example prototype with 1 required positional argument, any number of</span>
+</pre></div>
+</div>
+<p>We can call <code class="docutils literal notranslate"><span class="pre">example_a</span></code> in the following ways:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># we can call example_a in the following ways</span>
+<span class="n">example_a</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>                                  <span class="c1"># output: 3 1 4 1 1 2 3</span>
+<span class="n">example_a</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">,</span> <span class="n">named2</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>            <span class="c1"># output: a b c d 1 foo 3</span>
+<span class="n">example_a</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">named3</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">named1</span><span class="o">=</span><span class="s1">&#39;foo&#39;</span><span class="p">)</span>  <span class="c1"># output: 0 0 a b foo 2 bar</span>
+</pre></div>
+</div>
+<p>In every call, values for every positional argument is required.</p>
+<p>In the first call, all the named arguments retain their default values: 1, 2, 3.<br />
+In the second call, we override the value for <code class="docutils literal notranslate"><span class="pre">named2</span></code> only.<br />
+In the third call, we override <code class="docutils literal notranslate"><span class="pre">named1</span></code> and <code class="docutils literal notranslate"><span class="pre">named2</span></code> only.</p>
+<p>Let’s get a little more complicated. In the following code, we are creating
+a method that allows for an arbitrary number of position arguments, zero or 50!
+The method has exactly two named arguments.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># example prototype with 1 required positional argument, any number of</span>
 <span class="c1"># optional positional arguments, and two optional named arguments</span>
 <span class="k">def</span> <span class="nf">example_b</span><span class="p">(</span><span class="n">value1</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">named1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">named2</span><span class="o">=</span><span class="mi">2</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    value1 is a required, positional argument</span>
 <span class="sd">    args is basically a Tuple that represents any number of un-named argments that appear</span>
 <span class="sd">        before all named arguments</span>
-<span class="sd">    named1 &amp; named2 are optional, named arguments that are given default values</span>
+<span class="sd">    named1 &amp; named2 are optional named arguments that are given default values</span>
 <span class="sd">    &#39;&#39;&#39;</span>
-    <span class="c1"># when we put the &#39;*&#39; in front of args, we unpack the set of</span>
+    <span class="c1"># when we put the &#39;*&#39; in front of args, we unpack the positional arguments</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">value1</span> <span class="o">+</span> <span class="mi">10</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">named1</span><span class="p">,</span> <span class="n">named2</span><span class="p">)</span>
-
-<span class="c1"># we can call example_b in the following ways:</span>
+</pre></div>
+</div>
+<p>The only line of code calls <code class="docutils literal notranslate"><span class="pre">print</span></code> with 3 or more arguments. The first argument
+to <code class="docutils literal notranslate"><span class="pre">print</span></code> is <code class="docutils literal notranslate"><span class="pre">value1</span> <span class="pre">+</span> <span class="pre">10</span></code>. It then will pass in zero or more arguments that were
+passed into <code class="docutils literal notranslate"><span class="pre">example_b</span></code>.</p>
+<p>Let’s examine a few examples:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># we can call example_b in the following ways:</span>
 <span class="n">example_b</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>        <span class="c1"># output: 15 10 15 20 1 2</span>
 <span class="n">example_b</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">named2</span><span class="o">=</span><span class="s1">&#39;override&#39;</span><span class="p">)</span> <span class="c1"># output: 10 1 override</span>
-
-<span class="k">def</span> <span class="nf">example_c</span><span class="p">(</span><span class="n">value1</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">named1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">named2</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</pre></div>
+</div>
+<p>In the first call, we pass in 4 positional arguments. <code class="docutils literal notranslate"><span class="pre">value1</span></code> will have the value 5.
+Then, <code class="docutils literal notranslate"><span class="pre">*args</span></code> will accept the next 3 arguments. <code class="docutils literal notranslate"><span class="pre">args</span></code> is actually a <code class="docutils literal notranslate"><span class="pre">Tuple</span></code>. In order
+to pass all these values into <code class="docutils literal notranslate"><span class="pre">print</span></code> as separate arguments, we have to <code class="docutils literal notranslate"><span class="pre">unpack</span></code> the tuple
+by using the <code class="docutils literal notranslate"><span class="pre">*</span></code>.</p>
+<p>In the second call, we pass in only 1 positional argument and then override only one
+named argument.</p>
+<p>One more example:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">example_c</span><span class="p">(</span><span class="n">value1</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">named1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">named2</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
 <span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">    value1 is a required, positional argument</span>
 <span class="sd">    args is basically a Tuple that represents any number of un-named argments that appear</span>
@@ -598,54 +674,38 @@ We’d define this menthod as shown below. Note that the three arguments with de
     <span class="c1"># unpack **kwargs to be all named arguments</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">value1</span> <span class="o">+</span> <span class="mi">20</span><span class="p">,</span> <span class="n">named1</span><span class="p">,</span> <span class="n">named2</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
     
-<span class="n">example_c</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">named1</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>     <span class="c1"># output: 20 10 2</span>
-<span class="n">example_c</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="n">named2</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span> <span class="c1"># output: 22-1-0-foo</span>
+<span class="n">example_c</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">named1</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>                 <span class="c1"># output: 20 10 2</span>
+<span class="n">example_c</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="n">named2</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>  <span class="c1"># output: 22-1-0-foo</span>
+<span class="n">named_args</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;named1&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;named2&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;sep&#39;</span><span class="p">:</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="s1">&#39;end&#39;</span><span class="p">:</span><span class="s1">&#39;end_of_line&#39;</span> <span class="p">}</span>
+<span class="n">example_c</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="o">**</span><span class="n">named_args</span><span class="p">)</span>           <span class="c1"># output: 24:2:1:3end_of_line</span>
+</pre></div>
+</div>
+<p><strong>First call</strong><br />
+In the first call, <code class="docutils literal notranslate"><span class="pre">value1=0</span></code> and <code class="docutils literal notranslate"><span class="pre">named1=10</span></code>.</p>
+<p><strong>Second call</strong><br />
+In the second call, <code class="docutils literal notranslate"><span class="pre">value1=2</span></code> and <code class="docutils literal notranslate"><span class="pre">'foo'</span></code> is put into the <code class="docutils literal notranslate"><span class="pre">*args</span></code> argument. <code class="docutils literal notranslate"><span class="pre">named1</span></code> retains its default
+value of <code class="docutils literal notranslate"><span class="pre">1</span></code> and <code class="docutils literal notranslate"><span class="pre">named2</span></code> is overridden to have the value <code class="docutils literal notranslate"><span class="pre">0</span></code>. The named argument <code class="docutils literal notranslate"><span class="pre">sep</span></code> is not found in
+the <code class="docutils literal notranslate"><span class="pre">example_c</span></code> prototype–not as a named argument–so it gets put into the <code class="docutils literal notranslate"><span class="pre">**kwargs</span></code> argument and is subsequently unpacked and passed along to print. The API
+<code class="docutils literal notranslate"><span class="pre">print</span></code> has a named argument <code class="docutils literal notranslate"><span class="pre">'sep'</span></code> which is printed between each argument. This is why each value is
+separated by <code class="docutils literal notranslate"><span class="pre">'-'</span></code>.  In summary, the code effectly calls print like this:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="c1"># print(value1+20, named1, named2, *args, **kwargs)</span>
+    <span class="nb">print</span><span class="p">(</span>       <span class="mi">2</span><span class="o">+</span><span class="mi">20</span><span class="p">,</span>      <span class="mi">1</span><span class="p">,</span>      <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Third call</strong><br />
+In the third call things get even more complicated. here we create a <code class="docutils literal notranslate"><span class="pre">dictionary</span></code> that is a map of
+named arguments with values. It contains four named arguments, two of which are explicitly named
+in the <code class="docutils literal notranslate"><span class="pre">example_c</span></code> prototype, and lother two are defined in the <code class="docutils literal notranslate"><span class="pre">print</span></code> prototype. So, the call results in:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">value1</span> <span class="o">=</span> <span class="mi">4</span>
+<span class="o">*</span><span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="p">)</span>
+<span class="n">named1</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">named2</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="o">**</span><span class="n">kwargs</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;sep&#39;</span><span class="p">:</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="s1">&#39;end&#39;</span><span class="p">:</span><span class="s1">&#39;end_of_line&#39;</span> <span class="p">}</span>
 
+<span class="c1"># with the above values, the actual print statement is equivalent to:</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">4</span><span class="o">+</span><span class="mi">20</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s1">&#39;end_of_line&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Explain after each example how the output happens. Explain <code class="docutils literal notranslate"><span class="pre">sep</span></code>. Explain why <code class="docutils literal notranslate"><span class="pre">foo</span></code> appears at the end.</p>
-<p>Cover the different ways we print and how to format our strings.
-We need to understand named arguments, packing and unpacking.
-explain <code class="docutils literal notranslate"><span class="pre">print(*args,</span> <span class="pre">**kwargs)</span></code><br />
-explain how kwargs is a dictionary of key/value pairs.<br />
-explain how *args is a list or sequence of values.<br />
-explain named arguments ‘end’ and ‘sep’.</p>
-<p>Reference: https://realpython.com/python-f-strings/<br />
-https://docs.python.org/3/library/string.html#format-string-syntax</p>
-</section>
-<section id="formatting-old">
-<h2>%-formatting (old)<a class="headerlink" href="#formatting-old" title="Permalink to this heading">#</a></h2>
-<p>print(“Hello, %s. You are %s.” % (name, adjective))</p>
-</section>
-<section id="formatted-printing">
-<h2>formatted printing<a class="headerlink" href="#formatted-printing" title="Permalink to this heading">#</a></h2>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">float</span> <span class="o">=</span> <span class="mf">2.154327</span>
-<span class="n">format_float</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">{:.2f}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">format_float</span><span class="p">)</span>
-
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;text </span><span class="si">{0}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="s1">&#39;value&#39;</span><span class="p">))</span>
-</pre></div>
-</div>
-</section>
-<section id="f-string">
-<h2>f-string<a class="headerlink" href="#f-string" title="Permalink to this heading">#</a></h2>
-<p>Python’s string <a href="https://docs.python.org/3/library/string.html#format-string-syntax" 
-target="_blank">formatting</a> functionality as built into Pythons <a href="https://realpython.com/python-f-strings/" 
-target="_blank">f-string</a>. The API is a bit complicated to understand. It is similar
-to the way Java implements <code class="docutils literal notranslate"><span class="pre">printf</span></code>, only it has different escape sequences and specifics. In short, when a
-string literal is preceded with ‘f’ then the string is expecting to have some
-formatting sequence in it. A formatting sequence is embedded inside curly braces <code class="docutils literal notranslate"><span class="pre">{}</span></code> and the text
-inside the curly braces is interpreted. It would contain identifiers, method calls, and possibly
-formatting options following a colon. Here is the syantax for printing a floating point number with some text label:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>f&#39;text{&lt;identifer&gt;:.&lt;integer&gt;f}&#39;
-</pre></div>
-</div>
-<p>For example, let’s say we do the following:</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>gpa = 3.899
-print(f&#39;GPA={gpa:.2f}&#39;)
-</pre></div>
-</div>
-<p>That code results in printing, <code class="docutils literal notranslate"><span class="pre">GPA=3.90</span></code> (due to rounding to 2 decimal places).</p>
 </section>
 </section>
 
@@ -716,11 +776,9 @@ print(f&#39;GPA={gpa:.2f}&#39;)
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#printing">Printing</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#start-with-print">Start with Print</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#packing-unpacking-arguments">Packing &amp; Unpacking Arguments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatting-old">%-formatting (old)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#formatted-printing">formatted printing</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#f-string">f-string</a></li>
 </ul>
   </nav></div>
 

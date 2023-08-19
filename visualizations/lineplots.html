@@ -242,6 +242,9 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../Topics/machine_learning/index.html"><i class="fas fa-book fa-fw"></i> Machine Learning</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../Topics/machine_learning/feature-importance.html">Feature Importance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Topics/machine_learning/classification.html">Classification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Topics/machine_learning/regression.html">Regression - Distance Study</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Topics/machine_learning/classifier-rand.html">Classification - Fully Random</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../Topics/built-in/index.html"><i class="fas fa-book fa-fw"></i> Built-in</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -497,6 +500,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries">Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe">DataFrame</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-plots">Simple Plots</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#twinx-plots">Twinx Plots</a><ul class="nav section-nav flex-column">
@@ -517,10 +522,21 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="line-plots">
 <h1>Line Plots<a class="headerlink" href="#line-plots" title="Permalink to this heading">#</a></h1>
-<p>here are great plots
-https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.plot.html
-multiple yaxis (twinx): https://matplotlib.org/stable/gallery/spines/multiple_yaxis_with_spines.html</p>
-<p>There are several different libraries and objects that allow you to plot a line. The one you use depends on the structure of your data and the target graph. I have found that the most useful is the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> where you can do most of what you want to do. You should read and become familiar with all the named arguments and options for each object as they are different. When you do subplots, using the <code class="docutils literal notranslate"><span class="pre">Axes</span></code> object becomes invaluable.</p>
+<p>Line Plots are likely the most common plot you’ll create in IDP. It is fantastic for
+<a href='geospatial.html#correlations-and-coefficient-of-determination'>showing correlations</a>. While line plots are not complicated, it can be frustrating
+to draw multiple lines as you intend. Furthermore, there are many different API available to draw lines and they
+accept different named arguments (which is frustrating!).</p>
+<p>On this page you’ll see how to:</p>
+<ul class="simple">
+<li><p>draw multiple lines using various libraries</p></li>
+<li><p>do Time-Slices of a <code class="docutils literal notranslate"><span class="pre">TimeSeries</span></code></p></li>
+<li><p>rescale the axis for specific lines only</p></li>
+<li><p>customize line styles</p></li>
+</ul>
+<section id="libraries">
+<h2>Libraries<a class="headerlink" href="#libraries" title="Permalink to this heading">#</a></h2>
+<p>There are several different libraries and objects that allow you to plot a line. The one you use depends on the structure of your data and the complexity of your plot. I have found that the most useful object to use when drawing is the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> where you can do most of what you want to do. When doing subplots, using the <code class="docutils literal notranslate"><span class="pre">Axes</span></code> object becomes invaluable.</p>
+<p>You should read and become familiar with all the named arguments and options for each library/object.</p>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>Library</p></th>
@@ -561,6 +577,13 @@ multiple yaxis (twinx): https://matplotlib.org/stable/gallery/spines/multiple_ya
 <li><p><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.annotate.html#matplotlib.axes.Axes.annotate">ax.annotate</a> : Draws text on the axes</p></li>
 </ul>
 </div>
+</section>
+<section id="data">
+<h2>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
+<p>The data is three years of temperature data from Snohomish county. This page will do some computations and data organization
+to enable better plots, but this is what the data basically looks like. We load it as a <code class="docutils literal notranslate"><span class="pre">TimeSeries</span></code> using <code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code>.<br />
+<img alt="Temperature Data" src="../_images/line_data.png" /></p>
+</section>
 <section id="dataframe">
 <h2>DataFrame<a class="headerlink" href="#dataframe" title="Permalink to this heading">#</a></h2>
 <div class="sd-tab-set docutils">
@@ -584,9 +607,14 @@ in the data because it will jump from 1059 to 1100 since 1075 is not a valid tim
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-1">
-Data</label><div class="sd-tab-content docutils">
-<p>The data is three years of temperature data from Snohomish county.<br />
-<img alt="Temperature Data" src="../_images/line_data.png" /></p>
+Multi-Line</label><div class="sd-tab-content docutils">
+<p>We can very easily plot a specific set of lines by providing a list of column names. This plot is identical
+to the plot shown in the “Min &amp; Max” tab below.<br />
+<img alt="Temperature Data" src="../_images/line_min_max_temps.png" /></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;MinTemp&#39;</span><span class="p">,</span> <span class="s1">&#39;MaxTemp&#39;</span><span class="p">],</span> <span class="n">legend</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Min/Max Temperatures&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
 </div>
 <input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-2">
@@ -623,8 +651,9 @@ We take a <code class="docutils literal notranslate"><span class="pre">slice</sp
 </input><label class="sd-tab-label" for="sd-tab-item-4">
 Day light</label><div class="sd-tab-content docutils">
 <p><img alt="Temperature Data" src="../_images/line_hours_of_daylight.png" /><br />
-To adjust the number format for <code class="docutils literal notranslate"><span class="pre">Sunrise</span></code> and <code class="docutils literal notranslate"><span class="pre">Sunset</span></code> to be in fractions of an hour and thereby eliminate the
-apparent jumping, we do the following:</p>
+We do some math on <code class="docutils literal notranslate"><span class="pre">Sunrise</span></code> and <code class="docutils literal notranslate"><span class="pre">Sunset</span></code> to convert them to fractions of an hour and thereby eliminate the
+apparent jumping.  We convert the minutes <code class="docutils literal notranslate"><span class="pre">t%100</span></code> to be a percentage of an hour. The following code
+adds three new columns <code class="docutils literal notranslate"><span class="pre">['SunsetHr',</span> <span class="pre">'SunriseHr',</span> <span class="pre">'Day</span> <span class="pre">Light']</span></code> to the DataFrame and then plots <code class="docutils literal notranslate"><span class="pre">Day</span> <span class="pre">Light</span></code>.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;Sunset&#39;</span><span class="p">,</span> <span class="s1">&#39;Sunrise&#39;</span><span class="p">]:</span>
     <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="o">+</span><span class="s1">&#39;Hr&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">col</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">t</span><span class="p">:</span> <span class="n">t</span><span class="o">//</span><span class="mi">100</span> <span class="o">+</span> <span class="p">(</span><span class="n">t</span><span class="o">%</span><span class="mi">100</span><span class="p">)</span><span class="o">/</span><span class="mi">60</span><span class="p">)</span>
 <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Day Light&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;SunsetHr&#39;</span><span class="p">]</span> <span class="o">-</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;SunriseHr&#39;</span><span class="p">])</span>
@@ -644,6 +673,22 @@ Min &amp; Max</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
+<input id="sd-tab-item-6" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-6">
+Custom Line</label><div class="sd-tab-content docutils">
+<p><img alt="custom Line" src="../_images/line_custom_line.png" /><br />
+We can customize the line using some parameters to the <code class="docutils literal notranslate"><span class="pre">plt.plot</span></code> method. In most cases, you’ll
+want to use one of the string shorthand representations of linestyles. <code class="docutils literal notranslate"><span class="pre">['-',</span> <span class="pre">'--',</span> <span class="pre">':',</span> <span class="pre">'-.']</span></code>  But,
+we choose to set a custom dashed style, because we can. See <a class="reference external" href="https://matplotlib.org/stable/gallery/lines_bars_and_markers/linestyles.html">linestyle documentation</a> for more details.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Time-Slice the first 2 weeks of 2020</span>
+<span class="n">january</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;MaxTemp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2020-01-01&#39;</span><span class="p">:</span><span class="s1">&#39;2020-01-14&#39;</span><span class="p">]</span>
+<span class="c1"># Set line color, width, style and markers.</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">january</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;tab:purple&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span><span class="p">)),</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;x&#39;</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;2 Weeks Max Temp in January 2020&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="twinx-plots">
@@ -651,17 +696,20 @@ Min &amp; Max</label><div class="sd-tab-content docutils">
 <p>There are times when we want to plot two lines together but their units are dramatically different.
 You can see this impact in the DataFrame Default image at the top of this page.</p>
 <p>Here we will look at an example where the the units gets in the way of our plot. Then, we will
-address it using <code class="docutils literal notranslate"><span class="pre">twinx</span></code>.</p>
+address it using <code class="docutils literal notranslate"><span class="pre">twinx</span></code>. <a class="reference external" href="https://matplotlib.org/stable/gallery/spines/multiple_yaxis_with_spines.html">Online example</a></p>
 <p>Let’s plot the normal temperature (average temperature over many years)
 along with the the average current temperature and the amount of current precipitation.</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-6" name="sd-tab-set-2" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-6">
+<input checked="checked" id="sd-tab-item-7" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-7">
 First Attempt</label><div class="sd-tab-content docutils">
 <p><img alt="Bad Precipitation" src="../_images/line_rain_temps.png" /><br />
-Here you’ll see how the amount of precipitation is dwarfed by the scale of the temperatures. Here is the code
+Here you’ll see how the amount of precipitation is dwarfed by the scale of the temperatures. Below is the code
 used to generate the above plot. Note that we <code class="docutils literal notranslate"><span class="pre">resample</span></code> at the week interval to smooth out the data. And,
 for precipitation, we use <code class="docutils literal notranslate"><span class="pre">sum</span></code> instead of <code class="docutils literal notranslate"><span class="pre">mean</span></code> to get a larger, more representative value.</p>
+<p>We also use <code class="docutils literal notranslate"><span class="pre">loc</span></code> to do a time-slice of the data which is easy because our DataFrame is a
+<a href='https://cse163.github.io/book/module-3-pandas/lesson-9-time-series/time-series.html' target='_blank'>TimeSeries.</a>
+Python semantically understands the date strings.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Creating a DataFrame and ploting it is very simple and gets us most of </span>
 <span class="c1"># what we want. We ae missing a proper scale for the rain.</span>
 
@@ -690,17 +738,18 @@ for precipitation, we use <code class="docutils literal notranslate"><span class
 </pre></div>
 </div>
 </div>
-<input id="sd-tab-item-7" name="sd-tab-set-2" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-7">
-Fixed</label><div class="sd-tab-content docutils">
+<input id="sd-tab-item-8" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-8">
+Rescaled</label><div class="sd-tab-content docutils">
 <p><img alt="Good Precipitation" src="../_images/line_rain_temps_fixed.png" /><br />
 In this new version, we’ve done several things differently. First, we didn’t build a DataFrame
-where we are restricted to having the same number of values for each line. Instead, we plotted
-the <code class="docutils literal notranslate"><span class="pre">Series</span></code> object and <code class="docutils literal notranslate"><span class="pre">resample</span></code>d at a different rate to have fine control over how
+because a DataFrame is restricted to having the same number of values in each column. Instead,
+we use plot using the <code class="docutils literal notranslate"><span class="pre">Series</span></code> object which gives us some added flexibility.
+We <code class="docutils literal notranslate"><span class="pre">resample</span></code>d each <code class="docutils literal notranslate"><span class="pre">Series</span></code> at a different rate to have finer control over how
 we smooth the curve. To make the precipitation be more pronounced, we summed up the values
-over a two week period.</p>
-<p>My first attempt at the code below displayed separate legends, one for each axis. To fix
-this we combined the ‘handles’ and ‘labels’.</p>
+over a <strong>two week</strong> period.</p>
+<p>When I was developing this sample, I encountered a problem where the legends displayed separately, one for each axis. To fix
+this problem, I got help from ChatGPT which showed me how to combine the ‘handles’ and ‘labels’ into a single legend.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax1</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
 <span class="c1"># No need to resample - the curve is smooth</span>
@@ -742,19 +791,23 @@ this we combined the ‘handles’ and ‘labels’.</p>
 <p>This example is nice because it annotates the daylight curve with the length of the day.
 The plot shows how the average temperature “lags” the length of the day: the temperature
 doesn’t change immediately with the length of the day.</p>
+<p>The code takes a time-slice for a 12 month period. When finding the equinox points,
+we make use of Tuple packing and unpacking to combine two lines of code into one line. This is a bit
+of a trick and is a nice way to shortn highly similar code.</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-8" name="sd-tab-set-3" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-8">
+<input checked="checked" id="sd-tab-item-9" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-9">
 Image</label><div class="sd-tab-content docutils">
 <p><img alt="Temperature &amp; Daylight" src="../_images/line_temp_daylight.png" /></p>
 </div>
-<input id="sd-tab-item-9" name="sd-tab-set-3" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-9">
+<input id="sd-tab-item-10" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-10">
 Code</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">avg</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;AvgTemp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2020-08&#39;</span><span class="p">:</span><span class="s1">&#39;2021-07&#39;</span><span class="p">]</span>
 <span class="n">day_len</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Day Light&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="s1">&#39;2020-08&#39;</span><span class="p">:</span><span class="s1">&#39;2021-07&#39;</span><span class="p">]</span>
 
-<span class="c1"># find the minimum and maximum daylight days</span>
+<span class="c1"># find the minimum and maximum daylight days.</span>
+<span class="c1"># Use Tuple packing and unpacking to reduce the line count. Trick!</span>
 <span class="n">min_day</span><span class="p">,</span> <span class="n">max_day</span> <span class="o">=</span> <span class="n">day_len</span><span class="o">.</span><span class="n">idxmin</span><span class="p">(),</span> <span class="n">day_len</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
 <span class="n">min_len</span><span class="p">,</span> <span class="n">max_len</span> <span class="o">=</span> <span class="n">day_len</span><span class="p">[</span><span class="n">min_day</span><span class="p">],</span> <span class="n">day_len</span><span class="p">[</span><span class="n">max_day</span><span class="p">]</span>
 
@@ -797,6 +850,7 @@ Code</label><div class="sd-tab-content docutils">
 <li><p>When you have multiple y-values at the same x-value and you want to average them out automatically.</p></li>
 <li><p>When you have many lines that you want to plot with different colors.</p></li>
 <li><p>When you want to differentiate the lines using <code class="docutils literal notranslate"><span class="pre">size</span></code> or <code class="docutils literal notranslate"><span class="pre">style</span></code>.</p></li>
+<li><p>When you want to do a scatter plot and do a <a class="reference internal" href="line_of_best_fit.html"><span class="doc std std-doc">line of best fit</span></a>.</p></li>
 </ol>
 <div class="seealso dropdown admonition">
 <p class="admonition-title">Pivoted vs Unpivoted</p>
@@ -895,6 +949,8 @@ contains the name of the line that the data belongs to.<br />
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#libraries">Libraries</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data">Data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dataframe">DataFrame</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-plots">Simple Plots</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#twinx-plots">Twinx Plots</a><ul class="nav section-nav flex-column">

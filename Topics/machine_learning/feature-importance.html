@@ -107,7 +107,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="shortcut icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Built-in" href="../built-in/index.html" />
+    <link rel="next" title="Classification" href="classification.html" />
     <link rel="prev" title="Machine Learning" href="index.html" />
     
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -242,6 +242,9 @@ const thebe_selector_output = ".output, .cell_output"
 </li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html"><i class="fas fa-book fa-fw"></i> Machine Learning</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Feature Importance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="classification.html">Classification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="regression.html">Regression - Distance Study</a></li>
+<li class="toctree-l3"><a class="reference internal" href="classifier-rand.html">Classification - Fully Random</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../built-in/index.html"><i class="fas fa-book fa-fw"></i> Built-in</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -497,8 +500,10 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coefficient-magnitudes-linear-models">Coefficient Magnitudes (Linear Models)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#permutation-importance">Permutation Importance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coefficient-magnitudes-linear-models">Coefficient Magnitudes (Linear Models)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#permutation-importance">Permutation Importance</a></li>
+</ul>
+</li>
 </ul>
             </nav>
         </div>
@@ -512,9 +517,46 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="feature-importance">
 <h1>Feature Importance<a class="headerlink" href="#feature-importance" title="Permalink to this heading">#</a></h1>
-<p>Helpful Links: <a class="reference external" href="https://scikit-learn.org/stable/modules/permutation_importance.html">Scikit Learn Permuation Feature Importance</a></p>
-<p><strong>Feature importance</strong> is a concept in machine learning (ML) that helps us understand and quantify the impact of different <strong>features</strong> on the predictions made by a model. It allows us to identify which features are more influential in contributing to the model’s performance and predictions.</p>
-<p>There are several techniques to measure feature importance. This unit will go over a few of these techniques.</p>
+<p><strong>Feature importance</strong> is a concept in machine learning (ML) that helps us understand and quantify the impact of
+different <strong>features</strong> on the predictions made by a model. It allows us to identify which features are more
+influential in contributing to the model’s performance and predictions.</p>
+<p>Too often students will create a model, provide some accuracy scores and then move on to other topics. This is a travesty
+because understanding the model (how it makes its predictions) is important. To illustrate this point, this page will review
+a few models, show their predictions, and then explore how the features impact the predictions. (Feature Importance)</p>
+<p>Once a feature’s importance is known, a Data Scientist can choose to take several actions:</p>
+<ul class="simple">
+<li><p>make conclusions about features (obvious)</p></li>
+<li><p>eliminate a feature from the set of features (because it is so small)</p></li>
+<li><p>do a deeper dive study on select features</p>
+<ul>
+<li><p>Example: a <em>fairness</em> analysis (see classification study)</p></li>
+</ul>
+</li>
+</ul>
+<p>There are several techniques to measure <em>feature importance</em>. This unit will go over a few of these techniques.</p>
+<div class="seealso dropdown admonition">
+<p class="admonition-title">External Resources</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/permutation_importance.html">Scikit Learn Permuation Feature Importance</a></p></li>
+<li><p><a class="reference external" href="https://towardsdatascience.com/understanding-feature-importance-and-how-to-implement-it-in-python-ff0287b20285">Understanding Feature Importance and How to Implement it in Python</a></p></li>
+<li><p><a class="reference external" href="https://datagy.io/mean-squared-error-python/">MSE Explained</a></p></li>
+<li><p><a class="reference external" href="https://realpython.com/linear-regression-in-python/">Linear Regression in Python</a></p></li>
+</ul>
+</div>
+<div class="seealso dropdown admonition">
+<p class="admonition-title">imports</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: update this</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_absolute_error</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
+
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
 <section id="coefficient-magnitudes-linear-models">
 <h2>Coefficient Magnitudes (Linear Models)<a class="headerlink" href="#coefficient-magnitudes-linear-models" title="Permalink to this heading">#</a></h2>
 <p>In linear regression and other linear models, the magnitude of the coefficients assigned to each feature gives an indication of its importance. Larger absolute coefficients imply stronger impact on the output variable.</p>
@@ -538,7 +580,7 @@ Code</label><div class="sd-tab-content docutils">
 <span class="c1"># Print the coefficients and feature names</span>
 <span class="n">feature_coef</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">feature_names</span><span class="p">,</span> <span class="n">coefficients</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">f</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">feature_coef</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">f</span> <span class="o">+</span> <span class="s2">&quot;: &quot;</span> <span class="o">+</span> <span class="n">c</span><span class="p">);</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span> <span class="o">+</span> <span class="s2">&quot;: &quot;</span> <span class="o">+</span> <span class="n">c</span><span class="p">)</span>
 
 </pre></div>
 </div>
@@ -555,9 +597,8 @@ Comments</label><div class="sd-tab-content docutils">
 <p><strong>Magnitude Comparison:</strong> By comparing the magnitudes of coefficients across different features, you can rank features based on their relative importance. Features with larger absolute coefficients are generally considered more important in influencing the model’s predictions.</p>
 </div>
 </div>
-</section>
 <section id="permutation-importance">
-<h2>Permutation Importance<a class="headerlink" href="#permutation-importance" title="Permalink to this heading">#</a></h2>
+<h3>Permutation Importance<a class="headerlink" href="#permutation-importance" title="Permalink to this heading">#</a></h3>
 <p>This is a technique used to measure the importance of features in a model by evaluating how much the model’s performance drops when the values of a specific feature are randomly shuffled. The idea is that important features contribute significantly to the model’s prediction, so shuffling their values would lead to drop in performance.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
@@ -599,6 +640,7 @@ Code</label><div class="sd-tab-content docutils">
 </div>
 </div>
 <p>Remember that the larger the drop in performance after shuffling a feature, the more important that feature is. Permutation importance provides insights into the relative importance of features based on their impact on model performance.</p>
+</section>
 </section>
 </section>
 
@@ -643,11 +685,11 @@ Code</label><div class="sd-tab-content docutils">
       </div>
     </a>
     <a class="right-next"
-       href="../built-in/index.html"
+       href="classification.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><i class="fas fa-book fa-fw"></i> Built-in</p>
+        <p class="prev-next-title">Classification</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -669,8 +711,10 @@ Code</label><div class="sd-tab-content docutils">
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coefficient-magnitudes-linear-models">Coefficient Magnitudes (Linear Models)</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#permutation-importance">Permutation Importance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coefficient-magnitudes-linear-models">Coefficient Magnitudes (Linear Models)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#permutation-importance">Permutation Importance</a></li>
+</ul>
+</li>
 </ul>
   </nav></div>
 
