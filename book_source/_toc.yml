@@ -28,6 +28,7 @@ chapters:
       - file: Topics/machine_learning/index
         sections:
           - file: Topics/machine_learning/feature-importance
+          - file: Topics/machine_learning/assessing-accuracy
           - file: Topics/machine_learning/classification
           - file: Topics/machine_learning/regression
           - file: Topics/machine_learning/classifier-rand
