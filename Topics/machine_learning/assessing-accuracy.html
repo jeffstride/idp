@@ -243,7 +243,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html"><i class="fas fa-book fa-fw"></i> Machine Learning</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="feature-importance.html">Feature Importance</a></li>
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Assessing Accuracy</a></li>
-
 <li class="toctree-l3"><a class="reference internal" href="classification.html">Classification</a></li>
 <li class="toctree-l3"><a class="reference internal" href="regression.html">Regression - Distance Study</a></li>
 <li class="toctree-l3"><a class="reference internal" href="classifier-rand.html">Classification - Fully Random</a></li>
@@ -502,10 +501,9 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Assessing Accuracy</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#classification">Classification:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression">Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification">Classification</a></li>
 </ul>
-
             </nav>
         </div>
     </div>
@@ -516,11 +514,12 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article" role="main">
                   
-  <section id="assessing-accuracy">
+  <section class="tex2jax_ignore mathjax_ignore" id="assessing-accuracy">
 <h1>Assessing Accuracy<a class="headerlink" href="#assessing-accuracy" title="Permalink to this heading">#</a></h1>
 <p>Evaluating the accuracy of a machine learning (ML) model is a crucial step to determine its performance and effectiveness. The choice of evaluation metrics depends on the type of problem you’re solving (classification, regression, etc.), and it’s important to select metrics that are relevant to your specific goals. Here’s a general process for assessing the accuracy of an ML model.</p>
-<p>##Regression
-<strong>Mean Squared Error (MSE)</strong> measures the average squared difference between the predicted values and the actual values. It gives higher weight to larger errors.
+<section id="regression">
+<h2>Regression<a class="headerlink" href="#regression" title="Permalink to this heading">#</a></h2>
+<p><strong>Mean Squared Error (MSE)</strong> measures the average squared difference between the predicted values and the actual values. It gives higher weight to larger errors.
 <strong>Formula: MSE = (1/n) * Σ(y_actual - y_predicted)^2</strong></p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
@@ -539,7 +538,7 @@ Comments:</label><div class="sd-tab-content docutils">
 </div>
 </section>
 <section id="classification">
-<h1>Classification:<a class="headerlink" href="#classification" title="Permalink to this heading">#</a></h1>
+<h2>Classification<a class="headerlink" href="#classification" title="Permalink to this heading">#</a></h2>
 <p>Accuracy score is a metric for classification accuracy, which calculates the proportion of correctly predicted instances out of the total instances in the dataset.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
@@ -556,6 +555,7 @@ Comments:</label><div class="sd-tab-content docutils">
 <p>It’s important to keep in mind that accuracy alone might not provide a complete picture, especially in scenarios where the costs of different types of errors vary (More details in When Not to Use ML). Therefore, using additional evaluation metrics can offer a more comprehensive assessment of the model’s classification performance.</p>
 </div>
 </div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -625,10 +625,9 @@ Comments:</label><div class="sd-tab-content docutils">
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Assessing Accuracy</a></li>
-<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#classification">Classification:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#regression">Regression</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#classification">Classification</a></li>
 </ul>
-
   </nav></div>
 
 </div></div>

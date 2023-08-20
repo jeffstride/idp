@@ -12,7 +12,7 @@ Mr. Stride has created "this ridiculous" thing... for you.
 ```{admonition} Video Reference
 :class: dropdown seealso
 <div>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/tHU1uoR8L30" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/tHU1uoR8L30?start=0&end=79" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 ```
 
