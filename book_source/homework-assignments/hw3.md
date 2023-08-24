@@ -3,7 +3,9 @@
 ## Overview
 **Learning objective:** Read, process, and group CSV data to compute descriptive statistics with and without Pandas.  
 
-## Files
+## Files and Tests
+````{tab-set}
+```{tab-item} Provided Files
 **Note:** This list of files has some _non-runnable_ files which do not use the _main-method_ pattern. The methods inside them are run; we do not run the file directly using the Run button.  
    
 * `hw3_manual.py` is the _non-runnable_ file for you to put your implementations for solving each problem without Pandas.  
@@ -13,6 +15,25 @@
 * `pokemon_box.csv` is a large CSV file that stores information about pokemon.  
 * `pokemon_test.csv` is a very small CSV file that stores information about pokemon used for the example cases.  
 * `run_hw3.py` is the file that runs your implementations for each problem.  
+```
+```{tab-item} Files to Submit
+You must submit your work to the <a href="https://autograder-nchs.vercel.app/login" target="_blank">Code Submission Site</a>.  
+
+You are submit the following files **only**:  
+* `hw3_test.py`  
+* `hw3_pandas.py`  
+* `hw3_manual.py`  
+```
+```{tab-item} Replit Unit Tests
+No Unit Tests are provided for you in Replit. You need to write your own Unit Tests in `hw3_test.py`.  
+```
+```{tab-item} Test Tips
+* Do **NOT** use globals.  
+* You will test all methods, both manual and Pandas, using test methods that you write in the file `hw3_test.py`. The results from the two implementations, manual and Pandas, should be identical. The difference is that the manual methods accept a list of dictionaries while the Pandas methods accept a DataFrame. There are _proper_ ways to reduce redundancy. 
+* See **Tip #4** below.
+```
+````
+
 
 ## Context
 In the <a href="https://en.wikipedia.org/wiki/Pok%C3%A9mon" target="_blank">Pokémon</a> video game series, the player catches pokemon, fictional creatures trained to battle each other as part of a sport franchise. Pokémon exerted significant cultural influence on people who grew up in the late 1990s and early 2000s not only in its country of origin, Japan, but also around the world. More recently,
@@ -252,6 +273,10 @@ For the `pokemon_test.csv` file, `mean_attack_per_type(data)` should return `{'f
 
 ```
 ````
+```{admonition} Don't Forget
+:class: error
+<i class="fas fa-pen-square fa-fw"></i> **Write TWO** solutions to each problem. One solution will be in the file `hw3_manual.py` which will use a list of dictionaries. The second solution will be in the file `hw3_pandas.py` which will use a DataFrame.  
+```
 
 ## Code Quality
 Assessment submissions should pass these checks: `flake8`, and <a href="https://courses.cs.washington.edu/courses/cse163/22sp/resources/code_quality/" target="_blank">code quality guidelines</a>. The code quality guidelines are very thorough. For this assessment, the most relevant rules can be found in these sections, with the **bolded** one being new from the last homework:  
