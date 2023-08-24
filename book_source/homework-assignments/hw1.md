@@ -66,16 +66,31 @@ def problem_1(s):
 
 **For this assessment, we have already implemented some buggy solutions to these problems.** Your job is to identify and fix the bugs.
 
-## Files
+## Files and Tests
+````{tab-set}
+```{tab-item} Provided Files
+You are provided with the following files:  
 * `hw1.py` is the (potentially buggy) code for the problems described below. hw1.py is not a runnable program, so we don’t use the main-method pattern.
 * `hw1_test.py` is the file for you to put your own tests.
-* `cse163_utils.py` is a helper file that has code to help you test your code. You do not need to look at or modify this file ever.
+* `cse163_utils.py` is a helper file that has code to help you test your code. You do not need to look at or modify this file ever.  
+* `tox.ini` is a `flake8` configuration file that allows us to customize the types of warnings and errors students must fix.   
+```
+```{tab-item} Files to Submit
+You must submit your work to the <a href="https://autograder-nchs.vercel.app/login" target="_blank">Code Submission Site</a>.  
 
-```{admonition} warning
-:class: important
-`replit` needs to be configured to run a file. Unfortunately, the way this works has changed a bit over time as replit
-adds more features and advances. As of this writing, replit uses [Nix](https://docs.replit.com/tutorials/python/build-with-nix). 
-See [Building in Replit](/Topics/Replit/building-in-replit) for more details.
+**Submit only**:  
+* `hw1.py`  
+* `hw1_test.py` : must have `main-pattern` to run all test methods 
+```
+```{tab-item} Replit Unit Tests
+The only Unit Test provided in Replit is for the _Challenge Question_ which is not graded.
+```
+````
+```{admonition} Run in Replit
+:class: note
+For this assignment `replit` has been to be configured to run `hw1_test.py`.
+See [Building in Replit](/Topics/Replit/building-in-replit) for how this is done. In future assignments,
+you may want to modify this as you develop.  
 ```
 
 * * * 

@@ -34,9 +34,6 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
 from sklearn.metrics import accuracy_score
 
-import matplotlib.pyplot as plt
-import pandas as pd
-
 ```
 
 ## Coefficient Magnitudes (Linear Models)
@@ -77,7 +74,7 @@ The following is how to interpret coefficient magnitudes for feature importance:
 **Magnitude Comparison:** By comparing the magnitudes of coefficients across different features, you can rank features based on their relative importance. Features with larger absolute coefficients are generally considered more important in influencing the model's predictions.
 ```
 ````
-#### Permutation Importance
+## Permutation Importance
 This is a technique used to measure the importance of features in a model by evaluating how much the model's performance drops when the values of a specific feature are randomly shuffled. The idea is that important features contribute significantly to the model's prediction, so shuffling their values would lead to drop in performance.
 ````{tab-set}
 ```{tab-item} Goal
