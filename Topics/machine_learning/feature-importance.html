@@ -501,10 +501,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coefficient-magnitudes-linear-models">Coefficient Magnitudes (Linear Models)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#permutation-importance">Permutation Importance</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coefficient-magnitudes-linear-models">Coefficient Magnitudes (Linear Models)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#permutation-importance">Permutation Importance</a></li>
 </ul>
             </nav>
         </div>
@@ -552,9 +550,6 @@ a few models, show their predictions, and then explore how the features impact t
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_absolute_error</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
-
-<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </pre></div>
 </div>
 </div>
@@ -598,8 +593,9 @@ Comments</label><div class="sd-tab-content docutils">
 <p><strong>Magnitude Comparison:</strong> By comparing the magnitudes of coefficients across different features, you can rank features based on their relative importance. Features with larger absolute coefficients are generally considered more important in influencing the model’s predictions.</p>
 </div>
 </div>
+</section>
 <section id="permutation-importance">
-<h3>Permutation Importance<a class="headerlink" href="#permutation-importance" title="Permalink to this heading">#</a></h3>
+<h2>Permutation Importance<a class="headerlink" href="#permutation-importance" title="Permalink to this heading">#</a></h2>
 <p>This is a technique used to measure the importance of features in a model by evaluating how much the model’s performance drops when the values of a specific feature are randomly shuffled. The idea is that important features contribute significantly to the model’s prediction, so shuffling their values would lead to drop in performance.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-2" name="sd-tab-set-1" type="radio">
@@ -641,7 +637,6 @@ Code</label><div class="sd-tab-content docutils">
 </div>
 </div>
 <p>Remember that the larger the drop in performance after shuffling a feature, the more important that feature is. Permutation importance provides insights into the relative importance of features based on their impact on model performance.</p>
-</section>
 </section>
 </section>
 
@@ -712,10 +707,8 @@ Code</label><div class="sd-tab-content docutils">
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coefficient-magnitudes-linear-models">Coefficient Magnitudes (Linear Models)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#permutation-importance">Permutation Importance</a></li>
-</ul>
-</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coefficient-magnitudes-linear-models">Coefficient Magnitudes (Linear Models)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#permutation-importance">Permutation Importance</a></li>
 </ul>
   </nav></div>
 

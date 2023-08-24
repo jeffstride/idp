@@ -502,7 +502,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#files">Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#files-and-tests">Files and Tests</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implementation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing">Testing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">Documentation</a></li>
@@ -589,18 +589,41 @@ Step 3</label><div class="sd-tab-content docutils">
 </div>
 <p><strong>For this assessment, we have already implemented some buggy solutions to these problems.</strong> Your job is to identify and fix the bugs.</p>
 </section>
-<section id="files">
-<h2>Files<a class="headerlink" href="#files" title="Permalink to this heading">#</a></h2>
+<section id="files-and-tests">
+<h2>Files and Tests<a class="headerlink" href="#files-and-tests" title="Permalink to this heading">#</a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-3">
+Provided Files</label><div class="sd-tab-content docutils">
+<p>You are provided with the following files:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">hw1.py</span></code> is the (potentially buggy) code for the problems described below. hw1.py is not a runnable program, so we don’t use the main-method pattern.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">hw1_test.py</span></code> is the file for you to put your own tests.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">cse163_utils.py</span></code> is a helper file that has code to help you test your code. You do not need to look at or modify this file ever.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tox.ini</span></code> is a <code class="docutils literal notranslate"><span class="pre">flake8</span></code> configuration file that allows us to customize the types of warnings and errors students must fix.</p></li>
 </ul>
-<div class="important admonition">
-<p class="admonition-title">warning</p>
-<p><code class="docutils literal notranslate"><span class="pre">replit</span></code> needs to be configured to run a file. Unfortunately, the way this works has changed a bit over time as replit
-adds more features and advances. As of this writing, replit uses <a class="reference external" href="https://docs.replit.com/tutorials/python/build-with-nix">Nix</a>.
-See <a class="reference internal" href="../Topics/Replit/building-in-replit.html"><span class="doc std std-doc">Building in Replit</span></a> for more details.</p>
+</div>
+<input id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-4">
+Files to Submit</label><div class="sd-tab-content docutils">
+<p>You must submit your work to the <a href="https://autograder-nchs.vercel.app/login" target="_blank">Code Submission Site</a>.</p>
+<p><strong>Submit only</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">hw1.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hw1_test.py</span></code> : must have <code class="docutils literal notranslate"><span class="pre">main-pattern</span></code> to run all test methods</p></li>
+</ul>
+</div>
+<input id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-5">
+Replit Unit Tests</label><div class="sd-tab-content docutils">
+<p>The only Unit Test provided in Replit is for the <em>Challenge Question</em> which is not graded.</p>
+</div>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Run in Replit</p>
+<p>For this assignment <code class="docutils literal notranslate"><span class="pre">replit</span></code> has been to be configured to run <code class="docutils literal notranslate"><span class="pre">hw1_test.py</span></code>.
+See <a class="reference internal" href="../Topics/Replit/building-in-replit.html"><span class="doc std std-doc">Building in Replit</span></a> for how this is done. In future assignments,
+you may want to modify this as you develop.</p>
 </div>
 </section>
 <hr class="docutils" />
@@ -612,8 +635,8 @@ method is found in the tabs below.</p>
 <div><p>Note that there is a challenge question which is optional and not graded. See the <a href="#challenge-question">Challenge Question</a> section down below for details.</p>
 </div></blockquote>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-3">
+<input checked="checked" id="sd-tab-item-6" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-6">
 funky_sum</label><div class="sd-tab-content docutils">
 <p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a function <code class="docutils literal notranslate"><span class="pre">funky_sum</span></code> that does a special sum to combine two numbers. An initial (but incomplete) implementation has already been done for you! We will revisit funky_sum later in the spec to fix a bug in this initial code.</p>
 <p>The function should take three parameters, the first two are numbers, <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">b</span></code>, to combine and a third, <code class="docutils literal notranslate"><span class="pre">mix</span></code>, is a number to determine the ratio to use from each. <code class="docutils literal notranslate"><span class="pre">mix</span></code> acts as a “slider” to control how much to use of each number. If mix is 0 or less, the result should be the same as <code class="docutils literal notranslate"><span class="pre">a</span></code>. On the other hand, if <code class="docutils literal notranslate"><span class="pre">mix</span></code> is 1 or more, the result should be the same as <code class="docutils literal notranslate"><span class="pre">b</span></code>. For any value of <code class="docutils literal notranslate"><span class="pre">mix</span></code> between 0 and 1, it should add <code class="docutils literal notranslate"><span class="pre">1-mix</span></code> times <code class="docutils literal notranslate"><span class="pre">a</span></code> and <code class="docutils literal notranslate"><span class="pre">mix</span></code> times <code class="docutils literal notranslate"><span class="pre">b</span></code>. The technical name for this operation is “linear interpolation”.</p>
@@ -643,14 +666,14 @@ funky_sum</label><div class="sd-tab-content docutils">
 </tbody>
 </table>
 </div>
-<input id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-4">
+<input id="sd-tab-item-7" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-7">
 total</label><div class="sd-tab-content docutils">
 <p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a function total that takes a number <code class="docutils literal notranslate"><span class="pre">n</span></code> and returns the sum of the integers from 0 (inclusive) to n (inclusive). If <code class="docutils literal notranslate"><span class="pre">n</span></code> is negative, the function should return the value <code class="docutils literal notranslate"><span class="pre">None</span></code> instead.</p>
 <p>This method already been written for you, so you will not need to modify any code for this function. <strong>But</strong>, you will have to add <strong>doc-string documentation</strong> and add <strong>more tests</strong> to assure all special cases are covered.</p>
 </div>
-<input id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-5">
+<input id="sd-tab-item-8" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-8">
 swip_swap</label><div class="sd-tab-content docutils">
 <p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a function <code class="docutils literal notranslate"><span class="pre">swip_swap</span></code> that takes a string source and characters <code class="docutils literal notranslate"><span class="pre">c1</span></code> and <code class="docutils literal notranslate"><span class="pre">c2</span></code> and returns a copy of source with all occurrences of c1 and c2 swapped. You may assume that the c1 and c2 are single characters. Use str concatenation with the + operator to solve this problem.</p>
 <p>Here are some examples that you should make sure appear in <code class="docutils literal notranslate"><span class="pre">hw1_test.py</span></code>:</p>
@@ -836,7 +859,7 @@ swip_swap</label><div class="sd-tab-content docutils">
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#files">Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#files-and-tests">Files and Tests</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implementation">Implementation</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#testing">Testing</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#documentation">Documentation</a></li>

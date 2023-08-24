@@ -504,7 +504,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#files">Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#files-and-tests">Files and Tests</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#required-methods">Required Methods</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-quality">Code Quality</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rubric">Rubric</a></li>
@@ -526,13 +526,63 @@ document.write(`
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
 <p><strong>Learning objective:</strong> Apply control structures and data structures to solve problems involving numbers, text, and files.</p>
 </section>
-<section id="files">
-<h2>Files<a class="headerlink" href="#files" title="Permalink to this heading">#</a></h2>
+<section id="files-and-tests">
+<h2>Files and Tests<a class="headerlink" href="#files-and-tests" title="Permalink to this heading">#</a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+Provided Files</label><div class="sd-tab-content docutils">
+<p>You are provided with the following files:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">hw2.py</span></code> is the file to put your implementations for each problem. hw1.py is not a runnable program, so we don’t use the main-method pattern.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hw2.py</span></code> is the file to put your implementations for each problem. hw2.py is not a runnable program, so we don’t use the main-method pattern.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">hw2_test.py</span></code> is the file for you to put your own tests. The Run button executes this program.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">cse163_utils.py</span></code> is a helper file that has code to help you test your code.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cse163_utils.py</span></code> is a helper file that has code to help you test your code. Do <strong>NOT</strong> modify.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">song.txt</span></code> is a sample text file used in testing <code class="docutils literal notranslate"><span class="pre">longest_word</span></code>. Do <strong>NOT</strong> modify.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tox.ini</span></code> is a <code class="docutils literal notranslate"><span class="pre">flake8</span></code> configuration file that allows us to customize the types of warnings and errors students must fix.</p></li>
 </ul>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+Files to Submit</label><div class="sd-tab-content docutils">
+<p>You must submit your work to the <a href="https://autograder-nchs.vercel.app/login" target="_blank">Code Submission Site</a>.</p>
+<p><strong>Submit</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">hw2.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hw2_test.py</span></code> : must have <code class="docutils literal notranslate"><span class="pre">main-pattern</span></code> to run all test methods</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&lt;custom&gt;.txt</span></code> : You should create a few text files used in your testing. Submit all custom text files.</p></li>
+</ul>
+<p><strong>Do NOT submit</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">song.txt</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tox.ini</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cse163_utils.py</span></code></p></li>
+<li><p>zip files are not allowed in this assignment</p></li>
+</ul>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
+Replit Unit Tests</label><div class="sd-tab-content docutils">
+<p>There are 7 Unit Tests provided for you. Some key information:</p>
+<ul class="simple">
+<li><p>These Unit Tests are provided as a “sanity check” only. These are not the full and complete set of tests.</p></li>
+<li><p>The <strong>FIRST</strong> thing you should do is write your own tests in <code class="docutils literal notranslate"><span class="pre">hw2_test.py</span></code>. Once you believe that you have everything working and tested in your own code, then run the tests in Replit. If your own tests pass but you fail a Replit Unit Test, then you know that you’re not testing well enough.</p></li>
+<li><p>These tests do not necessarily represent all the tests that Mr. Stride will run when grading your assignment, but he definitely will run these tests.</p></li>
+<li><p>You do not get to see what these tests are doing. You only get to see that you failed or passed. Work with your own unit tests to debug functionality.</p></li>
+<li><p>There is no Replit Unit Test for the challenge question. However, <code class="docutils literal notranslate"><span class="pre">hw2_test.py</span></code> includes a challenge question test method written for you.</p></li>
+</ul>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-3">
+Test Tips</label><div class="sd-tab-content docutils">
+<p>You need to write tests that are <em>better</em> than the Unit Tests in Replit. Mr. Stride will
+be very thorough in testing your code. Even if you pass all these tests, you may still fail to meet some other functional expectations.</p>
+<p>Be creative and thorough: attempt to catch boundary cases in your tests.</p>
+<p>You should assume that all arguments are of the correct type. You do <strong>NOT</strong> need to test the argument types. In other words, you do <strong>NOT</strong> need to test as follows:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">assert_equals</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">hw2</span><span class="o">.</span><span class="n">total</span><span class="p">(</span><span class="s1">&#39;Do NOT test for bad argument type&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="important admonition">
 <p class="admonition-title">Expectation!</p>
 <p>In hw2.py you should not use any <code class="docutils literal notranslate"><span class="pre">import</span></code> statements or features in Python we have not yet discussed in class, online book, or in homework handout. All of these problems should be solved using the fundamental constructs we’ve learned in class so far. For your testing program, you can use imports. In fact, you’re expected to use cse163_utils‘ <code class="docutils literal notranslate"><span class="pre">assert_equals</span></code> function.</p>
@@ -546,8 +596,8 @@ method is found in the tabs below.</p>
 <p>You are required to <strong>TEST</strong> each method. Each test method should include the example method calls provided herein.</p>
 <p>Way down below is a challenge question which is optional and not graded. See the <a href="#challenge-question">Challenge Question</a> section down below for details.</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-0">
+<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-4">
 count_divisible_digits</label><div class="sd-tab-content docutils">
 <p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a function <code class="docutils literal notranslate"><span class="pre">count_divisible_digits</span></code> that takes two integer numbers <code class="docutils literal notranslate"><span class="pre">n</span></code> and <code class="docutils literal notranslate"><span class="pre">m</span></code> as arguments and returns the number of digits in n that are divisible by m. If m is 0, then count_divisible_digits should return 0. For this problem, any digit in n that is 0 is divisible by any number. You may assume m is a single digit (0 ≤ m &lt;10) and that it is not negative.</p>
 <p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a test in the file <code class="docutils literal notranslate"><span class="pre">hw2_test.py</span></code> that calls the function with some inputs and compares the output of the program with the expected value using assert_equals. Include test cases for all of the examples above as well as 3 (<strong>three</strong>) additional test cases.</p>
@@ -587,8 +637,8 @@ count_divisible_digits</label><div class="sd-tab-content docutils">
 </ul>
 </div>
 </div>
-<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-1">
+<input id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-5">
 is_relatively_prime</label><div class="sd-tab-content docutils">
 <p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a function <code class="docutils literal notranslate"><span class="pre">is_relatively_prime</span></code> that takes two integer numbers <code class="docutils literal notranslate"><span class="pre">n</span></code> and <code class="docutils literal notranslate"><span class="pre">m</span></code>, returning <code class="docutils literal notranslate"><span class="pre">True</span></code> if <code class="docutils literal notranslate"><span class="pre">n</span></code> and <code class="docutils literal notranslate"><span class="pre">m</span></code> are relatively prime to each other and <code class="docutils literal notranslate"><span class="pre">False</span></code> otherwise. Two numbers are relatively prime if they share no common factors besides 1. (1 is relatively prime with every number.) Assume the value of <code class="docutils literal notranslate"><span class="pre">n</span></code> and <code class="docutils literal notranslate"><span class="pre">m</span></code> are at least one.</p>
 <p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a test that calls the function with some inputs and compares the output of the program with the expected value using <code class="docutils literal notranslate"><span class="pre">assert_equals</span></code>. Include test cases for all of the examples below as well as 3 (<strong>three</strong>) additional test cases:</p>
@@ -628,8 +678,8 @@ is_relatively_prime</label><div class="sd-tab-content docutils">
 <p><strong>Do not</strong> use data structures to store factors during the execution of the algorithm. Also, use a single loop rather than nested loops.</p>
 </div>
 </div>
-<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-2">
+<input id="sd-tab-item-6" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-6">
 travel</label><div class="sd-tab-content docutils">
 <p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a function <code class="docutils literal notranslate"><span class="pre">travel</span></code> which takes a string of north, east, south, west directions, a starting location on a grid <code class="docutils literal notranslate"><span class="pre">x</span></code>, and a starting location on a grid <code class="docutils literal notranslate"><span class="pre">y</span></code>. Your function should return a tuple that indicates the new position after following the directions starting from the given <code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>. The returned tuple should be in the format <code class="docutils literal notranslate"><span class="pre">(x_new,</span> <span class="pre">y_new)</span></code>.</p>
 <p>The directions string will use <code class="docutils literal notranslate"><span class="pre">'N'</span></code> to indicate increasing the y-coordinate, <code class="docutils literal notranslate"><span class="pre">'E'</span></code> to indicate increasing the x-coordinate, <code class="docutils literal notranslate"><span class="pre">'S'</span></code> to indicate decreasing the y-coordinate, and <code class="docutils literal notranslate"><span class="pre">'W'</span></code> to indicate decreasing the x-coordinate. The case of the characters should be ignored. You can assume that <code class="docutils literal notranslate"><span class="pre">x</span></code> and <code class="docutils literal notranslate"><span class="pre">y</span></code> are both of type <code class="docutils literal notranslate"><span class="pre">int</span></code>. Any characters that are not ‘N’, ‘E’, ‘W’, or ‘S’ (ignoring letter-casing) should be ignored.</p>
@@ -646,8 +696,8 @@ travel</label><div class="sd-tab-content docutils">
 </ol>
 <p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a test that calls the function with some inputs and compares the output of the program with the expected value using <code class="docutils literal notranslate"><span class="pre">assert_equals</span></code>. Include test cases for the example above as well as 3 (<strong>three</strong>) additional test cases.</p>
 </div>
-<input id="sd-tab-item-3" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-3">
+<input id="sd-tab-item-7" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-7">
 reformat_date</label><div class="sd-tab-content docutils">
 <p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a function <code class="docutils literal notranslate"><span class="pre">reformat_date</span></code> which takes three strings as arguments representing a date, a current date format, and a target date format and returns a new string with the date formatted in the target format.</p>
 <p>For example, if we made the method call,  <code class="docutils literal notranslate"><span class="pre">reformat_date(&quot;12/31/1998&quot;,</span> <span class="pre">&quot;M/D/Y&quot;,</span> <span class="pre">&quot;D/M/Y&quot;)</span></code> it should return the string <code class="docutils literal notranslate"><span class="pre">&quot;31/12/1998&quot;</span></code>. In this example, the first argument represents a date and the second argument specifies this date is currently in the format Month/Day/Year (abbreviated <code class="docutils literal notranslate"><span class="pre">&quot;M/D/Y&quot;</span></code>). The third argument specifies that the method should return a new date in the format of Day/Month/Year format (abbreviated <code class="docutils literal notranslate"><span class="pre">&quot;D/M/Y&quot;</span></code>).</p>
@@ -699,8 +749,8 @@ reformat_date</label><div class="sd-tab-content docutils">
 <p>Your function should be as general as possible and avoid hard-coding specific orderings of the date parts.</p>
 </div>
 </div>
-<input id="sd-tab-item-4" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-4">
+<input id="sd-tab-item-8" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-8">
 longest_word</label><div class="sd-tab-content docutils">
 <p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a function <code class="docutils literal notranslate"><span class="pre">longest_word</span></code> that takes a string filename
 and returns the longest word in the file with which line it appears on. A word here is defined as a
@@ -722,8 +772,8 @@ Merrily, merrily, merrily, merrily<br />
 Life is but a dream!</p>
 </div>
 </div>
-<input id="sd-tab-item-5" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-5">
+<input id="sd-tab-item-9" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-9">
 get_average_in_range</label><div class="sd-tab-content docutils">
 <p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a function <code class="docutils literal notranslate"><span class="pre">get_average_in_range</span></code> that takes a list of integers, an integer
 <code class="docutils literal notranslate"><span class="pre">low</span></code>, and an integer <code class="docutils literal notranslate"><span class="pre">high</span></code>, and returns the average of all values within the list that lies in the given range from <code class="docutils literal notranslate"><span class="pre">low</span></code>
@@ -751,8 +801,8 @@ get_average_in_range</label><div class="sd-tab-content docutils">
 outputs of the method with the expected value using <code class="docutils literal notranslate"><span class="pre">assert_equals</span></code>. Include the test cases above as well as 3 (<strong>three</strong>)
 additional test cases.</p>
 </div>
-<input id="sd-tab-item-6" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-6">
+<input id="sd-tab-item-10" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-10">
 mode_digit</label><div class="sd-tab-content docutils">
 <p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a function <code class="docutils literal notranslate"><span class="pre">mode_digit</span></code> that takes an integer number <code class="docutils literal notranslate"><span class="pre">n</span></code> and returns
 the digit that appears most frequently in that number. The given number may be positive or negative, but the most
@@ -946,7 +996,7 @@ The method will return a weighted average of all the values using the weights ac
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#files">Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#files-and-tests">Files and Tests</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#required-methods">Required Methods</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-quality">Code Quality</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rubric">Rubric</a></li>
