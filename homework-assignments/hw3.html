@@ -274,9 +274,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l3"><a class="reference internal" href="../final-project/tips/code.html">Tips for Final Project Code</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../final-project/tips/report.html">Tips for Final Report</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../final-project/tips/presentation.html">Tips for Final Presentation</a></li>
-
-
-
 </ul>
 </li>
 </ul>
@@ -502,7 +499,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#files">Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#files-and-tests">Files and Tests</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context">Context</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#without-pandas">Without Pandas</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#with-pandas">With Pandas</a></li>
@@ -530,8 +527,12 @@ document.write(`
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading">#</a></h2>
 <p><strong>Learning objective:</strong> Read, process, and group CSV data to compute descriptive statistics with and without Pandas.</p>
 </section>
-<section id="files">
-<h2>Files<a class="headerlink" href="#files" title="Permalink to this heading">#</a></h2>
+<section id="files-and-tests">
+<h2>Files and Tests<a class="headerlink" href="#files-and-tests" title="Permalink to this heading">#</a></h2>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+Provided Files</label><div class="sd-tab-content docutils">
 <p><strong>Note:</strong> This list of files has some <em>non-runnable</em> files which do not use the <em>main-method</em> pattern. The methods inside them are run; we do not run the file directly using the Run button.</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">hw3_manual.py</span></code> is the <em>non-runnable</em> file for you to put your implementations for solving each problem without Pandas.</p></li>
@@ -542,6 +543,33 @@ document.write(`
 <li><p><code class="docutils literal notranslate"><span class="pre">pokemon_test.csv</span></code> is a very small CSV file that stores information about pokemon used for the example cases.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">run_hw3.py</span></code> is the file that runs your implementations for each problem.</p></li>
 </ul>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+Files to Submit</label><div class="sd-tab-content docutils">
+<p>You must submit your work to the <a href="https://autograder-nchs.vercel.app/login" target="_blank">Code Submission Site</a>.</p>
+<p>You are submit the following files <strong>only</strong>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">hw3_test.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hw3_pandas.py</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">hw3_manual.py</span></code></p></li>
+</ul>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
+Replit Unit Tests</label><div class="sd-tab-content docutils">
+<p>No Unit Tests are provided for you in Replit. You need to write your own Unit Tests in <code class="docutils literal notranslate"><span class="pre">hw3_test.py</span></code>.</p>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-3">
+Test Tips</label><div class="sd-tab-content docutils">
+<ul class="simple">
+<li><p>Do <strong>NOT</strong> use globals.</p></li>
+<li><p>You will test all methods, both manual and Pandas, using test methods that you write in the file <code class="docutils literal notranslate"><span class="pre">hw3_test.py</span></code>. The results from the two implementations, manual and Pandas, should be identical. The difference is that the manual methods accept a list of dictionaries while the Pandas methods accept a DataFrame. There are <em>proper</em> ways to reduce redundancy.</p></li>
+<li><p>See <strong>Tip #4</strong> below.</p></li>
+</ul>
+</div>
+</div>
 </section>
 <section id="context">
 <h2>Context<a class="headerlink" href="#context" title="Permalink to this heading">#</a></h2>
@@ -633,8 +661,8 @@ document.write(`
 <h3>Miscellaneous Tips<a class="headerlink" href="#miscellaneous-tips" title="Permalink to this heading">#</a></h3>
 <p>As with previous assessments, you’ll also check your solutions by adding tests to <code class="docutils literal notranslate"><span class="pre">hw3_test.py</span></code> using the <code class="docutils literal notranslate"><span class="pre">assert_equals</span></code> function.</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-0">
+<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-4">
 Tip #1</label><div class="sd-tab-content docutils">
 <div class="hint admonition">
 <p class="admonition-title">Parsing</p>
@@ -652,8 +680,8 @@ Tip #1</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </div>
-<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-1">
+<input id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-5">
 Tip #2</label><div class="sd-tab-content docutils">
 <div class="hint admonition">
 <p class="admonition-title">Test Files</p>
@@ -665,8 +693,8 @@ Tip #2</label><div class="sd-tab-content docutils">
 </ul>
 </div>
 </div>
-<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-2">
+<input id="sd-tab-item-6" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-6">
 Tip #3</label><div class="sd-tab-content docutils">
 <div class="hint admonition">
 <p class="admonition-title">Test Methods</p>
@@ -677,8 +705,8 @@ Tip #3</label><div class="sd-tab-content docutils">
 </ul>
 </div>
 </div>
-<input id="sd-tab-item-3" name="sd-tab-set-0" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-3">
+<input id="sd-tab-item-7" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-7">
 Tip #4</label><div class="sd-tab-content docutils">
 <div class="hint admonition">
 <p class="admonition-title">Constants, Globals &amp; Locality</p>
@@ -755,8 +783,8 @@ and <code class="docutils literal notranslate"><span class="pre">mean_attack_per
 <p>Way down below is a challenge question which is optional and not graded. See the <a href="#challenge-question">Challenge Question</a> section down below for details.</p>
 </div>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-4">
+<input checked="checked" id="sd-tab-item-8" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-8">
 species_count</label><div class="sd-tab-content docutils">
 <p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> in <code class="docutils literal notranslate"><span class="pre">hw3_manual.py</span></code> a function <code class="docutils literal notranslate"><span class="pre">species_count</span></code> that takes a parsed pokemon dataset and returns the number of unique pokemon species in the dataset as determined by the <code class="docutils literal notranslate"><span class="pre">name</span></code> attribute without using Pandas.</p>
 <p>For the <code class="docutils literal notranslate"><span class="pre">pokemon_test.csv</span></code> file, <code class="docutils literal notranslate"><span class="pre">species_count(data)</span></code> should return <code class="docutils literal notranslate"><span class="pre">3</span></code>.</p>
@@ -766,14 +794,14 @@ species_count</label><div class="sd-tab-content docutils">
 I realize that <code class="docutils literal notranslate"><span class="pre">id</span></code> should be the right approach, but UW has other ideas here. Don’t fight it. Just use <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
 </div>
 </div>
-<input id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-5">
+<input id="sd-tab-item-9" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-9">
 max_level</label><div class="sd-tab-content docutils">
 <p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> in <code class="docutils literal notranslate"><span class="pre">hw3_manual.py</span></code> a function <code class="docutils literal notranslate"><span class="pre">max_level</span></code> that takes a parsed pokemon dataset and returns a 2-element tuple of the <code class="docutils literal notranslate"><span class="pre">(name,</span> <span class="pre">level)</span></code> of the pokemon with the highest <code class="docutils literal notranslate"><span class="pre">level</span></code> in the dataset. If there is more than one pokemon with the highest <code class="docutils literal notranslate"><span class="pre">level</span></code>, return the pokemon that appears first in the file.</p>
 <p>For the <code class="docutils literal notranslate"><span class="pre">pokemon_test.csv</span></code> file, <code class="docutils literal notranslate"><span class="pre">max_level(data)</span></code> should return the 2-element tuple, <code class="docutils literal notranslate"><span class="pre">('Lapras',</span> <span class="pre">72)</span></code>.</p>
 </div>
-<input id="sd-tab-item-6" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-6">
+<input id="sd-tab-item-10" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-10">
 filter_range</label><div class="sd-tab-content docutils">
 <p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> in <code class="docutils literal notranslate"><span class="pre">hw3_manual.py</span></code> a function <code class="docutils literal notranslate"><span class="pre">filter_range</span></code> that takes a parsed pokemon dataset and  two numbers: a lower bound (inclusive) and upper bound (exclusive). The function returns a list of the names of pokemon whose <code class="docutils literal notranslate"><span class="pre">level</span></code> fall within the bounds in the same order that they appear in the dataset.</p>
 <p>For the <code class="docutils literal notranslate"><span class="pre">pokemon_test.csv</span></code> file, <code class="docutils literal notranslate"><span class="pre">filter_range(data,</span> <span class="pre">35,</span> <span class="pre">72)</span></code> should return <code class="docutils literal notranslate"><span class="pre">['Arcanine',</span> <span class="pre">'Arcanine',</span> <span class="pre">'Starmie']</span></code>. Note that Lapras is not included because the upper bound is exclusive of Lapras, which is exactly level 72.</p>
@@ -794,14 +822,14 @@ filter_range</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </div>
-<input id="sd-tab-item-7" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-7">
+<input id="sd-tab-item-11" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-11">
 mean_attack_for_type</label><div class="sd-tab-content docutils">
 <p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> in <code class="docutils literal notranslate"><span class="pre">hw3_manual.py</span></code> a function <code class="docutils literal notranslate"><span class="pre">mean_attack_for_type</span></code> that takes a parsed pokemon dataset and a string representing the pokemon <code class="docutils literal notranslate"><span class="pre">type</span></code>. The function returns the average <code class="docutils literal notranslate"><span class="pre">atk</span></code> for all the pokemon in the dataset with the given <code class="docutils literal notranslate"><span class="pre">type</span></code>. If there are no pokemon of the given <code class="docutils literal notranslate"><span class="pre">type</span></code>, return <code class="docutils literal notranslate"><span class="pre">None</span></code>.</p>
 <p>For the <code class="docutils literal notranslate"><span class="pre">pokemon_test.csv</span></code> file, <code class="docutils literal notranslate"><span class="pre">mean_attack_for_type(data,</span> <span class="pre">'fire')</span></code> should return <code class="docutils literal notranslate"><span class="pre">47.5</span></code>.</p>
 </div>
-<input id="sd-tab-item-8" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-8">
+<input id="sd-tab-item-12" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-12">
 count_types</label><div class="sd-tab-content docutils">
 <p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> in <code class="docutils literal notranslate"><span class="pre">hw3_manual.py</span></code> a function <code class="docutils literal notranslate"><span class="pre">count_types</span></code> that takes a parsed pokemon dataset and returns a dictionary representing for each pokemon <code class="docutils literal notranslate"><span class="pre">type</span></code> the number of pokemon of that <code class="docutils literal notranslate"><span class="pre">type</span></code>. The order of the keys in the returned dictionary does not matter.</p>
 <p>For the <code class="docutils literal notranslate"><span class="pre">pokemon_test.csv</span></code> file, <code class="docutils literal notranslate"><span class="pre">count_types(data)</span></code> should return <code class="docutils literal notranslate"><span class="pre">{'fire':</span> <span class="pre">2,</span> <span class="pre">'water':</span> <span class="pre">2}</span></code>.</p>
@@ -822,12 +850,16 @@ count_types</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </div>
-<input id="sd-tab-item-9" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-9">
+<input id="sd-tab-item-13" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-13">
 mean_attack_per_type</label><div class="sd-tab-content docutils">
 <p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> in <code class="docutils literal notranslate"><span class="pre">hw3_manual.py</span></code> a function <code class="docutils literal notranslate"><span class="pre">mean_attack_per_type</span></code> that takes a parsed pokemon dataset and returns a dictionary representing for each pokemon <code class="docutils literal notranslate"><span class="pre">type</span></code> the average <code class="docutils literal notranslate"><span class="pre">atk</span></code> of pokemon of that <code class="docutils literal notranslate"><span class="pre">type</span></code>. The order of the keys in the returned dictionary does not matter.</p>
 <p>For the <code class="docutils literal notranslate"><span class="pre">pokemon_test.csv</span></code> file, <code class="docutils literal notranslate"><span class="pre">mean_attack_per_type(data)</span></code> should return <code class="docutils literal notranslate"><span class="pre">{'fire':</span> <span class="pre">47.5,</span> <span class="pre">'water':</span> <span class="pre">140.5}</span></code>.</p>
 </div>
+</div>
+<div class="error admonition">
+<p class="admonition-title">Don’t Forget</p>
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write TWO</strong> solutions to each problem. One solution will be in the file <code class="docutils literal notranslate"><span class="pre">hw3_manual.py</span></code> which will use a list of dictionaries. The second solution will be in the file <code class="docutils literal notranslate"><span class="pre">hw3_pandas.py</span></code> which will use a DataFrame.</p>
 </div>
 </section>
 <section id="code-quality">
@@ -986,7 +1018,7 @@ statistics using Python libraries; do not implement the calculations yourself.</
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview">Overview</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#files">Files</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#files-and-tests">Files and Tests</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context">Context</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#without-pandas">Without Pandas</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#with-pandas">With Pandas</a></li>

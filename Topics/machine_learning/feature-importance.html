@@ -274,9 +274,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l3"><a class="reference internal" href="../../final-project/tips/code.html">Tips for Final Project Code</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../final-project/tips/report.html">Tips for Final Report</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../final-project/tips/presentation.html">Tips for Final Presentation</a></li>
-
-
-
 </ul>
 </li>
 </ul>
@@ -540,15 +537,17 @@ a few models, show their predictions, and then explore how the features impact t
 <li><p><a class="reference external" href="https://towardsdatascience.com/understanding-feature-importance-and-how-to-implement-it-in-python-ff0287b20285">Understanding Feature Importance and How to Implement it in Python</a></p></li>
 <li><p><a class="reference external" href="https://datagy.io/mean-squared-error-python/">MSE Explained</a></p></li>
 <li><p><a class="reference external" href="https://realpython.com/linear-regression-in-python/">Linear Regression in Python</a></p></li>
+<li><p><a class="reference external" href="https://www.datacamp.com/tutorial/random-forests-classifier-python">Random Forest Classifier</a></p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/permutation_importance.html">Permutation Importance</a></p></li>
 </ul>
 </div>
 <div class="seealso dropdown admonition">
 <p class="admonition-title">imports</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># TODO: update this</span>
-<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
 <span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="kn">import</span> <span class="n">DecisionTreeClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestClassifier</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
-<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_absolute_error</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span>
+<span class="kn">from</span> <span class="nn">sklearn.inspection</span> <span class="kn">import</span> <span class="n">permutation_importance</span>
 <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">accuracy_score</span>
 </pre></div>
 </div>
@@ -566,17 +565,13 @@ Code</label><div class="sd-tab-content docutils">
 <span class="c1"># Initialize the Linear Regression model</span>
 <span class="n">model</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
 
-<span class="c1"># Fit the model to the training data</span>
+<span class="c1"># Fit the model to the training data which calculates model&#39;s coefficients</span>
 <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train_f</span><span class="p">,</span> <span class="n">train_l</span><span class="p">)</span>
 
-<span class="c1"># Get the coefficients and feature names</span>
-<span class="n">coefficients</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">coef_</span>
-<span class="n">feature_names</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">feature_names</span>
-
-<span class="c1"># Print the coefficients and feature names</span>
-<span class="n">feature_coef</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="n">feature_names</span><span class="p">,</span> <span class="n">coefficients</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">f</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">feature_coef</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">f</span> <span class="o">+</span> <span class="s2">&quot;: &quot;</span> <span class="o">+</span> <span class="n">c</span><span class="p">)</span>
+<span class="c1"># Associate the coefficients and feature names</span>
+<span class="c1"># Print the coefficients and feature names using f-string formatting</span>
+<span class="k">for</span> <span class="n">f</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">features</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">model</span><span class="o">.</span><span class="n">coef_</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">f</span><span class="si">}</span><span class="s1">   : </span><span class="si">{</span><span class="n">c</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
 
 </pre></div>
 </div>
