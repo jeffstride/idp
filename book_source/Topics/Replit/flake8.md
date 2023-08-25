@@ -11,16 +11,15 @@ install flake8 version 5.0.4 (whereas the default version is 6.0.0). If the flak
 install the correct version by going to the `shell` tab and typing in: `poetry add 'flake8 5.0.4'`. Don't forget the quotes.
 ```
 
+**Turned off in `tox.ini`**
 |Codes|Descriptions|
 |-----|------------|
 |W291|Trailing whitespace: a line has a space at the end. Although this does assure that a coding file is super clean and professional, it is way more annoying than useful. This error is ignored|
-|W504| This warning code indicates a line break after a binary operator. It reminds you that there should not be a line break between a binary operator (e.g., +, -, *, /) and its second operand.|
-|W391| This warning code indicates a blank line at the end of a file. It reminds you to remove any unnecessary blank lines after the last line of code in a Python file.|
-|W291| This warning code indicates trailing whitespace at the end of a line. It reminds you to remove any spaces or tabs at the end of lines, which can be considered a style violation.|
-|W292| This warning code indicates that there are no newline (blank) lines at the end of the file. It is a style reminder that you should include a newline character at the end of the file.|
+|W292| This warning code indicates that there are no newline (blank) lines at the end of the file. This can appear to be contradictory to W391, which is also turned off.|
+|W391| This warning code indicates a blank line at the end of a file. If your file has 10s of blank lines at the end, you'll get dinged. One blank line? Let's ignore it.|
+|W504| This warning code indicates a line break after a binary operator. It reminds you that there should not be a line break between a binary operator (e.g., +, -, *, /) and its second operand. I figure, if it compiles and looks fine, go for it!|
 |E121| This error code indicates an indentation error. It is raised when there are inconsistencies in the indentation of code blocks, such as mismatched or inconsistent indentation levels.|
 |E402| This error code indicates a module-level import not at the top of the file. It reminds you that all imports should be placed at the beginning of the file before any other statements or code.|
-|E501| This error code indicates that a line of code exceeds the maximum line length allowed. By default, flake8 enforces a maximum line length of 79 characters.|
 
 ## tox.ini
 ```{admonition} Important!
@@ -32,6 +31,7 @@ If you fail flake8, then you'll be penalized.
 ## E501 line too long
 The spirit of the rule is fabulous: your code needs to be readable and lines that are too long detract from readability.
 Furthermore, `replit` has a nifty, built-in funtion to help correct these errors: simply type `ctrl+s`. 
+(Sometimes ctrl+s doesn't work.)
 **However**, the default 80-character line length (although not completely arbitrary) is too short for modern development
 and it doesn't allow for other good conventions such as:  
 * descriptive identifier names that are longer  

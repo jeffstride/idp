@@ -5,13 +5,13 @@
 * Present answers. Don't present the original questions.   
 * Don't explain the methodology.  
 * You may want to explain how the data is insufficient or biased.  
-* Present the sources of the data you used, but avoid details on its structure (unless that helps understand the results).  
+* Present the sources of the data you used, but avoid details on its structure (unless that helps understand the results). Where and how the data was collected can inform the reader of potential biases.   
 * **Be data driven** and avoid speculation.
     * You may do _some_ speculation, but you should have some evidence or source that you cite.   
     * If you speculate, be sure that you're not conflating your opinion with the facts.  
     * In the write-up, it should be clear to the reader that you're speculating and that you know you're speculating.  
 
-To expand beyond what is provided, you need to find a creative and valuable addition to incorporate in your project to make it unique and for it to synthesize. Here are a few considerations.
+You may want to extend beyond your peers to make your project unique and cool. You will want to find creative and valuable additions to incorporate. Here are a few considerations.
 
 ## Change the research questions
 
@@ -20,7 +20,6 @@ In conducting research, the formulation of a research question is a crucial step
 2. Data Analysis and Initial Findings
 3. Feedback and Peer Review
 
-By explaining how your research changed as you gained a better understanding of your topic can provide insightful information to the audience. It also adds layers and nuances to your final presentation. 
 
 ## Focus on different demographics
 

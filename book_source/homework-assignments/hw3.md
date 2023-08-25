@@ -10,19 +10,30 @@
    
 * `hw3_manual.py` is the _non-runnable_ file for you to put your implementations for solving each problem without Pandas.  
 * `hw3_pandas.py` is the _non-runnable_ file for you to put your implementations for solving each problem with Pandas.  
-* `hw3_test.py` is the file for you to put your own tests. You need to change `.replit` to run your tests. Be sure to use the _main-pattern_ for this file. Make sure it runs successfully!  
+* `hw3_test.py` is the file for you to put your own tests. Be sure to use the _main-pattern_ for this file. Make sure it runs successfully!  
 * `cse163_utils.py` is a helper file that has code to help you test your code.  
 * `pokemon_box.csv` is a large CSV file that stores information about pokemon.  
-* `pokemon_test.csv` is a very small CSV file that stores information about pokemon used for the example cases.  
-* `run_hw3.py` is the file that runs your implementations for each problem.  
+* `pokemon_test.csv` is a very small CSV file that stores information about pokemon used for the example cases. You may use this in your own personal tests, but do not change and do not submit.  
+* `run_hw3.py` is an optional file that runs your implementations for each problem and prints the output. To run it, you need to change `replit`.  
+* `tox.ini` is the set of `flake8` rules. Do not change. Do not submit.  
 ```
 ```{tab-item} Files to Submit
 You must submit your work to the <a href="https://autograder-nchs.vercel.app/login" target="_blank">Code Submission Site</a>.  
 
-You are submit the following files **only**:  
+You are to submit the following Python files:  
 * `hw3_test.py`  
 * `hw3_pandas.py`  
 * `hw3_manual.py`  
+
+You must also submit any test file that you personally created and used in your tests.  
+* `<test_file>.csv`
+
+Do **NOT** submit:  
+* `tox.ini`  
+* `pokemon_test.csv`  (Do not modify it, either)
+
+Do not create any subdirectories.  
+Do not submit any zip files.  
 ```
 ```{tab-item} Replit Unit Tests
 No Unit Tests are provided for you in Replit. You need to write your own Unit Tests in `hw3_test.py`.  
