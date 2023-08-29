@@ -32,6 +32,7 @@ chapters:
           - file: Topics/machine_learning/classification
           - file: Topics/machine_learning/regression
           - file: Topics/machine_learning/classifier-rand
+          - file: Topics/machine_learning/when-to-avoid-ml
       - file: Topics/built-in/index
         sections:
           - file: Topics/built-in/arguments
