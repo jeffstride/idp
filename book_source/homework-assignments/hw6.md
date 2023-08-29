@@ -310,3 +310,114 @@ from one algorithm to the other. Amazing, right?!
 
 Be sure you pass the final two Unit Tests:
 
+## Challenge Question
+This challenge question is a bit different than previous questions. Here, you'll be asked to do some Data Science
+research. The goal is to provide _visual_ insight into a mathematical _solution space_. Does this sound a bit strange? Let me elaborate.  
+
+You will have to:  
+* Learn some Math theory -- how to generate Pythagorean Triples. 
+* Write _efficient_ code to solve a problem _quickly_ -- I used **generators**, but that is not absolutely necessary.  
+* Apply some creative analysis to imagine visually appealing & insightful graphs.  
+* Create and annotate graphs -- For reference, use: [Mr. Stride's IDP Site](https://idp.mrstride.com) and/or [ChatGPT](https://chat.openai.com/)   
+* Interpret the data an draw some conclusions.  
+
+```{admonition} ChatGPT & Plagiarism
+:class: note
+This challenge question deals mostly with your ability to understand new things, search the internet,
+write code that solves your problem, and, **MOST IMPORTANTLY** create visually _insightful_ graphs.   
+
+You could turn this into an exercise to learn how much ChatGPT can do for you from the get-go.
+Or, you could use ChatGPT to help when you get stuck with creating specific graphs. It is up to you. It is a
+resource.  
+
+Keep the end goal in mind: **LEARN** how to provide _visual_ **INSIGHT**.  
+
+There is **NO** possibility of being accused of plagiarism on this Challenge Question. It isn't graded!!
+```
+
+### Pythagorean Triples
+Before you can really begin to solve this problem, you need to learn about how to generate **Pythagorean Triples.**
+You can get a great lesson by watching this video by **3 Blue 1 Brown.**  You definitely should watch it!!    
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/QJYmyhnaaek?si=WLMzcLbWceIs_gOf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+```{admonition} Related Links
+:class: seealso dropdown
+You can also look at some online resources:  
+* [Wikipedia Pythagorean Triple](https://en.wikipedia.org/wiki/Pythagorean_triple) - This can get a little overwhelming, but there are some good graphs and instuctions.  
+* [Least Hypotenuse of N Distinct Pythagorean Triangles](https://oeis.org/A006339/list) - This is not really that helpful other than to illustrate how someone asked an interesting question and provided a table of answers. Can you think of equally interesting questions? Can you partially graph this sequence?  
+```
+
+### Coding Hints
+You'll want to start by creating a method that generates all the fractions up to some maximum denominator. For example,
+here are all the fractions up through the denominator 9:
+$\frac{1}{2}, \frac{1}{3}, \frac{2}{3}, \frac{1}{4}, \frac{3}{4}, \frac{1}{5}, \frac{2}{5}, \frac{3}{5}, \frac{4}{5}, \frac{1}{6}, \frac{5}{6}, \frac{1}{7}, \frac{2}{7}, \frac{3}{7}, \frac{4}{7}, \frac{5}{7}, \frac{6}{7}, \frac{1}{8}, \frac{3}{8}, \frac{5}{8}, \frac{7}{8}, \frac{1}{9}, \frac{2}{9}, \frac{4}{9}, \frac{5}{9}, \frac{7}{9}, \frac{8}{9}$  
+
+I created a _generator_ in Python so that I could write the following:  
+```python
+for a, b in gen_fractions(9):
+    print(a, '/', b)
+```
+
+Once you have the ability to generate all the fractions you need, use each fraction to generate all the Pythagorean Triples
+with a hypotenuse <= max_length using a specific _complex number (u + vi)_ where _u_ and _v_ come from the fraction. 
+Put this into a nested loop and, _voila_, you have all the Triples! I personally had some repeats that needed to be
+removed using an _"appropriate"_ data structure.  
+
+The goal would be to create a function that counts the total number of Triples that have an hypotenuse <= max_length.
+If done correctly, you should find that `count_triples(2125) == 2131`. In other words, there are 2131 unique
+Pythagorean Triples that have an hypotenuse <= 2125. Calculating this should be very quick!  
+
+For efficiency, you'll want to save the data in appropriate data structures as you generate the data. If you regenerate
+data for all lengths, you'll be dog slow! For example, please do **NOT** do the following:  
+```python
+counts = []
+for c in range(max_hypotenuse):
+    counts.append(count_triples(c))
+```
+The avoid the above code, you may have to _refactor_ or _reorganize_ your code in ways that allow you to
+save data as you go.  
+
+To help you validate your code, ere is a table of the count of Triples for a specific Max Hypotenuse:
+```
+Count   Max Hypotenuse
+  1      5
+  2      10
+  3      13
+  4      15
+  5      17
+  6      20
+  8      25
+  9      26
+ 10      29
+ 11      30
+ 12      34
+ 13      35
+ 14      37
+ 15      39
+```
+The above table says that there are 13 unique Triples whose hypotenuse is of length 35 or less.  
+
+If you struggle with creating the code to generate these values, use online resources to help.
+There is _sooooo_ much more to this problem than coding a quick solution. **BUT** you should
+at least understand the code you've acquired, and don't forget to **annotate** where you got the code.
+
+### Graphs with Insight
+The obvious graph is something like this:  
+![Basic Plot](../_static/hw6_count_v_max.png)  
+
+There are lots of graphs you can generate to show the distribution of Triples, the growth rate,
+the cost to generate the count, the discovery rate of Unique Triples from each fraction, the line
+or parabola of best fit, how many unique Triples are found for an hypotenuse, and more!  
+
+Here are two more sample graphs that you can attempt to recreate or improve upon:
+![Parabola Fit](../_static/hw6_parabola_fit.png)  
+![Histogram](../_static/hw6_histogram.png)  
+Note that the above histogram says that after generating all Triples where the hypotenuse <= 6000,
+there was one hypotenuse length (5525) that had 22 unique Triples, all of which had a hypotenuse
+of length 5525.  
+
+### Draw some Conclusions
+What can you say about the count and distribution of Triples?  
+Can you accurately predict the count with a line or parabola?  
+Is it common to find 6 unique Triples for a singular hypotenuse? When does that first happen? What is the distribution?  
