@@ -4,7 +4,8 @@ Evaluating the accuracy of a machine learning (ML) model is a crucial step to de
 
 ## Regression
 **Mean Squared Error (MSE)** measures the average squared difference between the predicted values and the actual values. It gives higher weight to larger errors.
-**Formula: MSE = (1/n) * Σ(y_actual - y_predicted)^2**
+
+**Formula: {math}`MSE = (1/n) * Σ(y_a - y_p)^2`**
 ````{tab-set}
 ```{tab-item} Code:
 ```python
