@@ -12,7 +12,11 @@ chapters:
       - file: homework-assignments/hw7
   - file: Topics/index
     sections:
-      - file: Topics/collections
+      - file: Topics/misc/index
+        sections:
+        - file: Topics/misc/submitting
+        - file: Topics/misc/collections
+        - file: Topics/misc/my_st
       - file: Topics/Replit/index
         sections:
           - file: Topics/Replit/building-in-replit

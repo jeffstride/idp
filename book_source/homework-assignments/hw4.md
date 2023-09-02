@@ -3,15 +3,56 @@
 ## Overview
 **Learning objective:** Apply Pandas, Seaborn, and Scikit-learn to process, visualize, and predict outcomes about data.  
 
-## Files
+## Files and Tests
+````{tab-set}
+```{tab-item} Provided Files
 * `nces-ed-attainment.csv` is a CSV file that contains the education dataset for this assessment.  
 * `hw4.py` is the file for your implementations. The Run button executes this program.    
 * `hw4-writeup.md` is the file for your writeup. Instead of testing, this assessment emphasizes reflection on our data analysis.  
-* `cse163_imgd_NCHS.py` is a helper file that checks your plot outputs against expected output, and creates an image showing any pixel differences. (TODO: Explain how to run it. The Run button executes this program and your hw4.py.)  
+* `cse163_imgd_NCHS.py` is a helper file that checks your plot outputs against expected output, and creates an image showing any pixel differences. See the **Image Comparison Tool** tab for more information.   
 * `main.py` is present simply to allow Replit Unit Tests to run.  
 * `tox.ini` configures the rules enforced by `flake8`. We will eliminate some rules to hopefully make development a bit easier. Do **NOT** submit this file because your submission will be ignored during grading. Do **NOT** modify this file if you want `flake8` to pass during grading.  
 * `expected` is a folder containing the expected output for `line_plot_bachelors` and `bar_chart_high_school`. Don’t modify the contents of this folder.   
+```
+```{tab-item} Files to Submit
+You must submit your work to the <a href="https://autograder-nchs.vercel.app/login" target="_blank">Code Submission Site</a>.  
 
+You are to submit the following two files ONLY:  
+* `hw4.py`  
+* `hw4-writeup.md`  
+
+Do NOT submit anything else.
+```
+```{tab-item} Replit Tests
+These tests are to help you gain some confidence that your code is ready for grading. But, there are some issues
+with image comparison tests. Furthermore, there are a gazillion ways to make plots and each one can have minor,
+sometimes major, differences. It is best if you pass all these tests, but don't stress too much if you don't
+pass the image comparison tests: use the image comparison tool to help you verify.   
+Tests:  
+* **bar_chart_high_school** - Tests that the bar_chart_high_school.png is similar enough to the expected image.  
+* **line_plot_bachelors** - Tests that the line_plot_bachelors.png is similar enough to the expected image.  
+* **top_2000s** - Tests that the method top_2_2000s has good return values.  
+* **fit_and_predict** - Tests that `fit_and_predict_degrees` returns an acceptable error value.   
+* **bachelors_1980** - Tests that `compare_bachelors_1980` returns acceptable DataFrame.  
+```
+```{tab-item} Image Comparison Tool
+Included with the Replit startup code is a file `cse163_imgd_NCHS.py` which will compare the student's
+image with the expected image (provided in the _expected_ subfolder), and generate a _diff image_ that
+is saved in the _compare_ subfolder. Differences between the two images will be highlighted in hot pink.   
+
+To run the tool, you will need to modify `.replit` to run `cse163_imgd_NCHS.py`. Or, if you want, you can
+temporarily call the comparison using the following code:
+```python
+# This is in hw4.py
+from cse163_imgd_NCHS import compare_hw4_images
+
+def main():
+    # All your code goes here
+    # then, temporarily call the comparison method
+    # Comment out this line before submitting
+    compare_hw4_images()
+```
+````
 ## Context
 The National Center for Education Statistics is a U.S. federal government agency for collecting and analyzing data related to education. We have downloaded and cleaned one of their datasets: Percentage of persons 25 to 29 years old with selected levels of educational attainment, by race/ethnicity and sex: Selected years, 1920 through 2018. The nces-ed-attainment.csv file has columns for Year, Sex, Min degree, and race/ethnicity categories.   
 > Note the missing data: not all columns have data starting from 1920! And, Our `main` method provides a line of code to read `nces-ed-attainment.csv` and replaces all occurrences of the `---` with pandas `NaN` to help with later data processing steps.  
@@ -61,7 +102,8 @@ Your code should ONLY assume the structure of the data. Your code should **not**
 of rows or where values exist. Your code should work on a different data set with different index values.
 ```
 ```{tab-item} Method 2
-Answer the question: **What were the 2 most commonly-awarded levels of educational attainment awarded between 2000–2010 (inclusive) for a given sex?**  
+Answer the question: **What were the 2 most commonly-awarded levels of educational attainment awarded between 2000–2010 (inclusive) for a given sex?**   
+
 <i class="fas fa-pen-square fa-fw"></i> **Write** a function `top_2_2000s(data, sex)` that takes two arguments, the `data` and a `sex` parameter, and computes the two most commonly earned degrees for that given sex between the years 2000 and 2010 (inclusive). The function should return a 2-element `Series`. Compare educational attainment levels by using the `mean`. The index of the returned `Series` should be the `Min degree` and the values should be its `mean`. The `sex` parameter should default to `'A'` if no `sex` parameter/value is provided by the caller.
 
 > Hint: `Series.nlargest` works like `DataFrame.nlargest`. The Series method takes only a single integer argument and returns a Series, while the DataFrame method requires an additional column parameter and returns a DataFrame.  
