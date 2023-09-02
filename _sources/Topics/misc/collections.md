@@ -1,4 +1,4 @@
-# <i class="fas fa-pen-square fa-fw"></i> Collections
+#  Collections
 
 This is a _cheatsheet_ of Python's collection classes.
 
