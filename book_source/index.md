@@ -45,7 +45,6 @@ Here are a bunch of TODOs for Mr. Stride:
 * 5 stages of research (gather, organize, report, conclude, act or enact policy)
 * confirmation bias  (other biases?)   
 * "stuff" in my Notes directory   
-* flake8 rules to ignore  (or that I hate)  
 * prosecutors falacy, simpson's paradox, (other things from good videos)  
 * commenting  
     * tabs for: Too Little, Goldilocks, Too Much  

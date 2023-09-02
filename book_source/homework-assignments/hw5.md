@@ -3,12 +3,45 @@
 ## Overview
 **Learning objective:** Implement specialized data types with Python classes for tf-idf information retrieval.  
 
-## Files
+## Files and Tests
+````{tab-set}
+```{tab-item} Provided Files
 * `search_engine.py` is the file representing the SearchEngine class as well as a command-line interface for using the SearchEngine.  
 * `document.py` is the file representing a single document in the SearchEngine.  
-* `hw5_test.py` is the file for you to put your own tests. The Run button executes this program.  
-* `server.py` and `index.html` provide a web app for you to run your completed search engine. You do not need to look at or modify these files ever.  
-* `cse163_utils.py` is a helper file that has code to help you test your code.    
+* `hw5_test.py` is the file for you to put your own tests. The Run button executes this program.   
+* `cse163_utils.py` is a helper file that has code to help you test your code.   
+* `run_tests.py` is a helper file that will run all the "unit tests" in a way that is more transparent and debuggable.  
+```
+```{tab-item} Files to Submit
+You must submit your work to the <a href="https://autograder-nchs.vercel.app/login" target="_blank">Code Submission Site</a>.  
+
+You are to submit the following Python files:  
+* `search_engine.py`  
+* `document.py`  
+* `hw5_test.py`
+* `<my_test_files>.zip`  
+
+You should create subdirectories with test files in them.  
+You should submit zipfiles of your subdirectories.  
+
+Please do **NOT** submit the files in the following subdirectories:   
+* small_text   
+* test   
+* test_corpus  
+
+```{admonition} Submit Subdirectories
+:class: seealso
+<a href="../Topics/misc/submitting.html#submitting-subdirectories">Go here</a> for information on how to submit subdirectories.
+```
+```{tab-item} Replit Unit Tests
+There is one Unit Test, but it runs lots of tests. To get details on how the failures, run `run_tests.py` by modifying the `.replit` file.  
+```
+```{tab-item} Test Tips
+Try to break your search engine.  
+Create test files that are target the type of tests you want to run. They should have content that is easy enough to verify.    
+```
+````
+  
 
 ```{admonition} Time Management
 :class: warning
@@ -40,7 +73,7 @@ In this assessment, we’ll implement two classes: a `Document` class to represe
     * Commenting
     * Flake8
   
-# Normalizing Tokens
+## Normalizing Tokens
 In this project we need to remove punctuation so that all tokens that are semantically
 identical can be recognized as "_exactly_" identical. For example:
 ```
@@ -63,7 +96,7 @@ Just use the code that is found in `cse163_utils.py`.
 from cse163_utils import normalize_token
 ```
 
-# HTML Stripping
+## HTML Stripping
 In this ReplIt, you are provided with two folders with documents. When you run `main.py`, you should start off
 by crawling the files in `test_corpus` or a folder you created with your own individual set of files. Eventually, 
 _but not at the start_, you will
@@ -98,7 +131,7 @@ to download to your local computer and run HW4 locally. If your code is written 
 given a little time. If your code is not written efficiently, patience will not suffice. :-)
 
 
-# Writing Tests
+## Writing Tests
 You need to write your own tests. The tests should be simple enough that you can calculate
 expected values by hand. Do not assume your code is correct and use those values in your tests. 
 
@@ -109,9 +142,9 @@ of things you might test. I'm not claiming that the Unit Tests in the `test` dir
 easy to read. I'm not saying those test exemplify good style. They are tests that UW provided
 and I used them "out of the box."
 
-**IMPORTANT**: `hw4_test.py` needs to follow the Main-Pattern.
+**IMPORTANT**: `hw5_test.py` needs to follow the Main-Pattern.
 
-## Test Methods
+### Test Methods
 Write many test methods. For example: do NOT write a single method for all of Document.
 You should have at least one test method for each public method on the object. 
 > For example, Document has: get_path, get_words, term_frequency.
@@ -130,7 +163,7 @@ You can get details of the Unit Test failures by updating .replit to run the fil
 These tests are a gift to help you get extra verification that your code is working. 
 More tests will be run during grading.
 
-## Do Not Change...
+### Do Not Change...
 Do not add, change or remove anything from the files in these directories.
 Furthermore, do not add files to these directories:
 * test
@@ -157,44 +190,7 @@ def test_search():
     expected = normalize_paths(expected)
     actual = normalize_paths(actual)
     assert_equals(expected, actual)
-```
-
-## Submit 
-Be sure to turn your files into `AutoGrader`. 
-Turn in **ONLY** these python files:  
-- document.py
-- hw4_test.py
-- search_engine.py
-
-Please do **NOT** submit the `tox.ini` file, nor any of the other python files.  
-
-You will want to submit all subdirectories of test files that you created. Yes, you'll want to
-create test files in subdirectories. To submit your subdirectory to AutoGrader, you'll need
-to do some extra work. Sorry! 
-
-Zip your test subdirectories, but ONLY your test subdirectories. If you have more than one test
-subdirectory, you can zip them both in the same zip file if you want, or you may keep them
-separate and submit two zip files. Do **NOT** zip up any other files. Zip up only the test subdirectories.  
-
-Here are some images to help you create a zip file for this project (on Windows).  
-`TODO: ![ZipExample](assets/make_zip.jpg)`  
-You'll see that the two test directories are selected. Then, we `right-click` on the selection
-and choose `7-Zip -> Add to "HW4.zip"`. Of course, not all computers are the same, so, here is
-another option for you.  
-`TODO: ![ZipExample](assets/make_zip2.jpg)`  
-Again, the two test directories are selected. Then, we `right-click` on the selection
-and choose `Send to -> Compressed (zipped) folder"`.  
-
-Either way, you'll submit a zip file of your test directories. Note that this is a new feature
-in AutoGrader. I apologize for any bugs or hardships this may cause you (and especially me).
-
-> IMPORTANT: You may **NOT** submit your code, or any file in the "root" directory in a `.zip`
-file. Submit all other files one-by-one, normally.
-
-Please do **NOT** submit the files in the following directories:  
-* small_text  
-* test  
-* test_corpus  
+``` 
 
 ## Important Tips
 ### Testing Output
@@ -253,19 +249,5 @@ Every function needs a doc-string comment.
 
 Every class needs a doc-string.
 
-You should add _some_ comments to `hw4_test.py`.
+You should add _some_ comments to `hw5_test.py`.
 
-## Flake8
-This project has added a `tox.ini` file which adds some configuration to the project. 
-It turns off some rules and excludes `hw4_test.py` from `flake8`. It should make it a lot 
-easier to pass the flake8 tests.  My intention is to have the same configuration while grading. 
-You should not exclude more rules because I won't be turning off any othe rules in AutoGrader.
-
-I will still require that you
-demonstrate good style in `hw4_test.py`. My eye is pretty good at catching
-bad style such as really long lines.
-
-In other words, you 100% need to have flake8 pass as configured here!
-
-Be careful of really long lines. If you have really long lines, I'll catch that with my
-eye and you will be deducted points.
