@@ -528,18 +528,19 @@ document.write(`
 <h1>Building in Replit<a class="headerlink" href="#building-in-replit" title="Permalink to this heading">#</a></h1>
 <section id="shell">
 <h2>Shell<a class="headerlink" href="#shell" title="Permalink to this heading">#</a></h2>
-<p>Another way to run your file in Replit is to use the <code class="docutils literal notranslate"><span class="pre">Shell</span></code> tab. Inside Shell, type: <code class="docutils literal notranslate"><span class="pre">&quot;python</span> <span class="pre">file_name.py&quot;</span></code>
-<img alt="" src="../../_images/shell_run.png" /></p>
+<p>The best way to run a specific file in Replit is to use the <code class="docutils literal notranslate"><span class="pre">Shell</span></code> tab. Inside Shell, type: <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">file_name.py</span></code>
+<img alt="shell window" src="../../_images/shell_run.png" /></p>
+<p>This allows one to easily run the tests. For example: <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">hw1_test.py</span></code></p>
+<p>The <code class="docutils literal notranslate"><span class="pre">shell</span></code> keeps track of your history. To access previously typed commands, hit the up-arrow. You can even move forward and backwards through the history with the up and down arrow keys. This reduces your typing immensely.</p>
 </section>
 <section id="setting-entrypoint">
 <h2>Setting Entrypoint<a class="headerlink" href="#setting-entrypoint" title="Permalink to this heading">#</a></h2>
-<p>You’ll want to change which file you build so that you can run either your functional code or your tests.
-To do this, you’ll want to modify the <code class="docutils literal notranslate"><span class="pre">.replit</span></code> file which is hidden in the <code class="docutils literal notranslate"><span class="pre">Config</span> <span class="pre">files</span></code> section that
+<p>Another way to change which file you run is to modify the <code class="docutils literal notranslate"><span class="pre">.replit</span></code> file. This file is hidden in the <code class="docutils literal notranslate"><span class="pre">Config</span> <span class="pre">files</span></code> section that
 you can’t see until you <code class="docutils literal notranslate"><span class="pre">Show</span> <span class="pre">hidden</span> <span class="pre">files</span></code>.</p>
 <p>To run a different file, change <code class="docutils literal notranslate"><span class="pre">.replit</span></code> in two ways:</p>
 <ol class="arabic simple">
 <li><p>The <code class="docutils literal notranslate"><span class="pre">run</span></code> value references the file that you want to run. For example, the snippet of code below is set up to run <code class="docutils literal notranslate"><span class="pre">hw1_test.py</span></code>.</p></li>
-<li><p>The <code class="docutils literal notranslate"><span class="pre">entrypoint</span></code> value references the file you want to run. (I’ve noticed that at times it doesn’t seem like this needs to be updated and other times it does. Perhaps a student can give me authoratitive answer as to when or whether ‘entrypoint’ needs to be updated.)</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">entrypoint</span></code> value references the file you want to run. (I’ve noticed that at times it doesn’t seem like it is required to update both of these–sometimes only one is present. Perhaps a student can give me authoratitive answer as to when or whether ‘entrypoint’ needs to be updated vs ‘run’.)</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">run</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;python hw1_test.py&quot;</span>
 
