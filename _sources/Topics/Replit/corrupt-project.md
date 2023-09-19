@@ -44,6 +44,14 @@ In the migration of assignments and checkpoints, folder names and package depend
 |`poetry add 'flake8 5.0.4'` | Installs a specific version of flake8 that is compatible with python version 3.10. In the year 2022-23, IDP used python version 3.8 and flake8 verion 3.9.2.|  
 |`poetry update numpy`| Updates the numpy package|
 
+## Restart Project
+Sometimes your project's configuration can get corrupt and it becomes too difficult to fix. It's time to start over! But, you don't need to recode everything. Instead:  
+1) Download all your coded files.  
+2) In the project's name dropdown, click the down arrow, click on the vertical dots, then select `Delete`.   
+![Delete Project](../../_static/replit_delete.png)  
+3) Restart your project  
+3) Drag your saved files into Replit  
+
 Not-so-Helpful links:
 * [Using Nix with Replit](https://docs.replit.com/programming-ide/nix-on-replit)
 * [Building with Nix on Replit](https://docs.replit.com/tutorials/python/build-with-nix)
