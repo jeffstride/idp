@@ -12,6 +12,8 @@ Go to the `Settings` tab and change two things:
 These will make your code look easier to read and conform to all the template files provided to you.
 
 ## Auto-Formatting
+This appears to be broken. It used to work.  
+
 `ctrl+s` : This will format your file according to the settings. Your code will have to be syntactically correct
 in order for this to work. This will not adjust long comments to wrap accordingly.   
 
