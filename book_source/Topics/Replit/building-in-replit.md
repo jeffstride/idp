@@ -1,5 +1,9 @@
 # Building in Replit
 
+## Shell 
+Another way to run your file in Replit is to use the `Shell` tab. Inside Shell, type: `"python file_name.py"`
+![](../../_static/shell_run.png)
+
 ## Setting Entrypoint
 You'll want to change which file you build so that you can run either your functional code or your tests.
 To do this, you'll want to modify the `.replit` file which is hidden in the `Config files` section that
@@ -42,3 +46,5 @@ def main():
 if __name__ == '__main__':
     main()
 ```
+
+
