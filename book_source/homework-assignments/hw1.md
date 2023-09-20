@@ -21,7 +21,7 @@ python keyword `pass` as a placeholder for the implementation you will provide i
 def problem_1(s):
     '''
     This method will remove the first letter in the string s
-    and replace all other occurance of that letter with a space.
+    and replace all other occurence of that letter with a space.
     It will return the new string.
     If the string is empty, it will return an empty string.
     '''
