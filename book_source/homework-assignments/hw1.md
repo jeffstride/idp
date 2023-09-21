@@ -116,7 +116,7 @@ Here are some examples that you should make sure appear in `hw1_test.py`:
 ```
 
 ```{tab-item} total
-<i class="fas fa-pen-square fa-fw"></i> **Write** a function total that takes a number `n` and returns the sum of the integers from 0 (inclusive) to n (inclusive). If `n` is negative, the function should return the value `None` instead.  
+<i class="fas fa-pen-square fa-fw"></i> **Write** a function total that takes an integer `n` and returns the sum of the integers from 0 (inclusive) to n (inclusive). If `n` is negative, the function should return the value `None` instead.  
 
 This method already been written for you, so you will not need to modify any code for this function. **But**, you will have to add **doc-string documentation** and add **more tests** to assure all special cases are covered.
 
