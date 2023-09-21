@@ -2,7 +2,7 @@
 
 This is a _cheatsheet_ of Python's collection classes.
 
-## Summary Comparision
+## Summary Comparison
 |Action|List|Tuple|Set|Dictionary|
 |------|----|-----|---|----------|
 |Create|`a = [ ]`<br/>`a = list()`<br/>`a = [1, 2]`|`t = ( , )`<br/>`t = tuple()`<br/>`t = (1, 2)`|`s = set( )`<br/>`s = {1, 2}`|`d = { }`<br/>`d = dict( )`<br/> `d = { k1:v1, k2,v2 }`<br/>`d = dict(dict2)`|
@@ -15,7 +15,7 @@ This is a _cheatsheet_ of Python's collection classes.
 ## List
 |Operation|API|
 |---------|---|
-|Create|`my_list = []`<br/>`my_list = [x ** 2 for x in [1, 3, 5, 7]]`<br/>`my_list = list()`  # constructor<br/>`my_list = list(iterable)` # construct list from any iterable|
+|Create|`my_list = []`<br/>`my_list = [x ** 2 for x in [1, 3, 5, 7]]` # comprehension<br/>`my_list = list()`  # constructor<br/>`my_list = list(iterable)` # construct list from any iterable|
 |Add|`my_list.append(5)`<br/>`my_list += [5, 4, 3]` # extends the list with items in the other list<br/># don't confuse **append** with **extend**<br/>`my_list.append(list2)` # my_list has list2 as the last item|
 |Remove|`my_list.remove('value')`  # inplace, no return value<br/>`last = my_list.pop()`  # return and inplace remove last item in the list<br/>`value = my_list.pop(index)`<br/>`del list[index]`   # inplace, no return value|
 |Contains|`if 'value' in my_list:` # **in** operator|
