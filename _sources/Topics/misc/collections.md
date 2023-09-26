@@ -8,7 +8,7 @@ This is a _cheatsheet_ of Python's collection classes.
 |Create|`a = [ ]`<br/>`a = list()`<br/>`a = [1, 2]`|`t = ( , )`<br/>`t = tuple()`<br/>`t = (1, 2)`|`s = set( )`<br/>`s = {1, 2}`|`d = { }`<br/>`d = dict( )`<br/> `d = { k1:v1, k2,v2 }`<br/>`d = dict(dict2)`|
 |Add <br/>Insert|`a.append(obj)`<br/>`a.insert(idx, obj)`|`t = t + ( obj, )`|`s.add(3)`|`d['b'] = 2`|
 |Contains|`if obj in a`|`if obj in t`|`if obj in s`|`if key in d`|
-|Remove|`a.remove(obj)`<br/>`a.pop(index)`<br/>`a.pop()`|**NA**|`s.remove(obj)`<br/>`s.pop()`|`d.pop(key)`<br/>`d.pop(key, def_val)`<br/>`del d[key]`<br/>`d.popitem()`|
+|Remove|`a.remove(obj)`<br/>`a.pop(index)`<br/>`a.pop()`|**NA**|`s.remove(obj)`<br/>`s.pop()`<br/>`s.discard('value')`|`d.pop(key)`<br/>`d.pop(key, def_val)`<br/>`del d[key]`<br/>`d.popitem()`|
 |Get<br/>Set|`v = a[index]`|`v = t[index]`<br/>`i1, i2 = t`<br/>`i1, *mid, i2 = t`<br/>`i1, *last = t`|**NA**|`v = d['a']`<br/>`v = d.get('a', v)`|
 
 
