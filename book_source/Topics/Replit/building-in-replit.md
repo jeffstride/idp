@@ -1,13 +1,20 @@
 # Building in Replit
 
+## Shell 
+The best way to run a specific file in Replit is to use the `Shell` tab. Inside Shell, type: `python file_name.py`
+![shell window](../../_static/shell_run.png)  
+
+This allows one to easily run the tests. For example: `python hw1_test.py`  
+
+The `shell` keeps track of your history. To access previously typed commands, hit the up-arrow. You can even move forward and backwards through the history with the up and down arrow keys. This reduces your typing immensely.  
+
 ## Setting Entrypoint
-You'll want to change which file you build so that you can run either your functional code or your tests.
-To do this, you'll want to modify the `.replit` file which is hidden in the `Config files` section that
+Another way to change which file you run is to modify the `.replit` file. This file is hidden in the `Config files` section that
 you can't see until you `Show hidden files`.  
 
 To run a different file, change `.replit` in two ways:  
 1) The `run` value references the file that you want to run. For example, the snippet of code below is set up to run `hw1_test.py`.  
-2) The `entrypoint` value references the file you want to run. (I've noticed that at times it doesn't seem like this needs to be updated and other times it does. Perhaps a student can give me authoratitive answer as to when or whether 'entrypoint' needs to be updated.) 
+2) The `entrypoint` value references the file you want to run. (I've noticed that at times it doesn't seem like it is required to update both of these--sometimes only one is present. Perhaps a student can give me authoratitive answer as to when or whether 'entrypoint' needs to be updated vs 'run'.) 
 
 ```bash
 run = "python hw1_test.py"
@@ -42,3 +49,5 @@ def main():
 if __name__ == '__main__':
     main()
 ```
+
+

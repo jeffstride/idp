@@ -24,8 +24,16 @@ Lot's of icons found in `.\html\_static\vendor\fontawesome\6.1.2\css\all.min.css
 <i class="fas fa-file-download fa-fw"></i> fa-file-download   
 <i class="fas fa-download fa-fw"></i> fa-download   
 
+## Reference Examples
+Create some text that needs a footnote like this here.<a href="#footnotes"><sup>[1]</sup></a>   
+
+Create a <a href="#footnotes">reference</a> to somewhere on this page in the same way as using footnotes.  
+
+A reference to another page is done similarly. Go to <a href="../Replit/flake8.html#tox.ini"> Flake8 Tox.ini</a>.
+
+
 ## Tables
-### github tabl
+### github table
 |col1|col2|col3|
 |----|----|----|
 |value1|a lot of text here that may or may not wrap|more text|
@@ -46,3 +54,6 @@ In this table, the structure is much different. There is a title. And, you have 
   - 20
   - Likely, all the column widths are relative. But, I honestly don't understand the units. And, I'd like to find a way to create a table that doesn't span the entire width, but is more compact.
 ```
+
+## Footnotes
+[1] List all the footnotes here using numbers that match the link in the body. 

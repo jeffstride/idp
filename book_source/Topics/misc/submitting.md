@@ -18,12 +18,9 @@ However, Mr. Stride uses a tool to help him more quickly grade the code. The too
 5) Allows resubmissions at anytime; it helps highlight differences   
 6) Supports easily & quickly reusing comments across students  
 
-quick commenting (by reusing comments)This means 
-
-
 ## Getting Access
 To start using the <a href="https://autograder-nchs.vercel.app/login" target="_blank">Code Submission Site</a> you
-need to **first** register your Google Authentication with this site. All youy need to do is visit the site using
+need to **first** register your Google Authentication with this site. All you need to do is visit the site using
 your Student Google Credentials. There is a bug with the site and you may get an error at first. Simply retry and
 it should display the site. You won't see any classes or assignments at the get-go.  
 
@@ -61,7 +58,7 @@ rename the file for you. You must rename the file before submitting.
 ```
 
 ### Uploading to Site
-On the <a href="https://autograder-nchs.vercel.app/login" target="_blank">Code Submission Site</a>, you'll
+On the <a href="https://autograder-nchs.vercel.app/login" target="_blank">Code SubStation</a>, you'll
 select the class and assignment from the dropdowns on the left. This will open a pane on the right where you
 can drag-and-drop your files, or browse to them. Once all the files are present, click the `Submit` button.
 The expected successful submission should result in: the pane disappears, you get a verification pop-up, and the 

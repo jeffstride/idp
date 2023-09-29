@@ -21,7 +21,7 @@ python keyword `pass` as a placeholder for the implementation you will provide i
 def problem_1(s):
     '''
     This method will remove the first letter in the string s
-    and replace all other occurance of that letter with a space.
+    and replace all other occurence of that letter with a space.
     It will return the new string.
     If the string is empty, it will return an empty string.
     '''
@@ -116,7 +116,7 @@ Here are some examples that you should make sure appear in `hw1_test.py`:
 ```
 
 ```{tab-item} total
-<i class="fas fa-pen-square fa-fw"></i> **Write** a function total that takes a number `n` and returns the sum of the integers from 0 (inclusive) to n (inclusive). If `n` is negative, the function should return the value `None` instead.  
+<i class="fas fa-pen-square fa-fw"></i> **Write** a function total that takes an integer `n` and returns the sum of the integers from 0 (inclusive) to n (inclusive). If `n` is negative, the function should return the value `None` instead.  
 
 This method already been written for you, so you will not need to modify any code for this function. **But**, you will have to add **doc-string documentation** and add **more tests** to assure all special cases are covered.
 
@@ -169,7 +169,7 @@ Importantly, it helps to think about who the audience of your comments will be. 
 
 The audience of your comments are **NOT** looking for you to simply rewrite the code in English. They do **NOT** want to know how the method works. Those types of comments belong in the code as `# inline comments`. You commonly want to avoid phrases that are telling the reader how you accomplish something (e.g. “uses a for loop”) since that is a little too detailed into the specific implementation. Instead, describe your function at a high-level; mimic documentation that you find online about a method. 
 
-For example, when you read the <a href="https://docs.python.org/3/library/stdtypes.html#str.split" target="_blank">documentation</a> on the `split` method, notice that it doesn't ell you anything about the code. It tells you what it does!  
+For example, when you read the <a href="https://docs.python.org/3/library/stdtypes.html#str.split" target="_blank">documentation</a> on the `split` method, notice that it doesn't tell you anything about the code. It tells you what it does!  
 
 ```{admonition} hint
 Make sure to describe any import edge-cases that the reader might want to know about. For example, does your function ever return `None`?
