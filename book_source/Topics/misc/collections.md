@@ -5,7 +5,7 @@ This is a _cheatsheet_ of Python's collection classes.
 ## Summary Comparison
 |Action|List|Tuple|Set|Dictionary|
 |------|----|-----|---|----------|
-|Create|`a = [ ]`<br/>`a = list()`<br/>`a = [1, 2]`|`t = ( , )`<br/>`t = tuple()`<br/>`t = (1, 2)`|`s = set( )`<br/>`s = {1, 2}`|`d = { }`<br/>`d = dict( )`<br/> `d = { k1:v1, k2,v2 }`<br/>`d = dict(dict2)`|
+|Create|`a = [ ]`<br/>`a = list()`<br/>`a = [1, 2]`|`t = ( , )`<br/>`t = tuple()`<br/>`t = (1, 2)`|`s = set( )`<br/>`s = {1, 2}`|`d = { }`<br/>`d = dict( )`<br/> `d = { k1:v1, k2:v2 }`<br/>`d = dict(dict2)`|
 |Add <br/>Insert|`a.append(obj)`<br/>`a.insert(idx, obj)`|`t = t + ( obj, )`|`s.add(3)`|`d['b'] = 2`|
 |Contains|`if obj in a`|`if obj in t`|`if obj in s`|`if key in d`|
 |Remove|`a.remove(obj)`<br/>`a.pop(index)`<br/>`a.pop()`|**NA**|`s.remove(obj)`<br/>`s.pop()`<br/>`s.discard('value')`|`d.pop(key)`<br/>`d.pop(key, def_val)`<br/>`del d[key]`<br/>`d.popitem()`|
@@ -53,7 +53,7 @@ This is a _cheatsheet_ of Python's collection classes.
 |---------|---|
 |Create|`my_set = set()`  # constructor<br/>`my_set = set(iteratable)` # create set from any iterable<br/>`my_set = { x**2 for x in range(11) }` # comprehension<br/> # Note: empty `{ }` creates a **dictionary** not a set|
 |Add|`my_set.add(5)`<br/>`my_set.update({1, 2, 3})`  # inplace union of the sets|
-|Remove|`my_set.remove('value')`  # raise error if not found<br/>`my_set.discard('value')`  # no error raised if not found<br/>`my_set.pop()` # remove a RANDOM item from the set<br/>`my_set.difference_update(set2)`  # inplace removes set2 items|
+|Remove|`my_set.remove('value')`  # raise error if not found<br/>`my_set.discard('value')`  # no error raised if not found<br/>`my_set.pop()` # remove a RANDOM item from the set<br/>`my_set.difference_update(set2)`  # inplace removes set2 items<br/>`diff_set = my_set - remove_set` # difference operator|
 |Contains|`if value in my_set:` # **in** operator|
 |Size|`len(my_set)` # **len** is built-in function|
 |Remove All|`my_set.clear()`<br/>`my_set = set()`|
