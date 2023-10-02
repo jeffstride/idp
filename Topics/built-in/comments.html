@@ -511,6 +511,8 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#doc-string-comments">Doc-String Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inline-comments">Inline Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#too-little">Too Little</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goldilocks">Goldilocks</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#too-much">Too Much</a></li>
@@ -528,7 +530,29 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="writing-effective-comments">
 <h1>Writing Effective Comments<a class="headerlink" href="#writing-effective-comments" title="Permalink to this heading">#</a></h1>
 <p>Comments in Java are essential for making your code understandable to both yourself and others. They serve as documentation and explanations for the code you’ve written. However, writing good comments requires balance. In this lesson you’ll learn the clear and concise way of writing comments, with examples of too little, just right, and too many comments.</p>
-<p>There are two goals you want to reach when adding comments. The prototype should explain <code class="docutils literal notranslate"><span class="pre">WHAT</span></code> the code does. The inline should explain <code class="docutils literal notranslate"><span class="pre">WHY</span></code> it does it.</p>
+<section id="doc-string-comments">
+<h2>Doc-String Comments<a class="headerlink" href="#doc-string-comments" title="Permalink to this heading">#</a></h2>
+<p>Doc-strings are multi-line strings enclosed in triple-quotes (either single or double). They are used to document classes and functions. Here is what makes a strong Doc-String comment:</p>
+<ol class="arabic simple">
+<li><p>State WHAT the function does. NOT how. And NOT why.</p></li>
+<li><p>Mention by name all the arguments. Types can be inferred (or it is explicitly stated) for each argument.</p></li>
+<li><p>Describe all the return values and special cases.</p></li>
+</ol>
+<p>Doc-strings should not be used anywhere else except as the method descriptor.
+Note that they always belong <code class="docutils literal notranslate"><span class="pre">under</span></code> the prototype, not above the prototype (as they are in Java).</p>
+</section>
+<section id="inline-comments">
+<h2>Inline Comments<a class="headerlink" href="#inline-comments" title="Permalink to this heading">#</a></h2>
+<p>Inline comments are single-line comments that appear within the code, providing clarifications or explanations for specific lines or blocks of code. Inline should explain <code class="docutils literal notranslate"><span class="pre">WHY,</span> <span class="pre">HOW,</span> <span class="pre">WHAT.</span></code> Here is what makes a strong inline comment:</p>
+<ol class="arabic simple">
+<li><p>All comments should add real value while letting the code speak for itself. Avoid trivial comment such as: this adds one to x</p></li>
+<li><p>The BEST comments state WHY things are happening, such as: we subtract one because we must exclude the last value that is unused in this case</p></li>
+<li><p>Short, tight and efficient code can sometimes be very hard to read. This is when a WHAT comment is vital to have.</p></li>
+</ol>
+<p>When the “what” is obvious, a “how” may not be necessary in the final submission. “How” comments are initially used to help the developer decompose the problem when writing a solution. Developers often write out a few comments that state the steps to take to solve a problem. These can remain as explanations of WHAT if they still add value after the code is complete.</p>
+<p>But, avoid comments like: “loop through each element in the list” if the code is easy to read. However, if the code is sufficiently complicated, “how” comments can truly add value.</p>
+<p>It should be clear where vertical spacing belongs, <code class="docutils literal notranslate"><span class="pre">above</span></code> the inline comment (except if it is the first line in the method).</p>
+</section>
 <section id="too-little">
 <h2>Too Little<a class="headerlink" href="#too-little" title="Permalink to this heading">#</a></h2>
 <div class="sd-tab-set docutils">
@@ -546,25 +570,22 @@ No Comments</label><div class="sd-tab-content docutils">
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-1">
-Minimal Comments</label><div class="sd-tab-content docutils">
-<p>This example includes minimal comments, which do not provide meaningful information. While the comment mentions “Process data here,” it doesn’t explain how it is processed or provide any details about the logic involved.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">process_data</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
-    <span class="c1"># Process data here</span>
+Doc-String Comments</label><div class="sd-tab-content docutils">
+<p>The example inlcudes a comment, but it does not provide the paramter types or the return type. The explaination is also ambiguous. Does the function swap the characters with eachother? With another character? Does the function return anything?</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">swap</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Takes two characters and swaps them in a given word. </span>
+<span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
 </div>
 <input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-2">
-Missing Paramater and Return Types</label><div class="sd-tab-content docutils">
-<p>The example inlcudes a comment, but it does not provide the paramter types or the return type. The explaination is also ambiguous. Does the function swap the characters with eachother? With another character? Does the function return anything?</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
-
-<span class="sd">Takes two characters and swaps them in a given word. </span>
-
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="k">def</span> <span class="nf">swap</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span>
-    <span class="c1"># Function body here</span>
+Inline Comments</label><div class="sd-tab-content docutils">
+<p>This example includes minimal comments, which do not provide meaningful information. While the comment mentions “Swap here,” it doesn’t explain how it is swaped or provide any details about the logic involved.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">swap</span><span class="p">(</span><span class="n">c1</span><span class="p">,</span> <span class="n">c2</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span>
+    <span class="c1"># Swap here</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
@@ -576,33 +597,28 @@ Missing Paramater and Return Types</label><div class="sd-tab-content docutils">
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-3">
-Function Comments</label><div class="sd-tab-content docutils">
+Doc-String Comments</label><div class="sd-tab-content docutils">
 <p>This example includes comments at the function level. The comments explain what the function does, what arguments it expects, and what it returns. This level of commenting provides clear and useful information without being excessive.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
-
-<span class="sd">Find and return the largest number in the given list of numbers.</span>
-<span class="sd">Args: numbers (list), a list of numbers to search through.</span>
-<span class="sd">Returns: int, the largest number found in the list.</span>
-
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="k">def</span> <span class="nf">find_largest</span><span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
-    <span class="c1"># Implementation details</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">find_largest</span><span class="p">(</span><span class="n">numbers</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Find and return the largest number in the given list of numbers.</span>
+<span class="sd">    Args: numbers (list), a list of numbers to search through.</span>
+<span class="sd">    Returns: int, the largest number found in the list.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
 </div>
 <input id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-4">
-Class Comments</label><div class="sd-tab-content docutils">
-<p>In this case, high-level comments are provided at the class level. These comments give an overview of the class’s purpose and the kind of information it stores. It sets the context for the entire class, making it easier to understand its role in the program.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
-
-<span class="sd">The Student class represents a student in North Creek High School.</span>
-<span class="sd">It stores basic information about the student, such as name and ID.</span>
-
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="k">class</span> <span class="nc">Student</span><span class="p">:</span>
-    <span class="c1"># Fields, constructors, and functions go here</span>
+Inline Comments</label><div class="sd-tab-content docutils">
+<p>In this case, comments are provided to the function: count_total. The comments are concise and enhance code readability. They aren’t redundant and offer clarifications.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">count_total</span><span class="p">(</span><span class="n">num</span><span class="p">):</span>
+    <span class="c1"># Initialize the total sum</span>
+    <span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>  
+    <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
+    <span class="c1"># Add each number to the total</span>
+        <span class="n">total</span> <span class="o">+=</span> <span class="n">num</span>  
 </pre></div>
 </div>
 </div>
@@ -613,37 +629,42 @@ Class Comments</label><div class="sd-tab-content docutils">
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-5" name="sd-tab-set-2" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-5">
-Excessive Function Comments</label><div class="sd-tab-content docutils">
-<p>This example contains excessive comments that provide redundant information. Comments should not restate the obvious. Over-commenting can clutter the code and make it harder to read.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+Doc-String Comments</label><div class="sd-tab-content docutils">
+<p><code class="docutils literal notranslate"><span class="pre">Excessive</span> <span class="pre">comments</span> <span class="pre">in</span> <span class="pre">doc-string</span> <span class="pre">are</span> <span class="pre">not</span> <span class="pre">penalized,</span> <span class="pre">but</span> <span class="pre">they</span> <span class="pre">cost</span> <span class="pre">a</span> <span class="pre">lot</span> <span class="pre">of</span> <span class="pre">effort.</span></code>
+This example contains excessive comments that provide redundant information. Comments should not restate the obvious. Over-commenting can clutter the code and make it harder to read.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">This is the main module of the application.</span>
+<span class="sd">It does a lot of things, like managing user input, performing calculations, and displaying results.</span>
+<span class="sd">Here, I declare a variable &#39;x&#39; to hold some data.</span>
+<span class="sd">&#39;&#39;&#39;</span>
 
-<span class="sd">This method adds two numbers together.</span>
-<span class="sd">It takes two parameters, &#39;a&#39; and &#39;b&#39;, and returns their sum.</span>
-<span class="sd">Args: a (int), the first number to be added and b (int), the second number to be added.</span>
-<span class="sd">Returns: int, the sum of &#39;a&#39; and &#39;b&#39;.</span>
+<span class="k">class</span> <span class="nc">Main</span><span class="p">:</span>
 
-<span class="sd">&quot;&quot;&quot;</span>
 <span class="k">def</span> <span class="nf">add</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
-    <span class="c1"># Addition logic</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    This method adds two numbers together.</span>
+<span class="sd">    It takes two parameters, &#39;a&#39; and &#39;b&#39;, and returns their sum.</span>
+<span class="sd">    Args: a (int), the first number to be added and b (int), the second number to be added.</span>
+<span class="sd">    Returns: int, the sum of &#39;a&#39; and &#39;b&#39;.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
 </div>
 <input id="sd-tab-item-6" name="sd-tab-set-2" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-6">
-Exsessive Class Comments</label><div class="sd-tab-content docutils">
+Inline Comments</label><div class="sd-tab-content docutils">
 <p>Similarly, in this case, it is not essential to use comments to define variables. The language used is also not clean or professional.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize the total sum to zero</span>
+<span class="n">total</span> <span class="o">=</span> <span class="mi">0</span>
 
-<span class="sd">This is the main module of our application.</span>
-<span class="sd">It does a lot of things, like managing user input, performing calculations, and displaying results.</span>
-<span class="sd">Here, we declare a variable &#39;x&#39; to hold some data.</span>
+<span class="c1"># Loop through the list of numbers and calculate the total sum</span>
+<span class="c1"># This loop iterates over each element in the list &#39;numbers&#39;</span>
+<span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">numbers</span><span class="p">:</span>
 
-<span class="sd">&quot;&quot;&quot;</span>
-<span class="c1"># Variable declaration</span>
-<span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="c1"># Inside the loop, we add the current number to the total sum</span>
+    <span class="n">total</span> <span class="o">+=</span> <span class="n">num</span>
 
-<span class="k">class</span> <span class="nc">Main</span><span class="p">:</span>
 </pre></div>
 </div>
 </div>
@@ -714,6 +735,8 @@ Exsessive Class Comments</label><div class="sd-tab-content docutils">
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#doc-string-comments">Doc-String Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inline-comments">Inline Comments</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#too-little">Too Little</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goldilocks">Goldilocks</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#too-much">Too Much</a></li>
