@@ -58,7 +58,7 @@ This is a _cheatsheet_ of Python's collection classes.
 |Size|`len(my_set)` # **len** is built-in function|
 |Remove All|`my_set.clear()`<br/>`my_set = set()`|
 |Union|`my_set = set1.union(set2)` # union does not change the set<br/>`my_set = s1 | s2` # same as above|
-|Intersection|`my_set = s1.intersect(s2)`  # intersect does not change the set<br/>`my_set = s1 & s2` # same as above|
+|Intersection|`my_set = s1.intersection(s2)`  # does not change the set<br/>`my_set = s1 & s2` # same as above|
 |Difference|`my_set = s1.difference(s2)` # difference does not change the set<br/>`my_set = s1 - s2` # same as above|
 |Copy|`clone_set = my_set.copy()` # recall reference semantics|
 |Get|**NA**, can only determine if item is **in** set or not|
