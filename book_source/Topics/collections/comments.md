@@ -35,20 +35,42 @@ def calculate_total(list):
     return total
 ```
 ```{tab-item} Doc-String Comments
-The example inlcudes a comment, but it does not provide the paramter types or the return type. The explaination is also ambiguous. Does the function swap the characters with eachother? With another character? Does the function return anything?
+The example inlcudes a comment, but it does not provide the paramter types or the return type. The explaination is also ambiguous. Does the function take into consideration capital letters? What is the return type? What are the exceptions?
 ```python
-def swap(c1, c2, word):
+def count_letters(string):
+    ''' 
+    Takes a string and returns the occurrences of each character
     '''
-    Takes two characters and swaps them in a given word. 
-    '''
-    pass
+    dict = {}
+    for c in string:
+        if(dict.get(c) == None):
+            dict[c] = 1
+        else:
+            dict[c] += 1
+
+    return dict
+
+def main():
+  print(count_letters("How much wood could a wood chuck chuck?"))
+
 ```
 ```{tab-item} Inline Comments
-This example includes minimal comments, which do not provide meaningful information. While the comment mentions "Swap here," it doesn't explain how it is swaped or provide any details about the logic involved.
+This example includes minimal comments, which do not provide meaningful information. While the comment mentions "checks if c exists" it doesn't say where it is checking. It also doesn't clarify that main uses a test to check fro count_letters()
 ```python
-def swap(c1, c2, word):
-    # Swap here
-    pass
+def count_letters(string):
+    dict = {}
+    for c in string:
+        # checks if c exists
+        if(dict.get(c) == None):
+            dict[c] = 1
+        else:
+            dict[c] += 1
+
+    return dict
+
+def main():
+    # calls count_letters()
+    print(count_letters("How much wood could a wood chuck chuck?"))
 ```
 ````
 
@@ -59,21 +81,28 @@ This example includes comments at the function level. The comments explain what 
 ```python 
 def find_largest(numbers):
     '''
-    Find and return the largest number in the given list of numbers.
-    Args: numbers (list), a list of numbers to search through.
-    Returns: int, the largest number found in the list.
+    Find the largest value in numbers, an unsorted list of real values. 
+    Return as an integer the largest number found. Return None if the list is empty.
     '''
-    pass
+    return None if len(numbers) else int(max(numbers))
 ```
 ```{tab-item} Inline Comments
-In this case, comments are provided to the function: count_total. The comments are concise and enhance code readability. They aren't redundant and offer clarifications. 
+In this case, comments are provided to the function: stats(). The comments are concise and enhance code readability. They aren't redundant and offer clarifications. 
 ```python
-def count_total(num):
-    # Initialize the total sum
-    total = 0  
-    for num in numbers:
-    # Add each number to the total
-        total += num  
+def stats(tuple_args):
+    '''
+    This functions takes a tuple as an argument and returns the 
+    sum, count, and average of all elements as a tuple... 
+    (sum, count, avg)
+    '''
+    s = sum(tuple_args)
+    count = len(tuple_args)
+
+    # return a tuple with the mean
+    return(s, count, s/count)
+    
+def main():
+    print(stats((1,2,3)))
 ```
 ````
 
@@ -91,29 +120,32 @@ Here, I declare a variable 'x' to hold some data.
 
 class Main:
 
-def add(self, a, b):
+def add(a, b):
     '''
     This method adds two numbers together.
     It takes two parameters, 'a' and 'b', and returns their sum.
     Args: a (int), the first number to be added and b (int), the second number to be added.
     Returns: int, the sum of 'a' and 'b'.
     '''
-    pass
+    return a + b
 ```
 
 ```{tab-item} Inline Comments
 Similarly, in this case, it is not essential to use comments to define variables. The language used is also not clean or professional.
 ```python
-# Initialize the total sum to zero
-total = 0
+def add_all(numbers):
+    # Initialize the total sum to zero
+    total = 0
 
-# Loop through the list of numbers and calculate the total sum
-# This loop iterates over each element in the list 'numbers'
-for num in numbers:
+    # Loop through the list of numbers and calculate the total sum
+    # This loop iterates over each element in the list 'numbers'
+    for num in numbers:
 
-    # Inside the loop, we add the current number to the total sum
-    total += num
+        # Inside the loop, we add the current number to the total sum
+        total += num
 
+    # Return the total
+    return total 
 ```
 ````
 

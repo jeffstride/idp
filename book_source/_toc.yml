@@ -22,6 +22,7 @@ chapters:
         sections:
           - file: Topics/collections/collections
           - file: Topics/collections/stub2
+          - file: Topics/collections/comments
       - file: Topics/pandas/index
         sections:
           - file: Topics/pandas/dataframe
@@ -37,7 +38,6 @@ chapters:
         sections:
           - file: Topics/built-in/arguments
           - file: Topics/built-in/formatted-string
-          - file: Topics/built-in/comments
   - file: final-project/index
     sections:
       - file: final-project/handouts/index
