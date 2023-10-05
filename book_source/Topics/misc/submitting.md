@@ -2,7 +2,7 @@
 
 Students are to submit all **Checkpoints** into `Replit`. It's simple. Click the "Submit" button. Once you submit, the date-time is recorded. If you need to change your files, go ahead. But, your changes won't be seen by Mr. Stride until you hit the "Submit" button again, at which point, the date-time will change. If the new date-time is after the due date, some penalties _may_ apply.
 
-Students are to submit the **Homework Assignments** to the <a href="https://autograder-nchs.vercel.app/login" target="_blank">Code Submission Site</a>.  This page explains why and how.  
+Students are to submit the **Homework Assignments** to <a href="https://autograder-nchs.vercel.app/login" target="_blank">Code SubStation</a>.  This page explains why and how.  
 
 ## Why?
 Often a student will develop their code in `Replit`, which is awesome for several reasons:  
@@ -19,7 +19,7 @@ However, Mr. Stride uses a tool to help him more quickly grade the code. The too
 6) Supports easily & quickly reusing comments across students  
 
 ## Getting Access
-To start using the <a href="https://autograder-nchs.vercel.app/login" target="_blank">Code Submission Site</a> you
+To start using the <a href="https://autograder-nchs.vercel.app/login" target="_blank">Code SubStation</a> you
 need to **first** register your Google Authentication with this site. All you need to do is visit the site using
 your Student Google Credentials. There is a bug with the site and you may get an error at first. Simply retry and
 it should display the site. You won't see any classes or assignments at the get-go.  

@@ -16,6 +16,7 @@ chapters:
         sections:
         - file: Topics/misc/submitting
         - file: Topics/misc/collections
+        - file: Topics/misc/comments
         - file: Topics/misc/my_st
       - file: Topics/Replit/index
         sections:
