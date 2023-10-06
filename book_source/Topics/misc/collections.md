@@ -5,7 +5,7 @@ This is a _cheatsheet_ of Python's collection classes.
 ## Summary Comparison
 |Action|List|Tuple|Set|Dictionary|
 |------|----|-----|---|----------|
-|Create|`a = [ ]`<br/>`a = list()`<br/>`a = [1, 2]`|`t = ( , )`<br/>`t = tuple()`<br/>`t = (1, 2)`|`s = set( )`<br/>`s = {1, 2}`|`d = { }`<br/>`d = dict( )`<br/> `d = { k1:v1, k2:v2 }`<br/>`d = dict(dict2)`|
+|Create|`a = [ ]`<br/>`a = list()`<br/>`a = [1, 2]`|`t = ( 1, )`<br/>`t = tuple()`<br/>`t = (1, 2)`|`s = set( )`<br/>`s = {1, 2}`|`d = { }`<br/>`d = dict( )`<br/> `d = { k1:v1, k2:v2 }`<br/>`d = dict(dict2)`|
 |Add <br/>Insert|`a.append(obj)`<br/>`a.insert(idx, obj)`|`t = t + ( obj, )`|`s.add(3)`|`d['b'] = 2`|
 |Contains|`if obj in a`|`if obj in t`|`if obj in s`|`if key in d`|
 |Remove|`a.remove(obj)`<br/>`a.pop(index)`<br/>`a.pop()`|**NA**|`s.remove(obj)`<br/>`s.pop()`<br/>`s.discard('value')`|`d.pop(key)`<br/>`d.pop(key, def_val)`<br/>`del d[key]`<br/>`d.popitem()`|
