@@ -58,7 +58,7 @@ data = { "New York": [8.6, 20],
 df = pd.DataFrame(data)
 ```
 > The structure of the dictionary can take many forms. To see the various structures
-> take a look at the converse function <a href="" target="_blank">DataFrame.to_dict()</a>.
+> take a look at the converse function <a href="https://pandas.pydata.org/pandas-docs/version/0.21/generated/pandas.DataFrame.to_dict.html" target="_blank">DataFrame.to_dict()</a>.
 
 **Creating from a List**  
 This is highly unusual, but possible.  
