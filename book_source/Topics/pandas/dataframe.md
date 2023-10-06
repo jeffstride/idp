@@ -57,6 +57,8 @@ data = { "New York": [8.6, 20],
 # creates 5 columns, 2 rows, default indexing
 df = pd.DataFrame(data)
 ```
+> The structure of the dictionary can take many forms. To see the various structures
+> take a look at the converse function <a href="" target="_blank">DataFrame.to_dict()</a>.
 
 **Creating from a List**  
 This is highly unusual, but possible.  
