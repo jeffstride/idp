@@ -16,14 +16,14 @@ This is a _cheatsheet_ of Python's collection classes.
 |Operation|API|
 |---------|---|
 |Create|`my_list = []`<br/>`my_list = [x ** 2 for x in [1, 3, 5, 7]]` # comprehension<br/>`my_list = list()`  # constructor<br/>`my_list = list(iterable)` # construct list from any iterable|
-|Add|`my_list.append(5)`<br/>`my_list += [5, 4, 3]` # extends the list with items in the other list<br/># don't confuse **append** with **extend**<br/>`my_list.append(list2)` # my_list has list2 as the last item|
+|Add|`my_list.append(5)`<br/>`my_list.append(list2)` # my_list has list2 as the last item|
 |Remove|`my_list.remove('value')`  # inplace, no return value<br/>`last = my_list.pop()`  # return and inplace remove last item in the list<br/>`value = my_list.pop(index)`<br/>`del list[index]`   # inplace, no return value|
 |Contains|`if 'value' in my_list:` # **in** operator|
 |Get|`n = my_list[index]`|
 |Set|`my_list[index] = value`|
 |Size|`len(my_list)` # **len** is built-in function|
 |Insert|`my_list.insert(index, value)`|
-|Extend|`my_list.extend(list2)` # add all items in list2, not list2 as an item|
+|Extend|`my_list.extend(list2)` # add all items in list2, not list2 as an item<br/>`my_list += [5, 4, 3]` # extends the list with items in the other list<br/># don't confuse **append** with **extend**|
 |Remove all|`my_list.clear()`<br/>`my_list = []`<br/>`del my_list[:]`| 
 |indexOf|`my_list.index('value')`<br/>`my_list.index('value', startIndex)`<br/>`my_list.index('value', startIndex, endIndex)`|
 |Sort|`my_list.sort()` # inplace sorting<br/>`my_list = sorted(my_list)` # reassignment|
