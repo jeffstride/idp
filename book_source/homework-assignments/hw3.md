@@ -14,7 +14,7 @@
 * `cse163_utils.py` is a helper file that has code to help you test your code.  
 * `pokemon_box.csv` is a large CSV file that stores information about pokemon.  
 * `pokemon_test.csv` is a very small CSV file that stores information about pokemon used for the example cases. You may use this in your own personal tests, but do not change and do not submit.  
-* `run_hw3.py` is an optional file that runs your implementations for each problem and prints the output. To run it, you need to change `replit`.  
+* `run_hw3.py` is an optional file that runs your implementations for each problem and prints the output. To run it, you need to change `.replit` or use the shell tab and type in, `python run_hw3.py`.  
 * `tox.ini` is the set of `flake8` rules. Do not change. Do not submit.  
 ```
 ```{tab-item} Files to Submit
@@ -221,7 +221,7 @@ For the `pokemon_test.csv` file, `species_count(data)` should return `3`.
 
 ```{admonition}  Do not use id
 :class: important
-Do not use the `id` attribute to solve this this problem. Instead, you use the `name` attribute.  
+Do not use the `id` attribute to solve this problem. Instead, you use the `name` attribute.  
 I realize that `id` should be the right approach, but UW has other ideas here. Don't fight it. Just use `name`.
 ```
 
@@ -303,7 +303,7 @@ Assessment submissions should pass these checks: `flake8`, and <a href="https://
 
 ```{admonition} Reminder
 :class: important
-Make sure to provide a descriptive comments in doc-string format.
+Make sure to provide descriptive comments in doc-string format.
 ```  
 ## Rubric
 Rubric information can be found in the instruction in the Replit project.   
@@ -357,12 +357,12 @@ Stat = 0.104
 Stat = 0.984
 Stat = 13.000
 ```
-Several higher Object Oreinted pieces of functionality are are present. You need to figure them out.  
+Several higher Object Oriented pieces of functionality are present. You need to figure them out.  
 ```{admonition} Tips
 :class: hint
 * Mr. Stride's implementation was a total of 20 lines of code (including imports and empty lines, but excluding comments).   
 * Use an <a href="https://docs.python.org/3/library/functions.html#staticmethod" target="_blank">annotation</a> to designate `compute` to be a static method.  
 * Use <a href="https://docs.python.org/3/reference/datamodel.html#special-method-names" target="_blank">special methods</a> to allow the object to be _iterable_ and _printable_.  
-* Consider leveraging a list's inherent ability to be _iterable_ to simpify the object's required implementation.  
+* Consider leveraging a list's inherent ability to be _iterable_ to simplify the object's required implementation.  
 * Follow privacy rules by using Python's naming conventions (using underscores) for private instance field names.   
 ```

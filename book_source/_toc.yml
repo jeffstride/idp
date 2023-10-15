@@ -39,7 +39,6 @@ chapters:
         sections:
           - file: Topics/built-in/arguments
           - file: Topics/built-in/formatted-string
-          - file: Topics/built-in/comments
   - file: final-project/index
     sections:
       - file: final-project/handouts/index

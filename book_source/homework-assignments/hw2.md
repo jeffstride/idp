@@ -51,7 +51,7 @@ You should assume that all arguments are of the correct type. You do **NOT** nee
 ````
 ```{admonition} Expectation!
 :class: important
-In hw2.py you should not use any `import` statements or features in Python we have not yet discussed in class, online book, or in homework handout. All of these problems should be solved using the fundamental constructs we’ve learned in class so far. For your testing program, you can use imports. In fact, you're expected to use cse163_utils‘ `assert_equals` function.
+In hw2.py you should not use any `import` statements or features in Python we have not yet discussed in class, the online book, or in the homework handout. All of these problems should be solved using the fundamental constructs we’ve learned in class so far. For your testing program, you can use imports. In fact, you're expected to use cse163_utils‘ `assert_equals` function.
 ```
 
 * * * 
@@ -67,7 +67,7 @@ Way down below is a challenge question which is optional and not graded. See the
 ```{tab-item} count_divisible_digits
  <i class="fas fa-pen-square fa-fw"></i> **Write** a function `count_divisible_digits` that takes two integer numbers `n` and `m` as arguments and returns the number of digits in n that are divisible by m. If m is 0, then count_divisible_digits should return 0. For this problem, any digit in n that is 0 is divisible by any number. You may assume m is a single digit (0 ≤ m <10) and that it is not negative.
 
-<i class="fas fa-pen-square fa-fw"></i> **Write** a test in the file `hw2_test.py` that calls the function with some inputs and compares the output of the program with the expected value using assert_equals. Include test cases for all of the examples above as well as 3 (**three**) additional test cases.  
+<i class="fas fa-pen-square fa-fw"></i> **Write** a test in the file `hw2_test.py` that calls the function with some inputs and compares the output of the program with the expected value using assert_equals. Include test cases for all of the examples below as well as 3 (**three**) additional test cases.  
 
 Here are some examples that you should make sure appear in `hw2_test.py`:  
 | call | returns | comments |
@@ -79,7 +79,7 @@ Here are some examples that you should make sure appear in `hw2_test.py`:
 
 ```{admonition}  Do Not Use String
 :class: important
-Do not use `str` to solve any part of this this problem in any way. Instead, you should solve this problem by manipulating the number itself using integer division. Recall that:  
+Do not use `str` to solve any part of this problem in any way. Instead, you should solve this problem by manipulating the number itself using integer division. Recall that:  
 * `n // 10` evaluates to all but the last digit of n.  
 * `n % 10` evaluates to the last digit of n.  
 ```
@@ -119,7 +119,7 @@ The directions string will use `'N'` to indicate increasing the y-coordinate, `'
 7. Move 'n' to (0, 4).  
 8. Move 'W' to (-1, 4).  
 
-<i class="fas fa-pen-square fa-fw"></i> **Write** a test that calls the function with some inputs and compares the output of the program with the expected value using `assert_equals`. Include test cases for the example above as well as 3 (**three**) additional test cases.
+<i class="fas fa-pen-square fa-fw"></i> **Write** a test that calls the function with some inputs and compares the output of the program with the expected value using `assert_equals`. Include the valid test cases sh\own above as well as 3 (**three**) additional test cases.
 
 ```
 ```{tab-item} reformat_date
@@ -162,7 +162,7 @@ output of the method with the expected value using `assert_equals`. Include the 
 additional test cases.  
 
 📝 **TIP**: Each test case should have a test file that you have created. Be sure that you **submit** these
-test files with your python files.  Your test need to run successfully!!   
+test files with your python files.  Your tests need to run successfully!!   
 
 Using the file contents below, the call `longest_word('song.txt')` should return `'3: Merrily,'`, the first
 word in the third line of the file shown here. Note that the filename uses a relative path.   
@@ -174,7 +174,7 @@ Life is but a dream!
 ```
 ```{tab-item} get_average_in_range
 <i class="fas fa-pen-square fa-fw"></i> **Write** a function `get_average_in_range` that takes a list of integers, an integer
-`low`, and an integer `high`, and returns the average of all values within the list that lies in the given range from `low`
+`low`, and an integer `high`, and returns the average of all values within the list that lie in the given range from `low`
 (inclusive) to `high` (exclusive). If there are no values in the given range, returns `0`.
 
 
@@ -218,7 +218,7 @@ additional test cases.
 ````
 
 ## Code Quality
-Assessment submissions should pass these checks: `flake8`, and <a href="https://courses.cs.washington.edu/courses/cse163/22sp/resources/code_quality/" target="_blank">code quality guidelines</a>. The code quality guidelines are very thorough. For this assessment, the most relevant rules can be found in these sections:  
+Assessment submissions should pass these checks: `flake8` and <a href="https://courses.cs.washington.edu/courses/cse163/22sp/resources/code_quality/" target="_blank">code quality guidelines</a>. The code quality guidelines are very thorough. For this assessment, the most relevant rules can be found in these sections:  
 
 * <a href="https://courses.cs.washington.edu/courses/cse163/22sp/resources/code_quality/#naming-conventions" target="_blank">Naming</a>  
 * <a href="https://courses.cs.washington.edu/courses/cse163/22sp/resources/code_quality/#documentation" target="_blank">Documentation</a>   
@@ -233,7 +233,7 @@ Assessment submissions should pass these checks: `flake8`, and <a href="https://
 Make sure to provide a descriptive file header in doc-string format, not something generic like “implements functions for Primer”.
 ```  
 ## Rubric
-Rubric information can be found in the instruction in the Replit project.   
+Rubric information can be found in the **Instruction** tab in the Replit project.   
 
 ## Challenge Question
 
@@ -266,7 +266,7 @@ w3 = np.array([0, 0, 0, 2])
 
 ```{admonition} Tips
 :class: hint
-* It helps if you know about: `shape`, `broadcasting` and "vector" math.  
+* It helps if you know about: `shape`, `broadcasting`, and "vector" math.  
 * Consider how `numpy` uses "broadcasting" to adjust the shapes.  
 * Leverage `numpy` methods and functionality.  
 📝 **Extra Challenge**: Can you write this method in 1 line of code?  

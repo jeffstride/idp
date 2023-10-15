@@ -1,6 +1,6 @@
 # Submitting
 
-Students are to submit all **Checkpoints** into `Replit`. It's simple. Click the "Submit" button. Once you submit, the date-time is recorded. If you need to change your files, go ahead. But, your changes won't be seen by Mr. Stride until you hit the "Submit" button again, at which point, the date-time will change. If the new date-time is after the due date, some penalties _may_ apply.
+Students are to submit all **Checkpoints** into `Replit`. It's simple. Click the "Submit" button. Once you submit, the date-time is recorded. If you need to change your files, go ahead. But, your changes won't be seen by Mr. Stride until you hit the "Resubmit" button, at which point, the date-time will change. If the new date-time is after the due date, some penalties _may_ apply.
 
 Students are to submit the **Homework Assignments** to <a href="https://autograder-nchs.vercel.app/login" target="_blank">Code SubStation</a>.  This page explains why and how.  
 
@@ -31,11 +31,11 @@ Each assignment will have requirements about which files to submit. The list of 
 provided for you in the Homework Assignment. The experience you have can be best explained by describing
 the submission rule categories:  
 * **Restricted:** You may submit only the required files. You are **not** allowed to submit any other files.  
-* **Open:** you may submit any file that hasn't been explicitly disallowed. This is necessary when students are allowed (perhaps required) to create test files. Or, it may be the assignment is open-ended and it is impossible to know the names of all the files.  
+* **Open:** You may submit any file that hasn't been explicitly disallowed. This is necessary when students are allowed (perhaps required) to create test files. Or, it may be the assignment is open-ended and it is impossible to know the names of all the files.  
 
 Some files will be explicitly disallowed, such as `tox.ini` or `cse163_utils.py`. These are files that should
 remain unchanged. If you change these files in order to get your code to work, you're breaking the rules!!
-And, as a consequence, you code may fail the Unit Tests on Mr. Stride's machine during grading.  
+And, as a consequence, your code may fail the Unit Tests on Mr. Stride's machine during grading.  
 
 ### Downloading from Replit
 Most of the time, you'll be developing your code in `Replit`. To sumbit your files, you'll first need
@@ -50,7 +50,7 @@ the right-hand side. Click on the dots to reveal a menu of options. Choose, <i c
 Students often will download a file from Replit multiple times. In Windows, each time you download a file
 it is put into the `downloads` folder. If the filename already exists in the downloads folder, Windows will
 append a parenthetical version to the filename. For example: the first time you download `file.py`, it will
-be named `file.py``. If you download it again without having deleted the first file, Windows will download
+be named `file.py`. If you download it again without having deleted the first file, Windows will download
 the file as `file(1).py`. It is important to recognize that this is a different name!! 
 
 If the assignment requires `file.py`, you **cannot** expect `file(1).py` to work. Mr. Stride will not
@@ -61,7 +61,7 @@ rename the file for you. You must rename the file before submitting.
 On the <a href="https://autograder-nchs.vercel.app/login" target="_blank">Code SubStation</a>, you'll
 select the class and assignment from the dropdowns on the left. This will open a pane on the right where you
 can drag-and-drop your files, or browse to them. Once all the files are present, click the `Submit` button.
-The expected successful submission should result in: the pane disappears, you get a verification pop-up, and the 
+The expected successful submission behavior should be: the pane disappears, you get a verification pop-up, and the 
 file contents will appear in the `Submissions` tab.  
 
 > **NOTE:** It is valuable to verify your submission. Use the instructions below.  
@@ -81,7 +81,7 @@ If you don't see your code, then it's not there and Mr. Stride cannot see it eit
 ### Submitting Subdirectories
 Sometimes it is appropriate to create subfolders<a href="#footnotes"><sup>[1]</sup></a> with datafiles. Creating a folder structure is an excellent way
 to add clarity. In order to communicate the directory structure of your files, we make use of `zip` files. This adds
-some complication to the submission process. Most of the time, zipfiles are disallowed and unncessary.  
+some complication to the submission process. Most of the time, zipfiles are disallowed and unnecessary.  
 
 For some assignments, it will be required that submit test files created in subfolders. You'll 
 create test files in subdirectories, zip the subdirectory, and submit the zipfile. 

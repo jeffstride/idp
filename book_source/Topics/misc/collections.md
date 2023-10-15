@@ -64,7 +64,7 @@ This is a _cheatsheet_ of Python's collection classes.
 |Get|**NA**, can only determine if item is **in** set or not|
 |Set|**NA**, cannot set the value of a specific element|
 |Insert|**NA** Just add the object to the set. There is no order of elements.|
-|indexOf<br/>Sort<br/>reverse|**NA** This is no order in a set|
+|indexOf<br/>Sort<br/>Reverse|**NA** There is no order in a set|
 
 ## Dictionary
 |Operation|API|

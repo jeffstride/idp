@@ -10,13 +10,14 @@ The `shell` keeps track of your history. To access previously typed commands, hi
 
 ## Setting Entrypoint
 Another way to change which file you run is to modify the `.replit` file. This file is hidden in the `Config files` section that
-you can't see until you `Show hidden files`.  
+you can't see until you click `Show hidden files`.  
 
 To run a different file, change `.replit` in two ways:  
 1) The `run` value references the file that you want to run. For example, the snippet of code below is set up to run `hw1_test.py`.  
-2) The `entrypoint` value references the file you want to run. (I've noticed that at times it doesn't seem like it is required to update both of these--sometimes only one is present. Perhaps a student can give me authoratitive answer as to when or whether 'entrypoint' needs to be updated vs 'run'.) 
+2) The `entrypoint` value references the file you want to run.  
 
 ```bash
+# The command that runs the program. If the interpreter field is set, it will have priority and this run command will do nothing
 run = "python hw1_test.py"
 
 entrypoint = "main.py"
