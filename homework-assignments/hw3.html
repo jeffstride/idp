@@ -264,7 +264,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2 has-children"><a class="reference internal" href="../Topics/built-in/index.html"><i class="fas fa-book fa-fw"></i> Built-in</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../Topics/built-in/arguments.html">Arguments</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Topics/built-in/formatted-string.html">Formatted Strings</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Topics/built-in/comments.html">Writing Effective Comments</a></li>
 </ul>
 </li>
 </ul>
@@ -555,7 +554,7 @@ Provided Files</label><div class="sd-tab-content docutils">
 <li><p><code class="docutils literal notranslate"><span class="pre">cse163_utils.py</span></code> is a helper file that has code to help you test your code.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pokemon_box.csv</span></code> is a large CSV file that stores information about pokemon.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">pokemon_test.csv</span></code> is a very small CSV file that stores information about pokemon used for the example cases. You may use this in your own personal tests, but do not change and do not submit.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">run_hw3.py</span></code> is an optional file that runs your implementations for each problem and prints the output. To run it, you need to change <code class="docutils literal notranslate"><span class="pre">replit</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">run_hw3.py</span></code> is an optional file that runs your implementations for each problem and prints the output. To run it, you need to change <code class="docutils literal notranslate"><span class="pre">.replit</span></code> or use the shell tab and type in, <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">run_hw3.py</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">tox.ini</span></code> is the set of <code class="docutils literal notranslate"><span class="pre">flake8</span></code> rules. Do not change. Do not submit.</p></li>
 </ul>
 </div>
@@ -816,7 +815,7 @@ species_count</label><div class="sd-tab-content docutils">
 <p>For the <code class="docutils literal notranslate"><span class="pre">pokemon_test.csv</span></code> file, <code class="docutils literal notranslate"><span class="pre">species_count(data)</span></code> should return <code class="docutils literal notranslate"><span class="pre">3</span></code>.</p>
 <div class="important admonition">
 <p class="admonition-title">Do not use id</p>
-<p>Do not use the <code class="docutils literal notranslate"><span class="pre">id</span></code> attribute to solve this this problem. Instead, you use the <code class="docutils literal notranslate"><span class="pre">name</span></code> attribute.<br />
+<p>Do not use the <code class="docutils literal notranslate"><span class="pre">id</span></code> attribute to solve this problem. Instead, you use the <code class="docutils literal notranslate"><span class="pre">name</span></code> attribute.<br />
 I realize that <code class="docutils literal notranslate"><span class="pre">id</span></code> should be the right approach, but UW has other ideas here. Don’t fight it. Just use <code class="docutils literal notranslate"><span class="pre">name</span></code>.</p>
 </div>
 </div>
@@ -906,7 +905,7 @@ mean_attack_per_type</label><div class="sd-tab-content docutils">
 </ul>
 <div class="important admonition">
 <p class="admonition-title">Reminder</p>
-<p>Make sure to provide a descriptive comments in doc-string format.</p>
+<p>Make sure to provide descriptive comments in doc-string format.</p>
 </div>
 </section>
 <section id="rubric">
@@ -962,14 +961,14 @@ statistics using Python libraries; do not implement the calculations yourself.</
 <span class="n">Stat</span> <span class="o">=</span> <span class="mf">13.000</span>
 </pre></div>
 </div>
-<p>Several higher Object Oreinted pieces of functionality are are present. You need to figure them out.</p>
+<p>Several higher Object Oriented pieces of functionality are present. You need to figure them out.</p>
 <div class="hint admonition">
 <p class="admonition-title">Tips</p>
 <ul class="simple">
 <li><p>Mr. Stride’s implementation was a total of 20 lines of code (including imports and empty lines, but excluding comments).</p></li>
 <li><p>Use an <a href="https://docs.python.org/3/library/functions.html#staticmethod" target="_blank">annotation</a> to designate <code class="docutils literal notranslate"><span class="pre">compute</span></code> to be a static method.</p></li>
 <li><p>Use <a href="https://docs.python.org/3/reference/datamodel.html#special-method-names" target="_blank">special methods</a> to allow the object to be <em>iterable</em> and <em>printable</em>.</p></li>
-<li><p>Consider leveraging a list’s inherent ability to be <em>iterable</em> to simpify the object’s required implementation.</p></li>
+<li><p>Consider leveraging a list’s inherent ability to be <em>iterable</em> to simplify the object’s required implementation.</p></li>
 <li><p>Follow privacy rules by using Python’s naming conventions (using underscores) for private instance field names.</p></li>
 </ul>
 </div>

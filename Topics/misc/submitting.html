@@ -264,7 +264,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2 has-children"><a class="reference internal" href="../built-in/index.html"><i class="fas fa-book fa-fw"></i> Built-in</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../built-in/arguments.html">Arguments</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../built-in/formatted-string.html">Formatted Strings</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../built-in/comments.html">Writing Effective Comments</a></li>
 </ul>
 </li>
 </ul>
@@ -537,7 +536,7 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="submitting">
 <h1>Submitting<a class="headerlink" href="#submitting" title="Permalink to this heading">#</a></h1>
-<p>Students are to submit all <strong>Checkpoints</strong> into <code class="docutils literal notranslate"><span class="pre">Replit</span></code>. It’s simple. Click the “Submit” button. Once you submit, the date-time is recorded. If you need to change your files, go ahead. But, your changes won’t be seen by Mr. Stride until you hit the “Submit” button again, at which point, the date-time will change. If the new date-time is after the due date, some penalties <em>may</em> apply.</p>
+<p>Students are to submit all <strong>Checkpoints</strong> into <code class="docutils literal notranslate"><span class="pre">Replit</span></code>. It’s simple. Click the “Submit” button. Once you submit, the date-time is recorded. If you need to change your files, go ahead. But, your changes won’t be seen by Mr. Stride until you hit the “Resubmit” button, at which point, the date-time will change. If the new date-time is after the due date, some penalties <em>may</em> apply.</p>
 <p>Students are to submit the <strong>Homework Assignments</strong> to <a href="https://autograder-nchs.vercel.app/login" target="_blank">Code SubStation</a>.  This page explains why and how.</p>
 <section id="why">
 <h2>Why?<a class="headerlink" href="#why" title="Permalink to this heading">#</a></h2>
@@ -572,11 +571,11 @@ provided for you in the Homework Assignment. The experience you have can be best
 the submission rule categories:</p>
 <ul class="simple">
 <li><p><strong>Restricted:</strong> You may submit only the required files. You are <strong>not</strong> allowed to submit any other files.</p></li>
-<li><p><strong>Open:</strong> you may submit any file that hasn’t been explicitly disallowed. This is necessary when students are allowed (perhaps required) to create test files. Or, it may be the assignment is open-ended and it is impossible to know the names of all the files.</p></li>
+<li><p><strong>Open:</strong> You may submit any file that hasn’t been explicitly disallowed. This is necessary when students are allowed (perhaps required) to create test files. Or, it may be the assignment is open-ended and it is impossible to know the names of all the files.</p></li>
 </ul>
 <p>Some files will be explicitly disallowed, such as <code class="docutils literal notranslate"><span class="pre">tox.ini</span></code> or <code class="docutils literal notranslate"><span class="pre">cse163_utils.py</span></code>. These are files that should
 remain unchanged. If you change these files in order to get your code to work, you’re breaking the rules!!
-And, as a consequence, you code may fail the Unit Tests on Mr. Stride’s machine during grading.</p>
+And, as a consequence, your code may fail the Unit Tests on Mr. Stride’s machine during grading.</p>
 <section id="downloading-from-replit">
 <h3>Downloading from Replit<a class="headerlink" href="#downloading-from-replit" title="Permalink to this heading">#</a></h3>
 <p>Most of the time, you’ll be developing your code in <code class="docutils literal notranslate"><span class="pre">Replit</span></code>. To sumbit your files, you’ll first need
@@ -589,7 +588,8 @@ the right-hand side. Click on the dots to reveal a menu of options. Choose, <i c
 <p>Students often will download a file from Replit multiple times. In Windows, each time you download a file
 it is put into the <code class="docutils literal notranslate"><span class="pre">downloads</span></code> folder. If the filename already exists in the downloads folder, Windows will
 append a parenthetical version to the filename. For example: the first time you download <code class="docutils literal notranslate"><span class="pre">file.py</span></code>, it will
-be named <code class="docutils literal notranslate"><span class="pre">file.py``.</span> <span class="pre">If</span> <span class="pre">you</span> <span class="pre">download</span> <span class="pre">it</span> <span class="pre">again</span> <span class="pre">without</span> <span class="pre">having</span> <span class="pre">deleted</span> <span class="pre">the</span> <span class="pre">first</span> <span class="pre">file,</span> <span class="pre">Windows</span> <span class="pre">will</span> <span class="pre">download</span> <span class="pre">the</span> <span class="pre">file</span> <span class="pre">as</span> </code>file(1).py`. It is important to recognize that this is a different name!!</p>
+be named <code class="docutils literal notranslate"><span class="pre">file.py</span></code>. If you download it again without having deleted the first file, Windows will download
+the file as <code class="docutils literal notranslate"><span class="pre">file(1).py</span></code>. It is important to recognize that this is a different name!!</p>
 <p>If the assignment requires <code class="docutils literal notranslate"><span class="pre">file.py</span></code>, you <strong>cannot</strong> expect <code class="docutils literal notranslate"><span class="pre">file(1).py</span></code> to work. Mr. Stride will not
 rename the file for you. You must rename the file before submitting.</p>
 </div>
@@ -599,7 +599,7 @@ rename the file for you. You must rename the file before submitting.</p>
 <p>On the <a href="https://autograder-nchs.vercel.app/login" target="_blank">Code SubStation</a>, you’ll
 select the class and assignment from the dropdowns on the left. This will open a pane on the right where you
 can drag-and-drop your files, or browse to them. Once all the files are present, click the <code class="docutils literal notranslate"><span class="pre">Submit</span></code> button.
-The expected successful submission should result in: the pane disappears, you get a verification pop-up, and the
+The expected successful submission behavior should be: the pane disappears, you get a verification pop-up, and the
 file contents will appear in the <code class="docutils literal notranslate"><span class="pre">Submissions</span></code> tab.</p>
 <blockquote>
 <div><p><strong>NOTE:</strong> It is valuable to verify your submission. Use the instructions below.</p>
@@ -619,7 +619,7 @@ to see the contents. If the code can be seen, the submission was successful!</p>
 <h3>Submitting Subdirectories<a class="headerlink" href="#submitting-subdirectories" title="Permalink to this heading">#</a></h3>
 <p>Sometimes it is appropriate to create subfolders<a href="#footnotes"><sup>[1]</sup></a> with datafiles. Creating a folder structure is an excellent way
 to add clarity. In order to communicate the directory structure of your files, we make use of <code class="docutils literal notranslate"><span class="pre">zip</span></code> files. This adds
-some complication to the submission process. Most of the time, zipfiles are disallowed and unncessary.</p>
+some complication to the submission process. Most of the time, zipfiles are disallowed and unnecessary.</p>
 <p>For some assignments, it will be required that submit test files created in subfolders. You’ll
 create test files in subdirectories, zip the subdirectory, and submit the zipfile.
 This is extra work. Sorry!</p>

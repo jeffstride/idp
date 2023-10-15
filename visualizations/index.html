@@ -264,7 +264,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2 has-children"><a class="reference internal" href="../Topics/built-in/index.html"><i class="fas fa-book fa-fw"></i> Built-in</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l3"><a class="reference internal" href="../Topics/built-in/arguments.html">Arguments</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Topics/built-in/formatted-string.html">Formatted Strings</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../Topics/built-in/comments.html">Writing Effective Comments</a></li>
 </ul>
 </li>
 </ul>
@@ -513,6 +512,7 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plots">Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#todo">TODO</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a></li>
 </ul>
             </nav>
@@ -538,6 +538,23 @@ These are popular plots with nice customizations that proved to be effective in 
 <li><p>BarChart</p></li>
 <li><p>Geospatial</p></li>
 <li><p>Line/Scatter</p></li>
+</ul>
+</section>
+<section id="todo">
+<h2>TODO<a class="headerlink" href="#todo" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p>Explain when to use:</p>
+<ul>
+<li><p>ser.plot()</p></li>
+<li><p>df.plot()</p></li>
+<li><p>sns.lineplot()</p></li>
+<li><p>plt.plot()</p></li>
+<li><p>ax.plot()</p></li>
+</ul>
+</li>
+<li><p>Explain: figure, axis, grid, markers, ticks, labels, title (suptitle, too), spines. Naming convensions. ( axis.set_{name} where plot.{name})</p></li>
+<li><p>Explain when do figures get reset in Replit (when do we need to do plt.cla() to clear current active axis, plt.clf() to clear entire current figure).</p></li>
+<li><p>Explain how plt.gca() gets the current axis. So there is a concept of the current figure and current axis. plt.gcf() gets the current figure.</p></li>
 </ul>
 </section>
 <section id="table-of-contents">
@@ -620,6 +637,7 @@ These are popular plots with nice customizations that proved to be effective in 
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plots">Plots</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#todo">TODO</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#table-of-contents">Table of Contents</a></li>
 </ul>
   </nav></div>
