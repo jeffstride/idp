@@ -4,7 +4,7 @@ You may find that your Replit project isn't building, or that `flake8` isn't run
 You can:  
 * <a href="replit-tips.html#restart-project">Restart the server</a> with a `kill 1` command.  
 * If that doesn't work, you can <a href="#start-over">Start over</a> by deleting the project and starting over.  
-* If the Shell isn't allowing you to correctly type in commands, type them out in `notepad` or some other document, copy the text and then paste them into the shell window.  
+* If the Shell isn't allowing you to correctly type in commands, type them out in `notepad` or some other document, copy the text, and then paste them into the shell window.  
 
 Sometimes a project gets corrupt when you install packages incorrectly. So, be
 careful when installing packages such as `flake8`. Use the command `poetry add 'flake8 5.0.4'` to install flake8.  

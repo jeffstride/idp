@@ -13,6 +13,18 @@ Explanations and code for these types of plots:
 - Geospatial
 - Line/Scatter
 
+## TODO
+* Explain when to use:
+    * ser.plot()  
+    * df.plot()  
+    * sns.lineplot()  
+    * plt.plot()  
+    * ax.plot()  
+* Explain: figure, axis, grid, markers, ticks, labels, title (suptitle, too), spines. Naming convensions. ( axis.set_{name} where plot.{name})  
+* Explain when do figures get reset in Replit (when do we need to do plt.cla() to clear current active axis, plt.clf() to clear entire current figure).  
+* Explain how plt.gca() gets the current axis. So there is a concept of the current figure and current axis. plt.gcf() gets the current figure. 
+
+
 ## Table of Contents
 
 ```{tableofcontents}
