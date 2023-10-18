@@ -164,7 +164,7 @@ additional test cases.
 📝 **TIP**: Each test case should have a test file that you have created. Be sure that you **submit** these
 test files with your python files.  Your tests need to run successfully!!   
 
-Using the file contents below, the call `longest_word('song.txt')` should return `'3: Merrily,'`, the first
+Using the file contents below, the call `longest_word('song.txt')` should return the **string** `'3: Merrily,'`, the first
 word in the third line of the file shown here. Note that the filename uses a relative path.   
 ```{admonition} song.txt
 Row, row, row your boat  
