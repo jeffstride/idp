@@ -7,7 +7,7 @@ This is especially annoying when there is no mention of what `args` or `kwargs` 
 that problem, but we can at least understand what `*args`, `**kwargs` means and how to use them.
 In short:  
 * `*args` means that the method can take any number of **positional arguments**.  
-* `kwargs` means that the method can take any number of **named arguments**.  
+* `**kwargs` means that the method can take any number of **named arguments**.  
 
 Let's define a couple of terms.   
 ```{card} Important Terms
