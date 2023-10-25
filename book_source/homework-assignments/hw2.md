@@ -119,7 +119,7 @@ The directions string will use `'N'` to indicate increasing the y-coordinate, `'
 7. Move 'n' to (0, 4).  
 8. Move 'W' to (-1, 4).  
 
-<i class="fas fa-pen-square fa-fw"></i> **Write** a test that calls the function with some inputs and compares the output of the program with the expected value using `assert_equals`. Include the valid test cases sh\own above as well as 3 (**three**) additional test cases.
+<i class="fas fa-pen-square fa-fw"></i> **Write** a test that calls the function with some inputs and compares the output of the program with the expected value using `assert_equals`. Include the valid test cases shown above as well as 3 (**three**) additional test cases.
 
 ```
 ```{tab-item} reformat_date
