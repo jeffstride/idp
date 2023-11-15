@@ -29,6 +29,7 @@ with image comparison tests. Furthermore, there are a gazillion ways to make plo
 sometimes major, differences. It is best if you pass all these tests, but don't stress too much if you don't
 pass the image comparison tests: use the image comparison tool to help you verify.   
 Tests:  
+* **hispanic_plot** - Tests that the plot_hispanic_min_degree.png is similar enough to the expected image.  
 * **bar_chart_high_school** - Tests that the bar_chart_high_school.png is similar enough to the expected image.  
 * **line_plot_bachelors** - Tests that the line_plot_bachelors.png is similar enough to the expected image.  
 * **top_2000s** - Tests that the method top_2_2000s has good return values.  
