@@ -519,6 +519,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-methods">Pandas Methods</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-methods">Plotting Methods</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scikit-learn-requirement">Scikit-learn Requirement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markdown-writeup">Markdown Writeup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-quality">Code Quality</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rubric">Rubric</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-question">Challenge Question</a></li>
@@ -740,13 +741,27 @@ associate&#39;s 38.757143
 </section>
 <section id="plotting-methods">
 <h2>Plotting Methods<a class="headerlink" href="#plotting-methods" title="Permalink to this heading">#</a></h2>
-<p>You will use <code class="docutils literal notranslate"><span class="pre">Seaborn</span></code> to create three plots. You will implement three methods: <code class="docutils literal notranslate"><span class="pre">line_plot_bachelors</span></code>, <code class="docutils literal notranslate"><span class="pre">bar_chart_high_school</span></code>, <code class="docutils literal notranslate"><span class="pre">plot_hispanic_min_degree</span></code>.</p>
+<p>You will <strong>NOT</strong> use <code class="docutils literal notranslate"><span class="pre">Seaborn</span></code> to create your plots. You will use matplotlib.pyplot only when you implement the following three methods: <code class="docutils literal notranslate"><span class="pre">line_plot_bachelors</span></code>, <code class="docutils literal notranslate"><span class="pre">bar_chart_high_school</span></code>, <code class="docutils literal notranslate"><span class="pre">plot_hispanic_min_degree</span></code>.</p>
 <div class="warning admonition">
-<p class="admonition-title">Use Seaborn</p>
-<p>For <code class="docutils literal notranslate"><span class="pre">line_plot_bachelors</span></code> and <code class="docutils literal notranslate"><span class="pre">bar_chart_high_school</span></code>, be sure to use the <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> functions.<br />
-Use <code class="docutils literal notranslate"><span class="pre">catplot()</span></code> and <code class="docutils literal notranslate"><span class="pre">relplot()</span></code>.<br />
-Do <strong>NOT</strong> use <code class="docutils literal notranslate"><span class="pre">barplot()</span></code> or <code class="docutils literal notranslate"><span class="pre">lineplot()</span></code>.</p>
+<p class="admonition-title">NO Seaborn</p>
+<p>For all three plots (<code class="docutils literal notranslate"><span class="pre">line_plot_bachelors</span></code>, <code class="docutils literal notranslate"><span class="pre">bar_chart_high_school</span></code>, <code class="docutils literal notranslate"><span class="pre">plot_hispanic_min_degree</span></code>) there is NO <code class="docutils literal notranslate"><span class="pre">seaborn</span></code> allowed.<br />
+Use the following API:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">df.plot()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">series.plot()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plt.grid()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plt.legend(...)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plt.legend().set_visible(...)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">plt.xticks(ticks=...)</span></code><br />
+Do <strong>NOT</strong> use other methods of plotting.</p></li>
+</ul>
 <p>This is to assure that the image comparison tests can work.</p>
+</div>
+<div class="admonition-chatgpt-usage-allowed admonition">
+<p class="admonition-title">ChatGPT Usage Allowed</p>
+<p>In this Homework, I’m asking you to build some specific plots. This can be difficult to do without some help with the API. Go ahead and use the internet to help out. Figure it out with AI.</p>
+<p><strong>IMPORTANT</strong>: Understand the code. You will be expected to replicate this kind of code on the Exam.</p>
+<p><strong>IMPORTANT</strong>: Do not copy from a friend. This is an exercise in looking things up and getting help from the internet. This is NOT an exercise in how to plagiarize off of a fellow student!</p>
 </div>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-6" name="sd-tab-set-2" type="radio">
@@ -764,10 +779,13 @@ Plot 1</label><div class="sd-tab-content docutils">
 </input><label class="sd-tab-label" for="sd-tab-item-7">
 Plot 2</label><div class="sd-tab-content docutils">
 <p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a function <code class="docutils literal notranslate"><span class="pre">bar_chart_high_school</span></code> that takes the <code class="docutils literal notranslate"><span class="pre">data</span></code> and plots a bar chart comparing the total percentages of <code class="docutils literal notranslate"><span class="pre">Sex</span></code> <code class="docutils literal notranslate"><span class="pre">F</span></code>, <code class="docutils literal notranslate"><span class="pre">M</span></code>, and <code class="docutils literal notranslate"><span class="pre">A</span></code> with <code class="docutils literal notranslate"><span class="pre">high</span> <span class="pre">school</span></code> <code class="docutils literal notranslate"><span class="pre">Min</span> <span class="pre">degree</span></code> in the <code class="docutils literal notranslate"><span class="pre">Year</span></code> <code class="docutils literal notranslate"><span class="pre">2009</span></code>. Label the x-axis <strong>Sex</strong>, the y-axis <strong>Percentage</strong>, and title the plot <strong>Percentage Completed High School by Sex</strong>.</p>
+<blockquote>
+<div><p>Hint: When you plot using <code class="docutils literal notranslate"><span class="pre">df.plot()</span></code>, use the named argment <code class="docutils literal notranslate"><span class="pre">color</span></code>. Set the colors using the string contants, <code class="docutils literal notranslate"><span class="pre">'blue',</span> <span class="pre">'red',</span> <span class="pre">'green'</span></code>.</p>
+</div></blockquote>
 <p>Your plot should look like this:<br />
 <img alt="Percentage completed High School by Sex" src="../_images/hw4_bar_chart_high_school.png" /></p>
 <blockquote>
-<div><p>Ask yourself: Is this visualization an effective one? You will consider this in last section of the assignment asking you to reflect on the work we did for this assignment.</p>
+<div><p>Ask yourself: Is this visualization a fair and effective plot? You will need to answer this in the <code class="docutils literal notranslate"><span class="pre">hw4-writeup.md</span></code>.</p>
 </div></blockquote>
 <p>Use the following line of code to save the plot:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;bar_chart_high_school.png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
@@ -777,11 +795,9 @@ Plot 2</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-8" name="sd-tab-set-2" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-8">
 Plot 3</label><div class="sd-tab-content docutils">
-<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a function <code class="docutils literal notranslate"><span class="pre">plot_hispanic_min_degree</span></code> that takes the <code class="docutils literal notranslate"><span class="pre">data</span></code> and plots how the percentage of <code class="docutils literal notranslate"><span class="pre">Hispanic</span></code> people with degrees have changed between 1990–2010 (inclusive) for <code class="docutils literal notranslate"><span class="pre">high</span> <span class="pre">school</span></code> and <code class="docutils literal notranslate"><span class="pre">bachelor's</span></code> <code class="docutils literal notranslate"><span class="pre">Min</span> <span class="pre">degree</span></code>. Choose a plot type for this problem and prepare to explain your decision-making process in the writeup. Label the axes and title the plot appropriately.</p>
-<blockquote>
-<div><p>Hint: Remember that your plot should be readable. You might find the function <code class="docutils literal notranslate"><span class="pre">plt.xticks()</span></code> helpful!</p>
-</div></blockquote>
-<p>Use the following line of code to save the plot:</p>
+<p><i class="fas fa-pen-square fa-fw"></i> <strong>Write</strong> a function <code class="docutils literal notranslate"><span class="pre">plot_hispanic_min_degree</span></code> that takes the <code class="docutils literal notranslate"><span class="pre">data</span></code> and plots how the percentage of <code class="docutils literal notranslate"><span class="pre">Hispanic</span></code> people with degrees have changed between 1990–2010 (inclusive) for <code class="docutils literal notranslate"><span class="pre">high</span> <span class="pre">school</span></code> and <code class="docutils literal notranslate"><span class="pre">bachelor's</span></code> <code class="docutils literal notranslate"><span class="pre">Min</span> <span class="pre">degree</span></code>. Create a plot that matches the plot shown below.</p>
+<p><img alt="Hispanic Plot" src="../_images/hw4_plot_hispanic_min_degree.png" /><br />
+Use the following line of code to save the plot:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">&#39;plot_hispanic_min_degree.png&#39;</span><span class="p">,</span> <span class="n">bbox_inches</span><span class="o">=</span><span class="s1">&#39;tight&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -799,22 +815,15 @@ Plot 3</label><div class="sd-tab-content docutils">
 <p>This education dataset is a time series. When working with time series, it is common to use the last rows as the test set rather than random sampling since the goal is to design a model that predicts the future. But by randomly sampling to generate the test set, we are assessing the model on its ability to predict the past! Even though random sampling is not necessarily appropriate here, we ask you to do it anyways because it’s the most common sampling method.</p>
 </div>
 </section>
+<section id="markdown-writeup">
+<h2>Markdown Writeup<a class="headerlink" href="#markdown-writeup" title="Permalink to this heading">#</a></h2>
+<p>You are required to answer a few questions in the file <code class="docutils literal notranslate"><span class="pre">hw4-writeup.md</span></code> file. Furthermore, you are <strong>required</strong> to use some markdown that structures your answers nicely.</p>
+<p>Markdown (which uses the file extension, <code class="docutils literal notranslate"><span class="pre">md</span></code>) is a relatively simple text formatting language used in many places (Wikis, Replit Instructions, Jupyter Notebooks). Markdown offers a natural-looking way to define headings, lists, and links using special characters like #.</p>
+<p>For full points in your write-up, you <strong>MUST</strong> format with Markdown. Here is a <a class="reference external" href="https://www.markdownguide.org/basic-syntax/">Markdown reference</a>.  Be sure to included multiple forms of formatting such as: <code class="docutils literal notranslate"><span class="pre">_italics_,</span> <span class="pre">**bold**,</span> <span class="pre">&gt;</span> <span class="pre">block</span> <span class="pre">quotes,</span> <span class="pre">*</span> <span class="pre">bullets</span></code>.</p>
+</section>
 <section id="code-quality">
 <h2>Code Quality<a class="headerlink" href="#code-quality" title="Permalink to this heading">#</a></h2>
-<p>Assessment submissions should pass these checks: <code class="docutils literal notranslate"><span class="pre">flake8</span></code>, and <a href="https://courses.cs.washington.edu/courses/cse163/22sp/resources/code_quality/" target="_blank">code quality guidelines</a>. The code quality guidelines are very thorough. For this assessment, the most relevant rules can be found in these sections, with the <strong>bolded</strong> one being new from the last homework:</p>
-<ul class="simple">
-<li><p><a href="https://courses.cs.washington.edu/courses/cse163/22sp/resources/code_quality/#naming-conventions" target="_blank">Naming</a></p></li>
-<li><p><a href="https://courses.cs.washington.edu/courses/cse163/22sp/resources/code_quality/#documentation" target="_blank">Documentation</a></p></li>
-<li><p><a href="https://courses.cs.washington.edu/courses/cse163/22sp/resources/code_quality/#efficiency-and-redundancy" target="_blank">Efficiency and Redundancy</a></p>
-<ul>
-<li><p>Boolean Zen</p></li>
-<li><p>Loop Zen</p></li>
-<li><p>Factoring</p></li>
-<li><p>Unnecessary Cases</p></li>
-<li><p><strong>Avoid Looping with Pandas</strong></p></li>
-</ul>
-</li>
-</ul>
+<p>Assessment submissions should pass these checks: <code class="docutils literal notranslate"><span class="pre">flake8</span></code>, and <a href="https://courses.cs.washington.edu/courses/cse163/22sp/resources/code_quality/" target="_blank">code quality guidelines</a>. The code quality guidelines are very thorough.</p>
 <div class="important admonition">
 <p class="admonition-title">Reminder</p>
 <p>Make sure to provide a descriptive comments in doc-string format.</p>
@@ -822,7 +831,7 @@ Plot 3</label><div class="sd-tab-content docutils">
 </section>
 <section id="rubric">
 <h2>Rubric<a class="headerlink" href="#rubric" title="Permalink to this heading">#</a></h2>
-<p>Rubric information can be found in the instruction in the Replit project.</p>
+<p>Rubric information can be found in the instructions in the Replit project.</p>
 </section>
 <section id="challenge-question">
 <h2>Challenge Question<a class="headerlink" href="#challenge-question" title="Permalink to this heading">#</a></h2>
@@ -935,6 +944,7 @@ The final figure will look like the one below.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-methods">Pandas Methods</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plotting-methods">Plotting Methods</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#scikit-learn-requirement">Scikit-learn Requirement</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#markdown-writeup">Markdown Writeup</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-quality">Code Quality</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rubric">Rubric</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-question">Challenge Question</a></li>
