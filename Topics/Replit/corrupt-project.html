@@ -592,11 +592,17 @@ In the migration of assignments and checkpoints, folder names and package depend
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">add</span> <span class="pre">'flake8</span> <span class="pre">5.0.4'</span></code></p></td>
 <td><p>Installs a specific version of flake8 that is compatible with python version 3.10. In the year 2022-23, IDP used python version 3.8 and flake8 verion 3.9.2.</p></td>
 </tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">update</span> <span class="pre">numpy</span></code></p></td>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">update</span></code></p></td>
+<td><p>Updates all packages and dependencies</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">poetry</span> <span class="pre">update</span> <span class="pre">numpy</span></code></p></td>
 <td><p>Updates the numpy package</p></td>
 </tr>
 </tbody>
 </table>
+<blockquote>
+<div><p>git-python error: Recently, when running Unit Tests, I got an error involving “git-python 1.1.1”. I was able to resolve this issue by adding <code class="docutils literal notranslate"><span class="pre">git-python</span> <span class="pre">=</span> <span class="pre">&quot;1.0&quot;</span></code> under the tool.poetry.dependencies section in the file <code class="docutils literal notranslate"><span class="pre">pyproject.toml</span></code>.</p>
+</div></blockquote>
 <p>Not-so-Helpful links:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.replit.com/programming-ide/nix-on-replit">Using Nix with Replit</a></p></li>
