@@ -55,7 +55,10 @@ In the migration of assignments and checkpoints, folder names and package depend
 |`poetry show`| Provides a list of all the versions of installed packages (or fails if there is corruption).| 
 |`poetry show numpy` | Shows the version of `numpy`. | 
 |`poetry add 'flake8 5.0.4'` | Installs a specific version of flake8 that is compatible with python version 3.10. In the year 2022-23, IDP used python version 3.8 and flake8 verion 3.9.2.|  
+|`poetry update` | Updates all packages and dependencies|  
 |`poetry update numpy`| Updates the numpy package|
+
+> git-python error: Recently, when running Unit Tests, I got an error involving "git-python 1.1.1". I was able to resolve this issue by adding `git-python = "1.0"` under the tool.poetry.dependencies section in the file `pyproject.toml`.
 
 Not-so-Helpful links:
 * [Using Nix with Replit](https://docs.replit.com/programming-ide/nix-on-replit)
