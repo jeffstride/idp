@@ -27,6 +27,7 @@ chapters:
       - file: Topics/pandas/index
         sections:
           - file: Topics/pandas/dataframe
+          - file: Topics/pandas/mynb
       - file: Topics/machine_learning/index
         sections:
           - file: Topics/machine_learning/feature-importance
