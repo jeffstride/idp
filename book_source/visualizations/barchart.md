@@ -210,6 +210,127 @@ This is the first 11 rows of the **orginal** data (which was unsorted).
 ```
 ```` 
 
+## Adjusted Y-Label
+Bar charts usually have the y-axis start at 0. You may want to adjust the y-label to accentuate the differences, or simply to provide different insight. There are 3 different plots here. First, we use `bottom` on the `plt.bar` API to adjust the y-axis. To get the bars to draw at the correct height, we must plot an adjusted column. In this plot we also explore how to arbitrarily label the y-axis. Second, we use the `plt.ylim` API and adjust the list of Rectangles used to place the labels in the center of the bars. We also choose to plot on the `Series` object, simply to demonstrate that it can be done. Third, we label on the `'edge'` which simplifies the code a bit. We also play around with different colors. Read the comments in the code to get more insight.
+
+````{tab-set}
+```{tab-item} Image 1
+![bar chart](../_static/bars_bottom.png)
+```
+
+```{tab-item} Image 2
+![bar chart](../_static/bars_patches.png)
+```
+
+```{tab-item} Image 3
+![bar chart](../_static/bars_edge.png)
+```
+
+```{tab-item} Code 1
+```python
+def sorted_plt_bars(df):
+    fig, ax = plt.subplots(1, figsize=(12, 5))
+
+    # Show the y-axis grid lines, but show them underneath the bars
+    ax.grid(axis='y')
+    ax.set_axisbelow(True)
+
+    # sorting the values provides a more informative plot
+    df = df.sort_values(by='a_value', ascending=False)
+
+    # adjust the values so that we can change the bottom of the plot
+    bottom = 40
+    df['adj_value'] = df['a_value'] - bottom
+
+    # plt.bar returns a "BarContainer" that has all the rectangles of the bars.
+    # Set bottom to zoom in.
+    bar = plt.bar(x=df['state'], height=df['adj_value'], bottom=bottom)
+
+    # With the bar height adjusted, the bar label values are correct.
+    # Fix the bar label values by providing the labels argument.
+    ax.bar_label(bar, labels=df['a_value'], label_type='center')
+    plt.xticks(rotation=60)
+    
+    plt.title('Best "A Value" by State')
+    plt.ylabel('A Value')
+    plt.xlabel('')
+    
+    # Let's customize the y-labels using yticks.
+    # The first argument is a list of the positions using the values found in the data.
+    # The second argument is a list of the lables to use.
+    plt.yticks([y for y in range(40, 100, 10)], ['one', 'two', 'three', 'four', 'five', 'six'])
+```
+```{tab-item} Code 2
+```python
+def sorted_plt_bars(df):
+    fig, ax = plt.subplots(1, figsize=(12, 5))
+
+    # sort the states for a better display
+    df = df.sort_values(by='a_value', ascending=False)
+
+    # In this example, let's show how a Series object can be used to plot the bars.
+    # Set the index so that our Series will have the correct x-axis.
+    df = df.set_index('state')
+
+    # the default width is a bit skinny. Increase the width.
+    ax = df['a_value'].plot(kind='bar', width=0.7, color='lightcoral')
+    
+    # get our bar containers from axes to allow us to draw the values correctly
+    bars = ax.containers[0]
+    
+    # adjust the Rectangles so the label prints in the middle
+    bottom = 40    
+    bars.patches = [plt.Rectangle(r.get_xy(), r.get_width(), r.get_height()+bottom) for r in bars.patches]
+
+    # Show grid lines on both axis, blue, with small dotted linestyle.
+    # And, show the grid lines underneath the bars.
+    ax.grid(True, which='major', axis='both', color='b', ls=':')
+    ax.set_axisbelow(True)
+
+    # use plt.ylim to set the min/max y-values in the plot
+    plt.ylim(bottom=bottom, top=100)
+
+    # label the bars with the original values from the DataFrame
+    ax.bar_label(bars, labels=df['a_value'], label_type='center')
+
+    plt.xticks(rotation=60)
+    plt.title('Best "A Value" by State')
+    plt.ylabel('A Value')
+    plt.xlabel('')
+```
+```{tab-item} Code 3
+```python
+def sorted_plt_bars(df):
+    fig, ax = plt.subplots(1, figsize=(12, 5))
+
+    # sort the states for a better display
+    df = df.sort_values(by='a_value', ascending=False)
+
+    # in this example, let's show how a Series object can be used to plot the bars.
+    # Set the index so that our Series will have the correct x-axis
+    df = df.set_index('state')
+    ax = df['a_value'].plot(kind='bar', color='seagreen')
+    
+    # get our bar containers from axes to allow us to draw the values correctly
+    bars = ax.containers[0]   
+
+    # Show grid lines
+    ax.grid(True, which='major', axis='both', color='y', ls='-.')
+    ax.set_axisbelow(True)
+
+    # use plt.ylim to set the min/max y-values in the plot
+    plt.ylim(bottom=40, top=110)
+
+    # use label_type='edge' to show the label on the top of the bars 
+    ax.bar_label(bars, labels=df['a_value'], label_type='edge')
+
+    plt.xticks(rotation=60)
+    plt.title('Best "A Value" by State')
+    plt.ylabel('A Value')
+    plt.xlabel('')
+```
+```` 
+
 ## Stacked Bars
 Sometimes the addition of multiple values has meaning and you'll want to stack one bar on top of another. This allows you to see
 multiples values and their sum total. We still sort the bars by a specific value to provide some added insight.   
