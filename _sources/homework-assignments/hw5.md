@@ -59,19 +59,6 @@ A search engine is an algorithm that takes a query and retrieves the most releva
 The tf-idf statistic consists of two components: term frequency and inverse document frequency. Term frequency computes the number of times that a term appears in a document (such as a single Wikipedia page). If we were to use only the term frequency in determining the relevance of a term to each document, then our search result might not be helpful since most documents contain many common words such as “the” or “a”. In order to down-weight these common terms, the document frequency computes the number of times that a term appears across the corpus of all documents. The tf-idf statistic takes a term and a document and returns the term frequency divided by the document frequency.
 
 In this assessment, we’ll implement two classes: a `Document` class to represent individual web pages and a `SearchEngine` class that aggregates the corpus of all `Document` objects. The `SearchEngine` builds on the `Document`, so be sure to fully complete the `Document` class before moving onto the `SearchEngine`.
-
-## Topics
-* Normalizing Tokens
-* HTML Stripping
-* Writing Tests
-    * Test Methods
-    * Do Not Change...
-    * Normalize Paths
-    * Sorting lists for comparison
-* Submitting
-* Important Tips
-    * Commenting
-    * Flake8
   
 ## Normalizing Tokens
 In this project we need to remove punctuation so that all tokens that are semantically
@@ -125,9 +112,13 @@ arguably large. However, there is a much larger corpus you can choose to use:
 * [Large Wikipedia HTML](https://drive.google.com/file/d/1A3K-PR_eJrMFvmCCP28y-haFcW8thrV_/view?usp=share_link)
 * [Large Wikipedia Text](https://drive.google.com/file/d/15s5CkBwhW8cvQbUHKCjD_-jmeG5JsdhJ/view?usp=share_link)
 
+```{admonition} Access Note
+:class: note
+The Google shares require that you use your NSD Credentials. 
+```
 
 Due to their size, these _Large Wikipedia_ folders should NOT be uploaded to Replit. Instead, you are encouraged
-to download to your local computer and run HW4 locally. If your code is written efficiently, it will work if
+to download to your local computer and run HW5 locally. If your code is written efficiently, it will work if
 given a little time. If your code is not written efficiently, patience will not suffice. :-)
 
 
@@ -147,11 +138,11 @@ and I used them "out of the box."
 ### Test Methods
 Write many test methods. For example: do NOT write a single method for all of Document.
 You should have at least one test method for each public method on the object. 
-> For example, Document has: get_path, get_words, term_frequency.
+> For example, Document has: `get_path`, `get_words`, `term_frequency`.
 
 And, there should be a test method for every "important" private method on the object.
 
-> Example: SearchEngine has _calculate_idf
+> Example: SearchEngine has `_calculate_idf`
 
 I've provided you with one fat Unit Test in Replit. It actually runs a bunch of tests 
 in the `test` directory using the files in the `test_corpus` directory. This is not the
@@ -172,12 +163,16 @@ Furthermore, do not add files to these directories:
 
 Do not change `cse163_utils.py`. Do NOT add any method to this file either!
 
-## Normalize Paths
+### Normalize Paths
 Due to how `os.join.path` works across operating systems, search results
-need to be _normalized_. Use the following pattern to assure that your
-expected paths equal your actual paths no matter where your tests run:
+need to be _normalized_. Use the following pattern in your tests to assure that your
+expected paths equal your actual paths no matter where your tests run.  
+
+If you do not use this pattern, your tests might fail on my machine.
 
 ```python
+from cse163_utils import normalize_paths
+
 def test_search():
     '''
     This method is an Example Test showing how to normalize paths.
@@ -194,8 +189,8 @@ def test_search():
 
 ## Important Tips
 ### Testing Output
-Update the `.replit` file to run `run_tests.py` so that you can get more details
-on the failures you're getting. Note that if you fail one of these Unit Tests,
+Use `python run_tests.py` to run the suite of tests 'manually' so that you can get more details
+on any failures. Note that if you fail one of these Unit Tests,
 then **your** Unit Tests are not thorough enough. Update them!!
 
 ### Performance
@@ -227,7 +222,7 @@ method `term_frequency`.
 
 ### Test Document Thoroughly
 * Consider edge cases. Can you think of any?  
-* Test term_frequency on at least two different words and documents where you
+* Test `term_frequency` on at least two different words and documents where you
 can easily calculate the values manually.  
 * Search with UnNormalized! terms.
 
@@ -235,7 +230,7 @@ can easily calculate the values manually.
 When you `assert_equals` on two lists, the assert requires that the
 lists be in the same order. **IF** you don't care about the order of the lists,
 one way to verify that they are identical is to first
-sort the lists.
+sort the lists. Note that sometimes the order is important.  
 ```python
     # This test doesn't care about the order of the items.
     # This could be true for Document::get_words
