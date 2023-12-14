@@ -66,7 +66,7 @@ identical can be recognized as "_exactly_" identical. For example:
 ```
 'Hello!' == 'hello'
 ```
-`normalize_token` is a helper method found in the `cse_utils.py` file.
+`normalize_token` is a helper method found in the `cse163_utils.py` file.
 
 Furthermore, in the handout it talks about
 reading HTML files, only you'll discover that in this project there are no HTML files. Instead, I've already
