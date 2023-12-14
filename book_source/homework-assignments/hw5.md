@@ -13,24 +13,23 @@
 * `run_tests.py` is a helper file that will run all the "unit tests" in a way that is more transparent and debuggable.  
 ```
 ```{tab-item} Files to Submit
-You must submit your work to the <a href="https://autograder-nchs.vercel.app/login" target="_blank">Code Submission Site</a>.  
-
-You are to submit the following Python files:  
+You will check Schoology to see how to submit your work. Most likely it will be to DropBox and there will be a specific link for that.  For DropBox, you are to submit a folder named your school ID (example: 901234). The folder should contain the following Python files along with one or more "test corpus sub-directories":  
 * `search_engine.py`  
 * `document.py`  
 * `hw5_test.py`
-* `<my_test_files>.zip`  
+* `main.py`  
+* `<my_test_corpus>`  
 
-You should create subdirectories with test files in them.  
-You should submit zipfiles of your subdirectories.  
+You should create subdirectories with test files in them. Use these subdirectories in your tests. And, since your tests need to run on Mr. Stride's machine, be sure to submit your new subdirectories.    
 
-Please do **NOT** submit the files in the following subdirectories:   
+Please do **NOT** submit the following subdirectories. You may assume they exist on Mr. Stride's machine:   
 * small_text   
 * test   
 * test_corpus  
 
 ```{admonition} Submit Subdirectories
 :class: seealso
+This is relevant to Code SubStation only. Do not follow these instructions when using `DropBox`.  
 <a href="../Topics/misc/submitting.html#submitting-subdirectories">Go here</a> for information on how to submit subdirectories.
 ```
 ```{tab-item} Replit Unit Tests
@@ -52,7 +51,72 @@ This assessment is very information-dense. Plan ahead by taking notes of what yo
 :class: seealso
 Watch the video of [Hunter Schafer](https://www.loom.com/share/118366e8ba1a427dad84870b869b660a?sid=d7353687-52cf-4ab3-a737-ed743bed0971).
 ```
+## Deliverables
+You are to create two different classes, `Document` and `SearchEngine`, that implement a Search Engine.  
+You will create a `main.py` file that has console-based user interaction. It will prompt the user for a directory to use for the corpus of documents. The user may then enter any number of queries implemented by the `SearchEngine`. The results of the query will be output to the console. If the user enters an empty string, the program ends.  
 
+`Document` will have an initializer and one public method:  
+* `doc = Document(relativePath)` : Example code that creates a new `Document` initialized to an actual file.  
+* `term_frequency(term)`: returns the TF value for the term for this document.  
+
+`SearchEngine` will have an initializer and one public method:  
+* `se = SearchEngine(relativePath)` : Example code that creates a new `SearchEngine` initialized to a corpus of files found in the directory, `reltivePath`.  
+* `search(query)`: returns a list of document paths, relative to current working directory. The list is sorted by relevance (TF-IDF).  
+
+## Main Output
+Here is an example run of `main`. Note that the output below has shortened lists to ease readability. The actual output lists **ALL** documents returned by the `SearchEngine`:  
+```
+Please enter a the name of a directory: small_text
+Building Search Engine...
+
+Enter a search term to query (Enter=Quit): Elvis
+Displaying results for 'Elvis':
+    1. small_text/Viacom - Wikipedia.txt
+    2. small_text/Federal Bureau of Investigation - Wikipedia.txt
+    3. small_text/Black or White - Wikipedia.txt
+    4. small_text/List of songs recorded by The Jackson 5 - Wikipedia.txt
+    5. small_text/Michael Jackson - Wikipedia.txt
+    6. small_text/Game of Thrones - Wikipedia.txt
+
+Enter a search term to query (Enter=Quit): Santa at Christmas
+Displaying results for 'Santa at Christmas':
+    1. small_text/Jackson 5 Christmas Album - Wikipedia.txt
+    2. small_text/List of songs recorded by The Jackson 5 - Wikipedia.txt
+    3. small_text/ABC (The Jackson 5 album) - Wikipedia.txt
+    4. small_text/Mountain View, California - Wikipedia.txt
+    5. small_text/Mandalay Bay - Wikipedia.txt
+    6. small_text/Unity Tour - Wikipedia.txt
+    7. small_text/Michael Jackson - Wikipedia.txt
+    8. small_text/Humberto Gatica - Wikipedia.txt
+    9. small_text/VH1 - Wikipedia.txt
+    10. small_text/Federal Bureau of Investigation - Wikipedia.txt
+    11. small_text/Ubisoft - Wikipedia.txt
+    12. small_text/Viacom - Wikipedia.txt
+    13. small_text/Jehovah's Witnesses - Wikipedia.txt
+    14. small_text/Traditionalist conservatism - Wikipedia.txt
+    15. small_text/William McKinley - Wikipedia.txt
+
+Enter a search term to query (Enter=Quit): beads during celebration
+Displaying results for 'beads during celebration':
+    1. small_text/Seattle Mardi Gras riot - Wikipedia.txt
+    2. small_text/MJ &amp; Friends - Wikipedia.txt
+    3. small_text/Mesoparapylocheles - Wikipedia.txt
+    4. small_text/Thriller 25_ Limited Japanese Single Collection - Wikipedia.txt
+    5. small_text/Living with Michael Jackson - Wikipedia.txt
+    6. small_text/David Swinson Maynard - Wikipedia.txt
+    7. small_text/Robot (dance) - Wikipedia.txt
+    8. small_text/Moonwalk (dance) - Wikipedia.txt
+    9. small_text/Michael Jackson - Wikipedia.txt
+    10. small_text/VH1 - Wikipedia.txt
+    11. small_text/Airliner - Wikipedia.txt
+    12. small_text/Nintendo - Wikipedia.txt
+    13. small_text/Jeb Bush - Wikipedia.txt
+    14. small_text/In the Closet - Wikipedia.txt
+    15. small_text/Bob Corker - Wikipedia.txt
+
+Enter a search term to query (Enter=Quit): 
+Thank you for searching.
+```
 ## Context
 A search engine is an algorithm that takes a query and retrieves the most relevant documents for that query. In order to identify the most relevant documents, our search engine will use term frequency–inverse document frequency (tf–idf), a text information statistic for determining the relevance of a term to each document from a corpus consisting of many documents.
 
