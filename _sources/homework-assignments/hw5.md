@@ -64,9 +64,9 @@ You will create a `main.py` file that has console-based user interaction. It wil
 * `search(query)`: returns a list of document paths, relative to current working directory. The list is sorted by relevance (TF-IDF).  
 
 ## Main Output
-Here is an example run of `main`. Note that the output below has shortened lists to ease readability. The actual output lists **ALL** documents returned by the `SearchEngine`:  
+Here is an example run of `main`. Note that your program will output only the first 10 document paths even while the `SearchEngine` returns a much longer list in its results.  
 ```
-Please enter a the name of a directory: small_text
+Please enter the name of a directory: small_text
 Building Search Engine...
 
 Enter a search term to query (Enter=Quit): Elvis
@@ -78,41 +78,34 @@ Displaying results for 'Elvis':
     5. small_text/Michael Jackson - Wikipedia.txt
     6. small_text/Game of Thrones - Wikipedia.txt
 
-Enter a search term to query (Enter=Quit): Santa at Christmas
-Displaying results for 'Santa at Christmas':
+Enter a search term to query (Enter=Quit): Santa Claus 
+Displaying results for 'Santa Claus':
     1. small_text/Jackson 5 Christmas Album - Wikipedia.txt
-    2. small_text/List of songs recorded by The Jackson 5 - Wikipedia.txt
-    3. small_text/ABC (The Jackson 5 album) - Wikipedia.txt
-    4. small_text/Mountain View, California - Wikipedia.txt
+    2. small_text/ABC (The Jackson 5 album) - Wikipedia.txt
+    3. small_text/Mountain View, California - Wikipedia.txt
+    4. small_text/List of songs recorded by The Jackson 5 - Wikipedia.txt
     5. small_text/Mandalay Bay - Wikipedia.txt
-    6. small_text/Unity Tour - Wikipedia.txt
-    7. small_text/Michael Jackson - Wikipedia.txt
-    8. small_text/Humberto Gatica - Wikipedia.txt
-    9. small_text/VH1 - Wikipedia.txt
-    10. small_text/Federal Bureau of Investigation - Wikipedia.txt
-    11. small_text/Ubisoft - Wikipedia.txt
-    12. small_text/Viacom - Wikipedia.txt
-    13. small_text/Jehovah's Witnesses - Wikipedia.txt
-    14. small_text/Traditionalist conservatism - Wikipedia.txt
-    15. small_text/William McKinley - Wikipedia.txt
+    6. small_text/Michael Jackson - Wikipedia.txt
+    7. small_text/Federal Bureau of Investigation - Wikipedia.txt
+    8. small_text/Ubisoft - Wikipedia.txt
+    9. small_text/Viacom - Wikipedia.txt
+    10. small_text/Traditionalist conservatism - Wikipedia.txt
 
-Enter a search term to query (Enter=Quit): beads during celebration
-Displaying results for 'beads during celebration':
-    1. small_text/Seattle Mardi Gras riot - Wikipedia.txt
-    2. small_text/MJ &amp; Friends - Wikipedia.txt
-    3. small_text/Mesoparapylocheles - Wikipedia.txt
-    4. small_text/Thriller 25_ Limited Japanese Single Collection - Wikipedia.txt
-    5. small_text/Living with Michael Jackson - Wikipedia.txt
-    6. small_text/David Swinson Maynard - Wikipedia.txt
-    7. small_text/Robot (dance) - Wikipedia.txt
-    8. small_text/Moonwalk (dance) - Wikipedia.txt
-    9. small_text/Michael Jackson - Wikipedia.txt
-    10. small_text/VH1 - Wikipedia.txt
-    11. small_text/Airliner - Wikipedia.txt
-    12. small_text/Nintendo - Wikipedia.txt
-    13. small_text/Jeb Bush - Wikipedia.txt
-    14. small_text/In the Closet - Wikipedia.txt
-    15. small_text/Bob Corker - Wikipedia.txt
+Enter a search term to query (Enter=Quit): notinanydocument
+Displaying results for 'notinanydocument':
+    No results :(
+Enter a search term to query (Enter=Quit): Horrible Bosses in Schools
+Displaying results for 'Horrible Bosses in Schools':
+    1. small_text/Mountain View, California - Wikipedia.txt
+    2. small_text/Hal Abelson - Wikipedia.txt
+    3. small_text/Living with Michael Jackson - Wikipedia.txt
+    4. small_text/Jeb Bush - Wikipedia.txt
+    5. small_text/UNCF - Wikipedia.txt
+    6. small_text/VH1 - Wikipedia.txt
+    7. small_text/Hans-Hermann Hoppe - Wikipedia.txt
+    8. small_text/William McKinley - Wikipedia.txt
+    9. small_text/Steve Forbes - Wikipedia.txt
+    10. small_text/Nintendo - Wikipedia.txt
 
 Enter a search term to query (Enter=Quit): 
 Thank you for searching.
