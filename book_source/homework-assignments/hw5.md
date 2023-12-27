@@ -295,11 +295,13 @@ sort the lists. Note that sometimes the order is important.
 ```
 
 ## Commenting
-You need to thoroughly comment `document.py` and `search_engine.py`.  
+Emphasis will be put on two things:  
+1. _WHY_ comments  
+2. Class doc-strings  
 
-Every function needs a doc-string comment. 
-
-Every class needs a doc-string.
-
-You should add _some_ comments to `hw5_test.py`.
+Some reminders:  
+* You need to thoroughly comment `document.py`, `main.py` and `search_engine.py`.  
+* Every function needs a doc-string comment.   
+* Every class needs a doc-string.  
+* You should add _some_ comments to `hw5_test.py`.  
 
