@@ -527,6 +527,7 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#too-little">Too Little</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goldilocks">Goldilocks</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#too-much">Too Much</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-inline-comments">Quality Inline Comments</a></li>
 </ul>
             </nav>
         </div>
@@ -736,6 +737,40 @@ Inline Comments</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </section>
+<section id="quality-inline-comments">
+<h2>Quality Inline Comments<a class="headerlink" href="#quality-inline-comments" title="Permalink to this heading">#</a></h2>
+<p>The most important comments in code are those that explain <em>WHY</em>! Other important comments include <em>HOW</em> the code works. In some circumstances, <em>WHAT</em> the code does can be helpful at times, particularly as you decompose the problem. You should focus on <em>WHY</em> commenting.</p>
+<p>To add quality <em>WHY</em> comments ask yourself the following:</p>
+<ul class="simple">
+<li><p>What happens if we eliminate or modify the code?</p></li>
+<li><p>Why is this data structure the correct choice?</p></li>
+<li><p>Why are we using these constant values?</p></li>
+<li><p>Why is the code in this specific order?</p></li>
+</ul>
+<p>Avoid comments that are blatantly obvious from reading the code. The future programmer reading your code will know how to code, but will not necessarily know what was in your head when you wrote the code.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">demo</span><span class="p">(</span><span class="n">words</span><span class="p">,</span> <span class="n">fn</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Returns the magical math on words using a function, fn.</span>
+<span class="sd">    words is a string of words.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># calculate the sum before making changes to words</span>
+    <span class="c1"># to assure we have consistent summation methods on </span>
+    <span class="c1"># the original user input. Operate on non-empty tokens </span>
+    <span class="c1"># only by splitting on whitespace, not &quot; &quot;.</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">([</span><span class="n">mystery</span><span class="p">(</span><span class="n">term</span><span class="p">)</span> <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">words</span><span class="o">.</span><span class="n">split</span><span class="p">()])</span>
+
+    <span class="c1"># We split using &quot; &quot; because want to include</span>
+    <span class="c1"># &quot;empty&quot; words where multiple consecutive spaces appear.</span>
+    <span class="c1"># Sorted gets us a list and the first/last alphabetic word.</span>
+    <span class="c1"># Avoid first casting to a list() for better performance.</span>
+    <span class="n">words</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="n">fn</span><span class="p">,</span> <span class="n">words</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)))</span>
+    <span class="n">bounds</span> <span class="o">=</span> <span class="p">[</span><span class="n">fn</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="mi">0</span><span class="p">]),</span> <span class="n">fn</span><span class="p">(</span><span class="n">words</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])]</span>
+
+    <span class="c1"># subtract two so that we ignore the first and last word</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">words</span><span class="p">)</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">s</span> <span class="o">-</span> <span class="nb">sum</span><span class="p">(</span><span class="n">bounds</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -806,6 +841,7 @@ Inline Comments</label><div class="sd-tab-content docutils">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#too-little">Too Little</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#goldilocks">Goldilocks</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#too-much">Too Much</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#quality-inline-comments">Quality Inline Comments</a></li>
 </ul>
   </nav></div>
 
