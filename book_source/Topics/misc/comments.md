@@ -171,3 +171,35 @@ def calc_avg(numbers):
     return total / count 
 ```
 ````
+## Quality Inline Comments
+The most important comments in code are those that explain _WHY_! Other important comments include _HOW_ the code works. In some circumstances, _WHAT_ the code does can be helpful at times, particularly as you decompose the problem. You should focus on _WHY_ commenting.  
+
+To add quality _WHY_ comments ask yourself the following:  
+* What happens if we eliminate or modify the code?  
+* Why is this data structure the correct choice?  
+* Why are we using these constant values?  
+* Why is the code in this specific order?  
+
+Avoid comments that are blatantly obvious from reading the code. The future programmer reading your code will know how to code, but will not necessarily know what was in your head when you wrote the code.   
+```python
+def demo(words, fn):
+    '''
+    Returns the magical math on words using a function, fn.
+    words is a string of words.
+    '''
+    # calculate the sum before making changes to words
+    # to assure we have consistent summation methods on 
+    # the original user input. Operate on non-empty tokens 
+    # only by splitting on whitespace, not " ".
+    s = sum([mystery(term) for term in words.split()])
+
+    # We split using " " because want to include
+    # "empty" words where multiple consecutive spaces appear.
+    # Sorted gets us a list and the first/last alphabetic word.
+    # Avoid first casting to a list() for better performance.
+    words = sorted(map(fn, words.split(" ")))
+    bounds = [fn(words[0]), fn(words[-1])]
+
+    # subtract two so that we ignore the first and last word
+    return (len(words) - 2) * s - sum(bounds)
+```
