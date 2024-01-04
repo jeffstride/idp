@@ -55,11 +55,11 @@ Watch the video of [Hunter Schafer](https://www.loom.com/share/118366e8ba1a427da
 You are to create two different classes, `Document` and `SearchEngine`, that implement a Search Engine.  
 You will create a `main.py` file that has console-based user interaction. It will prompt the user for a directory to use for the corpus of documents. The user may then enter any number of queries implemented by the `SearchEngine`. The results of the query will be output to the console. If the user enters an empty string, the program ends.  
 
-`Document` will have an initializer and one public method:  
+`Document` will have an initializer and at least one public method:  
 * `doc = Document(relative_path)` : Example code that creates a new `Document` initialized to an actual file.  
 * `term_frequency(term)`: returns the TF value for the term for this document.  
 
-`SearchEngine` will have an initializer and one public method:  
+`SearchEngine` will have an initializer and only one public method:  
 * `se = SearchEngine(relative_path)` : Example code that creates a new `SearchEngine` initialized to a corpus of files found in the directory, `relative_path`.  
 * `search(query)`: returns a list of document paths, relative to current working directory. The list is sorted by relevance (TF-IDF).  
 
