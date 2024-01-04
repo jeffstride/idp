@@ -56,11 +56,11 @@ You are to create two different classes, `Document` and `SearchEngine`, that imp
 You will create a `main.py` file that has console-based user interaction. It will prompt the user for a directory to use for the corpus of documents. The user may then enter any number of queries implemented by the `SearchEngine`. The results of the query will be output to the console. If the user enters an empty string, the program ends.  
 
 `Document` will have an initializer and one public method:  
-* `doc = Document(relativePath)` : Example code that creates a new `Document` initialized to an actual file.  
+* `doc = Document(relative_path)` : Example code that creates a new `Document` initialized to an actual file.  
 * `term_frequency(term)`: returns the TF value for the term for this document.  
 
 `SearchEngine` will have an initializer and one public method:  
-* `se = SearchEngine(relativePath)` : Example code that creates a new `SearchEngine` initialized to a corpus of files found in the directory, `reltivePath`.  
+* `se = SearchEngine(relative_path)` : Example code that creates a new `SearchEngine` initialized to a corpus of files found in the directory, `relative_path`.  
 * `search(query)`: returns a list of document paths, relative to current working directory. The list is sorted by relevance (TF-IDF).  
 
 ## Main Output
@@ -140,45 +140,6 @@ Just use the code that is found in `cse163_utils.py`.
 from cse163_utils import normalize_token
 ```
 
-## HTML Stripping
-In this ReplIt, you are provided with two folders with documents. When you run `main.py`, you should start off
-by crawling the files in `test_corpus` or a folder you created with your own individual set of files. Eventually, 
-_but not at the start_, you will
-be able to quickly and effectively search `small_text`. Give it a shot before you submit your project!
-
-The `small_text` folder is a subset
-of wikipedia HTML articles with the HTML stripped away to reveal only the content. By stripping out
-the HTML tags, there are some pros can cons.  
-
-**Pros of Stripping:**  
-* The developer can proceed without the distraction of how the code interfers with the solution.
-* The indexing solution is not "confused" with needless code (the keywords and the non-English tag names).
-* The size of the content is reduced.
-
-**Cons of Stripping:** 
-* The indexing solution actually works quite nicely on the HTML directly (with a few exceptions).
-* The text has seemingly random spacing and an unusual occurance of the `^` character.
-* Viewing the content is unappealing because all the nice formatting is lost. :-(
-
-If you want to use the HTML version (small_wiki), you may download those files [here](https://drive.google.com/file/d/1PSCFeXbM5UCFU5pIkj5GbtXjgSDJXzoX/view?usp=share_link).  
-> Note: The curious developer may be interested to know that small_text was created
-> by using BeautifulSoup to strip the HTML files of their HTML. 
-
-The name of the folder `small_text` may be a misnomer because it is 2.5 MB in size. That's
-arguably large. However, there is a much larger corpus you can choose to use:  
-* [Large Wikipedia HTML](https://drive.google.com/file/d/1A3K-PR_eJrMFvmCCP28y-haFcW8thrV_/view?usp=share_link)
-* [Large Wikipedia Text](https://drive.google.com/file/d/15s5CkBwhW8cvQbUHKCjD_-jmeG5JsdhJ/view?usp=share_link)
-
-```{admonition} Access Note
-:class: note
-The Google shares require that you use your NSD Credentials. 
-```
-
-Due to their size, these _Large Wikipedia_ folders should NOT be uploaded to Replit. Instead, you are encouraged
-to download to your local computer and run HW5 locally. If your code is written efficiently, it will work if
-given a little time. If your code is not written efficiently, patience will not suffice. :-)
-
-
 ## Writing Tests
 You need to write your own tests. The tests should be simple enough that you can calculate
 expected values by hand. Do not assume your code is correct and use those values in your tests. 
@@ -203,7 +164,7 @@ And, there should be a test method for every "important" private method on the o
 
 I've provided you with one fat Unit Test in Replit. It actually runs a bunch of tests 
 in the `test` directory using the files in the `test_corpus` directory. This is not the
-preferred Unit Test to have. It is provided to you as a Saftey Check only. You need
+preferred Unit Test to have. It is provided to you as a Safety Check only. You need
 to write your own tests. The provided tests do not test every case!
 
 You can get details of the Unit Test failures by updating .replit to run the file `run_tests.py`.
@@ -304,4 +265,46 @@ Some reminders:
 * Every function needs a doc-string comment.   
 * Every class needs a doc-string.  
 * You should add _some_ comments to `hw5_test.py`.  
+
+## HTML Stripping
+In prior years, students were given HTML files and not text files. This section is a dicussion about stripping
+HTML out of the documents which has already been done for you.  
+
+In ReplIt, you are provided with two folders with documents. When you run `main.py`, you should start off
+by crawling the files in `test_corpus` or a folder you created with your own individual set of files. Eventually, 
+_but not at the start_, you will
+be able to quickly and effectively search `small_text`. Give it a shot before you submit your project!
+
+The `small_text` folder is a subset
+of wikipedia HTML articles with the HTML stripped away to reveal only the content. By stripping out
+the HTML tags, there are some pros and cons.  
+
+**Pros of Stripping:**  
+* The developer can proceed without the distraction of how the code interfers with the solution.
+* The indexing solution is not "confused" with needless code (the keywords and the non-English tag names).
+* The size of the content is reduced.
+
+**Cons of Stripping:** 
+* The indexing solution actually works quite nicely on the HTML directly (with a few exceptions).
+* The text has seemingly random spacing and an unusual occurance of the `^` character.
+* Viewing the content is unappealing because all the nice formatting is lost. :-(
+
+If you want to use the HTML version (small_wiki), you may download those files [here](https://drive.google.com/file/d/1PSCFeXbM5UCFU5pIkj5GbtXjgSDJXzoX/view?usp=share_link).  
+> Note: The curious developer may be interested to know that small_text was created
+> by using BeautifulSoup to strip the HTML files of their HTML. 
+
+The name of the folder `small_text` may be a misnomer because it is 2.5 MB in size. That's
+arguably large. However, there is a much larger corpus you can choose to use:  
+* [Large Wikipedia HTML](https://drive.google.com/file/d/1A3K-PR_eJrMFvmCCP28y-haFcW8thrV_/view?usp=share_link)
+* [Large Wikipedia Text](https://drive.google.com/file/d/15s5CkBwhW8cvQbUHKCjD_-jmeG5JsdhJ/view?usp=share_link)
+
+```{admonition} Access Note
+:class: note
+The Google shares require that you use your NSD Credentials. 
+```
+
+Due to their size, these _Large Wikipedia_ folders should NOT be uploaded to Replit. Instead, you are encouraged
+to download to your local computer and run HW5 locally. If your code is written efficiently, it will work if
+given a little time. If your code is not written efficiently, patience will not suffice. :-)
+
 

@@ -19,15 +19,15 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=bd9e20870c6007c4c509" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
     <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
@@ -39,9 +39,9 @@
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
-  <script src="../_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509" />
+  <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=bd9e20870c6007c4c509"></script>
 
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
@@ -132,7 +132,7 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
   
   <div id="pst-scroll-pixel-helper"></div>
 
@@ -175,12 +175,18 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <header>
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <div class="bd-header navbar navbar-expand-lg bd-navbar">
+    </div>
   
+  </header>
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -528,7 +534,6 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-output">Main Output</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context">Context</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalizing-tokens">Normalizing Tokens</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#html-stripping">HTML Stripping</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-tests">Writing Tests</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-methods">Test Methods</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#do-not-change">Do Not Change…</a></li>
@@ -544,6 +549,7 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commenting">Commenting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#html-stripping">HTML Stripping</a></li>
 </ul>
             </nav>
         </div>
@@ -553,7 +559,7 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="i-class-fas-fa-laptop-fa-fw-i-hw5-search-engine">
 <h1><i class="fas fa-laptop fa-fw"></i> HW5 - Search Engine<a class="headerlink" href="#i-class-fas-fa-laptop-fa-fw-i-hw5-search-engine" title="Permalink to this heading">#</a></h1>
@@ -626,12 +632,12 @@ Create test files that are target the type of tests you want to run. They should
 You will create a <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file that has console-based user interaction. It will prompt the user for a directory to use for the corpus of documents. The user may then enter any number of queries implemented by the <code class="docutils literal notranslate"><span class="pre">SearchEngine</span></code>. The results of the query will be output to the console. If the user enters an empty string, the program ends.</p>
 <p><code class="docutils literal notranslate"><span class="pre">Document</span></code> will have an initializer and one public method:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">doc</span> <span class="pre">=</span> <span class="pre">Document(relativePath)</span></code> : Example code that creates a new <code class="docutils literal notranslate"><span class="pre">Document</span></code> initialized to an actual file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">doc</span> <span class="pre">=</span> <span class="pre">Document(relative_path)</span></code> : Example code that creates a new <code class="docutils literal notranslate"><span class="pre">Document</span></code> initialized to an actual file.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">term_frequency(term)</span></code>: returns the TF value for the term for this document.</p></li>
 </ul>
 <p><code class="docutils literal notranslate"><span class="pre">SearchEngine</span></code> will have an initializer and one public method:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">se</span> <span class="pre">=</span> <span class="pre">SearchEngine(relativePath)</span></code> : Example code that creates a new <code class="docutils literal notranslate"><span class="pre">SearchEngine</span></code> initialized to a corpus of files found in the directory, <code class="docutils literal notranslate"><span class="pre">reltivePath</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">se</span> <span class="pre">=</span> <span class="pre">SearchEngine(relative_path)</span></code> : Example code that creates a new <code class="docutils literal notranslate"><span class="pre">SearchEngine</span></code> initialized to a corpus of files found in the directory, <code class="docutils literal notranslate"><span class="pre">relative_path</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">search(query)</span></code>: returns a list of document paths, relative to current working directory. The list is sorted by relevance (TF-IDF).</p></li>
 </ul>
 </section>
@@ -711,46 +717,6 @@ So, you get the code for free. <a class="reference external" href="https://youtu
 </pre></div>
 </div>
 </section>
-<section id="html-stripping">
-<h2>HTML Stripping<a class="headerlink" href="#html-stripping" title="Permalink to this heading">#</a></h2>
-<p>In this ReplIt, you are provided with two folders with documents. When you run <code class="docutils literal notranslate"><span class="pre">main.py</span></code>, you should start off
-by crawling the files in <code class="docutils literal notranslate"><span class="pre">test_corpus</span></code> or a folder you created with your own individual set of files. Eventually,
-<em>but not at the start</em>, you will
-be able to quickly and effectively search <code class="docutils literal notranslate"><span class="pre">small_text</span></code>. Give it a shot before you submit your project!</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">small_text</span></code> folder is a subset
-of wikipedia HTML articles with the HTML stripped away to reveal only the content. By stripping out
-the HTML tags, there are some pros can cons.</p>
-<p><strong>Pros of Stripping:</strong></p>
-<ul class="simple">
-<li><p>The developer can proceed without the distraction of how the code interfers with the solution.</p></li>
-<li><p>The indexing solution is not “confused” with needless code (the keywords and the non-English tag names).</p></li>
-<li><p>The size of the content is reduced.</p></li>
-</ul>
-<p><strong>Cons of Stripping:</strong></p>
-<ul class="simple">
-<li><p>The indexing solution actually works quite nicely on the HTML directly (with a few exceptions).</p></li>
-<li><p>The text has seemingly random spacing and an unusual occurance of the <code class="docutils literal notranslate"><span class="pre">^</span></code> character.</p></li>
-<li><p>Viewing the content is unappealing because all the nice formatting is lost. :-(</p></li>
-</ul>
-<p>If you want to use the HTML version (small_wiki), you may download those files <a class="reference external" href="https://drive.google.com/file/d/1PSCFeXbM5UCFU5pIkj5GbtXjgSDJXzoX/view?usp=share_link">here</a>.</p>
-<blockquote>
-<div><p>Note: The curious developer may be interested to know that small_text was created
-by using BeautifulSoup to strip the HTML files of their HTML.</p>
-</div></blockquote>
-<p>The name of the folder <code class="docutils literal notranslate"><span class="pre">small_text</span></code> may be a misnomer because it is 2.5 MB in size. That’s
-arguably large. However, there is a much larger corpus you can choose to use:</p>
-<ul class="simple">
-<li><p><a class="reference external" href="https://drive.google.com/file/d/1A3K-PR_eJrMFvmCCP28y-haFcW8thrV_/view?usp=share_link">Large Wikipedia HTML</a></p></li>
-<li><p><a class="reference external" href="https://drive.google.com/file/d/15s5CkBwhW8cvQbUHKCjD_-jmeG5JsdhJ/view?usp=share_link">Large Wikipedia Text</a></p></li>
-</ul>
-<div class="note admonition">
-<p class="admonition-title">Access Note</p>
-<p>The Google shares require that you use your NSD Credentials.</p>
-</div>
-<p>Due to their size, these <em>Large Wikipedia</em> folders should NOT be uploaded to Replit. Instead, you are encouraged
-to download to your local computer and run HW5 locally. If your code is written efficiently, it will work if
-given a little time. If your code is not written efficiently, patience will not suffice. :-)</p>
-</section>
 <section id="writing-tests">
 <h2>Writing Tests<a class="headerlink" href="#writing-tests" title="Permalink to this heading">#</a></h2>
 <p>You need to write your own tests. The tests should be simple enough that you can calculate
@@ -775,7 +741,7 @@ You should have at least one test method for each public method on the object.</
 </div></blockquote>
 <p>I’ve provided you with one fat Unit Test in Replit. It actually runs a bunch of tests
 in the <code class="docutils literal notranslate"><span class="pre">test</span></code> directory using the files in the <code class="docutils literal notranslate"><span class="pre">test_corpus</span></code> directory. This is not the
-preferred Unit Test to have. It is provided to you as a Saftey Check only. You need
+preferred Unit Test to have. It is provided to you as a Safety Check only. You need
 to write your own tests. The provided tests do not test every case!</p>
 <p>You can get details of the Unit Test failures by updating .replit to run the file <code class="docutils literal notranslate"><span class="pre">run_tests.py</span></code>.</p>
 <p>These tests are a gift to help you get extra verification that your code is working.
@@ -887,6 +853,48 @@ sort the lists. Note that sometimes the order is important.</p>
 <li><p>You should add <em>some</em> comments to <code class="docutils literal notranslate"><span class="pre">hw5_test.py</span></code>.</p></li>
 </ul>
 </section>
+<section id="html-stripping">
+<h2>HTML Stripping<a class="headerlink" href="#html-stripping" title="Permalink to this heading">#</a></h2>
+<p>In prior years, students were given HTML files and not text files. This section is a dicussion about stripping
+HTML out of the documents which has already been done for you.</p>
+<p>In ReplIt, you are provided with two folders with documents. When you run <code class="docutils literal notranslate"><span class="pre">main.py</span></code>, you should start off
+by crawling the files in <code class="docutils literal notranslate"><span class="pre">test_corpus</span></code> or a folder you created with your own individual set of files. Eventually,
+<em>but not at the start</em>, you will
+be able to quickly and effectively search <code class="docutils literal notranslate"><span class="pre">small_text</span></code>. Give it a shot before you submit your project!</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">small_text</span></code> folder is a subset
+of wikipedia HTML articles with the HTML stripped away to reveal only the content. By stripping out
+the HTML tags, there are some pros and cons.</p>
+<p><strong>Pros of Stripping:</strong></p>
+<ul class="simple">
+<li><p>The developer can proceed without the distraction of how the code interfers with the solution.</p></li>
+<li><p>The indexing solution is not “confused” with needless code (the keywords and the non-English tag names).</p></li>
+<li><p>The size of the content is reduced.</p></li>
+</ul>
+<p><strong>Cons of Stripping:</strong></p>
+<ul class="simple">
+<li><p>The indexing solution actually works quite nicely on the HTML directly (with a few exceptions).</p></li>
+<li><p>The text has seemingly random spacing and an unusual occurance of the <code class="docutils literal notranslate"><span class="pre">^</span></code> character.</p></li>
+<li><p>Viewing the content is unappealing because all the nice formatting is lost. :-(</p></li>
+</ul>
+<p>If you want to use the HTML version (small_wiki), you may download those files <a class="reference external" href="https://drive.google.com/file/d/1PSCFeXbM5UCFU5pIkj5GbtXjgSDJXzoX/view?usp=share_link">here</a>.</p>
+<blockquote>
+<div><p>Note: The curious developer may be interested to know that small_text was created
+by using BeautifulSoup to strip the HTML files of their HTML.</p>
+</div></blockquote>
+<p>The name of the folder <code class="docutils literal notranslate"><span class="pre">small_text</span></code> may be a misnomer because it is 2.5 MB in size. That’s
+arguably large. However, there is a much larger corpus you can choose to use:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://drive.google.com/file/d/1A3K-PR_eJrMFvmCCP28y-haFcW8thrV_/view?usp=share_link">Large Wikipedia HTML</a></p></li>
+<li><p><a class="reference external" href="https://drive.google.com/file/d/15s5CkBwhW8cvQbUHKCjD_-jmeG5JsdhJ/view?usp=share_link">Large Wikipedia Text</a></p></li>
+</ul>
+<div class="note admonition">
+<p class="admonition-title">Access Note</p>
+<p>The Google shares require that you use your NSD Credentials.</p>
+</div>
+<p>Due to their size, these <em>Large Wikipedia</em> folders should NOT be uploaded to Replit. Instead, you are encouraged
+to download to your local computer and run HW5 locally. If your code is written efficiently, it will work if
+given a little time. If your code is not written efficiently, patience will not suffice. :-)</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -946,6 +954,7 @@ sort the lists. Note that sometimes the order is important.</p>
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
 
+
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
     <i class="fa-solid fa-list"></i> Contents
@@ -958,7 +967,6 @@ sort the lists. Note that sometimes the order is important.</p>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#main-output">Main Output</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#context">Context</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#normalizing-tokens">Normalizing Tokens</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#html-stripping">HTML Stripping</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#writing-tests">Writing Tests</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test-methods">Test Methods</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#do-not-change">Do Not Change…</a></li>
@@ -974,6 +982,7 @@ sort the lists. Note that sometimes the order is important.</p>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#commenting">Commenting</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#html-stripping">HTML Stripping</a></li>
 </ul>
   </nav></div>
 
@@ -1025,8 +1034,8 @@ By Jeff Stride
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=bd9e20870c6007c4c509"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=bd9e20870c6007c4c509"></script>
 
   <footer class="bd-footer">
   </footer>
