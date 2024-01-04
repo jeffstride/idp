@@ -630,12 +630,12 @@ Create test files that are target the type of tests you want to run. They should
 <h2>Deliverables<a class="headerlink" href="#deliverables" title="Permalink to this heading">#</a></h2>
 <p>You are to create two different classes, <code class="docutils literal notranslate"><span class="pre">Document</span></code> and <code class="docutils literal notranslate"><span class="pre">SearchEngine</span></code>, that implement a Search Engine.<br />
 You will create a <code class="docutils literal notranslate"><span class="pre">main.py</span></code> file that has console-based user interaction. It will prompt the user for a directory to use for the corpus of documents. The user may then enter any number of queries implemented by the <code class="docutils literal notranslate"><span class="pre">SearchEngine</span></code>. The results of the query will be output to the console. If the user enters an empty string, the program ends.</p>
-<p><code class="docutils literal notranslate"><span class="pre">Document</span></code> will have an initializer and one public method:</p>
+<p><code class="docutils literal notranslate"><span class="pre">Document</span></code> will have an initializer and at least one public method:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">doc</span> <span class="pre">=</span> <span class="pre">Document(relative_path)</span></code> : Example code that creates a new <code class="docutils literal notranslate"><span class="pre">Document</span></code> initialized to an actual file.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">term_frequency(term)</span></code>: returns the TF value for the term for this document.</p></li>
 </ul>
-<p><code class="docutils literal notranslate"><span class="pre">SearchEngine</span></code> will have an initializer and one public method:</p>
+<p><code class="docutils literal notranslate"><span class="pre">SearchEngine</span></code> will have an initializer and only one public method:</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">se</span> <span class="pre">=</span> <span class="pre">SearchEngine(relative_path)</span></code> : Example code that creates a new <code class="docutils literal notranslate"><span class="pre">SearchEngine</span></code> initialized to a corpus of files found in the directory, <code class="docutils literal notranslate"><span class="pre">relative_path</span></code>.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">search(query)</span></code>: returns a list of document paths, relative to current working directory. The list is sorted by relevance (TF-IDF).</p></li>
