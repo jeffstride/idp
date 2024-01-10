@@ -240,6 +240,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="hw4.html"><i class="fas fa-laptop fa-fw"></i> HW4 - Education</a></li>
 <li class="toctree-l2"><a class="reference internal" href="hw5.html"><i class="fas fa-laptop fa-fw"></i> HW5 - Search Engine</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#"><i class="fas fa-laptop fa-fw"></i> HW6 - Spell Checker</a></li>
+
 <li class="toctree-l2"><a class="reference internal" href="hw7.html"><i class="fas fa-laptop fa-fw"></i> HW7 - Mapping</a></li>
 </ul>
 </li>
@@ -530,24 +531,26 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><i class="fas fa-laptop fa-fw"></i> HW6 - Spell Checker</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rubric-submission">Rubric &amp; Submission</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instructions">Instructions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spell-checking-an-essay">Spell Checking an Essay</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-spell-checking-an-essay">Simple Spell Checking an Essay</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-for-passing-test">Tips for Passing Test</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generators">Generators</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spelling-suggestion">Spelling Suggestion</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mis-misspelled">Mis-misspelled</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1">Part 1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2">Part 2</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3">Part 3</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggest-correction">suggest_correction</a><ul class="nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#spelling-suggestion">Spelling Suggestion</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mis-misspelled">Mis-misspelled</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1">Part 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2">Part 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3">Part 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggest-mismisspellings">suggest_mismisspellings</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#composing">Composing</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggest-correction">Suggest_correction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#levenshtein-distance">Levenshtein Distance</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-the-difference">Experience the Difference</a></li>
 </ul>
@@ -560,6 +563,9 @@ document.write(`
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+
             </nav>
         </div>
     </div>
@@ -577,11 +583,16 @@ document.write(`
 <h2>Rubric &amp; Submission<a class="headerlink" href="#rubric-submission" title="Permalink to this heading">#</a></h2>
 <p>Please note these important things:</p>
 <ul class="simple">
-<li><p>You will NOT turn this into AutoGrader. You will <strong>Submit to Replit.</strong></p></li>
-<li><p>This will be for your High School Grade only.  It will be worth <code class="docutils literal notranslate"><span class="pre">40</span> <span class="pre">points</span></code> (40% a UW Homework Assignment).</p></li>
-<li><p>You will be graded on the Replit Unit Tests only. ~3pts per Unit Test.</p></li>
+<li><p>You will submit your work to <strong>Dropbox</strong>. The link will be found on Schoology.</p></li>
+<li><p>This will be for your High School Grade only.</p></li>
+<li><p>You will be graded on:</p>
+<ul>
+<li><p>Functionality</p></li>
+<li><p>Speed/Efficiency</p></li>
+<li><p>Class design</p></li>
+</ul>
+</li>
 <li><p>You will not be graded on any commenting or tests you write.</p></li>
-<li><p>Please know the due date and TIME as posted in Schoology. (6am Feb 3)</p></li>
 </ul>
 </section>
 <section id="instructions">
@@ -603,36 +614,34 @@ The primary pieces of functionality will be to:</p>
 </ul>
 <p>A basic infrastructure of the SpellChecker class will be provided.</p>
 </section>
-<section id="spell-checking-an-essay">
-<h2>Spell Checking an Essay<a class="headerlink" href="#spell-checking-an-essay" title="Permalink to this heading">#</a></h2>
+<section id="simple-spell-checking-an-essay">
+<h2>Simple Spell Checking an Essay<a class="headerlink" href="#simple-spell-checking-an-essay" title="Permalink to this heading">#</a></h2>
 <p>First, improve the code so that it can complete the spell checking quickly.</p>
-<p>You will implement the following three things in the class <code class="docutils literal notranslate"><span class="pre">SpellChecker</span></code>:</p>
+<p>You will implement the following three methods in the class <code class="docutils literal notranslate"><span class="pre">SpellChecker</span></code>:</p>
 <ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">constructor</span></code> : Takes the name of a dictionary and intializes a SpellChecker object.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">misspelled</span></code> : An instance method that returns True if the word passed in is not found in the dictionary.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">spell_check</span></code> : An instance method that returns a list of misspelled words found in the essay while also outputting to the console details about which words are misspelled.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self,</span> <span class="pre">dictionary_name)</span></code> : Takes the name of a dictionary and intializes a SpellChecker object.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">misspelled(self,</span> <span class="pre">word)</span></code> : An instance method that returns True if the word is not found in the dictionary. (i.e. misspelled)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">spell_check(self,</span> <span class="pre">file_name,</span> <span class="pre">suggest=False)</span></code> : An instance method that returns a list of <code class="docutils literal notranslate"><span class="pre">WordInfo</span></code> objects for each misspelled word found in the essay. You will have an optional argument <code class="docutils literal notranslate"><span class="pre">suggest</span></code> that is defaulted to False. If True, the spell check will return suggestions for correctly spelled words. In this first <em>Simple</em> implementation, you won’t implement this.</p></li>
 </ol>
+<p>You will implement <code class="docutils literal notranslate"><span class="pre">main.py</span></code> that will create the SpellChecker object and output the misspelled words. Below is sample output.</p>
 <p>There are several Unit Tests that related to the above that you should pass
-before continuing onto the next step. Note that these Unit Test will test both
-the functionality as well as the speed of execution. You need to have <em>FAST</em> code!!</p>
+before continuing onto the next step. Note that the speed of execution is IMPORTANT.
+If you are too slow, you will get marked down. You need to have <em>FAST</em> code!!</p>
 <p>Also, the output printed to the console for <code class="docutils literal notranslate"><span class="pre">spell_check</span></code> should look close to:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">civalized</span><span class="p">:</span> <span class="n">line</span><span class="p">:</span> <span class="mi">1</span>  <span class="n">word</span><span class="p">:</span><span class="mi">3</span>
-<span class="n">oportunities</span><span class="p">:</span> <span class="n">line</span><span class="p">:</span> <span class="mi">6</span>  <span class="n">word</span><span class="p">:</span><span class="mi">4</span>
-<span class="n">seeems</span><span class="p">:</span> <span class="n">line</span><span class="p">:</span> <span class="mi">15</span>  <span class="n">word</span><span class="p">:</span><span class="mi">9</span>
-<span class="n">peopl</span><span class="p">:</span> <span class="n">line</span><span class="p">:</span> <span class="mi">21</span>  <span class="n">word</span><span class="p">:</span><span class="mi">8</span>
-<span class="n">ettiquitt</span><span class="p">:</span> <span class="n">line</span><span class="p">:</span> <span class="mi">35</span>  <span class="n">word</span><span class="p">:</span><span class="mi">1</span>
-<span class="n">shoudl</span><span class="p">:</span> <span class="n">line</span><span class="p">:</span> <span class="mi">37</span>  <span class="n">word</span><span class="p">:</span><span class="mi">7</span>
-<span class="n">psudo</span><span class="o">-</span><span class="n">code</span><span class="p">:</span> <span class="n">line</span><span class="p">:</span> <span class="mi">37</span>  <span class="n">word</span><span class="p">:</span><span class="mi">10</span>
-<span class="n">algorythm</span><span class="p">:</span> <span class="n">line</span><span class="p">:</span> <span class="mi">39</span>  <span class="n">word</span><span class="p">:</span><span class="mi">6</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>    <span class="n">civalized</span><span class="p">:</span> <span class="n">line</span><span class="p">:</span>   <span class="mi">1</span>  <span class="n">word</span><span class="p">:</span>  <span class="mi">3</span>
+ <span class="n">oportunities</span><span class="p">:</span> <span class="n">line</span><span class="p">:</span>   <span class="mi">6</span>  <span class="n">word</span><span class="p">:</span>  <span class="mi">4</span>
+       <span class="n">seeems</span><span class="p">:</span> <span class="n">line</span><span class="p">:</span>  <span class="mi">15</span>  <span class="n">word</span><span class="p">:</span>  <span class="mi">9</span>
+        <span class="n">peopl</span><span class="p">:</span> <span class="n">line</span><span class="p">:</span>  <span class="mi">21</span>  <span class="n">word</span><span class="p">:</span>  <span class="mi">8</span>
+    <span class="n">ettiquitt</span><span class="p">:</span> <span class="n">line</span><span class="p">:</span>  <span class="mi">35</span>  <span class="n">word</span><span class="p">:</span>  <span class="mi">1</span>
+       <span class="n">shoudl</span><span class="p">:</span> <span class="n">line</span><span class="p">:</span>  <span class="mi">37</span>  <span class="n">word</span><span class="p">:</span>  <span class="mi">7</span>
+   <span class="n">psudo</span><span class="o">-</span><span class="n">code</span><span class="p">:</span> <span class="n">line</span><span class="p">:</span>  <span class="mi">37</span>  <span class="n">word</span><span class="p">:</span> <span class="mi">10</span>
+    <span class="n">algorythm</span><span class="p">:</span> <span class="n">line</span><span class="p">:</span>  <span class="mi">39</span>  <span class="n">word</span><span class="p">:</span>  <span class="mi">6</span>
 </pre></div>
 </div>
 <p>Be sure you Pass the Unit Tests:</p>
 <ul class="simple">
-<li><p>test_misspelled</p></li>
-<li><p>test_check_essay</p></li>
-<li><p>test_check_essay_speed_not_garbage</p></li>
-<li><p>test_check_essay_speed_okay</p></li>
-<li><p>test_check_essay_speed_good</p></li>
+<li><p>check_essay</p></li>
+<li><p>misspelled</p></li>
 </ul>
 <section id="tips-for-passing-test">
 <h3>Tips for Passing Test<a class="headerlink" href="#tips-for-passing-test" title="Permalink to this heading">#</a></h3>
@@ -643,7 +652,7 @@ according to plan.</p>
 <div><p>Mr. Stride will ask to see your tests first before helping you figure out why
 a functional Unit Test is failing.</p>
 </div></blockquote>
-<p>You need to update <code class="docutils literal notranslate"><span class="pre">misspelled</span></code> to work with hyphenated words. There is
+<p>You need to implement <code class="docutils literal notranslate"><span class="pre">misspelled</span></code> to work with hyphenated words. There is
 a slick and easy recursive approach to this which is also very fast.</p>
 <blockquote>
 <div><p>Hint: If no hyphen, solve normally. If it has hyphens, break into subwords
@@ -695,13 +704,20 @@ list with all the values at once, which can be very memory-intensive.</p>
 <p>These videos provide a good overview of generators, including how to create them,
 how to use them, and some of the benefits of using generators in your Python code.</p>
 </section>
-<section id="spelling-suggestion">
-<h2>Spelling Suggestion<a class="headerlink" href="#spelling-suggestion" title="Permalink to this heading">#</a></h2>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="spelling-suggestion">
+<h1>Spelling Suggestion<a class="headerlink" href="#spelling-suggestion" title="Permalink to this heading">#</a></h1>
 <p>This is where the project starts to get more interesting. There are many creative ways
 to suggest words for a misspelled word.
-We will start simple and then build up to <em>AMAZING!</em></p>
+We will start simple and slow and then build up to <em>AMAZING and FAST!</em></p>
+<p>You will implement the following three methods as <strong>generators</strong>:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">_insert_letters</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_remove_letters</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">_swap_letters</span></code></p></li>
+</ol>
 <section id="mis-misspelled">
-<h3>Mis-misspelled<a class="headerlink" href="#mis-misspelled" title="Permalink to this heading">#</a></h3>
+<h2>Mis-misspelled<a class="headerlink" href="#mis-misspelled" title="Permalink to this heading">#</a></h2>
 <p>We will start with a concept that I’ll call: <code class="docutils literal notranslate"><span class="pre">mis-misspelled</span></code>. The basic idea
 is that we will modify the spelling of a misspelled word until
 it is modified into a correctly spelled word.</p>
@@ -721,7 +737,7 @@ using the generator just created.</p>
 </div></blockquote>
 </section>
 <section id="part-1">
-<h3>Part 1<a class="headerlink" href="#part-1" title="Permalink to this heading">#</a></h3>
+<h2>Part 1<a class="headerlink" href="#part-1" title="Permalink to this heading">#</a></h2>
 <p>You will implement a create_misspelling <code class="docutils literal notranslate"><span class="pre">generator</span></code>, but instead of using the name ‘create_misspelling’,
 we will use a more specific name that describes exactly <em>how</em> we are misspelling the
 word. Let’s name it: <code class="docutils literal notranslate"><span class="pre">_insert_letters</span></code>.</p>
@@ -737,7 +753,7 @@ position of a given word.</p>
 </ul>
 </section>
 <section id="part-2">
-<h3>Part 2<a class="headerlink" href="#part-2" title="Permalink to this heading">#</a></h3>
+<h2>Part 2<a class="headerlink" href="#part-2" title="Permalink to this heading">#</a></h2>
 <p>Implement another generator to move all letters, one letter at a time.
 This will be called: <code class="docutils literal notranslate"><span class="pre">_remove_letters</span></code>. For example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>   <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_remove_letters</span><span class="p">(</span><span class="s1">&#39;goodbye&#39;</span><span class="p">):</span>
@@ -758,7 +774,7 @@ This will be called: <code class="docutils literal notranslate"><span class="pre
 </ul>
 </section>
 <section id="part-3">
-<h3>Part 3<a class="headerlink" href="#part-3" title="Permalink to this heading">#</a></h3>
+<h2>Part 3<a class="headerlink" href="#part-3" title="Permalink to this heading">#</a></h2>
 <p>Implement another generator to change all letters, one letter at a time.
 This will be called: <code class="docutils literal notranslate"><span class="pre">_swap_letters</span></code>. Note that this does NOT mean that
 two letters in the word is swapped. Instead, it means that one letter is
@@ -793,10 +809,9 @@ swapped out for another. For example:</p>
 <li><p>test_swap_letters</p></li>
 </ul>
 </section>
-</section>
-<section id="suggest-correction">
-<h2>suggest_correction<a class="headerlink" href="#suggest-correction" title="Permalink to this heading">#</a></h2>
-<p>It is time to implement the method <code class="docutils literal notranslate"><span class="pre">suggest_correction</span></code>. This method
+<section id="suggest-mismisspellings">
+<h2>suggest_mismisspellings<a class="headerlink" href="#suggest-mismisspellings" title="Permalink to this heading">#</a></h2>
+<p>It is time to implement the method <code class="docutils literal notranslate"><span class="pre">suggest_mismisspellings</span></code>. This method
 should return a list of suggested words that could be the correct
 spelling for the misspelled word. The list will have an maximum number
 of words added to the list which is specified in the optional <code class="docutils literal notranslate"><span class="pre">max</span></code> argument.</p>
@@ -812,40 +827,27 @@ misspelled words require ALL THREE at the SAME TIME!! For example, to
 identify the correctly spelled word <code class="docutils literal notranslate"><span class="pre">etiquette</span></code> from <code class="docutils literal notranslate"><span class="pre">ettiquitt</span></code> requires
 that we delete a <code class="docutils literal notranslate"><span class="pre">t</span></code>, add an <code class="docutils literal notranslate"><span class="pre">e</span></code>, and change an <code class="docutils literal notranslate"><span class="pre">i</span></code> to an <code class="docutils literal notranslate"><span class="pre">e</span></code>. All three!!</p>
 <p>We want to implement all 3 types, composed with one another. This can be
-difficult. Here is a way to compose all three together:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">suggest_correction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">6</span><span class="p">):</span>
-        <span class="c1"># partial implementation only!!</span>
-        <span class="n">fns</span> <span class="o">=</span> <span class="p">[</span><span class="bp">self</span><span class="o">.</span><span class="n">_insert_letters</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_remove_letters</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">_swap_letters</span><span class="p">]</span>
-        <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compose_fns</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">fns</span><span class="p">):</span>
-            <span class="c1"># rest of code not shown</span>
-
-    <span class="k">def</span> <span class="nf">_compose_fns</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word</span><span class="p">,</span> <span class="n">fns</span><span class="p">):</span>
-<span class="w">        </span><span class="sd">&#39;&#39;&#39; </span>
-<span class="sd">        A recursive generator that composes all the generators in fns.</span>
-<span class="sd">        word : the word that is misspelled</span>
-<span class="sd">        fns : a list of generators</span>
-<span class="sd">        &#39;&#39;&#39;</span>
-        <span class="k">for</span> <span class="n">fn1_word</span> <span class="ow">in</span> <span class="n">fns</span><span class="p">[</span><span class="mi">0</span><span class="p">](</span><span class="n">word</span><span class="p">):</span>
-            <span class="k">yield</span> <span class="n">fn1_word</span>
-            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">fns</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
-                <span class="k">yield</span> <span class="n">fn1_word</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="c1"># our recursive case must be in the form of a for-loop</span>
-                <span class="k">for</span> <span class="n">fn2_word</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_compose_fns</span><span class="p">(</span><span class="n">fn1_word</span><span class="p">,</span> <span class="n">fns</span><span class="p">[</span><span class="mi">1</span><span class="p">:]):</span>
-                    <span class="k">yield</span> <span class="n">fn2_word</span>
-</pre></div>
-</div>
+very difficult. A common approach would be to use recursion to get call
+combinations of the generators composed together. This is even more difficult
+due to the way generators work–you don’t <em>call</em> them, you <em>iterate</em> through them.</p>
+<p><strong>TODO: more on composing generators</strong></p>
 <p>Be sure you pass the Unit Test:</p>
 <ul class="simple">
-<li><p>test_suggest_compose : This tests that suggest_correction correctly finds a suggestion for a misspelled word that requires three changes.</p></li>
+<li><p>test_suggest_compose : This tests that `suggest_mismisspellings`` correctly finds a suggestion for a misspelled word that requires at least two different types of changes. Ideally, it would find words that require <em>three</em> changes.</p></li>
 </ul>
-<p>Using the above code, see if you can correctly produce at least one suggestion
+<p><strong>TODO: don’t test on englishEssay.txt</strong>
+Using the above code, see if you can correctly produce at least one suggestion
 for each of the misspelled words in <code class="docutils literal notranslate"><span class="pre">englishEssay.txt</span></code>.</p>
 <blockquote>
 <div><p>Note: Your code may run for as much as a full minute to find suggestions for all
 the misspelled words in the englishEssay.txt.</p>
 </div></blockquote>
 </section>
+</section>
+<section id="suggest-correction">
+<h2>Suggest_correction<a class="headerlink" href="#suggest-correction" title="Permalink to this heading">#</a></h2>
+<p>You will now implement a FAST way to get the
+<code class="docutils literal notranslate"><span class="pre">suggest_corrections(self,</span> <span class="pre">word)</span></code> : An instance method that returns a list of suggested correctly spelled words.</p>
 </section>
 <section id="levenshtein-distance">
 <h2>Levenshtein Distance<a class="headerlink" href="#levenshtein-distance" title="Permalink to this heading">#</a></h2>
@@ -1067,24 +1069,26 @@ Is it common to find 6 unique Triples for a singular hypotenuse? When does that 
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#"><i class="fas fa-laptop fa-fw"></i> HW6 - Spell Checker</a><ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rubric-submission">Rubric &amp; Submission</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#instructions">Instructions</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spell-checking-an-essay">Spell Checking an Essay</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#simple-spell-checking-an-essay">Simple Spell Checking an Essay</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tips-for-passing-test">Tips for Passing Test</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#generators">Generators</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#spelling-suggestion">Spelling Suggestion</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mis-misspelled">Mis-misspelled</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1">Part 1</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2">Part 2</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3">Part 3</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggest-correction">suggest_correction</a><ul class="nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#spelling-suggestion">Spelling Suggestion</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mis-misspelled">Mis-misspelled</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-1">Part 1</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-2">Part 2</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#part-3">Part 3</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggest-mismisspellings">suggest_mismisspellings</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#composing">Composing</a></li>
 </ul>
 </li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggest-correction">Suggest_correction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#levenshtein-distance">Levenshtein Distance</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-the-difference">Experience the Difference</a></li>
 </ul>
@@ -1097,6 +1101,9 @@ Is it common to find 6 unique Triples for a singular hypotenuse? When does that 
 </ul>
 </li>
 </ul>
+</li>
+</ul>
+
   </nav></div>
 
 </div></div>
