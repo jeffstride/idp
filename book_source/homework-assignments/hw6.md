@@ -147,9 +147,11 @@ def get_suggestion(self, misspelled_word):
         if not misspelled(mis_misspelled_word):
             return mis_misspelled_word
 ```
-
-> For each section below, attempt find the correct spelling for words
+For each section below, attempt find the correct spelling for words
 using the generator just created.
+
+> IMPORTANT: In order to allow us to "compose" our misspellers together, we need each
+> generate to first yeild the word unchanged.
 
 ## Part 1
 You will implement a create_misspelling `generator`, but instead of using the name 'create_misspelling',
@@ -159,32 +161,64 @@ word. Let's name it: `_insert_letters`.
 > method is an instance method (belongs to the object).
 
 This method will insert all the letters, a-z, into every possible
-position of a given word. 
+position of a given word, at the start, between each letter, and at the end.
+Remember, the very first word to yield is the word unchanged.
+For example, if we have the word `cat`, the words generated would be:
+```
+cat
+acat
+bcat
+ccat
+dcat
+...
+ycat
+zcat
+caat
+cbat
+ccat
+cdat
+...
+czat
+caat
+cabt
+cact
+cadt
+...
+cazt
+...
+cata
+catb
+catc
+...
+catz
+```
 
-Be sure you pass the Unit Test:  
-* test_insert_letters
+Be sure you pass the Unit Test `insert_letters`.
 
 ## Part 2
 Implement another generator to move all letters, one letter at a time. 
+The first word the generate will yield, is the word unchanged.
 This will be called: `_remove_letters`. For example: 
 ```python
    for word in self._remove_letters('goodbye'):
       print(word)
 
 # prints
+goodbye
 oodbye
 godbye
 godbye
+goobye
 goodye
 goodbe
 goodby
 ```
 
-Be sure you pass the Unit Test:  
-* test_remove_letters
+Be sure you pass the Unit Test:  remove_letters
   
 ## Part 3
 Implement another generator to change all letters, one letter at a time. 
+Once again, the first word to yield is the original word, unchanged.
 This will be called: `_swap_letters`. Note that this does NOT mean that
 two letters in the word is swapped. Instead, it means that one letter is
 swapped out for another. For example: 
@@ -192,7 +226,8 @@ swapped out for another. For example:
    for word in self._swap_letters('ab'):
       print(word)
 
-# optionally prints 'ab', but definitely prints...
+# prints 
+ab
 bb
 cb
 db
@@ -214,8 +249,7 @@ az
 
 ```
 
-Be sure you pass the Unit Test:  
-* test_swap_letters
+Be sure you pass the Unit Test: swap_letters
 
 ## suggest_mismisspellings
 It is time to implement the method `suggest_mismisspellings`. This method
