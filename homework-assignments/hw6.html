@@ -731,9 +731,11 @@ we will generate the word <code class="docutils literal notranslate"><span class
             <span class="k">return</span> <span class="n">mis_misspelled_word</span>
 </pre></div>
 </div>
-<blockquote>
-<div><p>For each section below, attempt find the correct spelling for words
+<p>For each section below, attempt find the correct spelling for words
 using the generator just created.</p>
+<blockquote>
+<div><p>IMPORTANT: In order to allow us to “compose” our misspellers together, we need each
+generate to first yeild the word unchanged.</p>
 </div></blockquote>
 </section>
 <section id="part-1">
@@ -746,43 +748,72 @@ word. Let’s name it: <code class="docutils literal notranslate"><span class="p
 method is an instance method (belongs to the object).</p>
 </div></blockquote>
 <p>This method will insert all the letters, a-z, into every possible
-position of a given word.</p>
-<p>Be sure you pass the Unit Test:</p>
-<ul class="simple">
-<li><p>test_insert_letters</p></li>
-</ul>
+position of a given word, at the start, between each letter, and at the end.
+Remember, the very first word to yield is the word unchanged.
+For example, if we have the word <code class="docutils literal notranslate"><span class="pre">cat</span></code>, the words generated would be:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span>
+<span class="n">acat</span>
+<span class="n">bcat</span>
+<span class="n">ccat</span>
+<span class="n">dcat</span>
+<span class="o">...</span>
+<span class="n">ycat</span>
+<span class="n">zcat</span>
+<span class="n">caat</span>
+<span class="n">cbat</span>
+<span class="n">ccat</span>
+<span class="n">cdat</span>
+<span class="o">...</span>
+<span class="n">czat</span>
+<span class="n">caat</span>
+<span class="n">cabt</span>
+<span class="n">cact</span>
+<span class="n">cadt</span>
+<span class="o">...</span>
+<span class="n">cazt</span>
+<span class="o">...</span>
+<span class="n">cata</span>
+<span class="n">catb</span>
+<span class="n">catc</span>
+<span class="o">...</span>
+<span class="n">catz</span>
+</pre></div>
+</div>
+<p>Be sure you pass the Unit Test <code class="docutils literal notranslate"><span class="pre">insert_letters</span></code>.</p>
 </section>
 <section id="part-2">
 <h2>Part 2<a class="headerlink" href="#part-2" title="Permalink to this heading">#</a></h2>
 <p>Implement another generator to move all letters, one letter at a time.
+The first word the generate will yield, is the word unchanged.
 This will be called: <code class="docutils literal notranslate"><span class="pre">_remove_letters</span></code>. For example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>   <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_remove_letters</span><span class="p">(</span><span class="s1">&#39;goodbye&#39;</span><span class="p">):</span>
       <span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
 
 <span class="c1"># prints</span>
+<span class="n">goodbye</span>
 <span class="n">oodbye</span>
 <span class="n">godbye</span>
 <span class="n">godbye</span>
+<span class="n">goobye</span>
 <span class="n">goodye</span>
 <span class="n">goodbe</span>
 <span class="n">goodby</span>
 </pre></div>
 </div>
-<p>Be sure you pass the Unit Test:</p>
-<ul class="simple">
-<li><p>test_remove_letters</p></li>
-</ul>
+<p>Be sure you pass the Unit Test:  remove_letters</p>
 </section>
 <section id="part-3">
 <h2>Part 3<a class="headerlink" href="#part-3" title="Permalink to this heading">#</a></h2>
 <p>Implement another generator to change all letters, one letter at a time.
+Once again, the first word to yield is the original word, unchanged.
 This will be called: <code class="docutils literal notranslate"><span class="pre">_swap_letters</span></code>. Note that this does NOT mean that
 two letters in the word is swapped. Instead, it means that one letter is
 swapped out for another. For example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>   <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_swap_letters</span><span class="p">(</span><span class="s1">&#39;ab&#39;</span><span class="p">):</span>
       <span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
 
-<span class="c1"># optionally prints &#39;ab&#39;, but definitely prints...</span>
+<span class="c1"># prints </span>
+<span class="n">ab</span>
 <span class="n">bb</span>
 <span class="n">cb</span>
 <span class="n">db</span>
@@ -804,10 +835,7 @@ swapped out for another. For example:</p>
 
 </pre></div>
 </div>
-<p>Be sure you pass the Unit Test:</p>
-<ul class="simple">
-<li><p>test_swap_letters</p></li>
-</ul>
+<p>Be sure you pass the Unit Test: swap_letters</p>
 </section>
 <section id="suggest-mismisspellings">
 <h2>suggest_mismisspellings<a class="headerlink" href="#suggest-mismisspellings" title="Permalink to this heading">#</a></h2>
