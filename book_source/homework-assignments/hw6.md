@@ -164,7 +164,11 @@ This method will insert all the letters, a-z, into every possible
 position of a given word, at the start, between each letter, and at the end.
 Remember, the very first word to yield is the word unchanged.
 For example, if we have the word `cat`, the words generated would be:
-```
+```python
+for word in self._insert_letters('cat'):
+    print(word)
+
+# prints
 cat
 acat
 bcat
@@ -200,8 +204,8 @@ Implement another generator to remove all letters, one letter at a time.
 The first word the generator will yield, is the word unchanged.
 The generator will be called: `_remove_letters`. For example: 
 ```python
-   for word in self._remove_letters('goodbye'):
-      print(word)
+for word in self._remove_letters('goodbye'):
+    print(word)
 
 # prints
 goodbye
@@ -214,7 +218,7 @@ goodbe
 goodby
 ```
 
-Be sure you pass the Unit Test:  remove_letters
+Be sure you pass the Unit Test  `remove_letters`.
   
 ## Part 3
 Implement another generator to change all letters, one letter at a time. 
@@ -223,8 +227,8 @@ This will be called: `_swap_letters`. Note that this does NOT mean that
 two letters in the word are swapped. Instead, it means that one letter is
 swapped out for another. For example: 
 ```python
-   for word in self._swap_letters('ab'):
-      print(word)
+for word in self._swap_letters('ab'):
+   print(word)
 
 # prints 
 ab
@@ -249,7 +253,7 @@ az
 
 ```
 
-Be sure you pass the Unit Test: swap_letters
+Be sure you pass the Unit Test `swap_letters`.
 
 ## suggest_mismisspellings
 It is time to implement the method `suggest_mismisspellings`. This method
@@ -279,8 +283,7 @@ Instead, you'll simply use nested for-loops to get all possible combinations of 
 > to apply _ONLY_ _insert_letters. Havineg our other two mismisspellers return the word
 > unchanged allows us to write simple code to find mismisspellings when there is only one mistake.
 
-Be sure you pass the Unit Test:  
-* _suggest_compose_ : This tests that `suggest_mismisspellings` correctly finds a suggestion for a misspelled word that requires two and three misspellings applied. 
+Be sure you pass the Unit Test _suggest_compose_. This tests that `suggest_mismisspellings` correctly finds a suggestion for a misspelled word that requires all three misspellings. 
 
 Using the above code, you may want to see if you can correctly produce at least one suggestion
 for each of the misspelled words in `englishEssay.txt`. However, this method of finding suggestions is very slow.
@@ -293,13 +296,22 @@ There are two problems with what we've done so far:
 1) It's too slow!!  
 2) The list may contain lots of odd words  
 
-You will now implement  `suggest_corrections(self, word)`. It is a a _FAST_ way to find a list of correctly spelled words. 
+You will now implement `suggest_corrections(self, word)`. It uses a distance algorithm and
+is a much _FASTER_ way to find a list of correctly spelled words. 
 
 We are going to change the approach to solving this _suggestion problem_. We
 will essentially go backwards. Instead of generating mis-misspelled candidates
 and then search the dictionary to see if it is indeed a correctly spelled word,
 we will compare 'every' word in the dictionary against the misspelled word
-to see if it is 'close'. The 'closests' words will be what we suggest.
+to calculate how 'close' it is to our misspelled word. We will use Levenstein Distance for this.  
+
+Your method will identify the closest distance that any word is to the misspelled word.
+It will return a sorted list of all the words at that minimum distance from the misspelled word. 
+It will suggest all of the 'closests' words and only the closest words.  
+
+For example, if the misspelled word is `compewter`, your code should return the suggested
+list `['compester', 'competer']` because each of these is a distance of 1 away from the
+misspelled word `compewter`. The word `computer` is a distance of 2 and will not be included.  
 
 To accomplish this, we need a way to _measure the 'distance'_ between two words. 
 The `Levenshtein Distance` algorithm is exactly what we want. The algorithm will
@@ -307,6 +319,12 @@ provide an integer number that is essentially the count of changes made to one
 word to reach the other. The changes are exactly the same three generators you
 implemented above. (The algorithm will not use your generators.)
 
+```{admonition} Levenshtein Distance
+:class: dropdown
+The Levenshtein Distance algorithm, also known as the edit distance, is a measure of the similarity between two strings.
+It calculates the minimum number of single-character edits (insertions, deletions, or substitutions) required to transform
+one string into another. The smaller the Levenshtein Distance, the more similar the strings are.
+```
 You will add a new instance method to the SpellChecker class.
 ```python
     def suggest_corrections(self, word):
@@ -343,9 +361,13 @@ After you have Python code that correctly implements Levenshtein Distance, look 
 
 Amazing, right?!
 
-Be sure you pass the final two Unit Tests:
+## Final Product
+You will update `main.py` to run your Spell Checker. 
+Be sure you pass all the Unit Tests.
 
-## Challenge Question
+You can now also update your
+
+# Challenge Question
 This challenge question is a bit different than previous questions. Here, you'll be asked to do some Data Science
 research. The goal is to provide _visual_ insight into a mathematical _solution space_. Does this sound a bit strange? Let me elaborate.  
 
