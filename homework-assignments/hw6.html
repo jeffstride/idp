@@ -843,7 +843,7 @@ swapped out for another. For example:</p>
 should return a list of suggested words that could be the correct
 spelling for the misspelled word. The list will have an maximum number
 of words added to the list which is specified in the optional <code class="docutils literal notranslate"><span class="pre">max</span></code> argument.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">suggest_correction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">6</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">suggest_mismisspellings</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word</span><span class="p">,</span> <span class="nb">max</span><span class="o">=</span><span class="mi">6</span><span class="p">):</span>
         <span class="c1"># student&#39;s implementation goes here</span>
 </pre></div>
 </div>
@@ -858,14 +858,19 @@ that we delete a <code class="docutils literal notranslate"><span class="pre">t<
 very difficult. A common approach would be to use recursion to get call
 combinations of the generators composed together. This is even more difficult
 due to the way generators work–you don’t <em>call</em> them, you <em>iterate</em> through them.</p>
-<p><strong>TODO: more on composing generators</strong></p>
+<p>We will avoid recursion because we have a fixed number of generators that we want to compose.
+Instead, you’ll simply use nested for-loops to get all possible combinations of mismisspellings.</p>
+<blockquote>
+<div><p>Note: This is why we had each generator first return the word unchanged: we want the ability
+to apply <em>ONLY</em> _insert_letters. Havine our other two mismisspellers return the word
+unchanged allows us to write simple code to achieve this.</p>
+</div></blockquote>
 <p>Be sure you pass the Unit Test:</p>
 <ul class="simple">
-<li><p>test_suggest_compose : This tests that `suggest_mismisspellings`` correctly finds a suggestion for a misspelled word that requires at least two different types of changes. Ideally, it would find words that require <em>three</em> changes.</p></li>
+<li><p><em>suggest_compose</em> : This tests that <code class="docutils literal notranslate"><span class="pre">suggest_mismisspellings</span></code> correctly finds a suggestion for a misspelled word that requires two and three misspellings applied.</p></li>
 </ul>
-<p><strong>TODO: don’t test on englishEssay.txt</strong>
-Using the above code, see if you can correctly produce at least one suggestion
-for each of the misspelled words in <code class="docutils literal notranslate"><span class="pre">englishEssay.txt</span></code>.</p>
+<p>Using the above code, you may want to see if you can correctly produce at least one suggestion
+for each of the misspelled words in <code class="docutils literal notranslate"><span class="pre">englishEssay.txt</span></code>. However, this method of finding suggestionw is very slow.</p>
 <blockquote>
 <div><p>Note: Your code may run for as much as a full minute to find suggestions for all
 the misspelled words in the englishEssay.txt.</p>
@@ -874,7 +879,7 @@ the misspelled words in the englishEssay.txt.</p>
 </section>
 <section id="suggest-correction">
 <h2>Suggest_correction<a class="headerlink" href="#suggest-correction" title="Permalink to this heading">#</a></h2>
-<p>You will now implement a FAST way to get the
+<p>You will now implement a <em>FAST</em> way to get the
 <code class="docutils literal notranslate"><span class="pre">suggest_corrections(self,</span> <span class="pre">word)</span></code> : An instance method that returns a list of suggested correctly spelled words.</p>
 </section>
 <section id="levenshtein-distance">
@@ -895,7 +900,7 @@ provide an integer number that is essentially the count of changes made to one
 word to reach the other. The changes are exactly the same three generators you
 implemented above. (The algorithm will not use your generators.)</p>
 <p>You will add a new instance method to the SpellChecker class.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">lev_suggest_correction</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">suggest_corrections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span>
 <span class="w">       </span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">       Return a list of all the suggest words that share the same, minimum</span>
 <span class="sd">       distance from word using the levenshtein distance algorithm.</span>
@@ -903,24 +908,17 @@ implemented above. (The algorithm will not use your generators.)</p>
 </pre></div>
 </div>
 <p>It can take a while to understand the algorithm which can take us off topic
-quite a bit. So, instead, you have been provided with three different implementations
-of the algorithm in the file <code class="docutils literal notranslate"><span class="pre">levenshtein.py</span></code>.</p>
-<p>Below are the names of the 3 implementations along with the time (in seconds) it took to provide
-suggestions for all the misspelled words in the englishEssay.txt. (Times were using
-Mr. Stride’s implementation. Measured only once.)</p>
+quite a bit. So, instead, you will search the internet to find an implementation
+of the Levenshtein Distance algorithm. Add it to the file <code class="docutils literal notranslate"><span class="pre">levenshtein.py</span></code>. You will do this
+two ways:</p>
 <ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">levenshtein_distance:</span> <span class="pre">71.16</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">lev_distance:</span>&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160; <span class="pre">51.45</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">fast_lev_distance:</span>&#160;&#160;&#160;&#160; <span class="pre">1.42</span></code></p></li>
+<li><p>Find Python code</p></li>
+<li><p>Import a module</p></li>
 </ol>
-<p>It is pretty clear that one implementation is much, much, much faster than the rest.
-This is because it is implemented in the Python module <a class="reference external" href="https://pypi.org/project/editdistance/">editdistance</a>
-written in C++. Because it is written in C++ the code can run a lot faster.
-Furthermore, some braniacs out there used some fancy math an algorithm techniques
-to speed it up even more.</p>
+<p>Attempt to find <em>FAST</em> implementations. It is pretty clear that some implementations are much, much, much faster than the rest.</p>
 <section id="experience-the-difference">
 <h3>Experience the Difference<a class="headerlink" href="#experience-the-difference" title="Permalink to this heading">#</a></h3>
-<p>Implement the <code class="docutils literal notranslate"><span class="pre">lev_suggest_correction</span></code> and experience the difference in speed
+<p>Implement the <code class="docutils literal notranslate"><span class="pre">suggest_corrections</span></code> and experience the difference in speed
 from one algorithm to the other. Amazing, right?!</p>
 <p>Be sure you pass the final two Unit Tests:</p>
 </section>
