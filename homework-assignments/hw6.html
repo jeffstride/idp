@@ -241,6 +241,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l2"><a class="reference internal" href="hw5.html"><i class="fas fa-laptop fa-fw"></i> HW5 - Search Engine</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#"><i class="fas fa-laptop fa-fw"></i> HW6 - Spell Checker</a></li>
 
+
 <li class="toctree-l2"><a class="reference internal" href="hw7.html"><i class="fas fa-laptop fa-fw"></i> HW7 - Mapping</a></li>
 </ul>
 </li>
@@ -554,13 +555,14 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-module">Python Module</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-question">Challenge Question</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pythagorean-triples">Pythagorean Triples</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coding-hints">Coding Hints</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graphs-with-insight">Graphs with Insight</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#draw-some-conclusions">Draw some Conclusions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-product">Final Product</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-question">Challenge Question</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pythagorean-triples">Pythagorean Triples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coding-hints">Coding Hints</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graphs-with-insight">Graphs with Insight</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#draw-some-conclusions">Draw some Conclusions</a></li>
 </ul>
 </li>
 </ul>
@@ -750,7 +752,11 @@ method is an instance method (belongs to the object).</p>
 position of a given word, at the start, between each letter, and at the end.
 Remember, the very first word to yield is the word unchanged.
 For example, if we have the word <code class="docutils literal notranslate"><span class="pre">cat</span></code>, the words generated would be:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_insert_letters</span><span class="p">(</span><span class="s1">&#39;cat&#39;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+
+<span class="c1"># prints</span>
+<span class="n">cat</span>
 <span class="n">acat</span>
 <span class="n">bcat</span>
 <span class="n">ccat</span>
@@ -785,8 +791,8 @@ For example, if we have the word <code class="docutils literal notranslate"><spa
 <p>Implement another generator to remove all letters, one letter at a time.
 The first word the generator will yield, is the word unchanged.
 The generator will be called: <code class="docutils literal notranslate"><span class="pre">_remove_letters</span></code>. For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>   <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_remove_letters</span><span class="p">(</span><span class="s1">&#39;goodbye&#39;</span><span class="p">):</span>
-      <span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_remove_letters</span><span class="p">(</span><span class="s1">&#39;goodbye&#39;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
 
 <span class="c1"># prints</span>
 <span class="n">goodbye</span>
@@ -799,7 +805,7 @@ The generator will be called: <code class="docutils literal notranslate"><span c
 <span class="n">goodby</span>
 </pre></div>
 </div>
-<p>Be sure you pass the Unit Test:  remove_letters</p>
+<p>Be sure you pass the Unit Test  <code class="docutils literal notranslate"><span class="pre">remove_letters</span></code>.</p>
 </section>
 <section id="part-3">
 <h2>Part 3<a class="headerlink" href="#part-3" title="Permalink to this heading">#</a></h2>
@@ -808,8 +814,8 @@ Once again, the first word to yield is the original word, unchanged.
 This will be called: <code class="docutils literal notranslate"><span class="pre">_swap_letters</span></code>. Note that this does NOT mean that
 two letters in the word are swapped. Instead, it means that one letter is
 swapped out for another. For example:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>   <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_swap_letters</span><span class="p">(</span><span class="s1">&#39;ab&#39;</span><span class="p">):</span>
-      <span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_swap_letters</span><span class="p">(</span><span class="s1">&#39;ab&#39;</span><span class="p">):</span>
+   <span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
 
 <span class="c1"># prints </span>
 <span class="n">ab</span>
@@ -834,7 +840,7 @@ swapped out for another. For example:</p>
 
 </pre></div>
 </div>
-<p>Be sure you pass the Unit Test: swap_letters</p>
+<p>Be sure you pass the Unit Test <code class="docutils literal notranslate"><span class="pre">swap_letters</span></code>.</p>
 </section>
 <section id="suggest-mismisspellings">
 <h2>suggest_mismisspellings<a class="headerlink" href="#suggest-mismisspellings" title="Permalink to this heading">#</a></h2>
@@ -864,10 +870,7 @@ Instead, you’ll simply use nested for-loops to get all possible combinations o
 to apply <em>ONLY</em> _insert_letters. Havineg our other two mismisspellers return the word
 unchanged allows us to write simple code to find mismisspellings when there is only one mistake.</p>
 </div></blockquote>
-<p>Be sure you pass the Unit Test:</p>
-<ul class="simple">
-<li><p><em>suggest_compose</em> : This tests that <code class="docutils literal notranslate"><span class="pre">suggest_mismisspellings</span></code> correctly finds a suggestion for a misspelled word that requires two and three misspellings applied.</p></li>
-</ul>
+<p>Be sure you pass the Unit Test <em>suggest_compose</em>. This tests that <code class="docutils literal notranslate"><span class="pre">suggest_mismisspellings</span></code> correctly finds a suggestion for a misspelled word that requires all three misspellings.</p>
 <p>Using the above code, you may want to see if you can correctly produce at least one suggestion
 for each of the misspelled words in <code class="docutils literal notranslate"><span class="pre">englishEssay.txt</span></code>. However, this method of finding suggestions is very slow.</p>
 <blockquote>
@@ -883,17 +886,30 @@ the misspelled words in the englishEssay.txt.</p>
 <li><p>It’s too slow!!</p></li>
 <li><p>The list may contain lots of odd words</p></li>
 </ol>
-<p>You will now implement  <code class="docutils literal notranslate"><span class="pre">suggest_corrections(self,</span> <span class="pre">word)</span></code>. It is a a <em>FAST</em> way to find a list of correctly spelled words.</p>
+<p>You will now implement <code class="docutils literal notranslate"><span class="pre">suggest_corrections(self,</span> <span class="pre">word)</span></code>. It uses a distance algorithm and
+is a much <em>FASTER</em> way to find a list of correctly spelled words.</p>
 <p>We are going to change the approach to solving this <em>suggestion problem</em>. We
 will essentially go backwards. Instead of generating mis-misspelled candidates
 and then search the dictionary to see if it is indeed a correctly spelled word,
 we will compare ‘every’ word in the dictionary against the misspelled word
-to see if it is ‘close’. The ‘closests’ words will be what we suggest.</p>
+to calculate how ‘close’ it is to our misspelled word. We will use Levenstein Distance for this.</p>
+<p>Your method will identify the closest distance that any word is to the misspelled word.
+It will return a sorted list of all the words at that minimum distance from the misspelled word.
+It will suggest all of the ‘closests’ words and only the closest words.</p>
+<p>For example, if the misspelled word is <code class="docutils literal notranslate"><span class="pre">compewter</span></code>, your code should return the suggested
+list <code class="docutils literal notranslate"><span class="pre">['compester',</span> <span class="pre">'competer']</span></code> because each of these is a distance of 1 away from the
+misspelled word <code class="docutils literal notranslate"><span class="pre">compewter</span></code>. The word <code class="docutils literal notranslate"><span class="pre">computer</span></code> is a distance of 2 and will not be included.</p>
 <p>To accomplish this, we need a way to <em>measure the ‘distance’</em> between two words.
 The <code class="docutils literal notranslate"><span class="pre">Levenshtein</span> <span class="pre">Distance</span></code> algorithm is exactly what we want. The algorithm will
 provide an integer number that is essentially the count of changes made to one
 word to reach the other. The changes are exactly the same three generators you
 implemented above. (The algorithm will not use your generators.)</p>
+<div class="dropdown admonition">
+<p class="admonition-title">Levenshtein Distance</p>
+<p>The Levenshtein Distance algorithm, also known as the edit distance, is a measure of the similarity between two strings.
+It calculates the minimum number of single-character edits (insertions, deletions, or substitutions) required to transform
+one string into another. The smaller the Levenshtein Distance, the more similar the strings are.</p>
+</div>
 <p>You will add a new instance method to the SpellChecker class.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">suggest_corrections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span>
 <span class="w">       </span><span class="sd">&#39;&#39;&#39;</span>
@@ -924,11 +940,17 @@ two ways. The first way is to find the Python code on the internet. You will imp
 <h3>Python Module<a class="headerlink" href="#python-module" title="Permalink to this heading">#</a></h3>
 <p>After you have Python code that correctly implements Levenshtein Distance, look for a Python module that implements the same thing.</p>
 <p>Amazing, right?!</p>
-<p>Be sure you pass the final two Unit Tests:</p>
 </section>
 </section>
-<section id="challenge-question">
-<h2>Challenge Question<a class="headerlink" href="#challenge-question" title="Permalink to this heading">#</a></h2>
+<section id="final-product">
+<h2>Final Product<a class="headerlink" href="#final-product" title="Permalink to this heading">#</a></h2>
+<p>You will update <code class="docutils literal notranslate"><span class="pre">main.py</span></code> to run your Spell Checker.
+Be sure you pass all the Unit Tests.</p>
+<p>You can now also update your</p>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="challenge-question">
+<h1>Challenge Question<a class="headerlink" href="#challenge-question" title="Permalink to this heading">#</a></h1>
 <p>This challenge question is a bit different than previous questions. Here, you’ll be asked to do some Data Science
 research. The goal is to provide <em>visual</em> insight into a mathematical <em>solution space</em>. Does this sound a bit strange? Let me elaborate.</p>
 <p>You will have to:</p>
@@ -950,7 +972,7 @@ resource.</p>
 <p>There is <strong>NO</strong> possibility of being accused of plagiarism on this Challenge Question. It isn’t graded!!</p>
 </div>
 <section id="pythagorean-triples">
-<h3>Pythagorean Triples<a class="headerlink" href="#pythagorean-triples" title="Permalink to this heading">#</a></h3>
+<h2>Pythagorean Triples<a class="headerlink" href="#pythagorean-triples" title="Permalink to this heading">#</a></h2>
 <p>Before you can really begin to solve this problem, you need to learn about how to generate <strong>Pythagorean Triples.</strong>
 You can get a great lesson by watching this video by <strong>3 Blue 1 Brown.</strong>  You definitely should watch it!!</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/QJYmyhnaaek?si=WLMzcLbWceIs_gOf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -964,7 +986,7 @@ You can get a great lesson by watching this video by <strong>3 Blue 1 Brown.</st
 </div>
 </section>
 <section id="coding-hints">
-<h3>Coding Hints<a class="headerlink" href="#coding-hints" title="Permalink to this heading">#</a></h3>
+<h2>Coding Hints<a class="headerlink" href="#coding-hints" title="Permalink to this heading">#</a></h2>
 <p>You’ll want to start by creating a method that generates all the fractions up to some maximum denominator. For example,
 here are all the fractions up through the denominator 9:
 <span class="math notranslate nohighlight">\(\frac{1}{2}, \frac{1}{3}, \frac{2}{3}, \frac{1}{4}, \frac{3}{4}, \frac{1}{5}, \frac{2}{5}, \frac{3}{5}, \frac{4}{5}, \frac{1}{6}, \frac{5}{6}, \frac{1}{7}, \frac{2}{7}, \frac{3}{7}, \frac{4}{7}, \frac{5}{7}, \frac{6}{7}, \frac{1}{8}, \frac{3}{8}, \frac{5}{8}, \frac{7}{8}, \frac{1}{9}, \frac{2}{9}, \frac{4}{9}, \frac{5}{9}, \frac{7}{9}, \frac{8}{9}\)</span></p>
@@ -1013,7 +1035,7 @@ There is <em>sooooo</em> much more to this problem than coding a quick solution.
 at least understand the code you’ve acquired, and don’t forget to <strong>annotate</strong> where you got the code.</p>
 </section>
 <section id="graphs-with-insight">
-<h3>Graphs with Insight<a class="headerlink" href="#graphs-with-insight" title="Permalink to this heading">#</a></h3>
+<h2>Graphs with Insight<a class="headerlink" href="#graphs-with-insight" title="Permalink to this heading">#</a></h2>
 <p>The obvious graph is something like this:<br />
 <img alt="Basic Plot" src="../_images/hw6_count_v_max.png" /></p>
 <p>There are lots of graphs you can generate to show the distribution of Triples, the growth rate,
@@ -1027,11 +1049,10 @@ there was one hypotenuse length (5525) that had 22 unique Triples, all of which 
 of length 5525.</p>
 </section>
 <section id="draw-some-conclusions">
-<h3>Draw some Conclusions<a class="headerlink" href="#draw-some-conclusions" title="Permalink to this heading">#</a></h3>
+<h2>Draw some Conclusions<a class="headerlink" href="#draw-some-conclusions" title="Permalink to this heading">#</a></h2>
 <p>What can you say about the count and distribution of Triples?<br />
 Can you accurately predict the count with a line or parabola?<br />
 Is it common to find 6 unique Triples for a singular hypotenuse? When does that first happen? What is the distribution?</p>
-</section>
 </section>
 </section>
 
@@ -1122,13 +1143,14 @@ Is it common to find 6 unique Triples for a singular hypotenuse? When does that 
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-module">Python Module</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-question">Challenge Question</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pythagorean-triples">Pythagorean Triples</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#coding-hints">Coding Hints</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#graphs-with-insight">Graphs with Insight</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#draw-some-conclusions">Draw some Conclusions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-product">Final Product</a></li>
 </ul>
 </li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-question">Challenge Question</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pythagorean-triples">Pythagorean Triples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#coding-hints">Coding Hints</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#graphs-with-insight">Graphs with Insight</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#draw-some-conclusions">Draw some Conclusions</a></li>
 </ul>
 </li>
 </ul>
