@@ -196,9 +196,9 @@ catz
 Be sure you pass the Unit Test `insert_letters`.
 
 ## Part 2
-Implement another generator to move all letters, one letter at a time. 
-The first word the generate will yield, is the word unchanged.
-This will be called: `_remove_letters`. For example: 
+Implement another generator to remove all letters, one letter at a time. 
+The first word the generator will yield, is the word unchanged.
+The generator will be called: `_remove_letters`. For example: 
 ```python
    for word in self._remove_letters('goodbye'):
       print(word)
@@ -220,7 +220,7 @@ Be sure you pass the Unit Test:  remove_letters
 Implement another generator to change all letters, one letter at a time. 
 Once again, the first word to yield is the original word, unchanged.
 This will be called: `_swap_letters`. Note that this does NOT mean that
-two letters in the word is swapped. Instead, it means that one letter is
+two letters in the word are swapped. Instead, it means that one letter is
 swapped out for another. For example: 
 ```python
    for word in self._swap_letters('ab'):
@@ -262,49 +262,47 @@ of words added to the list which is specified in the optional `max` argument.
         # student's implementation goes here
 ```
 ### Composing
-Each `generator` above catches some types of mistakes, but not all of them.
-In fact, you can't even try all three back-to-back-to-back because some
+Each `generator` above catches some type of mistake, but not all of them.
+If you try all three back-to-back-to-back, you won't catch many misspellings because some
 misspelled words require ALL THREE at the SAME TIME!! For example, to
-identify the correctly spelled word `etiquette` from `ettiquitt` requires
+identify the correctly spelled word `etiquette` from `ettiquitt` it requires
 that we delete a `t`, add an `e`, and change an `i` to an `e`. All three!!
 
-We want to implement all 3 types, composed with one another. This can be
+We want to implement all 3 types composed with one another. This can be
 very difficult. A common approach would be to use recursion to get call
 combinations of the generators composed together. This is even more difficult
-due to the way generators work--you don't _call_ them, you _iterate_ through them.
+because of the way generators work--you don't _call_ them, you _iterate_ through them.
 
-We will avoid recursion because we have a fixed number of generators that we want to compose.
+We will avoid recursion because we have a small, fixed number of generators that we want to compose.
 Instead, you'll simply use nested for-loops to get all possible combinations of mismisspellings.
 > Note: This is why we had each generator first return the word unchanged: we want the ability
-> to apply _ONLY_ _insert_letters. Havine our other two mismisspellers return the word
-> unchanged allows us to write simple code to achieve this.
+> to apply _ONLY_ _insert_letters. Havineg our other two mismisspellers return the word
+> unchanged allows us to write simple code to find mismisspellings when there is only one mistake.
 
 Be sure you pass the Unit Test:  
 * _suggest_compose_ : This tests that `suggest_mismisspellings` correctly finds a suggestion for a misspelled word that requires two and three misspellings applied. 
 
 Using the above code, you may want to see if you can correctly produce at least one suggestion
-for each of the misspelled words in `englishEssay.txt`. However, this method of finding suggestionw is very slow.
+for each of the misspelled words in `englishEssay.txt`. However, this method of finding suggestions is very slow.
 
 > Note: Your code may run for as much as a full minute to find suggestions for all
 > the misspelled words in the englishEssay.txt.
 
-## Suggest_correction
-You will now implement a _FAST_ way to get the
-`suggest_corrections(self, word)` : An instance method that returns a list of suggested correctly spelled words. 
-
 ## Levenshtein Distance
 There are two problems with what we've done so far:  
-1) It's too slow!!
-2) The list may contain lots of odd words
+1) It's too slow!!  
+2) The list may contain lots of odd words  
 
-We are going to change the approach to solving this Suggestion Problem. We
+You will now implement  `suggest_corrections(self, word)`. It is a a _FAST_ way to find a list of correctly spelled words. 
+
+We are going to change the approach to solving this _suggestion problem_. We
 will essentially go backwards. Instead of generating mis-misspelled candidates
 and then search the dictionary to see if it is indeed a correctly spelled word,
 we will compare 'every' word in the dictionary against the misspelled word
 to see if it is 'close'. The 'closests' words will be what we suggest.
 
 To accomplish this, we need a way to _measure the 'distance'_ between two words. 
-The Levenshtein Distance algorithm is exactly what we want. The algorithm will
+The `Levenshtein Distance` algorithm is exactly what we want. The algorithm will
 provide an integer number that is essentially the count of changes made to one
 word to reach the other. The changes are exactly the same three generators you
 implemented above. (The algorithm will not use your generators.)
@@ -321,15 +319,29 @@ You will add a new instance method to the SpellChecker class.
 It can take a while to understand the algorithm which can take us off topic
 quite a bit. So, instead, you will search the internet to find an implementation
 of the Levenshtein Distance algorithm. Add it to the file `levenshtein.py`. You will do this
-two ways:  
-1) Find Python code  
-2) Import a module  
+two ways. The first way is to find the Python code on the internet. You will implement:  
 
+```python
+# This is in the file levenshtein.py
+
+def levenshtein_distance(s1, s2):
+    # Find internet code to return the distance between s1 & s2
+    pass
+```
 Attempt to find _FAST_ implementations. It is pretty clear that some implementations are much, much, much faster than the rest.
 
-### Experience the Difference
-Implement the `suggest_corrections` and experience the difference in speed
-from one algorithm to the other. Amazing, right?!
+You should write a few tests to verify that your implementation works. 
+
+```python
+def suggest_corrections(self, word):
+    pass
+```
+Once complete, do a spell_check of the englishEssay.txt and see how fast it finds spelling suggestions.
+
+### Python Module
+After you have Python code that correctly implements Levenshtein Distance, look for a Python module that implements the same thing.  
+
+Amazing, right?!
 
 Be sure you pass the final two Unit Tests:
 

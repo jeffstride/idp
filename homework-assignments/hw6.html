@@ -550,9 +550,8 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#composing">Composing</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggest-correction">Suggest_correction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#levenshtein-distance">Levenshtein Distance</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-the-difference">Experience the Difference</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-module">Python Module</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-question">Challenge Question</a><ul class="nav section-nav flex-column">
@@ -783,9 +782,9 @@ For example, if we have the word <code class="docutils literal notranslate"><spa
 </section>
 <section id="part-2">
 <h2>Part 2<a class="headerlink" href="#part-2" title="Permalink to this heading">#</a></h2>
-<p>Implement another generator to move all letters, one letter at a time.
-The first word the generate will yield, is the word unchanged.
-This will be called: <code class="docutils literal notranslate"><span class="pre">_remove_letters</span></code>. For example:</p>
+<p>Implement another generator to remove all letters, one letter at a time.
+The first word the generator will yield, is the word unchanged.
+The generator will be called: <code class="docutils literal notranslate"><span class="pre">_remove_letters</span></code>. For example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>   <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_remove_letters</span><span class="p">(</span><span class="s1">&#39;goodbye&#39;</span><span class="p">):</span>
       <span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
 
@@ -807,7 +806,7 @@ This will be called: <code class="docutils literal notranslate"><span class="pre
 <p>Implement another generator to change all letters, one letter at a time.
 Once again, the first word to yield is the original word, unchanged.
 This will be called: <code class="docutils literal notranslate"><span class="pre">_swap_letters</span></code>. Note that this does NOT mean that
-two letters in the word is swapped. Instead, it means that one letter is
+two letters in the word are swapped. Instead, it means that one letter is
 swapped out for another. For example:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>   <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">_swap_letters</span><span class="p">(</span><span class="s1">&#39;ab&#39;</span><span class="p">):</span>
       <span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
@@ -849,38 +848,33 @@ of words added to the list which is specified in the optional <code class="docut
 </div>
 <section id="composing">
 <h3>Composing<a class="headerlink" href="#composing" title="Permalink to this heading">#</a></h3>
-<p>Each <code class="docutils literal notranslate"><span class="pre">generator</span></code> above catches some types of mistakes, but not all of them.
-In fact, you can’t even try all three back-to-back-to-back because some
+<p>Each <code class="docutils literal notranslate"><span class="pre">generator</span></code> above catches some type of mistake, but not all of them.
+If you try all three back-to-back-to-back, you won’t catch many misspellings because some
 misspelled words require ALL THREE at the SAME TIME!! For example, to
-identify the correctly spelled word <code class="docutils literal notranslate"><span class="pre">etiquette</span></code> from <code class="docutils literal notranslate"><span class="pre">ettiquitt</span></code> requires
+identify the correctly spelled word <code class="docutils literal notranslate"><span class="pre">etiquette</span></code> from <code class="docutils literal notranslate"><span class="pre">ettiquitt</span></code> it requires
 that we delete a <code class="docutils literal notranslate"><span class="pre">t</span></code>, add an <code class="docutils literal notranslate"><span class="pre">e</span></code>, and change an <code class="docutils literal notranslate"><span class="pre">i</span></code> to an <code class="docutils literal notranslate"><span class="pre">e</span></code>. All three!!</p>
-<p>We want to implement all 3 types, composed with one another. This can be
+<p>We want to implement all 3 types composed with one another. This can be
 very difficult. A common approach would be to use recursion to get call
 combinations of the generators composed together. This is even more difficult
-due to the way generators work–you don’t <em>call</em> them, you <em>iterate</em> through them.</p>
-<p>We will avoid recursion because we have a fixed number of generators that we want to compose.
+because of the way generators work–you don’t <em>call</em> them, you <em>iterate</em> through them.</p>
+<p>We will avoid recursion because we have a small, fixed number of generators that we want to compose.
 Instead, you’ll simply use nested for-loops to get all possible combinations of mismisspellings.</p>
 <blockquote>
 <div><p>Note: This is why we had each generator first return the word unchanged: we want the ability
-to apply <em>ONLY</em> _insert_letters. Havine our other two mismisspellers return the word
-unchanged allows us to write simple code to achieve this.</p>
+to apply <em>ONLY</em> _insert_letters. Havineg our other two mismisspellers return the word
+unchanged allows us to write simple code to find mismisspellings when there is only one mistake.</p>
 </div></blockquote>
 <p>Be sure you pass the Unit Test:</p>
 <ul class="simple">
 <li><p><em>suggest_compose</em> : This tests that <code class="docutils literal notranslate"><span class="pre">suggest_mismisspellings</span></code> correctly finds a suggestion for a misspelled word that requires two and three misspellings applied.</p></li>
 </ul>
 <p>Using the above code, you may want to see if you can correctly produce at least one suggestion
-for each of the misspelled words in <code class="docutils literal notranslate"><span class="pre">englishEssay.txt</span></code>. However, this method of finding suggestionw is very slow.</p>
+for each of the misspelled words in <code class="docutils literal notranslate"><span class="pre">englishEssay.txt</span></code>. However, this method of finding suggestions is very slow.</p>
 <blockquote>
 <div><p>Note: Your code may run for as much as a full minute to find suggestions for all
 the misspelled words in the englishEssay.txt.</p>
 </div></blockquote>
 </section>
-</section>
-<section id="suggest-correction">
-<h2>Suggest_correction<a class="headerlink" href="#suggest-correction" title="Permalink to this heading">#</a></h2>
-<p>You will now implement a <em>FAST</em> way to get the
-<code class="docutils literal notranslate"><span class="pre">suggest_corrections(self,</span> <span class="pre">word)</span></code> : An instance method that returns a list of suggested correctly spelled words.</p>
 </section>
 <section id="levenshtein-distance">
 <h2>Levenshtein Distance<a class="headerlink" href="#levenshtein-distance" title="Permalink to this heading">#</a></h2>
@@ -889,13 +883,14 @@ the misspelled words in the englishEssay.txt.</p>
 <li><p>It’s too slow!!</p></li>
 <li><p>The list may contain lots of odd words</p></li>
 </ol>
-<p>We are going to change the approach to solving this Suggestion Problem. We
+<p>You will now implement  <code class="docutils literal notranslate"><span class="pre">suggest_corrections(self,</span> <span class="pre">word)</span></code>. It is a a <em>FAST</em> way to find a list of correctly spelled words.</p>
+<p>We are going to change the approach to solving this <em>suggestion problem</em>. We
 will essentially go backwards. Instead of generating mis-misspelled candidates
 and then search the dictionary to see if it is indeed a correctly spelled word,
 we will compare ‘every’ word in the dictionary against the misspelled word
 to see if it is ‘close’. The ‘closests’ words will be what we suggest.</p>
 <p>To accomplish this, we need a way to <em>measure the ‘distance’</em> between two words.
-The Levenshtein Distance algorithm is exactly what we want. The algorithm will
+The <code class="docutils literal notranslate"><span class="pre">Levenshtein</span> <span class="pre">Distance</span></code> algorithm is exactly what we want. The algorithm will
 provide an integer number that is essentially the count of changes made to one
 word to reach the other. The changes are exactly the same three generators you
 implemented above. (The algorithm will not use your generators.)</p>
@@ -910,16 +905,25 @@ implemented above. (The algorithm will not use your generators.)</p>
 <p>It can take a while to understand the algorithm which can take us off topic
 quite a bit. So, instead, you will search the internet to find an implementation
 of the Levenshtein Distance algorithm. Add it to the file <code class="docutils literal notranslate"><span class="pre">levenshtein.py</span></code>. You will do this
-two ways:</p>
-<ol class="arabic simple">
-<li><p>Find Python code</p></li>
-<li><p>Import a module</p></li>
-</ol>
+two ways. The first way is to find the Python code on the internet. You will implement:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is in the file levenshtein.py</span>
+
+<span class="k">def</span> <span class="nf">levenshtein_distance</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">):</span>
+    <span class="c1"># Find internet code to return the distance between s1 &amp; s2</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
 <p>Attempt to find <em>FAST</em> implementations. It is pretty clear that some implementations are much, much, much faster than the rest.</p>
-<section id="experience-the-difference">
-<h3>Experience the Difference<a class="headerlink" href="#experience-the-difference" title="Permalink to this heading">#</a></h3>
-<p>Implement the <code class="docutils literal notranslate"><span class="pre">suggest_corrections</span></code> and experience the difference in speed
-from one algorithm to the other. Amazing, right?!</p>
+<p>You should write a few tests to verify that your implementation works.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">suggest_corrections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span>
+    <span class="k">pass</span>
+</pre></div>
+</div>
+<p>Once complete, do a spell_check of the englishEssay.txt and see how fast it finds spelling suggestions.</p>
+<section id="python-module">
+<h3>Python Module<a class="headerlink" href="#python-module" title="Permalink to this heading">#</a></h3>
+<p>After you have Python code that correctly implements Levenshtein Distance, look for a Python module that implements the same thing.</p>
+<p>Amazing, right?!</p>
 <p>Be sure you pass the final two Unit Tests:</p>
 </section>
 </section>
@@ -1114,9 +1118,8 @@ Is it common to find 6 unique Triples for a singular hypotenuse? When does that 
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#composing">Composing</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#suggest-correction">Suggest_correction</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#levenshtein-distance">Levenshtein Distance</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#experience-the-difference">Experience the Difference</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-module">Python Module</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-question">Challenge Question</a><ul class="nav section-nav flex-column">
