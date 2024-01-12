@@ -258,7 +258,7 @@ spelling for the misspelled word. The list will have an maximum number
 of words added to the list which is specified in the optional `max` argument.
 
 ```python
-    def suggest_correction(self, word, max=6):
+    def suggest_mismisspellings(self, word, max=6):
         # student's implementation goes here
 ```
 ### Composing
@@ -273,20 +273,23 @@ very difficult. A common approach would be to use recursion to get call
 combinations of the generators composed together. This is even more difficult
 due to the way generators work--you don't _call_ them, you _iterate_ through them.
 
-**TODO: more on composing generators**
+We will avoid recursion because we have a fixed number of generators that we want to compose.
+Instead, you'll simply use nested for-loops to get all possible combinations of mismisspellings.
+> Note: This is why we had each generator first return the word unchanged: we want the ability
+> to apply _ONLY_ _insert_letters. Havine our other two mismisspellers return the word
+> unchanged allows us to write simple code to achieve this.
 
 Be sure you pass the Unit Test:  
-* test_suggest_compose : This tests that `suggest_mismisspellings`` correctly finds a suggestion for a misspelled word that requires at least two different types of changes. Ideally, it would find words that require _three_ changes.
+* _suggest_compose_ : This tests that `suggest_mismisspellings` correctly finds a suggestion for a misspelled word that requires two and three misspellings applied. 
 
-**TODO: don't test on englishEssay.txt** 
-Using the above code, see if you can correctly produce at least one suggestion
-for each of the misspelled words in `englishEssay.txt`.  
+Using the above code, you may want to see if you can correctly produce at least one suggestion
+for each of the misspelled words in `englishEssay.txt`. However, this method of finding suggestionw is very slow.
 
 > Note: Your code may run for as much as a full minute to find suggestions for all
 > the misspelled words in the englishEssay.txt.
 
 ## Suggest_correction
-You will now implement a FAST way to get the
+You will now implement a _FAST_ way to get the
 `suggest_corrections(self, word)` : An instance method that returns a list of suggested correctly spelled words. 
 
 ## Levenshtein Distance
@@ -308,7 +311,7 @@ implemented above. (The algorithm will not use your generators.)
 
 You will add a new instance method to the SpellChecker class.
 ```python
-    def lev_suggest_correction(self, word):
+    def suggest_corrections(self, word):
        '''
        Return a list of all the suggest words that share the same, minimum
        distance from word using the levenshtein distance algorithm.
@@ -316,25 +319,16 @@ You will add a new instance method to the SpellChecker class.
 ```
 
 It can take a while to understand the algorithm which can take us off topic
-quite a bit. So, instead, you have been provided with three different implementations
-of the algorithm in the file `levenshtein.py`.
+quite a bit. So, instead, you will search the internet to find an implementation
+of the Levenshtein Distance algorithm. Add it to the file `levenshtein.py`. You will do this
+two ways:  
+1) Find Python code  
+2) Import a module  
 
-Below are the names of the 3 implementations along with the time (in seconds) it took to provide
-suggestions for all the misspelled words in the englishEssay.txt. (Times were using
-Mr. Stride's implementation. Measured only once.)
-
-1) `levenshtein_distance: 71.16`
-2) `lev_distance:         51.45`
-3) `fast_lev_distance:     1.42`
-
-It is pretty clear that one implementation is much, much, much faster than the rest.
-This is because it is implemented in the Python module [editdistance](https://pypi.org/project/editdistance/)
-written in C++. Because it is written in C++ the code can run a lot faster.
-Furthermore, some braniacs out there used some fancy math an algorithm techniques
-to speed it up even more. 
+Attempt to find _FAST_ implementations. It is pretty clear that some implementations are much, much, much faster than the rest.
 
 ### Experience the Difference
-Implement the `lev_suggest_correction` and experience the difference in speed
+Implement the `suggest_corrections` and experience the difference in speed
 from one algorithm to the other. Amazing, right?!
 
 Be sure you pass the final two Unit Tests:
