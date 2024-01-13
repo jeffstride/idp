@@ -327,11 +327,13 @@ one string into another. The smaller the Levenshtein Distance, the more similar 
 ```
 You will add a new instance method to the SpellChecker class.
 ```python
-    def suggest_corrections(self, word):
-       '''
-       Return a list of all the suggest words that share the same, minimum
-       distance from word using the levenshtein distance algorithm.
-       '''
+# in file spell_checker.py
+def suggest_corrections(self, word):
+    '''
+    Return a list of all the suggest words that share the same, minimum
+    distance from word using the levenshtein distance algorithm.
+    '''
+    # use levenshtein distance to find suggestions
 ```
 
 It can take a while to understand the algorithm which can take us off topic
@@ -341,31 +343,47 @@ two ways. The first way is to find the Python code on the internet. You will imp
 
 ```python
 # This is in the file levenshtein.py
-
 def levenshtein_distance(s1, s2):
     # Find internet code to return the distance between s1 & s2
     pass
 ```
-Attempt to find _FAST_ implementations. It is pretty clear that some implementations are much, much, much faster than the rest.
+Attempt to find _FAST_ implementations. It is pretty clear that some implementations are much faster than others.
 
-You should write a few tests to verify that your implementation works. 
-
-```python
-def suggest_corrections(self, word):
-    pass
-```
-Once complete, do a spell_check of the englishEssay.txt and see how fast it finds spelling suggestions.
+Write a few tests to verify that your implementation works. 
 
 ### Python Module
-After you have Python code that correctly implements Levenshtein Distance, look for a Python module that implements the same thing.  
+After you have Python code that correctly implements Levenshtein Distance, look for a Python module that implements the same thing. Wrap up the module's implementation in `levenshtein.py` in the method `lev_distance`.   
 
-Amazing, right?!
-
-## Final Product
-You will update `main.py` to run your Spell Checker. 
 Be sure you pass all the Unit Tests.
 
-You can now also update your
+## Final Output
+You will update `main.py` to run your Spell Checker with suggestions. Run spell_check on the englishEssay.txt and see how fast it finds spelling suggestions. In other words, update `main.py` to call `spell_check(essay, True)` and then print out suggestions beneath the misspelling summary as shown below.  
+
+Compare the speed of the Python implementation to the module implementation by doing a spell_check using each. Mr. Stride's work showed that the Python implementation took 50.5 seconds and the module implementation took less than 2.5 seconds. Amazing, right?!
+
+```
+Dictionary: data/wordList.txt
+Essay to check: data/englishEssay.txt
+Time to spellcheck: 2.338
+      civalized: line:   1  word:  3
+   oportunities: line:   6  word:  4
+         seeems: line:  15  word:  9
+          peopl: line:  21  word:  8
+      ettiquitt: line:  35  word:  1
+         shoudl: line:  37  word:  7
+     psudo-code: line:  37  word: 10
+      algorythm: line:  39  word:  6
+
+Suggested Corrections:
+civalized     --> ['civilized']
+oportunities  --> ['opportunities']
+seeems        --> ['seems']
+peopl         --> ['people']
+ettiquitt     --> ['antiquist', 'antiquity', 'etiquette']
+shoudl        --> ['dhoul', 'ghoul', 'seoul', 'shaul', 'shoad', 'shoal', 'shoddy', 'shode', 'shoed', 'shoful', 'shonde', 'shood', 'shool', 'shorl', 'shough', 'should', 'shouldn', 'shouse', 'shout', 'shouts', 'shoval', 'shovel', 'showd', 'shroud', 'shrouds', 'shroudy']
+psudo-code    --> ['pseudo-code', 'psuedo-code']
+algorythm     --> ['algorithm']
+```
 
 # Challenge Question
 This challenge question is a bit different than previous questions. Here, you'll be asked to do some Data Science
