@@ -555,7 +555,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-module">Python Module</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-product">Final Product</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-output">Final Output</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-question">Challenge Question</a><ul class="visible nav section-nav flex-column">
@@ -911,11 +911,13 @@ It calculates the minimum number of single-character edits (insertions, deletion
 one string into another. The smaller the Levenshtein Distance, the more similar the strings are.</p>
 </div>
 <p>You will add a new instance method to the SpellChecker class.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="k">def</span> <span class="nf">suggest_corrections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span>
-<span class="w">       </span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">       Return a list of all the suggest words that share the same, minimum</span>
-<span class="sd">       distance from word using the levenshtein distance algorithm.</span>
-<span class="sd">       &#39;&#39;&#39;</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># in file spell_checker.py</span>
+<span class="k">def</span> <span class="nf">suggest_corrections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">    Return a list of all the suggest words that share the same, minimum</span>
+<span class="sd">    distance from word using the levenshtein distance algorithm.</span>
+<span class="sd">    &#39;&#39;&#39;</span>
+    <span class="c1"># use levenshtein distance to find suggestions</span>
 </pre></div>
 </div>
 <p>It can take a while to understand the algorithm which can take us off topic
@@ -923,30 +925,46 @@ quite a bit. So, instead, you will search the internet to find an implementation
 of the Levenshtein Distance algorithm. Add it to the file <code class="docutils literal notranslate"><span class="pre">levenshtein.py</span></code>. You will do this
 two ways. The first way is to find the Python code on the internet. You will implement:</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># This is in the file levenshtein.py</span>
-
 <span class="k">def</span> <span class="nf">levenshtein_distance</span><span class="p">(</span><span class="n">s1</span><span class="p">,</span> <span class="n">s2</span><span class="p">):</span>
     <span class="c1"># Find internet code to return the distance between s1 &amp; s2</span>
     <span class="k">pass</span>
 </pre></div>
 </div>
-<p>Attempt to find <em>FAST</em> implementations. It is pretty clear that some implementations are much, much, much faster than the rest.</p>
-<p>You should write a few tests to verify that your implementation works.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">suggest_corrections</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word</span><span class="p">):</span>
-    <span class="k">pass</span>
-</pre></div>
-</div>
-<p>Once complete, do a spell_check of the englishEssay.txt and see how fast it finds spelling suggestions.</p>
+<p>Attempt to find <em>FAST</em> implementations. It is pretty clear that some implementations are much faster than others.</p>
+<p>Write a few tests to verify that your implementation works.</p>
 <section id="python-module">
 <h3>Python Module<a class="headerlink" href="#python-module" title="Permalink to this heading">#</a></h3>
-<p>After you have Python code that correctly implements Levenshtein Distance, look for a Python module that implements the same thing.</p>
-<p>Amazing, right?!</p>
+<p>After you have Python code that correctly implements Levenshtein Distance, look for a Python module that implements the same thing. Wrap up the module’s implementation in <code class="docutils literal notranslate"><span class="pre">levenshtein.py</span></code> in the method <code class="docutils literal notranslate"><span class="pre">lev_distance</span></code>.</p>
+<p>Be sure you pass all the Unit Tests.</p>
 </section>
 </section>
-<section id="final-product">
-<h2>Final Product<a class="headerlink" href="#final-product" title="Permalink to this heading">#</a></h2>
-<p>You will update <code class="docutils literal notranslate"><span class="pre">main.py</span></code> to run your Spell Checker.
-Be sure you pass all the Unit Tests.</p>
-<p>You can now also update your</p>
+<section id="final-output">
+<h2>Final Output<a class="headerlink" href="#final-output" title="Permalink to this heading">#</a></h2>
+<p>You will update <code class="docutils literal notranslate"><span class="pre">main.py</span></code> to run your Spell Checker with suggestions. Run spell_check on the englishEssay.txt and see how fast it finds spelling suggestions. In other words, update <code class="docutils literal notranslate"><span class="pre">main.py</span></code> to call <code class="docutils literal notranslate"><span class="pre">spell_check(essay,</span> <span class="pre">True)</span></code> and then print out suggestions beneath the misspelling summary as shown below.</p>
+<p>Compare the speed of the Python implementation to the module implementation by doing a spell_check using each. Mr. Stride’s work showed that the Python implementation took 50.5 seconds and the module implementation took less than 2.5 seconds. Amazing, right?!</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Dictionary</span><span class="p">:</span> <span class="n">data</span><span class="o">/</span><span class="n">wordList</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">Essay</span> <span class="n">to</span> <span class="n">check</span><span class="p">:</span> <span class="n">data</span><span class="o">/</span><span class="n">englishEssay</span><span class="o">.</span><span class="n">txt</span>
+<span class="n">Time</span> <span class="n">to</span> <span class="n">spellcheck</span><span class="p">:</span> <span class="mf">2.338</span>
+      <span class="n">civalized</span><span class="p">:</span> <span class="n">line</span><span class="p">:</span>   <span class="mi">1</span>  <span class="n">word</span><span class="p">:</span>  <span class="mi">3</span>
+   <span class="n">oportunities</span><span class="p">:</span> <span class="n">line</span><span class="p">:</span>   <span class="mi">6</span>  <span class="n">word</span><span class="p">:</span>  <span class="mi">4</span>
+         <span class="n">seeems</span><span class="p">:</span> <span class="n">line</span><span class="p">:</span>  <span class="mi">15</span>  <span class="n">word</span><span class="p">:</span>  <span class="mi">9</span>
+          <span class="n">peopl</span><span class="p">:</span> <span class="n">line</span><span class="p">:</span>  <span class="mi">21</span>  <span class="n">word</span><span class="p">:</span>  <span class="mi">8</span>
+      <span class="n">ettiquitt</span><span class="p">:</span> <span class="n">line</span><span class="p">:</span>  <span class="mi">35</span>  <span class="n">word</span><span class="p">:</span>  <span class="mi">1</span>
+         <span class="n">shoudl</span><span class="p">:</span> <span class="n">line</span><span class="p">:</span>  <span class="mi">37</span>  <span class="n">word</span><span class="p">:</span>  <span class="mi">7</span>
+     <span class="n">psudo</span><span class="o">-</span><span class="n">code</span><span class="p">:</span> <span class="n">line</span><span class="p">:</span>  <span class="mi">37</span>  <span class="n">word</span><span class="p">:</span> <span class="mi">10</span>
+      <span class="n">algorythm</span><span class="p">:</span> <span class="n">line</span><span class="p">:</span>  <span class="mi">39</span>  <span class="n">word</span><span class="p">:</span>  <span class="mi">6</span>
+
+<span class="n">Suggested</span> <span class="n">Corrections</span><span class="p">:</span>
+<span class="n">civalized</span>     <span class="o">--&gt;</span> <span class="p">[</span><span class="s1">&#39;civilized&#39;</span><span class="p">]</span>
+<span class="n">oportunities</span>  <span class="o">--&gt;</span> <span class="p">[</span><span class="s1">&#39;opportunities&#39;</span><span class="p">]</span>
+<span class="n">seeems</span>        <span class="o">--&gt;</span> <span class="p">[</span><span class="s1">&#39;seems&#39;</span><span class="p">]</span>
+<span class="n">peopl</span>         <span class="o">--&gt;</span> <span class="p">[</span><span class="s1">&#39;people&#39;</span><span class="p">]</span>
+<span class="n">ettiquitt</span>     <span class="o">--&gt;</span> <span class="p">[</span><span class="s1">&#39;antiquist&#39;</span><span class="p">,</span> <span class="s1">&#39;antiquity&#39;</span><span class="p">,</span> <span class="s1">&#39;etiquette&#39;</span><span class="p">]</span>
+<span class="n">shoudl</span>        <span class="o">--&gt;</span> <span class="p">[</span><span class="s1">&#39;dhoul&#39;</span><span class="p">,</span> <span class="s1">&#39;ghoul&#39;</span><span class="p">,</span> <span class="s1">&#39;seoul&#39;</span><span class="p">,</span> <span class="s1">&#39;shaul&#39;</span><span class="p">,</span> <span class="s1">&#39;shoad&#39;</span><span class="p">,</span> <span class="s1">&#39;shoal&#39;</span><span class="p">,</span> <span class="s1">&#39;shoddy&#39;</span><span class="p">,</span> <span class="s1">&#39;shode&#39;</span><span class="p">,</span> <span class="s1">&#39;shoed&#39;</span><span class="p">,</span> <span class="s1">&#39;shoful&#39;</span><span class="p">,</span> <span class="s1">&#39;shonde&#39;</span><span class="p">,</span> <span class="s1">&#39;shood&#39;</span><span class="p">,</span> <span class="s1">&#39;shool&#39;</span><span class="p">,</span> <span class="s1">&#39;shorl&#39;</span><span class="p">,</span> <span class="s1">&#39;shough&#39;</span><span class="p">,</span> <span class="s1">&#39;should&#39;</span><span class="p">,</span> <span class="s1">&#39;shouldn&#39;</span><span class="p">,</span> <span class="s1">&#39;shouse&#39;</span><span class="p">,</span> <span class="s1">&#39;shout&#39;</span><span class="p">,</span> <span class="s1">&#39;shouts&#39;</span><span class="p">,</span> <span class="s1">&#39;shoval&#39;</span><span class="p">,</span> <span class="s1">&#39;shovel&#39;</span><span class="p">,</span> <span class="s1">&#39;showd&#39;</span><span class="p">,</span> <span class="s1">&#39;shroud&#39;</span><span class="p">,</span> <span class="s1">&#39;shrouds&#39;</span><span class="p">,</span> <span class="s1">&#39;shroudy&#39;</span><span class="p">]</span>
+<span class="n">psudo</span><span class="o">-</span><span class="n">code</span>    <span class="o">--&gt;</span> <span class="p">[</span><span class="s1">&#39;pseudo-code&#39;</span><span class="p">,</span> <span class="s1">&#39;psuedo-code&#39;</span><span class="p">]</span>
+<span class="n">algorythm</span>     <span class="o">--&gt;</span> <span class="p">[</span><span class="s1">&#39;algorithm&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="challenge-question">
@@ -1143,7 +1161,7 @@ Is it common to find 6 unique Triples for a singular hypotenuse? When does that 
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python-module">Python Module</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-product">Final Product</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#final-output">Final Output</a></li>
 </ul>
 </li>
 <li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#challenge-question">Challenge Question</a><ul class="visible nav section-nav flex-column">
