@@ -280,7 +280,7 @@ because of the way generators work--you don't _call_ them, you _iterate_ through
 We will avoid recursion because we have a small, fixed number of generators that we want to compose.
 Instead, you'll simply use nested for-loops to get all possible combinations of mismisspellings.
 > Note: This is why we had each generator first return the word unchanged: we want the ability
-> to apply _ONLY_ _insert_letters. Havineg our other two mismisspellers return the word
+> to apply _ONLY_ _insert_letters. Having our other two mismisspellers return the word
 > unchanged allows us to write simple code to find mismisspellings when there is only one mistake.
 
 Be sure you pass the Unit Test _suggest_compose_. This tests that `suggest_mismisspellings` correctly finds a suggestion for a misspelled word that requires all three misspellings. 
