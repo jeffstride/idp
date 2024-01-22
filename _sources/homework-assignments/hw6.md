@@ -151,7 +151,7 @@ For each section below, attempt find the correct spelling for words
 using the generator just created.
 
 > IMPORTANT: In order to allow us to "compose" our misspellers together, we need each
-> generate to first yeild the word unchanged.
+> generate to first yield the word unchanged.
 
 ## Part 1
 You will implement a create_misspelling `generator`, but instead of using the name 'create_misspelling',
@@ -258,7 +258,7 @@ Be sure you pass the Unit Test `swap_letters`.
 ## suggest_mismisspellings
 It is time to implement the method `suggest_mismisspellings`. This method
 should return a list of suggested words that could be the correct
-spelling for the misspelled word. The list will have an maximum number
+spelling for the misspelled word. The list will have a maximum number
 of words added to the list which is specified in the optional `max` argument.
 
 ```python
