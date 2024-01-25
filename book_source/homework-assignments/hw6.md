@@ -380,7 +380,7 @@ oportunities  --> ['opportunities']
 seeems        --> ['seems']
 peopl         --> ['people']
 ettiquitt     --> ['antiquist', 'antiquity', 'etiquet', 'etiquette']
-shoudl        --> ['dhoul', 'ghoul', 'seoul', 'shaul', 'shoad', 'shoal', 'shoddy', 'shode', 'shoed', 'shoful', 'shonde', 'shood', 'shool', 'shorl', 'shough', 'should', 'shouldn', 'shouse', 'shout', 'shouts', 'shoval', 'shovel', 'showd', 'shroud', 'shrouds', 'shroudy']
+shoudl        --> ['dhoul', 'ghoul', 'seoul', 'shaul', 'shoad', 'shoal', 'shod', 'shoddy', 'shode', 'shoed', 'shoful', 'shonde', 'shood', 'shool', 'shorl', 'shou', 'shough', 'should', 'shouldn', 'shouse', 'shout', 'shouts', 'shoval', 'shovel', 'showd', 'shroud', 'shrouds', 'shroudy', 'shul', 'soud', 'soul']
 psudo-code    --> ['pseudo-code', 'psuedo-code']
 algorythm     --> ['algorithm']
 ```
