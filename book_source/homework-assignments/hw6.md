@@ -453,7 +453,7 @@ for c in range(max_hypotenuse):
 The avoid the above code, you may have to _refactor_ or _reorganize_ your code in ways that allow you to
 save data as you go.  
 
-To help you validate your code, ere is a table of the count of Triples for a specific Max Hypotenuse:
+To help you validate your code, here is a table of the count of Triples for a specific Max Hypotenuse:
 ```
 Count   Max Hypotenuse
   1      5
