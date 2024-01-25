@@ -364,7 +364,7 @@ Compare the speed of the Python implementation to the module implementation by d
 ```
 Dictionary: data/wordList.txt
 Essay to check: data/englishEssay.txt
-Time to spellcheck: 2.338
+Time to spellcheck: 3.012
       civalized: line:   1  word:  3
    oportunities: line:   6  word:  4
          seeems: line:  15  word:  9
@@ -379,7 +379,7 @@ civalized     --> ['civilized']
 oportunities  --> ['opportunities']
 seeems        --> ['seems']
 peopl         --> ['people']
-ettiquitt     --> ['antiquist', 'antiquity', 'etiquette']
+ettiquitt     --> ['antiquist', 'antiquity', 'etiquet', 'etiquette']
 shoudl        --> ['dhoul', 'ghoul', 'seoul', 'shaul', 'shoad', 'shoal', 'shoddy', 'shode', 'shoed', 'shoful', 'shonde', 'shood', 'shool', 'shorl', 'shough', 'should', 'shouldn', 'shouse', 'shout', 'shouts', 'shoval', 'shovel', 'showd', 'shroud', 'shrouds', 'shroudy']
 psudo-code    --> ['pseudo-code', 'psuedo-code']
 algorythm     --> ['algorithm']
