@@ -75,7 +75,7 @@ def foo(*args, **kwargs):
 ```
 ## Examples
 Let's say that we want to have a method with 7 arguments where 3 of them have default values. 
-We'd define this menthod as shown below. Note that the three named arguments have default values.
+We'd define this method as shown below. Note that the three named arguments have default values.
 
 ```python
 # Example prototype with 4 positional arguments and 3 named arguments

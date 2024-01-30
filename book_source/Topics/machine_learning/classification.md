@@ -26,14 +26,14 @@ In this study, students should learn:
 ## Data Overview
 In this hypothetical example, we know the **height** and **gender** of about 2000 people who are between the ages of 22-32. We
 also know whether they play in the NBA (or WNBA). Let's see if a `DecisionTreeClassifier` can accurately predict whether they
-play in the NBA or not based soley on their gender and height.  Note that for simplicity, we will only consider male/female,
+play in the NBA or not based solely on their gender and height.  Note that for simplicity, we will only consider male/female,
 and we will often say just NBA when we also mean to include WNBA.  
 
 We will break up our study into two primary sections. Each section uses completely contrived and made-up data. This
 allows us to understand the model's results. In both cases, **height** impacts the results (playing for NBA), but
 the specifics of how it impacts the results is different in each study.  
 
-In our first dataset, the threashold for automatically being in the NBA is
+In our first dataset, the threshold for automatically being in the NBA is
 81+ inches tall for a male, while a woman must be only 75+ inches tall.  
 
 The two data types are:  
