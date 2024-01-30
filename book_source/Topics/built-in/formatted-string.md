@@ -38,7 +38,7 @@ to the way Java implements `printf`, only it has different escape sequences and 
 string literal is preceded with `'f'` then the string is expecting to have some
 formatting sequence in it. A formatting sequence is embedded inside curly braces `{}` and the text
 inside the curly braces is interpreted. It would contain identifiers, method calls, and possibly
-formatting options following a colon. Here is the syantax for printing a floating point number with some text label:  
+formatting options following a colon. Here is the syntax for printing a floating point number with some text label:  
 
     f'text{<identifer>:.<integer>f}'
     
