@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Line Plots &#8212; IDP at NCHS</title>
   
@@ -29,32 +28,30 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=6c3db60c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script kind="utterances">
 
     var commentsRunWhenDOMLoaded = cb => {
@@ -90,7 +87,7 @@ var addUtterances = () => {
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-DW6SHVPBYV"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -103,9 +100,21 @@ const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-DW6SHVPBYV');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'visualizations/lineplots';</script>
-    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Curve of Best Fit" href="line_of_best_fit.html" />
@@ -216,7 +225,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -547,7 +567,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="line-plots">
-<h1>Line Plots<a class="headerlink" href="#line-plots" title="Permalink to this heading">#</a></h1>
+<h1>Line Plots<a class="headerlink" href="#line-plots" title="Link to this heading">#</a></h1>
 <p>Line Plots are likely the most common plot you’ll create in IDP. It is fantastic for
 <a href='geospatial.html#correlations-and-coefficient-of-determination'>showing correlations</a>. While line plots are not complicated, it can be frustrating
 to draw multiple lines as you intend. Furthermore, there are many different API available to draw lines and they
@@ -560,7 +580,7 @@ accept different named arguments (which is frustrating!).</p>
 <li><p>customize line styles</p></li>
 </ul>
 <section id="libraries">
-<h2>Libraries<a class="headerlink" href="#libraries" title="Permalink to this heading">#</a></h2>
+<h2>Libraries<a class="headerlink" href="#libraries" title="Link to this heading">#</a></h2>
 <p>There are several different libraries and objects that allow you to plot a line. The one you use depends on the structure of your data and the complexity of your plot. I have found that the most useful object to use when drawing is the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> where you can do most of what you want to do. When doing subplots, using the <code class="docutils literal notranslate"><span class="pre">Axes</span></code> object becomes invaluable.</p>
 <p>You should read and become familiar with all the named arguments and options for each library/object.</p>
 <table class="table">
@@ -594,7 +614,7 @@ accept different named arguments (which is frustrating!).</p>
 </tbody>
 </table>
 <div class="seealso dropdown admonition">
-<p class="admonition-title">Helpful Resources/API </p>
+<p class="admonition-title">Helpful Resources/API</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://matplotlib.org/stable/gallery/color/named_colors.html">matplotlib Colors</a> : List of color names</p></li>
 <li><p><a class="reference external" href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.clf.html">plt.clf</a> : Clear the current figure</p></li>
@@ -605,13 +625,13 @@ accept different named arguments (which is frustrating!).</p>
 </div>
 </section>
 <section id="data">
-<h2>Data<a class="headerlink" href="#data" title="Permalink to this heading">#</a></h2>
+<h2>Data<a class="headerlink" href="#data" title="Link to this heading">#</a></h2>
 <p>The data is three years of temperature data from Snohomish county. This page will do some computations and data organization
 to enable better plots, but this is what the data basically looks like. We load it as a <code class="docutils literal notranslate"><span class="pre">TimeSeries</span></code> using <code class="docutils literal notranslate"><span class="pre">pd.read_csv</span></code>.<br />
 <img alt="Temperature Data" src="../_images/line_data.png" /></p>
 </section>
 <section id="dataframe">
-<h2>DataFrame<a class="headerlink" href="#dataframe" title="Permalink to this heading">#</a></h2>
+<h2>DataFrame<a class="headerlink" href="#dataframe" title="Link to this heading">#</a></h2>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-0">
@@ -659,7 +679,7 @@ a few things: figure size, columns to plot on <code class="docutils literal notr
 </div>
 </section>
 <section id="simple-plots">
-<h2>Simple Plots<a class="headerlink" href="#simple-plots" title="Permalink to this heading">#</a></h2>
+<h2>Simple Plots<a class="headerlink" href="#simple-plots" title="Link to this heading">#</a></h2>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-3">
@@ -718,7 +738,7 @@ we choose to set a custom dashed style, because we can. See <a class="reference 
 </div>
 </section>
 <section id="twinx-plots">
-<h2>Twinx Plots<a class="headerlink" href="#twinx-plots" title="Permalink to this heading">#</a></h2>
+<h2>Twinx Plots<a class="headerlink" href="#twinx-plots" title="Link to this heading">#</a></h2>
 <p>There are times when we want to plot two lines together but their units are dramatically different.
 You can see this impact in the DataFrame Default image at the top of this page.</p>
 <p>Here we will look at an example where the the units gets in the way of our plot. Then, we will
@@ -813,13 +833,13 @@ this problem, I got help from ChatGPT which showed me how to combine the ‘hand
 </div>
 </div>
 <section id="another-twinx-example">
-<h3>Another Twinx Example<a class="headerlink" href="#another-twinx-example" title="Permalink to this heading">#</a></h3>
+<h3>Another Twinx Example<a class="headerlink" href="#another-twinx-example" title="Link to this heading">#</a></h3>
 <p>This example is nice because it annotates the daylight curve with the length of the day.
 The plot shows how the average temperature “lags” the length of the day: the temperature
 doesn’t change immediately with the length of the day.</p>
 <p>The code takes a time-slice for a 12 month period. When finding the equinox points,
 we make use of Tuple packing and unpacking to combine two lines of code into one line. This is a bit
-of a trick and is a nice way to shortn highly similar code.</p>
+of a trick and is a nice way to shorten highly similar code.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-9" name="sd-tab-set-3" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-9">
@@ -869,7 +889,7 @@ Code</label><div class="sd-tab-content docutils">
 </section>
 </section>
 <section id="seaborn">
-<h2>Seaborn<a class="headerlink" href="#seaborn" title="Permalink to this heading">#</a></h2>
+<h2>Seaborn<a class="headerlink" href="#seaborn" title="Link to this heading">#</a></h2>
 <p>I’ve found that using Seaborn is helpful in only a few situations.</p>
 <ol class="arabic simple">
 <li><p>When the data is in the “unpivoted” format.</p></li>

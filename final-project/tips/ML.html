@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Leveraging ML in the Final Project &#8212; IDP at NCHS</title>
   
@@ -29,32 +28,30 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=6c3db60c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script kind="utterances">
 
     var commentsRunWhenDOMLoaded = cb => {
@@ -90,7 +87,7 @@ var addUtterances = () => {
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-DW6SHVPBYV"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -103,9 +100,21 @@ const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-DW6SHVPBYV');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'final-project/tips/ML';</script>
-    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Tips for Proposal Document" href="proposal.html" />
@@ -216,7 +225,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -545,12 +565,12 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="leveraging-ml-in-the-final-project">
-<h1>Leveraging ML in the Final Project<a class="headerlink" href="#leveraging-ml-in-the-final-project" title="Permalink to this heading">#</a></h1>
+<h1>Leveraging ML in the Final Project<a class="headerlink" href="#leveraging-ml-in-the-final-project" title="Link to this heading">#</a></h1>
 <p>As previously discussed, there are two principal categories of models: classification and regression. When conducting computations and analysis for your final project, it is important not to merely present numerical outputs. You need to ask yourself what the real-world significance is and draw practical implications. Use your correlations and models to identify patterns and trends, which, in turn, form the basis for making informed predictions.</p>
 <p>There are a few approaches you can take to draw effective and insightful information from the performance of an ML model. For the problem provided as an example, four different approaches are taken.</p>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="example-situation">
-<h1>Example Situation<a class="headerlink" href="#example-situation" title="Permalink to this heading">#</a></h1>
+<h1>Example Situation<a class="headerlink" href="#example-situation" title="Link to this heading">#</a></h1>
 <p>The prevalence of alcohol abuse remains a significant public health concern in the United States. To address this pressing issue and gain insights into the factors influencing alcohol abuse rates, a  machine learning (ML) model has been developed.</p>
 <p>The following creates a regression model to predict the alcohol prevalence (label) in a state in the US given information that represents that state (features). <strong>For the context of this problem, alcohol prevalence is defined as the median number of binge drinking occasions in a period of 30 days.</strong></p>
 <div class="sd-tab-set docutils">
@@ -572,7 +592,7 @@ Dataset</label><div class="sd-tab-content docutils">
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="st-approach-model-performance-evaluation">
-<h1>1st Approach: Model Performance Evaluation<a class="headerlink" href="#st-approach-model-performance-evaluation" title="Permalink to this heading">#</a></h1>
+<h1>1st Approach: Model Performance Evaluation<a class="headerlink" href="#st-approach-model-performance-evaluation" title="Link to this heading">#</a></h1>
 <p>Assessing the model’s performance metrics, such as mean squared error, allows you to gauge the model’s accuracy and generalization capabilities. This information is essential for understanding how well the model is likely to perform on new, unseen data.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
@@ -590,7 +610,7 @@ Comments</label><div class="sd-tab-content docutils">
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="nd-approach-identifying-important-features">
-<h1>2nd Approach: Identifying Important Features<a class="headerlink" href="#nd-approach-identifying-important-features" title="Permalink to this heading">#</a></h1>
+<h1>2nd Approach: Identifying Important Features<a class="headerlink" href="#nd-approach-identifying-important-features" title="Link to this heading">#</a></h1>
 <p>By analyzing the feature importances, you can determine which variables have the most significant impact on the predicted outcome. This information is crucial for understanding the driving factors influencing the label.</p>
 <p>To better understand the factors and their influence in alcohol prevalence, a Feature Importance analysis can be performed. Using the API provided by the <strong>DecisionTreeRegressor</strong> class, you can determine which of your features are most influential in the model’s predictions.</p>
 <div class="sd-tab-set docutils">
@@ -636,7 +656,7 @@ Comments</label><div class="sd-tab-content docutils">
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="rd-approach-decision-tree-analysis">
-<h1>3rd Approach: Decision Tree Analysis<a class="headerlink" href="#rd-approach-decision-tree-analysis" title="Permalink to this heading">#</a></h1>
+<h1>3rd Approach: Decision Tree Analysis<a class="headerlink" href="#rd-approach-decision-tree-analysis" title="Link to this heading">#</a></h1>
 <p>Another technique to better understand the significance of the results of your ML model, you can analyze what decisions were being made by the model to make predictions. You can do this by printing out images of your decision tree using the API provided by <strong>sklearn.</strong></p>
 <p>Using the hyperparameter “max_depth”, you can restrict and change the length of the decision tree and observe how that affected the decisions being made at each node. In this case, the height was changed three times and an image of the Tree was generated each time.</p>
 <div class="sd-tab-set docutils">
@@ -687,7 +707,7 @@ Comments</label><div class="sd-tab-content docutils">
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="th-approach-prediction-and-forecasting">
-<h1>4th Approach: Prediction and Forecasting<a class="headerlink" href="#th-approach-prediction-and-forecasting" title="Permalink to this heading">#</a></h1>
+<h1>4th Approach: Prediction and Forecasting<a class="headerlink" href="#th-approach-prediction-and-forecasting" title="Link to this heading">#</a></h1>
 <p>Regression models are commonly used for predicting and forecasting numerical values based on historical data. The model’s predictions can provide valuable insights into future trends, patterns, or behaviors, aiding in decision-making and planning.</p>
 <p>In the context of Alcohol Prevalence for a given state, the following decisions can be made in order to better the lives of individuals living in these areas:</p>
 <ol class="arabic simple">

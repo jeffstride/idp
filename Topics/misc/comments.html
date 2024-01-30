@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Writing Effective Comments &#8212; IDP at NCHS</title>
   
@@ -29,32 +28,30 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css" />
-    <link rel="stylesheet" href="../../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="../../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=6c3db60c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
-    <script src="../../_static/jquery.js"></script>
-    <script src="../../_static/underscore.js"></script>
-    <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../../_static/doctools.js"></script>
-    <script src="../../_static/clipboard.min.js"></script>
-    <script src="../../_static/copybutton.js"></script>
-    <script src="../../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
     <script kind="utterances">
 
     var commentsRunWhenDOMLoaded = cb => {
@@ -90,7 +87,7 @@ var addUtterances = () => {
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../../_static/design-tabs.js"></script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-DW6SHVPBYV"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -103,9 +100,21 @@ const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-DW6SHVPBYV');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Topics/misc/comments';</script>
-    <link rel="shortcut icon" href="../../_static/favicon.png"/>
+    <link rel="icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Notes on MyST" href="my_st.html" />
@@ -216,7 +225,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -544,10 +564,10 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="writing-effective-comments">
-<h1>Writing Effective Comments<a class="headerlink" href="#writing-effective-comments" title="Permalink to this heading">#</a></h1>
+<h1>Writing Effective Comments<a class="headerlink" href="#writing-effective-comments" title="Link to this heading">#</a></h1>
 <p>Comments in Java are essential for making your code understandable to both yourself and others. They serve as documentation and explanations for the code you’ve written. However, writing good comments requires balance. In this lesson you’ll learn the clear and concise way of writing comments, with examples of too little, just right, and too many comments.</p>
 <section id="doc-string-comments">
-<h2>Doc-String Comments<a class="headerlink" href="#doc-string-comments" title="Permalink to this heading">#</a></h2>
+<h2>Doc-String Comments<a class="headerlink" href="#doc-string-comments" title="Link to this heading">#</a></h2>
 <p>Doc-strings are multi-line strings enclosed in triple-quotes (either single or double). They are used to document classes and functions. Here is what makes a strong Doc-String comment:</p>
 <ol class="arabic simple">
 <li><p>State WHAT the function does. NOT how. And NOT why.</p></li>
@@ -558,7 +578,7 @@ document.write(`
 Note that they always belong <code class="docutils literal notranslate"><span class="pre">under</span></code> the prototype, not above the prototype (as they are in Java).</p>
 </section>
 <section id="inline-comments">
-<h2>Inline Comments<a class="headerlink" href="#inline-comments" title="Permalink to this heading">#</a></h2>
+<h2>Inline Comments<a class="headerlink" href="#inline-comments" title="Link to this heading">#</a></h2>
 <p>Inline comments are single-line comments that appear within the code, providing clarifications or explanations for specific lines or blocks of code. Inline should explain <code class="docutils literal notranslate"><span class="pre">WHY,</span> <span class="pre">HOW,</span> <span class="pre">WHAT.</span></code> Here is what makes a strong inline comment:</p>
 <ol class="arabic simple">
 <li><p>All comments should add real value while letting the code speak for itself. Avoid trivial comment such as: this adds one to x</p></li>
@@ -570,7 +590,7 @@ Note that they always belong <code class="docutils literal notranslate"><span cl
 <p>It should be clear where vertical spacing belongs, <code class="docutils literal notranslate"><span class="pre">above</span></code> the inline comment (except if it is the first line in the method).</p>
 </section>
 <section id="too-little">
-<h2>Too Little<a class="headerlink" href="#too-little" title="Permalink to this heading">#</a></h2>
+<h2>Too Little<a class="headerlink" href="#too-little" title="Link to this heading">#</a></h2>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-0">
@@ -629,7 +649,7 @@ Inline Comments</label><div class="sd-tab-content docutils">
 </div>
 </section>
 <section id="goldilocks">
-<h2>Goldilocks<a class="headerlink" href="#goldilocks" title="Permalink to this heading">#</a></h2>
+<h2>Goldilocks<a class="headerlink" href="#goldilocks" title="Link to this heading">#</a></h2>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-3">
@@ -674,7 +694,7 @@ Inline Comments</label><div class="sd-tab-content docutils">
 </div>
 </section>
 <section id="too-much">
-<h2>Too Much<a class="headerlink" href="#too-much" title="Permalink to this heading">#</a></h2>
+<h2>Too Much<a class="headerlink" href="#too-much" title="Link to this heading">#</a></h2>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-5" name="sd-tab-set-2" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-5">
@@ -742,7 +762,7 @@ Inline Comments</label><div class="sd-tab-content docutils">
 </div>
 </section>
 <section id="quality-inline-comments">
-<h2>Quality Inline Comments<a class="headerlink" href="#quality-inline-comments" title="Permalink to this heading">#</a></h2>
+<h2>Quality Inline Comments<a class="headerlink" href="#quality-inline-comments" title="Link to this heading">#</a></h2>
 <p>The most important comments in code are those that explain <em>WHY</em>! Other important comments include <em>HOW</em> the code works. In some circumstances, <em>WHAT</em> the code does can be helpful at times, particularly as you decompose the problem. You should focus on <em>WHY</em> commenting.</p>
 <p>To add quality <em>WHY</em> comments ask yourself the following:</p>
 <ul class="simple">

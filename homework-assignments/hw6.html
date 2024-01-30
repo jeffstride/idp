@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title> HW6 - Spell Checker &#8212; IDP at NCHS</title>
   
@@ -29,32 +28,30 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=6c3db60c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script kind="utterances">
 
     var commentsRunWhenDOMLoaded = cb => {
@@ -90,7 +87,7 @@ var addUtterances = () => {
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-DW6SHVPBYV"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -103,11 +100,23 @@ const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-DW6SHVPBYV');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'homework-assignments/hw6';</script>
-    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title=" HW7 - Mapping" href="hw7.html" />
@@ -218,7 +227,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -573,11 +593,11 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="i-class-fas-fa-laptop-fa-fw-i-hw6-spell-checker">
-<h1><i class="fas fa-laptop fa-fw"></i> HW6 - Spell Checker<a class="headerlink" href="#i-class-fas-fa-laptop-fa-fw-i-hw6-spell-checker" title="Permalink to this heading">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="hw6-spell-checker">
+<h1><i class="fas fa-laptop fa-fw"></i> HW6 - Spell Checker<a class="headerlink" href="#hw6-spell-checker" title="Link to this heading">#</a></h1>
 <p><strong>Learning objective:</strong> Implement efficient code with generators.</p>
 <section id="rubric-submission">
-<h2>Rubric &amp; Submission<a class="headerlink" href="#rubric-submission" title="Permalink to this heading">#</a></h2>
+<h2>Rubric &amp; Submission<a class="headerlink" href="#rubric-submission" title="Link to this heading">#</a></h2>
 <p>Please note these important things:</p>
 <ul class="simple">
 <li><p>You will submit your work to <strong>Dropbox</strong>. The link will be found on Schoology.</p></li>
@@ -593,7 +613,7 @@ document.write(`
 </ul>
 </section>
 <section id="instructions">
-<h2>Instructions<a class="headerlink" href="#instructions" title="Permalink to this heading">#</a></h2>
+<h2>Instructions<a class="headerlink" href="#instructions" title="Link to this heading">#</a></h2>
 <p>In this project you will learn:</p>
 <ul class="simple">
 <li><p>Class implementation (should just be extra practice by now)</p></li>
@@ -612,7 +632,7 @@ The primary pieces of functionality will be to:</p>
 <p>A basic infrastructure of the SpellChecker class will be provided.</p>
 </section>
 <section id="simple-spell-checking-an-essay">
-<h2>Simple Spell Checking an Essay<a class="headerlink" href="#simple-spell-checking-an-essay" title="Permalink to this heading">#</a></h2>
+<h2>Simple Spell Checking an Essay<a class="headerlink" href="#simple-spell-checking-an-essay" title="Link to this heading">#</a></h2>
 <p>First, improve the code so that it can complete the spell checking quickly.</p>
 <p>You will implement the following three methods in the class <code class="docutils literal notranslate"><span class="pre">SpellChecker</span></code>:</p>
 <ol class="arabic simple">
@@ -641,7 +661,7 @@ If you are too slow, you will get marked down. You need to have <em>FAST</em> co
 <li><p>misspelled</p></li>
 </ul>
 <section id="tips-for-passing-test">
-<h3>Tips for Passing Test<a class="headerlink" href="#tips-for-passing-test" title="Permalink to this heading">#</a></h3>
+<h3>Tips for Passing Test<a class="headerlink" href="#tips-for-passing-test" title="Link to this heading">#</a></h3>
 <p>Make sure that you have your own tests written. You will understand the input
 and expected output of your own tests. This will assure that things are working
 according to plan.</p>
@@ -667,7 +687,7 @@ and solve for each subword.</p>
 </section>
 </section>
 <section id="generators">
-<h2>Generators<a class="headerlink" href="#generators" title="Permalink to this heading">#</a></h2>
+<h2>Generators<a class="headerlink" href="#generators" title="Link to this heading">#</a></h2>
 <p>Before we move onto the next phase of development, you need to learn about
 <code class="docutils literal notranslate"><span class="pre">generators</span></code>.</p>
 <p>In Python, a generator is a special type of function that produces a sequence
@@ -703,7 +723,7 @@ how to use them, and some of the benefits of using generators in your Python cod
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="spelling-suggestion">
-<h1>Spelling Suggestion<a class="headerlink" href="#spelling-suggestion" title="Permalink to this heading">#</a></h1>
+<h1>Spelling Suggestion<a class="headerlink" href="#spelling-suggestion" title="Link to this heading">#</a></h1>
 <p>This is where the project starts to get more interesting. There are many creative ways
 to suggest words for a misspelled word.
 We will start simple and slow and then build up to <em>AMAZING and FAST!</em></p>
@@ -714,7 +734,7 @@ We will start simple and slow and then build up to <em>AMAZING and FAST!</em></p
 <li><p><code class="docutils literal notranslate"><span class="pre">_swap_letters</span></code></p></li>
 </ol>
 <section id="mis-misspelled">
-<h2>Mis-misspelled<a class="headerlink" href="#mis-misspelled" title="Permalink to this heading">#</a></h2>
+<h2>Mis-misspelled<a class="headerlink" href="#mis-misspelled" title="Link to this heading">#</a></h2>
 <p>We will start with a concept that I’ll call: <code class="docutils literal notranslate"><span class="pre">mis-misspelled</span></code>. The basic idea
 is that we will modify the spelling of a misspelled word until
 it is modified into a correctly spelled word.</p>
@@ -736,7 +756,7 @@ generate to first yield the word unchanged.</p>
 </div></blockquote>
 </section>
 <section id="part-1">
-<h2>Part 1<a class="headerlink" href="#part-1" title="Permalink to this heading">#</a></h2>
+<h2>Part 1<a class="headerlink" href="#part-1" title="Link to this heading">#</a></h2>
 <p>You will implement a create_misspelling <code class="docutils literal notranslate"><span class="pre">generator</span></code>, but instead of using the name ‘create_misspelling’,
 we will use a more specific name that describes exactly <em>how</em> we are misspelling the
 word. Let’s name it: <code class="docutils literal notranslate"><span class="pre">_insert_letters</span></code>.</p>
@@ -783,7 +803,7 @@ For example, if we have the word <code class="docutils literal notranslate"><spa
 <p>Be sure you pass the Unit Test <code class="docutils literal notranslate"><span class="pre">insert_letters</span></code>.</p>
 </section>
 <section id="part-2">
-<h2>Part 2<a class="headerlink" href="#part-2" title="Permalink to this heading">#</a></h2>
+<h2>Part 2<a class="headerlink" href="#part-2" title="Link to this heading">#</a></h2>
 <p>Implement another generator to remove all letters, one letter at a time.
 The first word the generator will yield, is the word unchanged.
 The generator will be called: <code class="docutils literal notranslate"><span class="pre">_remove_letters</span></code>. For example:</p>
@@ -804,7 +824,7 @@ The generator will be called: <code class="docutils literal notranslate"><span c
 <p>Be sure you pass the Unit Test  <code class="docutils literal notranslate"><span class="pre">remove_letters</span></code>.</p>
 </section>
 <section id="part-3">
-<h2>Part 3<a class="headerlink" href="#part-3" title="Permalink to this heading">#</a></h2>
+<h2>Part 3<a class="headerlink" href="#part-3" title="Link to this heading">#</a></h2>
 <p>Implement another generator to change all letters, one letter at a time.
 Once again, the first word to yield is the original word, unchanged.
 This will be called: <code class="docutils literal notranslate"><span class="pre">_swap_letters</span></code>. Note that this does NOT mean that
@@ -839,7 +859,7 @@ swapped out for another. For example:</p>
 <p>Be sure you pass the Unit Test <code class="docutils literal notranslate"><span class="pre">swap_letters</span></code>.</p>
 </section>
 <section id="suggest-mismisspellings">
-<h2>suggest_mismisspellings<a class="headerlink" href="#suggest-mismisspellings" title="Permalink to this heading">#</a></h2>
+<h2>suggest_mismisspellings<a class="headerlink" href="#suggest-mismisspellings" title="Link to this heading">#</a></h2>
 <p>It is time to implement the method <code class="docutils literal notranslate"><span class="pre">suggest_mismisspellings</span></code>. This method
 should return a list of suggested words that could be the correct
 spelling for the misspelled word. The list will have a maximum number
@@ -849,7 +869,7 @@ of words added to the list which is specified in the optional <code class="docut
 </pre></div>
 </div>
 <section id="composing">
-<h3>Composing<a class="headerlink" href="#composing" title="Permalink to this heading">#</a></h3>
+<h3>Composing<a class="headerlink" href="#composing" title="Link to this heading">#</a></h3>
 <p>Each <code class="docutils literal notranslate"><span class="pre">generator</span></code> above catches some type of mistake, but not all of them.
 If you try all three back-to-back-to-back, you won’t catch many misspellings because some
 misspelled words require ALL THREE at the SAME TIME!! For example, to
@@ -876,7 +896,7 @@ the misspelled words in the englishEssay.txt.</p>
 </section>
 </section>
 <section id="levenshtein-distance">
-<h2>Levenshtein Distance<a class="headerlink" href="#levenshtein-distance" title="Permalink to this heading">#</a></h2>
+<h2>Levenshtein Distance<a class="headerlink" href="#levenshtein-distance" title="Link to this heading">#</a></h2>
 <p>There are two problems with what we’ve done so far:</p>
 <ol class="arabic simple">
 <li><p>It’s too slow!!</p></li>
@@ -929,13 +949,13 @@ two ways. The first way is to find the Python code on the internet. You will imp
 <p>Attempt to find <em>FAST</em> implementations. It is pretty clear that some implementations are much faster than others.</p>
 <p>Write a few tests to verify that your implementation works.</p>
 <section id="python-module">
-<h3>Python Module<a class="headerlink" href="#python-module" title="Permalink to this heading">#</a></h3>
+<h3>Python Module<a class="headerlink" href="#python-module" title="Link to this heading">#</a></h3>
 <p>After you have Python code that correctly implements Levenshtein Distance, look for a Python module that implements the same thing. Wrap up the module’s implementation in <code class="docutils literal notranslate"><span class="pre">levenshtein.py</span></code> in the method <code class="docutils literal notranslate"><span class="pre">lev_distance</span></code>.</p>
 <p>Be sure you pass all the Unit Tests.</p>
 </section>
 </section>
 <section id="final-output">
-<h2>Final Output<a class="headerlink" href="#final-output" title="Permalink to this heading">#</a></h2>
+<h2>Final Output<a class="headerlink" href="#final-output" title="Link to this heading">#</a></h2>
 <p>You will update <code class="docutils literal notranslate"><span class="pre">main.py</span></code> to run your Spell Checker with suggestions. Run spell_check on the englishEssay.txt and see how fast it finds spelling suggestions. In other words, update <code class="docutils literal notranslate"><span class="pre">main.py</span></code> to call <code class="docutils literal notranslate"><span class="pre">spell_check(essay,</span> <span class="pre">True)</span></code> and then print out suggestions beneath the misspelling summary as shown below.</p>
 <p>Compare the speed of the Python implementation to the module implementation by doing a spell_check using each. Mr. Stride’s work showed that the Python implementation took 50.5 seconds and the module implementation took less than 2.5 seconds. Amazing, right?!</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Dictionary</span><span class="p">:</span> <span class="n">data</span><span class="o">/</span><span class="n">wordList</span><span class="o">.</span><span class="n">txt</span>
@@ -964,7 +984,7 @@ two ways. The first way is to find the Python code on the internet. You will imp
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="challenge-question">
-<h1>Challenge Question<a class="headerlink" href="#challenge-question" title="Permalink to this heading">#</a></h1>
+<h1>Challenge Question<a class="headerlink" href="#challenge-question" title="Link to this heading">#</a></h1>
 <p>This challenge question is a bit different than previous questions. Here, you’ll be asked to do some Data Science
 research. The goal is to provide <em>visual</em> insight into a mathematical <em>solution space</em>. Does this sound a bit strange? Let me elaborate.</p>
 <p>You will have to:</p>
@@ -986,7 +1006,7 @@ resource.</p>
 <p>There is <strong>NO</strong> possibility of being accused of plagiarism on this Challenge Question. It isn’t graded!!</p>
 </div>
 <section id="pythagorean-triples">
-<h2>Pythagorean Triples<a class="headerlink" href="#pythagorean-triples" title="Permalink to this heading">#</a></h2>
+<h2>Pythagorean Triples<a class="headerlink" href="#pythagorean-triples" title="Link to this heading">#</a></h2>
 <p>Before you can really begin to solve this problem, you need to learn about how to generate <strong>Pythagorean Triples.</strong>
 You can get a great lesson by watching this video by <strong>3 Blue 1 Brown.</strong>  You definitely should watch it!!</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/QJYmyhnaaek?si=WLMzcLbWceIs_gOf" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
@@ -1000,7 +1020,7 @@ You can get a great lesson by watching this video by <strong>3 Blue 1 Brown.</st
 </div>
 </section>
 <section id="coding-hints">
-<h2>Coding Hints<a class="headerlink" href="#coding-hints" title="Permalink to this heading">#</a></h2>
+<h2>Coding Hints<a class="headerlink" href="#coding-hints" title="Link to this heading">#</a></h2>
 <p>You’ll want to start by creating a method that generates all the fractions up to some maximum denominator. For example,
 here are all the fractions up through the denominator 9:
 <span class="math notranslate nohighlight">\(\frac{1}{2}, \frac{1}{3}, \frac{2}{3}, \frac{1}{4}, \frac{3}{4}, \frac{1}{5}, \frac{2}{5}, \frac{3}{5}, \frac{4}{5}, \frac{1}{6}, \frac{5}{6}, \frac{1}{7}, \frac{2}{7}, \frac{3}{7}, \frac{4}{7}, \frac{5}{7}, \frac{6}{7}, \frac{1}{8}, \frac{3}{8}, \frac{5}{8}, \frac{7}{8}, \frac{1}{9}, \frac{2}{9}, \frac{4}{9}, \frac{5}{9}, \frac{7}{9}, \frac{8}{9}\)</span></p>
@@ -1049,7 +1069,7 @@ There is <em>sooooo</em> much more to this problem than coding a quick solution.
 at least understand the code you’ve acquired, and don’t forget to <strong>annotate</strong> where you got the code.</p>
 </section>
 <section id="graphs-with-insight">
-<h2>Graphs with Insight<a class="headerlink" href="#graphs-with-insight" title="Permalink to this heading">#</a></h2>
+<h2>Graphs with Insight<a class="headerlink" href="#graphs-with-insight" title="Link to this heading">#</a></h2>
 <p>The obvious graph is something like this:<br />
 <img alt="Basic Plot" src="../_images/hw6_count_v_max.png" /></p>
 <p>There are lots of graphs you can generate to show the distribution of Triples, the growth rate,
@@ -1063,7 +1083,7 @@ there was one hypotenuse length (5525) that had 22 unique Triples, all of which 
 of length 5525.</p>
 </section>
 <section id="draw-some-conclusions">
-<h2>Draw some Conclusions<a class="headerlink" href="#draw-some-conclusions" title="Permalink to this heading">#</a></h2>
+<h2>Draw some Conclusions<a class="headerlink" href="#draw-some-conclusions" title="Link to this heading">#</a></h2>
 <p>What can you say about the count and distribution of Triples?<br />
 Can you accurately predict the count with a line or parabola?<br />
 Is it common to find 6 unique Triples for a singular hypotenuse? When does that first happen? What is the distribution?</p>

@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html lang="en" data-content_root="" >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Geospatial Plots &#8212; IDP at NCHS</title>
   
@@ -29,32 +28,30 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=6c3db60c" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
 <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
   <script src="../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=888ff710"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script kind="utterances">
 
     var commentsRunWhenDOMLoaded = cb => {
@@ -90,7 +87,7 @@ var addUtterances = () => {
 commentsRunWhenDOMLoaded(addUtterances);
 </script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-DW6SHVPBYV"></script>
     <script>
                 window.dataLayer = window.dataLayer || [];
@@ -103,11 +100,23 @@ const thebe_selector = ".thebe,.cell"
 const thebe_selector_input = "pre"
 const thebe_selector_output = ".output, .cell_output"
 </script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=afe5de03"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-DW6SHVPBYV');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
     <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
     <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'visualizations/geospatial';</script>
-    <link rel="shortcut icon" href="../_static/favicon.png"/>
+    <link rel="icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Line Plots" href="lineplots.html" />
@@ -218,7 +227,18 @@ const thebe_selector_output = ".output, .cell_output"
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -547,7 +567,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="geospatial-plots">
-<h1>Geospatial Plots<a class="headerlink" href="#geospatial-plots" title="Permalink to this heading">#</a></h1>
+<h1>Geospatial Plots<a class="headerlink" href="#geospatial-plots" title="Link to this heading">#</a></h1>
 <p>Geospatial plots are great at:</p>
 <ol class="arabic simple">
 <li><p>Showing how an <strong>area</strong> is impacted relative to other <strong>areas.</strong></p></li>
@@ -560,7 +580,7 @@ document.write(`
 <li><p>Emphasizing the amount of difference between one area and another.</p></li>
 </ol>
 <section id="contiguous-states-only">
-<h2>Contiguous States Only<a class="headerlink" href="#contiguous-states-only" title="Permalink to this heading">#</a></h2>
+<h2>Contiguous States Only<a class="headerlink" href="#contiguous-states-only" title="Link to this heading">#</a></h2>
 <p>Let’s start off by showing the benefits of showing only the contiguous United States.
 Imagine that we are trying to show which states have the most electoral college votes
 and perhaps we want to emphasize that California has the most by a long shot.</p>
@@ -619,7 +639,7 @@ Another way is to set some limits on the x &amp; y axes: <code class="docutils l
 </div>
 </section>
 <section id="inset-alaska-hawaii">
-<h2>Inset Alaska &amp; Hawaii<a class="headerlink" href="#inset-alaska-hawaii" title="Permalink to this heading">#</a></h2>
+<h2>Inset Alaska &amp; Hawaii<a class="headerlink" href="#inset-alaska-hawaii" title="Link to this heading">#</a></h2>
 <p>Eliminating two states from the drawing isn’t so great. We’d like to show Alaska and Hawaii like other maps do using an <code class="docutils literal notranslate"><span class="pre">inset</span></code>. This can be done, but it does get complicated rather quickly. The inset is a separate plot with separate arguments. When legends are shown, the size of the figure changes and the placement of the inset changes. I provide this code because it is educational to see and play with, but I recommend the method below this.</p>
 <div class="dropdown admonition">
 <p class="admonition-title">Inset Image and Complicated Code</p>
@@ -670,7 +690,7 @@ Another way is to set some limits on the x &amp; y axes: <code class="docutils l
 </div>
 </section>
 <section id="modified-geometry">
-<h2>Modified Geometry<a class="headerlink" href="#modified-geometry" title="Permalink to this heading">#</a></h2>
+<h2>Modified Geometry<a class="headerlink" href="#modified-geometry" title="Link to this heading">#</a></h2>
 <p>It becomes much easier to deal with plotting the full United States if the GeoDataFrame’s geometry is modified to put Alaska and Hawaii in the “right” spot. The only drawbacks are:</p>
 <ul class="simple">
 <li><p>If you do geospatial <code class="docutils literal notranslate"><span class="pre">sjoin</span></code>s, then it’ll all get messed up geographically.</p></li>
@@ -753,7 +773,7 @@ Comments</label><div class="sd-tab-content docutils">
 </div>
 </section>
 <section id="annotated-with-table-inset">
-<h2>Annotated with Table Inset<a class="headerlink" href="#annotated-with-table-inset" title="Permalink to this heading">#</a></h2>
+<h2>Annotated with Table Inset<a class="headerlink" href="#annotated-with-table-inset" title="Link to this heading">#</a></h2>
 <p>The problem with the plot above is that it is very hard to see if there is any difference between Orgegon and Nevada; the colors are just too close! To fix that we will annotate each state with the count of the votes printed onto the state’s location.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-8" name="sd-tab-set-2" type="radio">
@@ -860,7 +880,7 @@ Comments</label><div class="sd-tab-content docutils">
 </div>
 </section>
 <section id="finding-obvious-correlations">
-<h2>Finding Obvious Correlations<a class="headerlink" href="#finding-obvious-correlations" title="Permalink to this heading">#</a></h2>
+<h2>Finding Obvious Correlations<a class="headerlink" href="#finding-obvious-correlations" title="Link to this heading">#</a></h2>
 <p>Is there a correlation between population and electoral votes? Does the size of a state in square miles correlate to the number of electoral votes? Geospatial provides only minimal insight; a scatter plot is better.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-12" name="sd-tab-set-3" type="radio">
@@ -915,7 +935,7 @@ Comments</label><div class="sd-tab-content docutils">
 </div>
 </section>
 <section id="correlations-and-coefficient-of-determination">
-<h2>Correlations and Coefficient of Determination<a class="headerlink" href="#correlations-and-coefficient-of-determination" title="Permalink to this heading">#</a></h2>
+<h2>Correlations and Coefficient of Determination<a class="headerlink" href="#correlations-and-coefficient-of-determination" title="Link to this heading">#</a></h2>
 <p>In this example, we create three values (A, B, C) for each state. There is a strong correlation in the data, but the geospatial plots makes it hard to see <strong>how</strong> they relate. See if you can spot the correlations in the geospatial plots? Notice how the plots for <strong>‘Value A’</strong> and <strong>‘Value C’</strong> appear to be nearly identical, yet the details of the relationship is somewhat hidden because of the scale on the colormap. Then, the scatter &amp; line plots make it all very apparent. Read more in the <strong>Plot Comments</strong> and <strong>Code Comments</strong> tabs.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-16" name="sd-tab-set-4" type="radio">
@@ -1048,7 +1068,7 @@ at all the focus of this discussion, we left the spacing as-is.</p>
 </div>
 </section>
 <section id="cartopy">
-<h2>Cartopy<a class="headerlink" href="#cartopy" title="Permalink to this heading">#</a></h2>
+<h2>Cartopy<a class="headerlink" href="#cartopy" title="Link to this heading">#</a></h2>
 <p>You can make some cool plots that show the terrain of the Earth using a libary called <code class="docutils literal notranslate"><span class="pre">cartopy</span></code>.
 These types of plots are good to use when you’re attempting to illustrate the location of something
 as it would appear on a map.</p>
