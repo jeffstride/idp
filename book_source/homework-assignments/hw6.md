@@ -303,7 +303,7 @@ We are going to change the approach to solving this _suggestion problem_. We
 will essentially go backwards. Instead of generating mis-misspelled candidates
 and then search the dictionary to see if it is indeed a correctly spelled word,
 we will compare 'every' word in the dictionary against the misspelled word
-to calculate how 'close' it is to our misspelled word. We will use Levenstein Distance for this.  
+to calculate how 'close' it is to our misspelled word. We will use Levenshtein Distance for this.  
 
 Your method will identify the closest distance that any word is to the misspelled word.
 It will return a sorted list of all the words at that minimum distance from the misspelled word. 
