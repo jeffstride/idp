@@ -12,7 +12,7 @@ Mr. Stride has created "this ridiculous" thing... for you.
 ```{admonition} Video Reference
 :class: dropdown seealso
 <div>
-    <iframe width="560" height="315" src="https://www.youtube.com/embed/tHU1uoR8L30" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/tHU1uoR8L30?start=0&end=79" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 </div>
 ```
 
@@ -45,7 +45,6 @@ Here are a bunch of TODOs for Mr. Stride:
 * 5 stages of research (gather, organize, report, conclude, act or enact policy)
 * confirmation bias  (other biases?)   
 * "stuff" in my Notes directory   
-* flake8 rules to ignore  (or that I hate)  
 * prosecutors falacy, simpson's paradox, (other things from good videos)  
 * commenting  
     * tabs for: Too Little, Goldilocks, Too Much  

@@ -1,8 +1,8 @@
-## Assessing Accuracy 
+# Assessing Accuracy 
 
 Evaluating the accuracy of a machine learning (ML) model is a crucial step to determine its performance and effectiveness. The choice of evaluation metrics depends on the type of problem you're solving (classification, regression, etc.), and it's important to select metrics that are relevant to your specific goals. Here's a general process for assessing the accuracy of an ML model.
 
-##Regression
+## Regression
 **Mean Squared Error (MSE)** measures the average squared difference between the predicted values and the actual values. It gives higher weight to larger errors.
 
 **Formula: {math}`MSE = (1/n) * Σ(y_a - y_p)^2`**
@@ -17,7 +17,7 @@ Lower MSE values indicate better model performance. It's important to note that 
 ```
 ````
 
-## Classification:
+## Classification
 Accuracy score is a metric for classification accuracy, which calculates the proportion of correctly predicted instances out of the total instances in the dataset.
 ````{tab-set}
 ```{tab-item} Code:

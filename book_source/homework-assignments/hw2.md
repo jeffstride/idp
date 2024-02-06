@@ -5,11 +5,50 @@
 ## Overview
 **Learning objective:** Apply control structures and data structures to solve problems involving numbers, text, and files.
 
-## Files
-* `hw2.py` is the file to put your implementations for each problem. hw1.py is not a runnable program, so we don’t use the main-method pattern.  
+## Files and Tests
+````{tab-set}
+```{tab-item} Provided Files
+You are provided with the following files:  
+* `hw2.py` is the file to put your implementations for each problem. hw2.py is not a runnable program, so we don’t use the main-method pattern.  
 * `hw2_test.py` is the file for you to put your own tests. The Run button executes this program.  
-* `cse163_utils.py` is a helper file that has code to help you test your code.  
+* `cse163_utils.py` is a helper file that has code to help you test your code. Do **NOT** modify.   
+* `song.txt` is a sample text file used in testing `longest_word`. Do **NOT** modify.  
+* `tox.ini` is a `flake8` configuration file that allows us to customize the types of warnings and errors students must fix.  
+```
+```{tab-item} Files to Submit
+You must submit your work to the <a href="https://autograder-nchs.vercel.app/login" target="_blank">Code Submission Site</a>.  
 
+**Submit**:  
+* `hw2.py`  
+* `hw2_test.py` : must have `main-pattern` to run all test methods  
+* `<custom>.txt` : You should create a few text files used in your testing. Submit all custom text files.  
+
+**Do NOT submit**:
+* `song.txt`   
+* `tox.ini`  
+* `cse163_utils.py`  
+* zip files are not allowed in this assignment  
+
+```
+```{tab-item} Replit Unit Tests
+There are 7 Unit Tests provided for you. Some key information:   
+* These Unit Tests are provided as a "sanity check" only. These are not the full and complete set of tests.  
+* The **FIRST** thing you should do is write your own tests in `hw2_test.py`. Once you believe that you have everything working and tested in your own code, then run the tests in Replit. If your own tests pass but you fail a Replit Unit Test, then you know that you're not testing well enough.   
+* These tests do not necessarily represent all the tests that Mr. Stride will run when grading your assignment, but he definitely will run these tests.   
+* You do not get to see what these tests are doing. You only get to see that you failed or passed. Work with your own unit tests to debug functionality.   
+* There is no Replit Unit Test for the challenge question. However, `hw2_test.py` includes a challenge question test method written for you.  
+```
+```{tab-item} Test Tips
+You need to write tests that are _better_ than the Unit Tests in Replit. Mr. Stride will
+be very thorough in testing your code. Even if you pass all these tests, you may still fail to meet some other functional expectations.  
+
+Be creative and thorough: attempt to catch boundary cases in your tests.   
+
+You should assume that all arguments are of the correct type. You do **NOT** need to test the argument types. In other words, you do **NOT** need to test as follows:  
+```python
+    assert_equals(0, hw2.total('Do NOT test for bad argument type'))
+```
+````
 ```{admonition} Expectation!
 :class: important
 In hw2.py you should not use any `import` statements or features in Python we have not yet discussed in class, online book, or in homework handout. All of these problems should be solved using the fundamental constructs we’ve learned in class so far. For your testing program, you can use imports. In fact, you're expected to use cse163_utils‘ `assert_equals` function.

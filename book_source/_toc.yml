@@ -12,17 +12,17 @@ chapters:
       - file: homework-assignments/hw7
   - file: Topics/index
     sections:
+      - file: Topics/misc/index
+        sections:
+        - file: Topics/misc/submitting
+        - file: Topics/misc/collections
+        - file: Topics/misc/my_st
       - file: Topics/Replit/index
         sections:
           - file: Topics/Replit/building-in-replit
           - file: Topics/Replit/replit-tips
           - file: Topics/Replit/corrupt-project
           - file: Topics/Replit/flake8
-      - file: Topics/collections/index
-        sections:
-          - file: Topics/collections/collections
-          - file: Topics/collections/stub2
-          - file: Topics/collections/comments
       - file: Topics/pandas/index
         sections:
           - file: Topics/pandas/dataframe

@@ -21,22 +21,20 @@ There are several techniques to measure _feature importance_. This unit will go 
 * [Scikit Learn Permuation Feature Importance](https://scikit-learn.org/stable/modules/permutation_importance.html)  
 * [Understanding Feature Importance and How to Implement it in Python](https://towardsdatascience.com/understanding-feature-importance-and-how-to-implement-it-in-python-ff0287b20285)  
 * [MSE Explained](https://datagy.io/mean-squared-error-python/)  
-* [Linear Regression in Python](https://realpython.com/linear-regression-in-python/)
+* [Linear Regression in Python](https://realpython.com/linear-regression-in-python/)  
+* [Random Forest Classifier](https://www.datacamp.com/tutorial/random-forests-classifier-python)  
+* [Permutation Importance](https://scikit-learn.org/stable/modules/permutation_importance.html)  
 ```
 
 ```{admonition} imports
 :class: seealso dropdown
 ```python
-# TODO: update this
 from sklearn.linear_model import LinearRegression
 from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
-from sklearn.metrics import mean_absolute_error, mean_squared_error, r2_score
+from sklearn.inspection import permutation_importance
 from sklearn.metrics import accuracy_score
-
-import matplotlib.pyplot as plt
-import pandas as pd
-
 ```
 
 ## Coefficient Magnitudes (Linear Models)
@@ -52,17 +50,13 @@ train_f, test_f, train_l, test_l = train_test_split(features, labels, test_size=
 # Initialize the Linear Regression model
 model = LinearRegression()
 
-# Fit the model to the training data
+# Fit the model to the training data which calculates model's coefficients
 model.fit(train_f, train_l)
 
-# Get the coefficients and feature names
-coefficients = model.coef_
-feature_names = data.feature_names
-
-# Print the coefficients and feature names
-feature_coef = zip(feature_names, coefficients)
-for f, c in feature_coef:
-    print(f + ": " + c)
+# Associate the coefficients and feature names
+# Print the coefficients and feature names using f-string formatting
+for f, c in zip(features.columns, model.coef_):
+    print(f'{f}   : {c:.3f}')
 
 ```
 ```{tab-item} Comments
@@ -77,7 +71,7 @@ The following is how to interpret coefficient magnitudes for feature importance:
 **Magnitude Comparison:** By comparing the magnitudes of coefficients across different features, you can rank features based on their relative importance. Features with larger absolute coefficients are generally considered more important in influencing the model's predictions.
 ```
 ````
-#### Permutation Importance
+## Permutation Importance
 This is a technique used to measure the importance of features in a model by evaluating how much the model's performance drops when the values of a specific feature are randomly shuffled. The idea is that important features contribute significantly to the model's prediction, so shuffling their values would lead to drop in performance.
 ````{tab-set}
 ```{tab-item} Goal
