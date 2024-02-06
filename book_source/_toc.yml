@@ -26,6 +26,7 @@ chapters:
       - file: Topics/pandas/index
         sections:
           - file: Topics/pandas/dataframe
+          - file: Topics/pandas/slicing-methods.md
       - file: Topics/machine_learning/index
         sections:
           - file: Topics/machine_learning/feature-importance
