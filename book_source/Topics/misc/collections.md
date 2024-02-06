@@ -5,7 +5,7 @@ This is a _cheatsheet_ of Python's collection classes.
 ## Summary Comparison
 |Action|List|Tuple|Set|Dictionary|
 |------|----|-----|---|----------|
-|Create|`a = [ ]`<br/>`a = list()`<br/>`a = [1, 2]`|`t = ( , )`<br/>`t = tuple()`<br/>`t = (1, 2)`|`s = set( )`<br/>`s = {1, 2}`|`d = { }`<br/>`d = dict( )`<br/> `d = { k1:v1, k2,v2 }`<br/>`d = dict(dict2)`|
+|Create|`a = [ ]`<br/>`a = list()`<br/>`a = [1, 2]`|`t = ()` # empty<br/>`t = tuple()`<br/>`t = (1, 2)`|`s = set( )`<br/>`s = {1, 2}`|`d = { }`<br/>`d = dict( )`<br/> `d = { k1:v1, k2:v2 }`<br/>`d = dict(dict2)`|
 |Add <br/>Insert|`a.append(obj)`<br/>`a.insert(idx, obj)`|`t = t + ( obj, )`|`s.add(3)`|`d['b'] = 2`|
 |Contains|`if obj in a`|`if obj in t`|`if obj in s`|`if key in d`|
 |Remove|`a.remove(obj)`<br/>`a.pop(index)`<br/>`a.pop()`|**NA**|`s.remove(obj)`<br/>`s.pop()`<br/>`s.discard('value')`|`d.pop(key)`<br/>`d.pop(key, def_val)`<br/>`del d[key]`<br/>`d.popitem()`|
@@ -16,14 +16,14 @@ This is a _cheatsheet_ of Python's collection classes.
 |Operation|API|
 |---------|---|
 |Create|`my_list = []`<br/>`my_list = [x ** 2 for x in [1, 3, 5, 7]]` # comprehension<br/>`my_list = list()`  # constructor<br/>`my_list = list(iterable)` # construct list from any iterable|
-|Add|`my_list.append(5)`<br/>`my_list += [5, 4, 3]` # extends the list with items in the other list<br/># don't confuse **append** with **extend**<br/>`my_list.append(list2)` # my_list has list2 as the last item|
+|Add|`my_list.append(5)`<br/>`my_list.append(list2)` # my_list has list2 as the last item|
 |Remove|`my_list.remove('value')`  # inplace, no return value<br/>`last = my_list.pop()`  # return and inplace remove last item in the list<br/>`value = my_list.pop(index)`<br/>`del list[index]`   # inplace, no return value|
 |Contains|`if 'value' in my_list:` # **in** operator|
 |Get|`n = my_list[index]`|
 |Set|`my_list[index] = value`|
 |Size|`len(my_list)` # **len** is built-in function|
 |Insert|`my_list.insert(index, value)`|
-|Extend|`my_list.extend(list2)` # add all items in list2, not list2 as an item|
+|Extend|`my_list.extend(list2)` # add all items in list2, not list2 as an item<br/>`my_list += [5, 4, 3]` # extends the list with items in the other list<br/># don't confuse **append** with **extend**|
 |Remove all|`my_list.clear()`<br/>`my_list = []`<br/>`del my_list[:]`| 
 |indexOf|`my_list.index('value')`<br/>`my_list.index('value', startIndex)`<br/>`my_list.index('value', startIndex, endIndex)`|
 |Sort|`my_list.sort()` # inplace sorting<br/>`my_list = sorted(my_list)` # reassignment|
@@ -53,18 +53,18 @@ This is a _cheatsheet_ of Python's collection classes.
 |---------|---|
 |Create|`my_set = set()`  # constructor<br/>`my_set = set(iteratable)` # create set from any iterable<br/>`my_set = { x**2 for x in range(11) }` # comprehension<br/> # Note: empty `{ }` creates a **dictionary** not a set|
 |Add|`my_set.add(5)`<br/>`my_set.update({1, 2, 3})`  # inplace union of the sets|
-|Remove|`my_set.remove('value')`  # raise error if not found<br/>`my_set.discard('value')`  # no error raised if not found<br/>`my_set.pop()` # remove a RANDOM item from the set<br/>`my_set.difference_update(set2)`  # inplace removes set2 items|
+|Remove|`my_set.remove('value')`  # raise error if not found<br/>`my_set.discard('value')`  # no error raised if not found<br/>`my_set.pop()` # remove a RANDOM item from the set<br/>`my_set.difference_update(set2)`  # inplace removes set2 items<br/>`diff_set = my_set - remove_set` # difference operator|
 |Contains|`if value in my_set:` # **in** operator|
 |Size|`len(my_set)` # **len** is built-in function|
 |Remove All|`my_set.clear()`<br/>`my_set = set()`|
-|Union|`my_set = set1.union(set2)` # union does not change the set<br/>`my_set = s1 | s2` # same as above|
-|Intersection|`my_set = s1.intersect(s2)`  # intersect does not change the set<br/>`my_set = s1 & s2` # same as above|
+|Union|`my_set = set1.union(set2)` # union does not change the set<br/>`my_set = s1 \| s2` # same as above|
+|Intersection|`my_set = s1.intersection(s2)`  # does not change the set<br/>`my_set = s1 & s2` # same as above|
 |Difference|`my_set = s1.difference(s2)` # difference does not change the set<br/>`my_set = s1 - s2` # same as above|
 |Copy|`clone_set = my_set.copy()` # recall reference semantics|
-|Get|**NA**, can only determine if item is **in** set or not|
-|Set|**NA**, cannot set the value of a specific element|
+|Get|**NA** Can only determine if item is **in** set or not|
+|Set|**NA** Cannot set the value of a specific element|
 |Insert|**NA** Just add the object to the set. There is no order of elements.|
-|indexOf<br/>Sort<br/>reverse|**NA** This is no order in a set|
+|indexOf<br/>Sort<br/>Reverse|**NA** There is no order in a set|
 
 ## Dictionary
 |Operation|API|

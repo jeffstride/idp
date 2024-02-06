@@ -3,7 +3,7 @@ In this section, we will show how you can identify a Curve of Best Fit for a set
 The curve can be anything an equation can express, but there are some limitations with discontinuous curves and asymptotes.
 The easiest is finding a line of best fit. Secondarily, you can find the polynomial that fits the data points. Tertiary,
 you can provide an equation of a continuous curve involving a combination of functions such as sine or logarithm. 
-Lasty, you can have a non-continuous curve like Sigmoid or `y = 1 / (x - 3).  
+Lastly, you can have a non-continuous curve like Sigmoid or `y = 1 / (x - 3).  
 
 We will review four different ways to get the equation of a fitted curve.  
 1. `scipy.stats.linregress`: a statistical method that identifies a line's coefficients as well some statistical information.  
@@ -12,8 +12,8 @@ We will review four different ways to get the equation of a fitted curve.
 4. `ML LinearRegression`: 
 
 When identifying a Curve of Best Fit, it is good to know _how good_ the curve is at representing
-the data points. We want an objective quanitification that tells us whether a straight line is better at fitting
-the points, or some other curved line such as a parabola. We can compare how well two differen lines fit using 
+the data points. We want an objective quantification that tells us whether a straight line is better at fitting
+the points, or some other curved line such as a parabola. We can compare how well two different lines fit using 
 the Mean Squared Error.  
 
 Often we want to know how much of a correlation there is between the x & y data points. Afterall, 
@@ -303,7 +303,7 @@ To fit a line to a curve:
 equation with coefficients that are unknown. For example, a line is: `y = mx + b` where curve_fit will identify the values
 for `m` and `b`. You may have a polynomial curve such as: `y = a*x**4 + b*x**3 + c*x**2 + d*x + e` and curve_fit will
 find the values for `a` through `e`. If you know want to fix one of the values, you can use a constant to the known
-value. Write a method that takes `x` along with the coefficiencts are arguments. For example:  
+value. Write a method that takes `x` along with the coefficients are arguments. For example:  
 ```python
 def my_function(x, a, b, c):
     return a*x**2 + b*x + c
@@ -316,7 +316,7 @@ with the initial guess. For example:
 ```python
 # curve_fit returns a tuple. The first item is a list of coefficients. The second
 # is statistical information about the coefficients. In this example we ignore
-# the covariance values, and so we unpack them into the identifer '_' which is a conventional
+# the covariance values, and so we unpack them into the identifier '_' which is a conventional
 # name for a variable that goes ignored and unused.
 coeffs, _ = curve_fit(logarithmic_sinusoidal_wave, x_data, y_data, p0=p0)
 ```

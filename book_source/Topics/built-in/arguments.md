@@ -7,7 +7,7 @@ This is especially annoying when there is no mention of what `args` or `kwargs` 
 that problem, but we can at least understand what `*args`, `**kwargs` means and how to use them.
 In short:  
 * `*args` means that the method can take any number of **positional arguments**.  
-* `kwargs` means that the method can take any number of **named arguments**.  
+* `**kwargs` means that the method can take any number of **named arguments**.  
 
 Let's define a couple of terms.   
 ```{card} Important Terms
@@ -75,7 +75,7 @@ def foo(*args, **kwargs):
 ```
 ## Examples
 Let's say that we want to have a method with 7 arguments where 3 of them have default values. 
-We'd define this menthod as shown below. Note that the three named arguments have default values.
+We'd define this method as shown below. Note that the three named arguments have default values.
 
 ```python
 # Example prototype with 4 positional arguments and 3 named arguments

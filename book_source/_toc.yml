@@ -16,6 +16,7 @@ chapters:
         sections:
         - file: Topics/misc/submitting
         - file: Topics/misc/collections
+        - file: Topics/misc/comments
         - file: Topics/misc/my_st
       - file: Topics/Replit/index
         sections:
@@ -26,6 +27,7 @@ chapters:
       - file: Topics/pandas/index
         sections:
           - file: Topics/pandas/dataframe
+          - file: Topics/pandas/mynb
       - file: Topics/machine_learning/index
         sections:
           - file: Topics/machine_learning/feature-importance
@@ -38,7 +40,6 @@ chapters:
         sections:
           - file: Topics/built-in/arguments
           - file: Topics/built-in/formatted-string
-          - file: Topics/built-in/comments
   - file: final-project/index
     sections:
       - file: final-project/handouts/index

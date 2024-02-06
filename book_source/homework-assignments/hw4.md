@@ -29,6 +29,7 @@ with image comparison tests. Furthermore, there are a gazillion ways to make plo
 sometimes major, differences. It is best if you pass all these tests, but don't stress too much if you don't
 pass the image comparison tests: use the image comparison tool to help you verify.   
 Tests:  
+* **hispanic_plot** - Tests that the plot_hispanic_min_degree.png is similar enough to the expected image.  
 * **bar_chart_high_school** - Tests that the bar_chart_high_school.png is similar enough to the expected image.  
 * **line_plot_bachelors** - Tests that the line_plot_bachelors.png is similar enough to the expected image.  
 * **top_2000s** - Tests that the method top_2_2000s has good return values.  
@@ -117,15 +118,28 @@ associate's 38.757143
 ````
 
 ## Plotting Methods
-You will use `Seaborn` to create three plots. You will implement three methods: `line_plot_bachelors`, `bar_chart_high_school`, `plot_hispanic_min_degree`.
+You will **NOT** use `Seaborn` to create your plots. You will use matplotlib.pyplot only when you implement the following three methods: `line_plot_bachelors`, `bar_chart_high_school`, `plot_hispanic_min_degree`.
 
-```{admonition} Use Seaborn
+```{admonition} NO Seaborn
 :class: warning
-For `line_plot_bachelors` and `bar_chart_high_school`, be sure to use the `seaborn` functions.  
-Use `catplot()` and `relplot()`.  
-Do **NOT** use `barplot()` or `lineplot()`.   
+For all three plots (`line_plot_bachelors`, `bar_chart_high_school`, `plot_hispanic_min_degree`) there is NO `seaborn` allowed.  
+Use the following API:  
+* `df.plot()`  
+* `series.plot()`  
+* `plt.grid()`  
+* `plt.legend(...)`  
+* `plt.legend().set_visible(...)`  
+* `plt.xticks(ticks=...)`  
+Do **NOT** use other methods of plotting.  
 
 This is to assure that the image comparison tests can work.  
+```
+```{admonition} ChatGPT Usage Allowed
+In this Homework, I'm asking you to build some specific plots. This can be difficult to do without some help with the API. Go ahead and use the internet to help out. Figure it out with AI.   
+  
+**IMPORTANT**: Understand the code. You will be expected to replicate this kind of code on the Exam.   
+  
+**IMPORTANT**: Do not copy from a friend. This is an exercise in looking things up and getting help from the internet. This is NOT an exercise in how to plagiarize off of a fellow student!  
 ```
 ````{tab-set}
 ```{tab-item} Plot 1
@@ -141,20 +155,21 @@ plt.savefig('line_plot_bachelors.png', bbox_inches='tight')
 ```{tab-item} Plot 2
 <i class="fas fa-pen-square fa-fw"></i> **Write** a function `bar_chart_high_school` that takes the `data` and plots a bar chart comparing the total percentages of `Sex` `F`, `M`, and `A` with `high school` `Min degree` in the `Year` `2009`. Label the x-axis **Sex**, the y-axis **Percentage**, and title the plot **Percentage Completed High School by Sex**.  
 
+> Hint: When you plot using `df.plot()`, use the named argment `color`. Set the colors using the string contants, `'blue', 'red', 'green'`.  
+
 Your plot should look like this:  
 ![Percentage completed High School by Sex](../_static/hw4_bar_chart_high_school.png)
 
-> Ask yourself: Is this visualization an effective one? You will consider this in last section of the assignment asking you to reflect on the work we did for this assignment.  
+> Ask yourself: Is this visualization a fair and effective plot? You will need to answer this in the `hw4-writeup.md`.  
 
 Use the following line of code to save the plot:
 ```python
 plt.savefig('bar_chart_high_school.png', bbox_inches='tight')
 ```
 ```{tab-item} Plot 3
-<i class="fas fa-pen-square fa-fw"></i> **Write** a function `plot_hispanic_min_degree` that takes the `data` and plots how the percentage of `Hispanic` people with degrees have changed between 1990–2010 (inclusive) for `high school` and `bachelor's` `Min degree`. Choose a plot type for this problem and prepare to explain your decision-making process in the writeup. Label the axes and title the plot appropriately.  
+<i class="fas fa-pen-square fa-fw"></i> **Write** a function `plot_hispanic_min_degree` that takes the `data` and plots how the percentage of `Hispanic` people with degrees have changed between 1990–2010 (inclusive) for `high school` and `bachelor's` `Min degree`. Create a plot that matches the plot shown below.   
 
-> Hint: Remember that your plot should be readable. You might find the function `plt.xticks()` helpful!  
-
+![Hispanic Plot](../_static/hw4_plot_hispanic_min_degree.png)  
 Use the following line of code to save the plot:
 ```python
 plt.savefig('plot_hispanic_min_degree.png', bbox_inches='tight')
@@ -175,25 +190,22 @@ The automated tests only check that the function runs without causing an error. 
 This education dataset is a time series. When working with time series, it is common to use the last rows as the test set rather than random sampling since the goal is to design a model that predicts the future. But by randomly sampling to generate the test set, we are assessing the model on its ability to predict the past! Even though random sampling is not necessarily appropriate here, we ask you to do it anyways because it’s the most common sampling method.
 ```
 
+## Markdown Writeup
+You are required to answer a few questions in the file `hw4-writeup.md` file. Furthermore, you are **required** to use some markdown that structures your answers nicely.  
+
+Markdown (which uses the file extension, `md`) is a relatively simple text formatting language used in many places (Wikis, Replit Instructions, Jupyter Notebooks). Markdown offers a natural-looking way to define headings, lists, and links using special characters like #.  
+
+For full points in your write-up, you **MUST** format with Markdown. Here is a [Markdown reference](https://www.markdownguide.org/basic-syntax/).  Be sure to included multiple forms of formatting such as: `_italics_, **bold**, > block quotes, * bullets`.  
 
 ## Code Quality
-Assessment submissions should pass these checks: `flake8`, and <a href="https://courses.cs.washington.edu/courses/cse163/22sp/resources/code_quality/" target="_blank">code quality guidelines</a>. The code quality guidelines are very thorough. For this assessment, the most relevant rules can be found in these sections, with the **bolded** one being new from the last homework:  
-
-* <a href="https://courses.cs.washington.edu/courses/cse163/22sp/resources/code_quality/#naming-conventions" target="_blank">Naming</a>  
-* <a href="https://courses.cs.washington.edu/courses/cse163/22sp/resources/code_quality/#documentation" target="_blank">Documentation</a>   
-* <a href="https://courses.cs.washington.edu/courses/cse163/22sp/resources/code_quality/#efficiency-and-redundancy" target="_blank">Efficiency and Redundancy</a>  
-    * Boolean Zen  
-    * Loop Zen  
-    * Factoring   
-    * Unnecessary Cases
-    * **Avoid Looping with Pandas**
+Assessment submissions should pass these checks: `flake8`, and <a href="https://courses.cs.washington.edu/courses/cse163/22sp/resources/code_quality/" target="_blank">code quality guidelines</a>. The code quality guidelines are very thorough. 
 
 ```{admonition} Reminder
 :class: important
 Make sure to provide a descriptive comments in doc-string format.
 ```  
 ## Rubric
-Rubric information can be found in the instruction in the Replit project.   
+Rubric information can be found in the instructions in the Replit project.   
 
 ## Challenge Question
 

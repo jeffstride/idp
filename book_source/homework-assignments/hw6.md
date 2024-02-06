@@ -4,11 +4,13 @@
 
 ## Rubric & Submission
 Please note these important things:
-* You will NOT turn this into AutoGrader. You will **Submit to Replit.**
-* This will be for your High School Grade only.  It will be worth `40 points` (40% a UW Homework Assignment).
-* You will be graded on the Replit Unit Tests only. ~3pts per Unit Test.
+* You will submit your work to **Dropbox**. The link will be found on Schoology.  
+* This will be for your High School Grade only.  
+* You will be graded on:
+    * Functionality  
+    * Speed/Efficiency  
+    * Class design  
 * You will not be graded on any commenting or tests you write.
-* Please know the due date and TIME as posted in Schoology. (6am Feb 3)
 
 
 ## Instructions  
@@ -28,37 +30,36 @@ The primary pieces of functionality will be to:
 
 A basic infrastructure of the SpellChecker class will be provided. 
 
-## Spell Checking an Essay
+## Simple Spell Checking an Essay
 First, improve the code so that it can complete the spell checking quickly.
 
-You will implement the following three things in the class `SpellChecker`:
-1) `constructor` : Takes the name of a dictionary and intializes a SpellChecker object.  
-2) `misspelled` : An instance method that returns True if the word passed in is not found in the dictionary.
-3) `spell_check` : An instance method that returns a list of misspelled words found in the essay while also outputting to the console details about which words are misspelled.
+You will implement the following three methods in the class `SpellChecker`:
+1) `__init__(self, dictionary_name)` : Takes the name of a dictionary and intializes a SpellChecker object.  
+2) `misspelled(self, word)` : An instance method that returns True if the word is not found in the dictionary. (i.e. misspelled)
+3) `spell_check(self, file_name, suggest=False)` : An instance method that returns a list of `WordInfo` objects for each misspelled word found in the essay. You will have an optional argument `suggest` that is defaulted to False. If True, the spell check will return suggestions for correctly spelled words. In this first _Simple_ implementation, you won't implement this.   
+
+You will implement `main.py` that will create the SpellChecker object and output the misspelled words. Below is sample output.  
 
 There are several Unit Tests that related to the above that you should pass
-before continuing onto the next step. Note that these Unit Test will test both
-the functionality as well as the speed of execution. You need to have _FAST_ code!!
+before continuing onto the next step. Note that the speed of execution is IMPORTANT. 
+If you are too slow, you will get marked down. You need to have _FAST_ code!!
 
 Also, the output printed to the console for `spell_check` should look close to:
 
 ```
-civalized: line: 1  word:3
-oportunities: line: 6  word:4
-seeems: line: 15  word:9
-peopl: line: 21  word:8
-ettiquitt: line: 35  word:1
-shoudl: line: 37  word:7
-psudo-code: line: 37  word:10
-algorythm: line: 39  word:6
+    civalized: line:   1  word:  3
+ oportunities: line:   6  word:  4
+       seeems: line:  15  word:  9
+        peopl: line:  21  word:  8
+    ettiquitt: line:  35  word:  1
+       shoudl: line:  37  word:  7
+   psudo-code: line:  37  word: 10
+    algorythm: line:  39  word:  6
 ```
 
 Be sure you Pass the Unit Tests:  
-* test_misspelled
-* test_check_essay
-* test_check_essay_speed_not_garbage
-* test_check_essay_speed_okay
-* test_check_essay_speed_good
+* check_essay  
+* misspelled  
 
 ### Tips for Passing Test
 Make sure that you have your own tests written. You will understand the input
@@ -68,7 +69,7 @@ according to plan.
 > Mr. Stride will ask to see your tests first before helping you figure out why
 > a functional Unit Test is failing.
 
-You need to update `misspelled` to work with hyphenated words. There is
+You need to implement `misspelled` to work with hyphenated words. There is
 a slick and easy recursive approach to this which is also very fast.  
 > Hint: If no hyphen, solve normally. If it has hyphens, break into subwords
 > and solve for each subword.
@@ -119,12 +120,18 @@ Here are a couple of YouTube videos that explain generators in Python:
 These videos provide a good overview of generators, including how to create them, 
 how to use them, and some of the benefits of using generators in your Python code.
 
-## Spelling Suggestion
+# Spelling Suggestion
 This is where the project starts to get more interesting. There are many creative ways 
 to suggest words for a misspelled word.
-We will start simple and then build up to _AMAZING!_
+We will start simple and slow and then build up to _AMAZING and FAST!_
 
-### Mis-misspelled
+You will implement the following three methods as **generators**:  
+1) `_insert_letters`  
+2) `_remove_letters`  
+3) `_swap_letters`  
+ 
+
+## Mis-misspelled
 We will start with a concept that I'll call: `mis-misspelled`. The basic idea 
 is that we will modify the spelling of a misspelled word until
 it is modified into a correctly spelled word.  
@@ -140,11 +147,13 @@ def get_suggestion(self, misspelled_word):
         if not misspelled(mis_misspelled_word):
             return mis_misspelled_word
 ```
-
-> For each section below, attempt find the correct spelling for words
+For each section below, attempt find the correct spelling for words
 using the generator just created.
 
-### Part 1
+> IMPORTANT: In order to allow us to "compose" our misspellers together, we need each
+> generate to first yield the word unchanged.
+
+## Part 1
 You will implement a create_misspelling `generator`, but instead of using the name 'create_misspelling',
 we will use a more specific name that describes exactly _how_ we are misspelling the
 word. Let's name it: `_insert_letters`. 
@@ -152,40 +161,77 @@ word. Let's name it: `_insert_letters`.
 > method is an instance method (belongs to the object).
 
 This method will insert all the letters, a-z, into every possible
-position of a given word. 
-
-Be sure you pass the Unit Test:  
-* test_insert_letters
-
-### Part 2
-Implement another generator to move all letters, one letter at a time. 
-This will be called: `_remove_letters`. For example: 
+position of a given word, at the start, between each letter, and at the end.
+Remember, the very first word to yield is the word unchanged.
+For example, if we have the word `cat`, the words generated would be:
 ```python
-   for word in self._remove_letters('goodbye'):
-      print(word)
+for word in self._insert_letters('cat'):
+    print(word)
 
 # prints
+cat
+acat
+bcat
+ccat
+dcat
+...
+ycat
+zcat
+caat
+cbat
+ccat
+cdat
+...
+czat
+caat
+cabt
+cact
+cadt
+...
+cazt
+...
+cata
+catb
+catc
+...
+catz
+```
+
+Be sure you pass the Unit Test `insert_letters`.
+
+## Part 2
+Implement another generator to remove all letters, one letter at a time. 
+The first word the generator will yield, is the word unchanged.
+The generator will be called: `_remove_letters`. For example: 
+```python
+for word in self._remove_letters('goodbye'):
+    print(word)
+
+# prints
+goodbye
 oodbye
 godbye
 godbye
+goobye
 goodye
 goodbe
 goodby
 ```
 
-Be sure you pass the Unit Test:  
-* test_remove_letters
+Be sure you pass the Unit Test  `remove_letters`.
   
-### Part 3
+## Part 3
 Implement another generator to change all letters, one letter at a time. 
+Once again, the first word to yield is the original word, unchanged.
 This will be called: `_swap_letters`. Note that this does NOT mean that
-two letters in the word is swapped. Instead, it means that one letter is
+two letters in the word are swapped. Instead, it means that one letter is
 swapped out for another. For example: 
 ```python
-   for word in self._swap_letters('ab'):
-      print(word)
+for word in self._swap_letters('ab'):
+   print(word)
 
-# optionally prints 'ab', but definitely prints...
+# prints 
+ab
 bb
 cb
 db
@@ -207,110 +253,139 @@ az
 
 ```
 
-Be sure you pass the Unit Test:  
-* test_swap_letters
+Be sure you pass the Unit Test `swap_letters`.
 
-## suggest_correction
-It is time to implement the method `suggest_correction`. This method
+## suggest_mismisspellings
+It is time to implement the method `suggest_mismisspellings`. This method
 should return a list of suggested words that could be the correct
-spelling for the misspelled word. The list will have an maximum number
+spelling for the misspelled word. The list will have a maximum number
 of words added to the list which is specified in the optional `max` argument.
 
 ```python
-    def suggest_correction(self, word, max=6):
+    def suggest_mismisspellings(self, word, max=6):
         # student's implementation goes here
 ```
 ### Composing
-Each `generator` above catches some types of mistakes, but not all of them.
-In fact, you can't even try all three back-to-back-to-back because some
+Each `generator` above catches some type of mistake, but not all of them.
+If you try all three back-to-back-to-back, you won't catch many misspellings because some
 misspelled words require ALL THREE at the SAME TIME!! For example, to
-identify the correctly spelled word `etiquette` from `ettiquitt` requires
+identify the correctly spelled word `etiquette` from `ettiquitt` it requires
 that we delete a `t`, add an `e`, and change an `i` to an `e`. All three!!
 
-We want to implement all 3 types, composed with one another. This can be
-difficult. Here is a way to compose all three together:
-```python
-    def suggest_correction(self, word, max=6):
-        # partial implementation only!!
-        fns = [self._insert_letters, self._remove_letters, self._swap_letters]
-        for word in self._compose_fns(word, fns):
-            # rest of code not shown
+We want to implement all 3 types composed with one another. This can be
+very difficult. A common approach would be to use recursion to get call
+combinations of the generators composed together. This is even more difficult
+because of the way generators work--you don't _call_ them, you _iterate_ through them.
 
-    def _compose_fns(self, word, fns):
-        ''' 
-        A recursive generator that composes all the generators in fns.
-        word : the word that is misspelled
-        fns : a list of generators
-        '''
-        for fn1_word in fns[0](word):
-            yield fn1_word
-            if len(fns) == 1:
-                yield fn1_word
-            else:
-                # our recursive case must be in the form of a for-loop
-                for fn2_word in self._compose_fns(fn1_word, fns[1:]):
-                    yield fn2_word
-```
-Be sure you pass the Unit Test:  
-* test_suggest_compose : This tests that suggest_correction correctly finds a suggestion for a misspelled word that requires three changes.
-  
-Using the above code, see if you can correctly produce at least one suggestion
-for each of the misspelled words in `englishEssay.txt`.  
+We will avoid recursion because we have a small, fixed number of generators that we want to compose.
+Instead, you'll simply use nested for-loops to get all possible combinations of mismisspellings.
+> Note: This is why we had each generator first return the word unchanged: we want the ability
+> to apply _ONLY_ _insert_letters. Having our other two mismisspellers return the word
+> unchanged allows us to write simple code to find mismisspellings when there is only one mistake.
+
+Be sure you pass the Unit Test _suggest_compose_. This tests that `suggest_mismisspellings` correctly finds a suggestion for a misspelled word that requires all three misspellings. 
+
+Using the above code, you may want to see if you can correctly produce at least one suggestion
+for each of the misspelled words in `englishEssay.txt`. However, this method of finding suggestions is very slow.
 
 > Note: Your code may run for as much as a full minute to find suggestions for all
 > the misspelled words in the englishEssay.txt.
 
 ## Levenshtein Distance
 There are two problems with what we've done so far:  
-1) It's too slow!!
-2) The list may contain lots of odd words
+1) It's too slow!!  
+2) The list may contain lots of odd words  
 
-We are going to change the approach to solving this Suggestion Problem. We
+You will now implement `suggest_corrections(self, word)`. It uses a distance algorithm and
+is a much _FASTER_ way to find a list of correctly spelled words. 
+
+We are going to change the approach to solving this _suggestion problem_. We
 will essentially go backwards. Instead of generating mis-misspelled candidates
 and then search the dictionary to see if it is indeed a correctly spelled word,
 we will compare 'every' word in the dictionary against the misspelled word
-to see if it is 'close'. The 'closests' words will be what we suggest.
+to calculate how 'close' it is to our misspelled word. We will use Levenshtein Distance for this.  
+
+Your method will identify the closest distance that any word is to the misspelled word.
+It will return a sorted list of all the words at that minimum distance from the misspelled word. 
+It will suggest all of the 'closests' words and only the closest words.  
+
+For example, if the misspelled word is `compewter`, your code should return the suggested
+list `['compester', 'competer']` because each of these is a distance of 1 away from the
+misspelled word `compewter`. The word `computer` is a distance of 2 and will not be included.  
 
 To accomplish this, we need a way to _measure the 'distance'_ between two words. 
-The Levenshtein Distance algorithm is exactly what we want. The algorithm will
+The `Levenshtein Distance` algorithm is exactly what we want. The algorithm will
 provide an integer number that is essentially the count of changes made to one
 word to reach the other. The changes are exactly the same three generators you
 implemented above. (The algorithm will not use your generators.)
 
+```{admonition} Levenshtein Distance
+:class: dropdown
+The Levenshtein Distance algorithm, also known as the edit distance, is a measure of the similarity between two strings.
+It calculates the minimum number of single-character edits (insertions, deletions, or substitutions) required to transform
+one string into another. The smaller the Levenshtein Distance, the more similar the strings are.
+```
 You will add a new instance method to the SpellChecker class.
 ```python
-    def lev_suggest_correction(self, word):
-       '''
-       Return a list of all the suggest words that share the same, minimum
-       distance from word using the levenshtein distance algorithm.
-       '''
+# in file spell_checker.py
+def suggest_corrections(self, word):
+    '''
+    Return a list of all the suggest words that share the same, minimum
+    distance from word using the levenshtein distance algorithm.
+    '''
+    # use levenshtein distance to find suggestions
 ```
 
 It can take a while to understand the algorithm which can take us off topic
-quite a bit. So, instead, you have been provided with three different implementations
-of the algorithm in the file `levenshtein.py`.
+quite a bit. So, instead, you will search the internet to find an implementation
+of the Levenshtein Distance algorithm. Add it to the file `levenshtein.py`. You will do this
+two ways. The first way is to find the Python code on the internet. You will implement:  
 
-Below are the names of the 3 implementations along with the time (in seconds) it took to provide
-suggestions for all the misspelled words in the englishEssay.txt. (Times were using
-Mr. Stride's implementation. Measured only once.)
+```python
+# This is in the file levenshtein.py
+def levenshtein_distance(s1, s2):
+    # Find internet code to return the distance between s1 & s2
+    pass
+```
+Attempt to find _FAST_ implementations. It is pretty clear that some implementations are much faster than others.
 
-1) `levenshtein_distance: 71.16`
-2) `lev_distance:         51.45`
-3) `fast_lev_distance:     1.42`
+Write a few tests to verify that your implementation works. 
 
-It is pretty clear that one implementation is much, much, much faster than the rest.
-This is because it is implemented in the Python module [editdistance](https://pypi.org/project/editdistance/)
-written in C++. Because it is written in C++ the code can run a lot faster.
-Furthermore, some braniacs out there used some fancy math an algorithm techniques
-to speed it up even more. 
+### Python Module
+After you have Python code that correctly implements Levenshtein Distance, look for a Python module that implements the same thing. Wrap up the module's implementation in `levenshtein.py` in the method `lev_distance`.   
 
-### Experience the Difference
-Implement the `lev_suggest_correction` and experience the difference in speed
-from one algorithm to the other. Amazing, right?!
+Be sure you pass all the Unit Tests.
 
-Be sure you pass the final two Unit Tests:
+## Final Output
+You will update `main.py` to run your Spell Checker with suggestions. Run spell_check on the englishEssay.txt and see how fast it finds spelling suggestions. In other words, update `main.py` to call `spell_check(essay, True)` and then print out suggestions beneath the misspelling summary as shown below.  
 
-## Challenge Question
+Compare the speed of the Python implementation to the module implementation by doing a spell_check using each. Mr. Stride's work showed that the Python implementation took 50.5 seconds and the module implementation took less than 2.5 seconds. Amazing, right?!
+
+```
+Dictionary: data/wordList.txt
+Essay to check: data/englishEssay.txt
+Time to spellcheck: 3.012
+      civalized: line:   1  word:  3
+   oportunities: line:   6  word:  4
+         seeems: line:  15  word:  9
+          peopl: line:  21  word:  8
+      ettiquitt: line:  35  word:  1
+         shoudl: line:  37  word:  7
+     psudo-code: line:  37  word: 10
+      algorythm: line:  39  word:  6
+
+Suggested Corrections:
+civalized     --> ['civilized']
+oportunities  --> ['opportunities']
+seeems        --> ['seems']
+peopl         --> ['people']
+ettiquitt     --> ['antiquist', 'antiquity', 'etiquet', 'etiquette']
+shoudl        --> ['dhoul', 'ghoul', 'seoul', 'shaul', 'shoad', 'shoal', 'shod', 'shoddy', 'shode', 'shoed', 'shoful', 'shonde', 'shood', 'shool', 'shorl', 'shou', 'shough', 'should', 'shouldn', 'shouse', 'shout', 'shouts', 'shoval', 'shovel', 'showd', 'shroud', 'shrouds', 'shroudy', 'shul', 'soud', 'soul']
+psudo-code    --> ['pseudo-code', 'psuedo-code']
+algorythm     --> ['algorithm']
+```
+
+# Challenge Question
 This challenge question is a bit different than previous questions. Here, you'll be asked to do some Data Science
 research. The goal is to provide _visual_ insight into a mathematical _solution space_. Does this sound a bit strange? Let me elaborate.  
 
@@ -378,7 +453,7 @@ for c in range(max_hypotenuse):
 The avoid the above code, you may have to _refactor_ or _reorganize_ your code in ways that allow you to
 save data as you go.  
 
-To help you validate your code, ere is a table of the count of Triples for a specific Max Hypotenuse:
+To help you validate your code, here is a table of the count of Triples for a specific Max Hypotenuse:
 ```
 Count   Max Hypotenuse
   1      5

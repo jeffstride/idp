@@ -8,6 +8,8 @@ Welcome to your first take-home assessment! In every assessment, we will define 
 :class: margin
 You'll want to take shortcuts all year. You'll be better off if you follow this pattern.
 ```
+This section illustrates the **STEPS** you should take. You do **NOT** need to implement `problem_1` in this assignment.  
+
 This course will stress a development process called **Test Driven Development**. This means that you write your tests first!
 Of course your tests will fail, especially if you don't have the method prototypes (or stubs) created yet. The order of operations
 goes like this.
