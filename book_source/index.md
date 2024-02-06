@@ -46,16 +46,5 @@ Here are a bunch of TODOs for Mr. Stride:
 * confirmation bias  (other biases?)   
 * "stuff" in my Notes directory   
 * prosecutors falacy, simpson's paradox, (other things from good videos)  
-* commenting  
-    * tabs for: Too Little, Goldilocks, Too Much  
-    * prototype explains WHAT  
-    * inline value, especially WHY  
-* When do figures get reset in Replit (when do we need to do plt.cla() to clear current active axis, plt.clf() to clear entire current figure).  
-* plt.gca() gets the current axis. So there is a concept of the current figure and current axis. plt.gcf() gets the current figure. 
-* Explain: figure, axis, grid, markers, ticks, labels, title (suptitle, too), spines. Naming convensions. ( axis.set_{name} where plot.{name})  
-* Explain: when to use:
-    * ser.plot()  
-    * df.plot()  
-    * sns.lineplot()  
-    * plt.plot()  
-    * ax.plot()  
+
+

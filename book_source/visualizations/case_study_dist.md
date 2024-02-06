@@ -45,7 +45,7 @@ Note that our data is very "clean" and is not riddled with `NaN` or errors.
 Here are a set of common and essentially worthless graphs. A Final Report with only these plots in their report would be poor. These graphs are simple and not very insightful. Furthermore, one of the plots is mislabeled and misleading.    
 ````{tab-set}
 ```{tab-item} Average
-The most common question would be to see the average distance thrown by gender. Here is the basic bar plot of that data. The small 'tick' or 'bar' at the top represents a range showing 95% confidence that the 'true mean' is within the range of the black bar. It assumes that the data we have is a sample from the true population and that it isn't 100% representative. With the count of data points present, the bar represents with 95% confidence where would the mean actuall fall in the true population. 
+The most common question would be to see the average distance thrown by gender. Here is the basic bar plot of that data. The small 'tick' or 'bar' at the top represents a range showing 95% confidence that the 'true mean' is within the range of the black bar. It assumes that the data we have is a sample from the true population and that it isn't 100% representative. With the count of data points present, the bar represents with 95% confidence where would the mean actually fall in the true population. 
 
 Is the bar helpful? <a href="https://youtu.be/a2xZrXzuwyk" target="_blank">I think NOT!! (click for Video Reference)</a>  
 

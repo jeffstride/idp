@@ -16,6 +16,7 @@ chapters:
         sections:
         - file: Topics/misc/submitting
         - file: Topics/misc/collections
+        - file: Topics/misc/comments
         - file: Topics/misc/my_st
       - file: Topics/Replit/index
         sections:
@@ -27,6 +28,7 @@ chapters:
         sections:
           - file: Topics/pandas/dataframe
           - file: Topics/pandas/slicing-methods.md
+          - file: Topics/pandas/mynb
       - file: Topics/machine_learning/index
         sections:
           - file: Topics/machine_learning/feature-importance

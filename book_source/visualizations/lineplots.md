@@ -226,7 +226,7 @@ doesn't change immediately with the length of the day.
 
 The code takes a time-slice for a 12 month period. When finding the equinox points,
 we make use of Tuple packing and unpacking to combine two lines of code into one line. This is a bit
-of a trick and is a nice way to shortn highly similar code.
+of a trick and is a nice way to shorten highly similar code.
 ````{tab-set}
 ```{tab-item} Image
 ![Temperature & Daylight](../_static/line_temp_daylight.png) 

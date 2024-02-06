@@ -4,7 +4,7 @@ You may find that your Replit project isn't building, or that `flake8` isn't run
 You can:  
 * <a href="replit-tips.html#restart-project">Restart the server</a> with a `kill 1` command.  
 * If that doesn't work, you can <a href="#start-over">Start over</a> by deleting the project and starting over.  
-* If the Shell isn't allowing you to correctly type in commands, type them out in `notepad` or some other document, copy the text and then paste them into the shell window.  
+* If the Shell isn't allowing you to correctly type in commands, type them out in `notepad` or some other document, copy the text, and then paste them into the shell window.  
 
 Sometimes a project gets corrupt when you install packages incorrectly. So, be
 careful when installing packages such as `flake8`. Use the command `poetry add 'flake8 5.0.4'` to install flake8.  
@@ -55,7 +55,10 @@ In the migration of assignments and checkpoints, folder names and package depend
 |`poetry show`| Provides a list of all the versions of installed packages (or fails if there is corruption).| 
 |`poetry show numpy` | Shows the version of `numpy`. | 
 |`poetry add 'flake8 5.0.4'` | Installs a specific version of flake8 that is compatible with python version 3.10. In the year 2022-23, IDP used python version 3.8 and flake8 verion 3.9.2.|  
+|`poetry update` | Updates all packages and dependencies|  
 |`poetry update numpy`| Updates the numpy package|
+
+> git-python error: Recently, when running Unit Tests, I got an error involving "git-python 1.1.1". I was able to resolve this issue by adding `git-python = "1.0"` under the tool.poetry.dependencies section in the file `pyproject.toml`.
 
 Not-so-Helpful links:
 * [Using Nix with Replit](https://docs.replit.com/programming-ide/nix-on-replit)
