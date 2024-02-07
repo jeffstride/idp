@@ -1,0 +1,989 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>DataFrame Slicing Methods &#8212; IDP at NCHS</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../../_static/styles/theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/bootstrap.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+<link href="../../_static/styles/pydata-sphinx-theme.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+
+  
+  <link href="../../_static/vendor/fontawesome/6.5.1/css/all.min.css?digest=8d27b9dea8ad943066ae" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../../_static/vendor/fontawesome/6.5.1/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+    <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=384b581d" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../../_static/design-style.1e8bd061cd6da7fc9cf755528e8ffc24.min.css?v=0a3b3ea7" />
+    <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=6c3db60c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae" />
+<link rel="preload" as="script" href="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae" />
+  <script src="../../_static/vendor/fontawesome/6.5.1/js/all.min.js?digest=8d27b9dea8ad943066ae"></script>
+
+    <script src="../../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../../_static/doctools.js?v=888ff710"></script>
+    <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../../_static/copybutton.js?v=f281be69"></script>
+    <script src="../../_static/scripts/sphinx-book-theme.js?v=efea14e4"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "jeffstride/idp");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "preferred-color-scheme");
+    script.setAttribute("label", "💬 Comments");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../../_static/design-tabs.js?v=36754332"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-DW6SHVPBYV"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-DW6SHVPBYV');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-DW6SHVPBYV');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Topics/pandas/slicing-methods';</script>
+    <link rel="icon" href="../../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Useful API" href="mynb.html" />
+    <link rel="prev" title="DataFrame" href="dataframe.html" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DW6SHVPBYV"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-DW6SHVPBYV');
+    </script>
+
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a id="pst-skip-link" class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="../../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../../_static/logo.png" class="logo__image only-light" alt="IDP at NCHS - Home"/>
+    <script>document.write(`<img src="../../_static/logo.png" class="logo__image only-dark" alt="IDP at NCHS - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn navbar-btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../../index.html">
+                    <i class="fas fa-hand-sparkles fa-fw"></i> Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../homework-assignments/index.html"><i class="fas fa-book fa-fw"></i> Homework Assignments</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../homework-assignments/hw1.html"><i class="fas fa-laptop fa-fw"></i> HW1 - Startup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework-assignments/hw2.html"><i class="fas fa-laptop fa-fw"></i> HW2 - Primer</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework-assignments/hw3.html"><i class="fas fa-laptop fa-fw"></i> HW3 - Pokémon</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework-assignments/hw4.html"><i class="fas fa-laptop fa-fw"></i> HW4 - Education</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework-assignments/hw5.html"><i class="fas fa-laptop fa-fw"></i> HW5 - Search Engine</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../homework-assignments/hw6.html"><i class="fas fa-laptop fa-fw"></i> HW6 - Spell Checker</a></li>
+
+
+<li class="toctree-l2"><a class="reference internal" href="../../homework-assignments/hw7.html"><i class="fas fa-laptop fa-fw"></i> HW7 - Mapping</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html"><i class="fas fa-layer-group fa-fw"></i> Topics</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 has-children"><a class="reference internal" href="../misc/index.html"><i class="fas fa-book fa-fw"></i> Miscellaneous</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../misc/submitting.html">Submitting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../misc/collections.html">Collections</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../misc/comments.html">Writing Effective Comments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../misc/my_st.html">Notes on MyST</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Replit/index.html"><i class="fas fa-book fa-fw"></i> Replit</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Replit/building-in-replit.html">Building in Replit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Replit/replit-tips.html">Replit Tips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Replit/corrupt-project.html">Corrupt Replit Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Replit/flake8.html">Flake8</a></li>
+</ul>
+</li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html"><i class="fas fa-book fa-fw"></i> Pandas</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="dataframe.html">DataFrame</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">DataFrame Slicing Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mynb.html">Useful API</a></li>
+
+
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../machine_learning/index.html"><i class="fas fa-book fa-fw"></i> Machine Learning</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../machine_learning/feature-importance.html">Feature Importance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../machine_learning/assessing-accuracy.html">Assessing Accuracy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../machine_learning/classification.html">Classification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../machine_learning/regression.html">Regression - Distance Study</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../machine_learning/classifier-rand.html">Classification - Fully Random</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../machine_learning/when-to-avoid-ml.html">When to Avoid Using Machine Learning</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../built-in/index.html"><i class="fas fa-book fa-fw"></i> Built-in</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../built-in/arguments.html">Arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../built-in/formatted-string.html">Formatted Strings</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../final-project/index.html"><i class="fas fa-layer-group fa-fw"></i> Final Project</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../final-project/handouts/index.html"><i class="fas fa-book fa-fw"></i> Final Project - Handouts</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../final-project/handouts/proposal.html">Proposal Document</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../final-project/handouts/code.html">Final Project Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../final-project/handouts/report.html">Final Report</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../final-project/handouts/presentation.html">Final Presentation</a></li>
+</ul>
+</li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../../final-project/tips/index.html"><i class="fas fa-book fa-fw"></i> Final Project - Tips</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../final-project/tips/ML.html">Leveraging ML in the Final Project</a></li>
+
+
+
+
+
+<li class="toctree-l3"><a class="reference internal" href="../../final-project/tips/proposal.html">Tips for Proposal Document</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../final-project/tips/code.html">Tips for Final Project Code</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../final-project/tips/report.html">Tips for Final Report</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../final-project/tips/presentation.html">Tips for Final Presentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../../visualizations/index.html"><i class="fas fa-book fa-fw"></i> Visualizations</a><input class="toctree-checkbox" id="toctree-checkbox-11" name="toctree-checkbox-11" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-11"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../visualizations/barchart.html">Bar Charts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../visualizations/geospatial.html">Geospatial Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../visualizations/lineplots.html">Line Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../visualizations/line_of_best_fit.html">Curve of Best Fit</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../../visualizations/case_study_dist.html">Case Study on Distance</a></li>
+
+</ul>
+</li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jeffstride/idp" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jeffstride/idp/edit/main/book_source/Topics/pandas/slicing-methods.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jeffstride/idp/issues/new?title=Issue%20on%20page%20%2FTopics/pandas/slicing-methods.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../../_sources/Topics/pandas/slicing-methods.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>DataFrame Slicing Methods</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#df">df[]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#df-loc">df.loc[]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#df-iloc">Df.iloc[]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#df-take">df.take()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparisions-summary">Comparisions &amp; Summary:</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="dataframe-slicing-methods">
+<h1>DataFrame Slicing Methods<a class="headerlink" href="#dataframe-slicing-methods" title="Link to this heading">#</a></h1>
+<p>In this discussion, we will explore four methods for slicing data within a Pandas DataFrame:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">df[]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df.loc[]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df.iloc[]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df.take()</span></code></p></li>
+</ol>
+<p>Pandas is a powerful library that provides various ways to access and manipulate data. However, the abundance of methods can be overwhelming when choosing the most efficient one. This write-up aims to clarify the differences between these four slicing methods.</p>
+<p>For additional information, refer to the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html">Pandas DataFrame Documentation</a>.</p>
+<section id="df">
+<h2>df[]<a class="headerlink" href="#df" title="Link to this heading">#</a></h2>
+<p>This is the <em>simplest</em> and most <em>straightforward</em> slicing method. df[] allows for both position and label-based slicing. You can use positional indices to select either single rows or a selection of multiple rows. You cannot just use a single row index argument. If you want a single row, you have to refer to a slice which only will include that one row.</p>
+<p>We will use this dataframe for the following examples</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;col1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> 
+                   <span class="s1">&#39;col2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> 
+                   <span class="s1">&#39;col3&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> 
+                   <span class="s1">&#39;col4&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">]})</span>
+
+</pre></div>
+</div>
+<p>Remember that the <em>first argument is inclusive, but the second is exclusive</em></p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-0">
+Positional/Index Based</label><div class="sd-tab-content docutils">
+<p>In the first example, we use slicing to return a single row. You <strong>cannot</strong> just use a single row index argument. If you want a single row, you have to refer to a slice which only will include that one row.</p>
+<p>Positional selection works even with a custom index, relying on the row’s position rather than its label. You can also omit one or both parameters (df[1:], df[:3], and df[:]): a left-sided value includes rows including and beyond the specified position, right-sided value includes up to but not including the specified value, and a single colon includes all rows.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Single row:</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">s1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># Returns a series containing values of the 3rd row [9, 10, 11, 12]</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Multiple rows:</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">d1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># Returns a DataFrame containing rows &#39;col1&#39; and &#39;col2</span>
+<span class="n">d2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="c1"># Returns a DataFrame containg rows &#39;col2&#39;, &#39;col3&#39;, and &#39;col4&#39;</span>
+<span class="n">d3</span> <span class="o">=</span> <span class="n">df</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># Returns a DataFrame containg rows &#39;col1&#39; and &#39;col2&#39;</span>
+<span class="n">df4</span> <span class="o">=</span> <span class="n">df</span><span class="p">[:]</span> <span class="c1"># Returns a DataFrame containg all rows</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-1">
+Label-Based Selection</label><div class="sd-tab-content docutils">
+<p>You can use the <strong>labels</strong> of columns or the custom indexes of rows to select data</p>
+<p>Keep in mind that these are the labels assigned to the <strong>custom index</strong>. These labels are both <strong>inclusive</strong>. You cannot do this type of slicing (involving the colon) using column labels with this method. You would  instead use the <code class="docutils literal notranslate"><span class="pre">.loc</span></code> method.</p>
+<p>To select multiple columns with this method, we can use a <strong>list</strong> containing the labels of the column names. This is not a range of columns to be sliced. The function will only <em>return the columns contained in the list</em>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Single column or named row</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;col1&#39;</span><span class="p">]]</span> <span class="c1"># returns a series containing the values of &#39;col1&#39;</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Multiple rows (based on index label)</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">])</span> <span class="c1"># Returns dataframe with the indexes renamed to the rows a, b, and c</span>
+<span class="n">df3</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[</span><span class="n">a</span><span class="p">:</span><span class="n">c</span><span class="p">]</span> <span class="c1"># Returns a DataFrame containing the rows &#39;a&#39;, &#39;b&#39;, and &#39;c&#39;</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Multiple Columns using a list</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">d3</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;col1&#39;</span><span class="p">,</span> <span class="s1">&#39;col3&#39;</span><span class="p">]]</span> <span class="c1"># returns a dataframe containing the rows &#39;col1&#39; and &#39;col3&#39;</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-2">
+Exceptions and Oddities</label><div class="sd-tab-content docutils">
+<p>Some things to keep in mind when using this function:</p>
+<ul class="simple">
+<li><p>The inclusivity of breakpoints in slicing is <strong>not consistent</strong> in this function. When selecting based on position, it is similar to typical python: <strong>inclusive</strong> for the first argument, <strong>exclusive</strong> for the second. However, when selecting based on label, both terms are <strong>inclusive</strong>.</p></li>
+<li><p>A commonly used convention is to put a second set of  brackets around single term inputs, such as <code class="docutils literal notranslate"><span class="pre">d3</span> <span class="pre">=</span> <span class="pre">df[['col1']]</span></code> in order to avoid ambiguity or confusion related to lists.</p></li>
+<li><p>The ambiguous nature of this function can lead to confusion. For example, if you were trying to access the row at the first positional index using <code class="docutils literal notranslate"><span class="pre">df[1]</span></code>, but you also had a custom integer index, confusion on what the 1 refers to could arise. Using more specific slicing methods such as <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> or <code class="docutils literal notranslate"><span class="pre">.take</span></code> can help clear up this.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df[0]</span></code> will return an error. To get the first row, call <code class="docutils literal notranslate"><span class="pre">df[0:1]</span></code></p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="df-loc">
+<h2>df.loc[]<a class="headerlink" href="#df-loc" title="Link to this heading">#</a></h2>
+<p>df.loc is an <strong>index/label</strong> based slicer. It is designed to <em>decrease ambiguity</em> in comparison to the simple <code class="docutils literal notranslate"><span class="pre">df[]</span></code> function. Throughout the examples, the following dataframe will be used:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;col1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
+                   <span class="s1">&#39;col2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+                   <span class="s1">&#39;col3&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span>
+                   <span class="s1">&#39;col4&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">45</span><span class="p">]})</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">.loc</span></code> is structured in a way in which there are two <em>‘parameters’</em> separated by commas. The first determines the <em>slice to take out of the rows</em>, and the second determines the <em>slice to take out of the columns</em>. These ‘parameters’ can either be <strong>single values</strong>, <strong>lists</strong>, or <strong>slices</strong>. We will review all of the argument types and categorize them based on return type.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-3">
+Single Value</label><div class="sd-tab-content docutils">
+<p>This will return the value which is contained in <strong>row 2</strong> (by index, so effectively the 3rd row) of <strong>column 1</strong>, <strong>3</strong>. Since <code class="docutils literal notranslate"><span class="pre">.loc</span></code> is <strong>label based</strong>, the row parameter <em>does not have to be an integer</em>, as this example assumes a default index. If there was a custom index set, you could call <code class="docutils literal notranslate"><span class="pre">v1</span> <span class="pre">=</span> <span class="pre">df.loc[‘c’,</span> <span class="pre">‘col1’]</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">v1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;col1&#39;</span><span class="p">]</span>  <span class="c1"># Returns a single value from row 2 and column &#39;col1&#39;</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-4">
+Series</label><div class="sd-tab-content docutils">
+<p>Series baesd on row/column: Both of these lines will return a series of either a <strong>row</strong> or a <strong>column</strong>. Since the row parameter comes first, <em>you can forgo the column parameter if you were only looking for a single row</em>. However, if you are looking for a single column, <em>you need to include a <code class="docutils literal notranslate"><span class="pre">:</span></code></em>, which just refers to all of the rows.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39; </span>
+<span class="sd">Series based on a row:</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">s1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># returns the second row as a series</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Series based on column:</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;col1&#39;</span><span class="p">]</span>  <span class="c1"># Returns &#39;col1&#39; as a series (the first column)</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Series based on a section of a row:</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">s3</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;col1&#39;</span><span class="p">,</span> <span class="s1">&#39;col3&#39;</span><span class="p">]]</span> <span class="c1"># returns a series of elements contained in row 1 of columns 1 and 3</span>
+<span class="n">s4</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;col1&#39;</span><span class="p">:</span><span class="s1">&#39;col3&#39;</span><span class="p">]</span> <span class="c1"># returns a series of elements contained in row 1 of columns 1, 2, and 3</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Series based on a section of a column:</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">s5</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;col1&#39;</span><span class="p">]</span> <span class="c1"># returns a series of elements contained in rows 1 and 3 of column 1</span>
+<span class="n">s6</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;col1&#39;</span><span class="p">]</span> <span class="c1"># returns a series of elements contained in rows 1, 2, and 3 of column 1</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-5">
+DataFrame</label><div class="sd-tab-content docutils">
+<p>This will be <em>very similar to the examples earlier</em>. However, <strong>both</strong> ‘parameters’ will be either a <strong>slicer</strong> or <strong>list</strong>.</p>
+<p>You can ‘mix and match’ <strong>slicers</strong> and <strong>lists</strong>. Remember this assumes a default index, but it will work fine if you utilize a custom index and use the index labels rather than numerical values. This applies to all examples. Slicing parameters are still <strong>inclusive</strong>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;col1&#39;</span><span class="p">,</span> <span class="s1">&#39;col3&#39;</span><span class="p">]]</span> <span class="c1"># returns a dataframe contained in either row 1 or 3 of column 1 and 3</span>
+<span class="n">d2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;col1&#39;</span><span class="p">:</span> <span class="s1">&#39;col3&#39;</span><span class="p">]</span> <span class="c1"># returns a dataframe contained in either row 1, 2, or 3 of column 1, 2, and 3</span>
+<span class="n">d3</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;col1&#39;</span><span class="p">:</span> <span class="s1">&#39;col3&#39;</span><span class="p">]</span> <span class="c1"># returns a dataframe contained in either row 1 or 3 of column 1, 2, and 3</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-6" name="sd-tab-set-1" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-6">
+Exceptions and Oddities</label><div class="sd-tab-content docutils">
+<ul class="simple">
+<li><p>When indexing with integer based indices, <em>especially a custom index</em>, care is necessary in order to ensure you are referring to the right things (<strong>positional</strong> or <strong>label</strong> index?). Remember, if you are looking for positional indices, utilize <code class="docutils literal notranslate"><span class="pre">.iloc</span></code>.</p></li>
+<li><p>Assuming a default index, <code class="docutils literal notranslate"><span class="pre">df.loc[0]</span></code> will return the first row of the dataframe in a series.</p></li>
+<li><p>Square brackets are used simply because it is <em>consistent with the python convention of these brackets</em>, referring to slicing.</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="df-iloc">
+<h2>Df.iloc[]<a class="headerlink" href="#df-iloc" title="Link to this heading">#</a></h2>
+<p>All numbers in the comments of the sample programs refer to the <strong>index</strong> positions of the rows/columns, meaning row 1 refers to the <strong>second</strong> row of the dataframe</p>
+<p><code class="docutils literal notranslate"><span class="pre">df.iloc</span></code> is an <strong>integer</strong> index based slicing function. It <strong>only</strong> takes integer numbers into its arguments. However, it is <em>very similar to the <code class="docutils literal notranslate"><span class="pre">.loc</span></code> function</em>, in that there are two arguments, one for the <strong>row</strong> and one for the <strong>column</strong>. The  difference is that while <code class="docutils literal notranslate"><span class="pre">.loc</span></code>’s arguments for its slicers are <strong>inclusive</strong>, the arguments for <code class="docutils literal notranslate"><span class="pre">.iloc</span></code>’s slicers are similar to base python. The first argument is <strong>inclusive</strong> while the second is <strong>exclusive</strong>. The positional nature makes <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> very convenient when dealing with <em>large dataframes with confusing labels and custom indecies</em>. Sometimes, locating a <strong>value</strong> or <strong>slice</strong> based on its <strong>position</strong> in the dataframe is more straightforward.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-7" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-7">
+Single Value</label><div class="sd-tab-content docutils">
+<p>This will return the value which is contained in <strong>row 2</strong> of <strong>column 1</strong>, <strong>7</strong>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">v1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="c1"># returns the value in the 2x1 spot in the dataframe</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-8" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-8">
+Series</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Series based on a row</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">s1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># returns a series containing the row 1</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Series based on a column</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="c1"># returns a series containing the column 2</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Series based on a section of a row</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">s3</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span> <span class="c1"># retuns a series of the elements contained in row 1 of column 1 and 3</span>
+<span class="n">s4</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="c1"># retuns a series of the elements contained in row 1 of column 1, 2, and 3</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Series based on a section of a column:</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">s5</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">1</span><span class="p">]</span> <span class="c1"># returns a series of the elements contained in rows 1 and 3 of column 1</span>
+<span class="n">s6</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="c1"># returns a series of the elements contained in rows 1, 2, and 3 of column 1</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-9" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-9">
+Dataframe</label><div class="sd-tab-content docutils">
+<p>This will be very similar to the examples earlier. However, instead, both ‘parameters’ will have either a <strong>slicer</strong> or <strong>list</strong>.</p>
+<p>Like in <code class="docutils literal notranslate"><span class="pre">.loc</span></code>, you can ‘mix and match’ slicers and lists.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span> <span class="c1"># returns a dataframe contained in either row 1 or 3 of column 1 and 3</span>
+<span class="n">d2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">3</span><span class="p">]</span> <span class="c1"># returns a dataframe contained in either row 1, 2, or 3 of column 1, 2, and 3</span>
+<span class="n">d3</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">3</span><span class="p">]</span> <span class="c1"># returns a dataframe contained in either row 1 or 3 of column 1, 2, and 3</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-10" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-10">
+Exceptions and Oddities</label><div class="sd-tab-content docutils">
+<ul class="simple">
+<li><p>If you ever, for some reason, need to utilize a label based index using <code class="docutils literal notranslate"><span class="pre">.iloc</span></code>, you can use the function <code class="docutils literal notranslate"><span class="pre">df.columns.get_loc('your_column’)</span></code> in order to get the <strong>positional</strong> location of that <strong>column</strong>, and input that value into your <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> function. However, this is obviously <strong>not recommended</strong>, as simply using <code class="docutils literal notranslate"><span class="pre">.loc</span></code> would be better.</p></li>
+<li><p>Assuming a <em>default index</em>, <code class="docutils literal notranslate"><span class="pre">df.iloc[0]</span></code> will return the first row of the dataframe in a series, just like <code class="docutils literal notranslate"><span class="pre">.loc</span></code>.</p></li>
+<li><p>If both ‘parameters’ of <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> are single values, then it will return a <strong>single value</strong>. If one is a single value and the other is a slice or list, then it will return a <strong>series</strong>. If both are slices or lists, it will return a <strong>dataframe</strong>. This is applicable to <code class="docutils literal notranslate"><span class="pre">.loc</span></code>.</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="df-take">
+<h2>df.take()<a class="headerlink" href="#df-take" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">df.take()</span></code> is primarily a <strong>positional</strong> based indexer/slicer. It will return the <strong>columns</strong> or <strong>rows</strong> in the position specified by the inputs, which will either be a <strong>single value</strong>, <strong>list</strong>, or <strong>slice</strong>. It has another parameter, <code class="docutils literal notranslate"><span class="pre">axis</span></code>, which is set to <em>0 by default</em>. The default parameter refers to the <strong>index/rows</strong>, meaning we are selecting rows to extract. If you set <code class="docutils literal notranslate"><span class="pre">axis</span></code> to 1, then it will select <strong>columns</strong>.</p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-11" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-11">
+Series</label><div class="sd-tab-content docutils">
+<p>Since <code class="docutils literal notranslate"><span class="pre">df.take()</span></code> is <strong>positional</strong> based, you <strong>cannot</strong> input labels. They must be integers. Additionally, it <em>ignores whatever custom index you may have applied</em>, even if it is an integer index. It will use the <em>underlying positional index</em> to collect the data. Remember, you <strong>need</strong> to include the square brackets, because the function takes only lists.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Series based on a row</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">s1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">take</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># returns a series representing row 1</span>
+
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">Series based on a column</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="n">s2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">take</span><span class="p">([</span><span class="mi">1</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># returns a series representing column 1</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-12" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-12">
+Dataframe</label><div class="sd-tab-content docutils">
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">take</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span> <span class="c1"># returns a dataframe containing rows 1, 3, and 0</span>
+
+<span class="c1"># Setting `axis` to 1 indicates whether the list of indexes is for **rows** or **columns**</span>
+<span class="n">d2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">take</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># returns a dataframe containing columns 1, 3, and 0</span>
+</pre></div>
+</div>
+</div>
+<input id="sd-tab-item-13" name="sd-tab-set-3" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-13">
+Exceptions and Oddities</label><div class="sd-tab-content docutils">
+<ul class="simple">
+<li><p>Make sure to look out for <code class="docutils literal notranslate"><span class="pre">IndexError</span></code> exceptions, which will arise if you <em>input a number that is not in the index</em>. This means you <strong>can’t</strong> use <code class="docutils literal notranslate"><span class="pre">len(df)</span></code> as a parameter in order to get the <em>last row of the dataframe</em>.</p></li>
+<li><p>You can use <strong>negative indices</strong>. This works similarly to slicing in lists in base python, where <em>the -1 index corresponds to the last value of the set</em>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df.take([0])</span></code> returns the first (0 position) row.</p></li>
+</ul>
+</div>
+</div>
+</section>
+<section id="comparisions-summary">
+<h2>Comparisions &amp; Summary:<a class="headerlink" href="#comparisions-summary" title="Link to this heading">#</a></h2>
+<p>These 4 slicing methods are <strong>all effective</strong> if used right. The first step to determining the correct method is figuring out whether you are trying to slice <strong>positionally</strong> or based on <strong>labels</strong>, but there are other factors. This table will help you determine which to use.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"><p>Purpose</p></th>
+<th class="head"><p>Weaknesses</p></th>
+<th class="head"><p>Return Types</p></th>
+<th class="head"><p>Inclusive vs. Exclusive</p></th>
+<th class="head"><p>Arguments</p></th>
+<th class="head"><p>Additional Considerations</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">df[]</span></code></p></td>
+<td><p>General-purpose tool</p></td>
+<td><p>Ambiguous syntax, confusing arguments</p></td>
+<td><p>Series, DataFrames</p></td>
+<td><p>Inclusive:exclusive</p></td>
+<td><p>1 parameter: Single values, lists, slices</p></td>
+<td><p>Slices of row labels use <code class="docutils literal notranslate"><span class="pre">:</span></code>, for column labels, use lists</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">df.loc</span></code></p></td>
+<td><p>Choose based on labels</p></td>
+<td><p>Does not access positional values</p></td>
+<td><p>Single values, Series, DataFrames</p></td>
+<td><p>Inclusive</p></td>
+<td><p>2 parameters: Single values, lists, slices with mixing</p></td>
+<td><p>Slices of labels possible, e.g., <code class="docutils literal notranslate"><span class="pre">df.loc['col1':'col3']</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">df.iloc</span></code></p></td>
+<td><p>Choose based on positional index</p></td>
+<td><p>Cannot access labels</p></td>
+<td><p>Single values, Series, DataFrames</p></td>
+<td><p>Inclusive:exclusive</p></td>
+<td><p>2 parameters: Single values, lists, slices with mixing</p></td>
+<td><p>None</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">df.take</span></code></p></td>
+<td><p>Choose based on positional index</p></td>
+<td><p>Can be unnecessarily confusing</p></td>
+<td><p>Series, DataFrames</p></td>
+<td><p>None</p></td>
+<td><p>2 parameters: List of positions, axis parameter</p></td>
+<td><p>None</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./Topics/pandas"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="dataframe.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">DataFrame</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="mynb.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Useful API</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#df">df[]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#df-loc">df.loc[]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#df-iloc">Df.iloc[]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#df-take">df.take()</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparisions-summary">Comparisions &amp; Summary:</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Jeff Stride
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a href="https://idp.mrstride.com/acknowledgements.html">Acknowledgements</a>
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../../_static/scripts/bootstrap.js?digest=8d27b9dea8ad943066ae"></script>
+<script src="../../_static/scripts/pydata-sphinx-theme.js?digest=8d27b9dea8ad943066ae"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
