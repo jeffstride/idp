@@ -581,21 +581,21 @@ document.write(`
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-0">
-Positional/Index Based</label><div class="sd-tab-content docutils">
+Positional</label><div class="sd-tab-content docutils">
 <p>In the first example, we use slicing to return a single row. You <strong>cannot</strong> just use a single row index argument. If you want a single row, you have to refer to a slice which only will include that one row.</p>
 <p>Positional selection works even with a custom index, relying on the row’s position rather than its label. You can also omit one or both parameters (df[1:], df[:3], and df[:]): a left-sided value includes rows including and beyond the specified position, right-sided value includes up to but not including the specified value, and a single colon includes all rows.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">Single row:</span>
 <span class="sd">&#39;&#39;&#39;</span>
-<span class="n">s1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># Returns a series containing values of the 3rd row [9, 10, 11, 12]</span>
+<span class="n">s1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># Returns a series containing values of the 3rd col [3, 7, 11, 15]</span>
 
 <span class="sd">&#39;&#39;&#39;</span>
 <span class="sd">Multiple rows:</span>
 <span class="sd">&#39;&#39;&#39;</span>
-<span class="n">d1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># Returns a DataFrame containing rows &#39;col1&#39; and &#39;col2</span>
-<span class="n">d2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="c1"># Returns a DataFrame containg rows &#39;col2&#39;, &#39;col3&#39;, and &#39;col4&#39;</span>
-<span class="n">d3</span> <span class="o">=</span> <span class="n">df</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># Returns a DataFrame containg rows &#39;col1&#39; and &#39;col2&#39;</span>
-<span class="n">df4</span> <span class="o">=</span> <span class="n">df</span><span class="p">[:]</span> <span class="c1"># Returns a DataFrame containg all rows</span>
+<span class="n">d1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># Returns a DataFrame containing two rows [1, 5, 9, 13] and [2, 6, 10, 14]</span>
+<span class="n">d2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="c1"># Returns a DataFrame containg three rows [2, 6, 10, 14], [3, 7, 11, 15], and [4, 8, 12, 16]</span>
+<span class="n">d3</span> <span class="o">=</span> <span class="n">df</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># Returns a DataFrame containg two rows [1, 5, 9, 13] and [2, 6, 10, 14]</span>
+<span class="n">df4</span> <span class="o">=</span> <span class="n">df</span><span class="p">[:]</span> <span class="c1"># Returns a DataFrame containg all columns</span>
 </pre></div>
 </div>
 </div>
@@ -631,7 +631,7 @@ Exceptions and Oddities</label><div class="sd-tab-content docutils">
 <li><p>The inclusivity of breakpoints in slicing is <strong>not consistent</strong> in this function. When selecting based on position, it is similar to typical python: <strong>inclusive</strong> for the first argument, <strong>exclusive</strong> for the second. However, when selecting based on label, both terms are <strong>inclusive</strong>.</p></li>
 <li><p>A commonly used convention is to put a second set of  brackets around single term inputs, such as <code class="docutils literal notranslate"><span class="pre">d3</span> <span class="pre">=</span> <span class="pre">df[['col1']]</span></code> in order to avoid ambiguity or confusion related to lists.</p></li>
 <li><p>The ambiguous nature of this function can lead to confusion. For example, if you were trying to access the row at the first positional index using <code class="docutils literal notranslate"><span class="pre">df[1]</span></code>, but you also had a custom integer index, confusion on what the 1 refers to could arise. Using more specific slicing methods such as <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> or <code class="docutils literal notranslate"><span class="pre">.take</span></code> can help clear up this.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">df[0]</span></code> will return an error. To get the first row, call <code class="docutils literal notranslate"><span class="pre">df[0:1]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df[0]</span></code> will return an error. This is because it is expecting a column reference. When it is a slice, then the code filters down to the rows. To get the first row, call <code class="docutils literal notranslate"><span class="pre">df[0:1]</span></code></p></li>
 </ul>
 </div>
 </div>

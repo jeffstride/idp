@@ -28,7 +28,7 @@ Remember that the _first argument is inclusive, but the second is exclusive_
 
 ````{tab-set}
 
-```{tab-item} Positional/Index Based
+```{tab-item} Positional
 In the first example, we use slicing to return a single row. You **cannot** just use a single row index argument. If you want a single row, you have to refer to a slice which only will include that one row.
 
 Positional selection works even with a custom index, relying on the row's position rather than its label. You can also omit one or both parameters (df[1:], df[:3], and df[:]): a left-sided value includes rows including and beyond the specified position, right-sided value includes up to but not including the specified value, and a single colon includes all rows.
@@ -37,15 +37,15 @@ Positional selection works even with a custom index, relying on the row's positi
 '''
 Single row:
 '''
-s1 = df[2:3]  # Returns a series containing values of the 3rd row [9, 10, 11, 12]
+s1 = df[2:3]  # Returns a series containing values of the 3rd col [3, 7, 11, 15]
 
 '''
 Multiple rows:
 '''
-d1 = df[0:2]  # Returns a DataFrame containing rows 'col1' and 'col2
-d2 = df[1:] # Returns a DataFrame containg rows 'col2', 'col3', and 'col4'
-d3 = df[:2] # Returns a DataFrame containg rows 'col1' and 'col2'
-df4 = df[:] # Returns a DataFrame containg all rows
+d1 = df[0:2]  # Returns a DataFrame containing two rows [1, 5, 9, 13] and [2, 6, 10, 14]
+d2 = df[1:] # Returns a DataFrame containg three rows [2, 6, 10, 14], [3, 7, 11, 15], and [4, 8, 12, 16]
+d3 = df[:2] # Returns a DataFrame containg two rows [1, 5, 9, 13] and [2, 6, 10, 14]
+df4 = df[:] # Returns a DataFrame containg all columns
 ```
 
 ```{tab-item} Label-Based Selection
@@ -78,7 +78,7 @@ Some things to keep in mind when using this function:
 * The inclusivity of breakpoints in slicing is **not consistent** in this function. When selecting based on position, it is similar to typical python: **inclusive** for the first argument, **exclusive** for the second. However, when selecting based on label, both terms are **inclusive**.
 * A commonly used convention is to put a second set of  brackets around single term inputs, such as `d3 = df[['col1']]` in order to avoid ambiguity or confusion related to lists.
 * The ambiguous nature of this function can lead to confusion. For example, if you were trying to access the row at the first positional index using `df[1]`, but you also had a custom integer index, confusion on what the 1 refers to could arise. Using more specific slicing methods such as `.iloc` or `.take` can help clear up this.
-* `df[0]` will return an error. To get the first row, call `df[0:1]`
+* `df[0]` will return an error. This is because it is expecting a column reference. When it is a slice, then the code filters down to the rows. To get the first row, call `df[0:1]`
 
 ````
 
