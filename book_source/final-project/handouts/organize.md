@@ -8,7 +8,7 @@ You will deliver the following:
     * Reduce, Filter and Organize the data
     * Test (if you are doing the Unit Test Challenge)
 * Sketches of target plots  
-* Some Unit Tests (Challenge Goal)  
+* Some Unit Tests (Challenge Goal only)  
 
 More often than not, the raw data is not ready for plotting. The data needs to be rearranged and organized into a format that allows for `matplotlib.pyplot` to plot. The data may need to be reduced, filtered, joined, calculated or reorganized. 
 
@@ -30,7 +30,7 @@ Things to consider:
 * How to sort values to make it more visually appealing  
 * Use a TimeSeries - Average by some timeframe  
 * How to layer more information into a single plot  
-* How to use different types of plots:
+* How to use different types of plots along with impressive versions of each:
     * Bar Charts  
     * Pie Charts  
     * Box Plots  
@@ -42,11 +42,23 @@ Things to consider:
 
 ```{admonition} Sample Sketch
 :class: note dropdown
-This sketch was created in Paint in about 10-15 minutes. These are sketches for a hypothetical project on the box office revenues of movies. The project is attempting to show correlation with Netflix and GDP. The sketches illustrate a few things:  
-* I need more creativity - having only a barchart and lines plots is not enough  
+This sketch was created in Paint in about 15 minutes. These are sketches for a hypothetical project on the box office revenues of movies. The project is attempting to show correlation between box office revenues, Netflix earnings, and America's GDP.  
+
+Do not be fooled! This sketch represents `C-` quality work. The sketches illustrate a few things that should be addressed early. Before submitting this Organization Deliverable, the sketches should be updated to address these shortcomings:  
+* There are only 3 plots. Ouch!  
+* The y-axes are not all labeled.  
+* The bar chart showing genre of movies does not add any value to the research question. It is good that the bars are sorted by value, but there is no point to the chart.  
+* I lack annotation. The bar chart could have values added to the top of the bars (or inside the bars). The line plots could highlight inflection points.  
+* I need more creativity. Having only barchart and line plots is not enough. While line plots are fantastic at identifying correlations, there are other plots and activities that are great at doing showing correlation. The following example correlation methods may not be appropriate given the data collected or my research question. Regardless, here are some other methods:  
+    * [Correlation Heatmap](https://stackoverflow.com/questions/39409866/correlation-heatmap)  
+    * <a href="../../Topics/machine_learning/feature-importance.html">Machine Learning and Feature Importance</a>   
+    * Plotting Netflix vs GDP and then adding Statistical information such as `Coefficient of Determination`.  
+* The graphs do not sufficiently deter critical counter arguments. For example, even though there is a negative correlation between Box Office revenue and Netflix earnings, we could show that other popular streaming services do (or do not) correlate.  
+
+There are some positive realizations from doing these sketches that will impact my project's efforts:  
 * I need data by year  
 * I need to be able to do `twinx` plots--to plot lines with different scales on the same axis  
-* I lack annotation  
+
 ![Sample Sketch](../../_static/fp_movie_sketches.png)
 ```
 ## Replit Project

@@ -336,7 +336,7 @@ Plotting the model's predictions provides a lot of information.
 
 Calculating _Fairness_ values is important when evaluating a model.  
 
-## Data 2: TODO: Randomized Data Study 
+## Data 2: Randomized Data Study 
 In this sub-study, we will create data that is more random. Surely not everyone who is very
 tall is in the NBA; they are simply more likely to be in the NBA. 
 

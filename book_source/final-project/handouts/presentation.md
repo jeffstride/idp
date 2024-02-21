@@ -27,7 +27,3 @@ Your Data Science results are colored by your subjective journey through the pro
 * What bugs caused you pain? How did you solve them?  
 * What did you learn?  
 * What would you do differently?
-
-
-
-The Final Presentation will be a your **story**--a verbal presentation of You will introduce your research topic, provide context and goals. , show plots, and explain the resuls. 

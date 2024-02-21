@@ -4,6 +4,7 @@
 You will deliver the following:  
 * A Google Document (described below).
 * A Link to a Google Share that holds all your **raw data**. Your link will be in the document.  
+* Target Challenge Goals
 
 You do not need to have any code written yet, but you may want to use some code to help you learn about the data. For example, you may want to print out the columns or get some statistical information about the data using code.  
 
