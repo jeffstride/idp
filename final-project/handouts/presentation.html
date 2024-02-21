@@ -110,7 +110,7 @@ commentsRunWhenDOMLoaded(addUtterances);
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
     <link rel="next" title="Final Project - Tips" href="../tips/index.html" />
-    <link rel="prev" title="Final Report" href="report.html" />
+    <link rel="prev" title="Final Code and Report" href="final.html" />
     
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -295,24 +295,17 @@ commentsRunWhenDOMLoaded(addUtterances);
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="../index.html"><i class="fas fa-layer-group fa-fw"></i> Final Project</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html"><i class="fas fa-book fa-fw"></i> Final Project - Handouts</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="proposal.html">Proposal Document</a></li>
-<li class="toctree-l3"><a class="reference internal" href="code.html">Final Project Code</a></li>
-<li class="toctree-l3"><a class="reference internal" href="report.html">Final Report</a></li>
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">Final Presentation</a></li>
+<li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html"><i class="fas fa-layer-group fa-fw"></i> Final Project Deliverables</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="discovery.html"><i class="fas fa-book fa-fw"></i> Discovery Document</a></li>
+<li class="toctree-l3"><a class="reference internal" href="organize.html"><i class="fas fa-book fa-fw"></i> Data Organization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="final.html"><i class="fas fa-book fa-fw"></i> Final Code and Report</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#"><i class="fas fa-book fa-fw"></i> Final Presentation</a></li>
 </ul>
 </li>
-<li class="toctree-l2 has-children"><a class="reference internal" href="../tips/index.html"><i class="fas fa-book fa-fw"></i> Final Project - Tips</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l3"><a class="reference internal" href="../tips/ML.html">Leveraging ML in the Final Project</a></li>
-
-
-
-
-
-<li class="toctree-l3"><a class="reference internal" href="../tips/proposal.html">Tips for Proposal Document</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../tips/code.html">Tips for Final Project Code</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../tips/report.html">Tips for Final Report</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../tips/presentation.html">Tips for Final Presentation</a></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../tips/index.html"><i class="fas fa-layer-group fa-fw"></i> Final Project - Tips</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tips/report.html"><i class="fas fa-book fa-fw"></i> Tips for Final Report</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tips/presentation.html"><i class="fas fa-book fa-fw"></i> Tips for Final Presentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tips/ML.html"><i class="fas fa-book fa-fw"></i> Leveraging ML</a></li>
 </ul>
 </li>
 </ul>
@@ -516,7 +509,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
 </div></div>
       
     </div>
@@ -527,11 +522,20 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>Final Presentation</h1>
+    <h1><i class="fas fa-book fa-fw"></i> Final Presentation</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-science-results">Data Science Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#your-story">Your Story</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -542,15 +546,42 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="final-presentation">
-<h1>Final Presentation<a class="headerlink" href="#final-presentation" title="Link to this heading">#</a></h1>
-<p>It needs to focus on demonstrating your understanding.
-You will explain your plots.
-You will NOT have:</p>
+<h1><i class="fas fa-book fa-fw"></i> Final Presentation<a class="headerlink" href="#final-presentation" title="Link to this heading">#</a></h1>
+<p>Your Final Presentation will be a verbal presentation in front of the class. It will have two major parts:</p>
+<ol class="arabic simple">
+<li><p>Data Science Results</p></li>
+<li><p>Story of the Experience</p></li>
+</ol>
+<section id="data-science-results">
+<h2>Data Science Results<a class="headerlink" href="#data-science-results" title="Link to this heading">#</a></h2>
+<p>There are two goals of this part of the presentation:</p>
 <ul class="simple">
-<li><p>development process: unless the process is critical to understanding the data</p></li>
-<li><p>data description: unless it is important to understand the results and ways to critique the results</p></li>
+<li><p>To inform the audience of your research and results</p></li>
+<li><p>To demonstrate your understanding of the data</p></li>
 </ul>
-<p>It must have: x, y, z</p>
+<p>You will have very few slides with words on them. You will focus on the <strong>RESULTS</strong> of your research. You will present any necessary background or context that will allow the audience to understand the results.</p>
+<p>Explain to the audience what each plot is saying. Explain the significance or lack thereof. Explain how a plot might have lead you to do a different type of investigation.</p>
+<p>Do NOT talk about:</p>
+<ul class="simple">
+<li><p>where your data came from</p></li>
+<li><p>methodology or development process</p></li>
+<li><p>data description</p></li>
+</ul>
+</section>
+<section id="your-story">
+<h2>Your Story<a class="headerlink" href="#your-story" title="Link to this heading">#</a></h2>
+<p>Your Data Science results are colored by your subjective journey through the project. Take two minutes to discuss your personal, subjective experience. Talk about how things went:</p>
+<ul class="simple">
+<li><p>How did the Challenge Goals impact your project &amp; experience?</p></li>
+<li><p>How did you divide the work with your partner?</p></li>
+<li><p>How did you manage your time? Did you procrastinate? How did that work out?</p></li>
+<li><p>What frustrations did you have? Did that correlate to the size of your celebration once overcome (if ever)?</p></li>
+<li><p>What bugs caused you pain? How did you solve them?</p></li>
+<li><p>What did you learn?</p></li>
+<li><p>What would you do differently?</p></li>
+</ul>
+<p>The Final Presentation will be a your <strong>story</strong>–a verbal presentation of You will introduce your research topic, provide context and goals. , show plots, and explain the resuls.</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -584,12 +615,12 @@ You will NOT have:</p>
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="report.html"
+       href="final.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Final Report</p>
+        <p class="prev-next-title"><i class="fas fa-book fa-fw"></i> Final Code and Report</p>
       </div>
     </a>
     <a class="right-next"
@@ -597,7 +628,7 @@ You will NOT have:</p>
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><i class="fas fa-book fa-fw"></i> Final Project - Tips</p>
+        <p class="prev-next-title"><i class="fas fa-layer-group fa-fw"></i> Final Project - Tips</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -608,7 +639,21 @@ You will NOT have:</p>
             
             
               
-                <div class="bd-sidebar-secondary bd-toc"></div>
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-science-results">Data Science Results</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#your-story">Your Story</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
