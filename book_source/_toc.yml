@@ -44,17 +44,15 @@ chapters:
     sections:
       - file: final-project/handouts/index
         sections:
-          - file: final-project/handouts/proposal
-          - file: final-project/handouts/code
-          - file: final-project/handouts/report
+          - file: final-project/handouts/discovery
+          - file: final-project/handouts/organize
+          - file: final-project/handouts/final
           - file: final-project/handouts/presentation
       - file: final-project/tips/index
         sections:
-          - file: final-project/tips/ML
-          - file: final-project/tips/proposal
-          - file: final-project/tips/code
           - file: final-project/tips/report
           - file: final-project/tips/presentation
+          - file: final-project/tips/ML
   - file: visualizations/index
     sections:
       - file: visualizations/barchart

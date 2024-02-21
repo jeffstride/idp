@@ -1,4 +1,4 @@
-# Tips for Final Presentation
+# <i class="fas fa-book fa-fw"></i> Tips for Final Presentation
 
 The final presentation should highlight your discoveries, both expected and unexpected. You will want to focus on the visualizations and tell a story.  
 

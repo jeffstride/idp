@@ -1,13 +1,12 @@
-# Leveraging ML in the Final Project 
+# <i class="fas fa-book fa-fw"></i> Leveraging ML 
 As previously discussed, there are two principal categories of models: classification and regression. When conducting computations and analysis for your final project, it is important not to merely present numerical outputs. You need to ask yourself what the real-world significance is and draw practical implications. Use your correlations and models to identify patterns and trends, which, in turn, form the basis for making informed predictions.
 
 There are a few approaches you can take to draw effective and insightful information from the performance of an ML model. For the problem provided as an example, four different approaches are taken. 
 
-# Example Situation
+## Example Situation
 The prevalence of alcohol abuse remains a significant public health concern in the United States. To address this pressing issue and gain insights into the factors influencing alcohol abuse rates, a  machine learning (ML) model has been developed. 
 
 The following creates a regression model to predict the alcohol prevalence (label) in a state in the US given information that represents that state (features). **For the context of this problem, alcohol prevalence is defined as the median number of binge drinking occasions in a period of 30 days.**
-
 
 ````{tab-set}
 ```{tab-item} Features
@@ -20,14 +19,16 @@ Label: Alcohol prevalence (Median No. of Binge Drinking Occasions)
 ![sample code](../../_static/final_tips_dataset.png)
 ```
 ````
-# 1st Approach: Model Performance Evaluation
-Assessing the model's performance metrics, such as mean squared error, allows you to gauge the model's accuracy and generalization capabilities. This information is essential for understanding how well the model is likely to perform on new, unseen data.
+## Model Performance Evaluation
+(1st Approach) Assessing the model's performance metrics, such as mean squared error, allows you to gauge the model's accuracy and generalization capabilities. This information is essential for understanding how well the model is likely to perform on new, unseen data.
 ````{tab-set}
 
 ```{tab-item} Mean Squared Error
-Train Error: 0.006199999
+Train Error: 0.0061
 
-Test Error: 0.02508999
+Test Error: 0.0250
+
+> **NOTE**: You should not list out long, super precise values. If your Training Error is 0.006199999, just list it as 0.0061.
 ```
 ```{tab-item} Comments
 The model was accurately able to predict the alcohol prevalence value as indicated by the small testing error. 
@@ -36,8 +37,8 @@ This is a good start, but stopping at this point is not sufficient for the final
 ```
 ````
 
-# 2nd Approach: Identifying Important Features
-By analyzing the feature importances, you can determine which variables have the most significant impact on the predicted outcome. This information is crucial for understanding the driving factors influencing the label.
+## Identifying Important Features
+(2nd Approach) By analyzing the feature importances, you can determine which variables have the most significant impact on the predicted outcome. This information is crucial for understanding the driving factors influencing the label.
 
 To better understand the factors and their influence in alcohol prevalence, a Feature Importance analysis can be performed. Using the API provided by the **DecisionTreeRegressor** class, you can determine which of your features are most influential in the model’s predictions. 
 ````{tab-set}
@@ -77,8 +78,8 @@ Although the exact numbers varied each time, the general trend showed that among
 A higher score means that the specific feature will have a larger effect on the model that is being used to predict a certain variable. As you can see, the No. of Drinks had the highest score, and the Median Household Income had the secondest highest, showing that these are the two most influential features in the Machine Learning Model. 
 ```
 ````
-# 3rd Approach: Decision Tree Analysis 
-Another technique to better understand the significance of the results of your ML model, you can analyze what decisions were being made by the model to make predictions. You can do this by printing out images of your decision tree using the API provided by **sklearn.**
+## Decision Tree Analysis 
+(3rd Approach) Another technique to better understand the significance of the results of your ML model is to analyze what decisions were being made by the model to make predictions. You can do this by printing out images of your decision tree using the API provided by **sklearn.**
 
 Using the hyperparameter “max_depth”, you can restrict and change the length of the decision tree and observe how that affected the decisions being made at each node. In this case, the height was changed three times and an image of the Tree was generated each time.
 
@@ -134,8 +135,8 @@ Through this, we can successfully conclude that our most influential feature was
 ```
 ````
 
-# 4th Approach: Prediction and Forecasting
-Regression models are commonly used for predicting and forecasting numerical values based on historical data. The model's predictions can provide valuable insights into future trends, patterns, or behaviors, aiding in decision-making and planning.
+## Prediction and Forecasting
+(4th Approach) Regression models are commonly used for predicting and forecasting numerical values based on historical data. The model's predictions can provide valuable insights into future trends, patterns, or behaviors, aiding in decision-making and planning.
 
 In the context of Alcohol Prevalence for a given state, the following decisions can be made in order to better the lives of individuals living in these areas: 
 
@@ -146,13 +147,3 @@ In the context of Alcohol Prevalence for a given state, the following decisions 
 3. **Socioeconomic Patterns:** The predictions of the model may indicate relationships between alcohol consumption rates and socioeconomic elements like income, education, or employment rates. Such information can be used to examine the connection between alcohol use and social determinants of health.
 
 4. **Alcohol-Related Accidents and Crimes:** Higher alcohol consumption rates may be associated with an increased risk of alcohol-related accidents and crimes. Policymakers and law enforcement agencies can use the model's predictions to target areas with higher predicted consumption rates for enforcement and prevention measures.
-
-
-
-
-
-
-
-
-
-
