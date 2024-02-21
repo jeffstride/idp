@@ -14,14 +14,12 @@
 You may want to extend beyond your peers to make your project unique and cool. You will want to find creative and valuable additions to incorporate. Here are a few considerations.
 
 ## Change the research questions
-
 In conducting research, the formulation of a research question is a crucial step that evolves over time. As researchers delve deeper into the subject matter, gain new insights, and adapt to changing circumstances, the initial research question may undergo modifications or even a complete transformation. Changes can occur due to many reasons such as:
 1. Pilot Study or Data Collection
 2. Data Analysis and Initial Findings
 3. Feedback and Peer Review
 
 ## Focus on different demographics
-
 Having multiple research questions that focus on different areas or demographics within a project can enhance the depth and breadth of your study. Here's a description of how to accomplish this and a specific example to illustrate the concept:
 
 To create multiple research questions focusing on different areas or demographics, you should first identify the key dimensions they wish to explore within the broader research topic. These dimensions could be distinct variables, subgroups, or specific factors of interest. Each research question should be clear, relevant, and aligned with the unique characteristics of the subgroup or area under investigation.

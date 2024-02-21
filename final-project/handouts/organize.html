@@ -303,6 +303,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../tips/index.html"><i class="fas fa-layer-group fa-fw"></i> Final Project - Tips</a><input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-10"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l3"><a class="reference internal" href="../tips/discovery.html"><i class="fas fa-book fa-fw"></i> Discovery Tips</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../tips/report.html"><i class="fas fa-book fa-fw"></i> Tips for Final Report</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../tips/presentation.html"><i class="fas fa-book fa-fw"></i> Tips for Final Presentation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../tips/ML.html"><i class="fas fa-book fa-fw"></i> Leveraging ML</a></li>
@@ -566,7 +567,7 @@ document.write(`
 </ul>
 </li>
 <li><p>Sketches of target plots</p></li>
-<li><p>Some Unit Tests (Challenge Goal)</p></li>
+<li><p>Some Unit Tests (Challenge Goal only)</p></li>
 </ul>
 <p>More often than not, the raw data is not ready for plotting. The data needs to be rearranged and organized into a format that allows for <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> to plot. The data may need to be reduced, filtered, joined, calculated or reorganized.</p>
 <p>Things NOT necessary for this deliverable:</p>
@@ -589,7 +590,7 @@ document.write(`
 <li><p>How to sort values to make it more visually appealing</p></li>
 <li><p>Use a TimeSeries - Average by some timeframe</p></li>
 <li><p>How to layer more information into a single plot</p></li>
-<li><p>How to use different types of plots:</p>
+<li><p>How to use different types of plots along with impressive versions of each:</p>
 <ul>
 <li><p>Bar Charts</p></li>
 <li><p>Pie Charts</p></li>
@@ -604,14 +605,28 @@ document.write(`
 </ul>
 <div class="note dropdown admonition">
 <p class="admonition-title">Sample Sketch</p>
-<p>This sketch was created in Paint in about 10-15 minutes. These are sketches for a hypothetical project on the box office revenues of movies. The project is attempting to show correlation with Netflix and GDP. The sketches illustrate a few things:</p>
+<p>This sketch was created in Paint in about 15 minutes. These are sketches for a hypothetical project on the box office revenues of movies. The project is attempting to show correlation between box office revenues, Netflix earnings, and America’s GDP.</p>
+<p>Do not be fooled! This sketch represents <code class="docutils literal notranslate"><span class="pre">C-</span></code> quality work. The sketches illustrate a few things that should be addressed early. Before submitting this Organization Deliverable, the sketches should be updated to address these shortcomings:</p>
 <ul class="simple">
-<li><p>I need more creativity - having only a barchart and lines plots is not enough</p></li>
+<li><p>There are only 3 plots. Ouch!</p></li>
+<li><p>The y-axes are not all labeled.</p></li>
+<li><p>The bar chart showing genre of movies does not add any value to the research question. It is good that the bars are sorted by value, but there is no point to the chart.</p></li>
+<li><p>I lack annotation. The bar chart could have values added to the top of the bars (or inside the bars). The line plots could highlight inflection points.</p></li>
+<li><p>I need more creativity. Having only barchart and line plots is not enough. While line plots are fantastic at identifying correlations, there are other plots and activities that are great at doing showing correlation. The following example correlation methods may not be appropriate given the data collected or my research question. Regardless, here are some other methods:</p>
+<ul>
+<li><p><a class="reference external" href="https://stackoverflow.com/questions/39409866/correlation-heatmap">Correlation Heatmap</a></p></li>
+<li><p><a href="../../Topics/machine_learning/feature-importance.html">Machine Learning and Feature Importance</a></p></li>
+<li><p>Plotting Netflix vs GDP and then adding Statistical information such as <code class="docutils literal notranslate"><span class="pre">Coefficient</span> <span class="pre">of</span> <span class="pre">Determination</span></code>.</p></li>
+</ul>
+</li>
+<li><p>The graphs do not sufficiently deter critical counter arguments. For example, even though there is a negative correlation between Box Office revenue and Netflix earnings, we could show that other popular streaming services do (or do not) correlate.</p></li>
+</ul>
+<p>There are some positive realizations from doing these sketches that will impact my project’s efforts:</p>
+<ul class="simple">
 <li><p>I need data by year</p></li>
 <li><p>I need to be able to do <code class="docutils literal notranslate"><span class="pre">twinx</span></code> plots–to plot lines with different scales on the same axis</p></li>
-<li><p>I lack annotation<br />
-<img alt="Sample Sketch" src="../../_images/fp_movie_sketches.png" /></p></li>
 </ul>
+<p><img alt="Sample Sketch" src="../../_images/fp_movie_sketches.png" /></p>
 </div>
 </section>
 <section id="replit-project">
