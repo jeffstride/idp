@@ -1,4 +1,4 @@
-# Tips for Final Report
+# <i class="fas fa-book fa-fw"></i> Tips for Final Report
 
 * Be terse and professional.  
 * Provide an [Abstract](https://en.wikipedia.org/wiki/Abstract_(summary)): a very short, full summary of the research.  
@@ -19,7 +19,6 @@ In conducting research, the formulation of a research question is a crucial step
 1. Pilot Study or Data Collection
 2. Data Analysis and Initial Findings
 3. Feedback and Peer Review
-
 
 ## Focus on different demographics
 
