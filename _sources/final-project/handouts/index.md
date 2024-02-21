@@ -9,8 +9,8 @@ This is an overview of the deliverables at the various stages of your Final Proj
 During this Final Project you will have four deliverables.
 1) (20 pts) Discovery Document and Raw Data 
 2) (25 pts) Data Organization: Sketches of plots, Reduced Data, Starter Code  
-3) (35 pts) Final Code and Report  
-4) (20 pts) Final Presentation  
+3) (40 pts) Final Code and Report  
+4) (15 pts) Final Presentation  
 
 ## #1: Discovery Document  
 You will deliver the following:  
