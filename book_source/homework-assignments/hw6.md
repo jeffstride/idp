@@ -151,7 +151,7 @@ For each section below, attempt find the correct spelling for words
 using the generator just created.
 
 > IMPORTANT: In order to allow us to "compose" our misspellers together, we need each
-> generate to first yeild the word unchanged.
+> generate to first yield the word unchanged.
 
 ## Part 1
 You will implement a create_misspelling `generator`, but instead of using the name 'create_misspelling',
@@ -258,7 +258,7 @@ Be sure you pass the Unit Test `swap_letters`.
 ## suggest_mismisspellings
 It is time to implement the method `suggest_mismisspellings`. This method
 should return a list of suggested words that could be the correct
-spelling for the misspelled word. The list will have an maximum number
+spelling for the misspelled word. The list will have a maximum number
 of words added to the list which is specified in the optional `max` argument.
 
 ```python
@@ -280,7 +280,7 @@ because of the way generators work--you don't _call_ them, you _iterate_ through
 We will avoid recursion because we have a small, fixed number of generators that we want to compose.
 Instead, you'll simply use nested for-loops to get all possible combinations of mismisspellings.
 > Note: This is why we had each generator first return the word unchanged: we want the ability
-> to apply _ONLY_ _insert_letters. Havineg our other two mismisspellers return the word
+> to apply _ONLY_ _insert_letters. Having our other two mismisspellers return the word
 > unchanged allows us to write simple code to find mismisspellings when there is only one mistake.
 
 Be sure you pass the Unit Test _suggest_compose_. This tests that `suggest_mismisspellings` correctly finds a suggestion for a misspelled word that requires all three misspellings. 
@@ -303,7 +303,7 @@ We are going to change the approach to solving this _suggestion problem_. We
 will essentially go backwards. Instead of generating mis-misspelled candidates
 and then search the dictionary to see if it is indeed a correctly spelled word,
 we will compare 'every' word in the dictionary against the misspelled word
-to calculate how 'close' it is to our misspelled word. We will use Levenstein Distance for this.  
+to calculate how 'close' it is to our misspelled word. We will use Levenshtein Distance for this.  
 
 Your method will identify the closest distance that any word is to the misspelled word.
 It will return a sorted list of all the words at that minimum distance from the misspelled word. 
@@ -364,7 +364,7 @@ Compare the speed of the Python implementation to the module implementation by d
 ```
 Dictionary: data/wordList.txt
 Essay to check: data/englishEssay.txt
-Time to spellcheck: 2.338
+Time to spellcheck: 3.012
       civalized: line:   1  word:  3
    oportunities: line:   6  word:  4
          seeems: line:  15  word:  9
@@ -379,8 +379,8 @@ civalized     --> ['civilized']
 oportunities  --> ['opportunities']
 seeems        --> ['seems']
 peopl         --> ['people']
-ettiquitt     --> ['antiquist', 'antiquity', 'etiquette']
-shoudl        --> ['dhoul', 'ghoul', 'seoul', 'shaul', 'shoad', 'shoal', 'shoddy', 'shode', 'shoed', 'shoful', 'shonde', 'shood', 'shool', 'shorl', 'shough', 'should', 'shouldn', 'shouse', 'shout', 'shouts', 'shoval', 'shovel', 'showd', 'shroud', 'shrouds', 'shroudy']
+ettiquitt     --> ['antiquist', 'antiquity', 'etiquet', 'etiquette']
+shoudl        --> ['dhoul', 'ghoul', 'seoul', 'shaul', 'shoad', 'shoal', 'shod', 'shoddy', 'shode', 'shoed', 'shoful', 'shonde', 'shood', 'shool', 'shorl', 'shou', 'shough', 'should', 'shouldn', 'shouse', 'shout', 'shouts', 'shoval', 'shovel', 'showd', 'shroud', 'shrouds', 'shroudy', 'shul', 'soud', 'soul']
 psudo-code    --> ['pseudo-code', 'psuedo-code']
 algorythm     --> ['algorithm']
 ```
@@ -453,7 +453,7 @@ for c in range(max_hypotenuse):
 The avoid the above code, you may have to _refactor_ or _reorganize_ your code in ways that allow you to
 save data as you go.  
 
-To help you validate your code, ere is a table of the count of Triples for a specific Max Hypotenuse:
+To help you validate your code, here is a table of the count of Triples for a specific Max Hypotenuse:
 ```
 Count   Max Hypotenuse
   1      5
