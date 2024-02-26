@@ -28,7 +28,7 @@ You will deliver the following:
 You will deliver a polished research document as described [here](final.md). The document will focus on the plots and the insights they provide.  
 
 ## #4: Final Presentation
-The Final Presentation will be a your **story**--a verbal presentation of your Data Science results colored by your subjective journey through the project. You will introduce your research topic, provide context and goals. In short, show plots and explain the results. You will have a slide deck that is almost exclusively a collection of the plots that tell a story.  
+The Final Presentation will be your **story**--a verbal presentation of your Data Science results colored by your subjective journey through the project. You will introduce your research topic, provide context and goals. In short, show plots and explain the results. You will have a slide deck that is almost exclusively a collection of the plots that tell a story.  
 
 
 ## Table of Contents
