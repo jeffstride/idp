@@ -82,7 +82,7 @@ This dataset contains graduation rates of high school students in the year 2018 
 |district|string: The name of the school district|
 |county|[string]: A list of county names that the school district is in. A district may span multiple counties|
 |race|string: The race of the students in this row. Races included are ['white', 'hispanic', 'black', 'asian', 'multi']|
-|4YGR|double: The perceent of students of this race that graduated high school in four years. If a student graduated in 5 years, another column tracks that.|
+|4YGR|double: The percent of students of this race that graduated high school in four years. If a student graduated in 5 years, another column tracks that.|
 
 **Teachers_2014.csv**  
 This dataset contains salary & benefits information for full-time teachers by school district in the year 2014.  
