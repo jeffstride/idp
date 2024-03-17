@@ -11,11 +11,13 @@ Go to the `Settings` tab and change two things:
 
 These will make your code look easier to read and conform to all the template files provided to you.
 
-## Auto-Formatting
-This appears to be broken. It used to work.  
+## Viewing CSV Files
+You'll want to install an Extension. Open the Extension manager in.
+Search using they keyword "csv". Then, choose to install the CVS Editor.
+Once installed, you'll see the following in the Installed tab.  
+![CSV Editor](../../_static/csv_extension.png).   
 
-`ctrl+s` : This will format your file according to the settings. Your code will have to be syntactically correct
-in order for this to work. This will not adjust long comments to wrap accordingly.   
+To open a file using the editor, right-click on the CSV file and choose: `Open with CSV Editor`. 
 
 ## Restart Server
 Sometimes the replit evironment may have the CPU or RAM pegged even though you're not doing anything.
