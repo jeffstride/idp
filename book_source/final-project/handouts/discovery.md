@@ -45,7 +45,7 @@ Your document will have the following sections:
 * **Motivation.** In one or two paragraphs, expand on your research questions by providing context about why you care, or why anyone should care. How does knowing the answers affect the world or our understanding of it?  
 * **Dataset.** This is the MOST important part of this document. (more details below) You will do the following. 
     * Describe the real, existing dataset that you will use, including exact URLs.  
-    * You may not use a dataset that has been used in a previous CSE 163 assignment, AP Research work, or competitiona (TSA, FBLA).  
+    * You may not use a dataset that has been used in a previous CSE 163 assignment, AP Research work, or competition (TSA, FBLA).  
     * The data must be real — neither you nor someone else may make up the data.  
     * The data must be large enough (500 lines or more).  
 * **Challenge goals.** 

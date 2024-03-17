@@ -35,7 +35,7 @@ The details for these are listed in the <a href="discovery.html#challenges">Disc
 You will implement and deliver these either with the `Data Organization` or `Final Code and Report` deliverable.  
 
 ## #5: Final Presentation
-The Final Presentation will be a your **story**--a verbal presentation of your Data Science results colored by your subjective journey through the project. You will introduce your research topic, provide context and goals. In short, show plots and explain the results. You will have a slide deck that is almost exclusively a collection of the plots that tell a story.  
+The Final Presentation will be your **story**--a verbal presentation of your Data Science results colored by your subjective journey through the project. You will introduce your research topic, provide context and goals. In short, show plots and explain the results. You will have a slide deck that is almost exclusively a collection of the plots that tell a story.  
 
 
 ## Table of Contents
