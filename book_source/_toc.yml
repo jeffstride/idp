@@ -18,6 +18,7 @@ chapters:
         - file: Topics/misc/collections
         - file: Topics/misc/comments
         - file: Topics/misc/my_st
+        - file: Topics/misc/interfaces_classes
       - file: Topics/Replit/index
         sections:
           - file: Topics/Replit/building-in-replit
