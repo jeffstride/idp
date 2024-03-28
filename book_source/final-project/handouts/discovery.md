@@ -3,7 +3,7 @@
 ## Overview
 You will deliver the following:  
 * A Google Document (described below).
-* A Link to a Google Share that holds all your **raw data**. Your link will be in the document.  
+* A Link to a Google Folder that holds all your **raw data**. Your link will be in the document.  
 * Target Challenge Goals
 
 You do not need to have any code written yet, but you may want to use some code to help you learn about the data. For example, you may want to print out the columns or get some statistical information about the data using code.  
@@ -65,7 +65,7 @@ Here is an short example. Your dataset documentation is likely to be longer!
 ```{admonition} Sample Writeup
 :class: note
 **Datasets Summary:**   
-All the data can be found on this [Google Share](https://support.google.com/a/users/answer/9310249?hl=en).  
+All the data can be found on this [Google Folder](https://support.google.com/drive/answer/7166529?hl=en).  
 
 This shows that we are using only three datasets.     
 
