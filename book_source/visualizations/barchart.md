@@ -8,7 +8,7 @@ Bar charts are good when:
   
 Bar charts are NOT good when:  
 * You're attempting to show a correlation. (e.g. more X means more Y)  
-* The data are indended to be continuous and not discrete  
+* The data are intended to be continuous and not discrete  
 * There are a lot of points to show (e.g. 20 or more)
 
 There are a lot of different libraries and methods to create bar charts. Here is a quick summary. Details are found in the examples below.  
@@ -17,7 +17,7 @@ There are a lot of different libraries and methods to create bar charts. Here is
 |`df.plot(kind='bar')`|There is only one value per category|
 |`df.plot.barh()`|There is one value per category and horizontal bars adds meaning or there are many categories to show| 
 |`plt.bar()`|Essentially the same as `df.plot`, but you may not have a DataFrame handy|  
-|`plt.hist()`|You want to count occurences|  
+|`plt.hist()`|You want to count occurrences|  
 |`sns.barplot()`|There are many values per category to be averaged. The data can be structured differently. |
 |`sns.catplot(kind='bar')`|Effectively the same as `sns.barplot()`|    
 
@@ -25,7 +25,7 @@ There are a lot of different libraries and methods to create bar charts. Here is
 ## Positive vs Negative Bars
 In this example bar chart you'll see that the positive values have green bars
 while the negative values have red bars. The example below only uses two colors
-to emphasize the direction of change. We use a bar chart here depsite there being
+to emphasize the direction of change. We use a bar chart here despite there being
 many different years to plot because the green/red colors emphasize the relative changes nicely.
 
 
@@ -198,7 +198,7 @@ def sorted_plt_bars(df):
     plt.xlabel('')
 ```
 ```{tab-item} Data
-This is the first 11 rows of the **orginal** data (which was unsorted).  
+This is the first 11 rows of the **original** data (which was unsorted).  
 
 ![bar chart](../_static/sorted_data.jpg)
 ```
@@ -206,7 +206,7 @@ This is the first 11 rows of the **orginal** data (which was unsorted).
 * When there are a good number of bars, the viewer will benefit if the bars are sorted.   
 * In this chart, text is added inside the bar to provide the bar's value. Without a grid background (which can be added when using seaborn), it can be hard to know what the precise value is. There are multiple ways to add text. In this example, we use the `ax.bar_label` API. But, one can also use `plt.text` or `ax.annotate` methods.  
 * The x-axis label is purposely set to an empty string because the viewer can clearly the x-axis values and understand their meaning.  
-* The colors of the bars can be cusomized using the `color` named parameter. You can set all the bars to one identical color, or pass in a sequence of values such as `df['color']` (if you create a meaningful and correct color column in the dataframe).  
+* The colors of the bars can be customized using the `color` named parameter. You can set all the bars to one identical color, or pass in a sequence of values such as `df['color']` (if you create a meaningful and correct color column in the dataframe).  
 ```
 ```` 
 
@@ -362,7 +362,7 @@ def stacked_df_plot_kind(df):
 ```
 
 ```{tab-item} Data
-This is the first 11 rows of the **orginal** data (which was unsorted).  
+This is the first 11 rows of the **original** data (which was unsorted).  
 
 ![bar chart](../_static/sorted_data.jpg)
 ```
@@ -412,7 +412,7 @@ def plot_side_by_side(df):
 ```
 
 ```{tab-item} Data
-This is the first 11 rows of the **orginal** data (which was unsorted).  
+This is the first 11 rows of the **original** data (which was unsorted).  
 
 ![bar chart](../_static/sorted_data.jpg)
 ```
@@ -500,7 +500,7 @@ def df_horiz_plot(df):
 ```
 
 ```{tab-item} Data
-This is the first 11 rows of the **orginal** data (which was unsorted).  
+This is the first 11 rows of the **original** data (which was unsorted).  
 
 ![bar chart](../_static/sorted_data.jpg)
 ```
@@ -568,7 +568,7 @@ def sorted_bars(df):
 ```
 
 ```{tab-item} Data
-This is the first 11 rows of the **orginal** data (which was unsorted).  
+This is the first 11 rows of the **original** data (which was unsorted).  
 
 ![bar chart](../_static/sorted_data.jpg)
 ```

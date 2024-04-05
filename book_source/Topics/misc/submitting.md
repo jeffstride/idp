@@ -110,4 +110,4 @@ Zipfiles cannot contain any of the required files (which are always in the _root
 When you resubmit a Zipfile, it should contain all the files of the original zipfile.  
 ```
 #### Footnotes
-[1] `subdirectory` and `subfolder` are identical. There is no difference between these two terms. We will use them interchangably. 
+[1] `subdirectory` and `subfolder` are identical. There is no difference between these two terms. We will use them interchangeably. 

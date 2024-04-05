@@ -38,7 +38,7 @@ In our first dataset, the threshold for automatically being in the NBA is
 
 The two data types are:  
 1) Predictable Data :  a person is in the NBA based entirely on their height.  
-2) Ranomized Data : the taller a person is, the more likely they are in the NBA.
+2) Randomized Data : the taller a person is, the more likely they are in the NBA.
 
 **Example Data**  
 ````{tab-set}
@@ -236,7 +236,7 @@ an importance of 60% while **gender** is ~40%.
 
 **Model Predictions Drawn**  
 In this graph we see both how the actual data is distributed and how the predictions are made.
-The predictions are shown with the larger, blue and organge dots. On top of predictions are
+The predictions are shown with the larger, blue and orange dots. On top of predictions are
 smaller, red and green dots that represent that actual data. It shows that the model does
 a great job! The picture says a lot and you should find it useful in concluding that
 the model is sound.  
@@ -269,7 +269,7 @@ Read on and hopefully it will all make sense.
 Here are the results when **gender** is removed. I find the results fascinating! First off, the
 accuracy of the model is 99.5%!! Where you expecting that?  
 
-How in the world does the model predict with 99.5% accuracy when we ingore **gender** which has
+How in the world does the model predict with 99.5% accuracy when we ignore **gender** which has
 a _Feature Importance_ of 40%?  
 
 What we see in the graph is that the model doesn't predict NBA until one is 80 inches tall. In this
@@ -305,7 +305,7 @@ overall Accuracy is still very high. What happens?
 
 We see that the model's predictions for men is still very good and it basically ignores
 that women are shorter on average. This means that we have bad Fairness as measured by
-Equal Opportunit: there are too many False Negatives and not enough (or any) True-Positives.
+Equal Opportunity: there are too many False Negatives and not enough (or any) True-Positives.
 
 In other words, the True-Positive rate
 (the ability to correctly identify WNBA players) for women is near 0%.
@@ -327,7 +327,7 @@ us to conclude that the model is **NOT FAIR** when we exclude **gender** from th
 #### Summary
 _Feature Importance_ : Each feature is given a percentage amount
 that reflects how much that feature is used in the Decision Tree. The sum of all
-the imporance values will total 100%.   
+the importance values will total 100%.   
 
 _Feature Importance_ does **NOT** necessarily reflect how accurate the model will be if that feature
 is removed from consideration.  

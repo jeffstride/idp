@@ -105,7 +105,7 @@ v1 = df.loc[2, 'col1']  # Returns a single value from row 2 and column 'col1'
 ```
 
 ```{tab-item} Series 
-Series baesd on row/column: Both of these lines will return a series of either a **row** or a **column**. Since the row parameter comes first, _you can forgo the column parameter if you were only looking for a single row_. However, if you are looking for a single column, _you need to include a `:`_, which just refers to all of the rows.
+Series based on row/column: Both of these lines will return a series of either a **row** or a **column**. Since the row parameter comes first, _you can forgo the column parameter if you were only looking for a single row_. However, if you are looking for a single column, _you need to include a `:`_, which just refers to all of the rows.
 
 ```python
 ''' 
@@ -154,7 +154,7 @@ d3 = df.loc[[1, 3], 'col1': 'col3'] # returns a dataframe contained in either ro
 
 All numbers in the comments of the sample programs refer to the **index** positions of the rows/columns, meaning row 1 refers to the **second** row of the dataframe
 
-`df.iloc` is an **integer** index based slicing function. It **only** takes integer numbers into its arguments. However, it is _very similar to the `.loc` function_, in that there are two arguments, one for the **row** and one for the **column**. The  difference is that while `.loc`'s arguments for its slicers are **inclusive**, the arguments for `.iloc`’s slicers are similar to base python. The first argument is **inclusive** while the second is **exclusive**. The positional nature makes `.iloc` very convenient when dealing with _large dataframes with confusing labels and custom indecies_. Sometimes, locating a **value** or **slice** based on its **position** in the dataframe is more straightforward.
+`df.iloc` is an **integer** index based slicing function. It **only** takes integer numbers into its arguments. However, it is _very similar to the `.loc` function_, in that there are two arguments, one for the **row** and one for the **column**. The  difference is that while `.loc`'s arguments for its slicers are **inclusive**, the arguments for `.iloc`’s slicers are similar to base python. The first argument is **inclusive** while the second is **exclusive**. The positional nature makes `.iloc` very convenient when dealing with _large dataframes with confusing labels and custom indices_. Sometimes, locating a **value** or **slice** based on its **position** in the dataframe is more straightforward.
 
 ````{tab-set}
 ```{tab-item} Single Value

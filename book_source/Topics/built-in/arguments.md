@@ -171,7 +171,7 @@ separated by `'-'`.  In summary, the code effectly calls print like this:
 **Third call**  
 In the third call things get even more complicated. here we create a `dictionary` that is a map of
 named arguments with values. It contains four named arguments, two of which are explicitly named
-in the `example_c` prototype, and lother two are defined in the `print` prototype. So, the call results in:  
+in the `example_c` prototype, and other two are defined in the `print` prototype. So, the call results in:  
 ```python
 value1 = 4
 *args = (3, )
