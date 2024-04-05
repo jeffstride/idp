@@ -14,6 +14,7 @@ Explanations and code for these types of plots:
 - Line/Scatter
 
 ## TODO
+* [Correlation Heatmap](https://stackoverflow.com/questions/39409866/correlation-heatmap)  
 * Explain when to use:
     * ser.plot()  
     * df.plot()  

@@ -17,6 +17,7 @@ chapters:
         - file: Topics/misc/submitting
         - file: Topics/misc/collections
         - file: Topics/misc/comments
+        - file: Topics/misc/rand_response.md
         - file: Topics/misc/my_st
         - file: Topics/misc/interfaces_classes
       - file: Topics/Replit/index
@@ -46,17 +47,16 @@ chapters:
     sections:
       - file: final-project/handouts/index
         sections:
-          - file: final-project/handouts/proposal
-          - file: final-project/handouts/code
-          - file: final-project/handouts/report
+          - file: final-project/handouts/discovery
+          - file: final-project/handouts/organize
+          - file: final-project/handouts/final
           - file: final-project/handouts/presentation
       - file: final-project/tips/index
         sections:
-          - file: final-project/tips/ML
-          - file: final-project/tips/proposal
-          - file: final-project/tips/code
+          - file: final-project/tips/discovery
           - file: final-project/tips/report
           - file: final-project/tips/presentation
+          - file: final-project/tips/ML
   - file: visualizations/index
     sections:
       - file: visualizations/barchart
