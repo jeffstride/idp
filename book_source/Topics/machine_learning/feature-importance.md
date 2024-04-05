@@ -18,7 +18,7 @@ There are several techniques to measure _feature importance_. This unit will go 
 
 ```{admonition} External Resources
 :class: seealso dropdown
-* [Scikit Learn Permuation Feature Importance](https://scikit-learn.org/stable/modules/permutation_importance.html)  
+* [Scikit Learn Permutation Feature Importance](https://scikit-learn.org/stable/modules/permutation_importance.html)  
 * [Understanding Feature Importance and How to Implement it in Python](https://towardsdatascience.com/understanding-feature-importance-and-how-to-implement-it-in-python-ff0287b20285)  
 * [MSE Explained](https://datagy.io/mean-squared-error-python/)  
 * [Linear Regression in Python](https://realpython.com/linear-regression-in-python/)  

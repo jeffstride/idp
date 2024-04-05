@@ -311,7 +311,7 @@ def my_function(x, a, b, c):
 2. Select a set of values for the coefficients that represents a valid guess. Assign these coefficients to a
 list, often named, `p0`. You'll provide `p0` as an argument to `curve_fit` to help it get started as well as to
 understand how many coefficients to solve for.  
-3.  You'll call `curve_fit` with the following arguments: methoid pointer, set of points you want to fit, along 
+3.  You'll call `curve_fit` with the following arguments: method pointer, set of points you want to fit, along 
 with the initial guess. For example:
 ```python
 # curve_fit returns a tuple. The first item is a list of coefficients. The second
@@ -323,7 +323,7 @@ coeffs, _ = curve_fit(logarithmic_sinusoidal_wave, x_data, y_data, p0=p0)
 ````{tab-set}
 ```{tab-item} Sinusoidal  
 In our custom curve, we have coefficients for each of the following: amplitude, frequency, rate of logarithmic 
-degredation, phase and offset.  
+degradation, phase and offset.  
 
 The top plot has "zero arguments" provided in the method `logarithmic_sinusoidal_wave` which means that
 it uses all the default values (10, 1, 0.2, 0, 0). This is why the title of the top plot is: "Arguments: ()".  
@@ -365,14 +365,14 @@ def show_sinusoidal_curve():
 ```
 ```{tab-item} Best Fit
 This plot shows the generated data points (that have noise) as small red dots. These data points
-were derived by adding a noise ($\pm 1$) to the sinusoidal equation using the argments (15, 0.5, 0.1, 0, 10).  
+were derived by adding a noise ($\pm 1$) to the sinusoidal equation using the arguments (15, 0.5, 0.1, 0, 10).  
 
 The blue line is the best fit curve that fits the `logarithmic_sinusoidal_wave` (provided
 in the code of the Sinusoidal tab.)  
 
 The inset shows how the actual arguments used when generating the points with noise, and it compares
 them against the coefficients for the curve of best fit. Here you can see that it slightly underestimated
-the amplitidue. It was 0.15 off of the frequency, only 0.01 way from the rate of degradation, and only
+the amplitude. It was 0.15 off of the frequency, only 0.01 way from the rate of degradation, and only
 0.02 away from the offset. The phase was 6.56 off of the actual phase used.  
 ![regplot](../_static/bestfit_curve_fit.png)
 ```
@@ -422,7 +422,7 @@ random values intended to be "noise" or imperfections in the data.
 
 We chose to pass around the many coefficient to `generate_points` and `logarithmic_sinusoidal_wave` by
 using a tuple of values. `wave_args` is a tuple with all the "true" coefficients used in the 
-hypothetical experiement. The use of tuple shortens the code and makes it easier to read, so
+hypothetical experiment. The use of tuple shortens the code and makes it easier to read, so
 long as you understand what is going on. We unpack the values when we call `generate_points` which
 collects and repacks them into the tuple named 'args'. In turn, it can easily call the sinusoidal method
 with the tuple. Altogether, this allows us to generate points and solve for coefficients using as many or

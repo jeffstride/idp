@@ -37,9 +37,9 @@ Let's consider a research project examining the incidents in aerospace technolog
 ```{tab-item} Comments
 In this example, the researchers have formulated five distinct research questions, each focusing on a different area and demographic. By having multiple research questions, the researchers can collect data specifically tailored to each potential hazard in aerospace engineering as well as factors of ML.
 
-The first two focus on aircraft accidents and their connection to technology. The third question covers envionrmental and geographical demographics. The fourth is centered towards human behavior and physcology. And lastly, the fifth questions aims to draw connections using a Machine Learning model. 
+The first two focus on aircraft accidents and their connection to technology. The third question covers environmental and geographical demographics. The fourth is centered towards human behavior and psychology. And lastly, the fifth questions aims to draw connections using a Machine Learning model. 
 
-The different perspectives covered in this research, enviornmental, technology, physcological, and more make it complex and incredibly insightful. It also sets up the stage for conversation between findings. 
+The different perspectives covered in this research, enviornmental, technology, physiological, and more make it complex and incredibly insightful. It also sets up the stage for conversation between findings. 
 ```
 ````
 

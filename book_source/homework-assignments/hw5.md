@@ -267,7 +267,7 @@ Some reminders:
 * You should add _some_ comments to `hw5_test.py`.  
 
 ## HTML Stripping
-In prior years, students were given HTML files and not text files. This section is a dicussion about stripping
+In prior years, students were given HTML files and not text files. This section is a discussion about stripping
 HTML out of the documents which has already been done for you.  
 
 In ReplIt, you are provided with two folders with documents. When you run `main.py`, you should start off
@@ -280,7 +280,7 @@ of wikipedia HTML articles with the HTML stripped away to reveal only the conten
 the HTML tags, there are some pros and cons.  
 
 **Pros of Stripping:**  
-* The developer can proceed without the distraction of how the code interfers with the solution.
+* The developer can proceed without the distraction of how the code interferes with the solution.
 * The indexing solution is not "confused" with needless code (the keywords and the non-English tag names).
 * The size of the content is reduced.
 

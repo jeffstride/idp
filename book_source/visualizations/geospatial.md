@@ -3,7 +3,7 @@
 Geospatial plots are great at:  
 1. Showing how an **area** is impacted relative to other **areas.**  
 2. Revealing which area is impacted.  
-3. Illustrateing a pattern in the location of something.
+3. Illustrating a pattern in the location of something.
 
 Geospatial plots are NOT good at:  
 1. Showing **how** one value correlates to another. (Use a line plot for this)  
@@ -53,7 +53,7 @@ In this example, we have two geospatial in one figure where there are just three
 
 By hiding Alaska and Hawaii, we can bring a much greater focus on the states. Providing a legend is very helpful. And, eliminating the box with longitude and latitude ticks removes an unnecessary distraction since we really don't care about the lat/long.  
 
-In the chart on the right, we can easily see that California is large and brilliant yellow which ephasizes its impact. 
+In the chart on the right, we can easily see that California is large and brilliant yellow which emphasizes its impact. 
 There are two ways to hide these states. One way is to eliminate them from the GeoDataFrame:  
 `gdf = gdf[(gdf['NAME'] != 'Alaska') & (gdf['NAME'] != 'Hawaii')]`  
 Another way is to set some limits on the x & y axes: `ax2.set_xlim(-130, -65)`
@@ -182,7 +182,7 @@ When the geometry of the GeoDataFrame is modified, the plotting code is pretty s
 ````
 
 ## Annotated with Table Inset
-The problem with the plot above is that it is very hard to see if there is any difference between Orgegon and Nevada; the colors are just too close! To fix that we will annotate each state with the count of the votes printed onto the state's location. 
+The problem with the plot above is that it is very hard to see if there is any difference between Oregon and Nevada; the colors are just too close! To fix that we will annotate each state with the count of the votes printed onto the state's location. 
 ````{tab-set}
 ```{tab-item} Image
 ![election image](../_static/geo_elect_annotated.jpg)
@@ -270,7 +270,7 @@ Is there a correlation between population and electoral votes? Does the size of 
 
 ````{tab-set}
 ```{tab-item} Image
-One the top-left, you'll see a plot representing Electoral Votes by state. Were we to plot a geospatial plot of Population, we'd see something virtually identical and therefore a correrlation would be seen.  
+One the top-left, you'll see a plot representing Electoral Votes by state. Were we to plot a geospatial plot of Population, we'd see something virtually identical and therefore a correlation would be seen.  
 One the top-right, you'll see a plot representing each state's size in square miles.
    
 ![election image](../_static/geo_correlation.jpg)
@@ -303,7 +303,7 @@ Same data as above.
 ![election data](../_static/geo_elect_data.jpg)
 ```
 ```{tab-item} Comments
-Were we to plot a geospatial plot of Population, we'd see something virtually identical to the top-left and, therefore, a correrlation would be seen. But, it would take **two** geospatial plots to show the correlation. And, in this specific case, the correlation is **extremely strong**; Electoral Votes is, in fact, calculated by a state's population. In this example, we omitted the second geospatial plot in favor of a scatter plot.   
+Were we to plot a geospatial plot of Population, we'd see something virtually identical to the top-left and, therefore, a correlation would be seen. But, it would take **two** geospatial plots to show the correlation. And, in this specific case, the correlation is **extremely strong**; Electoral Votes is, in fact, calculated by a state's population. In this example, we omitted the second geospatial plot in favor of a scatter plot.   
 
 One the top-right, you'll see a plot representing each state's size in square miles. Is there a correlation of a state's size to the count of Electoral Votes? It's a bit hard to determine from the geospatial plot. However, in combination with the scatter plots, one can be more confident in their assessment.  
 
