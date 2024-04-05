@@ -90,7 +90,7 @@ This dataset contains salary & benefits information for full-time teachers by sc
 |------|-----------|
 |DNUM|integer: The number for the school district. For example, Northshore is 417.|
 |PERV|integer: The number of personal vacation days that a teacher gets per year.|
-|BASE|double: The Base salaray of a full-time teacher.|
+|BASE|double: The Base salary of a full-time teacher.|
 |HRPAY|double: The additional pay given to a teacher beyond their base salary for simply being a teacher.|
 |SPST|double: The average additional pay (stipend) given to a teacher for coaching a sport.|
 |APST|double: The additional pay (stipend) given to an AP Teacher.|

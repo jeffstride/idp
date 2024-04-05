@@ -258,6 +258,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <li class="toctree-l3"><a class="reference internal" href="../misc/comments.html">Writing Effective Comments</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../misc/rand_response.html">Reversing Randomized Response</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../misc/my_st.html">Notes on MyST</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../misc/interfaces_classes.html">Interfaces and Classes</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../Replit/index.html"><i class="fas fa-book fa-fw"></i> Replit</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -597,7 +598,7 @@ the specifics of how it impacts the results is different in each study.</p>
 <p>The two data types are:</p>
 <ol class="arabic simple">
 <li><p>Predictable Data :  a person is in the NBA based entirely on their height.</p></li>
-<li><p>Ranomized Data : the taller a person is, the more likely they are in the NBA.</p></li>
+<li><p>Randomized Data : the taller a person is, the more likely they are in the NBA.</p></li>
 </ol>
 <p><strong>Example Data</strong></p>
 <div class="sd-tab-set docutils">
@@ -801,7 +802,7 @@ for your gender, you’re in! When we look at the <em>Feature Importance</em> we
 an importance of 60% while <strong>gender</strong> is ~40%.</p>
 <p><strong>Model Predictions Drawn</strong><br />
 In this graph we see both how the actual data is distributed and how the predictions are made.
-The predictions are shown with the larger, blue and organge dots. On top of predictions are
+The predictions are shown with the larger, blue and orange dots. On top of predictions are
 smaller, red and green dots that represent that actual data. It shows that the model does
 a great job! The picture says a lot and you should find it useful in concluding that
 the model is sound.</p>
@@ -829,7 +830,7 @@ drops to just ~6%. <strong>What does that say about Feature Importance?</strong>
 <h3>Gender Removed<a class="headerlink" href="#gender-removed" title="Link to this heading">#</a></h3>
 <p>Here are the results when <strong>gender</strong> is removed. I find the results fascinating! First off, the
 accuracy of the model is 99.5%!! Where you expecting that?</p>
-<p>How in the world does the model predict with 99.5% accuracy when we ingore <strong>gender</strong> which has
+<p>How in the world does the model predict with 99.5% accuracy when we ignore <strong>gender</strong> which has
 a <em>Feature Importance</em> of 40%?</p>
 <p>What we see in the graph is that the model doesn’t predict NBA until one is 80 inches tall. In this
 particular dataset, one woman happened to be that tall while 12 others in the WNBA were not that tall.<br />
@@ -859,7 +860,7 @@ fairness scientifically once we define it.</p>
 overall Accuracy is still very high. What happens?</p>
 <p>We see that the model’s predictions for men is still very good and it basically ignores
 that women are shorter on average. This means that we have bad Fairness as measured by
-Equal Opportunit: there are too many False Negatives and not enough (or any) True-Positives.</p>
+Equal Opportunity: there are too many False Negatives and not enough (or any) True-Positives.</p>
 <p>In other words, the True-Positive rate
 (the ability to correctly identify WNBA players) for women is near 0%.
 This is also called PPV (Positive Predictive Value) <a class="reference external" href="https://youtu.be/QqgJHryKOSU">Video Reference</a></p>
@@ -883,7 +884,7 @@ Male</label><div class="sd-tab-content docutils">
 <h4>Summary<a class="headerlink" href="#id1" title="Link to this heading">#</a></h4>
 <p><em>Feature Importance</em> : Each feature is given a percentage amount
 that reflects how much that feature is used in the Decision Tree. The sum of all
-the imporance values will total 100%.</p>
+the importance values will total 100%.</p>
 <p><em>Feature Importance</em> does <strong>NOT</strong> necessarily reflect how accurate the model will be if that feature
 is removed from consideration.</p>
 <p>Plotting the model’s predictions provides a lot of information.</p>

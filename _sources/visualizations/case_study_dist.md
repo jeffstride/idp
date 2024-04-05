@@ -473,7 +473,7 @@ def create_dual_hist_plots(df, df_us):
     plt.suptitle('Actual vs Study Sample', fontsize=20)
 ```
 ```{tab-item} Box Plot
-Here we see that the younger you are, the farther you can throw. The one exception is in the 88-99 age bracket. There we see that they are a bit better than they 78-87 year olds. Even though the average is slightly greater than the 68-77 year-olds, the range is much smaller. This is probably due to the low numbers we have the higher age group and is an anomoly in the data. 
+Here we see that the younger you are, the farther you can throw. The one exception is in the 88-99 age bracket. There we see that they are a bit better than they 78-87 year olds. Even though the average is slightly greater than the 68-77 year-olds, the range is much smaller. This is probably due to the low numbers we have the higher age group and is an anomaly in the data. 
 
 ![Age Box Plot](../_static/dist_age_box_plots.png)   
 
@@ -499,7 +499,7 @@ This plot is starting to show a little more creativity. Notice a few things:
 
 First, the y-label goes up to 1.0, which represent 100% of people at that distance. No matter what distance we look at, all the people there represent 100% of the people there. For example, even though at 120 yards there are only 2 people there, they make up 100% of the people there. At 110 yards, there is only one person who happens to be in the 18-27 year-old age-bracket, which is why the graph is entirely blue at 110 yards.   
 
-Secondly, the older participants make up a very small percentage of the people overall and they are virually gone at 70 yards (with just a few outliers). At very short distances, the majority of people there are 58 and older. 
+Secondly, the older participants make up a very small percentage of the people overall and they are virtually gone at 70 yards (with just a few outliers). At very short distances, the majority of people there are 58 and older. 
 
 ![Area of age percentage at each distance](../_static/dist_age_area.png)   
 ```{admonition} See Code and Data

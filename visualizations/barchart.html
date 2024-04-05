@@ -258,6 +258,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <li class="toctree-l3"><a class="reference internal" href="../Topics/misc/comments.html">Writing Effective Comments</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Topics/misc/rand_response.html">Reversing Randomized Response</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Topics/misc/my_st.html">Notes on MyST</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Topics/misc/interfaces_classes.html">Interfaces and Classes</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../Topics/Replit/index.html"><i class="fas fa-book fa-fw"></i> Replit</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -568,7 +569,7 @@ document.write(`
 <p>Bar charts are NOT good when:</p>
 <ul class="simple">
 <li><p>You’re attempting to show a correlation. (e.g. more X means more Y)</p></li>
-<li><p>The data are indended to be continuous and not discrete</p></li>
+<li><p>The data are intended to be continuous and not discrete</p></li>
 <li><p>There are a lot of points to show (e.g. 20 or more)</p></li>
 </ul>
 <p>There are a lot of different libraries and methods to create bar charts. Here is a quick summary. Details are found in the examples below.</p>
@@ -589,7 +590,7 @@ document.write(`
 <td><p>Essentially the same as <code class="docutils literal notranslate"><span class="pre">df.plot</span></code>, but you may not have a DataFrame handy</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">plt.hist()</span></code></p></td>
-<td><p>You want to count occurences</p></td>
+<td><p>You want to count occurrences</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sns.barplot()</span></code></p></td>
 <td><p>There are many values per category to be averaged. The data can be structured differently.</p></td>
@@ -603,7 +604,7 @@ document.write(`
 <h2>Positive vs Negative Bars<a class="headerlink" href="#positive-vs-negative-bars" title="Link to this heading">#</a></h2>
 <p>In this example bar chart you’ll see that the positive values have green bars
 while the negative values have red bars. The example below only uses two colors
-to emphasize the direction of change. We use a bar chart here depsite there being
+to emphasize the direction of change. We use a bar chart here despite there being
 many different years to plot because the green/red colors emphasize the relative changes nicely.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
@@ -802,7 +803,7 @@ Code</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-11" name="sd-tab-set-2" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-11">
 Data</label><div class="sd-tab-content docutils">
-<p>This is the first 11 rows of the <strong>orginal</strong> data (which was unsorted).</p>
+<p>This is the first 11 rows of the <strong>original</strong> data (which was unsorted).</p>
 <p><img alt="bar chart" src="../_images/sorted_data.jpg" /></p>
 </div>
 <input id="sd-tab-item-12" name="sd-tab-set-2" type="radio">
@@ -812,7 +813,7 @@ Comments</label><div class="sd-tab-content docutils">
 <li><p>When there are a good number of bars, the viewer will benefit if the bars are sorted.</p></li>
 <li><p>In this chart, text is added inside the bar to provide the bar’s value. Without a grid background (which can be added when using seaborn), it can be hard to know what the precise value is. There are multiple ways to add text. In this example, we use the <code class="docutils literal notranslate"><span class="pre">ax.bar_label</span></code> API. But, one can also use <code class="docutils literal notranslate"><span class="pre">plt.text</span></code> or <code class="docutils literal notranslate"><span class="pre">ax.annotate</span></code> methods.</p></li>
 <li><p>The x-axis label is purposely set to an empty string because the viewer can clearly the x-axis values and understand their meaning.</p></li>
-<li><p>The colors of the bars can be cusomized using the <code class="docutils literal notranslate"><span class="pre">color</span></code> named parameter. You can set all the bars to one identical color, or pass in a sequence of values such as <code class="docutils literal notranslate"><span class="pre">df['color']</span></code> (if you create a meaningful and correct color column in the dataframe).</p></li>
+<li><p>The colors of the bars can be customized using the <code class="docutils literal notranslate"><span class="pre">color</span></code> named parameter. You can set all the bars to one identical color, or pass in a sequence of values such as <code class="docutils literal notranslate"><span class="pre">df['color']</span></code> (if you create a meaningful and correct color column in the dataframe).</p></li>
 </ul>
 </div>
 </div>
@@ -987,7 +988,7 @@ Code</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-21" name="sd-tab-set-4" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-21">
 Data</label><div class="sd-tab-content docutils">
-<p>This is the first 11 rows of the <strong>orginal</strong> data (which was unsorted).</p>
+<p>This is the first 11 rows of the <strong>original</strong> data (which was unsorted).</p>
 <p><img alt="bar chart" src="../_images/sorted_data.jpg" /></p>
 </div>
 <input id="sd-tab-item-22" name="sd-tab-set-4" type="radio">
@@ -1045,7 +1046,7 @@ Code</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-25" name="sd-tab-set-5" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-25">
 Data</label><div class="sd-tab-content docutils">
-<p>This is the first 11 rows of the <strong>orginal</strong> data (which was unsorted).</p>
+<p>This is the first 11 rows of the <strong>original</strong> data (which was unsorted).</p>
 <p><img alt="bar chart" src="../_images/sorted_data.jpg" /></p>
 </div>
 <input id="sd-tab-item-26" name="sd-tab-set-5" type="radio">
@@ -1149,7 +1150,7 @@ Code</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-33" name="sd-tab-set-7" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-33">
 Data</label><div class="sd-tab-content docutils">
-<p>This is the first 11 rows of the <strong>orginal</strong> data (which was unsorted).</p>
+<p>This is the first 11 rows of the <strong>original</strong> data (which was unsorted).</p>
 <p><img alt="bar chart" src="../_images/sorted_data.jpg" /></p>
 </div>
 <input id="sd-tab-item-34" name="sd-tab-set-7" type="radio">
@@ -1241,7 +1242,7 @@ Code</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-41" name="sd-tab-set-9" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-41">
 Data</label><div class="sd-tab-content docutils">
-<p>This is the first 11 rows of the <strong>orginal</strong> data (which was unsorted).</p>
+<p>This is the first 11 rows of the <strong>original</strong> data (which was unsorted).</p>
 <p><img alt="bar chart" src="../_images/sorted_data.jpg" /></p>
 </div>
 <input id="sd-tab-item-42" name="sd-tab-set-9" type="radio">

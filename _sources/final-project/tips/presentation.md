@@ -10,9 +10,9 @@ Here are some presentation tips:
 * **Focus on the visualizations** and key takeaways. Hopefully the graphs are creative and insightful, and they may require some explanation or setup. The visualizations may have annotations that highlight key points or areas in the graph that deserve attention. Explain what conclusions one can draw from each graph.  
 * **Tell a story** about your research and your experience.  
     * Inform us of a discovery from a particular visualization that inspired new questions and directions.
-    * If there was something particularly fun or difficult, it can make the presentation more relateable.    
+    * If there was something particularly fun or difficult, it can make the presentation more relatable.    
     * Explain how your research changed as you gained a better understanding of your topic. This can provide insightful information to the audience. It also adds layers and nuances to your final presentation. 
-* **Demostrate interactive graphs or animations.** If you took the time to create interactive graphs, demonstrate them. This can often be easiest if you create a video of the interactions instead of worrying about installing software.   
+* **Demonstrate interactive graphs or animations.** If you took the time to create interactive graphs, demonstrate them. This can often be easiest if you create a video of the interactions instead of worrying about installing software.   
 * **Future work** or future directions for this project. Most likely you ran out of time to research everything. Or, perhaps you discovered tangential research that is deserving of attention. 
 
 There are several things you want to **avoid**:  

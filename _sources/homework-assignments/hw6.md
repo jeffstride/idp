@@ -34,7 +34,7 @@ A basic infrastructure of the SpellChecker class will be provided.
 First, improve the code so that it can complete the spell checking quickly.
 
 You will implement the following three methods in the class `SpellChecker`:
-1) `__init__(self, dictionary_name)` : Takes the name of a dictionary and intializes a SpellChecker object.  
+1) `__init__(self, dictionary_name)` : Takes the name of a dictionary and initializes a SpellChecker object.  
 2) `misspelled(self, word)` : An instance method that returns True if the word is not found in the dictionary. (i.e. misspelled)
 3) `spell_check(self, file_name, suggest=False)` : An instance method that returns a list of `WordInfo` objects for each misspelled word found in the essay. You will have an optional argument `suggest` that is defaulted to False. If True, the spell check will return suggestions for correctly spelled words. In this first _Simple_ implementation, you won't implement this.   
 

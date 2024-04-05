@@ -260,6 +260,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <li class="toctree-l3"><a class="reference internal" href="../Topics/misc/comments.html">Writing Effective Comments</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Topics/misc/rand_response.html">Reversing Randomized Response</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Topics/misc/my_st.html">Notes on MyST</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Topics/misc/interfaces_classes.html">Interfaces and Classes</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../Topics/Replit/index.html"><i class="fas fa-book fa-fw"></i> Replit</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -624,7 +625,7 @@ The primary pieces of functionality will be to:</p>
 <p>First, improve the code so that it can complete the spell checking quickly.</p>
 <p>You will implement the following three methods in the class <code class="docutils literal notranslate"><span class="pre">SpellChecker</span></code>:</p>
 <ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self,</span> <span class="pre">dictionary_name)</span></code> : Takes the name of a dictionary and intializes a SpellChecker object.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">__init__(self,</span> <span class="pre">dictionary_name)</span></code> : Takes the name of a dictionary and initializes a SpellChecker object.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">misspelled(self,</span> <span class="pre">word)</span></code> : An instance method that returns True if the word is not found in the dictionary. (i.e. misspelled)</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">spell_check(self,</span> <span class="pre">file_name,</span> <span class="pre">suggest=False)</span></code> : An instance method that returns a list of <code class="docutils literal notranslate"><span class="pre">WordInfo</span></code> objects for each misspelled word found in the essay. You will have an optional argument <code class="docutils literal notranslate"><span class="pre">suggest</span></code> that is defaulted to False. If True, the spell check will return suggestions for correctly spelled words. In this first <em>Simple</em> implementation, you won’t implement this.</p></li>
 </ol>

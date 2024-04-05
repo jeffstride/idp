@@ -259,6 +259,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <li class="toctree-l3"><a class="reference internal" href="../Topics/misc/comments.html">Writing Effective Comments</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Topics/misc/rand_response.html">Reversing Randomized Response</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Topics/misc/my_st.html">Notes on MyST</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Topics/misc/interfaces_classes.html">Interfaces and Classes</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../Topics/Replit/index.html"><i class="fas fa-book fa-fw"></i> Replit</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -1059,7 +1060,7 @@ Notice how there are two y-axis labels for each subplot.</p>
 <input id="sd-tab-item-16" name="sd-tab-set-3" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-16">
 Box Plot</label><div class="sd-tab-content docutils">
-<p>Here we see that the younger you are, the farther you can throw. The one exception is in the 88-99 age bracket. There we see that they are a bit better than they 78-87 year olds. Even though the average is slightly greater than the 68-77 year-olds, the range is much smaller. This is probably due to the low numbers we have the higher age group and is an anomoly in the data.</p>
+<p>Here we see that the younger you are, the farther you can throw. The one exception is in the 88-99 age bracket. There we see that they are a bit better than they 78-87 year olds. Even though the average is slightly greater than the 68-77 year-olds, the range is much smaller. This is probably due to the low numbers we have the higher age group and is an anomaly in the data.</p>
 <p><img alt="Age Box Plot" src="../_images/dist_age_box_plots.png" /></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">boxes_by_age</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
     <span class="c1"># add an age bracket to a copy of the DF</span>
@@ -1084,7 +1085,7 @@ Box Plot</label><div class="sd-tab-content docutils">
 Area of Percent</label><div class="sd-tab-content docutils">
 <p>This plot is starting to show a little more creativity. Notice a few things:</p>
 <p>First, the y-label goes up to 1.0, which represent 100% of people at that distance. No matter what distance we look at, all the people there represent 100% of the people there. For example, even though at 120 yards there are only 2 people there, they make up 100% of the people there. At 110 yards, there is only one person who happens to be in the 18-27 year-old age-bracket, which is why the graph is entirely blue at 110 yards.</p>
-<p>Secondly, the older participants make up a very small percentage of the people overall and they are virually gone at 70 yards (with just a few outliers). At very short distances, the majority of people there are 58 and older.</p>
+<p>Secondly, the older participants make up a very small percentage of the people overall and they are virtually gone at 70 yards (with just a few outliers). At very short distances, the majority of people there are 58 and older.</p>
 <p><img alt="Area of age percentage at each distance" src="../_images/dist_age_area.png" /></p>
 <div class="dropdown admonition">
 <p class="admonition-title">See Code and Data</p>

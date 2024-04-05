@@ -38,5 +38,5 @@ Let the data speak for itself.
 Work hard to create plots that speak volumes!  
 
 ## Footnotes
-[1] Articles are heavily influenced by the author's desire to sell their work. Articles are biased in several big ways: Selection bias, Confirmation bias, Political bias, Commerical bias and Cultural bias. Consider the source of the publication (Fox vs CNN). Just because someone published it on the internet does not make it true!  
+[1] Articles are heavily influenced by the author's desire to sell their work. Articles are biased in several big ways: Selection bias, Confirmation bias, Political bias, Commercial bias and Cultural bias. Consider the source of the publication (Fox vs CNN). Just because someone published it on the internet does not make it true!  
 [2] <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2917255/">Identifying and Avoiding Bias in Research</a>

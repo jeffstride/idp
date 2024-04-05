@@ -260,6 +260,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <li class="toctree-l3"><a class="reference internal" href="../Topics/misc/comments.html">Writing Effective Comments</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Topics/misc/rand_response.html">Reversing Randomized Response</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../Topics/misc/my_st.html">Notes on MyST</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Topics/misc/interfaces_classes.html">Interfaces and Classes</a></li>
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../Topics/Replit/index.html"><i class="fas fa-book fa-fw"></i> Replit</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -560,7 +561,7 @@ document.write(`
 <ol class="arabic simple">
 <li><p>Showing how an <strong>area</strong> is impacted relative to other <strong>areas.</strong></p></li>
 <li><p>Revealing which area is impacted.</p></li>
-<li><p>Illustrateing a pattern in the location of something.</p></li>
+<li><p>Illustrating a pattern in the location of something.</p></li>
 </ol>
 <p>Geospatial plots are NOT good at:</p>
 <ol class="arabic simple">
@@ -619,7 +620,7 @@ Comments</label><div class="sd-tab-content docutils">
 <li><p>We show a legend</p></li>
 </ol>
 <p>By hiding Alaska and Hawaii, we can bring a much greater focus on the states. Providing a legend is very helpful. And, eliminating the box with longitude and latitude ticks removes an unnecessary distraction since we really don’t care about the lat/long.</p>
-<p>In the chart on the right, we can easily see that California is large and brilliant yellow which ephasizes its impact.
+<p>In the chart on the right, we can easily see that California is large and brilliant yellow which emphasizes its impact.
 There are two ways to hide these states. One way is to eliminate them from the GeoDataFrame:<br />
 <code class="docutils literal notranslate"><span class="pre">gdf</span> <span class="pre">=</span> <span class="pre">gdf[(gdf['NAME']</span> <span class="pre">!=</span> <span class="pre">'Alaska')</span> <span class="pre">&amp;</span> <span class="pre">(gdf['NAME']</span> <span class="pre">!=</span> <span class="pre">'Hawaii')]</span></code><br />
 Another way is to set some limits on the x &amp; y axes: <code class="docutils literal notranslate"><span class="pre">ax2.set_xlim(-130,</span> <span class="pre">-65)</span></code></p>
@@ -762,7 +763,7 @@ Comments</label><div class="sd-tab-content docutils">
 </section>
 <section id="annotated-with-table-inset">
 <h2>Annotated with Table Inset<a class="headerlink" href="#annotated-with-table-inset" title="Link to this heading">#</a></h2>
-<p>The problem with the plot above is that it is very hard to see if there is any difference between Orgegon and Nevada; the colors are just too close! To fix that we will annotate each state with the count of the votes printed onto the state’s location.</p>
+<p>The problem with the plot above is that it is very hard to see if there is any difference between Oregon and Nevada; the colors are just too close! To fix that we will annotate each state with the count of the votes printed onto the state’s location.</p>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-8" name="sd-tab-set-2" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-8">
@@ -874,7 +875,7 @@ Comments</label><div class="sd-tab-content docutils">
 <input checked="checked" id="sd-tab-item-12" name="sd-tab-set-3" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-12">
 Image</label><div class="sd-tab-content docutils">
-<p>One the top-left, you’ll see a plot representing Electoral Votes by state. Were we to plot a geospatial plot of Population, we’d see something virtually identical and therefore a correrlation would be seen.<br />
+<p>One the top-left, you’ll see a plot representing Electoral Votes by state. Were we to plot a geospatial plot of Population, we’d see something virtually identical and therefore a correlation would be seen.<br />
 One the top-right, you’ll see a plot representing each state’s size in square miles.</p>
 <p><img alt="election image" src="../_images/geo_correlation.jpg" /></p>
 </div>
@@ -912,7 +913,7 @@ Data</label><div class="sd-tab-content docutils">
 <input id="sd-tab-item-15" name="sd-tab-set-3" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-15">
 Comments</label><div class="sd-tab-content docutils">
-<p>Were we to plot a geospatial plot of Population, we’d see something virtually identical to the top-left and, therefore, a correrlation would be seen. But, it would take <strong>two</strong> geospatial plots to show the correlation. And, in this specific case, the correlation is <strong>extremely strong</strong>; Electoral Votes is, in fact, calculated by a state’s population. In this example, we omitted the second geospatial plot in favor of a scatter plot.</p>
+<p>Were we to plot a geospatial plot of Population, we’d see something virtually identical to the top-left and, therefore, a correlation would be seen. But, it would take <strong>two</strong> geospatial plots to show the correlation. And, in this specific case, the correlation is <strong>extremely strong</strong>; Electoral Votes is, in fact, calculated by a state’s population. In this example, we omitted the second geospatial plot in favor of a scatter plot.</p>
 <p>One the top-right, you’ll see a plot representing each state’s size in square miles. Is there a correlation of a state’s size to the count of Electoral Votes? It’s a bit hard to determine from the geospatial plot. However, in combination with the scatter plots, one can be more confident in their assessment.</p>
 <p><strong>In summary</strong>: we show 4 different plots in a single figure that in combination provide insight. The geospatial plots provide some understanding about where the Electoral Votes go geographically. Showing it side-by-side to the geospatial plot on Square Miles gives you an idea that there is <em>not an obvious</em> correlation between votes and square miles. However, when we add the scatter plots, the correlations become a lot clearer. It is obvious that there is strong and direct relationship between population and votes, while there is very little, if any, correlation of square miles to votes.</p>
 <div class="dropdown admonition">
