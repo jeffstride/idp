@@ -123,7 +123,8 @@ Challenge goals help us to define expectations while still offering flexibility 
     * Download from Web: [requests](https://2.python-requests.org/en/master/)
     * Scientific Computing: [SciPy](https://www.scipy.org/)
     * Natural Language Processing: [spaCy](https://spacy.io/)
-    * Advanced/Interactive Visualizations: [altair](https://altair-viz.github.io/) or [plotly](https://plot.ly/python/). 
+    * Advanced/Interactive Visualizations: [altair](https://altair-viz.github.io/) or [plotly](https://plot.ly/python/).  
+        * Note that interactive plots work best for data that has lots of different filtering options. For example: filter by year, by age, by gender, by position. 
     
 ```{admonition} Interactive Note
 :class: important

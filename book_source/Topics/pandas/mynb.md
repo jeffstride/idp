@@ -59,15 +59,15 @@ result = df1.add(df2)
 |`isin(iterable)`|Returns a boolean Series, True if the value is found in the iterable|  
 
 ### File Related
-* setting None into a DataFrame may go to np.NaN if column is numeric
-* read_csv and parse_dates to get TimeSeries
-* Reading Unicode files: with ('filename.txt, encoding='utf-8')
-    * This is helpful when copying content from Google Docs or Word
 |API|Comments|  
 |---|--------|  
 |`to_csv()`|Saves the DF as a CSV file. Handy during Final Project preprocessing step.|  
-|`read_csv()`| TODO: More details on date formatting|  
+|`read_csv()`| Details <a href="#read-csv">below</a>|  
 
+* If you set a location to `None` (e.g. `df.iloc[3, 2] = None`), The value may become `np.NaN` if column is numeric
+* read_csv and parse_dates to get TimeSeries
+* Reading Unicode files: with ('filename.txt, encoding='utf-8')
+    * This is helpful when copying content from Google Docs or Word  
 * Series
     * `s.isin(list)` # a mask
     * (most of the DataFrame methods): 
@@ -107,9 +107,6 @@ result = df1.add(df2)
     * 
 * `df = df.apply(pd.to_numeric, errors='coerce')` : forces values to be numeric
 
-
-
-
 ```python
 import pandas as pd
 
@@ -118,81 +115,93 @@ import pandas as pd
 # groupby()
 # .loc[]
 
-df
 ```
 
-# Standard Cleaning DF
-* read_csv  
+**more topics:** 
 * dropna or fillna  
 * keep select columns with `df = df[ col_list ]`  
 * perhaps coerce column dtypes: `df = df.apply(pd.to_numeric, errors='coerce')`  
 * rename columns to something short and readable: `df = df.rename(dict)`  
 
 
-# read_csv
-In Pandas version 2.0, there is a date_format.
-But, the version NCHS has installed is older. (v 1.3)
-To see the version, you can print(pd._version)
+## read_csv
+For full documentation, see <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.read_csv.html" target="_blank">Pandas API reference</a>  
 
-Older versions support data_parser=fun. Where it is best to use pd.to_datetime(date_string, format=’%Y-%m-%d’).
-So this will parse MM-YYYY-DD, such as 03-2023-31: 
-df = pd.read_csv('data.csv', index_col='date', parse_dates=True, date_parser=lambda s: pd.to_datetime(s, format='%m-%Y-%d'))
-When parse_dates == True, then we will parse the index.
+**Formatting the Date:**  
+In Pandas version 2.0, there is a `date_format` argument. But the version that NCHS has installed is older (v 1.3) and does not. In Jupyter Notebook, you can see your version using: `print(pd._version)`.  
 
-parse_dates: bool, list of Hashable, list of lists or dict of {Hashablelist}, default False
-The behavior is as follows:
-•	bool. If True -> try parsing the index.
-•	list of int or names. e.g. If [1, 2, 3] -> try parsing columns 1, 2, 3 each as a separate date column.
-•	list of list. e.g. If [[1, 3]] -> combine columns 1 and 3 and parse as a single date column.
-•	dict, e.g. {'foo' : [1, 3]} -> parse columns 1, 3 as date and call result ‘foo’
-If a column or index cannot be represented as an array of datetime, say because of an unparsable value or a mixture of timezones, the column or index will be returned unaltered as an object data type. For non-standard datetime parsing, use to_datetime() after read_csv().
+Older versions support `data_parser=fun`. **fun** is a function to parse the date. It is recommended to use `pd.to_datetime(date_string, format='%Y-%m-%d')`.  
 
-
-# more than one way to do this
-```python
-for n in df2: # iterates through the columns
-    print(n)
+Here is an example that will parse `MM-YYYY-DD` formatted dates such as `03-2023-31`.  
+```python 
+df = pd.read_csv('data.csv', index_col='date', parse_dates=True, 
+                 date_parser=lambda s: pd.to_datetime(s, format='%m-%Y-%d'))
 ```
 
-# iterates through the tuples (col_name, col_series)
+When `parse_dates=True`, then we will parse the index as our date. 
+
+```{admonition} parse_dates
+:class: dropdown seealso
+
+**parse_dates**: bool, list of Hashable, list of lists or dict of {Hashablelist}, default False  
+
+The line above has the following _behavior_:   
+* bool. If True -> try parsing the index.  
+* list of int or names. e.g. If [1, 2, 3] -> try parsing columns 1, 2, 3 each as a separate date column.  
+* list of list. e.g. If [[1, 3]] -> combine columns 1 and 3 and parse as a single date column.  
+* dict, e.g. `{'foo' : [1, 3]}` -> parse columns 1, 3 as date and call result `foo`  
+
+If a column or index cannot be represented as an array of datetime, say because of an unparsable value or a mixture of timezones, the column or index will be returned unaltered as an object data type. For non-standard datetime parsing, use to_datetime() after read_csv().
+```
+
+
+
+## Iterating a DataFrame
+There are several ways to iterate through a DataFrame.
 ```python
+# iterates through the columns
+for n in df2:
+    print(n)
+
+# iterates through the tuples (col_name, col_series)
 for col_name, col_series in df2.iteritems():
     print(col_name)
     print(col_series)
-```
 
 # identical to the above
-```python
 for col_name, col_series in df2.items():
     print(col_name)
     print(col_series)
 ```
 
-# dataframe Plot
-|  x : label or position, default None
- |      Only used if data is a DataFrame.
- |  y : label, position or list of label, positions, default None
- |      Allows plotting of one column versus another. Only used if data is a
- |      DataFrame.
- |  kind : str
- |      The kind of plot to produce:
- |  
- |      - 'line' : line plot (default)
- |      - 'bar' : vertical bar plot
- |      - 'barh' : horizontal bar plot
- |      - 'hist' : histogram
- |      - 'box' : boxplot
- |      - 'kde' : Kernel Density Estimation plot
- |      - 'density' : same as 'kde'
- |      - 'area' : area plot
- |      - 'pie' : pie plot
- |      - 'scatter' : scatter plot (DataFrame only)
- |      - 'hexbin' : hexbin plot (DataFrame only)
- |  ax : matplotlib axes object, default None
- |      An axes of the current figure.
- |  subplots : bool, default False
- |      Make separate subplots for each column.
+## DataFrame Plot API Summary
+For full documentation, see <a href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.plot.html#pandas-dataframe-plot" target="_blank">Pandas DataFrame plot</a>.  
 
+```{admonition} Documentation Notes
+:class: dropdown
+Note that in this documentation:
+* `label` means the column name in the DataFrame.  
+* `position` is a integer representing the ordinal of the column.  
+```
+
+**x** : label or position, default `None` (use the index as the x-axis)  
+**y** : label, position, list of labels or positions, default None.   
+**kind** : One of the following strings describing the kind of plot to produce.  
+- 'line' : line plot (default)
+- 'bar' : vertical bar plot
+- 'barh' : horizontal bar plot
+- 'hist' : histogram
+- 'box' : boxplot
+- 'kde' : Kernel Density Estimation plot
+- 'density' : same as 'kde'
+- 'area' : area plot
+- 'pie' : pie plot
+- 'scatter' : scatter plot (DataFrame only)
+- 'hexbin' : hexbin plot (DataFrame only)
+**ax** : The axes object to plot to
+**subplot** : bool, `True` means to make separate subplots for each column.  
+
+There are many more arguments such as: `title`, `grid`, `legend`, `style`, `xticks`, `yticks`, `xlim`, `ylim`, `xlabel`, `ylabel`, `rot`, `colormap`, `table`, `stacked`
 
 ```python
 import pandas as pd
@@ -200,7 +209,3 @@ df = pd.DataFrame()
 help(df.plot)
 ```
 
-
-```python
-
-```
