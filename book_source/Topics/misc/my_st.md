@@ -31,6 +31,21 @@ Create a <a href="#footnotes">reference</a> to somewhere on this page in the sam
 
 A reference to another page is done similarly. Go to <a href="../Replit/flake8.html#tox.ini"> Flake8 Tox.ini</a>.
 
+## Admonitions
+Here are examples of popular admonitions:  
+```{admonition} Reference
+:class: dropdown seealso
+Content is here
+```
+
+```{admonition} Note
+:class: note
+This is a note
+```
+
+## Math
+`$\sigma = \sqrt{n \cdot p \cdot (1 - p)}$ `  
+$\sigma = \sqrt{n \cdot p \cdot (1 - p)}$ 
 
 ## Tables
 ### github table
