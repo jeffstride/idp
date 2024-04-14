@@ -21,7 +21,20 @@ Things NOT necessary for this deliverable:
 ## Sketches of Plots
 Think about the types of plots you want to create and how those could answer the questions you've posed. Be creative and hypothetical in this step. Imagine what a plot would look like and then sketch it out by hand or using Paint.  
 
-The goal is to imagine what your plots might look like while not constraining yourself by your coding abilities. Consider ways to convey information while assuming data values. If you find that you're drawing simple, repetitive bar plots or line plots, then you need to dig deeper into your creativity. Get some inspiration by looking at other published reports or at the Visualizations on <a href="../../visualizations/case_study_dist.html">IDP MrStride</a>. 
+The goal is to imagine what your plots might look like while not constraining yourself by your coding abilities. Consider ways to convey information while assuming data values. If you find that you're drawing simple, repetitive bar plots or line plots, then you need to dig deeper into your creativity. Get some inspiration by looking at other published reports or at the Visualizations on <a href="../../visualizations/case_study_dist.html">IDP MrStride</a>.  
+
+```{admonition} Good Features
+Fabulous sketches will:  
+* Reasonably _"answer"_ all your questions  
+* Have a Title with the axes labeled  
+* Be easy to read (not crowded, not sloppy)  
+* Include 4 or more different types of plots  
+* Include color, legends, and/or annotations  
+* Achievable with the data you've collected  
+* Illustrate Challenge Goals such as:  
+    * Plots of ML Model predictions  
+    * Controls in interactive plots  
+```
 
 Things to consider:  
 * How you might annotate your plots with values  
@@ -33,12 +46,14 @@ Things to consider:
 * How to use different types of plots along with impressive versions of each:
     * Bar Charts  
     * Pie Charts  
-    * Box Plots  
+    * Box and Whisker Plots  
     * Histograms  
     * Swarm Plots  
     * Area Plots  
+    * Line Plots (Regression plots) 
     * Scatter Plots  
     * Geospatial  
+    * Heatmap  
 
 ```{admonition} Sample Sketch
 :class: note dropdown

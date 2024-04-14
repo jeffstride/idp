@@ -105,6 +105,8 @@ commentsRunWhenDOMLoaded(addUtterances);
                 gtag('config', 'G-DW6SHVPBYV');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'Topics/misc/my_st';</script>
     <link rel="icon" href="../../_static/favicon.png"/>
     <link rel="index" title="Index" href="../../genindex.html" />
@@ -272,12 +274,6 @@ commentsRunWhenDOMLoaded(addUtterances);
 <li class="toctree-l3"><a class="reference internal" href="../pandas/dataframe.html">DataFrame</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../pandas/slicing-methods.html">DataFrame Slicing Methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../pandas/mynb.html">Useful API</a></li>
-
-
-
-
-
-
 </ul>
 </li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../machine_learning/index.html"><i class="fas fa-book fa-fw"></i> Machine Learning</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -539,6 +535,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-with-lines-and-emphasis">Code with Lines and Emphasis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#icons">Icons</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-examples">Reference Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#admonitions">Admonitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#math">Math</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tables">Tables</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#github-table">github table</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#myst">myST</a></li>
@@ -588,6 +586,23 @@ document.write(`
 <p>Create some text that needs a footnote like this here.<a href="#footnotes"><sup>[1]</sup></a></p>
 <p>Create a <a href="#footnotes">reference</a> to somewhere on this page in the same way as using footnotes.</p>
 <p>A reference to another page is done similarly. Go to <a href="../Replit/flake8.html#tox.ini"> Flake8 Tox.ini</a>.</p>
+</section>
+<section id="admonitions">
+<h2>Admonitions<a class="headerlink" href="#admonitions" title="Link to this heading">#</a></h2>
+<p>Here are examples of popular admonitions:</p>
+<div class="dropdown seealso admonition">
+<p class="admonition-title">Reference</p>
+<p>Content is here</p>
+</div>
+<div class="note admonition">
+<p class="admonition-title">Note</p>
+<p>This is a note</p>
+</div>
+</section>
+<section id="math">
+<h2>Math<a class="headerlink" href="#math" title="Link to this heading">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">$\sigma</span> <span class="pre">=</span> <span class="pre">\sqrt{n</span> <span class="pre">\cdot</span> <span class="pre">p</span> <span class="pre">\cdot</span> <span class="pre">(1</span> <span class="pre">-</span> <span class="pre">p)}$</span> </code><br />
+<span class="math notranslate nohighlight">\(\sigma = \sqrt{n \cdot p \cdot (1 - p)}\)</span></p>
 </section>
 <section id="tables">
 <h2>Tables<a class="headerlink" href="#tables" title="Link to this heading">#</a></h2>
@@ -715,6 +730,8 @@ document.write(`
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-with-lines-and-emphasis">Code with Lines and Emphasis</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#icons">Icons</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-examples">Reference Examples</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#admonitions">Admonitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#math">Math</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tables">Tables</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#github-table">github table</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#myst">myST</a></li>
