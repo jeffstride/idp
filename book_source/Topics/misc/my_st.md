@@ -45,7 +45,15 @@ This is a note
 
 ## Math
 `$\sigma = \sqrt{n \cdot p \cdot (1 - p)}$ `  
-$\sigma = \sqrt{n \cdot p \cdot (1 - p)}$ 
+$\sigma = \sqrt{n \cdot p \cdot (1 - p)}$   
+
+`$\frac{x+y}{a+b}$`  
+$\frac{x+y}{a+b}$   
+
+`$f'(x_1) \approx sqrt{2+x_0 \cdot x_1} \pm 1$`  
+$f'(x_1) \approx \sqrt{2+x_0 \cdot x_1} \pm 1$    
+
+
 
 ## Tables
 ### github table
