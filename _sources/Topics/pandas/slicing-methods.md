@@ -1,210 +1,149 @@
-# DataFrame Slicing Methods
+# DataFrame Indexing Methods
 
-In this discussion, we will explore four methods for slicing data within a Pandas DataFrame:
+We will explore four methods that index data within a Pandas DataFrame. The abundance of approaches can be overwhelming and this write-up aims provide clarity. For additional information, refer to the [Pandas DataFrame Documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html).  
 
-1. `df[]`
-2. `df.loc[]`
-3. `df.iloc[]`
-4. `df.take()`
+|API|Index/Position|Comment|  
+|---|-----|-------|  
+|`df[]`|rows by position, columns by name|One argument only|  
+|`df.loc[]`|by index | `[inclusive : inclusive]` |  
+|`df.iloc[]`|by position| Columns by position, too|  
+|`df.take()`|by position| `axis=0` take rows</br>`axis=1` take columns| 
 
-Pandas is a powerful library that provides various ways to access and manipulate data. However, the abundance of methods can be overwhelming when choosing the most efficient one. This write-up aims to clarify the differences between these four slicing methods.
+Except for `loc` the API are `[inclusive : exclusive]`.  
 
-For additional information, refer to the [Pandas DataFrame Documentation](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html).
+## Argument Types
+|Type|Example|Notes|
+|----|-------:|-----|
+|Number| `df.iloc[3]`</br>`df.loc[3]`|Describes the position, or,</br>index|   
+|Numerical Slice| `df[0:3]`</br>`df.loc[1:3]` |A slice using numbers (positional)</br> (index)|  
+|Numerical List| `df.take([0, 3])`</br>`df.loc[[1,3]]`|List of numbers (positional)</br> (index)|
+|Mask|`df[[True, False, True]]`|Any iterable of True/False values|
+|String|`df['A']`|A column name (or index value)| 
+|String Slice|`df.loc[:, 'C':'words']`|Represents a range of columns|  
+|String List|`df[['C','D','words']]`|A list of column names|
 
-
-## df[]
-This is the _simplest_ and most _straightforward_ slicing method. df[] allows for both position and label-based slicing. You can use positional indices to select either single rows or a selection of multiple rows. You cannot just use a single row index argument. If you want a single row, you have to refer to a slice which only will include that one row.
-
-We will use this dataframe for the following examples
-
-```python
-df = pd.DataFrame({'col1': [1, 2, 3, 4], 
-                   'col2': [5, 6, 7, 8], 
-                   'col3': [9, 10, 11, 12], 
-                   'col4': [13, 14, 15, 16]})
-
-```
-Remember that the _first argument is inclusive, but the second is exclusive_
-
+## API Details
 ````{tab-set}
 
-```{tab-item} Positional
-In the first example, we use slicing to return a single row. You **cannot** just use a single row index argument. If you want a single row, you have to refer to a slice which only will include that one row.
+```{tab-item} df
+* `df[]` takes a single argument only.  
+* Slices are `[ Inclusive : Exclusive ]`.   
+* The most common usage is to get a `Series` (column) from the `DataFrame` via `df['col_name']`.  
+* One can add a column to a `DataFrame` with `df['new_column'] = list_of_values`  
 
-Positional selection works even with a custom index, relying on the row's position rather than its label. You can also omit one or both parameters (df[1:], df[:3], and df[:]): a left-sided value includes rows including and beyond the specified position, right-sided value includes up to but not including the specified value, and a single colon includes all rows.
+It is important to note here that when a numerical slice is used, the values represent positions, not the index. When string values are used, the values represent column names.   
 
-```python
-'''
-Single row:
-'''
-s1 = df[2:3]  # Returns a series containing values of the 3rd col [3, 7, 11, 15]
+**Valid Argument Types:**  
+* **Numerical Slice:** represents the Row **Positions**  
+* **Mask:** represents which Rows to keep  
+* **String:** column name  
+* **String List:** list of column names  
 
-'''
-Multiple rows:
-'''
-d1 = df[0:2]  # Returns a DataFrame containing two rows [1, 5, 9, 13] and [2, 6, 10, 14]
-d2 = df[1:] # Returns a DataFrame containg three rows [2, 6, 10, 14], [3, 7, 11, 15], and [4, 8, 12, 16]
-d3 = df[:2] # Returns a DataFrame containg two rows [1, 5, 9, 13] and [2, 6, 10, 14]
-df4 = df[:] # Returns a DataFrame containg all columns
+**Invalid Argument Types:**  
+* **Numerical List:** You cannot use `df[[0, 5, 8]]` to access a list of rows.  
+* **String Slice:** You cannot use `df['first':'exclude_me']` to access a slice of columns. Instead, you must use a list of strings.  
+
+**Examples:**  
+|Valid|Results|Invalid|Note|  
+|-----|----|-------|----|  
+|`df[0:1]`|DataFrame</br>All columns, 1 row|`df[0]`|single number **NOT** allowed|  
+|`df[1:3]`|DataFrame</br>All columns, 2 rows|`df[[0, 3]]`| List must be column names|  
+|`df[2:10]`|DataFrame</br>All columns. Many rows| |All rows at those positions. If the slice is completely out of bounds, an empty DataFrame is returned.|
+|`df[[True, False]]` |DataFrame</br>All columns, rows where mask==True| |Length of mask must be len(df)|  
+|`df[['C', 'D']]`|DataFrame</br>All rows with columns 'C' and 'D'|  | The columns are ordered as they appear in the list.|  
+|`df[['C']]`|DataFrame</br>All rows, one column 'C'|  |A list of just 1 still results in a DataFrame. |  
+|`df['C']`|Series. Column 'C'|`df['C':'words']`|Column slices **NOT** allowed. |  
+ 
+Note that, except for the last example, all valid API return a DataFrame.  
+``` 
+```{tab-item} df.loc
+* `df.loc[rows, cols]` takes one or two arguments.  
+* To get all rows, use an 'empty' slice: `df.loc[ : , 'Name']`  
+* Each argument can describe multiple values or a single value.   
+* The type returned depends on the argument types (vectors vs scalar <a href="#footnotes">[1][2]</a>).  
+    * If both arguments are vectors, a `DataFrame` is returned.   
+    * If exactly one argument is a vector, then a `Series` is returned.   
+    * If both arguments are scalar, then the contents of the single cell is returned.    
+* Slices are `[ Inclusive : Inclusive ]`.  
+* One can set a value. `df.loc[1, 'Name'] = 5` will set the `DataFrame`'s value to 5 at index 1 and row 'Name'.  
+
+The first argument describes the indices of the rows desired.   
+The second argument describes the column names desired.  
+
+**Valid Argument Types:**  
+* **Slice**: For rows, the slice must match the index type. For columns, the slice indicates the names of the columns to include and every column between.   
+* **Mask**: Represents which rows/cols to keep. Mask is an iterable of True/False values (such as a `Series` or a list)  
+* **List**: A list of indices or column names to include.   
+
+
+Examples: 
+|Valid|Note|  
+|-----|----| 
+|`df.loc[0:3]`|Rows with indices 0 & 3, and everything in between|
+|`df.loc[11:5]`|Since indices don't need to be sorted, this will have index 11 as the first row and index 5 as the last row, and all rows that are positioned between them.|  
+|`df.loc[mask1, mask2]`|Gets all the rows where mask1 is True, and all the columns where mask2 is True. len(mask1) == count of rows. len(mask2) == count of columns.|  
+|'df.loc[ : , df.columns != 'Bad']`|Gets all the rows and all the columns except for 'Bad'. df.columns is a list of column names. The result of comparing the list to 'Bad' is a list of True/False values... a mask|  
+|`df.loc[ [0, 8, 11], ['One', 'Three'] ]`| Each list represents which row/column to keep. The result has the same order as that provided in the list.|  
+
+  
+```{admonition} Why Inclusive?
+:class: note 
+The reason this API is inclusive is because one will often want to get a set of columns that one knows about. It is better to say:  
+> "I want all the columns starting with 'One' and ending with 'Last'"   
+
+than it is to say:
+> "I want all the columns starting with 'One' and goes until the column after the 'Last' column that I want named... gosh, what is the name of the column that I don't want?  
+
+The same can be true for rows when the index is not sorted.  
 ```
 
-```{tab-item} Label-Based Selection
-You can use the **labels** of columns or the custom indexes of rows to select data
+```{tab-item} df.iloc
+Under constructions.  
+* `df.iloc[rows, cols]` takes 1 or 2 arguments.  
+* Arguments are primarily **integers** that represent **position**, but can also be a boolean mask.  
+* Arguments can also be a lambda for with the argument of the lambda is the calling object, either a DataFrame or Series.  
+* There are no string arguments.  
 
-Keep in mind that these are the labels assigned to the **custom index**. These labels are both **inclusive**. You cannot do this type of slicing (involving the colon) using column labels with this method. You would  instead use the `.loc` method. 
+**Valid Argument Types:**  
+* **integer** that represents the position of the row or column.  
+* **Numerical Slice** that represents the positions of the rows or columns.  
+* **Numerical List** that represents the positions of the rows or columns.   
 
-To select multiple columns with this method, we can use a **list** containing the labels of the column names. This is not a range of columns to be sliced. The function will only _return the columns contained in the list_. 
-
-```python 
-'''
-Single column or named row
-'''
-s2 = df[['col1']] # returns a series containing the values of 'col1'
-
-'''
-Multiple rows (based on index label)
-'''
-df2 = df.set_index(['a', 'b', 'c', 'd']) # Returns dataframe with the indexes renamed to the rows a, b, and c
-df3 = df2[a:c] # Returns a DataFrame containing the rows 'a', 'b', and 'c'
-
-'''
-Multiple Columns using a list
-'''
-d3 = df[['col1', 'col3']] # returns a dataframe containing the rows 'col1' and 'col3'
 ```
-
-```{tab-item} Exceptions and Oddities
-Some things to keep in mind when using this function:
-* The inclusivity of breakpoints in slicing is **not consistent** in this function. When selecting based on position, it is similar to typical python: **inclusive** for the first argument, **exclusive** for the second. However, when selecting based on label, both terms are **inclusive**.
-* A commonly used convention is to put a second set of  brackets around single term inputs, such as `d3 = df[['col1']]` in order to avoid ambiguity or confusion related to lists.
-* The ambiguous nature of this function can lead to confusion. For example, if you were trying to access the row at the first positional index using `df[1]`, but you also had a custom integer index, confusion on what the 1 refers to could arise. Using more specific slicing methods such as `.iloc` or `.take` can help clear up this.
-* `df[0]` will return an error. This is because it is expecting a column reference. When it is a slice, then the code filters down to the rows. To get the first row, call `df[0:1]`
-
+```{tab-item} df.take
+under construction
+```
 ````
 
-
-## df.loc[]
-
-df.loc is an **index/label** based slicer. It is designed to _decrease ambiguity_ in comparison to the simple `df[]` function. Throughout the examples, the following dataframe will be used: 
-
-```python
-df = pd.DataFrame({'col1': [2, 4, 6, 8],
-                   'col2': [1, 3, 5, 7],
-                   'col3': [10, 20, 30, 40],
-                   'col4': [15, 25, 35, 45]})
-```
-`.loc` is structured in a way in which there are two _‘parameters’_ separated by commas. The first determines the _slice to take out of the rows_, and the second determines the _slice to take out of the columns_. These ‘parameters’ can either be **single values**, **lists**, or **slices**. We will review all of the argument types and categorize them based on return type.
+## Examples
 
 ````{tab-set}
-```{tab-item} Single Value
 
-This will return the value which is contained in **row 2** (by index, so effectively the 3rd row) of **column 1**, **3**. Since `.loc` is **label based**, the row parameter _does not have to be an integer_, as this example assumes a default index. If there was a custom index set, you could call `v1 = df.loc[‘c’, ‘col1’]`.
-
-```python
-v1 = df.loc[2, 'col1']  # Returns a single value from row 2 and column 'col1'
+```{tab-item} Common
+df = ![Default Index](../../_static/df_slice_1.png)  
+|Result|API|
+|------|---|
+|![Default Index](../../_static/df_slice_1a.png)|`df[0:1]`</br>`df.loc[0:0]`</br>`df.iloc[0:1]`</br>`df.take([0])`|  
+|![Default Index](../../_static/df_slice_1b.png)|`df[1:3]`</br>`df.loc[1:2]`</br>`df.iloc[1:3]`</br>`df.take([1,2])`|
+|![Default Index](../../_static/df_slice_1c.png)|`mask=[True,False,True,False]`</br>`df[mask]`</br>`df.loc[mask]`</br>`df.loc[[0, 2]]`</br>`df.iloc[mask]`</br>`df.iloc[[0, 2]]`</br>`df.take([0, 2])`</br>`df[[0, 2]]` <span style="background-color: yellow">FAILS!!</span>|
+|![Default Index](../../_static/df_slice_1d.png)|`mask=[False,False,True,True,True,False]`</br>`df[['C', 'D', 'words']]`</br>`df.loc[:, mask]`</br>`df.loc[:, 'C':'words']`</br>`df.loc[:, ['C', 'D', 'words']]`</br>`df.iloc[:, mask]`</br>`df.iloc[:, [0, 2]]`</br>`df.take([2, 3, 4], axis=1)`</br>`df['C':'words']` <span style="background-color: yellow">FAILS!!</span>| 
+|![Default Index](../../_static/df_slice_1e.png)|`df.loc[:, mask]`</br>`df.loc[:, 'A':'A']`</br>`df.loc[:, ['A']]`</br>`df.iloc[:, 0:1]`</br>`df.iloc[:, mask]`</br>`df.iloc[:, [0]]`</br>`df.take([0], axis=1)`</br>`df.loc[:, 'A']` <span style="background-color: yellow">WRONG!! Returns Series</span>| 
+|Series: Column 'A'</br><pre>0    1</br>1    2</br>2    3</br>3    4</br>Name: A, dtype: int64</pre>|`df['A']`</br>`df.loc[:, 'A']`</br>`df.loc[:, mask]`</br>`df.iloc[:, 0]`</br>`df.iloc[:, mask]`|  
+|Series: 2nd Row with index 1</br><pre>A          2</br>B          6</br>C         10</br>D         14</br>words    cat</br>jumpy      2</br>Name: 1, dtype: object0</pre>|`df.loc[1, :]`</br>`df.iloc[1, :]`|  
+|Scalar Value:</br>`7`|`df.loc[2, 'B']`</br>`df.iloc[2, 1]`|
 ```
-
-```{tab-item} Series 
-Series based on row/column: Both of these lines will return a series of either a **row** or a **column**. Since the row parameter comes first, _you can forgo the column parameter if you were only looking for a single row_. However, if you are looking for a single column, _you need to include a `:`_, which just refers to all of the rows.
-
-```python
-''' 
-Series based on a row:
-'''
-s1 = df.loc[1] # returns the second row as a series
-
-'''
-Series based on column:
-'''
-s2 = df.loc[:, 'col1']  # Returns 'col1' as a series (the first column)
-
-'''
-Series based on a section of a row:
-'''
-s3 = df.loc[1, ['col1', 'col3']] # returns a series of elements contained in row 1 of columns 1 and 3
-s4 = df.loc[1, 'col1':'col3'] # returns a series of elements contained in row 1 of columns 1, 2, and 3
-
-'''
-Series based on a section of a column:
-'''
-s5 = df.loc[[1, 3], 'col1'] # returns a series of elements contained in rows 1 and 3 of column 1
-s6 = df.loc[1:3, 'col1'] # returns a series of elements contained in rows 1, 2, and 3 of column 1
+```{tab-item} Unsorted Index
+|DataFrame|Result|API|
+|---------|------|---|
+|![Default Index](../../_static/df_slice_2.png)|![Default Index](../../_static/df_slice_2a.png)|`df[0:1]`</br>`df.loc[9:9]`</br>`df.iloc[0:1]`</br>`df.take([0])`|  
+|  |![Default Index](../../_static/df_slice_2b.png)|`df[1:3]`</br>`df.loc[2:11]`</br>`df.iloc[1:3]`</br>`df.take([1,2])`|
 ```
-
-```{tab-item} DataFrame
-This will be _very similar to the examples earlier_. However, **both** ‘parameters’ will be either a **slicer** or **list**. 
-
-You can ‘mix and match’ **slicers** and **lists**. Remember this assumes a default index, but it will work fine if you utilize a custom index and use the index labels rather than numerical values. This applies to all examples. Slicing parameters are still **inclusive**.
-```python
-d1 = df.loc[[1, 3], ['col1', 'col3']] # returns a dataframe contained in either row 1 or 3 of column 1 and 3
-d2 = df.loc[1: 3, 'col1': 'col3'] # returns a dataframe contained in either row 1, 2, or 3 of column 1, 2, and 3
-d3 = df.loc[[1, 3], 'col1': 'col3'] # returns a dataframe contained in either row 1 or 3 of column 1, 2, and 3
+```{tab-item} String Index
+|DataFrame|Result|API|
+|---------|------|---|
+|![Default Index](../../_static/df_slice_3.png)|![Default Index](../../_static/df_slice_3a.png)|`df[0:1]`</br>`df.loc['ax']`</br>`df.iloc[0:1]`</br>`df.take([0])`|  
+|  |![Default Index](../../_static/df_slice_3b.png)|`df[1:3]`</br>`df.loc['cat':'dog']`</br>`df.iloc[1:3]`</br>`df.take([1,2])`|
 ```
-
-```{tab-item} Exceptions and Oddities
-* When indexing with integer based indices, _especially a custom index_, care is necessary in order to ensure you are referring to the right things (**positional** or **label** index?). Remember, if you are looking for positional indices, utilize `.iloc`.
-* Assuming a default index, `df.loc[0]` will return the first row of the dataframe in a series.
-* Square brackets are used simply because it is _consistent with the python convention of these brackets_, referring to slicing.
-
-````
-
-
-
-## Df.iloc[]
-
-All numbers in the comments of the sample programs refer to the **index** positions of the rows/columns, meaning row 1 refers to the **second** row of the dataframe
-
-`df.iloc` is an **integer** index based slicing function. It **only** takes integer numbers into its arguments. However, it is _very similar to the `.loc` function_, in that there are two arguments, one for the **row** and one for the **column**. The  difference is that while `.loc`'s arguments for its slicers are **inclusive**, the arguments for `.iloc`’s slicers are similar to base python. The first argument is **inclusive** while the second is **exclusive**. The positional nature makes `.iloc` very convenient when dealing with _large dataframes with confusing labels and custom indices_. Sometimes, locating a **value** or **slice** based on its **position** in the dataframe is more straightforward.
-
-````{tab-set}
-```{tab-item} Single Value
-
-This will return the value which is contained in **row 2** of **column 1**, **7**. 
-
-```python
-v1 = df.iloc[2, 1] # returns the value in the 2x1 spot in the dataframe
-```
-
-```{tab-item} Series
-```python
-'''
-Series based on a row
-'''
-s1 = df.iloc[1] # returns a series containing the row 1
-
-'''
-Series based on a column
-'''
-s2 = df.iloc[:, 2] # returns a series containing the column 2
-
-'''
-Series based on a section of a row
-'''
-s3 = df.iloc[1: [1, 3]] # retuns a series of the elements contained in row 1 of column 1 and 3
-s4 = df.iloc[1:, 1:3] # retuns a series of the elements contained in row 1 of column 1, 2, and 3
-
-'''
-Series based on a section of a column:
-'''
-s5 = df.iloc[[1, 3], 1] # returns a series of the elements contained in rows 1 and 3 of column 1
-s6 = df.iloc[1:3, 1] # returns a series of the elements contained in rows 1, 2, and 3 of column 1
-```
-```{tab-item} Dataframe
-This will be very similar to the examples earlier. However, instead, both ‘parameters’ will have either a **slicer** or **list**. 
-
-Like in `.loc`, you can ‘mix and match’ slicers and lists. 
-
-```python
-d1 = df.loc[[1, 3], [1, 3]] # returns a dataframe contained in either row 1 or 3 of column 1 and 3
-d2 = df.loc[1: 3, 1: 3] # returns a dataframe contained in either row 1, 2, or 3 of column 1, 2, and 3
-d3 = df.loc[[1, 3], 1: 3] # returns a dataframe contained in either row 1 or 3 of column 1, 2, and 3
-```
-
-```{tab-item} Exceptions and Oddities
-* If you ever, for some reason, need to utilize a label based index using `.iloc`, you can use the function `df.columns.get_loc('your_column’)` in order to get the **positional** location of that **column**, and input that value into your `.iloc` function. However, this is obviously **not recommended**, as simply using `.loc` would be better.
-* Assuming a _default index_, `df.iloc[0]` will return the first row of the dataframe in a series, just like `.loc`.
-* If both ‘parameters’ of `.iloc` are single values, then it will return a **single value**. If one is a single value and the other is a slice or list, then it will return a **series**. If both are slices or lists, it will return a **dataframe**. This is applicable to `.loc`.
-
 ````
 
 ## df.take()
@@ -242,13 +181,7 @@ d2 = df.take([1, 3, 0], axis=1) # returns a dataframe containing columns 1, 3, a
 * `df.take([0])` returns the first (0 position) row.
 
 ````
-## Comparisions & Summary:
-These 4 slicing methods are **all effective** if used right. The first step to determining the correct method is figuring out whether you are trying to slice **positionally** or based on **labels**, but there are other factors. This table will help you determine which to use.
 
-
-| Method   | Purpose                        | Weaknesses                               | Return Types       | Inclusive vs. Exclusive | Arguments                             | Additional Considerations                             |
-|----------|--------------------------------|------------------------------------------|--------------------|-------------------------|---------------------------------------|-------------------------------------------------------|
-| `df[]`   | General-purpose tool            | Ambiguous syntax, confusing arguments    | Series, DataFrames | Inclusive:exclusive      | 1 parameter: Single values, lists, slices | Slices of row labels use `:`, for column labels, use lists |
-| `df.loc` | Choose based on labels           | Does not access positional values        | Single values, Series, DataFrames | Inclusive | 2 parameters: Single values, lists, slices with mixing    | Slices of labels possible, e.g., `df.loc['col1':'col3']`  |
-| `df.iloc`| Choose based on positional index | Cannot access labels                     | Single values, Series, DataFrames | Inclusive:exclusive      | 2 parameters: Single values, lists, slices with mixing    | None                                                     |
-| `df.take`| Choose based on positional index | Can be unnecessarily confusing           | Series, DataFrames | None                    | 2 parameters: List of positions, axis parameter            | None                                                     |
+## Footnotes
+[1] **Vector** is intended to a data structure that can hold multiple values such as a list, slice, or array, even when these structures contain a single value.    
+[2] **Scalar** is intended to mean a single value such as a string or integer. It is NOT a list, slice, or array. 

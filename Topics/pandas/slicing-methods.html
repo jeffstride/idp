@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>DataFrame Slicing Methods &#8212; IDP at NCHS</title>
+    <title>DataFrame Indexing Methods &#8212; IDP at NCHS</title>
   
   
   
@@ -270,7 +270,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 </li>
 <li class="toctree-l2 current active has-children"><a class="reference internal" href="index.html"><i class="fas fa-book fa-fw"></i> Pandas</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="dataframe.html">DataFrame</a></li>
-<li class="toctree-l3 current active"><a class="current reference internal" href="#">DataFrame Slicing Methods</a></li>
+<li class="toctree-l3 current active"><a class="current reference internal" href="#">DataFrame Indexing Methods</a></li>
 <li class="toctree-l3"><a class="reference internal" href="mynb.html">Useful API</a></li>
 </ul>
 </li>
@@ -519,7 +519,7 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>DataFrame Slicing Methods</h1>
+    <h1>DataFrame Indexing Methods</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
@@ -529,11 +529,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#df">df[]</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#df-loc">df.loc[]</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#df-iloc">Df.iloc[]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#argument-types">Argument Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-details">API Details</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#df-take">df.take()</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparisions-summary">Comparisions &amp; Summary:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#footnotes">Footnotes</a></li>
 </ul>
             </nav>
         </div>
@@ -545,215 +545,322 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="dataframe-slicing-methods">
-<h1>DataFrame Slicing Methods<a class="headerlink" href="#dataframe-slicing-methods" title="Link to this heading">#</a></h1>
-<p>In this discussion, we will explore four methods for slicing data within a Pandas DataFrame:</p>
-<ol class="arabic simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">df[]</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">df.loc[]</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">df.iloc[]</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">df.take()</span></code></p></li>
-</ol>
-<p>Pandas is a powerful library that provides various ways to access and manipulate data. However, the abundance of methods can be overwhelming when choosing the most efficient one. This write-up aims to clarify the differences between these four slicing methods.</p>
-<p>For additional information, refer to the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html">Pandas DataFrame Documentation</a>.</p>
-<section id="df">
-<h2>df[]<a class="headerlink" href="#df" title="Link to this heading">#</a></h2>
-<p>This is the <em>simplest</em> and most <em>straightforward</em> slicing method. df[] allows for both position and label-based slicing. You can use positional indices to select either single rows or a selection of multiple rows. You cannot just use a single row index argument. If you want a single row, you have to refer to a slice which only will include that one row.</p>
-<p>We will use this dataframe for the following examples</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;col1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> 
-                   <span class="s1">&#39;col2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> 
-                   <span class="s1">&#39;col3&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">],</span> 
-                   <span class="s1">&#39;col4&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">]})</span>
-
-</pre></div>
-</div>
-<p>Remember that the <em>first argument is inclusive, but the second is exclusive</em></p>
+  <section class="tex2jax_ignore mathjax_ignore" id="dataframe-indexing-methods">
+<h1>DataFrame Indexing Methods<a class="headerlink" href="#dataframe-indexing-methods" title="Link to this heading">#</a></h1>
+<p>We will explore four methods that index data within a Pandas DataFrame. The abundance of approaches can be overwhelming and this write-up aims provide clarity. For additional information, refer to the <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.html">Pandas DataFrame Documentation</a>.</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>API</p></th>
+<th class="head"><p>Index/Position</p></th>
+<th class="head"><p>Comment</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">df[]</span></code></p></td>
+<td><p>rows by position, columns by name</p></td>
+<td><p>One argument only</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">df.loc[]</span></code></p></td>
+<td><p>by index</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[inclusive</span> <span class="pre">:</span> <span class="pre">inclusive]</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">df.iloc[]</span></code></p></td>
+<td><p>by position</p></td>
+<td><p>Columns by position, too</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">df.take()</span></code></p></td>
+<td><p>by position</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">axis=0</span></code> take rows</br><code class="docutils literal notranslate"><span class="pre">axis=1</span></code> take columns</p></td>
+</tr>
+</tbody>
+</table>
+<p>Except for <code class="docutils literal notranslate"><span class="pre">loc</span></code> the API are <code class="docutils literal notranslate"><span class="pre">[inclusive</span> <span class="pre">:</span> <span class="pre">exclusive]</span></code>.</p>
+<section id="argument-types">
+<h2>Argument Types<a class="headerlink" href="#argument-types" title="Link to this heading">#</a></h2>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head text-right"><p>Example</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Number</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">df.iloc[3]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.loc[3]</span></code></p></td>
+<td><p>Describes the position, or,</br>index</p></td>
+</tr>
+<tr class="row-odd"><td><p>Numerical Slice</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">df[0:3]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.loc[1:3]</span></code></p></td>
+<td><p>A slice using numbers (positional)</br> (index)</p></td>
+</tr>
+<tr class="row-even"><td><p>Numerical List</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">df.take([0,</span> <span class="pre">3])</span></code></br><code class="docutils literal notranslate"><span class="pre">df.loc[[1,3]]</span></code></p></td>
+<td><p>List of numbers (positional)</br> (index)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Mask</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">df[[True,</span> <span class="pre">False,</span> <span class="pre">True]]</span></code></p></td>
+<td><p>Any iterable of True/False values</p></td>
+</tr>
+<tr class="row-even"><td><p>String</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">df['A']</span></code></p></td>
+<td><p>A column name (or index value)</p></td>
+</tr>
+<tr class="row-odd"><td><p>String Slice</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">df.loc[:,</span> <span class="pre">'C':'words']</span></code></p></td>
+<td><p>Represents a range of columns</p></td>
+</tr>
+<tr class="row-even"><td><p>String List</p></td>
+<td class="text-right"><p><code class="docutils literal notranslate"><span class="pre">df[['C','D','words']]</span></code></p></td>
+<td><p>A list of column names</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="api-details">
+<h2>API Details<a class="headerlink" href="#api-details" title="Link to this heading">#</a></h2>
 <div class="sd-tab-set docutils">
 <input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-0">
-Positional</label><div class="sd-tab-content docutils">
-<p>In the first example, we use slicing to return a single row. You <strong>cannot</strong> just use a single row index argument. If you want a single row, you have to refer to a slice which only will include that one row.</p>
-<p>Positional selection works even with a custom index, relying on the row’s position rather than its label. You can also omit one or both parameters (df[1:], df[:3], and df[:]): a left-sided value includes rows including and beyond the specified position, right-sided value includes up to but not including the specified value, and a single colon includes all rows.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">Single row:</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="n">s1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span>  <span class="c1"># Returns a series containing values of the 3rd col [3, 7, 11, 15]</span>
-
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">Multiple rows:</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="n">d1</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span>  <span class="c1"># Returns a DataFrame containing two rows [1, 5, 9, 13] and [2, 6, 10, 14]</span>
-<span class="n">d2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span> <span class="c1"># Returns a DataFrame containg three rows [2, 6, 10, 14], [3, 7, 11, 15], and [4, 8, 12, 16]</span>
-<span class="n">d3</span> <span class="o">=</span> <span class="n">df</span><span class="p">[:</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># Returns a DataFrame containg two rows [1, 5, 9, 13] and [2, 6, 10, 14]</span>
-<span class="n">df4</span> <span class="o">=</span> <span class="n">df</span><span class="p">[:]</span> <span class="c1"># Returns a DataFrame containg all columns</span>
-</pre></div>
-</div>
+df</label><div class="sd-tab-content docutils">
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">df[]</span></code> takes a single argument only.</p></li>
+<li><p>Slices are <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">Inclusive</span> <span class="pre">:</span> <span class="pre">Exclusive</span> <span class="pre">]</span></code>.</p></li>
+<li><p>The most common usage is to get a <code class="docutils literal notranslate"><span class="pre">Series</span></code> (column) from the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> via <code class="docutils literal notranslate"><span class="pre">df['col_name']</span></code>.</p></li>
+<li><p>One can add a column to a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> with <code class="docutils literal notranslate"><span class="pre">df['new_column']</span> <span class="pre">=</span> <span class="pre">list_of_values</span></code></p></li>
+</ul>
+<p>It is important to note here that when a numerical slice is used, the values represent positions, not the index. When string values are used, the values represent column names.</p>
+<p><strong>Valid Argument Types:</strong></p>
+<ul class="simple">
+<li><p><strong>Numerical Slice:</strong> represents the Row <strong>Positions</strong></p></li>
+<li><p><strong>Mask:</strong> represents which Rows to keep</p></li>
+<li><p><strong>String:</strong> column name</p></li>
+<li><p><strong>String List:</strong> list of column names</p></li>
+</ul>
+<p><strong>Invalid Argument Types:</strong></p>
+<ul class="simple">
+<li><p><strong>Numerical List:</strong> You cannot use <code class="docutils literal notranslate"><span class="pre">df[[0,</span> <span class="pre">5,</span> <span class="pre">8]]</span></code> to access a list of rows.</p></li>
+<li><p><strong>String Slice:</strong> You cannot use <code class="docutils literal notranslate"><span class="pre">df['first':'exclude_me']</span></code> to access a slice of columns. Instead, you must use a list of strings.</p></li>
+</ul>
+<p><strong>Examples:</strong></p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Valid</p></th>
+<th class="head"><p>Results</p></th>
+<th class="head"><p>Invalid</p></th>
+<th class="head"><p>Note</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">df[0:1]</span></code></p></td>
+<td><p>DataFrame</br>All columns, 1 row</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df[0]</span></code></p></td>
+<td><p>single number <strong>NOT</strong> allowed</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">df[1:3]</span></code></p></td>
+<td><p>DataFrame</br>All columns, 2 rows</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df[[0,</span> <span class="pre">3]]</span></code></p></td>
+<td><p>List must be column names</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">df[2:10]</span></code></p></td>
+<td><p>DataFrame</br>All columns. Many rows</p></td>
+<td><p></p></td>
+<td><p>All rows at those positions. If the slice is completely out of bounds, an empty DataFrame is returned.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">df[[True,</span> <span class="pre">False]]</span></code></p></td>
+<td><p>DataFrame</br>All columns, rows where mask==True</p></td>
+<td><p></p></td>
+<td><p>Length of mask must be len(df)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">df[['C',</span> <span class="pre">'D']]</span></code></p></td>
+<td><p>DataFrame</br>All rows with columns ‘C’ and ‘D’</p></td>
+<td><p></p></td>
+<td><p>The columns are ordered as they appear in the list.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">df[['C']]</span></code></p></td>
+<td><p>DataFrame</br>All rows, one column ‘C’</p></td>
+<td><p></p></td>
+<td><p>A list of just 1 still results in a DataFrame.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">df['C']</span></code></p></td>
+<td><p>Series. Column ‘C’</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df['C':'words']</span></code></p></td>
+<td><p>Column slices <strong>NOT</strong> allowed.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Note that, except for the last example, all valid API return a DataFrame.</p>
 </div>
 <input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-1">
-Label-Based Selection</label><div class="sd-tab-content docutils">
-<p>You can use the <strong>labels</strong> of columns or the custom indexes of rows to select data</p>
-<p>Keep in mind that these are the labels assigned to the <strong>custom index</strong>. These labels are both <strong>inclusive</strong>. You cannot do this type of slicing (involving the colon) using column labels with this method. You would  instead use the <code class="docutils literal notranslate"><span class="pre">.loc</span></code> method.</p>
-<p>To select multiple columns with this method, we can use a <strong>list</strong> containing the labels of the column names. This is not a range of columns to be sliced. The function will only <em>return the columns contained in the list</em>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">Single column or named row</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="n">s2</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;col1&#39;</span><span class="p">]]</span> <span class="c1"># returns a series containing the values of &#39;col1&#39;</span>
-
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">Multiple rows (based on index label)</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="n">df2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">])</span> <span class="c1"># Returns dataframe with the indexes renamed to the rows a, b, and c</span>
-<span class="n">df3</span> <span class="o">=</span> <span class="n">df2</span><span class="p">[</span><span class="n">a</span><span class="p">:</span><span class="n">c</span><span class="p">]</span> <span class="c1"># Returns a DataFrame containing the rows &#39;a&#39;, &#39;b&#39;, and &#39;c&#39;</span>
-
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">Multiple Columns using a list</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="n">d3</span> <span class="o">=</span> <span class="n">df</span><span class="p">[[</span><span class="s1">&#39;col1&#39;</span><span class="p">,</span> <span class="s1">&#39;col3&#39;</span><span class="p">]]</span> <span class="c1"># returns a dataframe containing the rows &#39;col1&#39; and &#39;col3&#39;</span>
-</pre></div>
+df.loc</label><div class="sd-tab-content docutils">
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">df.loc[rows,</span> <span class="pre">cols]</span></code> takes one or two arguments.</p></li>
+<li><p>To get all rows, use an ‘empty’ slice: <code class="docutils literal notranslate"><span class="pre">df.loc[</span> <span class="pre">:</span> <span class="pre">,</span> <span class="pre">'Name']</span></code></p></li>
+<li><p>Each argument can describe multiple values or a single value.</p></li>
+<li><p>The type returned depends on the argument types (vectors vs scalar <a href="#footnotes">[1][2]</a>).</p>
+<ul>
+<li><p>If both arguments are vectors, a <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code> is returned.</p></li>
+<li><p>If exactly one argument is a vector, then a <code class="docutils literal notranslate"><span class="pre">Series</span></code> is returned.</p></li>
+<li><p>If both arguments are scalar, then the contents of the single cell is returned.</p></li>
+</ul>
+</li>
+<li><p>Slices are <code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">Inclusive</span> <span class="pre">:</span> <span class="pre">Inclusive</span> <span class="pre">]</span></code>.</p></li>
+<li><p>One can set a value. <code class="docutils literal notranslate"><span class="pre">df.loc[1,</span> <span class="pre">'Name']</span> <span class="pre">=</span> <span class="pre">5</span></code> will set the <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code>’s value to 5 at index 1 and row ‘Name’.</p></li>
+</ul>
+<p>The first argument describes the indices of the rows desired.<br />
+The second argument describes the column names desired.</p>
+<p><strong>Valid Argument Types:</strong></p>
+<ul class="simple">
+<li><p><strong>Slice</strong>: For rows, the slice must match the index type. For columns, the slice indicates the names of the columns to include and every column between.</p></li>
+<li><p><strong>Mask</strong>: Represents which rows/cols to keep. Mask is an iterable of True/False values (such as a <code class="docutils literal notranslate"><span class="pre">Series</span></code> or a list)</p></li>
+<li><p><strong>List</strong>: A list of indices or column names to include.</p></li>
+</ul>
+<p>Examples:</p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Valid</p></th>
+<th class="head"><p>Note</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">df.loc[0:3]</span></code></p></td>
+<td><p>Rows with indices 0 &amp; 3, and everything in between</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">df.loc[11:5]</span></code></p></td>
+<td><p>Since indices don’t need to be sorted, this will have index 11 as the first row and index 5 as the last row, and all rows that are positioned between them.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">df.loc[mask1,</span> <span class="pre">mask2]</span></code></p></td>
+<td><p>Gets all the rows where mask1 is True, and all the columns where mask2 is True. len(mask1) == count of rows. len(mask2) == count of columns.</p></td>
+</tr>
+<tr class="row-odd"><td><p>‘df.loc[ : , df.columns != ‘Bad’]`</p></td>
+<td><p>Gets all the rows and all the columns except for ‘Bad’. df.columns is a list of column names. The result of comparing the list to ‘Bad’ is a list of True/False values… a mask</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">df.loc[</span> <span class="pre">[0,</span> <span class="pre">8,</span> <span class="pre">11],</span> <span class="pre">['One',</span> <span class="pre">'Three']</span> <span class="pre">]</span></code></p></td>
+<td><p>Each list represents which row/column to keep. The result has the same order as that provided in the list.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="note admonition">
+<p class="admonition-title">Why Inclusive?</p>
+<p>The reason this API is inclusive is because one will often want to get a set of columns that one knows about. It is better to say:</p>
+<blockquote>
+<div><p>“I want all the columns starting with ‘One’ and ending with ‘Last’”</p>
+</div></blockquote>
+<p>than it is to say:</p>
+<blockquote>
+<div><p>“I want all the columns starting with ‘One’ and goes until the column after the ‘Last’ column that I want named… gosh, what is the name of the column that I don’t want?</p>
+</div></blockquote>
+<p>The same can be true for rows when the index is not sorted.</p>
 </div>
 </div>
 <input id="sd-tab-item-2" name="sd-tab-set-0" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-2">
-Exceptions and Oddities</label><div class="sd-tab-content docutils">
-<p>Some things to keep in mind when using this function:</p>
+df.iloc</label><div class="sd-tab-content docutils">
+<p>Under constructions.</p>
 <ul class="simple">
-<li><p>The inclusivity of breakpoints in slicing is <strong>not consistent</strong> in this function. When selecting based on position, it is similar to typical python: <strong>inclusive</strong> for the first argument, <strong>exclusive</strong> for the second. However, when selecting based on label, both terms are <strong>inclusive</strong>.</p></li>
-<li><p>A commonly used convention is to put a second set of  brackets around single term inputs, such as <code class="docutils literal notranslate"><span class="pre">d3</span> <span class="pre">=</span> <span class="pre">df[['col1']]</span></code> in order to avoid ambiguity or confusion related to lists.</p></li>
-<li><p>The ambiguous nature of this function can lead to confusion. For example, if you were trying to access the row at the first positional index using <code class="docutils literal notranslate"><span class="pre">df[1]</span></code>, but you also had a custom integer index, confusion on what the 1 refers to could arise. Using more specific slicing methods such as <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> or <code class="docutils literal notranslate"><span class="pre">.take</span></code> can help clear up this.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">df[0]</span></code> will return an error. This is because it is expecting a column reference. When it is a slice, then the code filters down to the rows. To get the first row, call <code class="docutils literal notranslate"><span class="pre">df[0:1]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df.iloc[rows,</span> <span class="pre">cols]</span></code> takes 1 or 2 arguments.</p></li>
+<li><p>Arguments are primarily <strong>integers</strong> that represent <strong>position</strong>, but can also be a boolean mask.</p></li>
+<li><p>Arguments can also be a lambda for with the argument of the lambda is the calling object, either a DataFrame or Series.</p></li>
+<li><p>There are no string arguments.</p></li>
 </ul>
+<p><strong>Valid Argument Types:</strong></p>
+<ul class="simple">
+<li><p><strong>integer</strong> that represents the position of the row or column.</p></li>
+<li><p><strong>Numerical Slice</strong> that represents the positions of the rows or columns.</p></li>
+<li><p><strong>Numerical List</strong> that represents the positions of the rows or columns.</p></li>
+</ul>
+</div>
+<input id="sd-tab-item-3" name="sd-tab-set-0" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-3">
+df.take</label><div class="sd-tab-content docutils">
+<p>under construction</p>
 </div>
 </div>
 </section>
-<section id="df-loc">
-<h2>df.loc[]<a class="headerlink" href="#df-loc" title="Link to this heading">#</a></h2>
-<p>df.loc is an <strong>index/label</strong> based slicer. It is designed to <em>decrease ambiguity</em> in comparison to the simple <code class="docutils literal notranslate"><span class="pre">df[]</span></code> function. Throughout the examples, the following dataframe will be used:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;col1&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span>
-                   <span class="s1">&#39;col2&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
-                   <span class="s1">&#39;col3&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">],</span>
-                   <span class="s1">&#39;col4&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mi">15</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">45</span><span class="p">]})</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">.loc</span></code> is structured in a way in which there are two <em>‘parameters’</em> separated by commas. The first determines the <em>slice to take out of the rows</em>, and the second determines the <em>slice to take out of the columns</em>. These ‘parameters’ can either be <strong>single values</strong>, <strong>lists</strong>, or <strong>slices</strong>. We will review all of the argument types and categorize them based on return type.</p>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Link to this heading">#</a></h2>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-3" name="sd-tab-set-1" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-3">
-Single Value</label><div class="sd-tab-content docutils">
-<p>This will return the value which is contained in <strong>row 2</strong> (by index, so effectively the 3rd row) of <strong>column 1</strong>, <strong>3</strong>. Since <code class="docutils literal notranslate"><span class="pre">.loc</span></code> is <strong>label based</strong>, the row parameter <em>does not have to be an integer</em>, as this example assumes a default index. If there was a custom index set, you could call <code class="docutils literal notranslate"><span class="pre">v1</span> <span class="pre">=</span> <span class="pre">df.loc[‘c’,</span> <span class="pre">‘col1’]</span></code>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">v1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;col1&#39;</span><span class="p">]</span>  <span class="c1"># Returns a single value from row 2 and column &#39;col1&#39;</span>
-</pre></div>
-</div>
-</div>
-<input id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
+<input checked="checked" id="sd-tab-item-4" name="sd-tab-set-1" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-4">
-Series</label><div class="sd-tab-content docutils">
-<p>Series based on row/column: Both of these lines will return a series of either a <strong>row</strong> or a <strong>column</strong>. Since the row parameter comes first, <em>you can forgo the column parameter if you were only looking for a single row</em>. However, if you are looking for a single column, <em>you need to include a <code class="docutils literal notranslate"><span class="pre">:</span></code></em>, which just refers to all of the rows.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39; </span>
-<span class="sd">Series based on a row:</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="n">s1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># returns the second row as a series</span>
-
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">Series based on column:</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="n">s2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[:,</span> <span class="s1">&#39;col1&#39;</span><span class="p">]</span>  <span class="c1"># Returns &#39;col1&#39; as a series (the first column)</span>
-
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">Series based on a section of a row:</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="n">s3</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;col1&#39;</span><span class="p">,</span> <span class="s1">&#39;col3&#39;</span><span class="p">]]</span> <span class="c1"># returns a series of elements contained in row 1 of columns 1 and 3</span>
-<span class="n">s4</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;col1&#39;</span><span class="p">:</span><span class="s1">&#39;col3&#39;</span><span class="p">]</span> <span class="c1"># returns a series of elements contained in row 1 of columns 1, 2, and 3</span>
-
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">Series based on a section of a column:</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="n">s5</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;col1&#39;</span><span class="p">]</span> <span class="c1"># returns a series of elements contained in rows 1 and 3 of column 1</span>
-<span class="n">s6</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;col1&#39;</span><span class="p">]</span> <span class="c1"># returns a series of elements contained in rows 1, 2, and 3 of column 1</span>
-</pre></div>
-</div>
+Common</label><div class="sd-tab-content docutils">
+<p>df = <img alt="Default Index" src="../../_images/df_slice_1.png" /></p>
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Result</p></th>
+<th class="head"><p>API</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><img alt="Default Index" src="../../_images/df_slice_1a.png" /></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df[0:1]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.loc[0:0]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.iloc[0:1]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.take([0])</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><img alt="Default Index" src="../../_images/df_slice_1b.png" /></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df[1:3]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.loc[1:2]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.iloc[1:3]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.take([1,2])</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><img alt="Default Index" src="../../_images/df_slice_1c.png" /></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mask=[True,False,True,False]</span></code></br><code class="docutils literal notranslate"><span class="pre">df[mask]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.loc[mask]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.loc[[0,</span> <span class="pre">2]]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.iloc[mask]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.iloc[[0,</span> <span class="pre">2]]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.take([0,</span> <span class="pre">2])</span></code></br><code class="docutils literal notranslate"><span class="pre">df[[0,</span> <span class="pre">2]]</span></code> <span style="background-color: yellow">FAILS!!</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><img alt="Default Index" src="../../_images/df_slice_1d.png" /></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">mask=[False,False,True,True,True,False]</span></code></br><code class="docutils literal notranslate"><span class="pre">df[['C',</span> <span class="pre">'D',</span> <span class="pre">'words']]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.loc[:,</span> <span class="pre">mask]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.loc[:,</span> <span class="pre">'C':'words']</span></code></br><code class="docutils literal notranslate"><span class="pre">df.loc[:,</span> <span class="pre">['C',</span> <span class="pre">'D',</span> <span class="pre">'words']]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.iloc[:,</span> <span class="pre">mask]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.iloc[:,</span> <span class="pre">[0,</span> <span class="pre">2]]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.take([2,</span> <span class="pre">3,</span> <span class="pre">4],</span> <span class="pre">axis=1)</span></code></br><code class="docutils literal notranslate"><span class="pre">df['C':'words']</span></code> <span style="background-color: yellow">FAILS!!</span></p></td>
+</tr>
+<tr class="row-even"><td><p><img alt="Default Index" src="../../_images/df_slice_1e.png" /></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df.loc[:,</span> <span class="pre">mask]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.loc[:,</span> <span class="pre">'A':'A']</span></code></br><code class="docutils literal notranslate"><span class="pre">df.loc[:,</span> <span class="pre">['A']]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.iloc[:,</span> <span class="pre">0:1]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.iloc[:,</span> <span class="pre">mask]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.iloc[:,</span> <span class="pre">[0]]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.take([0],</span> <span class="pre">axis=1)</span></code></br><code class="docutils literal notranslate"><span class="pre">df.loc[:,</span> <span class="pre">'A']</span></code> <span style="background-color: yellow">WRONG!! Returns Series</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Series: Column ‘A’</br><pre>0    1</br>1    2</br>2    3</br>3    4</br>Name: A, dtype: int64</pre></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df['A']</span></code></br><code class="docutils literal notranslate"><span class="pre">df.loc[:,</span> <span class="pre">'A']</span></code></br><code class="docutils literal notranslate"><span class="pre">df.loc[:,</span> <span class="pre">mask]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.iloc[:,</span> <span class="pre">0]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.iloc[:,</span> <span class="pre">mask]</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>Series: 2nd Row with index 1</br><pre>A          2</br>B          6</br>C         10</br>D         14</br>words    cat</br>jumpy      2</br>Name: 1, dtype: object0</pre></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df.loc[1,</span> <span class="pre">:]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.iloc[1,</span> <span class="pre">:]</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>Scalar Value:</br><code class="docutils literal notranslate"><span class="pre">7</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df.loc[2,</span> <span class="pre">'B']</span></code></br><code class="docutils literal notranslate"><span class="pre">df.iloc[2,</span> <span class="pre">1]</span></code></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <input id="sd-tab-item-5" name="sd-tab-set-1" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-5">
-DataFrame</label><div class="sd-tab-content docutils">
-<p>This will be <em>very similar to the examples earlier</em>. However, <strong>both</strong> ‘parameters’ will be either a <strong>slicer</strong> or <strong>list</strong>.</p>
-<p>You can ‘mix and match’ <strong>slicers</strong> and <strong>lists</strong>. Remember this assumes a default index, but it will work fine if you utilize a custom index and use the index labels rather than numerical values. This applies to all examples. Slicing parameters are still <strong>inclusive</strong>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="s1">&#39;col1&#39;</span><span class="p">,</span> <span class="s1">&#39;col3&#39;</span><span class="p">]]</span> <span class="c1"># returns a dataframe contained in either row 1 or 3 of column 1 and 3</span>
-<span class="n">d2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;col1&#39;</span><span class="p">:</span> <span class="s1">&#39;col3&#39;</span><span class="p">]</span> <span class="c1"># returns a dataframe contained in either row 1, 2, or 3 of column 1, 2, and 3</span>
-<span class="n">d3</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="s1">&#39;col1&#39;</span><span class="p">:</span> <span class="s1">&#39;col3&#39;</span><span class="p">]</span> <span class="c1"># returns a dataframe contained in either row 1 or 3 of column 1, 2, and 3</span>
-</pre></div>
-</div>
+Unsorted Index</label><div class="sd-tab-content docutils">
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>DataFrame</p></th>
+<th class="head"><p>Result</p></th>
+<th class="head"><p>API</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><img alt="Default Index" src="../../_images/df_slice_2.png" /></p></td>
+<td><p><img alt="Default Index" src="../../_images/df_slice_2a.png" /></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df[0:1]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.loc[9:9]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.iloc[0:1]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.take([0])</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p><img alt="Default Index" src="../../_images/df_slice_2b.png" /></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df[1:3]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.loc[2:11]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.iloc[1:3]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.take([1,2])</span></code></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 <input id="sd-tab-item-6" name="sd-tab-set-1" type="radio">
 </input><label class="sd-tab-label" for="sd-tab-item-6">
-Exceptions and Oddities</label><div class="sd-tab-content docutils">
-<ul class="simple">
-<li><p>When indexing with integer based indices, <em>especially a custom index</em>, care is necessary in order to ensure you are referring to the right things (<strong>positional</strong> or <strong>label</strong> index?). Remember, if you are looking for positional indices, utilize <code class="docutils literal notranslate"><span class="pre">.iloc</span></code>.</p></li>
-<li><p>Assuming a default index, <code class="docutils literal notranslate"><span class="pre">df.loc[0]</span></code> will return the first row of the dataframe in a series.</p></li>
-<li><p>Square brackets are used simply because it is <em>consistent with the python convention of these brackets</em>, referring to slicing.</p></li>
-</ul>
-</div>
-</div>
-</section>
-<section id="df-iloc">
-<h2>Df.iloc[]<a class="headerlink" href="#df-iloc" title="Link to this heading">#</a></h2>
-<p>All numbers in the comments of the sample programs refer to the <strong>index</strong> positions of the rows/columns, meaning row 1 refers to the <strong>second</strong> row of the dataframe</p>
-<p><code class="docutils literal notranslate"><span class="pre">df.iloc</span></code> is an <strong>integer</strong> index based slicing function. It <strong>only</strong> takes integer numbers into its arguments. However, it is <em>very similar to the <code class="docutils literal notranslate"><span class="pre">.loc</span></code> function</em>, in that there are two arguments, one for the <strong>row</strong> and one for the <strong>column</strong>. The  difference is that while <code class="docutils literal notranslate"><span class="pre">.loc</span></code>’s arguments for its slicers are <strong>inclusive</strong>, the arguments for <code class="docutils literal notranslate"><span class="pre">.iloc</span></code>’s slicers are similar to base python. The first argument is <strong>inclusive</strong> while the second is <strong>exclusive</strong>. The positional nature makes <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> very convenient when dealing with <em>large dataframes with confusing labels and custom indices</em>. Sometimes, locating a <strong>value</strong> or <strong>slice</strong> based on its <strong>position</strong> in the dataframe is more straightforward.</p>
-<div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-7" name="sd-tab-set-2" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-7">
-Single Value</label><div class="sd-tab-content docutils">
-<p>This will return the value which is contained in <strong>row 2</strong> of <strong>column 1</strong>, <strong>7</strong>.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">v1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="c1"># returns the value in the 2x1 spot in the dataframe</span>
-</pre></div>
-</div>
-</div>
-<input id="sd-tab-item-8" name="sd-tab-set-2" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-8">
-Series</label><div class="sd-tab-content docutils">
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">Series based on a row</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="n">s1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="c1"># returns a series containing the row 1</span>
-
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">Series based on a column</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="n">s2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">2</span><span class="p">]</span> <span class="c1"># returns a series containing the column 2</span>
-
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">Series based on a section of a row</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="n">s3</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span> <span class="c1"># retuns a series of the elements contained in row 1 of column 1 and 3</span>
-<span class="n">s4</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="c1"># retuns a series of the elements contained in row 1 of column 1, 2, and 3</span>
-
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="sd">Series based on a section of a column:</span>
-<span class="sd">&#39;&#39;&#39;</span>
-<span class="n">s5</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">1</span><span class="p">]</span> <span class="c1"># returns a series of the elements contained in rows 1 and 3 of column 1</span>
-<span class="n">s6</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="c1"># returns a series of the elements contained in rows 1, 2, and 3 of column 1</span>
-</pre></div>
-</div>
-</div>
-<input id="sd-tab-item-9" name="sd-tab-set-2" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-9">
-Dataframe</label><div class="sd-tab-content docutils">
-<p>This will be very similar to the examples earlier. However, instead, both ‘parameters’ will have either a <strong>slicer</strong> or <strong>list</strong>.</p>
-<p>Like in <code class="docutils literal notranslate"><span class="pre">.loc</span></code>, you can ‘mix and match’ slicers and lists.</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">]]</span> <span class="c1"># returns a dataframe contained in either row 1 or 3 of column 1 and 3</span>
-<span class="n">d2</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">3</span><span class="p">]</span> <span class="c1"># returns a dataframe contained in either row 1, 2, or 3 of column 1, 2, and 3</span>
-<span class="n">d3</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="mi">1</span><span class="p">:</span> <span class="mi">3</span><span class="p">]</span> <span class="c1"># returns a dataframe contained in either row 1 or 3 of column 1, 2, and 3</span>
-</pre></div>
-</div>
-</div>
-<input id="sd-tab-item-10" name="sd-tab-set-2" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-10">
-Exceptions and Oddities</label><div class="sd-tab-content docutils">
-<ul class="simple">
-<li><p>If you ever, for some reason, need to utilize a label based index using <code class="docutils literal notranslate"><span class="pre">.iloc</span></code>, you can use the function <code class="docutils literal notranslate"><span class="pre">df.columns.get_loc('your_column’)</span></code> in order to get the <strong>positional</strong> location of that <strong>column</strong>, and input that value into your <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> function. However, this is obviously <strong>not recommended</strong>, as simply using <code class="docutils literal notranslate"><span class="pre">.loc</span></code> would be better.</p></li>
-<li><p>Assuming a <em>default index</em>, <code class="docutils literal notranslate"><span class="pre">df.iloc[0]</span></code> will return the first row of the dataframe in a series, just like <code class="docutils literal notranslate"><span class="pre">.loc</span></code>.</p></li>
-<li><p>If both ‘parameters’ of <code class="docutils literal notranslate"><span class="pre">.iloc</span></code> are single values, then it will return a <strong>single value</strong>. If one is a single value and the other is a slice or list, then it will return a <strong>series</strong>. If both are slices or lists, it will return a <strong>dataframe</strong>. This is applicable to <code class="docutils literal notranslate"><span class="pre">.loc</span></code>.</p></li>
-</ul>
+String Index</label><div class="sd-tab-content docutils">
+<table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>DataFrame</p></th>
+<th class="head"><p>Result</p></th>
+<th class="head"><p>API</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><img alt="Default Index" src="../../_images/df_slice_3.png" /></p></td>
+<td><p><img alt="Default Index" src="../../_images/df_slice_3a.png" /></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df[0:1]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.loc['ax']</span></code></br><code class="docutils literal notranslate"><span class="pre">df.iloc[0:1]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.take([0])</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p><img alt="Default Index" src="../../_images/df_slice_3b.png" /></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">df[1:3]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.loc['cat':'dog']</span></code></br><code class="docutils literal notranslate"><span class="pre">df.iloc[1:3]</span></code></br><code class="docutils literal notranslate"><span class="pre">df.take([1,2])</span></code></p></td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </section>
@@ -761,8 +868,8 @@ Exceptions and Oddities</label><div class="sd-tab-content docutils">
 <h2>df.take()<a class="headerlink" href="#df-take" title="Link to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">df.take()</span></code> is primarily a <strong>positional</strong> based indexer/slicer. It will return the <strong>columns</strong> or <strong>rows</strong> in the position specified by the inputs, which will either be a <strong>single value</strong>, <strong>list</strong>, or <strong>slice</strong>. It has another parameter, <code class="docutils literal notranslate"><span class="pre">axis</span></code>, which is set to <em>0 by default</em>. The default parameter refers to the <strong>index/rows</strong>, meaning we are selecting rows to extract. If you set <code class="docutils literal notranslate"><span class="pre">axis</span></code> to 1, then it will select <strong>columns</strong>.</p>
 <div class="sd-tab-set docutils">
-<input checked="checked" id="sd-tab-item-11" name="sd-tab-set-3" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-11">
+<input checked="checked" id="sd-tab-item-7" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-7">
 Series</label><div class="sd-tab-content docutils">
 <p>Since <code class="docutils literal notranslate"><span class="pre">df.take()</span></code> is <strong>positional</strong> based, you <strong>cannot</strong> input labels. They must be integers. Additionally, it <em>ignores whatever custom index you may have applied</em>, even if it is an integer index. It will use the <em>underlying positional index</em> to collect the data. Remember, you <strong>need</strong> to include the square brackets, because the function takes only lists.</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="sd">&#39;&#39;&#39;</span>
@@ -777,8 +884,8 @@ Series</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="sd-tab-item-12" name="sd-tab-set-3" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-12">
+<input id="sd-tab-item-8" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-8">
 Dataframe</label><div class="sd-tab-content docutils">
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">d1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">take</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span> <span class="c1"># returns a dataframe containing rows 1, 3, and 0</span>
 
@@ -787,8 +894,8 @@ Dataframe</label><div class="sd-tab-content docutils">
 </pre></div>
 </div>
 </div>
-<input id="sd-tab-item-13" name="sd-tab-set-3" type="radio">
-</input><label class="sd-tab-label" for="sd-tab-item-13">
+<input id="sd-tab-item-9" name="sd-tab-set-2" type="radio">
+</input><label class="sd-tab-label" for="sd-tab-item-9">
 Exceptions and Oddities</label><div class="sd-tab-content docutils">
 <ul class="simple">
 <li><p>Make sure to look out for <code class="docutils literal notranslate"><span class="pre">IndexError</span></code> exceptions, which will arise if you <em>input a number that is not in the index</em>. This means you <strong>can’t</strong> use <code class="docutils literal notranslate"><span class="pre">len(df)</span></code> as a parameter in order to get the <em>last row of the dataframe</em>.</p></li>
@@ -798,55 +905,10 @@ Exceptions and Oddities</label><div class="sd-tab-content docutils">
 </div>
 </div>
 </section>
-<section id="comparisions-summary">
-<h2>Comparisions &amp; Summary:<a class="headerlink" href="#comparisions-summary" title="Link to this heading">#</a></h2>
-<p>These 4 slicing methods are <strong>all effective</strong> if used right. The first step to determining the correct method is figuring out whether you are trying to slice <strong>positionally</strong> or based on <strong>labels</strong>, but there are other factors. This table will help you determine which to use.</p>
-<table class="table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Method</p></th>
-<th class="head"><p>Purpose</p></th>
-<th class="head"><p>Weaknesses</p></th>
-<th class="head"><p>Return Types</p></th>
-<th class="head"><p>Inclusive vs. Exclusive</p></th>
-<th class="head"><p>Arguments</p></th>
-<th class="head"><p>Additional Considerations</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">df[]</span></code></p></td>
-<td><p>General-purpose tool</p></td>
-<td><p>Ambiguous syntax, confusing arguments</p></td>
-<td><p>Series, DataFrames</p></td>
-<td><p>Inclusive:exclusive</p></td>
-<td><p>1 parameter: Single values, lists, slices</p></td>
-<td><p>Slices of row labels use <code class="docutils literal notranslate"><span class="pre">:</span></code>, for column labels, use lists</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">df.loc</span></code></p></td>
-<td><p>Choose based on labels</p></td>
-<td><p>Does not access positional values</p></td>
-<td><p>Single values, Series, DataFrames</p></td>
-<td><p>Inclusive</p></td>
-<td><p>2 parameters: Single values, lists, slices with mixing</p></td>
-<td><p>Slices of labels possible, e.g., <code class="docutils literal notranslate"><span class="pre">df.loc['col1':'col3']</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">df.iloc</span></code></p></td>
-<td><p>Choose based on positional index</p></td>
-<td><p>Cannot access labels</p></td>
-<td><p>Single values, Series, DataFrames</p></td>
-<td><p>Inclusive:exclusive</p></td>
-<td><p>2 parameters: Single values, lists, slices with mixing</p></td>
-<td><p>None</p></td>
-</tr>
-<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">df.take</span></code></p></td>
-<td><p>Choose based on positional index</p></td>
-<td><p>Can be unnecessarily confusing</p></td>
-<td><p>Series, DataFrames</p></td>
-<td><p>None</p></td>
-<td><p>2 parameters: List of positions, axis parameter</p></td>
-<td><p>None</p></td>
-</tr>
-</tbody>
-</table>
+<section id="footnotes">
+<h2>Footnotes<a class="headerlink" href="#footnotes" title="Link to this heading">#</a></h2>
+<p>[1] <strong>Vector</strong> is intended to a data structure that can hold multiple values such as a list, slice, or array, even when these structures contain a single value.<br />
+[2] <strong>Scalar</strong> is intended to mean a single value such as a string or integer. It is NOT a list, slice, or array.</p>
 </section>
 </section>
 
@@ -914,11 +976,11 @@ Exceptions and Oddities</label><div class="sd-tab-content docutils">
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#df">df[]</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#df-loc">df.loc[]</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#df-iloc">Df.iloc[]</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#argument-types">Argument Types</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#api-details">API Details</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#examples">Examples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#df-take">df.take()</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comparisions-summary">Comparisions &amp; Summary:</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#footnotes">Footnotes</a></li>
 </ul>
   </nav></div>
 
