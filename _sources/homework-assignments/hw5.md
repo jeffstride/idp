@@ -13,28 +13,27 @@
 * `run_tests.py` is a helper file that will run all the "unit tests" in a way that is more transparent and debuggable.  
 ```
 ```{tab-item} Files to Submit
-You will check Schoology to see how to submit your work. Most likely it will be to DropBox and there will be a specific link for that.  For DropBox, you are to submit a folder named your school ID (example: 901234). The folder should contain the following Python files along with one or more "test corpus sub-directories":  
+You must submit your work as your teacher requires. Ask questions in class.  
+
+Submit the following Python files along with one or more "test corpus sub-directories":  
 * `search_engine.py`  
 * `document.py`  
 * `hw5_test.py`
 * `main.py`  
 * `<my_test_corpus>`  
 
-You should create subdirectories with test files in them. Use these subdirectories in your tests. And, since your tests need to run on Mr. Stride's machine, be sure to submit your new subdirectories.    
+You should create subdirectories with test files in them. Use these subdirectories in your tests. And, since your tests need to run on the teacher's machine, be sure to submit your new subdirectories.    
 
-Please do **NOT** submit the following subdirectories. You may assume they exist on Mr. Stride's machine:   
+Please do **NOT** submit the following subdirectories. You may assume they exist on the teacher's machine:   
 * small_text   
 * test   
 * test_corpus  
 
 ```{admonition} Submit Subdirectories
 :class: seealso
-This is relevant to Code SubStation only. Do not follow these instructions when using `DropBox`.  
-<a href="../Topics/misc/submitting.html#submitting-subdirectories">Go here</a> for information on how to submit subdirectories.
+You must submit your work as your teacher requires. Ask questions in class.   
 ```
-```{tab-item} Replit Unit Tests
-There is one Unit Test, but it runs lots of tests. To get details on how the failures, run `run_tests.py` by modifying the `.replit` file.  
-```
+
 ```{tab-item} Test Tips
 Try to break your search engine.  
 Create test files that are target the type of tests you want to run. They should have content that is easy enough to verify.    
