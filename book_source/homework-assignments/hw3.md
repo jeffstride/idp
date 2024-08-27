@@ -18,7 +18,7 @@
 * `tox.ini` is the set of `flake8` rules. Do not change. Do not submit.  
 ```
 ```{tab-item} Files to Submit
-You must submit your work to the <a href="https://autograder-nchs.vercel.app/login" target="_blank">Code Submission Site</a>.  
+You must submit your work as your teacher requires. Ask questions in class.  
 
 You are to submit the following Python files:  
 * `hw3_test.py`  
@@ -34,9 +34,6 @@ Do **NOT** submit:
 
 Do not create any subdirectories.  
 Do not submit any zip files.  
-```
-```{tab-item} Replit Unit Tests
-No Unit Tests are provided for you in Replit. You need to write your own Unit Tests in `hw3_test.py`.  
 ```
 ```{tab-item} Test Tips
 * Do **NOT** use globals.  

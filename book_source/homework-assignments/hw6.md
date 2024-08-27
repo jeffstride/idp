@@ -4,8 +4,7 @@
 
 ## Rubric & Submission
 Please note these important things:
-* You will submit your work to **Dropbox**. The link will be found on Schoology.  
-* This will be for your High School Grade only.  
+* You must submit your work as your teacher requires. Ask questions in class.   
 * You will be graded on:
     * Functionality  
     * Speed/Efficiency  

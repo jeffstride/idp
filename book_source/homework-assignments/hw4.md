@@ -15,7 +15,7 @@
 * `expected` is a folder containing the expected output for `line_plot_bachelors` and `bar_chart_high_school`. Don’t modify the contents of this folder.   
 ```
 ```{tab-item} Files to Submit
-You must submit your work to the <a href="https://autograder-nchs.vercel.app/login" target="_blank">Code Submission Site</a>.  
+You must submit your work as your teacher requires. Ask questions in class.  
 
 You are to submit the following two files ONLY:  
 * `hw4.py`  
@@ -23,26 +23,13 @@ You are to submit the following two files ONLY:
 
 Do NOT submit anything else.
 ```
-```{tab-item} Replit Tests
-These tests are to help you gain some confidence that your code is ready for grading. But, there are some issues
-with image comparison tests. Furthermore, there are a gazillion ways to make plots and each one can have minor,
-sometimes major, differences. It is best if you pass all these tests, but don't stress too much if you don't
-pass the image comparison tests: use the image comparison tool to help you verify.   
-Tests:  
-* **hispanic_plot** - Tests that the plot_hispanic_min_degree.png is similar enough to the expected image.  
-* **bar_chart_high_school** - Tests that the bar_chart_high_school.png is similar enough to the expected image.  
-* **line_plot_bachelors** - Tests that the line_plot_bachelors.png is similar enough to the expected image.  
-* **top_2000s** - Tests that the method top_2_2000s has good return values.  
-* **fit_and_predict** - Tests that `fit_and_predict_degrees` returns an acceptable error value.   
-* **bachelors_1980** - Tests that `compare_bachelors_1980` returns acceptable DataFrame.  
-```
+
 ```{tab-item} Image Comparison Tool
-Included with the Replit startup code is a file `cse163_imgd_NCHS.py` which will compare the student's
+You may have been given a file `cse163_imgd_NCHS.py` to compare the student's
 image with the expected image (provided in the _expected_ subfolder), and generate a _diff image_ that
 is saved in the _compare_ subfolder. Differences between the two images will be highlighted in hot pink.   
 
-To run the tool, you will need to modify `.replit` to run `cse163_imgd_NCHS.py`. Or, if you want, you can
-temporarily call the comparison using the following code:
+You execute call the comparison using the following code:
 ```python
 # This is in hw4.py
 from cse163_imgd_NCHS import compare_hw4_images

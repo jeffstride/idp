@@ -78,22 +78,15 @@ You are provided with the following files:
 * `tox.ini` is a `flake8` configuration file that allows us to customize the types of warnings and errors students must fix.   
 ```
 ```{tab-item} Files to Submit
-You must submit your work to the <a href="https://autograder-nchs.vercel.app/login" target="_blank">Code Submission Site</a>.  
+You must submit your work as your teacher requires. Ask questions in class.    
 
 **Submit only**:  
 * `hw1.py`  
 * `hw1_test.py` : must have `main-pattern` to run all test methods 
 ```
-```{tab-item} Replit Unit Tests
-The only Unit Test provided in Replit is for the _Challenge Question_ which is not graded.
-```
+
 ````
-```{admonition} Run in Replit
-:class: note
-For this assignment `replit` has been to be configured to run `hw1_test.py`.
-See [Building in Replit](/Topics/Replit/building-in-replit) for how this is done. In future assignments,
-you may want to modify this as you develop.  
-```
+
 
 * * * 
 ## Implementation
