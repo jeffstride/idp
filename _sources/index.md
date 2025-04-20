@@ -1,14 +1,21 @@
 
 # <i class="fas fa-hand-sparkles fa-fw"></i> Introduction
 
-```{admonition} Website Mission
+```{admonition} NCHS Students
 :class: note
-To provide a site that allows one to “window shop” for the technology and methods that add value to a student in IDP.  
+Mr. Rukman has an new IDP site for you. [Please go there](https://nchs-cs.github.io/idp/).
 ```
 
-This website is intended to augment the [CSE 163: Intermediate Data Programming](https://courses.cs.washington.edu/courses/cse163) curriculum and [online book](https://cse163.github.io/book) provided by Hunter Schafer. The UW course is completed in 10 weeks (the length of UW's quarter) while students in high school have 35 weeks. This mean that the ambitious student has time for some _more, cool stuff_. Furthermore, the tools leveraged and the expectations in the high school classroom are different from UW's expectations. Sometimes, the published UW material is simply inaccurate. Herein, we provide valuable, easy to browse, easy to leverage, accurate information for the high school student in IDP.  
+```{admonition} Website Mission
+:class: note
+Allow a student learning Data Science to “window shop” for technology and methods.     
+```
 
-Mr. Stride has created "this ridiculous" thing... for you.
+In the Fall of 2024, Mr. Stride has moved to UW Bothell and this site is no longer a primary source of information for students at NCHS. As a result, content is transforming to reference material on Python in general instead of directions on high school homework.
+
+This website is intended to augment the [CSE 163: Intermediate Data Programming](https://courses.cs.washington.edu/courses/cse163) curriculum and [online book](https://cse163.github.io/book) provided by Hunter Schafer.   
+
+Mr. Stride has created "this ridiculous" thing...
 ```{admonition} Video Reference
 :class: dropdown seealso
 <div>
@@ -16,16 +23,10 @@ Mr. Stride has created "this ridiculous" thing... for you.
 </div>
 ```
 
-
-
-Things this website hopes to have:
-* NCHS Homework descriptions
-* HW Tips and Tricks
-* Machine Learning extras
-* Plotting extras
-* Final Project description and extras
-* Cheatsheet Notes (maybe)
-* Exam Preparation material (maybe)
+Things this website hopes to have information on:
+* Machine Learning 
+* Plotting 
+* Cheatsheet Notes  
 
 Once you are ready to read, you can navigate the book using the sidebar on the left!  
   
