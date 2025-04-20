@@ -5,12 +5,6 @@ author: "Jeff Stride"
 copyright: "2023"
 logo: _static/logo.png
 
-
-nav_external_links:
-  - title: LearnGitBranching
-    url: https://nchs-cs.github.io/idp/static/gitbranching/learnGitBranching
-    opens_in_new_tab: true
-
 #######################################################################################
 # Execution settings
 execute:

@@ -37,3 +37,5 @@ chapters:
       - file: visualizations/lineplots
       - file: visualizations/line_of_best_fit.md
       - file: visualizations/case_study_dist.md
+  - url: https://nchs-cs.github.io/idp/static/gitbranching/learnGitBranching
+    title: Learn Git Branching
