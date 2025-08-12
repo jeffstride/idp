@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css?v=13237357" />
     <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../../_static/sphinx-design.min.css?v=95c83b7e" />
     <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=6c3db60c" />
@@ -253,6 +253,7 @@ commentsRunWhenDOMLoaded(addUtterances);
 <li class="toctree-l3 current active"><a class="current reference internal" href="#">Notes on MyST</a></li>
 <li class="toctree-l3"><a class="reference internal" href="interfaces_classes.html">Interfaces and Classes</a></li>
 <li class="toctree-l3"><a class="reference internal" href="flake8.html">Flake8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="java_conventions.html">CSS 142/143 Code Quality Guide</a></li>
 </ul>
 </details></li>
 <li class="toctree-l2 has-children"><a class="reference internal" href="../pandas/index.html"><i class="fas fa-book fa-fw"></i> Pandas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
@@ -503,9 +504,11 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#highlight-and-hover">Highlight and Hover</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-with-lines-and-emphasis">Code with Lines and Emphasis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-with-background-color">Code with Background Color</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#icons">Icons</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-examples">Reference Examples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#admonitions">Admonitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabs">Tabs</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#math">Math</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tables">Tables</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#github-table">github table</a></li>
@@ -524,7 +527,18 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="notes-on-myst">
+  <style>
+div.good-code div pre {
+    background-color: rgba(209, 255, 211, 0.5) !important; /* Light green */
+}
+div.bad-code div pre {
+    background-color: rgba(255, 209, 209, 0.5) !important;
+}
+div.okay-code div pre {
+    background-color: rgba(253, 255, 201, 0.5) !important;
+}
+</style>
+<section class="tex2jax_ignore mathjax_ignore" id="notes-on-myst">
 <h1>Notes on MyST<a class="headerlink" href="#notes-on-myst" title="Link to this heading">#</a></h1>
 <p>This page contains example styles to help authors of this site to style stuff correctly.</p>
 <section id="highlight-and-hover">
@@ -537,6 +551,23 @@ document.write(`
 <span class="linenos">2</span>    <span class="nb">print</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 <span class="hll"><span class="linenos">3</span>    <span class="k">return</span> <span class="n">x</span>
 </span></pre></div>
+</div>
+</section>
+<section id="code-with-background-color">
+<h2>Code with Background Color<a class="headerlink" href="#code-with-background-color" title="Link to this heading">#</a></h2>
+<div class="good-code highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Good Code</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">example</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Green background.&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// Background is supplied with a CSS style</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="bad-code highlight-java notranslate"><div class="highlight"><pre><span></span><span class="c1">// Bad Code</span>
+<span class="kd">public</span><span class="w"> </span><span class="kd">static</span><span class="w"> </span><span class="kt">void</span><span class="w"> </span><span class="nf">arg</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="n">System</span><span class="p">.</span><span class="na">out</span><span class="p">.</span><span class="na">println</span><span class="p">(</span><span class="s">&quot;Red background.&quot;</span><span class="p">);</span>
+<span class="w">  </span><span class="c1">// Inline style and class applied in {code-block} with :class: bad-code</span>
+<span class="p">}</span>
+</pre></div>
 </div>
 </section>
 <section id="icons">
@@ -567,6 +598,28 @@ document.write(`
 <div class="note admonition">
 <p class="admonition-title">Note</p>
 <p>This is a note</p>
+</div>
+</section>
+<section id="tabs">
+<h2>Tabs<a class="headerlink" href="#tabs" title="Link to this heading">#</a></h2>
+<p>To get tabs, use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">View</span> <span class="n">the</span> <span class="n">source</span> <span class="n">of</span> <span class="n">this</span> <span class="n">page</span> <span class="n">to</span> <span class="n">get</span> <span class="n">the</span> <span class="n">true</span> <span class="n">formatting</span>
+<span class="p">{</span><span class="n">tab</span><span class="o">-</span><span class="nb">set</span><span class="p">}</span> 
+<span class="p">{</span><span class="n">tab</span><span class="o">-</span><span class="n">item</span><span class="p">}</span> <span class="n">Tab</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p><strong>Example Tabs</strong></p>
+<div class="sd-tab-set docutils">
+<input checked="checked" id="sd-tab-item-0" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-0">
+Tab 1</label><div class="sd-tab-content docutils">
+<p>Stuff</p>
+</div>
+<input id="sd-tab-item-1" name="sd-tab-set-0" type="radio">
+<label class="sd-tab-label" for="sd-tab-item-1">
+Tab 2</label><div class="sd-tab-content docutils">
+<p>More stuff</p>
+</div>
 </div>
 </section>
 <section id="math">
@@ -706,9 +759,11 @@ document.write(`
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#highlight-and-hover">Highlight and Hover</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-with-lines-and-emphasis">Code with Lines and Emphasis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#code-with-background-color">Code with Background Color</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#icons">Icons</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#reference-examples">Reference Examples</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#admonitions">Admonitions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tabs">Tabs</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#math">Math</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tables">Tables</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#github-table">github table</a></li>

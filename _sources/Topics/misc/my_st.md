@@ -1,3 +1,14 @@
+<style>
+div.good-code div pre {
+    background-color: rgba(209, 255, 211, 0.5) !important; /* Light green */
+}
+div.bad-code div pre {
+    background-color: rgba(255, 209, 209, 0.5) !important;
+}
+div.okay-code div pre {
+    background-color: rgba(253, 255, 201, 0.5) !important;
+}
+</style>
 # Notes on MyST 
 This page contains example styles to help authors of this site to style stuff correctly.
 
@@ -11,6 +22,24 @@ This page contains example styles to help authors of this site to style stuff co
 def my_method(x):
     print(s)
     return x
+```
+
+## Code with Background Color 
+```{code-block} java
+:class: good-code
+// Good Code
+public static void example() {
+  System.out.println("Green background.");
+  // Background is supplied with a CSS style
+}
+```
+```{code-block} java
+:class: bad-code
+// Bad Code
+public static void arg() {
+  System.out.println("Red background.");
+  // Inline style and class applied in {code-block} with :class: bad-code
+}
 ```
 
 ## Icons
@@ -42,6 +71,25 @@ Content is here
 :class: note
 This is a note
 ```
+
+## Tabs
+To get tabs, use:
+```
+// View the source of this page to get the true formatting
+{tab-set} 
+{tab-item} Tab 1
+```
+
+**Example Tabs**
+````{tab-set}
+
+```{tab-item} Tab 1
+Stuff
+```
+```{tab-item} Tab 2
+More stuff
+```
+````
 
 ## Math
 `$\sigma = \sqrt{n \cdot p \cdot (1 - p)}$ `  
