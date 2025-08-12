@@ -12,6 +12,7 @@ chapters:
         - file: Topics/misc/my_st
         - file: Topics/misc/interfaces_classes
         - file: Topics/misc/flake8
+        - file: Topics/misc/java_conventions
       - file: Topics/pandas/index
         sections:
           - file: Topics/pandas/dataframe
