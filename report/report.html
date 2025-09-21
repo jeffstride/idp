@@ -1,0 +1,1939 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="../" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Correlations to Success (draft) &#8212; IDP at NCHS</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=6c3db60c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
+    <script kind="utterances">
+
+    var commentsRunWhenDOMLoaded = cb => {
+    if (document.readyState != 'loading') {
+        cb()
+    } else if (document.addEventListener) {
+        document.addEventListener('DOMContentLoaded', cb)
+    } else {
+        document.attachEvent('onreadystatechange', function() {
+        if (document.readyState == 'complete') cb()
+        })
+    }
+}
+
+var addUtterances = () => {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src = "https://utteranc.es/client.js";
+    script.async = "async";
+
+    script.setAttribute("repo", "jeffstride/idp");
+    script.setAttribute("issue-term", "pathname");
+    script.setAttribute("theme", "preferred-color-scheme");
+    script.setAttribute("label", "💬 Comments");
+    script.setAttribute("crossorigin", "anonymous");
+
+    sections = document.querySelectorAll("div.section");
+    if (sections !== null) {
+        section = sections[sections.length-1];
+        section.appendChild(script);
+    }
+}
+commentsRunWhenDOMLoaded(addUtterances);
+</script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js?v=f930bc37"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-DW6SHVPBYV"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-DW6SHVPBYV');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-DW6SHVPBYV');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'report/report';</script>
+    <link rel="icon" href="../_static/favicon.png"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Reports" href="index.html" />
+    
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DW6SHVPBYV"></script>
+    <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-DW6SHVPBYV');
+    </script>
+
+
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="IDP at NCHS - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="IDP at NCHS - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../index.html">
+                    <i class="fas fa-hand-sparkles fa-fw"></i> Introduction
+                </a>
+            </li>
+        </ul>
+        <ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../Topics/index.html"><i class="fas fa-layer-group fa-fw"></i> Topics</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Topics/misc/index.html"><i class="fas fa-book fa-fw"></i> Miscellaneous</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Topics/misc/submitting.html">Submitting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Topics/misc/collections.html">Collections</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Topics/misc/comments.html">Writing Effective Comments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Topics/misc/rand_response.html">Reversing Randomized Response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Topics/misc/my_st.html">Notes on MyST</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Topics/misc/interfaces_classes.html">Interfaces and Classes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Topics/misc/flake8.html">Flake8</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Topics/pandas/index.html"><i class="fas fa-book fa-fw"></i> Pandas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Topics/pandas/dataframe.html">DataFrame</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Topics/pandas/slicing-methods.html">DataFrame Indexing Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Topics/pandas/mynb.html">Useful API</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Topics/machine_learning/index.html"><i class="fas fa-book fa-fw"></i> Machine Learning</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Topics/machine_learning/feature-importance.html">Feature Importance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Topics/machine_learning/assessing-accuracy.html">Assessing Accuracy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Topics/machine_learning/classification.html">Classification</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Topics/machine_learning/regression.html">Regression - Distance Study</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Topics/machine_learning/classifier-rand.html">Classification - Fully Random</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Topics/machine_learning/when-to-avoid-ml.html">When to Avoid Using Machine Learning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Topics/machine_learning/ML.html"><i class="fas fa-book fa-fw"></i> Leveraging ML</a></li>
+</ul>
+</details></li>
+<li class="toctree-l2 has-children"><a class="reference internal" href="../Topics/built-in/index.html"><i class="fas fa-book fa-fw"></i> Built-in</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Topics/built-in/arguments.html">Arguments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../Topics/built-in/formatted-string.html">Formatted Strings</a></li>
+</ul>
+</details></li>
+</ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../visualizations/index.html"><i class="fas fa-book fa-fw"></i> Visualizations</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l2"><a class="reference internal" href="../visualizations/barchart.html">Bar Charts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualizations/geospatial.html">Geospatial Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualizations/lineplots.html">Line Plots</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../visualizations/line_of_best_fit.html">Curve of Best Fit</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../visualizations/case_study_dist.html">Case Study on Distance</a></li>
+
+</ul>
+</details></li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html"><i class="fas fa-book fa-fw"></i>  Reports</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Correlations to Success (draft)</a></li>
+</ul>
+</details></li>
+<li class="toctree-l1"><a class="reference external" href="https://nchs-cs.github.io/idp/static/gitbranching/learnGitBranching">Learn Git Branching</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</button></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/jeffstride/idp" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jeffstride/idp/edit/main/book_source/report/report.md" target="_blank"
+   class="btn btn-sm btn-source-edit-button dropdown-item"
+   title="Suggest edit"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-pencil-alt"></i>
+  </span>
+<span class="btn__text-container">Suggest edit</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/jeffstride/idp/issues/new?title=Issue%20on%20page%20%2Freport/report.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/report/report.md" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.md</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Correlations to Success (draft)</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract"><strong>Abstract</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong>Introduction</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-description"><strong>Data Description</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#top-14-feature-descriptions">Top 14 Feature Descriptions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#remaining-features">Remaining Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#demographis-age-gender-race-retakes">Demographis: Age, Gender, Race, Retakes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gender">Gender</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grit-codetime-credit">Grit, CodeTime &amp; Credit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#on-grit-difficulty-vs-codetime">On Grit/Difficulty vs CodeTime</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#credit-blame">Credit-Blame</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pearson-correlation">Pearson Correlation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kde-plots">KDE Plots</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#whisker-plots-top-14-features">Whisker Plots (Top 14 Features)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#whisker-plots-other-features">Whisker Plots (Other Features)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#st-generation-race">1st Generation &amp; Race</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advantage-count-mutable">Advantage Count Mutable</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repeats">Repeats</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix">Appendix</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cohen-s-d">Cohen’s d</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stats-table-select-columns">Stats Table (Select Columns)</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="correlations-to-success-draft">
+<h1>Correlations to Success (draft)<a class="headerlink" href="#correlations-to-success-draft" title="Link to this heading">#</a></h1>
+<section id="abstract">
+<h2><strong>Abstract</strong><a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
+<p>Students <em>(n=210)</em> in the Computer Science pre-major course at UW Bothell, CSS 143, Introduction to Programming II, were given a survey. The resulting data were analyzed to discover that there were 14 features that correlated to better classroom performance. The study aims to ultimately identify avenues for instructors and universities to better prepare students for academic success. Among the possibilities are: improve success in the prequisite CSS 142, foster peer connections, and encourage regular attendance.</p>
+</section>
+<section id="introduction">
+<h2><strong>Introduction</strong><a class="headerlink" href="#introduction" title="Link to this heading">#</a></h2>
+<p>This study sought to identify correlations to success in University of Washington Bothell’s Introduction to Computer Programming II (CSS 143) by examining student grades to demographics and answers to survey questions. A survey was administered in week 4 of a 10-week quarter for five different sections during the 2024-25 school year. All the sections were taught by the same instructor, Mr. Stride. There were 210 total respondants. Each participant’s grade in 143 was recorded.</p>
+<p>All questions were multiple choice. There were several types of questions: Yes/No, Radio Options (4 or 5), Range of 1-5, Checkboxes (check all that apply). Many of the columns were mapped to values 1-5, and others were 1-hot encoded so that the most answers could be numerical. Specifics are explained in the <em>Data Description</em> section below. The data were explored by dividing the answers into two groups, a left and right group. For example, for a Yes/No question (mapped to 1/0), we examined to see if the grades of the students who answered <code class="docutils literal notranslate"><span class="pre">Yes</span></code> vary significantly from those who answered <code class="docutils literal notranslate"><span class="pre">No</span></code>. When the values had a range, the grouping depended on the quantity of the selections and where differences were revealed. For example, <code class="docutils literal notranslate"><span class="pre">grit1</span></code> split the answers so that the left side comprised <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">3]</span></code> and the right side was <code class="docutils literal notranslate"><span class="pre">[5]</span></code>.  The specifics on how each grouping was done is provided below.</p>
+<p>The data were inspected for correlations primarly by: Cohen’s d value, Pearson’s Coefficient, and Student-t p-value. Here is a brief explanation of Table #1.</p>
+<ul class="simple">
+<li><p>Descriptions for what each <code class="docutils literal notranslate"><span class="pre">Feature</span></code> means are <a href="#top14">provided below.</a></p></li>
+<li><p>The table is ordered with the strongest correlations at the top. The strength of the correlations are determined by <code class="docutils literal notranslate"><span class="pre">Cohen's</span> <span class="pre">d</span></code> and <code class="docutils literal notranslate"><span class="pre">Student-t</span> <span class="pre">p-value</span></code>, both shown in the table below.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">p-value</span></code> shown comes from the <code class="docutils literal notranslate"><span class="pre">Student-t</span></code> test and it is the probability of observing data as extreme as (or more extreme than) what was actually observed, assuming the null hypothesis is true (i.e., assuming the <strong>left</strong> and <strong>right</strong> populations ARE identical).</p></li>
+<li><p>Results with <code class="docutils literal notranslate"><span class="pre">p-values</span></code> below <em>α = 0.02</em> are considered statistically significant.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">r</span></code> represents the <code class="docutils literal notranslate"><span class="pre">Pearson</span> <span class="pre">Correlation</span></code>.</p></li>
+<li><p>The change in mean, represented with  <span class="math notranslate nohighlight">\(\bar{x}_1 - \bar{x}_2\)</span> is the difference in the mean between the left and right groups.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">+/-</span></code> column describes the 95% confidence interval.</p></li>
+</ul>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>cohen_d</p></th>
+<th class="head"><p>p_value</p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">r</span></code></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\bar{x}_1 - \bar{x}_2\)</span></p></th>
+<th class="head"><p>+/-</p></th>
+<th class="head"><p>left</p></th>
+<th class="head"><p>right</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>142grade</p></td>
+<td><p>1.076</p></td>
+<td><p>5.740e-10</p></td>
+<td><p>0.434</p></td>
+<td><p>1.340</p></td>
+<td><p>0.399</p></td>
+<td><p>[1, 2, 3]</p></td>
+<td><p>[5]</p></td>
+</tr>
+<tr class="row-odd"><td><p>difficulty</p></td>
+<td><p>1.059</p></td>
+<td><p>2.651e-07</p></td>
+<td><p>-0.357</p></td>
+<td><p>1.338</p></td>
+<td><p>0.485</p></td>
+<td><p>[5]</p></td>
+<td><p>[1, 2, 3]</p></td>
+</tr>
+<tr class="row-even"><td><p>fun</p></td>
+<td><p>0.951</p></td>
+<td><p>1.310e-04</p></td>
+<td><p>0.340</p></td>
+<td><p>1.244</p></td>
+<td><p>0.625</p></td>
+<td><p>[1, 2, 3]</p></td>
+<td><p>[5]</p></td>
+</tr>
+<tr class="row-odd"><td><p>race</p></td>
+<td><p>0.719</p></td>
+<td><p>0.010</p></td>
+<td><p>0.177</p></td>
+<td><p>0.956</p></td>
+<td><p>0.725</p></td>
+<td><p>Black</p></td>
+<td><p>Other</p></td>
+</tr>
+<tr class="row-even"><td><p>friends</p></td>
+<td><p>0.695</p></td>
+<td><p>0.003</p></td>
+<td><p>0.201</p></td>
+<td><p>0.839</p></td>
+<td><p>0.543</p></td>
+<td><p>[0]</p></td>
+<td><p>[3]</p></td>
+</tr>
+<tr class="row-odd"><td><p>attend</p></td>
+<td><p>0.689</p></td>
+<td><p>0.005</p></td>
+<td><p>0.371</p></td>
+<td><p>0.943</p></td>
+<td><p>0.648</p></td>
+<td><p>[1, 2, 3, 4]</p></td>
+<td><p>[5]</p></td>
+</tr>
+<tr class="row-even"><td><p>gpa</p></td>
+<td><p>0.641</p></td>
+<td><p>1.052e-05</p></td>
+<td><p>0.251</p></td>
+<td><p>0.828</p></td>
+<td><p>0.361</p></td>
+<td><p>&lt;= 3.6</p></td>
+<td><p>&gt;= 3.7</p></td>
+</tr>
+<tr class="row-odd"><td><p>priorcourses</p></td>
+<td><p>0.621</p></td>
+<td><p>0.004</p></td>
+<td><p>0.177</p></td>
+<td><p>0.831</p></td>
+<td><p>0.561</p></td>
+<td><p>[1, 2]</p></td>
+<td><p>[4]</p></td>
+</tr>
+<tr class="row-even"><td><p>grit1</p></td>
+<td><p>0.595</p></td>
+<td><p>0.003</p></td>
+<td><p>0.216</p></td>
+<td><p>0.786</p></td>
+<td><p>0.517</p></td>
+<td><p>[1, 3]</p></td>
+<td><p>[5]</p></td>
+</tr>
+<tr class="row-odd"><td><p>fluent</p></td>
+<td><p>0.556</p></td>
+<td><p>0.010</p></td>
+<td><p>0.183</p></td>
+<td><p>0.740</p></td>
+<td><p>0.559</p></td>
+<td><p>[1, 2, 3, 4]</p></td>
+<td><p>[5]</p></td>
+</tr>
+<tr class="row-even"><td><p>identify</p></td>
+<td><p>0.486</p></td>
+<td><p>0.016</p></td>
+<td><p>0.225</p></td>
+<td><p>0.650</p></td>
+<td><p>0.528</p></td>
+<td><p>[1, 2]</p></td>
+<td><p>[4, 5]</p></td>
+</tr>
+<tr class="row-odd"><td><p>1stgen</p></td>
+<td><p>0.453</p></td>
+<td><p>0.004</p></td>
+<td><p>-0.201</p></td>
+<td><p>0.600</p></td>
+<td><p>0.401</p></td>
+<td><p>[1]</p></td>
+<td><p>[0]</p></td>
+</tr>
+<tr class="row-even"><td><p>jobhours</p></td>
+<td><p>0.448</p></td>
+<td><p>0.018</p></td>
+<td><p>0.159</p></td>
+<td><p>0.589</p></td>
+<td><p>0.488</p></td>
+<td><p>[1, 2]</p></td>
+<td><p>[5]</p></td>
+</tr>
+<tr class="row-odd"><td><p>project</p></td>
+<td><p>0.427</p></td>
+<td><p>0.003</p></td>
+<td><p>0.201</p></td>
+<td><p>0.566</p></td>
+<td><p>0.377</p></td>
+<td><p>[0]</p></td>
+<td><p>[1]</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>Table #1</strong></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+<td><p></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Let’s briefly examine the top feature, <code class="docutils literal notranslate"><span class="pre">142grade</span></code>, to illustrate what the table’s values mean. We can see that those in the “<em>right</em>” group (students with a higher <code class="docutils literal notranslate"><span class="pre">142grade</span></code>) had an average grade increase in the CSS143 course of 1.34 ± 0.399 (95% confidence) over those in the “<em>left</em>”. The Null Hypothesis that the <em>left</em> and <em>right</em> groups have the same mean value is strongly rejected because the p-value = 5.740e-10.</p>
+<p><strong>Areas of Interest</strong><br />
+We will explore some areas of interest:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">CodeTime</span></code>: For those students who ranked themselves in the middle of <code class="docutils literal notranslate"><span class="pre">difficulty</span></code> and <code class="docutils literal notranslate"><span class="pre">grit1</span></code>, there was a correlation to time spent coding each week. There was no correlation for those on either end.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Gender</span></code> : Males &amp; females performed virtually identically.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">selfeval_</span></code> : Students who performed well ( &gt;= 3.6) credited their prior course work and the instructor for their performance more than the poor performing students (&lt;= 2.0).  Regarding the remaining <em>performance explaination options</em>, poor-performing vs well-performing students did not explain their performance significantly differently.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">adv_count</span></code> : The count of Advantaged Features correlates strongly to how well a student does in the course. Once a student gets to 9 (of 14) advantages, there is a very strong chance the student will perform well.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">race</span></code> : Black students performed worse than other races. Black students had very few Advantage Features.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1stgen</span></code> : A first generation student was more likely to have fewer advantages and to perform poorly. A first generation student at a specific Advantage Feature count was likely to perform as good as other students at the same advantage count.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">142x</span></code> : The number of times a student took CSS 142 does <strong>not</strong> correlate to performance in CSS 143.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">143x</span></code> : The number of times a student previously took CSS 143 does <strong>not</strong> correlate to better performance, and those students tended toward a negative correlation (although not significant enough; p-value = 0.076). A student who took the course before is <strong>not</strong> more likely to perform better.</p></li>
+</ol>
+<p><strong>Advantage Feature Count</strong><br />
+If a student falls in the “<em>right</em>” data set, we consider this to be an advantage. In an effort to identify a 3rd Cause for <code class="docutils literal notranslate"><span class="pre">1stgen</span></code> and <code class="docutils literal notranslate"><span class="pre">race</span></code>, we will at times excluded these two immutable features and call the remaining 12 “Advantaged Features Mutable.” We counted how many advantages each student had and named this <code class="docutils literal notranslate"><span class="pre">adv_count</span></code> and <code class="docutils literal notranslate"><span class="pre">adv_count_mut</span></code>. Similar to the features themselves, we bisected the students into two groups: <em>left</em> = those who had 4/3 or fewer; <em>right</em> = those with 8/7 or more. These two groups had the following statistical values:</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>col</p></th>
+<th class="head"><p>cohen_d</p></th>
+<th class="head"><p>p_value</p></th>
+<th class="head"><p><code class="docutils literal notranslate"><span class="pre">r</span></code></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(\bar{x}_1 - \bar{x}_2\)</span></p></th>
+<th class="head"><p>+/-</p></th>
+<th class="head"><p>left</p></th>
+<th class="head"><p>right</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>adv_count</p></td>
+<td><p>1.526</p></td>
+<td><p>2.367e-12</p></td>
+<td><p>0.493</p></td>
+<td><p>1.747</p></td>
+<td><p>0.437</p></td>
+<td><p>&lt;= 4</p></td>
+<td><p>&gt;= 8</p></td>
+</tr>
+<tr class="row-odd"><td><p>adv_count_mut</p></td>
+<td><p>1.638</p></td>
+<td><p>7.374e-13</p></td>
+<td><p>0.472</p></td>
+<td><p>1.836</p></td>
+<td><p>0.447</p></td>
+<td><p>&lt;= 3</p></td>
+<td><p>&gt;= 7</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><img alt="KDE Plot of Grades by adv_count" src="../_images/kde_adv_count_summary.png" /><br />
+Here we see how the 36 students with a high advantage count performed significantly better than the other students. The curve shows the probability distribution while the table uses actual percentages from the data. Only 14% of students with 5 or fewer advantages achieved a 3.5 or better in the course, while 86% of students with 9 did.</p>
+</section>
+<section id="data-description">
+<h2><strong>Data Description</strong><a class="headerlink" href="#data-description" title="Link to this heading">#</a></h2>
+<p>Data from 5 sections over 3 quarters in 143 class taught by Mr. Stride.  Data was collected in the 4th week of the course and so some students may have already withdrawn from the course. All data is self-reported except for the grade in 143. This is important because some answers may be accidentally wrong (e.g. overall gpa), and other answers will reflect intentions and not necessarily reality (e.g. grit, attendance). Two questions were give to only 2 sections (Attendance, Recency of 142). Show the questions, how they are mapped to shortened column names.</p>
+<p>The data went through several stages:</p>
+<ol class="arabic simple">
+<li><p>Partial Raw Data: Three different files representing the students’ answers. This data is not anonymized.</p></li>
+<li><p>Full Raw Data: The three different quarters were concatenated together. Any corrected typos and added questions were manually corrected</p></li>
+<li><p>Grade &amp; Anonymous Data: The students’ grades were joined with student names, and then the names and section information were removed.</p></li>
+<li><p>Final Data: Answers were mapped to values. Multi-checkbox answers were broken out into a 1-Hot encoding. Each student Advantage Count was calculated and added.</p></li>
+</ol>
+<p>All in all, there were 55 Features extracted from the survey questions, and then two were derived from the top 14 (<code class="docutils literal notranslate"><span class="pre">adv_count</span></code>, <code class="docutils literal notranslate"><span class="pre">adv_count_mut</span></code>).</p>
+<p><a id="top14"></a></p>
+<section id="top-14-feature-descriptions">
+<h3>Top 14 Feature Descriptions<a class="headerlink" href="#top-14-feature-descriptions" title="Link to this heading">#</a></h3>
+<p>Recall that the student, on week 4 of the 10 week course, self-reported all data except for their 143 grade. Except where noted, a value of 5 indicates the better score.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>Mapped<br>Values</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>142grade</p></td>
+<td><p>1-5</p></td>
+<td><p>The student’s grade in CSS 142. 5=Grade of 4.0.</p></td>
+</tr>
+<tr class="row-odd"><td><p>difficulty</p></td>
+<td><p>1-5</p></td>
+<td><p>How difficult a student found the course. 1=Easy. 5=Hard.</p></td>
+</tr>
+<tr class="row-even"><td><p>fun</p></td>
+<td><p>1-5</p></td>
+<td><p>The amount of fun a student has while coding an assignment.</p></td>
+</tr>
+<tr class="row-odd"><td><p>race</p></td>
+<td><p>Categorical</p></td>
+<td><p>The race of the student.</p></td>
+</tr>
+<tr class="row-even"><td><p>friends</p></td>
+<td><p>0-3</p></td>
+<td><p>The number of friends currently in or who have previously taken CSS 143.<br>0 → 0 Friends<br>1 → 1-2 Friends <br>2 → 3-4 Friends<br> 3 → 5+ Friends</p></td>
+</tr>
+<tr class="row-odd"><td><p>attend</p></td>
+<td><p>1-5</p></td>
+<td><p>How often a student intends to attend class. 5=Every day.</p></td>
+</tr>
+<tr class="row-even"><td><p>gpa</p></td>
+<td><p>2.0 - 4.0</p></td>
+<td><p>Approximate overall college GPA (not continuous).<br><code class="docutils literal notranslate"><span class="pre">{'4.0':4,</span> <span class="pre">'3.60</span> <span class="pre">-</span> <span class="pre">3.99':3.8,</span> <span class="pre">'3.10</span> <span class="pre">-</span> <span class="pre">3.59':3.35,</span> <span class="pre">'2.60</span> <span class="pre">-</span> <span class="pre">3.09':2.85,</span> <span class="pre">'2.10</span> <span class="pre">-</span> <span class="pre">2.59':2.35,</span> <span class="pre">'Less</span> <span class="pre">than</span> <span class="pre">2.10':2</span> <span class="pre">}</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>priorcourses</p></td>
+<td><p>1-4</p></td>
+<td><p>The total number of programming courses previously taken (not repeated).</p></td>
+</tr>
+<tr class="row-even"><td><p>grit1</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[1,3,4,5]</span></code></p></td>
+<td><p>How a student deals with getting stuck; indicates <code class="docutils literal notranslate"><span class="pre">grit</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>fluent</p></td>
+<td><p>1-5</p></td>
+<td><p>How fluent a student is in English. 5=Fluent.</p></td>
+</tr>
+<tr class="row-even"><td><p>identify</p></td>
+<td><p>1-5</p></td>
+<td><p>How much a student identifies with typical professional programmer.<br>5=<em>It’s like looking in the mirror</em></p></td>
+</tr>
+<tr class="row-odd"><td><p>1stgen</p></td>
+<td><p>0/1</p></td>
+<td><p>1=Indicates the student’s parents did <strong>not</strong> go to college.</p></td>
+</tr>
+<tr class="row-even"><td><p>jobhours</p></td>
+<td><p>1-5</p></td>
+<td><p>The number hours per week a student works.<br>1=30+ hours<br>2=17-30 hours<br>3=9-16 hours<br>4=1-8 hours<br>5=Zero hours</p></td>
+</tr>
+<tr class="row-odd"><td><p>project</p></td>
+<td><p>0/1</p></td>
+<td><p>1=Indicates that the student has coded a project not required by school, club, or CTSO.</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="remaining-features">
+<h3>Remaining Features<a class="headerlink" href="#remaining-features" title="Link to this heading">#</a></h3>
+<p>Below are specific descriptions of how the answers were mapped to the values used in this study (<code class="docutils literal notranslate"><span class="pre">data.csv</span></code>). The student survey questions can be seen in the file <code class="docutils literal notranslate"><span class="pre">Survey</span> <span class="pre">Questions</span> <span class="pre">-</span> <span class="pre">S2025.pdf</span></code>.</p>
+<p>Here is a table that shows how each Feature’s value was generated from the student answer. Many of the mappings are expressed as a <em>Python dictionary</em> where the <code class="docutils literal notranslate"><span class="pre">key</span></code> is the student answer and the <code class="docutils literal notranslate"><span class="pre">value</span></code> is the resulting value used in the data.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>Mapped<br>Values</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>age</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[20,</span> <span class="pre">22,</span> <span class="pre">24,</span> <span class="pre">27]</span></code></p></td>
+<td><p>The approximate age of the student.<br><code class="docutils literal notranslate"><span class="pre">{'20</span> <span class="pre">and</span> <span class="pre">younger':20,</span> <span class="pre">'21-22':</span> <span class="pre">22,</span> <span class="pre">'23-25':</span> <span class="pre">24,</span> <span class="pre">'26+':</span> <span class="pre">27}</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>profcomfort</p></td>
+<td><p>1-5</p></td>
+<td><p>How much comfort the student has getting help from the professor.<br>5=<em>”I rather like it”</em></p></td>
+</tr>
+<tr class="row-even"><td><p>major</p></td>
+<td><p>Categorical</p></td>
+<td><p>The major the student is likely to pursue.<br><code class="docutils literal notranslate"><span class="pre">[</span> <span class="pre">Computer</span> <span class="pre">Science,</span> <span class="pre">STEM,</span> <span class="pre">non-STEM]</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>142x</p></td>
+<td><p>1-5</p></td>
+<td><p>The number of times the student took CSS 142<br><code class="docutils literal notranslate"><span class="pre">{1:1,</span> <span class="pre">2:2,</span> <span class="pre">3:3,</span> <span class="pre">4:4,</span> <span class="pre">'5+':</span> <span class="pre">5}</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>143x</p></td>
+<td><p>0-4</p></td>
+<td><p>The previous number of times the student has already taken CSS 143.<br> <code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">0:0,</span> <span class="pre">1:1,</span> <span class="pre">2:2,</span> <span class="pre">3:3,</span> <span class="pre">'4+':</span> <span class="pre">4</span> <span class="pre">}</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>hobby</p></td>
+<td><p>0/1</p></td>
+<td><p>1=The student considers programming to be a hobby.</p></td>
+</tr>
+<tr class="row-even"><td><p>codetime</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[1,3,5]</span></code></p></td>
+<td><p>The amount of time the student spends coding each week.<br><code class="docutils literal notranslate"><span class="pre">{</span> <span class="pre">'1-2</span> <span class="pre">hours':</span> <span class="pre">1,</span> <span class="pre">'3-6</span> <span class="pre">hours':</span> <span class="pre">3,</span> <span class="pre">'7+</span> <span class="pre">hours':</span> <span class="pre">5</span> <span class="pre">}</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>family</p></td>
+<td><p>0/1</p></td>
+<td><p>1=Indicates the student has an immediate family member in the technology industry.</p></td>
+</tr>
+<tr class="row-even"><td><p>recent</p></td>
+<td><p>1-5</p></td>
+<td><p>How recently did the student take CSS 142.<br><code class="docutils literal notranslate"><span class="pre">{'8+</span> <span class="pre">quarters':1,</span> <span class="pre">'5-7</span> <span class="pre">quarters':2,</span> <span class="pre">'3-4</span> <span class="pre">quarters':3,</span> <span class="pre">'2</span> <span class="pre">quarters':4,'last':5}</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>grit2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[0,1,2,4]</span></code></p></td>
+<td><p>How a student deals with getting stuck; indicates <code class="docutils literal notranslate"><span class="pre">grit</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>gender</p></td>
+<td><p>Categorical</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[Male,</span> <span class="pre">Female,</span> <span class="pre">X,</span> <span class="pre">Prefer</span> <span class="pre">not</span> <span class="pre">to</span> <span class="pre">say</span> <span class="pre">]</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>oncampus</p></td>
+<td><p>0/1</p></td>
+<td><p>1=Indicates the student lives on campus.</p></td>
+</tr>
+<tr class="row-even"><td><p>yearsus</p></td>
+<td><p>1-4</p></td>
+<td><p>How much education was done in the US.<br><code class="docutils literal notranslate"><span class="pre">{'1-2</span> <span class="pre">Years':1,</span> <span class="pre">'3-7</span> <span class="pre">Years':2,</span> <span class="pre">'8-12</span> <span class="pre">Years':3,</span> <span class="pre">'Every</span> <span class="pre">year':4}</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>There were 5 questions that asked student to check multiple checkboxes. Each of these questions was 1-hot encoded with values <code class="docutils literal notranslate"><span class="pre">[0,</span> <span class="pre">1]</span></code> indicating whether the box was checked.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Question<br>Category</p></th>
+<th class="head"><p>Feature</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>whycourse</strong></p></td>
+<td><p></p></td>
+<td><p>Why are you taking this course?</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>_fun</p></td>
+<td><p><em>It’s fun/interesting</em></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>_pushed</p></td>
+<td><p><em>Relatives push me this way</em></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>_pathway</p></td>
+<td><p><em>Requirements for my intended academic pathway</em></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>_curious</p></td>
+<td><p><em>Exploring (just curious)</em></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>_other</p></td>
+<td><p><em>Other</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>whymajor</strong></p></td>
+<td><p></p></td>
+<td><p>If CS is your major, why are you choosing to major in CS?</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>_not</p></td>
+<td><p><em>Not choosing CS</em></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>_fun</p></td>
+<td><p><em>It’s fun/interesting</em></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>_pushed</p></td>
+<td><p><em>Relatives push me this way</em></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>_money</p></td>
+<td><p><em>To make money in the industry</em></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>_other</p></td>
+<td><p><em>Other</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>financial</strong></p></td>
+<td><p></p></td>
+<td><p>How much financial support do you have to attend UWB?</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>_none</p></td>
+<td><p><em>None. I’m paying for it all.</em></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>_parents</p></td>
+<td><p><em>My parents are paying for it all.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>_loans</p></td>
+<td><p><em>I’m taking out loans.</em></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>_scholarship</p></td>
+<td><p><em>I have some scholarship funds.</em></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>_other</p></td>
+<td><p><em>Other</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>notes</strong></p></td>
+<td><p></p></td>
+<td><p>How/when do you take notes in CSS 143?</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>_paper</p></td>
+<td><p><em>In class on paper</em></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>_laptop</p></td>
+<td><p><em>In class on my laptop or electronic device</em></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>_home_paper</p></td>
+<td><p><em>At home on paper</em></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>_home_laptop</p></td>
+<td><p><em>At home on my laptop or electronic device</em></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>_none</p></td>
+<td><p><em>I really don’t take notes</em></p></td>
+</tr>
+<tr class="row-even"><td><p><strong>selveval</strong></p></td>
+<td><p></p></td>
+<td><p>What do you think are the most likely reasons for your own personal performance (positive or negative) in CSS 143?</p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>_test</p></td>
+<td><p><em>Test taking ability</em></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>_family</p></td>
+<td><p><em>Support from Family &amp; Friends</em></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>_model</p></td>
+<td><p><em>Mentor, Model, or Cultural Inspiration</em></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>_prior</p></td>
+<td><p><em>Prior course work</em></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>_instructor</p></td>
+<td><p><em>Instructors</em></p></td>
+</tr>
+<tr class="row-even"><td><p></p></td>
+<td><p>_iq</p></td>
+<td><p><em>Intelligence</em></p></td>
+</tr>
+<tr class="row-odd"><td><p></p></td>
+<td><p>_time</p></td>
+<td><p><em>Time spent working on subject</em></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="demographis-age-gender-race-retakes">
+<h3>Demographis: Age, Gender, Race, Retakes<a class="headerlink" href="#demographis-age-gender-race-retakes" title="Link to this heading">#</a></h3>
+<p>Here are a few pie charts exploring the demographics of the participants.</p>
+<table>
+<tr>
+<td><img src="../_static/charts/pie_age.png" width="300"></td>
+<td><img src="../_static/charts/pie_gender.png" width="300"></td>
+</tr>
+<tr>
+<td colspan="2"><img src="../_static/charts/pie_race.png" width="600"></td>
+</tr>
+<tr>
+<td><img src="../_static/charts/pie_142x.png" width="300"></td>
+<td><img src="../_static/charts/pie_143x.png" width="300"></td>
+</tr>
+</table>
+</section>
+<section id="gender">
+<h3>Gender<a class="headerlink" href="#gender" title="Link to this heading">#</a></h3>
+<p>There were no statistical differences between male and female students. The chart estimates the continuous probability density function (a KDE plot) of Male vs Female. It clearly shows virtually identical distribution. Note that the distribution is intentionally cut off at zero and 4.0. The legend provides the count of male &amp; female students (151, 56 respectively).</p>
+<p><img alt="KDE Male vs Female" src="../_images/kde_gender.png" /></p>
+<p>In the charts below you’ll see bar charts showing the distribution of grades across genders. We leave out Gender X and “Prefer not to say” because there are so few.</p>
+<table>
+    <tr>
+        <td><img src="../_static/charts/hist_gender_grade.png"></td>
+        <td><img src="../_static/charts/hist_gender_grade_perc.png"></td>
+    </tr>
+    <tr>
+        <td>Shows the count (y-axis) of male and female students achieving a grade. <br>Each bar has printed on it the percentage of students achieving that grade.</td>
+        <td>Shows the percentage of male and female students achieving a grade.<br>Having the the y-axis be a percentage helps the reader compare the two groups.</td>
+    </tr>
+</table>
+</section>
+</section>
+<section id="grit-codetime-credit">
+<h2>Grit, CodeTime &amp; Credit<a class="headerlink" href="#grit-codetime-credit" title="Link to this heading">#</a></h2>
+<p>There were two questions related to grit that are mapped to <code class="docutils literal notranslate"><span class="pre">grit1</span></code> and <code class="docutils literal notranslate"><span class="pre">grit2</span></code>. There were no correlations found for <code class="docutils literal notranslate"><span class="pre">grit2</span></code>. Below is how the <code class="docutils literal notranslate"><span class="pre">grit1</span></code> question was presented and mapped to values. This is what we will use for “grit.”</p>
+<p>The count of students at each grit value were: 3, 46, 107, 54. This means that only 3 students said that they tend to give up quickly. Over half of the students claimed that they <em>‘persevere and suffer through it’</em>. The students were not given the mapping, and nowhere in the question was the word <em>“grit”</em> referenced.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Complete</span> <span class="n">this</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">way</span> <span class="n">that</span> <span class="ow">is</span> <span class="n">most</span> <span class="n">like</span> <span class="n">you</span><span class="p">:</span>
+<span class="n">When</span> <span class="n">I</span> <span class="n">get</span> <span class="n">stuck</span><span class="o">...</span>
+</pre></div>
+</div>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>    <span class="n">grit1_map</span> <span class="o">=</span> <span class="p">{</span> <span class="s1">&#39;I tend to give up pretty quickly.&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> 
+                  <span class="s1">&#39;I give up after a good amount of effort.&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> 
+                  <span class="s1">&#39;I persevere and suffer through it.&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> 
+                  <span class="s2">&quot;I enjoy the challenge; I just can&#39;t let it go.&quot;</span><span class="p">:</span> <span class="mi">5</span> <span class="p">}</span>
+</pre></div>
+</div>
+<p>No one claimed to spend less than an hour per week on coding.</p>
+<section id="on-grit-difficulty-vs-codetime">
+<h3>On Grit/Difficulty vs CodeTime<a class="headerlink" href="#on-grit-difficulty-vs-codetime" title="Link to this heading">#</a></h3>
+<p><img alt="Grit-Diff-pvalues" src="../_images/Grit-Difficulty-p-values.png" /></p>
+<p>The above chart examines six groups that were created by filtering down to students whose <code class="docutils literal notranslate"><span class="pre">grit1</span></code> or <code class="docutils literal notranslate"><span class="pre">difficulty</span></code> are a certain value. We group the students by how much they code per week (<code class="docutils literal notranslate"><span class="pre">codetime</span></code>), and see if time spent coding has an impact on their mean 143 grade. The columns <code class="docutils literal notranslate"><span class="pre">Left</span></code> and <code class="docutils literal notranslate"><span class="pre">Right</span></code> indicate which subgroups were compared against each other when calculating the p-value using the Student-t Test.</p>
+<p>The p-values only reach a level of significance for those student who are in the middle of difficulty and grit. We see that student who rate themselves in the most common difficulty category (4), that students who do 1-2 hours of coding per week perform significantly worse than students who do 3+ hours.</p>
+<p>For students who rate themselves in the most common grit category (4), that students who do 1-2 hours of coding per week perform significantly worse than students who do 3-6 hours per week. Furthermore, students who code for 3-6 hours per week actually perform better than those who do 7+ hours. Perhaps this is due to diminishing returns for students who really struggle.</p>
+<p>This data, and other charts, illustrate that for those with high grit, time spent coding does not correlate to a better grade.</p>
+<p>We can summarize this way:</p>
+<blockquote>
+<div><p>There are some students who are bound to do well or poorly (given their Difficulty and Grit level) for whom spending more time
+coding won’t make a difference. For the majority of students who are in the middle, coding 3-6 hours per week improves their grade over doing less. Coding for 7+ hours per week may indicate an insurmountable skills gap.</p>
+</div></blockquote>
+<section id="credit-blame">
+<h4>Credit-Blame<a class="headerlink" href="#credit-blame" title="Link to this heading">#</a></h4>
+<p>Below you’ll see how students give credit/blame for their performance. This shows that Good Performers are more likely to credit the instructor for their good performance than Poor Performers are to blame the instructor for their poor performance. p-value = 0.008 (Using a 2-Proportion Z-Test). Similarly, Good Performers are more likely to credit their prior course work for their performance. p-value = 0.024. While it appears that Poor Performers are more likely to blame their Test Taking ability, it is not statistically significant. p-value = 0.122.</p>
+<p><img alt="Credit/Blame" src="../_images/bar_credit_blame.png" /></p>
+</section>
+</section>
+</section>
+<section id="pearson-correlation">
+<h2>Pearson Correlation<a class="headerlink" href="#pearson-correlation" title="Link to this heading">#</a></h2>
+<p>All the Features were graphed and statistically analyzed against the 143 Grade. This investigation was used to derive the Advantage Features. While, statistically, it is possible to get a false positive here, we limited the p-value to be less than 0.02 to reduce the chances of a coincidental correlation. In the abstract, you’ll find the table that shows the top 14 Features with their statistics. Below you’ll see a graph that illustrates their Pearson Correlation (absolute value) to the 143 Grade. This Pearson Correlation uses the Feature’s value and does not consider <em>left vs right</em> groups.</p>
+<p><img alt="Strong Correlations" src="../_images/bar_pearson_gt_0.2.png" /></p>
+<section id="kde-plots">
+<h3>KDE Plots<a class="headerlink" href="#kde-plots" title="Link to this heading">#</a></h3>
+<p>The following KDE plots show how the probability distribution is better for the <em>right</em> group over the <em>left</em> group for the top 14 features. (See tables for the definition of <em>left</em> and <em>right</em> groups.)</p>
+<table>
+<tr>
+<td><img src="../_static/charts/kde_142grade.png"></td>
+<td><img src="../_static/charts/kde_difficulty.png"></td>
+</tr>
+<tr>
+<td><img src="../_static/charts/kde_fun.png"></td>
+<td><img src="../_static/charts/kde_race.png"></td>
+</tr>
+<tr>
+<td><img src="../_static/charts/kde_friends.png"></td>
+<td><img src="../_static/charts/kde_attend.png"></td>
+</tr>
+<tr>
+<td><img src="../_static/charts/kde_gpa.png"></td>
+<td><img src="../_static/charts/kde_priorcourses.png"></td>
+</tr>
+<tr>
+<td><img src="../_static/charts/kde_grit1.png"></td>
+<td><img src="../_static/charts/kde_fluent.png"></td>
+</tr>
+<tr>
+<td><img src="../_static/charts/kde_identify.png"></td>
+<td><img src="../_static/charts/kde_1stgen.png"></td>
+</tr>
+<tr>
+<td><img src="../_static/charts/kde_jobhours.png"></td>
+<td><img src="../_static/charts/kde_project.png"></td>
+</tr>
+</table>
+</section>
+</section>
+<section id="whisker-plots-top-14-features">
+<h2>Whisker Plots (Top 14 Features)<a class="headerlink" href="#whisker-plots-top-14-features" title="Link to this heading">#</a></h2>
+<p>These whisker plots show the spread of the CSS 143 grade for every value for the top 14 Features.<br />
+<img alt="Whisker Top 14" src="../_images/box_all_top_features.png" /></p>
+</section>
+<section id="whisker-plots-other-features">
+<h2>Whisker Plots (Other Features)<a class="headerlink" href="#whisker-plots-other-features" title="Link to this heading">#</a></h2>
+<p>These whisker plots show the spread of the CSS 143 grade for many of the remaining features.<br />
+<img alt="Whisker Not Top 14" src="../_images/box_all_not_top_features.png" /></p>
+<section id="st-generation-race">
+<h3>1st Generation &amp; Race<a class="headerlink" href="#st-generation-race" title="Link to this heading">#</a></h3>
+<p>First generation and Black students performed worse than their counterparts.
+There were only 14 Black students which is too few data points to find much significance, statistically. Below you can see how many Advantaged Features that Black and 1st Generation students had. It is apparent that Black students did not have as many Advantaged Features. This makes it difficult to know if being Black correlates to features that cause bad grades, or if being Black is, in and of itself, a feature that causes bad grades.</p>
+<p><img alt="1stgen Count" src="../_images/bar_1st_v_other_by_count.png" /><br />
+<img alt="1stgen KDE" src="../_images/kde_1st_v_other.png" />
+<img alt="1stgen Grade" src="../_images/bar_1st_v_other_of_count.png" /></p>
+<p>First Generation students did have plenty of Advantaged Features. While it mayt appear that First Generation students with advantages performed a bit worse than other students with the same count of advantages, the statistics do not bear this out. This could be due to our sample size being too small.</p>
+<p>First Generation students had fewer advantages overall (p-value = 0.004). The distribution of Advantage Count (Mutable) is skewed to the left.</p>
+<p>We examined students at each Advantage Count (Mutable) to see if their mean 143 Grade was significantly different. The table below shows the p-value derived from a Student-t test at each advantage count. None of the p-values were below 0.05.</p>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head text-center"><p>Advantage Count</p></th>
+<th class="head"><p>p-value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td class="text-center"><p>1</p></td>
+<td><p>0.278</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>2</p></td>
+<td><p>0.153</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>3</p></td>
+<td><p>0.150</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>4</p></td>
+<td><p>0.444</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>5</p></td>
+<td><p>0.266</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>6</p></td>
+<td><p>0.503</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>7</p></td>
+<td><p>0.321</p></td>
+</tr>
+<tr class="row-odd"><td class="text-center"><p>8</p></td>
+<td><p>0.881</p></td>
+</tr>
+<tr class="row-even"><td class="text-center"><p>9</p></td>
+<td><p>0.759</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Below we see a scatter plot of student grades by Advantage Count (Mutable). The plot shows 4 subcategories of students. Non-Black, Non-1stgen students had a higher advantage count. Even at lower advantage counts, the line of best fit indicates that these students would perform better than 1st generation students. However, as the table shows above, the p-values are not strong enough to state this definitively.</p>
+<p><img alt="Scatter Advantages" src="../_images/scatter_adv_count_by_race_1stgen.png" /></p>
+<p>Due to there being only 14 Black students, statistical analyses cannot be done with any significance. Below shows both the count and percentage of Black students in each of the Advantaged Features. It shows the count of students at the bottom (Blacks Total = 14. Other Total = 196.). P-values are not shown on the chart. At the top of the bar it shows the percentage of those students who where in the <em>right</em> group of that feature and therefore had an advantage. Note that Black students were more likely to be 1st generation (a disadvantage, with p-value = 0.002, as calculated by a 2-Proportion Z-Test). Another disadvantage that Black students had was a lower overall gpa (p-value = 0.013).</p>
+<p><img alt="Advantages By Race" src="../_images/bar_adv_by_race.png" /></p>
+<p>Similarly, one should question whether being a 1st generation college student is a direct correlation to doing poorly in CSS 143.</p>
+</section>
+<section id="advantage-count-mutable">
+<h3>Advantage Count Mutable<a class="headerlink" href="#advantage-count-mutable" title="Link to this heading">#</a></h3>
+<p>If we consider <code class="docutils literal notranslate"><span class="pre">race</span></code> and <code class="docutils literal notranslate"><span class="pre">1stgen</span></code> to be immutable characteristics and the rest of the features to be mutable, we see a nearly identical performance between Advantage Count and Advantage Count Mutable.<br />
+<img alt="Adv Count Mutable" src="../_images/kde_adv_count_mut_summary.png" /></p>
+<p><img alt="Adv Count Mutable" src="../_images/kde_adv_count_summary.png" /></p>
+</section>
+</section>
+<section id="repeats">
+<h2>Repeats<a class="headerlink" href="#repeats" title="Link to this heading">#</a></h2>
+<p>Students who took 142 multiple times did not perform any differently from students who took it only once. We compared students who took the course only once against those that took it 3 times (only 1 student took it 4 times, and only 6 students took it 3 times). While the difference in the mean grade was 0.6, the p-value was 0.29. Perhaps with a great number of students a correlation could be found. The students who took 142 twice had essentially the same performance (but with a slightly higher variance) as those who took it only once.</p>
+<p>Students who retook 143 multiple times did not perform any differently from students who took it the first time. However, students who retook the course had a worse mean grade (0.43), and the p-value for determining significance was 0.076.</p>
+<p>More details can be seen in the whisker plots and the table below.</p>
+</section>
+<section id="appendix">
+<h2>Appendix<a class="headerlink" href="#appendix" title="Link to this heading">#</a></h2>
+<section id="cohen-s-d">
+<h3>Cohen’s d<a class="headerlink" href="#cohen-s-d" title="Link to this heading">#</a></h3>
+<p>Formula for Cohen’s d is:<br />
+<span class="math notranslate nohighlight">\(d = (\bar{x}_1 - \bar{x}_2) / \sqrt{(s_1^2 + s_2^2) / 2}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\bar{x}_1, \bar{x}_2\)</span>: mean of sample 1 and sample 2, respectively<br />
+<span class="math notranslate nohighlight">\(s_1^2, s_2^2\)</span>: variance of sample 1 and sample 2, respectively</p>
+<p><code class="docutils literal notranslate"><span class="pre">Cohen's</span> <span class="pre">d</span></code> value indicates the number of standard deviations the two groups’ means differ by.</p>
+<p>References:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.statology.org/interpret-cohens-d/">Statology</a></p></li>
+</ul>
+</section>
+<section id="stats-table-select-columns">
+<h3>Stats Table (Select Columns)<a class="headerlink" href="#stats-table-select-columns" title="Link to this heading">#</a></h3>
+<div class="pst-scrollable-table-container"><table class="table">
+<thead>
+<tr class="row-odd"><th class="head"><p>col</p></th>
+<th class="head"><p>cohen_d</p></th>
+<th class="head"><p>p_value</p></th>
+<th class="head"><p>pearson_cor</p></th>
+<th class="head"><p>mean_change</p></th>
+<th class="head"><p>+/-</p></th>
+<th class="head"><p>left</p></th>
+<th class="head"><p>right</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>142grade</p></td>
+<td><p>1.076</p></td>
+<td><p>5.740e-10</p></td>
+<td><p>0.434</p></td>
+<td><p>1.340</p></td>
+<td><p>0.399</p></td>
+<td><p>[1, 2, 3]</p></td>
+<td><p>[5]</p></td>
+</tr>
+<tr class="row-odd"><td><p>difficulty</p></td>
+<td><p>1.059</p></td>
+<td><p>2.651e-07</p></td>
+<td><p>-0.357</p></td>
+<td><p>1.338</p></td>
+<td><p>0.485</p></td>
+<td><p>[5]</p></td>
+<td><p>[1, 2, 3]</p></td>
+</tr>
+<tr class="row-even"><td><p>fun</p></td>
+<td><p>0.951</p></td>
+<td><p>1.310e-04</p></td>
+<td><p>0.340</p></td>
+<td><p>1.244</p></td>
+<td><p>0.625</p></td>
+<td><p>[1, 2, 3]</p></td>
+<td><p>[5]</p></td>
+</tr>
+<tr class="row-odd"><td><p>race</p></td>
+<td><p>0.719</p></td>
+<td><p>0.010</p></td>
+<td><p>nan</p></td>
+<td><p>0.956</p></td>
+<td><p>0.725</p></td>
+<td><p>[‘Black or African American’]</p></td>
+<td><p>Other</p></td>
+</tr>
+<tr class="row-even"><td><p>friends</p></td>
+<td><p>0.695</p></td>
+<td><p>0.003</p></td>
+<td><p>0.201</p></td>
+<td><p>0.839</p></td>
+<td><p>0.543</p></td>
+<td><p>[0]</p></td>
+<td><p>[3]</p></td>
+</tr>
+<tr class="row-odd"><td><p>attend</p></td>
+<td><p>0.689</p></td>
+<td><p>0.005</p></td>
+<td><p>0.371</p></td>
+<td><p>0.943</p></td>
+<td><p>0.648</p></td>
+<td><p>[1, 2, 3, 4]</p></td>
+<td><p>[5]</p></td>
+</tr>
+<tr class="row-even"><td><p>gpa</p></td>
+<td><p>0.641</p></td>
+<td><p>1.052e-05</p></td>
+<td><p>0.251</p></td>
+<td><p>0.828</p></td>
+<td><p>0.361</p></td>
+<td><p>[2.0, 2.35, 2.85, 3.35]</p></td>
+<td><p>[3.8, 4.0]</p></td>
+</tr>
+<tr class="row-odd"><td><p>priorcourses</p></td>
+<td><p>0.621</p></td>
+<td><p>0.004</p></td>
+<td><p>0.177</p></td>
+<td><p>0.831</p></td>
+<td><p>0.561</p></td>
+<td><p>[1, 2]</p></td>
+<td><p>[4]</p></td>
+</tr>
+<tr class="row-even"><td><p>grit1</p></td>
+<td><p>0.595</p></td>
+<td><p>0.003</p></td>
+<td><p>0.216</p></td>
+<td><p>0.786</p></td>
+<td><p>0.517</p></td>
+<td><p>[1, 2, 3]</p></td>
+<td><p>[5]</p></td>
+</tr>
+<tr class="row-odd"><td><p>fluent</p></td>
+<td><p>0.556</p></td>
+<td><p>0.010</p></td>
+<td><p>0.183</p></td>
+<td><p>0.740</p></td>
+<td><p>0.559</p></td>
+<td><p>[1, 2, 3, 4]</p></td>
+<td><p>[5]</p></td>
+</tr>
+<tr class="row-even"><td><p>age</p></td>
+<td><p>0.493</p></td>
+<td><p>0.131</p></td>
+<td><p>-0.189</p></td>
+<td><p>0.637</p></td>
+<td><p>0.829</p></td>
+<td><p>[27]</p></td>
+<td><p>[20]</p></td>
+</tr>
+<tr class="row-odd"><td><p>identify</p></td>
+<td><p>0.486</p></td>
+<td><p>0.016</p></td>
+<td><p>0.225</p></td>
+<td><p>0.650</p></td>
+<td><p>0.528</p></td>
+<td><p>[1, 2]</p></td>
+<td><p>[4, 5]</p></td>
+</tr>
+<tr class="row-even"><td><p>1stgen</p></td>
+<td><p>0.453</p></td>
+<td><p>0.004</p></td>
+<td><p>-0.201</p></td>
+<td><p>0.600</p></td>
+<td><p>0.401</p></td>
+<td><p>[1]</p></td>
+<td><p>[0]</p></td>
+</tr>
+<tr class="row-odd"><td><p>jobhours</p></td>
+<td><p>0.448</p></td>
+<td><p>0.018</p></td>
+<td><p>0.159</p></td>
+<td><p>0.589</p></td>
+<td><p>0.488</p></td>
+<td><p>[1, 2]</p></td>
+<td><p>[5]</p></td>
+</tr>
+<tr class="row-even"><td><p>142x</p></td>
+<td><p>0.442</p></td>
+<td><p>0.291</p></td>
+<td><p>-0.052</p></td>
+<td><p>0.596</p></td>
+<td><p>1.112</p></td>
+<td><p>[3]</p></td>
+<td><p>[1]</p></td>
+</tr>
+<tr class="row-odd"><td><p>project</p></td>
+<td><p>0.427</p></td>
+<td><p>0.003</p></td>
+<td><p>0.201</p></td>
+<td><p>0.566</p></td>
+<td><p>0.377</p></td>
+<td><p>[0]</p></td>
+<td><p>[1]</p></td>
+</tr>
+<tr class="row-even"><td><p>selfeval_family</p></td>
+<td><p>0.425</p></td>
+<td><p>0.018</p></td>
+<td><p>-0.164</p></td>
+<td><p>0.566</p></td>
+<td><p>0.466</p></td>
+<td><p>[1]</p></td>
+<td><p>[0]</p></td>
+</tr>
+<tr class="row-odd"><td><p>notes_none</p></td>
+<td><p>0.418</p></td>
+<td><p>0.014</p></td>
+<td><p>0.169</p></td>
+<td><p>0.558</p></td>
+<td><p>0.445</p></td>
+<td><p>[0]</p></td>
+<td><p>[1]</p></td>
+</tr>
+<tr class="row-even"><td><p>whycourse_fun</p></td>
+<td><p>0.377</p></td>
+<td><p>0.007</p></td>
+<td><p>0.185</p></td>
+<td><p>0.501</p></td>
+<td><p>0.363</p></td>
+<td><p>[0]</p></td>
+<td><p>[1]</p></td>
+</tr>
+<tr class="row-odd"><td><p>selfeval_instructor</p></td>
+<td><p>0.376</p></td>
+<td><p>0.011</p></td>
+<td><p>0.175</p></td>
+<td><p>0.500</p></td>
+<td><p>0.384</p></td>
+<td><p>[0]</p></td>
+<td><p>[1]</p></td>
+</tr>
+<tr class="row-even"><td><p>profcomfort</p></td>
+<td><p>0.368</p></td>
+<td><p>0.079</p></td>
+<td><p>0.162</p></td>
+<td><p>0.479</p></td>
+<td><p>0.536</p></td>
+<td><p>[1, 2]</p></td>
+<td><p>[4, 5]</p></td>
+</tr>
+<tr class="row-odd"><td><p>major</p></td>
+<td><p>0.333</p></td>
+<td><p>0.019</p></td>
+<td><p>nan</p></td>
+<td><p>0.444</p></td>
+<td><p>0.371</p></td>
+<td><p>[‘Some major outside of STEM’, ‘Some other major in STEM’]</p></td>
+<td><p>[‘Computer Science’]</p></td>
+</tr>
+<tr class="row-even"><td><p>143x</p></td>
+<td><p>0.319</p></td>
+<td><p>0.076</p></td>
+<td><p>-0.123</p></td>
+<td><p>0.428</p></td>
+<td><p>0.474</p></td>
+<td><p>[1, 2, 3]</p></td>
+<td><p>[0]</p></td>
+</tr>
+<tr class="row-odd"><td><p>finan_parents</p></td>
+<td><p>0.295</p></td>
+<td><p>0.035</p></td>
+<td><p>0.146</p></td>
+<td><p>0.395</p></td>
+<td><p>0.366</p></td>
+<td><p>[0]</p></td>
+<td><p>[1]</p></td>
+</tr>
+<tr class="row-even"><td><p>whymajor_money</p></td>
+<td><p>0.255</p></td>
+<td><p>0.072</p></td>
+<td><p>0.125</p></td>
+<td><p>0.341</p></td>
+<td><p>0.372</p></td>
+<td><p>[0]</p></td>
+<td><p>[1]</p></td>
+</tr>
+<tr class="row-odd"><td><p>selfeval_prior</p></td>
+<td><p>0.238</p></td>
+<td><p>0.087</p></td>
+<td><p>0.119</p></td>
+<td><p>0.319</p></td>
+<td><p>0.366</p></td>
+<td><p>[0]</p></td>
+<td><p>[1]</p></td>
+</tr>
+<tr class="row-even"><td><p>hobby</p></td>
+<td><p>0.230</p></td>
+<td><p>0.104</p></td>
+<td><p>0.112</p></td>
+<td><p>0.309</p></td>
+<td><p>0.373</p></td>
+<td><p>[0]</p></td>
+<td><p>[1]</p></td>
+</tr>
+<tr class="row-odd"><td><p>codetime</p></td>
+<td><p>0.222</p></td>
+<td><p>0.404</p></td>
+<td><p>0.014</p></td>
+<td><p>0.318</p></td>
+<td><p>0.756</p></td>
+<td><p>[1, 2]</p></td>
+<td><p>[4, 5]</p></td>
+</tr>
+<tr class="row-even"><td><p>whymajor_fun</p></td>
+<td><p>0.214</p></td>
+<td><p>0.124</p></td>
+<td><p>0.106</p></td>
+<td><p>0.288</p></td>
+<td><p>0.368</p></td>
+<td><p>[0]</p></td>
+<td><p>[1]</p></td>
+</tr>
+<tr class="row-odd"><td><p>whymajor_other</p></td>
+<td><p>0.198</p></td>
+<td><p>0.338</p></td>
+<td><p>0.066</p></td>
+<td><p>0.267</p></td>
+<td><p>0.548</p></td>
+<td><p>[0]</p></td>
+<td><p>[1]</p></td>
+</tr>
+<tr class="row-even"><td><p>family</p></td>
+<td><p>0.191</p></td>
+<td><p>0.167</p></td>
+<td><p>0.096</p></td>
+<td><p>0.258</p></td>
+<td><p>0.366</p></td>
+<td><p>[0]</p></td>
+<td><p>[1]</p></td>
+</tr>
+<tr class="row-odd"><td><p>recent</p></td>
+<td><p>0.171</p></td>
+<td><p>0.564</p></td>
+<td><p>0.096</p></td>
+<td><p>0.251</p></td>
+<td><p>0.863</p></td>
+<td><p>[1, 2, 3]</p></td>
+<td><p>[5]</p></td>
+</tr>
+<tr class="row-even"><td><p>grit2</p></td>
+<td><p>0.162</p></td>
+<td><p>0.259</p></td>
+<td><p>0.112</p></td>
+<td><p>0.218</p></td>
+<td><p>0.379</p></td>
+<td><p>[0, 1, 2]</p></td>
+<td><p>[4]</p></td>
+</tr>
+<tr class="row-odd"><td><p>whycourse_pathway</p></td>
+<td><p>0.109</p></td>
+<td><p>0.714</p></td>
+<td><p>0.025</p></td>
+<td><p>0.147</p></td>
+<td><p>0.792</p></td>
+<td><p>[0]</p></td>
+<td><p>[1]</p></td>
+</tr>
+<tr class="row-even"><td><p>gender</p></td>
+<td><p>0.100</p></td>
+<td><p>0.525</p></td>
+<td><p>nan</p></td>
+<td><p>0.135</p></td>
+<td><p>0.418</p></td>
+<td><p>[‘Male’]</p></td>
+<td><p>[‘Female’]</p></td>
+</tr>
+<tr class="row-odd"><td><p>notes_laptop</p></td>
+<td><p>0.075</p></td>
+<td><p>0.594</p></td>
+<td><p>0.037</p></td>
+<td><p>0.101</p></td>
+<td><p>0.373</p></td>
+<td><p>[0]</p></td>
+<td><p>[1]</p></td>
+</tr>
+<tr class="row-even"><td><p>oncampus</p></td>
+<td><p>0.045</p></td>
+<td><p>0.804</p></td>
+<td><p>0.017</p></td>
+<td><p>0.060</p></td>
+<td><p>0.478</p></td>
+<td><p>[0]</p></td>
+<td><p>[1]</p></td>
+</tr>
+<tr class="row-odd"><td><p>whycourse_pushed</p></td>
+<td><p>0.009</p></td>
+<td><p>0.966</p></td>
+<td><p>0.003</p></td>
+<td><p>0.013</p></td>
+<td><p>0.578</p></td>
+<td><p>[0]</p></td>
+<td><p>[1]</p></td>
+</tr>
+<tr class="row-even"><td><p>selfeval_time</p></td>
+<td><p>-0.047</p></td>
+<td><p>0.747</p></td>
+<td><p>-0.022</p></td>
+<td><p>-0.064</p></td>
+<td><p>0.387</p></td>
+<td><p>[0]</p></td>
+<td><p>[1]</p></td>
+</tr>
+<tr class="row-odd"><td><p>selfeval_iq</p></td>
+<td><p>-0.049</p></td>
+<td><p>0.740</p></td>
+<td><p>-0.023</p></td>
+<td><p>-0.066</p></td>
+<td><p>0.390</p></td>
+<td><p>[0]</p></td>
+<td><p>[1]</p></td>
+</tr>
+<tr class="row-even"><td><p>finan_none</p></td>
+<td><p>-0.092</p></td>
+<td><p>0.656</p></td>
+<td><p>-0.031</p></td>
+<td><p>-0.124</p></td>
+<td><p>0.549</p></td>
+<td><p>[0]</p></td>
+<td><p>[1]</p></td>
+</tr>
+<tr class="row-odd"><td><p>selfeval_model</p></td>
+<td><p>-0.092</p></td>
+<td><p>0.787</p></td>
+<td><p>-0.019</p></td>
+<td><p>-0.125</p></td>
+<td><p>0.908</p></td>
+<td><p>[0]</p></td>
+<td><p>[1]</p></td>
+</tr>
+<tr class="row-even"><td><p>yearsus</p></td>
+<td><p>-0.115</p></td>
+<td><p>0.597</p></td>
+<td><p>-0.059</p></td>
+<td><p>-0.154</p></td>
+<td><p>0.574</p></td>
+<td><p>[1.0, 2.0]</p></td>
+<td><p>[3.0, 4.0]</p></td>
+</tr>
+<tr class="row-odd"><td><p>finan_other</p></td>
+<td><p>-0.119</p></td>
+<td><p>0.527</p></td>
+<td><p>-0.044</p></td>
+<td><p>-0.160</p></td>
+<td><p>0.499</p></td>
+<td><p>[0]</p></td>
+<td><p>[1]</p></td>
+</tr>
+<tr class="row-even"><td><p>notes_home_paper</p></td>
+<td><p>-0.179</p></td>
+<td><p>0.249</p></td>
+<td><p>-0.080</p></td>
+<td><p>-0.242</p></td>
+<td><p>0.412</p></td>
+<td><p>[0]</p></td>
+<td><p>[1]</p></td>
+</tr>
+<tr class="row-odd"><td><p>finan_scholarship</p></td>
+<td><p>-0.189</p></td>
+<td><p>0.205</p></td>
+<td><p>-0.088</p></td>
+<td><p>-0.254</p></td>
+<td><p>0.395</p></td>
+<td><p>[0]</p></td>
+<td><p>[1]</p></td>
+</tr>
+<tr class="row-even"><td><p>selfeval_test</p></td>
+<td><p>-0.208</p></td>
+<td><p>0.143</p></td>
+<td><p>-0.101</p></td>
+<td><p>-0.280</p></td>
+<td><p>0.376</p></td>
+<td><p>[0]</p></td>
+<td><p>[1]</p></td>
+</tr>
+<tr class="row-odd"><td><p>notes_home_laptop</p></td>
+<td><p>-0.209</p></td>
+<td><p>0.142</p></td>
+<td><p>-0.102</p></td>
+<td><p>-0.281</p></td>
+<td><p>0.376</p></td>
+<td><p>[0]</p></td>
+<td><p>[1]</p></td>
+</tr>
+<tr class="row-even"><td><p>whymajor_pushed</p></td>
+<td><p>-0.237</p></td>
+<td><p>0.188</p></td>
+<td><p>-0.091</p></td>
+<td><p>-0.319</p></td>
+<td><p>0.476</p></td>
+<td><p>[0]</p></td>
+<td><p>[1]</p></td>
+</tr>
+<tr class="row-odd"><td><p>notes_paper</p></td>
+<td><p>-0.247</p></td>
+<td><p>0.170</p></td>
+<td><p>-0.095</p></td>
+<td><p>-0.332</p></td>
+<td><p>0.475</p></td>
+<td><p>[0]</p></td>
+<td><p>[1]</p></td>
+</tr>
+<tr class="row-even"><td><p>finan_loans</p></td>
+<td><p>-0.254</p></td>
+<td><p>0.205</p></td>
+<td><p>-0.088</p></td>
+<td><p>-0.342</p></td>
+<td><p>0.531</p></td>
+<td><p>[0]</p></td>
+<td><p>[1]</p></td>
+</tr>
+<tr class="row-odd"><td><p>whycourse_curious</p></td>
+<td><p>-0.275</p></td>
+<td><p>0.177</p></td>
+<td><p>-0.094</p></td>
+<td><p>-0.370</p></td>
+<td><p>0.539</p></td>
+<td><p>[0]</p></td>
+<td><p>[1]</p></td>
+</tr>
+<tr class="row-even"><td><p>whymajor_not</p></td>
+<td><p>-0.330</p></td>
+<td><p>0.023</p></td>
+<td><p>-0.157</p></td>
+<td><p>-0.441</p></td>
+<td><p>0.380</p></td>
+<td><p>[0]</p></td>
+<td><p>[1]</p></td>
+</tr>
+<tr class="row-odd"><td><p>whycourse_other</p></td>
+<td><p>-0.348</p></td>
+<td><p>0.336</p></td>
+<td><p>-0.067</p></td>
+<td><p>-0.469</p></td>
+<td><p>0.958</p></td>
+<td><p>[0]</p></td>
+<td><p>[1]</p></td>
+</tr>
+<tr class="row-even"><td><p>selfeval_family</p></td>
+<td><p>-0.425</p></td>
+<td><p>0.018</p></td>
+<td><p>-0.164</p></td>
+<td><p>-0.566</p></td>
+<td><p>0.466</p></td>
+<td><p>[0]</p></td>
+<td><p>[1]</p></td>
+</tr>
+<tr class="row-odd"><td><p>adv_count</p></td>
+<td><p>1.526</p></td>
+<td><p>2.428e-12</p></td>
+<td><p>0.493</p></td>
+<td><p>1.747</p></td>
+<td><p>0.437</p></td>
+<td><p>[0, 1, 2, 3, 4]</p></td>
+<td><p>[8, 9, 10, 11, 12, 13]</p></td>
+</tr>
+<tr class="row-even"><td><p>adv_count_mut</p></td>
+<td><p>1.638</p></td>
+<td><p>7.374e-13</p></td>
+<td><p>0.472</p></td>
+<td><p>1.836</p></td>
+<td><p>0.447</p></td>
+<td><p>[0, 1, 2, 3]</p></td>
+<td><p>[7, 8, 9, 10, 11, 12]</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./report"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="index.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><i class="fas fa-book fa-fw"></i>  Reports</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract"><strong>Abstract</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#introduction"><strong>Introduction</strong></a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#data-description"><strong>Data Description</strong></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#top-14-feature-descriptions">Top 14 Feature Descriptions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#remaining-features">Remaining Features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#demographis-age-gender-race-retakes">Demographis: Age, Gender, Race, Retakes</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#gender">Gender</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#grit-codetime-credit">Grit, CodeTime &amp; Credit</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#on-grit-difficulty-vs-codetime">On Grit/Difficulty vs CodeTime</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#credit-blame">Credit-Blame</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#pearson-correlation">Pearson Correlation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#kde-plots">KDE Plots</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#whisker-plots-top-14-features">Whisker Plots (Top 14 Features)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#whisker-plots-other-features">Whisker Plots (Other Features)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#st-generation-race">1st Generation &amp; Race</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#advantage-count-mutable">Advantage Count Mutable</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#repeats">Repeats</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#appendix">Appendix</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#cohen-s-d">Cohen’s d</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stats-table-select-columns">Stats Table (Select Columns)</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Jeff Stride
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2023.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+<div class="extra_footer">
+  <a href="https://idp.mrstride.com/acknowledgements.html">Acknowledgements</a>
+</div>
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
