@@ -58,7 +58,7 @@ Create some text that needs a footnote like this here.<a href="#footnotes"><sup>
 
 Create a <a href="#footnotes">reference</a> to somewhere on this page in the same way as using footnotes.  
 
-A reference to another page is done similarly. Go to <a href="../Replit/flake8.html#tox.ini"> Flake8 Tox.ini</a>.
+A reference to another page is done similarly. Go to <a href="../interfaces/lambdas.html#functional-interface"> Functional Interface</a>.
 
 ## Admonitions
 Here are examples of popular admonitions:  
