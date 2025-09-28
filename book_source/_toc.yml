@@ -40,5 +40,6 @@ chapters:
   - file: report/index
     sections:
       - file: report/report
+      - file: report/subjective_analysis
   - url: https://nchs-cs.github.io/idp/static/gitbranching/learnGitBranching
     title: Learn Git Branching
