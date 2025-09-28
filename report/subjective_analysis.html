@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Reports &#8212; IDP at NCHS</title>
+    <title>Subjective Analysis &#8212; IDP at NCHS</title>
   
   
   
@@ -105,14 +105,11 @@ commentsRunWhenDOMLoaded(addUtterances);
                 gtag('config', 'G-DW6SHVPBYV');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'report/index';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'report/subjective_analysis';</script>
     <link rel="icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Correlations to Success (draft)" href="report.html" />
-    <link rel="prev" title="Case Study on Distance" href="../visualizations/case_study_dist.html" />
+    <link rel="prev" title="Correlations to Success (draft)" href="report.html" />
     
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -288,9 +285,9 @@ commentsRunWhenDOMLoaded(addUtterances);
 
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#"><i class="fas fa-book fa-fw"></i>  Reports</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html"><i class="fas fa-book fa-fw"></i>  Reports</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="report.html">Correlations to Success (draft)</a></li>
-<li class="toctree-l2"><a class="reference internal" href="subjective_analysis.html">Subjective Analysis</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Subjective Analysis</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference external" href="https://nchs-cs.github.io/idp/static/gitbranching/learnGitBranching">Learn Git Branching</a></li>
@@ -365,7 +362,7 @@ commentsRunWhenDOMLoaded(addUtterances);
       
       
       
-      <li><a href="https://github.com/jeffstride/idp/edit/main/book_source/report/index.md" target="_blank"
+      <li><a href="https://github.com/jeffstride/idp/edit/main/book_source/report/subjective_analysis.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -382,7 +379,7 @@ commentsRunWhenDOMLoaded(addUtterances);
       
       
       
-      <li><a href="https://github.com/jeffstride/idp/issues/new?title=Issue%20on%20page%20%2Freport/index.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/jeffstride/idp/issues/new?title=Issue%20on%20page%20%2Freport/subjective_analysis.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -412,7 +409,7 @@ commentsRunWhenDOMLoaded(addUtterances);
       
       
       
-      <li><a href="../_sources/report/index.md" target="_blank"
+      <li><a href="../_sources/report/subjective_analysis.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -483,7 +480,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -494,11 +493,21 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><i class="fas fa-book fa-fw"></i>  Reports</h1>
+    <h1>Subjective Analysis</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ai-analysis-suggestions">AI Analysis &amp; Suggestions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rebuttal-from-a-human">Rebuttal From a Human</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -508,15 +517,98 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="reports">
-<h1><i class="fas fa-book fa-fw"></i>  Reports<a class="headerlink" href="#reports" title="Link to this heading">#</a></h1>
-<p>This section has a report created using data from UW Bothell. Currently, the report is in its draft format.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="report.html">Correlations to Success (draft)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="subjective_analysis.html">Subjective Analysis</a></li>
+  <section class="tex2jax_ignore mathjax_ignore" id="subjective-analysis">
+<h1>Subjective Analysis<a class="headerlink" href="#subjective-analysis" title="Link to this heading">#</a></h1>
+<p>This report uses the data in the <strong>Correlations to Success</strong> report. Here we attempt to explain <em>why</em> correlations exist and <em>what to do</em>.</p>
+<p>Ideally, the results of the study would be to identify avenues for instructors and universities to better prepare students for academic success.</p>
+<section id="abstract">
+<h2>Abstract<a class="headerlink" href="#abstract" title="Link to this heading">#</a></h2>
+<p>Some of the data can appear to be circular. For example, students who have a high GPA are likely to get a better grade in CSS 143. Students who experienced success in CSS 142 are more likely to experience success in CSS 143. Students who found the subject matter to be easy more easily succeeded. It would seem to be saying, <em>“Good students are good students.”</em> Nevertheless, there is opportunity to improve students’ chances of success through some activities such as: improving attendance, fostering peer connections, and promoting resilience. Further study needs to happen to:</p>
+<ol class="arabic simple">
+<li><p>validate the correlations by repeating parts of the study</p></li>
+<li><p>see if extrinsic factors that increase the Advantaged Feature count can actually improve student performance</p></li>
+<li><p>see if equally strong correlations can be determined before the student even begins the course</p></li>
+</ol>
+</section>
+<section id="ai-analysis-suggestions">
+<h2>AI Analysis &amp; Suggestions<a class="headerlink" href="#ai-analysis-suggestions" title="Link to this heading">#</a></h2>
+<p>The below is what AI composed from the report. I believe that the suggestions made are naive and assume too much causality in the correlations.</p>
+<hr class="docutils" />
+<p>The report provides insights into factors that correlate with better performance in CSS 143, which can be leveraged to increase students’ advantage count in future courses.  Here are some speculative strategies based on the findings:</p>
+<ol class="arabic simple">
+<li><p>Improve CSS 142 Preparation:</p>
+<ul class="simple">
+<li><p>Focus on ensuring students achieve a strong foundation in CSS 142, as higher grades in this course correlate with better performance in CSS 143.</p></li>
+<li><p>Offer additional resources, tutoring, or review sessions for CSS 142 concepts.</p></li>
 </ul>
-</div>
+</li>
+<li><p>Reduce Perceived Difficulty:</p>
+<ul class="simple">
+<li><p>Simplify complex concepts or provide more structured guidance to make the course feel less challenging.</p></li>
+<li><p>Incorporate scaffolding techniques to gradually build students’ confidence and skills.</p></li>
+</ul>
+</li>
+<li><p>Enhance Enjoyment of Coding:</p>
+<ul class="simple">
+<li><p>Design assignments that are engaging and fun, such as gamified coding challenges or real-world projects.</p></li>
+<li><p>Encourage creativity and exploration in coding tasks.</p></li>
+</ul>
+</li>
+<li><p>Foster Peer Connections:</p>
+<ul class="simple">
+<li><p>Create opportunities for students to form friendships, such as group projects, study groups, or social events.</p></li>
+<li><p>Pair students with peers who have taken the course before for mentorship.</p></li>
+</ul>
+</li>
+<li><p>Encourage Regular Attendance:</p>
+<ul class="simple">
+<li><p>Emphasize the importance of attending class and provide incentives for consistent participation.</p></li>
+<li><p>Make classes interactive and engaging to motivate students to attend.</p></li>
+</ul>
+</li>
+<li><p>Support English Fluency:</p>
+<ul class="simple">
+<li><p>Provide language support for non-native English speakers, such as glossaries for technical terms or additional explanations.</p></li>
+<li><p>Encourage students to practice technical communication skills.</p></li>
+</ul>
+</li>
+<li><p>Promote Grit and Resilience:</p>
+<ul class="simple">
+<li><p>Teach strategies for overcoming challenges, such as debugging techniques or problem-solving frameworks.</p></li>
+<li><p>Share stories of perseverance and success to inspire students.</p></li>
+</ul>
+</li>
+<li><p>Increase Exposure to Programming:</p>
+<ul class="simple">
+<li><p>Offer workshops or extracurricular activities to introduce students to programming before they take CSS 143.</p></li>
+<li><p>Encourage students to explore coding projects outside of class.</p></li>
+</ul>
+</li>
+<li><p>Reduce Workload Outside School:</p>
+<ul class="simple">
+<li><p>Provide flexible deadlines or alternative schedules for students who work long hours.</p></li>
+<li><p>Offer financial aid or scholarships to reduce the need for excessive work hours.</p></li>
+</ul>
+</li>
+<li><p>Support First-Generation Students:</p>
+<ul class="simple">
+<li><p>Provide targeted resources, mentorship, and support for first-generation college students.</p></li>
+<li><p>Create a welcoming and inclusive environment that addresses their unique challenges.</p></li>
+</ul>
+</li>
+<li><p>Encourage Independent Coding Projects:</p>
+<ul class="simple">
+<li><p>Motivate students to work on personal coding projects by showcasing examples and providing guidance.</p></li>
+<li><p>Offer incentives, such as extra credit, for completing independent projects.</p></li>
+</ul>
+</li>
+</ol>
+<p>By implementing these strategies, instructors can help students build more advantageous features, thereby increasing their advantage count and improving their chances of success in future courses.</p>
+</section>
+<section id="rebuttal-from-a-human">
+<h2>Rebuttal From a Human<a class="headerlink" href="#rebuttal-from-a-human" title="Link to this heading">#</a></h2>
+<p>TODO:</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -550,22 +642,13 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../visualizations/case_study_dist.html"
+       href="report.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Case Study on Distance</p>
-      </div>
-    </a>
-    <a class="right-next"
-       href="report.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
         <p class="prev-next-title">Correlations to Success (draft)</p>
       </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -573,6 +656,23 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#abstract">Abstract</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#ai-analysis-suggestions">AI Analysis &amp; Suggestions</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rebuttal-from-a-human">Rebuttal From a Human</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
