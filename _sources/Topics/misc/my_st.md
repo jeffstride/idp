@@ -130,3 +130,6 @@ In this table, the structure is much different. There is a title. And, you have 
 
 ## Footnotes
 [1] List all the footnotes here using numbers that match the link in the body. 
+
+✅ Good way
+❌ Bad Way

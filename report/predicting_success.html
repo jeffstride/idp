@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Reports &#8212; IDP at NCHS</title>
+    <title>Predicting Success &#8212; IDP at NCHS</title>
   
   
   
@@ -105,14 +105,11 @@ commentsRunWhenDOMLoaded(addUtterances);
                 gtag('config', 'G-DW6SHVPBYV');
             </script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
-    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <script>DOCUMENTATION_OPTIONS.pagename = 'report/index';</script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'report/predicting_success';</script>
     <link rel="icon" href="../_static/favicon.png"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Correlations to Success (draft)" href="report.html" />
-    <link rel="prev" title="Case Study on Distance" href="../visualizations/case_study_dist.html" />
+    <link rel="prev" title="Subjective Analysis" href="subjective_analysis.html" />
     
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -288,10 +285,10 @@ commentsRunWhenDOMLoaded(addUtterances);
 
 </ul>
 </details></li>
-<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#"><i class="fas fa-book fa-fw"></i>  Reports</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html"><i class="fas fa-book fa-fw"></i>  Reports</a><details open="open"><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="report.html">Correlations to Success (draft)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="subjective_analysis.html">Subjective Analysis</a></li>
-<li class="toctree-l2"><a class="reference internal" href="predicting_success.html">Predicting Success</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Predicting Success</a></li>
 </ul>
 </details></li>
 <li class="toctree-l1"><a class="reference external" href="https://nchs-cs.github.io/idp/static/gitbranching/learnGitBranching">Learn Git Branching</a></li>
@@ -366,7 +363,7 @@ commentsRunWhenDOMLoaded(addUtterances);
       
       
       
-      <li><a href="https://github.com/jeffstride/idp/edit/main/book_source/report/index.md" target="_blank"
+      <li><a href="https://github.com/jeffstride/idp/edit/main/book_source/report/predicting_success.md" target="_blank"
    class="btn btn-sm btn-source-edit-button dropdown-item"
    title="Suggest edit"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -383,7 +380,7 @@ commentsRunWhenDOMLoaded(addUtterances);
       
       
       
-      <li><a href="https://github.com/jeffstride/idp/issues/new?title=Issue%20on%20page%20%2Freport/index.html&body=Your%20issue%20content%20here." target="_blank"
+      <li><a href="https://github.com/jeffstride/idp/issues/new?title=Issue%20on%20page%20%2Freport/predicting_success.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
    title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -413,7 +410,7 @@ commentsRunWhenDOMLoaded(addUtterances);
       
       
       
-      <li><a href="../_sources/report/index.md" target="_blank"
+      <li><a href="../_sources/report/predicting_success.md" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
    title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -484,7 +481,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -495,11 +494,24 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1><i class="fas fa-book fa-fw"></i>  Reports</h1>
+    <h1>Predicting Success</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-exam-results">First Exam Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#free-response">Free Response</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#total-exam">Total Exam</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">14 Questions</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -509,16 +521,46 @@ document.write(`
 <div id="searchbox"></div>
                 <article class="bd-article">
                   
-  <section class="tex2jax_ignore mathjax_ignore" id="reports">
-<h1><i class="fas fa-book fa-fw"></i>  Reports<a class="headerlink" href="#reports" title="Link to this heading">#</a></h1>
-<p>This section has a report created using data from UW Bothell. Currently, the report is in its draft format.</p>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="report.html">Correlations to Success (draft)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="subjective_analysis.html">Subjective Analysis</a></li>
-<li class="toctree-l1"><a class="reference internal" href="predicting_success.html">Predicting Success</a></li>
-</ul>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="predicting-success">
+<h1>Predicting Success<a class="headerlink" href="#predicting-success" title="Link to this heading">#</a></h1>
+<p>In the Fall of 2025, I took only 14 questions that could be seen as predicting success. I had the students answer the questions in the first week of class–before they had done any homework or spent time in class. To account for the fact that they could not answer how difficult CSS 143 was, or how much they enjoyed the homework given in 143, I had to I altered a few question. Effectively, I used they experience with 142 as a proxy.</p>
+<section id="first-exam-results">
+<h2>First Exam Results<a class="headerlink" href="#first-exam-results" title="Link to this heading">#</a></h2>
+<p>The plots below show the results quite well. With fewer data points, I decided to use 6 as my point of division to create the two sub-groups. The disadvantaged group would have fewer than 6, and the advantaged group would have more than 6. I did not include those who had exactly 6.</p>
+<p>Out of the 45 students originally enrolled, 3 students did not take the survey and 6 students dropped the course before taking the first exam. This left only 36 students to analyze.</p>
+<p>Nine students were in the disadvantaged group. Sixteen were in the advantaged group. These numbers are admittedly small.</p>
+<section id="free-response">
+<h3>Free Response<a class="headerlink" href="#free-response" title="Link to this heading">#</a></h3>
+<p>The performance on the Free Response portion of the exam showed a greater divide.
+<img alt="Reg Plot FR" src="../_images/reg_f2025_frq1.png" /><br />
+<img alt="KDE Plot FR" src="../_images/kde_f2025_frq1.png" /></p>
+</section>
+<section id="total-exam">
+<h3>Total Exam<a class="headerlink" href="#total-exam" title="Link to this heading">#</a></h3>
+<p>When we include the Multiplce Choice portion of the exam, the significance is diminished.
+<img alt="Reg Plot FR" src="../_images/reg_f2025_total1.png" /><br />
+<img alt="KDE Plot FR" src="../_images/kde_f2025_total1.png" /></p>
+</section>
+</section>
+<section id="questions">
+<h2>14 Questions<a class="headerlink" href="#questions" title="Link to this heading">#</a></h2>
+<ol class="arabic simple">
+<li><p>What is your race/ethnicity?</p></li>
+<li><p>Are you a first-generation college student? (Your parents did not go to college)</p></li>
+<li><p>How fluent are you in English?</p></li>
+<li><p>Have you ever coded a project that was not required by school, club or CTSO?</p></li>
+<li><p>Complete this sentence in the way that is most like you: “When I get stuck…”</p></li>
+<li><p>How much fun do you have while coding homework assignments?</p></li>
+<li><p>How many friends do you have that are currently in, or have previously taken CSS 143?</p></li>
+<li><p>When you see a typical professional programmer, how much do you identify with the person?</p></li>
+<li><p>How many hours per week do you work a job?</p></li>
+<li><p>What was your final grade in CSS 142?</p></li>
+<li><p>How many total programming courses have already taken prior to CSS 143? (Include courses at all other schools. Count each course only once, even if you repeated it.)</p></li>
+<li><p>What is your current overall college GPA? (Estimate is fine)</p></li>
+<li><p>How easy or hard did you find CSS 142?</p></li>
+<li><p>How often do you attend, or plan to attend, class for CSS 143?</p></li>
+</ol>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -552,22 +594,13 @@ document.write(`
                   
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../visualizations/case_study_dist.html"
+       href="subjective_analysis.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">Case Study on Distance</p>
+        <p class="prev-next-title">Subjective Analysis</p>
       </div>
-    </a>
-    <a class="right-next"
-       href="report.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Correlations to Success (draft)</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
     </a>
 </div>
                 </footer>
@@ -575,6 +608,26 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#first-exam-results">First Exam Results</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#free-response">Free Response</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#total-exam">Total Exam</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#questions">14 Questions</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

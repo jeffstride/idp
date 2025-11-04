@@ -52,4 +52,12 @@ The report provides insights into factors that correlate with better performance
 By implementing these strategies, instructors can help students build more advantageous features, thereby increasing their advantage count and improving their chances of success in future courses. 
 
 ## Rebuttal From a Human
-TODO: 
+I have some suspicions about how or why some features would contribute to a better grade in 143.  
+
+**Friends**  
+Three things come to mind:  
+1) You are an average of your 5 closest friends.  
+2) More friends in a class gives you more resources to get help from.  
+3) More friends in a class gives you more ways to get insider information and an unfair advantage on the homework and exams.  
+
+
