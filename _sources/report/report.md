@@ -1,4 +1,4 @@
-# Correlations to Success (draft)
+# Correlations to Success
 
 ## **Abstract**
 Students *(n=210)* in the Computer Science pre-major course at UW Bothell, *Introduction to Programming II (CSS 143)*, responded to a multiple-choice survey four weeks into a ten week quarter. Fewer than 5 students did not respond the survey. The resulting data were analyzed by examining each question for correlations with a higher grade in the class. Two populations--*left* and *right*--were created by comparing opposite ends of participant answers and conducting a Student-t tests to determine whether there were significantly different mean grade values. Fourteen questions produced responses that formed populations with differing performance levels. Those that performed better are considered to be in the **right group** and to possess an "Advantaged Feature". Students with a higher count of advantaged features (nine or more out of fourteen) showed a strong correlation with academic success. This report explores the data and explains the processes used, but it does not attempt to explain the underlying reasons or suggest actions. 

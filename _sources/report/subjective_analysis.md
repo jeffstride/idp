@@ -10,7 +10,7 @@ Some of the data can appear to be circular (self-fullfilling). In other words, g
 3) see if equally strong correlations can be determined before the student even begins the course    
 
 ## Analysis
-[The below](#ai-analysis) is what AI composed from the report. I believe that the suggestions are naive and assume too much causality in the correlations.   
+The <a href="#ai-analysis-of-report">below</a> is what AI composed from the report. I believe that the suggestions are naive and assume too much causality in the correlations.   
 
 I have some suspicions (and data) about how or why some features would contribute to a better grade in 143.  
 
@@ -31,15 +31,13 @@ I made two mistakes:
 1) From quarter to quarter, I only marginally updated the multiple choice portion of the exam. While I did not allow students to take exams out of the classroom, and I did my best to prevent students from taking pictures or otherwise stealing the exam.   
 2) From section to section in the same quarter, I used the exact same exam. This is the crux of the problem.  
 
-As news spread and students became more aware of how to cheat, the data showing cheating manifested.  
+As news spread and students became more aware of how to cheat, the data showing cheating manifested. I also have two pieces of evidence supporting the fact that cheating occurred. 1) One honest student told me that he was offered a copy of last quarter's MCQ. 2) I caught a student with the answers to the FRQ in the later section.  
 
-I don't believe the data shows improved exam scores from quarter to quarter. (TODO: Show this data.) This suggests that the exams where either changed enough from quarter to quarter, and/or that any *"black market"* exams had an insignificant impact.    
+I don't believe the data shows improved exam scores from quarter to quarter. **(TODO: Show this data.)** This suggests that the exams where either changed enough from quarter to quarter, and/or that any *"black market"* exams had an insignificant impact.    
 
-#### TODO: plot and analysis of data
-Show how MCQ/FRQ scores changed from quarter to quarter and section to section.  
-See if the Student-t test shows that the average is different. Plot KDE plots. The code to do this is pretty much already available, just not on the MCQ and FRQ scores. 
-
-Note that the better performance on every exam and every portion was always the later section. Never did an earlier section do better.  
+#### Section Differences
+Below you'll see MCQ/FRQ scores and how they changed from section to section.  
+Note how the Student-t test shows that the average MCQ is significantly different on every exam. Furthermore, the later section had better performance on every exam. Never did an earlier section do better.  
 
 ```
 Winter 2025:
@@ -47,14 +45,32 @@ Midterm #1: MCQ +0.5%.  FRQ: +1.6%
 Midterm #2: MCQ +4.4%   FRQ: +2.6%
 Final:      MCQ +1.8%   FRQ: +0.2%
 
-Spring 2026:
+Spring 2025:
 Midterm #1: MCQ +10.9%  FRQ: + 4.8%
-Midterm #2: MCQ +14.6%  FRQ: +13.2%
-Final:      MCQ +12.1%  FRQ: +11.1%
+Midterm #2: MCQ +10.5%  FRQ: +13.2%
+Final:      MCQ + 7.3%  FRQ: + 5.6%
+
+MID1      t_stat	p_value	significant	n_A	n_B
+FRQ(%)	  0.9851	0.3272	   False	44	45
+MCQ(%)	  2.3285	0.0222	    True	44	45
+Total(%)  1.8238	0.0716	   False	44	45
+
+MID2	  t_stat	p_value	significant	n_A	n_B
+FRQ(%)	  2.3338	0.0221	    True	41	44
+MCQ(%)	  2.5990	0.0110	    True	41	44
+Total(%)  2.6264	0.0103	    True	41	44
+
+Final	  t_stat	p_value	significant	n_A	n_B
+FRQ(%)	  1.0942	0.2775	   False	38	36
+MCQ(%)	  2.1645	0.0337	    True	38	36
+Total(%)  1.9072	0.0605     False	38	36
+
 ```
 
 ### Is Multiple Choice a Poor Choice?
-The data shows that a bit more cheating occurs on the MCQ, but not significantly more. Only once (Spring 2026 Midterm #1) was the MCQ signficantly showing a larger delta than the FRQ. (TODO: Need some p-values and such.) An MCQ has many questions. Students leaving an exam could not memorize all the questions. However, should a student get their hands on a stolen MCQ, providing correct answers without true knowledge on the subject would be relatively easy. An FRQ would be easier to remember but harder to fake an answer.  
+The data shows that a bit more cheating occurs on the MCQ. When analyzing the Spring 2025 quarter, the MCQ was significantly (using p=0.05) different across the two sections for all three exams. The FRQ was statistically different for midterm #2, however it was *"noticably"* different across all thee exams.  
+
+An MCQ has many questions. Students leaving an exam could not easily memorize all the questions. However, should a student get their hands on a stolen MCQ, providing correct answers without true knowledge (i.e. memorization) on the subject would be relatively easy. An FRQ would be easier to remember because there are fewer quctions, but it would harder to fake an answer.  
 
 As an instructor, I find it hard to continually author good multiple choice questions that measure real knowledge. 
 
@@ -63,12 +79,13 @@ The motivational speaker, Jim Rohn, in the 1980's originated the concept that *"
 
 A school's program may attempt to increase the count of friends a student has in order to improve their academic success on the premise that more friends gives you more emotional support, more study partners, and a better experience in a program (an experience is undoubtedly better with friends). While I do not contest these as I believe them to be true, I think the greater impact on a student's score originating from a friend group comes from the other two areas: *Average of 5* and *Academic Dishonesty*.  
 
-While there's no study literally calculating the "average" of your five friends, extensive social science shows that our close social circle does influence us. One study<a href="#footnotes"><sup>[1]</sup></a> shows how close firends' and admired peers' academic engagement contributed to their own academic engagement **over time**. It shows that adolescents who were similar in academic engagement more often became friends. It not state that simply having more friends would increase your academic performance. Instead, if your genuine interests are in Computer Science, you are likely to have more friends also in Computer Science: you are more likely to have a genuine and longstanding interest in Computer Science if your friends do. The study does suggest that if your friends are academically strong that you would migrate to become academically strong as well. Through a social contagion you would start to value academics more and strive to become better at academics.  Friends serve to influence your behavior over time.<a href="#footnotes"><sup>[2]</sup></a>  
+While there's no study literally calculating the "average" of your five friends, extensive social science shows that our close social circle does influence us. One study<a href="#references"><sup>[1]</sup></a> shows how close firends' and admired peers' academic engagement contributed to their own academic engagement **over time**. It shows that adolescents who were similar in academic engagement more often became friends. It not state that simply having more friends would increase your academic performance. Instead, if your genuine interests are in Computer Science, you are likely to have more friends also in Computer Science: you are more likely to have a genuine and longstanding interest in Computer Science if your friends do. The study does suggest that if your friends are academically strong that you would migrate to become academically strong as well. Through a social contagion you would start to value academics more and strive to become better at academics.  Friends serve to influence your behavior over time.<a href="#references"><sup>[2]</sup></a>   
 
 If any program (e.g. STARS) were to work toward building up a larger friend network, the effort should be to introduce struggling students with high performing students. A friend network including only poor achieving students could perpetuation poor performance.  
----    
-<a href="#ai-analysis"></a>
+   
 ## AI Analysis of Report
+> This section is what AI created, verbatim, about my report.  
+
 The report provides insights into factors that correlate with better performance in CSS 143, which can be leveraged to increase students' advantage count in future courses.  Here are some speculative strategies based on the findings:
 1) Improve CSS 142 Preparation:
     * Focus on ensuring students achieve a strong foundation in CSS 142, as higher grades in this course correlate with better performance in CSS 143. 
@@ -106,6 +123,7 @@ The report provides insights into factors that correlate with better performance
 
 By implementing these strategies, instructors can help students build more advantageous features, thereby increasing their advantage count and improving their chances of success in future courses. 
 
-## Footnotes
-[1] [Social contagion of academic behavior: Comparing social networks of close friends and admired peers](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0265385) 
+## References
+[1] Huiyoung Shin [Social contagion of academic behavior: Comparing social networks of close friends and admired peers](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0265385) Plos 2022.   
+
 [2] McPherson M, Smith-Lovin L, Cook JM. Birds of a feather: Homophily in social networks. Annu Rev Sociol. 2001;27:415–444. https://doi.org/10.1146/annurev.soc.27.1.415
